@@ -1,0 +1,10 @@
+
+data-raw/eidith_eha_predict1_animals-sampled_Sep09_1416.csv filter=lfs diff=lfs merge=lfs -text
+data-raw/eidith_eha_predict1_columbia-submissions_Sep09_1434.csv filter=lfs diff=lfs merge=lfs -text
+data-raw/eidith_eha_predict1_events_Sep09_1415.csv filter=lfs diff=lfs merge=lfs -text
+data-raw/eidith_eha_predict1_file-submissions_Sep09_1413.csv filter=lfs diff=lfs merge=lfs -text
+data-raw/eidith_eha_predict1_interpreted-results_Sep09_1431.csv filter=lfs diff=lfs merge=lfs -text
+data-raw/eidith_eha_predict1_sequences_Sep09_1433.csv filter=lfs diff=lfs merge=lfs -text
+data-raw/eidith_eha_predict1_species-names_Sep09_1414.csv filter=lfs diff=lfs merge=lfs -text
+data-raw/eidith_eha_predict1_specimens_Sep09_1420.csv filter=lfs diff=lfs merge=lfs -text
+data-raw/eidith_eha_predict1_tests_Sep09_1425.csv filter=lfs diff=lfs merge=lfs -text
