@@ -2,12 +2,12 @@ Package: eidith
 Title: eidith
 Version: 0.1.0
 Author: Noam Ross
-Maintainer: ross@ecohealthalliance.org
+Maintainer: Noam Ross <ross@ecohealthalliance.org>
 Description: Access to PREDICT EIDITH data
 License: MIT + file LICENSE
 LazyData: true
 URL: https://github.com/ecohealthalliance/eidith
 BugReports: https://github.com/ecohealthalliance/eidith/issues
 RoxygenNote: 5.0.1
-Suggests: 
+Suggests:
     testthat
