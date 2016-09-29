@@ -19,6 +19,8 @@ knitr::opts_chunk$set(
 
 ***Data access and analytical tools for PREDICT***
 
+[![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
+
 ## Installation
 
 Use the following command to install the package.  You will require a github
