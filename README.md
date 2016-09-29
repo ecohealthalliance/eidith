@@ -1,6 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-![](inst/eidith-logo-2014.png)
+![](README-eidith-logo-2014.png)
 
 The EIDITH R Package
 ====================
@@ -38,4 +38,4 @@ License
 
 MIT + file LICENSE ©
 
-![](inst/predictfooter.png)
+![](README-predictfooter.png)
