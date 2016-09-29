@@ -1,11 +1,12 @@
 
 
 
-# eidith
 
-> eidith
+![](inst/eidith-logo-2014.png)
 
-Access to EHA PREDICT EIDITH data
+# The EIDITH R Package
+
+Data access and analytical tools for PREDICT
 
 ## Installation
 
@@ -27,3 +28,5 @@ library(eidith)
 ## License
 
 MIT + file LICENSE © 
+
+![](inst/predictfooter.png)

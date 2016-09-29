@@ -5,4 +5,5 @@
 ^.travis.yml$
 ^appveyor.yml$
 ^data-raw$
+^docs$
 ^misc$
