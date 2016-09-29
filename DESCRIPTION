@@ -11,3 +11,4 @@ BugReports: https://github.com/ecohealthalliance/eidith/issues
 RoxygenNote: 5.0.1
 Suggests:
     testthat
+    

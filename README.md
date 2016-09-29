@@ -1,7 +1,6 @@
 
 
 
-
 ![](inst/eidith-logo-2014.png)
 
 # The EIDITH R Package
