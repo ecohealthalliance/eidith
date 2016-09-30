@@ -1,13 +1,18 @@
 Package: eidith
-Title: eidith
-Version: 0.1.0
+Title: Data access and analytical tools for the PREDICT EIDITH database
+Version: 0.1.0.9000
 Authors@R: c(
-    person("Noam", "Ross", , "ross@ecohealthalliance.org", role = c("aut", "cre"))
+    person("Noam", "Ross", , "ross@ecohealthalliance.org", role = c("aut", "cre"),
+    person("EcoHealth Alliance", role="cph"))
     )
-Description: Access to PREDICT EIDITH data
+Description: This package provides a programmatic interface to the PREDICT
+    EIDITH database from R, allowing download and query of sampling data.  Use
+    of download functions requires an EIDITH account with appropriate permissions.
+    EIDITH also generates standard reports and implements common analysis
+    functions for PREDICT data.
 License: MIT + file LICENSE
 LazyData: true
-URL: https://github.com/ecohealthalliance/eidith
+URL: https://ecohealthalliance.github.io/eidith
 BugReports: https://github.com/ecohealthalliance/eidith/issues
 RoxygenNote: 5.0.1
 Suggests:
