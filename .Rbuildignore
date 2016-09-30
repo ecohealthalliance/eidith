@@ -3,8 +3,10 @@
 ^Makefile$
 ^.travis.yml$
 ^appveyor.yml$
+^_staticdocs.yml$
 ^data-raw$
 ^docs$
 ^misc$
 ^README\.Rmd$
 ^README-.*\.png$
+^LICENSE.md$
