@@ -1,6 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-![](README-eidith-logo-2014.png)
+![](inst/images/README-eidith-logo-2014.png)
 
 The EIDITH R Package
 ====================
@@ -33,4 +33,4 @@ Contributing
 
 Contributing to development of devtools currently requires Git Large File System (<https://git-lfs.github.com/>). Install prior to cloning this repository.
 
-![](README-predictfooter.png)
+![](inst/images/README-predictfooter.png)

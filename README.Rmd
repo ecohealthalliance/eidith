@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
   fig.height = 8)
 ```
 
-![](README-eidith-logo-2014.png)
+![](inst/images/README-eidith-logo-2014.png)
 
 # The EIDITH R Package
 
@@ -46,4 +46,4 @@ Contributing to development of devtools currently requires Git Large File
 System (https://git-lfs.github.com/). Install prior to cloning this repository.
 
 
-![](README-predictfooter.png)
+![](inst/images/README-predictfooter.png)

@@ -11,7 +11,9 @@ docs:
 	${RSCRIPT} -e "library(methods); devtools::document(roclets=c('rd', 'collate', 'namespace', 'vignette'))"
 
 site: docs
-	${RSCRIPT} -e "library(methods); staticdocs::build_site()""
+	${RSCRIPT} -e "library(methods); staticdocs::build_site()"
+	mkdir -p docs/inst
+	cp -R inst/images docs/inst
 
 test:
 	${RSCRIPT} -e "library(methods); devtools::test()"
