@@ -15,8 +15,14 @@ LazyData: true
 URL: https://ecohealthalliance.github.io/eidith
 BugReports: https://github.com/ecohealthalliance/eidith/issues
 RoxygenNote: 5.0.1
+Imports:
+    httr,
+    jsonlite,
+    tibble
 Suggests:
     testthat,
     covr,
     rmarkdown,
-    staticdocs
+    pkgdown,
+    knitr
+VignetteBuilder: knitr
