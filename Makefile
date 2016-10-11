@@ -10,8 +10,8 @@ README.md: README.Rmd
 docs:
 	${RSCRIPT} -e "library(methods); devtools::document(roclets=c('rd', 'collate', 'namespace', 'vignette'))"
 
-site: docs
-	${RSCRIPT} -e "library(methods); staticdocs::build_site()"
+site: docs readme
+	${RSCRIPT} -e "library(methods); pkgdown::build_site()"
 	mkdir -p docs/inst
 	cp -R inst/images docs/inst
 
@@ -20,9 +20,7 @@ test:
 
 check:
 	${RSCRIPT} -e "library(methods); devtools::check()"
+
 # ADD
-# Roxygenize
-# Build staticdocs
-# Copy README images to docs
 # DRAT
 # Tests?

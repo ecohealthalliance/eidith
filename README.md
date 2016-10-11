@@ -7,7 +7,9 @@ The EIDITH R Package
 
 **Data access and analytical tools for PREDICT's [Emerging Infectious Disease Information Technology Hub](https://www.eidith.org/)**
 
-[![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip) <a href="https://travis-ci.org/ecohealthalliance/eidith"> <object data="https://img.shields.io/badge/build-unknown-lightgrey.svg" type="image/png"> <img src="https://travis-ci.org/ecohealthalliance/eidith.svg?branch=master" /> </object></a> [![MIT Licensed - Copyright 2016 EcoHealth Alliance](https://img.shields.io/badge/license-MIT-blue.svg)](https://badges.mit-license.org/)
+[![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip) [![MIT Licensed - Copyright 2016 EcoHealth Alliance](https://img.shields.io/badge/license-MIT-blue.svg)](https://badges.mit-license.org/)
+
+<a href="https://travis-ci.org/ecohealthalliance/eidith"> <object data="https://img.shields.io/badge/build-unknown-lightgrey.svg" type="image/png"> <img src="https://travis-ci.org/ecohealthalliance/eidith.svg?branch=master" /> </object> </a>
 
 Installation
 ------------
