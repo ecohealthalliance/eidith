@@ -2,11 +2,11 @@
 
 export(ed_animals)
 export(ed_events)
+export(ed_get)
 export(ed_specimens)
 export(ed_tests)
 export(ed_viruses)
 export(eidith_user)
-export(get_eidith_data)
 importFrom(httr,GET)
 importFrom(httr,status_code)
 importFrom(jsonlite,fromJSON)

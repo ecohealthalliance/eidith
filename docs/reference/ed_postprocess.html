@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference. EIDITH</title>
+<title>ed_postprocess. EIDITH</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -81,26 +81,28 @@
       </header>
 
       <div class="page-header">
-  <h1>Function reference <small>version&nbsp;0.0.0.9000</small></h1>
+  <h1>Standard post-processing of EIDITH exports</h1>
 </div>
 
 <div class="row">
   <div class="col-md-9">
-    <div class="section ">
-      <h2>All functions</h2>
-      <p class="section-desc"></p>
+    
+    <p>This function takes raw EIDITH data tables and does minor common
+post-processing tasks.</p>
+    
 
-      <dl class="dl-horizontal">
-        <dt><a href="ed_get.html">ed_animals</a></dt><dt><a href="ed_get.html">ed_events</a></dt><dt><a href="ed_get.html">ed_get</a></dt><dt><a href="ed_get.html">ed_specimens</a></dt><dt><a href="ed_get.html">ed_tests</a></dt><dt><a href="ed_get.html">ed_viruses</a></dt>
-        <dd>Functions to access main EIDITH tables</dd>
-        <dt><a href="ed_postprocess.html">ed_postprocess</a></dt>
-        <dd>Standard post-processing of EIDITH exports</dd>
-        <dt><a href="eidith_user.html">eidith_user</a></dt>
-        <dd>EIDITH logon credentials</dd>
-        <dt><a href="eidith.html">eidith</a></dt><dt><a href="eidith.html">eidith-package</a></dt>
-        <dd>eidith</dd>
-      </dl>
-    </div>
+    <pre><span class='fu'>ed_postprocess</span>(<span class='no'>data</span>, <span class='no'>endpoint</span>)</pre>
+    
+    <h2>Arguments</h2>
+    <dl class="dl-horizontal">
+      <dt>data</dt>
+      <dd>The data as exported from EIDITH and imported via</dd>
+      <dt>endpoint</dt>
+      <dd>The name of the endpoint or data table: one of &quot;Event&quot;,
+&quot;Animal&quot;,  &quot;Specimen&quot;, &quot;Test&quot;, or &quot;Virus&quot;.</dd>
+    </dl>
+          </div>
+  <div class="col-md-3">
   </div>
 </div>
 

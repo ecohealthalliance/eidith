@@ -14,44 +14,57 @@ predict_base_url <- "https://predict2api.eidith.org/api/app/"
 #' @importFrom jsonlite fromJSON
 #' @importFrom tibble as_tibble
 #' @export
-get_eidith_data <- function(endpoint, username=eidith_user(), password=eidith_pwd(), progress=interactive()) {
+ed_get <- function(endpoint, username=NULL, password=NULL, verbose=interactive(), postprocess=TRUE, ...) {
    url <- paste0(predict_base_url, endpoint)
-   if(progress) pbar = progress() else pbar=NULL
-   request <- GET(url=url, authenticate(username, password, type="basic"), pbar)
+   if(verbose) {
+     pbar = progress()
+     message("Downloading...\n")
+     } else {
+       pbar=NULL
+     }
+
+   if(is.null(username)) username = eidith_user(verbose)
+   if(is.null(password)) password = eidith_pwd(verbose)
+
+   request <- GET(url=url, authenticate(username, password, type="basic"), pbar, ...)
+
    if(status_code(request) != 200) {
      stop(paste("Requested failed with HTTP code", status_code(request)))
    }
+   if(verbose) message("Importing...\n")
    data <- as_tibble(fromJSON(content(request, as = "text", encoding="UTF-8")))
-   names(data) <-camel_to_snake(names(data))
+
+   if(post_process) data = ed_postprocess(data, endpoint)
+
    return(data)
 }
 
-#' @rdname get_eidith_data
+#' @rdname ed_get
 #' @export
-ed_events <- function(username=eidith_user(), password=eidith_pwd()) {
-  get_eidith_data("Event", username, password)
+ed_events <- function(username=NULL, password=NULL, verbose=interactive(), post_process=TRUE) {
+  ed_get("Event", username, password, verbose, post_process)
 }
 
-#' @rdname get_eidith_data
+#' @rdname ed_get
 #' @export
-ed_animals <- function(username=eidith_user(), password=eidith_pwd()) {
-  get_eidith_data("Animal", username, password)
+ed_animals <- function(username=NULL, password=NULL, verbose=interactive(), post_process=TRUE) {
+  ed_get("Animal", username, password, verbose, post_process)
 }
 
-#' @rdname get_eidith_data
+#' @rdname ed_get
 #' @export
-ed_specimens <- function(username=eidith_user(), password=eidith_pwd()) {
-  get_eidith_data("Specimen", username, password)
+ed_specimens <- function(username=NULL, password=NULL, verbose=interactive(), post_process=TRUE) {
+  ed_get("Specimen", username, password, verbose, post_process)
 }
 
-#' @rdname get_eidith_data
+#' @rdname ed_get
 #' @export
-ed_tests <- function(username=eidith_user(), password=eidith_pwd()) {
-  get_eidith_data("Test", username, password)
+ed_tests <- function(username=NULL, password=NULL, verbose=interactive(), post_process=TRUE) {
+  ed_get("Test", username, password, verbose, post_process)
 }
 
-#' @rdname get_eidith_data
+#' @rdname ed_get
 #' @export
-ed_viruses <- function(username=eidith_user(), password=eidith_pwd()) {
-  get_eidith_data("Virus", username, password)
+ed_viruses <- function(username=NULL, password=NULL, verbose=interactive(), post_process=TRUE) {
+  ed_get("Virus", username, password, verbose, post_process)
 }
