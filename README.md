@@ -30,9 +30,4 @@ Load the package with
 library(eidith)
 ```
 
-Contributing
-------------
-
-Contributing to development of devtools currently requires Git Large File System (<https://git-lfs.github.com/>). Install prior to cloning this repository.
-
 ![](inst/images/README-predictfooter.png)
