@@ -13,19 +13,19 @@ ed_get(endpoint, username = NULL, password = NULL,
   verbose = interactive(), postprocess = TRUE, ...)
 
 ed_events(username = NULL, password = NULL, verbose = interactive(),
-  post_process = TRUE)
+  postprocess = TRUE)
 
 ed_animals(username = NULL, password = NULL, verbose = interactive(),
-  post_process = TRUE)
+  postprocess = TRUE)
 
 ed_specimens(username = NULL, password = NULL, verbose = interactive(),
-  post_process = TRUE)
+  postprocess = TRUE)
 
 ed_tests(username = NULL, password = NULL, verbose = interactive(),
-  post_process = TRUE)
+  postprocess = TRUE)
 
 ed_viruses(username = NULL, password = NULL, verbose = interactive(),
-  post_process = TRUE)
+  postprocess = TRUE)
 }
 \arguments{
 \item{endpoint}{Which API endpoint to access, one of "Event", "Animal",
@@ -35,10 +35,10 @@ Convenience functions are provided for each.}
 \item{username}{Your EIDITH username. Store it in your \code{.Renviron} file
 as \code{EIDITH_USERNAME=XXXXX} for automatic access.}
 
+\item{verbose}{Show a progress bar and other messages?}
+
 \item{username}{Your EIDITH password. Store it in your \code{.Renviron} file
 as \code{EIDITH_PASSWORD=XXXXX} for automatic access.}
-
-\item{progress}{Show a progress bar?}
 }
 \value{
 a \link[tibble]{tibble}-style data frame

@@ -4,16 +4,16 @@
 \alias{ed_postprocess}
 \title{Standard post-processing of EIDITH exports}
 \usage{
-ed_postprocess(data, endpoint)
+ed_postprocess(dat, endpoint)
 }
 \arguments{
-\item{data}{The data as exported from EIDITH and imported via}
+\item{dat}{The dat as exported from EIDITH and imported via}
 
-\item{endpoint}{The name of the endpoint or data table: one of "Event",
+\item{endpoint}{The name of the endpoint or dat table: one of "Event",
 "Animal",  "Specimen", "Test", or "Virus".}
 }
 \description{
-This function takes raw EIDITH data tables and does minor common
+This function takes raw EIDITH dat tables and does minor common
 post-processing tasks.
 }
 

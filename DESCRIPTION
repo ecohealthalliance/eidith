@@ -18,11 +18,13 @@ RoxygenNote: 5.0.1
 Imports:
     httr,
     jsonlite,
+    dplyr,
     tibble
 Suggests:
     testthat,
     covr,
     rmarkdown,
     pkgdown,
-    knitr
+    knitr,
+    feather
 VignetteBuilder: knitr

@@ -5,19 +5,19 @@
 #' home \code{.Renviron} file as \code{EIDITH_USERNAME} and
 #' \code{EIDITH_PASSWORD} and these values will be used as defaults for all
 #' calls.
-#' @param quiet Suppress messages when calling values
+#' @param verbose Show messages?
 #' @export
-
-eidith_user <- function(quiet=!interactive()) {
+eidith_user <- function(verbose=interactive()) {
   user <- Sys.getenv("EIDITH_USERNAME")
   if(identical(user, "")) return(NULL)
-  if (!quiet) message("Using EIDITH username from envar EIDITH_USERNAME")
+  if (verbose) message("Using EIDITH username from envar EIDITH_USERNAME")
   return(user)
 }
 
-eidith_pwd <- function(quiet=!interactive()) {
+#' @rdname eidith_user
+eidith_pwd <- function(verbose=interactive()) {
   pwd <- Sys.getenv("EIDITH_PASSWORD")
-  if (!quiet) message("Using EIDITH password from envar EIDITH_PASSWORD")
+  if (verbose) message("Using EIDITH password from envar EIDITH_PASSWORD")
   return(pwd)
 }
 
