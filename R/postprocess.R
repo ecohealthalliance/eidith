@@ -91,3 +91,7 @@ pp_Test <- function(dat) {
 pp_Virus <- function(dat) {
   return(dat)
 }
+
+pp_TestIDSpecimenID <- function(dat) {
+  return(dat)
+}
