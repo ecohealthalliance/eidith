@@ -4,82 +4,78 @@ endpoints <- c("Event", "Animal", "Specimen", "Test", "Virus", "TestIDSpecimenID
 #' @param endpoint Which API endpoint to access, one of "Event", "Animal",
 #'   "Specimen", "Test", or "Virus". Each endpoint delivers one of these tables.
 #'   Convenience functions are provided for each.
-#' @param username  Your EIDITH username. Store it in your \code{.Renviron} file
-#'   as \code{EIDITH_USERNAME=XXXXX} for automatic access.
-#' @param username  Your EIDITH password. Store it in your \code{.Renviron} file
-#'   as \code{EIDITH_PASSWORD=XXXXX} for automatic access.
 #' @param verbose Show a progress bar and other messages?
 #' @return a \link[tibble]{tibble}-style data frame
 #' @importFrom httr GET status_code progress authenticate content modify_url
 #' @importFrom jsonlite fromJSON
 #' @importFrom tibble as_tibble
 #' @export
-ed_get <- function(endpoint, username=NULL, password=NULL, verbose=interactive(), postprocess=TRUE, header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
-   url <- modify_url(url =  paste0(eidith_base_url, endpoint),
-                     query = list(header_only = ifelse(header_only, "y", "n"),
-                                  lmdate_from = lmdate_from,
-                                  lmdate_to = lmdate_to))
-   if(verbose) {
-     pbar = progress()
-     message("Downloading...")
-     } else {
-       pbar=NULL
-     }
+ed_get <- function(endpoint, verbose=interactive(), postprocess=TRUE, header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+  url <- modify_url(url =  paste0(eidith_base_url, endpoint),
+                    query = list(header_only = ifelse(header_only, "y", "n"),
+                                 lmdate_from = lmdate_from,
+                                 lmdate_to = lmdate_to))
+  if(verbose) {
+    pbar = progress()
+    message("Downloading...")
+  } else {
+    pbar=NULL
+  }
 
-   if(is.null(username)) username = eidith_user(verbose)
-   if(is.null(password)) password = eidith_pwd(verbose)
+  if(is.null(auth)) auth <- eidith_auth(username, password)
 
-      request <- GET(url=url, authenticate(username, password, type="basic"), pbar, ...)
+  request <- GET(url=url, authenticate(auth[1], auth[2], type="basic"), pbar, ...)
 
-   if(status_code(request) != 200) {
-     stop(paste("Requested failed with HTTP code", status_code(request)))
-   }
-   if(verbose) message("Importing...")
-   data <- fromJSON(content(request, as = "text", encoding="UTF-8"))
+  if(status_code(request) == 401) {
+    stop("Unauthorized (HTTP 401). See ?eidith_auth.")
+  }
 
-   if(header_only) {
-     return(data)
-   } else {
-     data = as_tibble(data)
-   }
+  if(verbose) message("Importing...")
+  data <- fromJSON(content(request, as = "text", encoding="UTF-8"))
 
-   if(postprocess) data = ed_postprocess(data, endpoint)
+  if(header_only) {
+    return(data)
+  } else {
+    data = as_tibble(data)
+  }
 
-   return(data)
+  if(postprocess) data = ed_postprocess(data, endpoint)
+
+  return(data)
 }
 
 #' @rdname ed_get
 #' @export
-ed_events <- function(username=NULL, password=NULL, verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
-  ed_get("Event", username, password, verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
+ed_events <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+  ed_get("Event", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }
 
 #' @rdname ed_get
 #' @export
-ed_animals <- function(username=NULL, password=NULL, verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
-  ed_get("Animal", username, password, verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
+ed_animals <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+  ed_get("Animal", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }
 
 #' @rdname ed_get
 #' @export
-ed_specimens <- function(username=NULL, password=NULL, verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
-  ed_get("Specimen", username, password, verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
+ed_specimens <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+  ed_get("Specimen", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }
 
 #' @rdname ed_get
 #' @export
-ed_tests <- function(username=NULL, password=NULL, verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
-  ed_get("Test", username, password, verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
+ed_tests <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+  ed_get("Test", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }
 
 #' @rdname ed_get
 #' @export
-ed_viruses <- function(username=NULL, password=NULL, verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
-  ed_get("Virus", username, password, verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
+ed_viruses <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+  ed_get("Virus", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }
 
 #' @rdname ed_get
 #' @export
-ed_testspecimen <- function(username=NULL, password=NULL, verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
-  ed_get("TestIDSpecimenID", username, password, verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
+ed_testspecimen <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+  ed_get("TestIDSpecimenID", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }

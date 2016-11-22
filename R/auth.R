@@ -7,17 +7,35 @@
 #' calls.
 #' @param verbose Show messages?
 #' @export
-eidith_user <- function(verbose=interactive()) {
+eidith_auth <- function(verbose=interactive(), force=FALSE) {
   user <- Sys.getenv("EIDITH_USERNAME")
-  if(identical(user, "")) return(NULL)
-  if (verbose) message("Using EIDITH username from envar EIDITH_USERNAME")
-  return(user)
-}
-
-#' @rdname eidith_user
-eidith_pwd <- function(verbose=interactive()) {
   pwd <- Sys.getenv("EIDITH_PASSWORD")
-  if (verbose) message("Using EIDITH password from envar EIDITH_PASSWORD")
-  return(pwd)
+
+  if(identical(user, "") || identical(pwd, "") || force) {
+    if(interactive()) {
+      message("We recommend saving EIDITH credentials as environment variables.See ?eidith_auth")
+      user <- readline("EIDITH username: ")
+      pwd <- getPass::getPass("EIDITH password: ")
+    } else {
+      stop("No credentials supplied. See ?eidith_auth.")
+    }
+  } else {
+    if (verbose) message("Using env vars EIDITH_USERNAME and EIDITH_PASSWORD for logon")
+  }
+
+  auth <- c(username=user, password=pwd)
+  class(auth) <- c(class(auth), "eidithauth")
+  invisible(auth)
 }
 
+print.eidithauth <- function(auth) {
+  if(interactive()) message("Credentials hidden")
+}
+
+str.eidithauth <- function(auth) {
+  stop("Operation not allowed")
+}
+
+`[.eidithauth` <- function(auth, n) {
+  stop("Operation not allowed")
+}

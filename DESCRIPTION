@@ -19,7 +19,11 @@ Imports:
     httr,
     jsonlite,
     dplyr,
-    tibble
+    tibble,
+    RSQLite,
+    DBI,
+    getPass,
+    rappdirs
 Suggests:
     testthat,
     covr,
