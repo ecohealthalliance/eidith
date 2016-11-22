@@ -89,7 +89,22 @@ pp_Test <- function(dat) {
 }
 
 pp_Virus <- function(dat) {
+  dat <- rename(dat,new_genbank_accession = GenbankAccessionNumber)
+  dat$known_genbank_accession <- get_genbank(dat$Interpretation)
+  dat$known_genbank_accession[which(dat$known_genbank_accession == "character(0)")] <- NA
+  dat$of_interest <- get_interest(dat$Interpretation)
   return(dat)
+}
+
+get_genbank <- function(interpretations){
+  accession <- str_extract_all(interpretations,"([A-Z]{1,2}_?[0-9]{5,6})")
+  accession <- str_replace_all(accession, "_", "")
+  return(accession)
+}
+
+get_interest<-function(interpretations){
+  x <- !str_detect(interpretations,"[Tt]here is(\\scurrently)? not? evidence(\\sat this time)?(\\sto suggest)?(\\sthat)? ((this virus)|(it))(es)?(\\sa)? (poses?)?(might be)? ((any risk)|(a threat)) to human health.?") & !str_detect(interpretations, "there is no evidence at this time that Simian adenoviruses pose a threat to human health")
+  return(x)
 }
 
 pp_TestIDSpecimenID <- function(dat) {
