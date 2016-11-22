@@ -24,20 +24,20 @@ camel_to_snake <- function(CamelNames) {
 
 #' @importFrom dplyr rename_ select_ mutate_ recode
 pp_Event <- function(dat) {
-  # dat <- dplyr::rename_(dat, .dots = c("event_id"="gains3_event_id", "organization_id"="organization_idowner"))
-  # dat <- dplyr::select_(dat, .dots = c("event_id", "region", "country", "site_name", "event_date",
-  #                                        "state_prov", "district", "latitude", "longitude", "habitat_type",
-  #                                        "habitat_comment", "landscape_conversion_gradient", "anthropogenic_change",
-  #                                        "anthropogenic_change_other", "anthropogenic_change_secondary",
-  #                                        "anthropogenic_change_secondary_other", "domestic_animals", "other_domestic_animals",
-  #                                        "duration_of_event_days", "recorder_name", "recorder_other",
-  #                                        "organization", "organization_id", "archived_dat", "deep_forest_dat", "source_certainty",
-  #                                        "primary_interface", "other_primary_interface", "secondary_interface",
-  #                                        "other_secondary_interface", "reason_for_collection", "source_known",
-  #                                        "event_custom_columns", "primary_interface_group", "secondary_interface_group",
-  #                                        "date_last_updated", "event_name"))
-  #dat <- dplyr::mutate_(dat, habitat_type = ~recode(habitat_type, `lowland forest`='Lowland forest', `Grassland `='Grassland', `river/stream`='River/stream'))
-  #dat <- dplyr::mutate_(dat, archived_dat = ~(archived_dat == "yes"), deep_forest_dat = ~(deep_forest_dat == "yes"))
+  dat <- dplyr::rename_(dat, .dots = c("event_id"="gains3_event_id", "organization_id"="organization_idowner"))
+  dat <- dplyr::select_(dat, .dots = c("event_id", "region", "country", "site_name", "event_date",
+                                         "state_prov", "district", "latitude", "longitude", "habitat_type",
+                                         "habitat_comment", "landscape_conversion_gradient", "anthropogenic_change",
+                                         "anthropogenic_change_other", "anthropogenic_change_secondary",
+                                         "anthropogenic_change_secondary_other", "domestic_animals", "other_domestic_animals",
+                                         "duration_of_event_days", "recorder_name", "recorder_other",
+                                         "organization", "organization_id", "archived_dat", "deep_forest_dat", "source_certainty",
+                                         "primary_interface", "other_primary_interface", "secondary_interface",
+                                         "other_secondary_interface", "reason_for_collection", "source_known",
+                                         "event_custom_columns", "primary_interface_group", "secondary_interface_group",
+                                         "date_last_updated", "event_name"))
+  dat <- dplyr::mutate_(dat, habitat_type = ~recode(habitat_type, `lowland forest`='Lowland forest', `Grassland `='Grassland', `river/stream`='River/stream'))
+  dat <- dplyr::mutate_(dat, archived_dat = ~(archived_dat == "yes"), deep_forest_dat = ~(deep_forest_dat == "yes"))
   return(dat)
 }
 
