@@ -15,22 +15,28 @@ ed_get(endpoint, username = NULL, password = NULL,
   lmdate_from = "2000-01-01", lmdate_to = Sys.Date() + 1, ...)
 
 ed_events(username = NULL, password = NULL, verbose = interactive(),
-  postprocess = TRUE, ...)
+  postprocess = TRUE, header_only = FALSE, lmdate_from = "2000-01-01",
+  lmdate_to = Sys.Date() + 1, ...)
 
 ed_animals(username = NULL, password = NULL, verbose = interactive(),
-  postprocess = TRUE, ...)
+  postprocess = TRUE, header_only = FALSE, lmdate_from = "2000-01-01",
+  lmdate_to = Sys.Date() + 1, ...)
 
 ed_specimens(username = NULL, password = NULL, verbose = interactive(),
-  postprocess = TRUE, ...)
+  postprocess = TRUE, header_only = FALSE, lmdate_from = "2000-01-01",
+  lmdate_to = Sys.Date() + 1, ...)
 
 ed_tests(username = NULL, password = NULL, verbose = interactive(),
-  postprocess = TRUE, ...)
+  postprocess = TRUE, header_only = FALSE, lmdate_from = "2000-01-01",
+  lmdate_to = Sys.Date() + 1, ...)
 
 ed_viruses(username = NULL, password = NULL, verbose = interactive(),
-  postprocess = TRUE, ...)
+  postprocess = TRUE, header_only = FALSE, lmdate_from = "2000-01-01",
+  lmdate_to = Sys.Date() + 1, ...)
 
 ed_testspecimen(username = NULL, password = NULL, verbose = interactive(),
-  postprocess = TRUE, ...)
+  postprocess = TRUE, header_only = FALSE, lmdate_from = "2000-01-01",
+  lmdate_to = Sys.Date() + 1, ...)
 }
 \arguments{
 \item{endpoint}{Which API endpoint to access, one of "Event", "Animal",

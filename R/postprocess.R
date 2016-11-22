@@ -36,8 +36,8 @@ pp_Event <- function(dat) {
   #                                        "other_secondary_interface", "reason_for_collection", "source_known",
   #                                        "event_custom_columns", "primary_interface_group", "secondary_interface_group",
   #                                        "date_last_updated", "event_name"))
-  dat <- dplyr::mutate_(dat, habitat_type = ~recode(habitat_type, `lowland forest`='Lowland forest', `Grassland `='Grassland', `river/stream`='River/stream'))
-  dat <- dplyr::mutate_(dat, archived_dat = ~(archived_dat == "yes"), deep_forest_dat = ~(deep_forest_dat == "yes"))
+  #dat <- dplyr::mutate_(dat, habitat_type = ~recode(habitat_type, `lowland forest`='Lowland forest', `Grassland `='Grassland', `river/stream`='River/stream'))
+  #dat <- dplyr::mutate_(dat, archived_dat = ~(archived_dat == "yes"), deep_forest_dat = ~(deep_forest_dat == "yes"))
   return(dat)
 }
 
