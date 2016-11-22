@@ -188,3 +188,9 @@ check_processing(specimens, tests)
 
 View(tests[which(str_detect(tests$SpecimenName, "KH11.P.0018.V")),])
 
+
+localdata <- readRDS("localdata.rds")
+
+specimens <- ed_specimens(postprocess = F)
+
+
