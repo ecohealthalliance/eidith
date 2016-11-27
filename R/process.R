@@ -6,11 +6,10 @@
 #' @param dat The dat as exported from EIDITH and imported via
 #' @param endpoint The name of the endpoint or dat table: one of "Event",
 #' "Animal",  "Specimen", "Test", or "Virus".
-#' @export
 #' @importFrom dplyr na_if as_data_frame
 #' @importFrom stringi stri_trim_both
 #' @importFrom purrr map_if
-ed_postprocess <- function(dat, endpoint) {
+ed_process <- function(dat, endpoint) {
   names(dat) <- fix_names(names(dat))
   dat <- map_if(dat, is.character, ~na_if(stri_trim_both(.), ""))
   dat <- map_if(dat, ~all(. %in% c("yes", "no", NA_character_)),  ~ . == "yes")
