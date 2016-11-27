@@ -1,14 +1,6 @@
 eidith_base_url <- "https://predict2api.eidith.org/api/app/"
 endpoints <- c("Event", "Animal", "Specimen", "Test", "Virus", "TestIDSpecimenID")
-db_tables <- c("events", "animals", "specimens", "tests", "viruses", "test_specimen_ids", "status")
-db_indexes <- list(
-  events = c("GAINS3_EventID"),
-  animals = c("animal_id"),
-  specimens = c("specimen_id"),
-  tests = c("test_id"),
-  viruses = c("virus_id"),
-  test_specimen_ids = c("test_id", "specimen_id")
-)
+
 #' Functions to access main EIDITH tables
 #' @param endpoint Which API endpoint to access, one of "Event", "Animal",
 #'   "Specimen", "Test", or "Virus". Each endpoint delivers one of these tables.
@@ -55,36 +47,36 @@ ed_get <- function(endpoint, verbose=interactive(), postprocess=TRUE, header_onl
 
 #' @rdname ed_get
 #' @export
-ed_events <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+get_ed_events <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
   ed_get("Event", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }
 
 #' @rdname ed_get
 #' @export
-ed_animals <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+get_ed_animals <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
   ed_get("Animal", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }
 
 #' @rdname ed_get
 #' @export
-ed_specimens <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+get_ed_specimens <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
   ed_get("Specimen", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }
 
 #' @rdname ed_get
 #' @export
-ed_tests <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+get_ed_tests <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
   ed_get("Test", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }
 
 #' @rdname ed_get
 #' @export
-ed_viruses <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+get_ed_viruses <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
   ed_get("Virus", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }
 
 #' @rdname ed_get
 #' @export
-ed_testspecimen <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+get_ed_testspecimen <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
   ed_get("TestIDSpecimenID", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }
