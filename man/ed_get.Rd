@@ -12,7 +12,7 @@
 \usage{
 ed_get(endpoint, verbose = interactive(), postprocess = TRUE,
   header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
-  + 1, ...)
+  + 1, auth = NULL, ...)
 
 get_ed_events(verbose = interactive(), postprocess = TRUE,
   header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
