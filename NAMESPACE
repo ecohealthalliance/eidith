@@ -3,7 +3,6 @@
 export(ed_animals)
 export(ed_events)
 export(ed_get)
-export(ed_postprocess)
 export(ed_specimens)
 export(ed_table)
 export(ed_table_)
