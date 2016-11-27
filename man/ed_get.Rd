@@ -10,46 +10,39 @@
 \alias{ed_testspecimen}
 \title{Functions to access main EIDITH tables}
 \usage{
-ed_get(endpoint, username = NULL, password = NULL,
-  verbose = interactive(), postprocess = TRUE, header_only = FALSE,
+ed_get(endpoint, verbose = interactive(), postprocess = TRUE,
+  header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
+  + 1, ...)
+
+ed_events(verbose = interactive(), postprocess = TRUE,
+  header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
+  + 1, ...)
+
+ed_animals(verbose = interactive(), postprocess = TRUE,
+  header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
+  + 1, ...)
+
+ed_specimens(verbose = interactive(), postprocess = TRUE,
+  header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
+  + 1, ...)
+
+ed_tests(verbose = interactive(), postprocess = TRUE, header_only = FALSE,
   lmdate_from = "2000-01-01", lmdate_to = Sys.Date() + 1, ...)
 
-ed_events(username = NULL, password = NULL, verbose = interactive(),
-  postprocess = TRUE, header_only = FALSE, lmdate_from = "2000-01-01",
-  lmdate_to = Sys.Date() + 1, ...)
+ed_viruses(verbose = interactive(), postprocess = TRUE,
+  header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
+  + 1, ...)
 
-ed_animals(username = NULL, password = NULL, verbose = interactive(),
-  postprocess = TRUE, header_only = FALSE, lmdate_from = "2000-01-01",
-  lmdate_to = Sys.Date() + 1, ...)
-
-ed_specimens(username = NULL, password = NULL, verbose = interactive(),
-  postprocess = TRUE, header_only = FALSE, lmdate_from = "2000-01-01",
-  lmdate_to = Sys.Date() + 1, ...)
-
-ed_tests(username = NULL, password = NULL, verbose = interactive(),
-  postprocess = TRUE, header_only = FALSE, lmdate_from = "2000-01-01",
-  lmdate_to = Sys.Date() + 1, ...)
-
-ed_viruses(username = NULL, password = NULL, verbose = interactive(),
-  postprocess = TRUE, header_only = FALSE, lmdate_from = "2000-01-01",
-  lmdate_to = Sys.Date() + 1, ...)
-
-ed_testspecimen(username = NULL, password = NULL, verbose = interactive(),
-  postprocess = TRUE, header_only = FALSE, lmdate_from = "2000-01-01",
-  lmdate_to = Sys.Date() + 1, ...)
+ed_testspecimen(verbose = interactive(), postprocess = TRUE,
+  header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
+  + 1, ...)
 }
 \arguments{
 \item{endpoint}{Which API endpoint to access, one of "Event", "Animal",
 "Specimen", "Test", or "Virus". Each endpoint delivers one of these tables.
 Convenience functions are provided for each.}
 
-\item{username}{Your EIDITH username. Store it in your \code{.Renviron} file
-as \code{EIDITH_USERNAME=XXXXX} for automatic access.}
-
 \item{verbose}{Show a progress bar and other messages?}
-
-\item{username}{Your EIDITH password. Store it in your \code{.Renviron} file
-as \code{EIDITH_PASSWORD=XXXXX} for automatic access.}
 }
 \value{
 a \link[tibble]{tibble}-style data frame

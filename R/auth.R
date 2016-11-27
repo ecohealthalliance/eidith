@@ -28,14 +28,14 @@ eidith_auth <- function(verbose=interactive(), force=FALSE) {
   invisible(auth)
 }
 
-print.eidithauth <- function(auth) {
-  if(interactive()) message("Credentials hidden")
-}
-
-str.eidithauth <- function(auth) {
-  stop("Operation not allowed")
-}
-
-`[.eidithauth` <- function(auth, n) {
-  stop("Operation not allowed")
-}
+# print.eidithauth <- function(auth) {
+#   if(interactive()) message("Credentials hidden")
+# }
+#
+# str.eidithauth <- function(auth) {
+#   stop("Operation not allowed")
+# }
+#
+# `[.eidithauth` <- function(auth, n) {
+#   stop("Operation not allowed")
+# }
