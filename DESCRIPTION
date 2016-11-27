@@ -23,7 +23,12 @@ Imports:
     RSQLite,
     DBI,
     getPass,
-    rappdirs
+    rappdirs,
+    purrr,
+    stringi,
+    magrittr,
+    lazyeval,
+    lubridate
 Suggests:
     testthat,
     covr,

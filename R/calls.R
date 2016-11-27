@@ -11,7 +11,7 @@ endpoints <- c("Event", "Animal", "Specimen", "Test", "Virus", "TestIDSpecimenID
 #' @importFrom jsonlite fromJSON
 #' @importFrom tibble as_tibble
 #' @export
-ed_get <- function(endpoint, verbose=interactive(), postprocess=TRUE, header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+ed_get <- function(endpoint, verbose=interactive(), postprocess=TRUE, header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, auth=NULL, ...) {
   url <- modify_url(url =  paste0(eidith_base_url, endpoint),
                     query = list(header_only = ifelse(header_only, "y", "n"),
                                  lmdate_from = lmdate_from,
@@ -23,7 +23,7 @@ ed_get <- function(endpoint, verbose=interactive(), postprocess=TRUE, header_onl
     pbar=NULL
   }
 
-  auth <- eidith_auth()
+  if(is.null(auth)) auth <- eidith_auth()
 
   request <- GET(url=url, authenticate(auth[1], auth[2], type="basic"), pbar, ...)
 
@@ -40,7 +40,7 @@ ed_get <- function(endpoint, verbose=interactive(), postprocess=TRUE, header_onl
     data = as_tibble(data)
   }
 
-  if(postprocess) data = ed_postprocess(data, endpoint)
+  if(postprocess) data = ed_process(data, endpoint)
 
   return(data)
 }

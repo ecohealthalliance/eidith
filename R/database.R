@@ -19,12 +19,13 @@ db_other_indexes <- list(
 )
 
 #' @importFrom dplyr db_list_tables db_drop_table copy_to
+#' @export
 download_db <- function(verbose=interactive()) {
   auth <- eidith_auth(verbose = verbose)
   if(verbose) message("Downloading and processing EIDITH data. This may take a few minutes.")
-  withr::with_envvar(c(EIDITH_USERNAME=auth[1], EIDITH_PASSWORD=auth[2]), {
-    tables <- lapply(endpoints, ed_get, postprocess=TRUE, verbose=FALSE)
-  })
+  #with_envvar(c("EIDITH_USERNAME"=auth[1], "EIDITH_PASSWORD"=auth[2]), {
+    tables <- lapply(endpoints, ed_get, postprocess=TRUE, verbose=FALSE, auth=auth)
+#  }, action="replace")
   lapply(dplyr:: db_list_tables(eidith_db$con), function(x) {
     dplyr::db_drop_table(eidith_db$con, x)}
     )
