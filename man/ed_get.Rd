@@ -2,38 +2,39 @@
 % Please edit documentation in R/calls.R
 \name{ed_get}
 \alias{ed_get}
-\alias{ed_events}
-\alias{ed_animals}
-\alias{ed_specimens}
-\alias{ed_tests}
-\alias{ed_viruses}
-\alias{ed_testspecimen}
+\alias{get_ed_events}
+\alias{get_ed_animals}
+\alias{get_ed_specimens}
+\alias{get_ed_tests}
+\alias{get_ed_viruses}
+\alias{get_ed_testspecimen}
 \title{Functions to access main EIDITH tables}
 \usage{
 ed_get(endpoint, verbose = interactive(), postprocess = TRUE,
   header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
   + 1, ...)
 
-ed_events(verbose = interactive(), postprocess = TRUE,
+get_ed_events(verbose = interactive(), postprocess = TRUE,
   header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
   + 1, ...)
 
-ed_animals(verbose = interactive(), postprocess = TRUE,
+get_ed_animals(verbose = interactive(), postprocess = TRUE,
   header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
   + 1, ...)
 
-ed_specimens(verbose = interactive(), postprocess = TRUE,
+get_ed_specimens(verbose = interactive(), postprocess = TRUE,
   header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
   + 1, ...)
 
-ed_tests(verbose = interactive(), postprocess = TRUE, header_only = FALSE,
-  lmdate_from = "2000-01-01", lmdate_to = Sys.Date() + 1, ...)
-
-ed_viruses(verbose = interactive(), postprocess = TRUE,
+get_ed_tests(verbose = interactive(), postprocess = TRUE,
   header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
   + 1, ...)
 
-ed_testspecimen(verbose = interactive(), postprocess = TRUE,
+get_ed_viruses(verbose = interactive(), postprocess = TRUE,
+  header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
+  + 1, ...)
+
+get_ed_testspecimen(verbose = interactive(), postprocess = TRUE,
   header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
   + 1, ...)
 }
