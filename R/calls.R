@@ -31,7 +31,7 @@ ed_get <- function(endpoint, verbose=interactive(), postprocess=TRUE, header_onl
     pbar=NULL
   }
 
-  if(is.null(auth)) auth <- eidith_auth(username, password)
+  auth <- eidith_auth()
 
   request <- GET(url=url, authenticate(auth[1], auth[2], type="basic"), pbar, ...)
 

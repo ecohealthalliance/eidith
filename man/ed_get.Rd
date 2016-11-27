@@ -10,7 +10,6 @@
 \alias{ed_testspecimen}
 \title{Functions to access main EIDITH tables}
 \usage{
-<<<<<<< HEAD
 ed_get(endpoint, verbose = interactive(), postprocess = TRUE,
   header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
   + 1, ...)
@@ -37,29 +36,6 @@ ed_viruses(verbose = interactive(), postprocess = TRUE,
 ed_testspecimen(verbose = interactive(), postprocess = TRUE,
   header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
   + 1, ...)
-=======
-ed_get(endpoint, username = NULL, password = NULL,
-  verbose = interactive(), postprocess = TRUE, header_only = FALSE,
-  lmdate_from = "2000-01-01", lmdate_to = Sys.Date() + 1, ...)
-
-ed_events(username = NULL, password = NULL, verbose = interactive(),
-  postprocess = TRUE, ...)
-
-ed_animals(username = NULL, password = NULL, verbose = interactive(),
-  postprocess = TRUE, ...)
-
-ed_specimens(username = NULL, password = NULL, verbose = interactive(),
-  postprocess = TRUE, ...)
-
-ed_tests(username = NULL, password = NULL, verbose = interactive(),
-  postprocess = TRUE, ...)
-
-ed_viruses(username = NULL, password = NULL, verbose = interactive(),
-  postprocess = TRUE, ...)
-
-ed_testspecimen(username = NULL, password = NULL, verbose = interactive(),
-  postprocess = TRUE, ...)
->>>>>>> Update to include new API queries and test/spec table
 }
 \arguments{
 \item{endpoint}{Which API endpoint to access, one of "Event", "Animal",
