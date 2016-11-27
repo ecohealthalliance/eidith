@@ -46,3 +46,16 @@ destrange <- function(c){
 reduce_dashes <- function(c){
   stri_replace_all_regex(c, "-+","-")
 }
+
+
+#' @importFrom lubridate fast_strptime
+#' @export
+quicktime <- function(datestring) {
+  as.Date(fast_strptime(datestring, format='%Y-%m-%d'))
+}
+
+#' @importFrom lubridate fast_strptime
+#' @export
+quicktime2 <- function(datestring) {
+  as.POSIXct(fast_strptime(datestring, format='%Y-%m-%dT%H:%M:%OS'))
+}
