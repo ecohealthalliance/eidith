@@ -1,4 +1,4 @@
-logical_vars <- c("archived_data", "deep_forest_data", "priortized_for_testing",
+logical_vars <- c("archived_data", "deep_forest_data", "prioritized_for_testing",
                   "pooled", "message_sent_to_country", "message_sent_to_govt",
                   "govt_approved_release", "predict_protocol", "known",
                   "known_human_risk")

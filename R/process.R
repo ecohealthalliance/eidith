@@ -45,7 +45,8 @@ pp_Event <- function(dat) {
 #' @importFrom dplyr rename_ select_ mutate_  arrange_ left_join starts_with distinct_
 pp_Animal <- function(dat) {
   dat <- rename_(dat, .dots = c("event_id"="gains3_event_id", "animal_id"="gains3_sample_unit_id", "animal_id_name"="animal_id_gains",
-                                "animal_id_name_fromcountry"="animal_id_from_country"))
+                                "animal_id_name_fromcountry"="animal_id_from_country",
+                                "prioritized_for_testing"="priortized_for_testing"))
   dat <- select_(dat, .dots = c("-sample_unit_id", "-container_id"))
   dat <- left_join(dat, eidith_itis_lookup, by=c("species_scientific_name"="eidith_name")) %>%
     select_(.dots=c("-species_scientific_name", "-class", "-order", "-family", "-genus", "-species")) %>%
@@ -202,7 +203,7 @@ animals_order <- c(
   "quantity_certainty",
   "quantity_unit",
   "animal_id_name_fromcountry",
-  "priortized_for_testing",
+  "prioritized_for_testing",
   "sample_date",
   "sample_unit_latitude",
   "sample_unit_longitude",

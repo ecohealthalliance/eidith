@@ -11,6 +11,6 @@ eidith_db <- NULL # need to pre-create this  so we can assign to it in .onLoad
 }
 
 .onAttach <- function(libname, pkgname) {
-  packageStartupMessage("Some message about db status") #Describe current countries in db, update set, if credentials set, check if there are updates from GitHub warning of changes.
+ # packageStartupMessage("Some message about db status") #Describe current countries in db, update set, if credentials set, check if there are updates from GitHub warning of changes.
 }
 
