@@ -9,11 +9,28 @@ ed_process(dat, endpoint)
 \arguments{
 \item{dat}{The dat as exported from EIDITH and imported via}
 
-\item{endpoint}{The name of the endpoint or dat table: one of "Event",
-"Animal",  "Specimen", "Test", or "Virus".}
+\item{endpoint}{The name of the endpoint or data table: one of "Event",
+"Animal",  "Specimen", "Test", "Virus", or "TestIDSpecimenID" (for test-specimen cross referencing)}
 }
 \description{
-This function takes raw EIDITH dat tables and does minor common
-post-processing tasks.
+This function takes raw data downloaded from EIDITH and puts it through
+various preprocessing and cleaning steps.  In general there is no need to
+call this function directly - it is called by both \code{\link[=download_db]{download_db()}} and the \link[=ed_get]{direct download functions}.
+}
+\details{
+Steps taken to clean the data include:
+\itemize{
+\item Converting variable names from \code{camelCase} to \code{snake_case} to make it easy
+to distinguish between raw and cleaned data.
+\item Converting some variable names to clearer ones:  all \code{_id} variables are
+numeric primary keys, other identifiers are now go by \code{_id_name}.
+\item Cleaning up whitespace and capitalization variability
+\item Re-arranging table order to put the most pertinent information first.
+\item Normalizing all animal taxonomic information to match the \href{https://www.itis.gov/}{ITIS} database.
+\item Coercing some free-form entries (e.g. \code{specimen_type}) to a standard set of categories
+\item Converting yes/no fields to TRUE/FALSE
+\item Fixing spelling errors
+\item Extracting common TRUE/FALSE variables from free-form text of viral interpretation (Genbank numbers, whether virus is known, whether virus is known to affect humans).
+}
 }
 

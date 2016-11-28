@@ -1,12 +1,34 @@
 #' EIDITH logon credentials
+#
+#' Any function that downloads data from EIDITH, such as [download_db()] or
+#' the [raw download functions][ed_get()] requires login credentials.  These
+#' functions will ask for a username and password.
 #'
-#' These are convience functions for using your default EIDITH logon credentials
-#' for any calls to EIDITH.  Place your EIDITH username and password in your
-#' home \code{.Renviron} file as \code{EIDITH_USERNAME} and
-#' \code{EIDITH_PASSWORD} and these values will be used as defaults for all
-#' calls.
+#' For frequent or programmatic use, we recommend caching your logon credentials
+#' as environment variables.  **eidith** functions will automatically search
+#' for your credentials in the `EIDITH_USERNAME` and `EIDITH_PASSWORD` environment
+#' variables.
+#'
+#' To cache your credentials across multiple R sessions, save them in your
+#' personal `.Renviron` file by running the following code in your R console
+#' (replacing `YOUR_USERNAME` and `YOUR_PASSWORD` with actual values).
+#'
+#' ```
+#' cat("EIDITH_USERNAME=YOUR_USERNAME\nEIDITH_PASSWORD=YOUR_PASSWORD",
+#'     file = file.path(normalizePath("~/"), ".Renviron"), append = TRUE)
+#' ```
+#'
+#' Restart R, and you will be automatically logged in to download data from
+#' when working on this computer.
+#'
+#' @rdname eidith_auth
+#' @name eidith_auth
+NULL
+
 #' @param verbose Show messages?
-#' @export
+#' @param force Ask for logon credentials even if environment variables are
+#' provided.
+#' @noRd
 eidith_auth <- function(verbose=interactive(), force=FALSE) {
   user <- Sys.getenv("EIDITH_USERNAME")
   pwd <- Sys.getenv("EIDITH_PASSWORD")

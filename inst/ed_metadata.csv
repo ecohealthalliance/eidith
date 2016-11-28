@@ -1,0 +1,184 @@
+Table,Processed Name,Original Name,Description
+events,event_id,GAINS3_EventID,"Numerical event ID (unique, primary key)"
+events,country,Country,Country of collection site
+events,organization,Organization,Organization
+events,event_date,EventDate,Date
+events,site_name,SiteName,Unique name of site where data was collected
+events,primary_interface,PrimaryInterface,"Category which best describes the situation in which animals were handled and sampled, or the primary reason for sampling at this site"
+events,event_name,EventName,Unique name of event where data was collected
+events,region,Region,
+events,state_prov,StateProv,State or province of collection site
+events,district,District,District of collection site
+events,latitude,Latitude,Decimal degrees
+events,longitude,Longitude,Decimal degrees
+events,habitat_type,HabitatType,Primary habitat within home range of animals sampled
+events,habitat_comment,HabitatComment,Free text notes to describe habitat
+events,landscape_conversion_gradient,LandscapeConversionGradient,
+events,anthropogenic_change,AnthropogenicChange,Anthropogenic change which has occurred within home range of animals sampled within the past 6 months
+events,anthropogenic_change_other,AnthropogenicChangeOther,
+events,anthropogenic_change_secondary,AnthropogenicChangeSecondary,Anthropogenic change which has also occurred within home range of animals sampled within past 6 months
+events,anthropogenic_change_secondary_other,AnthropogenicChangeSecondaryOther,
+events,domestic_animals,DomesticAnimals,Which domestic species may have come in contact with animals sampled
+events,other_domestic_animals,OtherDomesticAnimals,"Only required if not in the ""DomesticAnimals"" list."
+events,duration_of_event_days,DurationOfEventDays,"Duration of event, in days"
+events,recorder_name,RecorderName,Name of person collecting data
+events,recorder_other,RecorderOther,
+events,archived_data,ArchivedData,Whether these samples have been obtained by archives of collaborators
+events,deep_forest_data,DeepForestData,
+events,source_certainty,SourceCertainty,
+events,other_primary_interface,OtherPrimaryInterface,"Description if ""other"" seelcted for primary interface"
+events,secondary_interface,SecondaryInterface,Category which next besst describes the situation in whcih animals were handled/sampled or a secondary reason for sampling at this site
+events,other_secondary_interface,OtherSecondaryInterface,"Description if ""other"" selected for secondary interface"
+events,reason_for_collection,ReasonForCollection,Description of reason for collection
+events,source_known,SourceKnown,Whether the source was previously known to recorders
+events,event_custom_columns,EventCustomColumns,Site custom data that does not transfer to other events
+events,primary_interface_group,PrimaryInterfaceGroup,
+events,secondary_interface_group,SecondaryInterfaceGroup,
+events,date_last_updated,DateLastUpdated,
+events,organization_id,OrganizatonIDOwner,
+animals,animal_id,GAINS3_SampleUnitID,Numerical animal ID
+animals,event_id,GAINS3_EventID,Numerical event ID
+animals,animal_id_name,AnimalID (GAINS),Alphanumeric animal ID
+animals,species_scientific_name,SpeciesScientificName,"Scientific name of animal, ""sp."" used for known genus but uncertain or unspecified species."
+animals,species_common_name_english,SpeciesCommonNameEnglish,Species common name
+animals,sex,Sex,Sex of animal
+animals,age_class,AgeClass,Age class of animal
+animals,container_type,ContainerType,Type of container sample group was in
+animals,quantity,,
+animals,quantity_certainty,,
+animals,quantity_unit,,
+animals,animal_id_name_fromcountry,AnimalID from Country,
+animals,prioritized_for_testing,PriortizedForTesting,
+animals,sample_date,SampleDate,
+animals,sample_unit_latitude,SampleUnitLatitude,"DD.dddd, Positive values for North: only required if latitude differs from site latitude"
+animals,sample_unit_longitude,SampleUnitLongitude,"DD.dddd, Positive values for East; only required if longitude differs from site longitude"
+animals,butcher_reduces_blood_contact,ButcherReducesBloodContact,Whether the butcher has done anything to reduce blood contact with bushmeat
+animals,circumstance_of_observation,CircumstanceofObservation,"Direct observation by recorder, or indirect report"
+animals,other_condition_of_preservation,OtherConditionOfPreservation,Used for condition or preservation methods not in list
+animals,origin_known,OriginKnown,Whether wildlife product origination known
+animals,origin_location,OriginLocation,"Where wildlife product originated from, may only be relevant for samples from wildlife trade"
+animals,time_since_origin,TimeSinceOrigin,Estimated time elapsed since product harvest from source (days)
+animals,destination_product,DestinationProduct,Destination of wildlife product (if known)
+animals,vendor_quantity,VendorQuantity,Total quantity of product at start of day per vendor or at time of inquiry
+animals,price_unit_usd,PriceUnitUSD,Cost per kg or unit in US Dollars based on current exchange rate
+animals,rate_sale_sold,RateSaleSold,Estimate of turnover based on number of units sold per unit time
+animals,identified_by,IdentifiedBy,Who identified wildife
+animals,circumstance_observation,CircumstanceObservation,IDENTICAL to circumstance_of_observation?
+animals,animal_classification,AnimalClassification,Animal category: captive wild; domestic; feral domestic; wild
+animals,species_common_name_local,SpeciesCommonNameLocal,Common name of animal in national language of country where animal collected
+animals,identification_certainty,IdentificationCertainty,Level of certainty of wildlife identification
+animals,tag_band_id,TagBandID,
+animals,pregnant,Pregnant,
+animals,with_young,WithYoung,Whether the animal has young with them at capture
+animals,lactating,Lactating,
+animals,condition_at_capture,ConditionAtCapture,Condition of the animal when sampling begins
+animals,condition_at_release,ConditionAtRelease,Physical condition of animal at release
+animals,preservation_method,PreservationMethod,Condition or Preservation method
+animals,other_condition_preservation,OtherConditionPreservation,IDENTICAL to other_condition_of_preservation?
+animals,use,Use,Intended use of wildlife product (if known)
+animals,other_use,OtherUse,
+animals,euthanasia,Euthanasia,
+animals,clinical_signs_gross_findings,ClinicalSigns/GrossFindings,Notes on specific clinical signs (if observed)
+animals,disease_suspected,DiseaseSuspected,
+animals,suspected_disease,SuspectedDisease,NOT IDENTICAL to disease_suspected
+animals,necropsy_exam,Necropsy/exam,Whether necropsy or physical exam was conducted
+animals,field_necropsy_result,FieldNecropsyResult,"Captures physical signs or signalment regarding the animals, to get information such as edema, bruising, hemorrhage, skin lesions, conjunctivitis, excessive discharge, etc. This would help define sentinel syndromes."
+animals,body_measurement_body_part_type,BodyMeasurementBodyPartType,Type of part measured
+animals,body_measurement_unit,BodyMeasurementUnit,SI unit for body part measurement
+animals,body_measurement_value,BodyMeasurementValue,Value of body part measurement
+animals,part_name,PartName,Description of wildlife product based on USFWS form 3-177 (code given in parentheses)
+animals,part_description,PartDescription,Provides opportunity to enter more details on parts field
+animals,perceived_rate_of_sale,PerceivedRateOfSale,IDENTICAL to rate_sale_sold?
+animals,price_unit_local,PriceUnitLocal,Cost per kg or unit in local currency
+animals,vendor_quantity_unit,VendorQuantityUnit,SI unit which quantity is reported in
+animals,vendor_quantity_certainty,VendorQuantityCertainty,Degree of certainty over quantity assessment
+animals,butchering_activity,ButcheringActivity,Whether there is butchering activity occuring at this site or sampling event
+animals,butcher_name,ButcherName,Who the butcher was at this sampling event
+animals,butcher_observable_risk_factors,ButcherObservableRiskFactors,Risk factors associated with the butchering event
+animals,quarter,Quarter,
+animals,sample_unit_notes,SampleUnitNotes,Notes on animal entry
+animals,sample_unit_custom_columns,SampleUnitCustomColumns,
+animals,date_last_updated,DateLastUpdated,
+animals,sample_individual_name,SampleIndividualName,
+animals,taxagroup,Taxagroup,
+animals,class,class,Integrated Taxonomic Information System Class
+animals,order,order,Integrated Taxonomic Information System Order
+animals,family,family,Integrated Taxonomic Information System Family
+animals,genus,genus,Integrated Taxonomic Information System Genus
+animals,species,species,Integrated Taxonomic Information System Species
+animals,subspecies,,Integrated Taxonomic Information System Subspecies
+animals,binomial,,Binomial Nomenclature based on Integrated Taxonomic Information System
+specimens,specimen_id,GAINS3_SpecimenID,Numerical Specimen ID
+specimens,animal_id,GAINS3_AnimalID,Numerical Animal ID
+specimens,specimen_id_name,SpecimenIDUnique,"Unique ID assigned by gains.org; a sequential number/letter combination, concatenated to the Animal ID."
+specimens,specimen_type,SpecimenType,Type of specimen sample
+specimens,sampling_method,SamplingMethod,Description of sample collection method
+specimens,aliquot_id,AliquotID,Unique ID assigned to sample aliquot. Each aliquot should be entered in its own row in the template: same Specimen ID for each aliquot.
+specimens,specimen_date,SpecimenDate,
+specimens,specimen_type_group,SpecimenTypeGroup,
+specimens,specimen_condition,SpecimenCondition,Description of specimen condition at storage
+specimens,sample_container,SampleContainer,Description of container holding sample
+specimens,storage_medium,StorageMedium,Description of storage medium
+specimens,labratory_storage_method,LaboratoryStorageMethod,Description of storage method
+specimens,storage_location_facility_original,StorageLocationFacilityOriginal,
+specimens,storage_location_in_facility_original,StorageLocationInFacilityOriginal,
+specimens,storage_location_address_original,StorageLocationAdressOriginal,"Original physical address for the facility where specimens are located. NOTE: different spelling of ""address"""
+specimens,storage_location_facility_current,StorageLocationFacilityCurrent,
+specimens,storage_location_in_facility_current,StorageLocationInFacilityCurrent,
+specimens,storage_location_address_current,StorageLocationAdressCurrent,"Current physical address for the facility where specimens are located. NOTE: different spelling of ""address"""
+specimens,time_from_collection_to_freezing,TimeFromCollectionToFreezing,Time between collection of specimen and freezing
+specimens,specimen_comments,SpecimenComments,Comment on the specimen sample
+specimens,specimen_notes,SpecimenNotes,Notes on specimen sample
+specimens,specimen_custom_columns,SpecimenCustomColumns,Specimen custom columns
+specimens,date_last_updated,DateLastUpdated,
+specimens,specimen_type_id,SpecimenTypeID,
+specimens,specimen_id_name2,Specimen_ID,"ID assigned by gains.org; a sequential number/letter combination, concatenated to the Animal ID."
+tests,test_id,TestID,Numerical Test ID
+tests,specimen_id_name,SpecimenID,"Unique ID assigned by gains.org; a sequential number/letter combination, concatenated to the Animal ID."
+tests,pooled,Pooled,Whether tests are pooled or single samples
+tests,test_type_broad,TestTypeBroad,Type of test
+tests,test_type_specific,TestTypeSpecific,Specific type of test
+tests,test_date,TestDate,Date of test
+tests,test_result,TestResult,Categorical result of test
+tests,confirmatory_testing,ConfirmatoryTesting,Test type run for confirmation
+tests,confirmation_result,ConfirmationResult,Result from the confirmatory testing
+tests,diagnostic_laboratory_name,DiagnosticLaboratoryName,Name of diagnostic laboratory
+tests,lab_storage_method,LabStorageMethod,Description of storage method
+tests,lab_submission_date,LabSubmissionDate,Date of submission specimens to laboratory
+tests,specimen_type,SpecimenType,Description of sample type submitted
+tests,specimen_type_group,SpecimenTypeGroup,
+tests,other_test_type,OtherTestType,Description of test type (if not listed)
+tests,test_requested,TestRequested,Name of test requested (for PCR and Serology)
+tests,other_test_requested,OtherTestRequested,Description of test requested (if not listed)
+tests,test_requested_protocol,TestRequestedProtocol,
+tests,other_test_requested_protocol,OtherTestRequestedProtocol,
+tests,methodology_reference,MethodologyReference,Reference for test methodology
+tests,results_date,ResultsDate,Date of test results
+tests,raw_result,RawResult,Quantitative value of test result
+tests,result_descriptor,ResultDescriptor,Description of sequencing and microarray details for positive confirmation results
+tests,sequence,Sequence,
+tests,virus_name,VirusName,
+tests,interpretation,Interpretation,Completed by Tracey Goldstein et al. when test result has been finalized
+tests,test_status,TestStatus,Status of the test
+tests,message_sent_to_country,MessageSentToCountry,
+tests,message_sent_to_govt,MessageSentToGovt,
+tests,govt_approved_release,GovtApprovedRelease,
+tests,notes,Notes,
+tests,interpretation_notes,InterpretationNotes,
+tests,comments,Comments,
+tests,predict_protocol,PredictProtocol,
+tests,date_last_updated,DateLastUpdated,
+tests,specimen_id,GAINS3_SpecimenID,Numerical Specimen ID
+viruses,virus_id,GAINS3_SequenceID,Numerical Sequence ID
+viruses,test_id,GAINS3_TestID,Numerical Test ID
+viruses,viral_family,ViralFamily,ICTV Viral Family
+viruses,viral_genus,ViralGenus,ICTV Viral Genus
+viruses,known,Processed from Interpretation,Whether sequence represents a known virus
+viruses,known_human_risk,Processed from Interpretation,Whether sequence represents a virus that poses possible risk to humans
+viruses,new_genbank_accession,GenbankAccessionNumber,Genbank Accession Number for novel strain or novel virus sequences
+viruses,known_genbank_accession,Processed from Interpretation,Genbank Accession Number for known viruses
+viruses,virus_name,VirusName,Virus Name
+viruses,virus_code,VirusCode,
+viruses,date_last_updated,DateLastUpdated,
+viruses,sequence,Sequence,
+viruses,interpretation,Interpretation,

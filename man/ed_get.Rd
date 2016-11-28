@@ -8,12 +8,8 @@
 \alias{get_ed_tests}
 \alias{get_ed_viruses}
 \alias{get_ed_testspecimen}
-\title{Functions to access main EIDITH tables}
+\title{Functions to download EIDITH tables via API}
 \usage{
-ed_get(endpoint, verbose = interactive(), postprocess = TRUE,
-  header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
-  + 1, auth = NULL, ...)
-
 get_ed_events(verbose = interactive(), postprocess = TRUE,
   header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
   + 1, ...)
@@ -39,16 +35,27 @@ get_ed_testspecimen(verbose = interactive(), postprocess = TRUE,
   + 1, ...)
 }
 \arguments{
-\item{endpoint}{Which API endpoint to access, one of "Event", "Animal",
-"Specimen", "Test", or "Virus". Each endpoint delivers one of these tables.
-Convenience functions are provided for each.}
-
 \item{verbose}{Show a progress bar and other messages?}
+
+\item{postprocess}{Should data be cleaned via \code{\link[=ed_process]{ed_process()}} or returned raw?}
+
+\item{header_only}{Return only the table header.  Useful for checking if
+API access works}
+
+\item{lmdate_from}{filter records by earliest date, in YYYY-MM-DD format}
+
+\item{lmdate_to}{filter records by latest date, in YYYY-MM-DD format (see details)}
+
+\item{...}{additional arguments passed to \code{\link[httr:GET]{httr::GET()}}}
 }
 \value{
-a \link[tibble]{tibble}-style data frame
+a \link[tibble:tibble]{tibble}-style data frame
 }
 \description{
-Functions to access main EIDITH tables
+These function download data directly from the EIDITH API.  They require
+\link[=eidith_auth]{authorization}.  They can be useful for comparing local data
+against data updated in the database, or processed vs. unprocessed data.
+The \link[=ed_table]{table functions} load data from the local database instead,
+and are thus faster and work without an internet connection.#'
 }
 

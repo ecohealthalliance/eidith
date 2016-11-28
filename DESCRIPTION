@@ -2,9 +2,10 @@ Package: eidith
 Title: Data access and analytical tools for the PREDICT EIDITH database
 Version: 0.0.0.9000
 Authors@R: c(
-    person("Noam", "Ross", , "ross@ecohealthalliance.org", role = c("aut", "cre"),
+    person("Noam", "Ross", , "ross@ecohealthalliance.org", role = c("aut", "cre")),
+    person("Nistara", "Randhawa", , "nrandhawa@ucdavis.edu", role = c("aut")),
+    person("Cale", "Basaraba", , "basaraba@ecohealthalliance.org", role = c("aut")),
     person("EcoHealth Alliance", role="cph"))
-    )
 Description: This package provides a programmatic interface to the PREDICT
     EIDITH database from R, allowing download and query of sampling data.  Use
     of download functions requires an EIDITH account with appropriate permissions.
@@ -12,9 +13,11 @@ Description: This package provides a programmatic interface to the PREDICT
     functions for PREDICT data.
 License: MIT + file LICENSE
 LazyData: true
-URL: https://ecohealthalliance.github.io/eidith
+URL: https://github.com/ecohealthalliance/eidith
 BugReports: https://github.com/ecohealthalliance/eidith/issues
 RoxygenNote: 5.0.1.9000
+Depends: 
+    R (>= 3.1.2)
 Imports:
     httr,
     jsonlite,
@@ -28,14 +31,16 @@ Imports:
     stringi,
     magrittr,
     lazyeval,
-    lubridate
+    lubridate,
+    readr,
+    DT
 Suggests:
     testthat,
     covr,
     rmarkdown,
     pkgdown,
     knitr,
-    roxygen
+    roxygen2
 Remotes:
   klutometis/roxygen
 Roxygen: list(markdown = TRUE)

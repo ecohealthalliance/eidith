@@ -6,11 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference. EIDITH</title>
+<title>Function reference • EIDITH</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
-
 <!-- Bootstrap -->
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -22,6 +21,7 @@
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
@@ -34,10 +34,9 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container template-reference-index">
       <header>
-      
-<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -66,6 +65,7 @@
   <a href="../news/index.html">Release Notes</a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/ecohealthalliance/eidith">
@@ -77,35 +77,78 @@
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
+
       
       </header>
 
-      <div class="page-header">
-  <h1>Function reference <small>version&nbsp;0.0.0.9000</small></h1>
-</div>
-
-<div class="row">
+      <div class="row">
   <div class="col-md-9">
-    <div class="section ">
-      <h2>All functions</h2>
+    <div class="page-header">
+      <h1>Function reference</h1>
+      <h4>version&nbsp;0.0.0.9000</h4>
+    </div>
+
+    <div class="contents">
+      <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
       <p class="section-desc"></p>
 
-      <dl class="dl-horizontal">
-        <dt><a href="ed_get.html">ed_animals</a></dt><dt><a href="ed_get.html">ed_events</a></dt><dt><a href="ed_get.html">ed_get</a></dt><dt><a href="ed_get.html">ed_specimens</a></dt><dt><a href="ed_get.html">ed_tests</a></dt><dt><a href="ed_get.html">ed_viruses</a></dt>
-        <dd>Functions to access main EIDITH tables</dd>
-        <dt><a href="ed_postprocess.html">ed_postprocess</a></dt>
-        <dd>Standard post-processing of EIDITH exports</dd>
-        <dt><a href="eidith_user.html">eidith_pwd</a></dt><dt><a href="eidith_user.html">eidith_user</a></dt>
-        <dd>EIDITH logon credentials</dd>
-        <dt><a href="eidith.html">eidith</a></dt><dt><a href="eidith.html">eidith-package</a></dt>
-        <dd>eidith</dd>
-      </dl>
+      
+      <p><a href="download_db.html">Download EIDITH data to local storage</a></p>
+      <ul>
+        <li><code><a href="download_db.html">download_db</a></code></li>
+      </ul>
+      
+      <p><a href="ed_get.html">Functions to download EIDITH tables via API</a></p>
+      <ul>
+        <li><code><a href="ed_get.html">ed_get</a></code></li><li><code><a href="ed_get.html">get_ed_events</a></code></li><li><code><a href="ed_get.html">get_ed_animals</a></code></li><li><code><a href="ed_get.html">get_ed_specimens</a></code></li><li><code><a href="ed_get.html">get_ed_tests</a></code></li><li><code><a href="ed_get.html">get_ed_viruses</a></code></li><li><code><a href="ed_get.html">get_ed_testspecimen</a></code></li>
+      </ul>
+      
+      <p><a href="ed_metadata.html">EIDITH table metadata</a></p>
+      <ul>
+        <li><code><a href="ed_metadata.html">ed_metadata</a></code></li>
+      </ul>
+      
+      <p><a href="ed_process.html">Standard post-processing of EIDITH exports</a></p>
+      <ul>
+        <li><code><a href="ed_process.html">ed_process</a></code></li>
+      </ul>
+      
+      <p><a href="ed_table.html">Load EIDITH data from the local database</a></p>
+      <ul>
+        <li><code><a href="ed_table.html">ed_table_</a></code></li><li><code><a href="ed_table.html">ed_table</a></code></li><li><code><a href="ed_table.html">ed_events</a></code></li><li><code><a href="ed_table.html">ed_animals</a></code></li><li><code><a href="ed_table.html">ed_specimens</a></code></li><li><code><a href="ed_table.html">ed_tests</a></code></li><li><code><a href="ed_table.html">ed_viruses</a></code></li><li><code><a href="ed_table.html">ed_testspecimen</a></code></li>
+      </ul>
+      
+      <p><a href="eidith_auth.html">EIDITH logon credentials
+</a></p>
+      <ul>
+        <li><code><a href="eidith_auth.html">eidith_auth</a></code></li>
+      </ul>
+      
+      <p><a href="eidith-package.html">eidith</a></p>
+      <ul>
+        <li><code><a href="eidith-package.html">eidith-package</a></code></li>
+      </ul>
+    
     </div>
+  </div>
+
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#section-all-functions">All functions</a></li>
+    </ul>
   </div>
 </div>
 
       <footer>
-      <p>Built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>. Styled with <a href="http://getbootstrap.com">Bootstrap 3</a>.</p>
+      <div class="copyright">
+  <p>Developed by Noam Ross, Nistara Randhawa, Cale Basaraba.</p>
+</div>
+
+<div class="pkgdown">
+  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+</div>
+
       </footer>
    </div>
 

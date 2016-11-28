@@ -6,11 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>eidith. EIDITH</title>
+<title>eidith — eidith • EIDITH</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
-
 <!-- Bootstrap -->
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -22,6 +21,7 @@
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
@@ -34,10 +34,9 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container template-reference-topic">
       <header>
-      
-<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -66,6 +65,7 @@
   <a href="../news/index.html">Release Notes</a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/ecohealthalliance/eidith">
@@ -77,26 +77,81 @@
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
+
       
       </header>
 
-      <div class="page-header">
-  <h1>eidith</h1>
-</div>
+      <div class="row">
+  <div class="col-md-9 contents">
+    <div class="page-header">
+    <h1>eidith</h1>
+    </div>
 
-<div class="row">
-  <div class="col-md-9">
     
-    <p>Access to PREDICT EIDITH data</p>
+    <p>The <strong>eidith</strong> R package provides programmatic access and analytical tools
+for data from the <a href = 'PREDICT program'>http://www.vetmed.ucdavis.edu/ohi/predict/</a>,
+housed at the <a href = 'Emerging Infectious Disease Information Technology Hub'>https://www.eidith.org/</a>.</p>
     
 
-              </div>
-  <div class="col-md-3">
+        
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The <strong>eidith</strong> package contains no data. To access data, you must be
+<a href = 'registered'>https://www.eidith.org/register.aspx</a> EIDITH user with data access privileges.</p>
+    
+    <h2 class="hasAnchor" id="topics"><a class="anchor" href="#topics"></a>Topics</h2>
+
+    <p></p>
+    <p><ul>
+<li> <a href='eidith_auth.html'>Authentication with EIDITH credentials</a>
+</li>
+<li> Downloading EIDITH data to a <a href='download_db.html'>local store</a> and direct API access
+</li>
+<li> <a href='ed_process.html'>Data cleaning</a>
+</li>
+<li> <a href='ed_metadata.html'>Metadata for tables and fields in the EIDITH database</a>
+</li>
+</ul></p>
+    
+    <h2 class="hasAnchor" id="contact"><a class="anchor" href="#contact"></a>Contact</h2>
+
+    <p></p>
+    <p><ul>
+<li> Package source code is found at https://github.com/ecohealthalliance/eidith
+</li>
+<li> File bug reports and request features at https://github.com/ecohealthalliance/eidith/issues
+</li>
+<li> Online version of this documentation found at https://ecohealthalliance.github.io/eidith/
+</li>
+<li> Questions related to your EIDITH credentials should be directed to <a href = 'technology@eidith.org'>mailto:technology@eidith.org</a>.
+</li>
+</ul></p>
+    
+
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#topics">Topics</a></li>
+
+      <li><a href="#contact">Contact</a></li>
+          </ul>
+
   </div>
 </div>
 
       <footer>
-      <p>Built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>. Styled with <a href="http://getbootstrap.com">Bootstrap 3</a>.</p>
+      <div class="copyright">
+  <p>Developed by Noam Ross, Nistara Randhawa, Cale Basaraba.</p>
+</div>
+
+<div class="pkgdown">
+  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+</div>
+
       </footer>
    </div>
 

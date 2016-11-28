@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>All news • EIDITH</title>
+<title>Standard post-processing of EIDITH exports — ed_process • EIDITH</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -34,7 +34,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -82,30 +82,65 @@
       </header>
 
       <div class="row">
-
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Change log <small>All releases</small></h1>
+    <h1>Standard post-processing of EIDITH exports</h1>
     </div>
 
-    <div class="contents">
-    <div id="eidith-0-0-0-9000" class="section level1">
-<h1 class="hasAnchor">
-<a href="#eidith-0-0-0-9000" class="anchor"> </a>eidith 0.0.0.9000</h1>
-<ul><li>Initial development version</li>
-</ul></div>
-    </div>
+    
+    <p>This function takes raw data downloaded from EIDITH and puts it through
+various preprocessing and cleaning steps.  In general there is no need to
+call this function directly - it is called by both <code><a href='download_db.html'>download_db()</a></code> and the <a href='ed_get.html'>direct download functions</a>.</p>
+    
+
+    <pre><span class='fu'>ed_process</span>(<span class='no'>dat</span>, <span class='no'>endpoint</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <dl class="dl-horizontal">
+      <dt>dat</dt>
+      <dd>The dat as exported from EIDITH and imported via</dd>
+      <dt>endpoint</dt>
+      <dd>The name of the endpoint or data table: one of &quot;Event&quot;,
+&quot;Animal&quot;,  &quot;Specimen&quot;, &quot;Test&quot;, &quot;Virus&quot;, or &quot;TestIDSpecimenID&quot; (for test-specimen cross referencing)</dd>
+    </dl>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Steps taken to clean the data include:
+<ul>
+<li> Converting variable names from <code>camelCase</code> to <code>snake_case</code> to make it easy
+to distinguish between raw and cleaned data.
+</li>
+<li> Converting some variable names to clearer ones:  all <code>_id</code> variables are
+numeric primary keys, other identifiers are now go by <code>_id_name</code>.
+</li>
+<li> Cleaning up whitespace and capitalization variability
+</li>
+<li> Re-arranging table order to put the most pertinent information first.
+</li>
+<li> Normalizing all animal taxonomic information to match the <a href = 'ITIS'>https://www.itis.gov/</a> database.
+</li>
+<li> Coercing some free-form entries (e.g. <code>specimen_type</code>) to a standard set of categories
+</li>
+<li> Converting yes/no fields to TRUE/FALSE
+</li>
+<li> Fixing spelling errors
+</li>
+<li> Extracting common TRUE/FALSE variables from free-form text of viral interpretation (Genbank numbers, whether virus is known, whether virus is known to affect humans).
+</li>
+</ul></p>
+    
+
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#eidith-0-0-0-9000">0.0.0.9000</a></li>
-      </ul>
-    </div>
-  </div>
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#details">Details</a></li>
+          </ul>
 
+  </div>
 </div>
 
       <footer>

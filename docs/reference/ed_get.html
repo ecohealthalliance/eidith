@@ -6,11 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ed_get. EIDITH</title>
+<title>Functions to download EIDITH tables via API — ed_get • EIDITH</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
-
 <!-- Bootstrap -->
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -22,6 +21,7 @@
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
@@ -34,10 +34,9 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container template-reference-topic">
       <header>
-      
-<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -66,6 +65,7 @@
   <a href="../news/index.html">Release Notes</a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/ecohealthalliance/eidith">
@@ -77,65 +77,91 @@
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
+
       
       </header>
 
-      <div class="page-header">
-  <h1>Functions to access main EIDITH tables</h1>
-</div>
+      <div class="row">
+  <div class="col-md-9 contents">
+    <div class="page-header">
+    <h1>Functions to download EIDITH tables via API</h1>
+    </div>
 
-<div class="row">
-  <div class="col-md-9">
     
-    <p>Functions to access main EIDITH tables</p>
+    <p>These function download data directly from the EIDITH API.  They require
+<a href='eidith_auth.html'>authorization</a>.  They can be useful for comparing local data
+against data updated in the database, or processed vs. unprocessed data.
+The <a href='ed_table_.html'>table functions</a> load data from the local database instead,
+and are thus faster and work without an internet connection.#&#39;</p>
     
 
-    <pre><span class='fu'>ed_get</span>(<span class='no'>endpoint</span>, <span class='kw'>username</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>password</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
+    <pre><span class='fu'>get_ed_events</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>header_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lmdate_from</span> <span class='kw'>=</span> <span class='st'>"2000-01-01"</span>, <span class='kw'>lmdate_to</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>()
+  + <span class='fl'>1</span>, <span class='no'>...</span>)
 
-<span class='fu'>ed_events</span>(<span class='kw'>username</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>password</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(),
-  <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>get_ed_animals</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>header_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lmdate_from</span> <span class='kw'>=</span> <span class='st'>"2000-01-01"</span>, <span class='kw'>lmdate_to</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>()
+  + <span class='fl'>1</span>, <span class='no'>...</span>)
 
-<span class='fu'>ed_animals</span>(<span class='kw'>username</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>password</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(),
-  <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>get_ed_specimens</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>header_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lmdate_from</span> <span class='kw'>=</span> <span class='st'>"2000-01-01"</span>, <span class='kw'>lmdate_to</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>()
+  + <span class='fl'>1</span>, <span class='no'>...</span>)
 
-<span class='fu'>ed_specimens</span>(<span class='kw'>username</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>password</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(),
-  <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>get_ed_tests</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>header_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lmdate_from</span> <span class='kw'>=</span> <span class='st'>"2000-01-01"</span>, <span class='kw'>lmdate_to</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>()
+  + <span class='fl'>1</span>, <span class='no'>...</span>)
 
-<span class='fu'>ed_tests</span>(<span class='kw'>username</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>password</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(),
-  <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>get_ed_viruses</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>header_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lmdate_from</span> <span class='kw'>=</span> <span class='st'>"2000-01-01"</span>, <span class='kw'>lmdate_to</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>()
+  + <span class='fl'>1</span>, <span class='no'>...</span>)
 
-<span class='fu'>ed_viruses</span>(<span class='kw'>username</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>password</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(),
-  <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+<span class='fu'>get_ed_testspecimen</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>header_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lmdate_from</span> <span class='kw'>=</span> <span class='st'>"2000-01-01"</span>, <span class='kw'>lmdate_to</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>()
+  + <span class='fl'>1</span>, <span class='no'>...</span>)</pre>
     
-    <h2>Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>endpoint</dt>
-      <dd>Which API endpoint to access, one of &quot;Event&quot;, &quot;Animal&quot;,
-&quot;Specimen&quot;, &quot;Test&quot;, or &quot;Virus&quot;. Each endpoint delivers one of these tables.
-Convenience functions are provided for each.</dd>
-      <dt>username</dt>
-      <dd>Your EIDITH username. Store it in your <code>.Renviron</code> file
-as <code>EIDITH_USERNAME=XXXXX</code> for automatic access.</dd>
       <dt>verbose</dt>
       <dd>Show a progress bar and other messages?</dd>
-      <dt>username</dt>
-      <dd>Your EIDITH password. Store it in your <code>.Renviron</code> file
-as <code>EIDITH_PASSWORD=XXXXX</code> for automatic access.</dd>
+      <dt>postprocess</dt>
+      <dd>Should data be cleaned via <code><a href='ed_process.html'>ed_process()</a></code> or returned raw?</dd>
+      <dt>header_only</dt>
+      <dd>Return only the table header.  Useful for checking if
+API access works</dd>
+      <dt>lmdate_from</dt>
+      <dd>filter records by earliest date, in YYYY-MM-DD format</dd>
+      <dt>lmdate_to</dt>
+      <dd>filter records by latest date, in YYYY-MM-DD format (see details)</dd>
+      <dt>...</dt>
+      <dd>additional arguments passed to <code><a href='http://www.rdocumentation.org/packages/httr/topics/GET'>httr::GET()</a></code></dd>
     </dl>
     
-    <div class="Value">
-      <h2>Value</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-      <p>a <a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a>-style data frame</p>
-    </div>
-      </div>
-  <div class="col-md-3">
+    <p>a <a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a>-style data frame</p>
+    
+
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
+
   </div>
 </div>
 
       <footer>
-      <p>Built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>. Styled with <a href="http://getbootstrap.com">Bootstrap 3</a>.</p>
+      <div class="copyright">
+  <p>Developed by Noam Ross, Nistara Randhawa, Cale Basaraba.</p>
+</div>
+
+<div class="pkgdown">
+  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+</div>
+
       </footer>
    </div>
 

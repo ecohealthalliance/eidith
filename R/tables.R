@@ -6,8 +6,26 @@ logical_vars <- c("archived_data", "deep_forest_data", "priortized_for_testing",
 date_vars <- c("event_date", "sample_date", "specimen_date",
                "test_date", "lab_submission_date", "results_date")
 
+#' Load EIDITH data from the local database
+#'
+#' These functions load data from the locally-stored SQLite database of downloaded
+#' and cleaned EIDITH data. `ed_table` is a general function, and `ed_table_`
+#' it's [standard evaluation](https://cran.r-project.org/web/packages/dplyr/vignettes/nse.html)
+#' equivalent, useful for programming.  The other functions are convenience aliases
+#' for the individual tables.
+#'
+#' These functions take [dplyr::filter()] arguments to sub-set the data.  Using
+#' these, the data is subsetted via SQL *before* it is loaded into memory.
+#' For large tables, such as the *tests* table, this is useful for reducing the memory footprint of your R session.
+#'
+#' @param table one of the EIDITH database tables. One of "events", "animals",
+#' "specimens", "tests", "viruses", or "test_specimen_ids".
+#' @param ... arguments passed to [dplyr::filter()] to subset data
+#' @param .dots standard-evaluation versions of subsetting arguments
+#' @return a [tibble][tibble::tibble]-style data frame.
 #' @importFrom dplyr tbl tbl_df filter_ mutate_each_ funs_ funs collect
 #' @export
+#' @rdname ed_table
 ed_table_ <- function(table, .dots) {
   tbl(eidith_db, table) %>%
     filter_(.dots=.dots) %>%
@@ -26,31 +44,43 @@ fix_classes <- function(table) {
 }
 
 #' @export
+#' @rdname ed_table
 ed_table = function(table, ...) {
   ed_table_(table, .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
+#' @rdname ed_table
 ed_events = function(...) {
   ed_table_("events", .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
+#' @rdname ed_table
 ed_animals = function(...) {
   ed_table_("animals", .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
+#' @rdname ed_table
 ed_specimens = function(...) {
   ed_table_("specimens", .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
+#' @rdname ed_table
 ed_tests = function(...) {
   ed_table_("tests", .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
+#' @rdname ed_table
 ed_viruses = function(...) {
   ed_table_("viruses", .dots = lazyeval::lazy_dots(...))
+}
+
+#' @export
+#' @rdname ed_table
+ed_testspecimen = function(...) {
+  ed_table_("test_specimen_ids", .dots = lazyeval::lazy_dots(...))
 }

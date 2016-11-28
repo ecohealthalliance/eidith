@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>All news • EIDITH</title>
+<title>EIDITH logon credentials
+ — eidith_auth • EIDITH</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -34,7 +35,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -82,30 +83,40 @@
       </header>
 
       <div class="row">
-
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Change log <small>All releases</small></h1>
+    <h1>EIDITH logon credentials
+</h1>
     </div>
 
-    <div class="contents">
-    <div id="eidith-0-0-0-9000" class="section level1">
-<h1 class="hasAnchor">
-<a href="#eidith-0-0-0-9000" class="anchor"> </a>eidith 0.0.0.9000</h1>
-<ul><li>Initial development version</li>
-</ul></div>
-    </div>
+    
+    <p>For frequent or programmatic use, we recommend caching your logon credentials
+as environment variables.  <strong>eidith</strong> functions will automatically search
+for your credentials in the <code>EIDITH_USERNAME</code> and <code>EIDITH_PASSWORD</code> environment
+variables.</p>
+    
+
+        
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>To cache your credentials across multiple R sessions, save them in your
+personal <code>.Renviron</code> file by running the following code in your R console
+(replacing <code>YOUR_USERNAME</code> and <code>YOUR_PASSWORD</code> with actual values).<pre>cat(&quot;EIDITH_USERNAME=YOUR_USERNAME\nEIDITH_PASSWORD=YOUR_PASSWORD&quot;,
+    file = file.path(normalizePath(&quot;~/&quot;), &quot;.Renviron&quot;), append = TRUE)
+</pre></p>
+    <p>Restart R, and you will be automatically logged in to download data from
+when working on this computer.</p>
+    
+
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#eidith-0-0-0-9000">0.0.0.9000</a></li>
-      </ul>
-    </div>
-  </div>
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      
+      <li><a href="#details">Details</a></li>
+          </ul>
 
+  </div>
 </div>
 
       <footer>

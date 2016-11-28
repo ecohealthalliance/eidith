@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>All news • EIDITH</title>
+<title>Download EIDITH data to local storage — download_db • EIDITH</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -34,7 +34,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -82,30 +82,53 @@
       </header>
 
       <div class="row">
-
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Change log <small>All releases</small></h1>
+    <h1>Download EIDITH data to local storage</h1>
     </div>
 
-    <div class="contents">
-    <div id="eidith-0-0-0-9000" class="section level1">
-<h1 class="hasAnchor">
-<a href="#eidith-0-0-0-9000" class="anchor"> </a>eidith 0.0.0.9000</h1>
-<ul><li>Initial development version</li>
-</ul></div>
-    </div>
+    
+    <p>This function fetches all available tables from the EIDITH database and
+caches the data locally for further use with the <a href='ed_table_.html'>table functions</a>.
+The database persists between R sessions, so you only need to run this when
+you want to update data.  You should also run it when updating to new
+versions of the <strong>eidith</strong> package.</p>
+    
+
+    <pre><span class='fu'>download_db</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>())</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <dl class="dl-horizontal">
+      <dt>verbose</dt>
+      <dd>Show messages while in progress?</dd>
+    </dl>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function does a few things:
+<ul>
+<li> Fetches all tables from EIDITH (events, animals, specimens, tests, viruses, and test-specimen cross-references)
+</li>
+<li> Cleans and pre-processes the data with <code><a href='ed_process.html'>ed_process()</a></code>.
+</li>
+<li> Stores the data in an SQLite database in your <a href='http://www.rdocumentation.org/packages/rappdirs/topics/user_data_dir'>user data directory</a>.
+</li>
+</ul></p>
+    <p>Each time it is run it clears out the previous data and downloads all the data,
+as such it takes a few minutes.  In the future, we will allow for updating only with new and changed records.</p>
+    <p>The function will prompt for username and password unless you have <a href='eidith_auth.html'>cached your credentials</a>.</p>
+    
+
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#eidith-0-0-0-9000">0.0.0.9000</a></li>
-      </ul>
-    </div>
-  </div>
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#details">Details</a></li>
+          </ul>
 
+  </div>
 </div>
 
       <footer>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>All news • EIDITH</title>
+<title>Load EIDITH data from the local database — ed_table_ • EIDITH</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -34,7 +34,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -82,30 +82,69 @@
       </header>
 
       <div class="row">
-
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Change log <small>All releases</small></h1>
+    <h1>Load EIDITH data from the local database</h1>
     </div>
 
-    <div class="contents">
-    <div id="eidith-0-0-0-9000" class="section level1">
-<h1 class="hasAnchor">
-<a href="#eidith-0-0-0-9000" class="anchor"> </a>eidith 0.0.0.9000</h1>
-<ul><li>Initial development version</li>
-</ul></div>
-    </div>
+    
+    <p>These functions load data from the locally-stored SQLite database of downloaded
+and cleaned EIDITH data. <code>ed_table</code> is a general function, and <code>ed_table_</code>
+it&#39;s <a href = 'standard evaluation'>https://cran.r-project.org/web/packages/dplyr/vignettes/nse.html</a>
+equivalent, useful for programming.  The other functions are convenience aliases
+for the individual tables.</p>
+    
+
+    <pre><span class='fu'>ed_table_</span>(<span class='no'>table</span>, <span class='no'>.dots</span>)
+
+<span class='fu'>ed_table</span>(<span class='no'>table</span>, <span class='no'>...</span>)
+
+<span class='fu'>ed_events</span>(<span class='no'>...</span>)
+
+<span class='fu'>ed_animals</span>(<span class='no'>...</span>)
+
+<span class='fu'>ed_specimens</span>(<span class='no'>...</span>)
+
+<span class='fu'>ed_tests</span>(<span class='no'>...</span>)
+
+<span class='fu'>ed_viruses</span>(<span class='no'>...</span>)
+
+<span class='fu'>ed_testspecimen</span>(<span class='no'>...</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <dl class="dl-horizontal">
+      <dt>table</dt>
+      <dd>one of the EIDITH database tables. One of &quot;events&quot;, &quot;animals&quot;,
+&quot;specimens&quot;, &quot;tests&quot;, &quot;viruses&quot;, or &quot;test_specimen_ids&quot;.</dd>
+      <dt>.dots</dt>
+      <dd>standard-evaluation versions of subsetting arguments</dd>
+      <dt>...</dt>
+      <dd>arguments passed to <code><a href='http://www.rdocumentation.org/packages/dplyr/topics/filter'>dplyr::filter()</a></code> to subset data</dd>
+    </dl>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a <a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a>-style data frame.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>These functions take <code><a href='http://www.rdocumentation.org/packages/dplyr/topics/filter'>dplyr::filter()</a></code> arguments to sub-set the data.  Using
+these, the data is subsetted via SQL <em>before</em> it is loaded into memory.
+For large tables, such as the <em>tests</em> table, this is useful for reducing the memory footprint of your R session.</p>
+    
+
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#eidith-0-0-0-9000">0.0.0.9000</a></li>
-      </ul>
-    </div>
-  </div>
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
 
+      <li><a href="#details">Details</a></li>
+          </ul>
+
+  </div>
 </div>
 
       <footer>

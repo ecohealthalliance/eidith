@@ -47,7 +47,7 @@ itis_search_safe <- function(term, fuzz=0.4, binomial_only = FALSE) {
 }
 
 #load data
-animals <- ed_animals(postprocess = FALSE)
+animals <- ed_animals_raw(postprocess = FALSE)
 
 #get fallback table
 manual_matches <- gs_read(gs_url("https://docs.google.com/spreadsheets/d/1n_Q-Rhi3HQfxj-a9ay3ZLae6hMaTXAQNS6DFl8NFCO4")) %>%

@@ -1,11 +1,26 @@
 #' Standard post-processing of EIDITH exports
 #'
-#' This function takes raw EIDITH dat tables and does minor common
-#' post-processing tasks.
+#' This function takes raw data downloaded from EIDITH and puts it through
+#' various preprocessing and cleaning steps.  In general there is no need to
+#' call this function directly - it is called by both [download_db()] and the [direct download functions][ed_get()].
+#'
+#' Steps taken to clean the data include:
+#'
+#' -   Converting variable names from `camelCase` to `snake_case` to make it easy
+#' to distinguish between raw and cleaned data.
+#' -   Converting some variable names to clearer ones:  all `_id` variables are
+#' numeric primary keys, other identifiers are now go by `_id_name`.
+#' -   Cleaning up whitespace and capitalization variability
+#' -   Re-arranging table order to put the most pertinent information first.
+#' -   Normalizing all animal taxonomic information to match the [ITIS](https://www.itis.gov/) database.
+#' -   Coercing some free-form entries (e.g. `specimen_type`) to a standard set of categories
+#' -   Converting yes/no fields to TRUE/FALSE
+#' -   Fixing spelling errors
+#' -   Extracting common TRUE/FALSE variables from free-form text of viral interpretation (Genbank numbers, whether virus is known, whether virus is known to affect humans).
 #'
 #' @param dat The dat as exported from EIDITH and imported via
-#' @param endpoint The name of the endpoint or dat table: one of "Event",
-#' "Animal",  "Specimen", "Test", or "Virus".
+#' @param endpoint The name of the endpoint or data table: one of "Event",
+#' "Animal",  "Specimen", "Test", "Virus", or "TestIDSpecimenID" (for test-specimen cross referencing)
 #' @importFrom dplyr na_if as_data_frame
 #' @importFrom stringi stri_trim_both
 #' @importFrom purrr map_if

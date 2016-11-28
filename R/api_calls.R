@@ -1,16 +1,31 @@
 eidith_base_url <- "https://predict2api.eidith.org/api/app/"
 endpoints <- c("Event", "Animal", "Specimen", "Test", "Virus", "TestIDSpecimenID")
 
-#' Functions to access main EIDITH tables
-#' @param endpoint Which API endpoint to access, one of "Event", "Animal",
-#'   "Specimen", "Test", or "Virus". Each endpoint delivers one of these tables.
-#'   Convenience functions are provided for each.
+#' Functions to download EIDITH tables via API
+#'
+#' These function download data directly from the EIDITH API.  They require
+#' [authorization][eidith_auth].  They can be useful for comparing local data
+#' against data updated in the database, or processed vs. unprocessed data.
+#' The [table functions][ed_table] load data from the local database instead,
+#' and are thus faster and work without an internet connection.#'
+
 #' @param verbose Show a progress bar and other messages?
-#' @return a \link[tibble]{tibble}-style data frame
+#' @param postprocess Should data be cleaned via [ed_process()] or returned raw?
+#' @param header_only Return only the table header.  Useful for checking if
+#' API access works
+#' @param lmdate_from filter records by earliest date, in YYYY-MM-DD format
+#' @param lmdate_to filter records by latest date, in YYYY-MM-DD format (see details)
+#' @param ... additional arguments passed to [httr::GET()]
+#' @return a [tibble][tibble::tibble()]-style data frame
+#' @rdname ed_get
+#' @name ed_get
+NULL
+
+
+#' @noRd
 #' @importFrom httr GET status_code progress authenticate content modify_url
 #' @importFrom jsonlite fromJSON
 #' @importFrom tibble as_tibble
-#' @export
 ed_get <- function(endpoint, verbose=interactive(), postprocess=TRUE, header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, auth=NULL, ...) {
   url <- modify_url(url =  paste0(eidith_base_url, endpoint),
                     query = list(header_only = ifelse(header_only, "y", "n"),

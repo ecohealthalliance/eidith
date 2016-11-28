@@ -1,5 +1,5 @@
 ---
-title: "The EIDITH R Package"
+title: "Tutorial: The eidith R Package"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{pkgdown}
@@ -15,3 +15,70 @@ knitr::opts_chunk$set(
   fig.width = 8,
   fig.height = 8)
 ```
+
+The **eidith** R package provides programmatic access and analytical tools for
+data from the [PREDICT Program](http://www.vetmed.ucdavis.edu/ohi/predict/),
+housed at the [Emerging Infectious Disease Information Technology Hub](https://www.eidith.org/).
+
+The **eidith** package contains no data.  To access data, you must be
+[registered](https://www.eidith.org/register.aspx) EIDITH user with data access
+privileges. If you have a question about your access level, contact technology@eidith.org.
+
+This package is currently in development. We anticipate additional functionality
+for common analytical tasks. It also currently only accesses data from PREDICT-1. If
+you have question, bug reports, or feature requests, please post them on our
+[issue tracker](https://github.com/ecohealthalliance/eidith/issues).
+
+### Installation
+
+*eidith** is installed from GitHub rather than CRAN.  To install, you will
+require the [**devtools**](https://CRAN.R-project.org/package=devtools) package Use the following command to install the package.
+To install, run the following commands in R::
+
+```{r install, eval = FALSE}
+if (!require(devtools)) install.packages("devtools")
+devtools::install_github("ecohealthalliance/eidith")
+```
+### Authentication
+
+To download data from EIDITH, you must provide logon credentials.  If you run
+`download_db()` or the functions `get_*` from the R console, your EIDITH username
+and password will be requested.  To use these functions in scripts, you 
+must provide these as *environent variables*.  
+
+You can cache your credentials to logon automatically by putting them in a hidden
+`.Renviron` file, which defines environment variables for your R session. For
+more information see the `?eidith_auth` help file.
+
+### Downloading data
+
+The **eidith** package downloads data from EIDITH and stores it locally on your
+computer in a database so you don't have to download from the web repeatedly.
+Once you've installed the package, you'll need to populated this database with
+the `download_db()` command, like so:
+
+```
+library(eidith)
+download_db()
+```
+This may take a few minutes to complete depending on the speed of your internet
+connection.
+
+`download_db()` may be run again to update your local database with the latest
+data.  You should also run it after installing a new version of the **eidith**
+package, as a new version may change the structure of the database.
+
+### Loading data
+
+Once you've populated your local database, you can look up EIDITH data with
+the *table functions*, each of which loads data from the different table in the
+database: `ed_events()`, `ed_animals()`, `ed_specimens()`, `ed_tests()`, and
+`ed_viruses()`, as well as `ed_testspecimen()`, which contains cross-references
+between the test and specimen tables.  See the help for these functions for more
+details.
+
+### Direct API access
+
+If you want to access data from the web API directly (for instance, if you want
+to compare differences between raw data and the automatically-cleaned version
+`download_db()` creates), you can use the `get_*` functions, such as `get_ed_events()`.

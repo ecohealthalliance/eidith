@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>All news • EIDITH</title>
+<title>EIDITH table metadata — ed_metadata • EIDITH</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -34,7 +34,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -82,30 +82,35 @@
       </header>
 
       <div class="row">
-
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Change log <small>All releases</small></h1>
+    <h1>EIDITH table metadata</h1>
     </div>
 
-    <div class="contents">
-    <div id="eidith-0-0-0-9000" class="section level1">
-<h1 class="hasAnchor">
-<a href="#eidith-0-0-0-9000" class="anchor"> </a>eidith 0.0.0.9000</h1>
-<ul><li>Initial development version</li>
-</ul></div>
-    </div>
+    
+    <p>Descriptions of fields in the EIDITH database.  Running <code>ed_metadata()</code> will
+return a data frame with this information. This table is also shown below in a searchable and exportable format.</p>
+    
+
+    <pre><span class='fu'>ed_metadata</span>()</pre>
+        
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>More information can be found at the <a href = 'EIDITH resources page'>https://eidith.org/Resources.aspx</a>.</p>
+    <p>Here &quot;Original Name&quot; refers to the name in the EIDITH database, &quot;Processed Name&quot;
+is what is found after running <code>ed_process</code> on the data tables.</p>
+    <p>/var/folders/x5/rj19z1h13zbgffswjx1cc4v00000gn/T//RtmpOLbMs5/file149bb6e204797.html</p>
+    
+
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#eidith-0-0-0-9000">0.0.0.9000</a></li>
-      </ul>
-    </div>
-  </div>
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      
+      <li><a href="#details">Details</a></li>
+          </ul>
 
+  </div>
 </div>
 
       <footer>
