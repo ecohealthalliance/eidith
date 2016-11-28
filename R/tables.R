@@ -6,7 +6,7 @@ logical_vars <- c("archived_data", "deep_forest_data", "priortized_for_testing",
 date_vars <- c("event_date", "sample_date", "specimen_date",
                "test_date", "lab_submission_date", "results_date")
 
-#' @importFrom dplyr tbl tbl_df filter_ mutate_each_ funs
+#' @importFrom dplyr tbl tbl_df filter_ mutate_each_ funs_ funs collect
 #' @export
 ed_table_ <- function(table, .dots) {
   tbl(eidith_db, table) %>%

@@ -35,5 +35,8 @@ Suggests:
     rmarkdown,
     pkgdown,
     knitr,
-    feather
+    roxygen
+Remotes:
+  klutometis/roxygen
+Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
