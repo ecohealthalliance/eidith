@@ -54,17 +54,17 @@
 <div class="contents">
 <p>The <strong>eidith</strong> R package provides programmatic access and analytical tools for data from the <a href="http://www.vetmed.ucdavis.edu/ohi/predict/">PREDICT Program</a>, housed at the <a href="https://www.eidith.org/">Emerging Infectious Disease Information Technology Hub</a>.</p>
 <p>The <strong>eidith</strong> package contains no data. To access data, you must be <a href="https://www.eidith.org/register.aspx">registered</a> EIDITH user with data access privileges. If you have a question about your access level, contact <a href="mailto:technology@eidith.org">technology@eidith.org</a>.</p>
-<p>This package is currently in development. We anticipate additional functionality for common analytical tasks. It also currently only accesses data from PREDICT-1. If you have question, bug reports, or feature requests, please post them on our <a href="https://github.com/ecohealthalliance/eidith/issues">issue tracker</a>.</p>
+<p>This package is currently in development. We anticipate additional functionality for common analytical tasks. It also currently only accesses data from PREDICT-1. If you have questions, bug reports, or feature requests, please post them on our <a href="https://github.com/ecohealthalliance/eidith/issues">issue tracker</a>.</p>
 <div id="installation" class="section level3">
 <h3 class="hasAnchor"><html><body><a href="#installation" class="anchor"> </a></body></html>Installation</h3>
-<p>*eidith** is installed from GitHub rather than CRAN. To install, you will require the <a href="https://CRAN.R-project.org/package=devtools"><strong>devtools</strong></a> package Use the following command to install the package. To install, run the following commands in R::</p>
+<p>*eidith** is installed from GitHub rather than CRAN. To install, you will require the <a href="https://CRAN.R-project.org/package=devtools"><strong>devtools</strong></a> package. Use the following command to install the package:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (!<span class="kw">require</span>(devtools)) <span class="kw">install.packages</span>(<span class="st">"devtools"</span>)
 devtools::<span class="kw">install_github</span>(<span class="st">"ecohealthalliance/eidith"</span>)</code></pre></div>
 </div>
 <div id="authentication" class="section level3">
 <h3 class="hasAnchor"><html><body><a href="#authentication" class="anchor"> </a></body></html>Authentication</h3>
-<p>To download data from EIDITH, you must provide logon credentials. If you run <code><a href="../reference/download_db.html">download_db()</a></code> or the functions <code>get_*</code> from the R console, your EIDITH username and password will be requested. To use these functions in scripts, you must provide these as <em>environent variables</em>.</p>
-<p>You can cache your credentials to logon automatically by putting them in a hidden <code>.Renviron</code> file, which defines environment variables for your R session. For more information see the <code><a href="../reference/eidith_auth.html">?eidith_auth</a></code> help file.</p>
+<p>To download data from EIDITH, you must provide logon credentials. If you run <code><a href="../reference/download_db.html">download_db()</a></code> or the functions <code>get_*</code> from the R console, your EIDITH username and password will be requested. To use these functions in scripts, you must provide these as <em>environment variables</em>.</p>
+<p>You can cache your credentials and login automatically by putting them in a hidden <code>.Renviron</code> file, which defines environment variables for your R session. For more information see the <code><a href="../reference/eidith_auth.html">?eidith_auth</a></code> help file.</p>
 </div>
 <div id="downloading-data" class="section level3">
 <h3 class="hasAnchor"><html><body><a href="#downloading-data" class="anchor"> </a></body></html>Downloading data</h3>

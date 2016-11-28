@@ -19,7 +19,7 @@ personal \code{.Renviron} file by running the following code in your R console
     file = file.path(normalizePath("~/"), ".Renviron"), append = TRUE)
 }
 
-Restart R, and you will be automatically logged in to download data from
+Restart R, and you will be automatically logged in to download data from EIDITH
 when working on this computer.
 }
 

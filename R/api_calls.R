@@ -7,8 +7,8 @@ endpoints <- c("Event", "Animal", "Specimen", "Test", "Virus", "TestIDSpecimenID
 #' [authorization][eidith_auth].  They can be useful for comparing local data
 #' against data updated in the database, or processed vs. unprocessed data.
 #' The [table functions][ed_table] load data from the local database instead,
-#' and are thus faster and work without an internet connection.#'
-
+#' and are thus faster and work without an internet connection.
+#'
 #' @param verbose Show a progress bar and other messages?
 #' @param postprocess Should data be cleaned via [ed_process()] or returned raw?
 #' @param header_only Return only the table header.  Useful for checking if
@@ -92,6 +92,6 @@ get_ed_viruses <- function(verbose=interactive(), postprocess=TRUE,  header_only
 
 #' @rdname ed_get
 #' @export
-get_ed_testspecimen <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+get_ed_test_specimen_ids <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
   ed_get("TestIDSpecimenID", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }

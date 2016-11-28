@@ -7,7 +7,7 @@
 \alias{get_ed_specimens}
 \alias{get_ed_tests}
 \alias{get_ed_viruses}
-\alias{get_ed_testspecimen}
+\alias{get_ed_test_specimen_ids}
 \title{Functions to download EIDITH tables via API}
 \usage{
 get_ed_events(verbose = interactive(), postprocess = TRUE,
@@ -30,7 +30,7 @@ get_ed_viruses(verbose = interactive(), postprocess = TRUE,
   header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
   + 1, ...)
 
-get_ed_testspecimen(verbose = interactive(), postprocess = TRUE,
+get_ed_test_specimen_ids(verbose = interactive(), postprocess = TRUE,
   header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
   + 1, ...)
 }
@@ -56,6 +56,6 @@ These function download data directly from the EIDITH API.  They require
 \link[=eidith_auth]{authorization}.  They can be useful for comparing local data
 against data updated in the database, or processed vs. unprocessed data.
 The \link[=ed_table]{table functions} load data from the local database instead,
-and are thus faster and work without an internet connection.#'
+and are thus faster and work without an internet connection.
 }
 

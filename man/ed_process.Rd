@@ -9,8 +9,9 @@ ed_process(dat, endpoint)
 \arguments{
 \item{dat}{The dat as exported from EIDITH and imported via}
 
-\item{endpoint}{The name of the endpoint or data table: one of "Event",
-"Animal",  "Specimen", "Test", "Virus", or "TestIDSpecimenID" (for test-specimen cross referencing)}
+\item{endpoint}{The name of the API endpoint: one of "Event",
+"Animal",  "Specimen", "Test", "Virus", or "TestIDSpecimenID" (for test-specimen cross referencing).  Note these are different
+than the names of the tables stored locally (which are lowercase and plural).}
 }
 \description{
 This function takes raw data downloaded from EIDITH and puts it through
@@ -23,7 +24,7 @@ Steps taken to clean the data include:
 \item Converting variable names from \code{camelCase} to \code{snake_case} to make it easy
 to distinguish between raw and cleaned data.
 \item Converting some variable names to clearer ones:  all \code{_id} variables are
-numeric primary keys, other identifiers are now go by \code{_id_name}.
+numeric primary keys, other identifiers now go by \code{_id_name}.
 \item Cleaning up whitespace and capitalization variability
 \item Re-arranging table order to put the most pertinent information first.
 \item Normalizing all animal taxonomic information to match the \href{https://www.itis.gov/}{ITIS} database.

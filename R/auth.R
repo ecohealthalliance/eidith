@@ -17,8 +17,7 @@
 #' cat("EIDITH_USERNAME=YOUR_USERNAME\nEIDITH_PASSWORD=YOUR_PASSWORD",
 #'     file = file.path(normalizePath("~/"), ".Renviron"), append = TRUE)
 #' ```
-#'
-#' Restart R, and you will be automatically logged in to download data from
+#' Restart R, and you will be automatically logged in to download data from EIDITH
 #' when working on this computer.
 #'
 #' @rdname eidith_auth

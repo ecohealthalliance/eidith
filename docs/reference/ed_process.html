@@ -100,8 +100,9 @@ call this function directly - it is called by both <code><a href='download_db.ht
       <dt>dat</dt>
       <dd>The dat as exported from EIDITH and imported via</dd>
       <dt>endpoint</dt>
-      <dd>The name of the endpoint or data table: one of &quot;Event&quot;,
-&quot;Animal&quot;,  &quot;Specimen&quot;, &quot;Test&quot;, &quot;Virus&quot;, or &quot;TestIDSpecimenID&quot; (for test-specimen cross referencing)</dd>
+      <dd>The name of the API endpoint: one of &quot;Event&quot;,
+&quot;Animal&quot;,  &quot;Specimen&quot;, &quot;Test&quot;, &quot;Virus&quot;, or &quot;TestIDSpecimenID&quot; (for test-specimen cross referencing).  Note these are different
+than the names of the tables stored locally (which are lowercase and plural).</dd>
     </dl>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -112,7 +113,7 @@ call this function directly - it is called by both <code><a href='download_db.ht
 to distinguish between raw and cleaned data.
 </li>
 <li> Converting some variable names to clearer ones:  all <code>_id</code> variables are
-numeric primary keys, other identifiers are now go by <code>_id_name</code>.
+numeric primary keys, other identifiers now go by <code>_id_name</code>.
 </li>
 <li> Cleaning up whitespace and capitalization variability
 </li>

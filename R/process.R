@@ -9,7 +9,7 @@
 #' -   Converting variable names from `camelCase` to `snake_case` to make it easy
 #' to distinguish between raw and cleaned data.
 #' -   Converting some variable names to clearer ones:  all `_id` variables are
-#' numeric primary keys, other identifiers are now go by `_id_name`.
+#' numeric primary keys, other identifiers now go by `_id_name`.
 #' -   Cleaning up whitespace and capitalization variability
 #' -   Re-arranging table order to put the most pertinent information first.
 #' -   Normalizing all animal taxonomic information to match the [ITIS](https://www.itis.gov/) database.
@@ -19,8 +19,9 @@
 #' -   Extracting common TRUE/FALSE variables from free-form text of viral interpretation (Genbank numbers, whether virus is known, whether virus is known to affect humans).
 #'
 #' @param dat The dat as exported from EIDITH and imported via
-#' @param endpoint The name of the endpoint or data table: one of "Event",
-#' "Animal",  "Specimen", "Test", "Virus", or "TestIDSpecimenID" (for test-specimen cross referencing)
+#' @param endpoint The name of the API endpoint: one of "Event",
+#' "Animal",  "Specimen", "Test", "Virus", or "TestIDSpecimenID" (for test-specimen cross referencing).  Note these are different
+#' than the names of the tables stored locally (which are lowercase and plural).
 #' @importFrom dplyr na_if as_data_frame
 #' @importFrom stringi stri_trim_both
 #' @importFrom purrr map_if

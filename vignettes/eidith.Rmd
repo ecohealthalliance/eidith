@@ -26,14 +26,14 @@ privileges. If you have a question about your access level, contact technology@e
 
 This package is currently in development. We anticipate additional functionality
 for common analytical tasks. It also currently only accesses data from PREDICT-1. If
-you have question, bug reports, or feature requests, please post them on our
+you have questions, bug reports, or feature requests, please post them on our
 [issue tracker](https://github.com/ecohealthalliance/eidith/issues).
 
 ### Installation
 
 *eidith** is installed from GitHub rather than CRAN.  To install, you will
-require the [**devtools**](https://CRAN.R-project.org/package=devtools) package Use the following command to install the package.
-To install, run the following commands in R::
+require the [**devtools**](https://CRAN.R-project.org/package=devtools) package.
+Use the following command to install the package:
 
 ```{r install, eval = FALSE}
 if (!require(devtools)) install.packages("devtools")
@@ -44,9 +44,9 @@ devtools::install_github("ecohealthalliance/eidith")
 To download data from EIDITH, you must provide logon credentials.  If you run
 `download_db()` or the functions `get_*` from the R console, your EIDITH username
 and password will be requested.  To use these functions in scripts, you 
-must provide these as *environent variables*.  
+must provide these as *environment variables*.  
 
-You can cache your credentials to logon automatically by putting them in a hidden
+You can cache your credentials and login automatically by putting them in a hidden
 `.Renviron` file, which defines environment variables for your R session. For
 more information see the `?eidith_auth` help file.
 

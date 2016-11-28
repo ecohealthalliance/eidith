@@ -50,7 +50,7 @@ download_db <- function(verbose=interactive()) {
     dplyr::copy_to(eidith_db, tables[[x]], name=db_tables[x], temporary = FALSE,
                       unique_indexes = db_unique_indexes[[x]], indexes = db_other_indexes[[x]])
   })
-  return()
+  if(verbose) message("Database updated!")
 }
 
 #' #' @importFrom magrittr use_series
