@@ -18,6 +18,15 @@ More information can be found at the \href{https://eidith.org/Resources.aspx}{EI
 Here "Original Name" refers to the name in the EIDITH database, "Processed Name"
 is what is found after running \code{\link{ed_process}} on the data tables.
 
-\Sexpr[echo=FALSE, results=rd, stage=render]{tmp <- tempfile(fileext=".html");htmlwidgets::saveWidget(DT::datatable(eidith::ed_metadata()), tmp);return(paste(c('\\\out{<div>', readLines(tmp), '</div>}'), collapse = "\n"))}}
+\Sexpr[echo=FALSE, results=rd, stage=render]{
+    tmp <- paste0(system.file("", package="eidith"), "ed_meta_table.html")
+      htmlwidgets::saveWidget(DT::datatable(eidith::ed_metadata()), tmp)
+      return(paste(
+              '\\\out{<div style= "width:100\%"',
+                 paste(readLines(tmp), collapse="\n"),
+              '</div>}',
+              sep="\n"))
+  }
+}
 }
 
