@@ -22,7 +22,7 @@
 #' @param endpoint The name of the API endpoint: one of "Event",
 #' "Animal",  "Specimen", "Test", "Virus", or "TestIDSpecimenID" (for test-specimen cross referencing).  Note these are different
 #' than the names of the tables stored locally (which are lowercase and plural).
-#' @importFrom dplyr na_if as_data_frame
+#' @importFrom dplyr na_if as_data_frame rename_
 #' @importFrom stringi stri_trim_both
 #' @importFrom purrr map_if
 ed_process <- function(dat, endpoint) {
@@ -36,7 +36,8 @@ ed_process <- function(dat, endpoint) {
 
 #' @importFrom dplyr rename_ select_ mutate_ arrange_ recode distinct_
 pp_Event <- function(dat) {
-  dat <- rename_(dat, .dots = c("event_id"="gains3_event_id", "organization_id"="organization_idowner"))
+  dat <- rename_(dat, .dots = c("event_id"="gains3_event_id", "organization_id"="organization_idowner",
+                                "database_date"="date_last_updated", "date_created" ="crdate", "date_modified"="lmdate"))
   dat <- mutate_(dat, habitat_type = ~recode(habitat_type, `lowland forest`='Lowland forest', `Grassland `='Grassland', `river/stream`='River/stream'))
   dat <- select_(dat, .dots = events_order)
   dat <- arrange_(dat, .dots = "event_id")
@@ -47,7 +48,8 @@ pp_Event <- function(dat) {
 pp_Animal <- function(dat) {
   dat <- rename_(dat, .dots = c("event_id"="gains3_event_id", "animal_id"="gains3_sample_unit_id", "animal_id_name"="animal_id_gains",
                                 "animal_id_name_fromcountry"="animal_id_from_country",
-                                "prioritized_for_testing"="priortized_for_testing"))
+                                "prioritized_for_testing"="priortized_for_testing",
+                                "database_date"="date_last_updated", "date_created" ="crdate", "date_modified"="lmdate"))
   dat <- select_(dat, .dots = c("-sample_unit_id", "-container_id"))
   dat <- left_join(dat, eidith_itis_lookup, by=c("species_scientific_name"="eidith_name")) %>%
     select_(.dots=c("-species_scientific_name", "-class", "-order", "-family", "-genus", "-species")) %>%
@@ -73,7 +75,8 @@ pp_Specimen <- function(dat) {
                                 "animal_id"="gains3_sample_unit_id",
                                 "specimen_id_name"="specimen_idunique",
                                 "storage_location_address_original" = "storage_location_adress_original",
-                                "storage_location_address_current" = "storage_location_adress_current"))
+                                "storage_location_address_current" = "storage_location_adress_current",
+                                "database_date"="date_last_updated", "date_created" ="crdate", "date_modified"="lmdate"))
   dat <- mutate_(dat,
                  specimen_id = ~as.integer(specimen_id),
                  specimen_type = ~stri_replace_first_fixed(specimen_type, "Smear, thin", "thin smear") %>%
@@ -94,7 +97,8 @@ pp_Specimen <- function(dat) {
 #' @importFrom dplyr rename_ select_ mutate_ arrange_ distinct_
 #' @importFrom stringi stri_replace_all_fixed stri_replace_all_regex
 pp_Test <- function(dat) {
-  dat <- rename_(dat, .dots = c("specimen_id"="gains3_specimen_id", "specimen_id_name"="specimen_name"))
+  dat <- rename_(dat, .dots = c("specimen_id"="gains3_specimen_id", "specimen_id_name"="specimen_name",
+                                "database_date"="date_last_updated", "date_created" ="crdate", "date_modified"="lmdate"))
   dat <- mutate_(dat,
                  specimen_id_name = ~stri_replace_all_fixed(specimen_id_name, "Lung, Liver", "Lung-Liver") %>%
                                      stri_replace_all_fixed("110818EKSGbg001", "110818EKSGBG001") %>%
@@ -116,7 +120,8 @@ pp_Virus <- function(dat) {
   dat <- rename_(dat, .dots = c("virus_id"="gains3_sequence_id",
                                 "test_id"="gains3_test_id",
                                 "new_genbank_accession" = "genbank_accession_number",
-                                "known" = "virus_status"))
+                                "known" = "virus_status",
+                                "database_date"="date_last_updated", "date_created" ="crdate", "date_modified"="lmdate"))
   dat <- mutate_(dat,
                  known = ~known=="known",
                  known_genbank_accession = ~get_genbank(interpretation),
@@ -188,8 +193,10 @@ events_order <- c(
   "event_custom_columns",
   "primary_interface_group",
   "secondary_interface_group",
-  "date_last_updated",
-  "organization_id")
+  "organization_id",
+  "date_modified",
+  "date_created",
+  "database_date")
 
 animals_order <- c(
   "animal_id",
@@ -254,7 +261,6 @@ animals_order <- c(
   "quarter",
   "sample_unit_notes",
   "sample_unit_custom_columns",
-  "date_last_updated",
   "sample_individual_name",
   "taxagroup",
   "class",
@@ -263,7 +269,10 @@ animals_order <- c(
   "genus",
   "species",
   "subspecies",
-  "binomial")
+  "binomial",
+  "date_modified",
+  "date_created",
+  "database_date")
 
 specimens_order <- c(
   "specimen_id",
@@ -288,9 +297,11 @@ specimens_order <- c(
   "specimen_comments",
   "specimen_notes",
   "specimen_custom_columns",
-  "date_last_updated",
   "specimen_type_id",
-  "specimen_id_name2")
+  "specimen_id_name2",
+  "date_modified",
+  "date_created",
+  "database_date")
 
 tests_order <- c(
   "test_id",
@@ -327,8 +338,10 @@ tests_order <- c(
   "interpretation_notes",
   "comments",
   "predict_protocol",
-  "date_last_updated",
-  "specimen_id"
+  "specimen_id",
+  "date_modified",
+  "date_created",
+  "database_date"
 )
 
 viruses_order <- c(
@@ -342,7 +355,9 @@ viruses_order <- c(
   "known_genbank_accession",
   "virus_name",
   "virus_code",
-  "date_last_updated",
   "sequence",
-  "interpretation"
+  "interpretation",
+  "date_modified",
+  "date_created",
+  "database_date"
 )

@@ -34,7 +34,9 @@ events,source_known,SourceKnown,Whether the source was previously known to recor
 events,event_custom_columns,EventCustomColumns,Site custom data that does not transfer to other events
 events,primary_interface_group,PrimaryInterfaceGroup,
 events,secondary_interface_group,SecondaryInterfaceGroup,
-events,date_last_updated,DateLastUpdated,
+events,database_date,DateLastUpdated,Last date of export from EIDITH database to the API
+events,date_modified,LMDate,Last-modified date of record within the EIDITH database
+events,date_created,CRDate,Date record was first created within the EIDITH database
 events,organization_id,OrganizatonIDOwner,
 animals,animal_id,GAINS3_SampleUnitID,Numerical animal ID
 animals,event_id,GAINS3_EventID,Numerical event ID
@@ -98,7 +100,7 @@ animals,butcher_observable_risk_factors,ButcherObservableRiskFactors,Risk factor
 animals,quarter,Quarter,
 animals,sample_unit_notes,SampleUnitNotes,Notes on animal entry
 animals,sample_unit_custom_columns,SampleUnitCustomColumns,
-animals,date_last_updated,DateLastUpdated,
+animals,database_date,DateLastUpdated,
 animals,sample_individual_name,SampleIndividualName,
 animals,taxagroup,Taxagroup,
 animals,class,class,Integrated Taxonomic Information System Class
@@ -108,6 +110,8 @@ animals,genus,genus,Integrated Taxonomic Information System Genus
 animals,species,species,Integrated Taxonomic Information System Species
 animals,subspecies,,Integrated Taxonomic Information System Subspecies
 animals,binomial,,Binomial Nomenclature based on Integrated Taxonomic Information System
+animals,date_modified,LMDate,Last-modified date of record within the EIDITH database
+animals,date_created,CRDate,Date record was first created within the EIDITH database
 specimens,specimen_id,GAINS3_SpecimenID,Numerical Specimen ID
 specimens,animal_id,GAINS3_AnimalID,Numerical Animal ID
 specimens,specimen_id_name,SpecimenIDUnique,"Unique ID assigned by gains.org; a sequential number/letter combination, concatenated to the Animal ID."
@@ -130,9 +134,11 @@ specimens,time_from_collection_to_freezing,TimeFromCollectionToFreezing,Time bet
 specimens,specimen_comments,SpecimenComments,Comment on the specimen sample
 specimens,specimen_notes,SpecimenNotes,Notes on specimen sample
 specimens,specimen_custom_columns,SpecimenCustomColumns,Specimen custom columns
-specimens,date_last_updated,DateLastUpdated,
+specimens,database_date,DateLastUpdated,
 specimens,specimen_type_id,SpecimenTypeID,
 specimens,specimen_id_name2,Specimen_ID,"ID assigned by gains.org; a sequential number/letter combination, concatenated to the Animal ID."
+specimens,date_modified,LMDate,Last-modified date of record within the EIDITH database
+specimens,date_created,CRDate,Date record was first created within the EIDITH database
 tests,test_id,TestID,Numerical Test ID
 tests,specimen_id_name,SpecimenID,"Unique ID assigned by gains.org; a sequential number/letter combination, concatenated to the Animal ID."
 tests,pooled,Pooled,Whether tests are pooled or single samples
@@ -167,8 +173,10 @@ tests,notes,Notes,
 tests,interpretation_notes,InterpretationNotes,
 tests,comments,Comments,
 tests,predict_protocol,PredictProtocol,
-tests,date_last_updated,DateLastUpdated,
+tests,database_date,DateLastUpdated,
 tests,specimen_id,GAINS3_SpecimenID,Numerical Specimen ID
+tests,date_modified,LMDate,Last-modified date of record within the EIDITH database
+tests,date_created,CRDate,Date record was first created within the EIDITH database
 viruses,virus_id,GAINS3_SequenceID,Numerical Sequence ID
 viruses,test_id,GAINS3_TestID,Numerical Test ID
 viruses,viral_family,ViralFamily,ICTV Viral Family
@@ -179,6 +187,8 @@ viruses,new_genbank_accession,GenbankAccessionNumber,Genbank Accession Number fo
 viruses,known_genbank_accession,Processed from Interpretation,Genbank Accession Number for known viruses
 viruses,virus_name,VirusName,Virus Name
 viruses,virus_code,VirusCode,
-viruses,date_last_updated,DateLastUpdated,
+viruses,database_date,DateLastUpdated,
 viruses,sequence,Sequence,
 viruses,interpretation,Interpretation,
+viruses,date_modified,LMDate,Last-modified date of record within the EIDITH database
+viruses,date_created,CRDate,Date record was first created within the EIDITH database

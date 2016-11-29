@@ -6,6 +6,8 @@ logical_vars <- c("archived_data", "deep_forest_data", "prioritized_for_testing"
 date_vars <- c("event_date", "sample_date", "specimen_date",
                "test_date", "lab_submission_date", "results_date")
 
+datetime_vars <- c("date_created", "date_modified", "database_date")
+
 #' Load EIDITH data from the local database
 #'
 #' These functions load data from the locally-stored SQLite database of downloaded
@@ -36,7 +38,7 @@ ed_table_ <- function(table, .dots) {
 fix_classes <- function(table) {
   logical_cols <- names(table)[names(table) %in% logical_vars]
   date_cols <-  names(table)[names(table) %in% date_vars]
-  datetime_cols <- names(table)[names(table) == "date_last_updated"]
+  datetime_cols <- names(table)[names(table)  %in% datetime_vars]
   if(length(logical_cols) != 0) table <- mutate_each_(table, funs_("as.logical"), logical_cols)
   if(length(date_cols) != 0) table <- mutate_each_(table, funs(quicktime), date_cols)
   if(length(datetime_cols) != 0) table <- mutate_each_(table, funs(quicktime2), datetime_cols)
