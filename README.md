@@ -7,10 +7,10 @@
 The EIDITH R Package
 ====================
 
-The **eidith** R package provides programmatic access and analytical tools for data from the [PREDICT Program](http://www.vetmed.ucdavis.edu/ohi/predict/), housed at the [Emerging Infectious Disease Information Technology Hub](https://www.eidith.org/).
+The **eidith** R package provides programmatic access and analytical tools for data from the [PREDICT program](http://www.vetmed.ucdavis.edu/ohi/predict/). housed at the [Emerging Infectious Disease Information Technology Hub](https://www.eidith.org/).
 
-The **eidith** package contains no data. To access data, you must be [registered](https://www.eidith.org/register.aspx) EIDITH user with data access privileges. If you have a question about your access level, contact <technology@eidith.org>.
+The **eidith** package contains no data. To access data, you must be a [registered](https://www.eidith.org/register.aspx) EIDITH user with data access privileges. If you have a question about your access level, contact <technology@eidith.org>.
 
-See the [package tutorial](docs/articles/eidith.html) and [help files](docs/reference/index.html) for installation and usage information.
+See the [package tutorial](https://ecohealthalliance.github.io/eidith/articles/eidith.html) and [help files](https://ecohealthalliance.github.io/eidith/reference/index.html) for installation and usage information.
 
 ![](inst/images/README-predictfooter.png)
