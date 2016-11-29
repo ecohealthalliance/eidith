@@ -31,7 +31,7 @@ you have questions, bug reports, or feature requests, please post them on our
 
 ### Installation
 
-*eidith** is installed from GitHub rather than CRAN.  To install, you will
+**eidith** is installed from GitHub rather than CRAN.  To install, you will
 require the [**devtools**](https://CRAN.R-project.org/package=devtools) package.
 Use the following command to install the package:
 
@@ -42,9 +42,9 @@ devtools::install_github("ecohealthalliance/eidith")
 ### Authentication
 
 To download data from EIDITH, you must provide logon credentials.  If you run
-`download_db()` or the functions `get_*` from the R console, your EIDITH username
+`download_db()` or the `get_*()` functions from the R console, your EIDITH username
 and password will be requested.  To use these functions in scripts, you 
-must provide these as *environment variables*.  
+must provide these credentials as *environment variables*.  
 
 You can cache your credentials and login automatically by putting them in a hidden
 `.Renviron` file, which defines environment variables for your R session. For
@@ -81,4 +81,4 @@ details.
 
 If you want to access data from the web API directly (for instance, if you want
 to compare differences between raw data and the automatically-cleaned version
-`download_db()` creates), you can use the `get_*` functions, such as `get_ed_events()`.
+`download_db()` creates), you can use the `get_*()` functions, such as `get_ed_events()`.
