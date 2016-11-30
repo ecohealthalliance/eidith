@@ -43,7 +43,11 @@ ed_get <- function(endpoint, verbose=interactive(), postprocess=TRUE, header_onl
   request <- GET(url=url, authenticate(auth[1], auth[2], type="basic"), pbar, ...)
 
   if(status_code(request) == 401) {
-    stop("Unauthorized (HTTP 401). See ?eidith_auth.")
+    stop("Unauthorized (HTTP 401). Your username or password do not match an account. See ?eidith_auth.")
+  }
+
+  if(status_code(request) == 403) {
+    stop("Forbidden (HTTP 403). Your account does not have access permissions. Contact technology@eidith.org.")
   }
 
   if(verbose) message("Importing...")

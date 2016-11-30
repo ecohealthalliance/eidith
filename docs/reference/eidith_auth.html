@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EIDITH logon credentials
- — eidith_auth • EIDITH</title>
+<title>EIDITH logon credentials — eidith_auth • EIDITH</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -85,20 +84,23 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>EIDITH logon credentials
-</h1>
+    <h1>EIDITH logon credentials</h1>
     </div>
 
     
-    <p>For frequent or programmatic use, we recommend caching your logon credentials
-as environment variables.  <strong>eidith</strong> functions will automatically search
-for your credentials in the <code>EIDITH_USERNAME</code> and <code>EIDITH_PASSWORD</code> environment
-variables.</p>
+    <p>Any function that downloads data from EIDITH, such as <code><a href='download_db.html'>download_db()</a></code> or
+the <a href='ed_get.html'>raw download functions</a> requires login credentials.  These
+functions will ask for a username and password.  To get an EIDITH account
+with data access permissions, contact technology@eidith.org.</p>
     
 
         
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
+    <p>For frequent or programmatic use, we recommend caching your logon credentials
+as environment variables.  <strong>eidith</strong> functions will automatically search
+for your credentials in the <code>EIDITH_USERNAME</code> and <code>EIDITH_PASSWORD</code> environment
+variables.</p>
     <p>To cache your credentials across multiple R sessions, save them in your
 personal <code>.Renviron</code> file by running the following code in your R console
 (replacing <code>YOUR_USERNAME</code> and <code>YOUR_PASSWORD</code> with actual values).<pre>cat(&quot;EIDITH_USERNAME=YOUR_USERNAME\nEIDITH_PASSWORD=YOUR_PASSWORD&quot;,

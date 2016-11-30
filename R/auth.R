@@ -1,8 +1,9 @@
 #' EIDITH logon credentials
-#
+#'
 #' Any function that downloads data from EIDITH, such as [download_db()] or
 #' the [raw download functions][ed_get()] requires login credentials.  These
-#' functions will ask for a username and password.
+#' functions will ask for a username and password.  To get an EIDITH account
+#' with data access permissions, contact technology@eidith.org.
 #'
 #' For frequent or programmatic use, we recommend caching your logon credentials
 #' as environment variables.  **eidith** functions will automatically search

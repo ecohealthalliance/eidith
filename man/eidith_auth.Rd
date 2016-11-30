@@ -2,17 +2,19 @@
 % Please edit documentation in R/auth.R
 \name{eidith_auth}
 \alias{eidith_auth}
-\title{EIDITH logon credentials
+\title{EIDITH logon credentials}
+\description{
 Any function that downloads data from EIDITH, such as \code{\link[=download_db]{download_db()}} or
 the \link[=ed_get]{raw download functions} requires login credentials.  These
-functions will ask for a username and password.}
-\description{
+functions will ask for a username and password.  To get an EIDITH account
+with data access permissions, contact technology@eidith.org.
+}
+\details{
 For frequent or programmatic use, we recommend caching your logon credentials
 as environment variables.  \strong{eidith} functions will automatically search
 for your credentials in the \code{EIDITH_USERNAME} and \code{EIDITH_PASSWORD} environment
 variables.
-}
-\details{
+
 To cache your credentials across multiple R sessions, save them in your
 personal \code{.Renviron} file by running the following code in your R console
 (replacing \code{YOUR_USERNAME} and \code{YOUR_PASSWORD} with actual values).\preformatted{cat("EIDITH_USERNAME=YOUR_USERNAME\nEIDITH_PASSWORD=YOUR_PASSWORD",

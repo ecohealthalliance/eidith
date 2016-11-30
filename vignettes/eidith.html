@@ -75,13 +75,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>This package is currently in development. We anticipate additional functionality for common analytical tasks. It also currently only accesses data from PREDICT-1. If you have questions, bug reports, or feature requests, please post them on our <a href="https://github.com/ecohealthalliance/eidith/issues">issue tracker</a>.</p>
 <div id="installation" class="section level3">
 <h3>Installation</h3>
-<p>*eidith** is installed from GitHub rather than CRAN. To install, you will require the <a href="https://CRAN.R-project.org/package=devtools"><strong>devtools</strong></a> package. Use the following command to install the package:</p>
+<p><strong>eidith</strong> is installed from GitHub rather than CRAN. To install, you will require the <a href="https://CRAN.R-project.org/package=devtools"><strong>devtools</strong></a> package. Use the following command to install the package:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (!<span class="kw">require</span>(devtools)) <span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)
 devtools::<span class="kw">install_github</span>(<span class="st">&quot;ecohealthalliance/eidith&quot;</span>)</code></pre></div>
 </div>
 <div id="authentication" class="section level3">
 <h3>Authentication</h3>
-<p>To download data from EIDITH, you must provide logon credentials. If you run <code>download_db()</code> or the functions <code>get_*</code> from the R console, your EIDITH username and password will be requested. To use these functions in scripts, you must provide these as <em>environment variables</em>.</p>
+<p>To download data from EIDITH, you must provide logon credentials. If you run <code>download_db()</code> or the <code>get_*()</code> functions from the R console, your EIDITH username and password will be requested. To use these functions in scripts, you must provide these credentials as <em>environment variables</em>.</p>
 <p>You can cache your credentials and login automatically by putting them in a hidden <code>.Renviron</code> file, which defines environment variables for your R session. For more information see the <code>?eidith_auth</code> help file.</p>
 </div>
 <div id="downloading-data" class="section level3">
@@ -98,7 +98,7 @@ download_db()</code></pre>
 </div>
 <div id="direct-api-access" class="section level3">
 <h3>Direct API access</h3>
-<p>If you want to access data from the web API directly (for instance, if you want to compare differences between raw data and the automatically-cleaned version <code>download_db()</code> creates), you can use the <code>get_*</code> functions, such as <code>get_ed_events()</code>.</p>
+<p>If you want to access data from the web API directly (for instance, if you want to compare differences between raw data and the automatically-cleaned version <code>download_db()</code> creates), you can use the <code>get_*()</code> functions, such as <code>get_ed_events()</code>.</p>
 </div>
 
 
