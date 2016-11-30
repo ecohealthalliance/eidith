@@ -42,7 +42,7 @@ Suggests:
     knitr,
     roxygen2
 Remotes:
-  klutometis/roxygen
+  klutometis/roxygen,
   hadley/pkgdown
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
