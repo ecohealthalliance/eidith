@@ -36,7 +36,7 @@ ed_process <- function(dat, endpoint) {
 
 #' @importFrom dplyr rename_ select_ mutate_ arrange_ recode distinct_
 pp_Event <- function(dat) {
-  dat <- rename_(dat, .dots = c("event_id"="gains3_event_id", "organization_id"="organization_idowner",
+  dat <- rename_(dat, .dots = c("event_id"="gains3_event_id",
                                 "database_date"="date_last_updated", "date_created" ="crdate", "date_modified"="lmdate"))
   dat <- mutate_(dat, habitat_type = ~recode(habitat_type, `lowland forest`='Lowland forest', `Grassland `='Grassland', `river/stream`='River/stream'))
   dat <- select_(dat, .dots = events_order)
@@ -193,7 +193,6 @@ events_order <- c(
   "event_custom_columns",
   "primary_interface_group",
   "secondary_interface_group",
-  "organization_id",
   "date_modified",
   "date_created",
   "database_date")

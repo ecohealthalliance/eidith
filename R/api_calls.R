@@ -33,7 +33,7 @@ ed_get <- function(endpoint, verbose=interactive(), postprocess=TRUE, header_onl
                                  lmdate_to = lmdate_to))
   if(verbose) {
     pbar = progress()
-    message("Downloading...")
+    message(paste("Downloading", endpoint, "table..."))
   } else {
     pbar=NULL
   }
