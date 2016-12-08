@@ -34,4 +34,3 @@ numeric primary keys, other identifiers now go by \code{_id_name}.
 \item Extracting common TRUE/FALSE variables from free-form text of viral interpretation (Genbank numbers, whether virus is known, whether virus is known to affect humans).
 }
 }
-

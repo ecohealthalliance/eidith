@@ -24,4 +24,3 @@ personal \code{.Renviron} file by running the following code in your R console
 Restart R, and you will be automatically logged in to download data from EIDITH
 when working on this computer.
 }
-

@@ -58,4 +58,3 @@ against data updated in the database, or processed vs. unprocessed data.
 The \link[=ed_table]{table functions} load data from the local database instead,
 and are thus faster and work without an internet connection.
 }
-

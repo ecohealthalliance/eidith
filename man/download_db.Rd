@@ -29,4 +29,3 @@ as such it takes a few minutes.  In the future, we will allow for updating only 
 
 The function will prompt for username and password unless you have \link[=eidith_auth]{cached your credentials}.
 }
-
