@@ -31,6 +31,7 @@ reference:
       - ed_db_export
   - title: "EIDITH data"
     contents:
+      - ed_metadata
       - ed_table
       - ed_events
       - ed_animals
