@@ -337,7 +337,6 @@ tests_order <- c(
   "interpretation_notes",
   "comments",
   "predict_protocol",
-  "specimen_id",
   "date_modified",
   "date_created",
   "database_date"
