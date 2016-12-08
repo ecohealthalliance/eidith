@@ -104,11 +104,7 @@ db_status <- function(path=NULL) {
 print.dbstatus <- function(dbstatus) {
   cat(dbstatus$status_msg)
 }
-#'
-#' update_db <- function() {
-#'
-#' }
-#'
+
 
 #' @export
 export_db <- function(filename, ...) {  #Exports the database file to new location.  options(eidith_db) should let you change it.
