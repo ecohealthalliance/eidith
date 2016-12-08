@@ -7,9 +7,9 @@
 ed_process(dat, endpoint)
 }
 \arguments{
-\item{dat}{The dat as exported from EIDITH and imported via}
+\item{dat}{The data as exported from EIDITH and imported via the \code{\link[=ed_get]{ed_get()}} functions (without preprocessing).}
 
-\item{endpoint}{The name of the API endpoint: one of "Event",
+\item{endpoint}{The name of the API endpoint uaws: one of "Event",
 "Animal",  "Specimen", "Test", "Virus", or "TestIDSpecimenID" (for test-specimen cross referencing).  Note these are different
 than the names of the tables stored locally (which are lowercase and plural).}
 }

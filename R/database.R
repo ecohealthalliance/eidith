@@ -38,6 +38,7 @@ db_other_indexes <- list(
 #'
 #' @importFrom dplyr db_list_tables db_drop_table copy_to
 #' @param verbose Show messages while in progress?
+#' @seealso [ed_db_status()], [ed_db_updates()], [ed_db_export()]
 #' @export
 ed_db_download <- function(verbose=interactive()) {
   auth <- ed_auth(verbose = verbose)
@@ -54,16 +55,29 @@ ed_db_download <- function(verbose=interactive()) {
                  name="status", temporary=FALSE)
   if(verbose) {
     message("Database updated!")
-    message(db_status()[["status_msg"]])
+    message(ed_db_status()[["status_msg"]])
   }
 }
 
+#' Get the status of the locally stored EIDITH database
+#'
+#' @description
+#' This function provides:
+#'  - Countries in the database
+#'  - Size of each table in the database
+#'  - The most recent download date
+#'  - The last-updated records in local database
+#'
+#' @return A list of database status information, pretty-printed.
+#' @param path if provided, the filename of the sqlite database to check. By default,
+#'   the function checks the status of the internal database or that with the global option `"ed_sql_path"`.
+#' @seealso  [ed_db_download()], [ed_db_updates()], [ed_db_export()]
 #' @importFrom magrittr use_series
 #' @importFrom purrr map_chr
 #' @importFrom dplyr tbl group_by_ summarise_ collect lst db_list_tables mutate_
 #' @importFrom tidyr separate_
 #' @export
-db_status <- function(path=NULL) {
+ed_db_status <- function(path=NULL) {
   edb <- eidith_db(path)
   if(!(all(db_tables %in% db_list_tables(edb$con)))) {
     dbstatus<- list(status_msg = "Local EIDITH database is empty, out-of-date, or corrupt.  Run ed_db_download() to update")
@@ -105,16 +119,39 @@ print.dbstatus <- function(dbstatus) {
   cat(dbstatus$status_msg)
 }
 
-
+#' Export the local EIDITH database to a file
+#'
+#' This function allows you to export the local EIDITH database to a file that
+#' can then be used by others.  The database is in [SQLite](https://sqlite.org/) format.
+#' @param filename The filename to export to. We suggest something ending in `.sqlite`.
+#' @seealso  [ed_db_status()], [ed_db_updates()], [ed_db_export()]
+#' @examples
+#' \dontrun{
+#'   #Here's an example of how to export and then use the exported database
+#'
+#'   ed_db_export("mydb.sqlite")
+#'   options(ed_sql_path = "mydb.sqlite") # This switches to working with the exported database
+#'   ed_db_status()  #get status of the current (exported) database
+#' }
 #' @export
-export_db <- function(filename, ...) {  #Exports the database file to new location.  options(eidith_db) should let you change it.
+ed_db_export <- function(filename, ...) {  #Exports the database file to new location.  options(eidith_db) should let you change it.
    file.copy(from = eidith_db()$path, to = filename, ...)
 }
 
+#' Check the online EIDITH databse for updates since your last download.
+#'
+#' This function checks to see if the EIDITH online database has been updated
+#' since the last time [ed_db_download()] was run. If it has, you may run
+#' [ed_db_download()] to get the latest data.
+#'
+#' @param path if provided, the filename of the sqlite database to check. By default,
+#'   the function checks the status of the internal database or that with the global option `"ed_sql_path"`.
+#' @return A named vector, showing TRUE for tables that have been updated.  A message is also printed.
+#' @seealso  [ed_db_status()], [ed_db_download()],  [ed_db_export()]
 #'@importFrom stringi stri_replace_first_fixed
 #'@importFrom dplyr collect tbl
 #'@export
-check_db_updates <- function(path = NULL) {
+ed_db_updates <- function(path = NULL) {
   last_download <- stri_replace_first_fixed(
     collect(tbl(eidith_db(path), "status"))$last_download,
     " ", "T")

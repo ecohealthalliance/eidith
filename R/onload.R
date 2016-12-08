@@ -21,6 +21,6 @@ eidith_db <- function(path = NULL) {
 
 .onAttach <- function(libname, pkgname) {
   if(interactive())
-    packageStartupMessage(db_status()$status_msg)
+    packageStartupMessage(ed_db_status()$status_msg)
 }
 

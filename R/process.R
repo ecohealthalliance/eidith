@@ -18,8 +18,8 @@
 #' -   Fixing spelling errors
 #' -   Extracting common TRUE/FALSE variables from free-form text of viral interpretation (Genbank numbers, whether virus is known, whether virus is known to affect humans).
 #'
-#' @param dat The dat as exported from EIDITH and imported via
-#' @param endpoint The name of the API endpoint: one of "Event",
+#' @param dat The data as exported from EIDITH and imported via the [ed_get()] functions (without preprocessing).
+#' @param endpoint The name of the API endpoint uaws: one of "Event",
 #' "Animal",  "Specimen", "Test", "Virus", or "TestIDSpecimenID" (for test-specimen cross referencing).  Note these are different
 #' than the names of the tables stored locally (which are lowercase and plural).
 #' @importFrom dplyr na_if as_data_frame rename_

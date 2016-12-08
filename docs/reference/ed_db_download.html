@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>eidith — eidith-package • EIDITH</title>
+<title>Download EIDITH data to local storage — ed_db_download • EIDITH</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -84,60 +84,54 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>eidith</h1>
+    <h1>Download EIDITH data to local storage</h1>
     </div>
 
     
-    <p>The <strong>eidith</strong> R package provides programmatic access and analytical tools
-for data from the <a href = 'PREDICT program'>http://www.vetmed.ucdavis.edu/ohi/predict/</a>,
-housed at the <a href = 'Emerging Infectious Disease Information Technology Hub'>https://www.eidith.org/</a>.</p>
+    <p>This function fetches all available tables from the EIDITH database and
+caches the data locally for further use with the <a href='ed_table_.html'>table functions</a>.
+The database persists between R sessions, so you only need to run this when
+you want to update data.  You should also run it when updating to new
+versions of the <strong>eidith</strong> package.</p>
     
 
-        
+    <pre><span class='fu'>ed_db_download</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>())</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <dl class="dl-horizontal">
+      <dt>verbose</dt>
+      <dd>Show messages while in progress?</dd>
+    </dl>
+    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The <strong>eidith</strong> package contains no data. To access data, you must be
-<a href = 'registered'>https://www.eidith.org/register.aspx</a> EIDITH user with data access privileges.</p>
-    
-    <h2 class="hasAnchor" id="topics"><a class="anchor" href="#topics"></a>Topics</h2>
-
-    <p></p>
-    <p><ul>
-<li> <a href='ed_auth.html'>Authentication with EIDITH credentials</a>
+    <p>This function does a few things:
+<ul>
+<li> Fetches all tables from EIDITH (events, animals, specimens, tests, viruses, and test-specimen cross-references)
 </li>
-<li> Downloading EIDITH data to a <a href='ed_db_download.html'>local store</a> and <a href='ed_get.html'>direct API access</a>
+<li> Cleans and pre-processes the data with <code><a href='ed_process.html'>ed_process()</a></code>.
 </li>
-<li> <a href='ed_process.html'>Data cleaning</a>
-</li>
-<li> <a href='ed_metadata.html'>Metadata for tables and fields in the EIDITH database</a>
+<li> Stores the data in an SQLite database in your <a href='http://www.rdocumentation.org/packages/rappdirs/topics/user_data_dir'>user data directory</a>.
 </li>
 </ul></p>
+    <p>Each time it is run it clears out the previous data and downloads all the data,
+as such it takes a few minutes.  In the future, we will allow for updating only with new and changed records.</p>
+    <p>The function will prompt for username and password unless you have <a href='ed_auth.html'>cached your credentials</a>.</p>
     
-    <h2 class="hasAnchor" id="contact"><a class="anchor" href="#contact"></a>Contact</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p></p>
-    <p><ul>
-<li> Package source code is found at <a href = 'https://github.com/ecohealthalliance/eidith'>https://github.com/ecohealthalliance/eidith</a>
-</li>
-<li> File bug reports and request features at <a href = 'https://github.com/ecohealthalliance/eidith/issues'>https://github.com/ecohealthalliance/eidith/issues</a>
-</li>
-<li> Online version of this documentation found at <a href = 'https://ecohealthalliance.github.io/eidith/'>https://github.com/ecohealthalliance/eidith/issues</a>
-</li>
-<li> Questions related to your EIDITH credentials should be directed to <a href = 'technology@eidith.org'>mailto:technology@eidith.org</a>.
-</li>
-</ul></p>
+    <p><code><a href='ed_db_status.html'>ed_db_status()</a></code>, <code><a href='ed_db_updates.html'>ed_db_updates()</a></code>, <code><a href='ed_db_export.html'>ed_db_export()</a></code></p>
     
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#details">Details</a></li>
 
-      <li><a href="#topics">Topics</a></li>
-
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#see-also">See also</a></li>
           </ul>
 
   </div>

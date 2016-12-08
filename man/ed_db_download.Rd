@@ -29,3 +29,6 @@ as such it takes a few minutes.  In the future, we will allow for updating only 
 
 The function will prompt for username and password unless you have \link[=ed_auth]{cached your credentials}.
 }
+\seealso{
+\code{\link[=ed_db_status]{ed_db_status()}}, \code{\link[=ed_db_updates]{ed_db_updates()}}, \code{\link[=ed_db_export]{ed_db_export()}}
+}

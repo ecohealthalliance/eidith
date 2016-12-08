@@ -90,7 +90,7 @@
     
     <p>This function takes raw data downloaded from EIDITH and puts it through
 various preprocessing and cleaning steps.  In general there is no need to
-call this function directly - it is called by both <code><a href='download_db.html'>download_db()</a></code> and the <a href='ed_get.html'>direct download functions</a>.</p>
+call this function directly - it is called by both <code><a href='ed_db_download.html'>ed_db_download()</a></code> and the <a href='ed_get.html'>direct download functions</a>.</p>
     
 
     <pre><span class='fu'>ed_process</span>(<span class='no'>dat</span>, <span class='no'>endpoint</span>)</pre>
@@ -98,9 +98,9 @@ call this function directly - it is called by both <code><a href='download_db.ht
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>dat</dt>
-      <dd>The dat as exported from EIDITH and imported via</dd>
+      <dd>The data as exported from EIDITH and imported via the <code><a href='ed_get.html'>ed_get()</a></code> functions (without preprocessing).</dd>
       <dt>endpoint</dt>
-      <dd>The name of the API endpoint: one of &quot;Event&quot;,
+      <dd>The name of the API endpoint uaws: one of &quot;Event&quot;,
 &quot;Animal&quot;,  &quot;Specimen&quot;, &quot;Test&quot;, &quot;Virus&quot;, or &quot;TestIDSpecimenID&quot; (for test-specimen cross referencing).  Note these are different
 than the names of the tables stored locally (which are lowercase and plural).</dd>
     </dl>

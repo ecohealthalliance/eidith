@@ -46,14 +46,15 @@
   <div class="col-md-9">
     <div class="page-header toc-ignore">
       <h1>Tutorial: The eidith R Package</h1>
+                        <h4 class="author">Noam Ross</h4>
             
           </div>
 
     
     
 <div class="contents">
-<p>The <strong>eidith</strong> R package provides programmatic access and analytical tools for data from the <a href="http://www.vetmed.ucdavis.edu/ohi/predict/">PREDICT Program</a>, housed at the <a href="https://www.eidith.org/">Emerging Infectious Disease Information Technology Hub</a>.</p>
-<p>The <strong>eidith</strong> package contains no data. To access data, you must be <a href="https://www.eidith.org/register.aspx">registered</a> EIDITH user with data access privileges. If you have a question about your access level, contact <a href="mailto:technology@eidith.org">technology@eidith.org</a>.</p>
+<p>The <strong>eidith</strong> R package provides programmatic access and analytical tools for data from the <a href="http://www.vetmed.ucdavis.edu/ohi/predict/">PREDICT Program</a>, housed at the <a href="https://www.eidith.org/">Emerging Infectious Disease Information Technology Hub</a> (EIDITH).</p>
+<p>The <strong>eidith</strong> package contains no data. To access data, you must be a <a href="https://www.eidith.org/register.aspx">registered</a> EIDITH user with data access privileges. If you have a question about your access level, contact <a href="mailto:technology@eidith.org">technology@eidith.org</a>.</p>
 <p>This package is currently in development. We anticipate additional functionality for common analytical tasks. It also currently only accesses data from PREDICT-1. If you have questions, bug reports, or feature requests, please post them on our <a href="https://github.com/ecohealthalliance/eidith/issues">issue tracker</a>.</p>
 <div id="installation" class="section level3">
 <h3 class="hasAnchor"><html><body><a href="#installation" class="anchor"> </a></body></html>Installation</h3>
@@ -63,24 +64,26 @@ devtools::<span class="kw">install_github</span>(<span class="st">"ecohealthalli
 </div>
 <div id="authentication" class="section level3">
 <h3 class="hasAnchor"><html><body><a href="#authentication" class="anchor"> </a></body></html>Authentication</h3>
-<p>To download data from EIDITH, you must provide logon credentials. If you run <code><a href="../reference/download_db.html">download_db()</a></code> or the <code>get_*()</code> functions from the R console, your EIDITH username and password will be requested. To use these functions in scripts, you must provide these credentials as <em>environment variables</em>.</p>
-<p>You can cache your credentials and login automatically by putting them in a hidden <code>.Renviron</code> file, which defines environment variables for your R session. For more information see the <code><a href="../reference/eidith_auth.html">?eidith_auth</a></code> help file.</p>
+<p>To download data from EIDITH, you must provide logon credentials. If you run <code><a href="../reference/ed_db_download.html">ed_db_download()</a></code> or the <code><a href="../reference/ed_get.html">ed_get()</a></code> functions from the R console, your EIDITH username and password will be requested. To use these functions in scripts, you must provide these credentials as <em>environment variables</em>.</p>
+<p>You can cache your credentials and login automatically by putting them in a hidden <code>.Renviron</code> file, which defines environment variables for your R session. For more information see the <code><a href="../reference/ed_auth.html">ed_auth()</a></code> help file.</p>
 </div>
 <div id="downloading-data" class="section level3">
 <h3 class="hasAnchor"><html><body><a href="#downloading-data" class="anchor"> </a></body></html>Downloading data</h3>
-<p>The <strong>eidith</strong> package downloads data from EIDITH and stores it locally on your computer in a database so you don&rsquo;t have to download from the web repeatedly. Once you&rsquo;ve installed the package, you&rsquo;ll need to populated this database with the <code><a href="../reference/download_db.html">download_db()</a></code> command, like so:</p>
+<p>The <strong>eidith</strong> package downloads data from EIDITH and stores it locally on your computer in a database so you don&rsquo;t have to download from the web repeatedly. Once you&rsquo;ve installed the package, you&rsquo;ll need to populated this database with the <code><a href="../reference/ed_db_download.html">ed_db_download()</a></code> command, like so:</p>
 <pre><code>library(eidith)
-download_db()</code></pre>
+ed_db_download()</code></pre>
 <p>This may take a few minutes to complete depending on the speed of your internet connection.</p>
-<p><code><a href="../reference/download_db.html">download_db()</a></code> may be run again to update your local database with the latest data. You should also run it after installing a new version of the <strong>eidith</strong> package, as a new version may change the structure of the database.</p>
+<p>Running <code><a href="../reference/ed_db_status.html">ed_db_status()</a></code> will give you a summary of the contents of your database. This is useful to see which countries&rsquo; data you have access to or the latest updated you have downloaded.</p>
+<p><code><a href="../reference/ed_db_updates.html">ed_db_updates()</a></code> will check if the online database has been updated since your last download. If it has, <code><a href="../reference/ed_db_download.html">ed_db_download()</a></code> may be run again to update your local database with the latest data. You should also run it after installing a new version of the <strong>eidith</strong> package, as a new version may change the structure of the database.</p>
 </div>
 <div id="loading-data" class="section level3">
 <h3 class="hasAnchor"><html><body><a href="#loading-data" class="anchor"> </a></body></html>Loading data</h3>
 <p>Once you&rsquo;ve populated your local database, you can look up EIDITH data with the <em>table functions</em>, each of which loads data from the different table in the database: <code><a href="../reference/ed_table_.html">ed_events()</a></code>, <code><a href="../reference/ed_table_.html">ed_animals()</a></code>, <code><a href="../reference/ed_table_.html">ed_specimens()</a></code>, <code><a href="../reference/ed_table_.html">ed_tests()</a></code>, and <code><a href="../reference/ed_table_.html">ed_viruses()</a></code>, as well as <code><a href="../reference/ed_table_.html">ed_testspecimen()</a></code>, which contains cross-references between the test and specimen tables. See the help for these functions for more details.</p>
+<p><code><a href="../reference/ed_metadata.html">ed_metadata()</a></code> contains a list of all variables across these tables and some information on them. If you lookup this in R help in RStudio with <code><a href="../reference/ed_metadata.html">?ed_metadata</a></code> you&rsquo;ll find this metadata in searchable form.</p>
 </div>
 <div id="direct-api-access" class="section level3">
 <h3 class="hasAnchor"><html><body><a href="#direct-api-access" class="anchor"> </a></body></html>Direct API access</h3>
-<p>If you want to access data from the web API directly (for instance, if you want to compare differences between raw data and the automatically-cleaned version <code><a href="../reference/download_db.html">download_db()</a></code> creates), you can use the <code>get_*()</code> functions, such as <code><a href="../reference/ed_get.html">get_ed_events()</a></code>.</p>
+<p>If you want to access data from the web API directly (for instance, if you want to compare differences between raw data and the automatically-cleaned version <code><a href="../reference/ed_db_download.html">ed_db_download()</a></code> creates), you can use the <code><a href="../reference/ed_get.html">ed_get()</a></code> functions, such as <code>get_ed_events()</code>. In this case you would use <code><a href="../reference/ed_get.html">ed_get_events(postprocess=FALSE)</a></code>, to get unprocessed data.</p>
 </div>
 </div>
   </div>
