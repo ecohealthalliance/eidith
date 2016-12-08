@@ -18,3 +18,31 @@ navbar:
   right:
   - icon: fa-github fa-lg
     href: https://github.com/ecohealthalliance/eidith
+
+reference:
+  - title: "Authorization"
+    contents:
+      - ed_auth
+  - title: "Database"
+    contents:
+      - ed_db_download
+      - ed_db_status
+      - ed_db_updates
+      - ed_db_export
+  - title: "EIDITH data"
+    contents:
+      - ed_table
+      - ed_events
+      - ed_animals
+      - ed_specimens
+      - ed_tests
+      - ed_testspecimen
+  - title: "Raw data"
+    contents:
+      - ed_get
+      - ed_get_events
+      - ed_get_animals
+      - ed_get_specimens
+      - ed_get_tests
+      - ed_get_testspecimen
+      - ed_process
