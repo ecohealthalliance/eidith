@@ -38,7 +38,7 @@ ed_get <- function(endpoint, verbose=interactive(), postprocess=TRUE, header_onl
     pbar=NULL
   }
 
-  if(is.null(auth)) auth <- eidith_auth()
+  if(is.null(auth)) auth <- ed_auth()
 
   request <- GET(url=url, authenticate(auth[1], auth[2], type="basic"), pbar, ...)
 
@@ -66,36 +66,36 @@ ed_get <- function(endpoint, verbose=interactive(), postprocess=TRUE, header_onl
 
 #' @rdname ed_get
 #' @export
-get_ed_events <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+ed_get_events <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
   ed_get("Event", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }
 
 #' @rdname ed_get
 #' @export
-get_ed_animals <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+ed_get_animals <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
   ed_get("Animal", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }
 
 #' @rdname ed_get
 #' @export
-get_ed_specimens <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+ed_get_specimens <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
   ed_get("Specimen", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }
 
 #' @rdname ed_get
 #' @export
-get_ed_tests <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+ed_get_tests <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
   ed_get("Test", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }
 
 #' @rdname ed_get
 #' @export
-get_ed_viruses <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+ed_get_viruses <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
   ed_get("Virus", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }
 
 #' @rdname ed_get
 #' @export
-get_ed_test_specimen_ids <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+ed_get_testspecimen <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
   ed_get("TestIDSpecimenID", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }

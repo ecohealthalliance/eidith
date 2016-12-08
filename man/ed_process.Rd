@@ -16,7 +16,7 @@ than the names of the tables stored locally (which are lowercase and plural).}
 \description{
 This function takes raw data downloaded from EIDITH and puts it through
 various preprocessing and cleaning steps.  In general there is no need to
-call this function directly - it is called by both \code{\link[=download_db]{download_db()}} and the \link[=ed_get]{direct download functions}.
+call this function directly - it is called by both \code{\link[=ed_db_download]{ed_db_download()}} and the \link[=ed_get]{direct download functions}.
 }
 \details{
 Steps taken to clean the data include:

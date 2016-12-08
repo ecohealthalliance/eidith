@@ -2,7 +2,7 @@
 #'
 #' This function takes raw data downloaded from EIDITH and puts it through
 #' various preprocessing and cleaning steps.  In general there is no need to
-#' call this function directly - it is called by both [download_db()] and the [direct download functions][ed_get()].
+#' call this function directly - it is called by both [ed_db_download()] and the [direct download functions][ed_get()].
 #'
 #' Steps taken to clean the data include:
 #'

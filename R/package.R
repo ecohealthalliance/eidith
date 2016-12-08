@@ -9,8 +9,8 @@
 #'
 #' @section Topics:
 #'
-#' -  [Authentication with EIDITH credentials][eidith_auth]
-#' -  Downloading EIDITH data to a [local store][download_db] and [direct API access][ed_get]
+#' -  [Authentication with EIDITH credentials][ed_auth]
+#' -  Downloading EIDITH data to a [local store][ed_db_download] and [direct API access][ed_get]
 #' -  [Data cleaning][ed_process]
 #' -  [Metadata for tables and fields in the EIDITH database][ed_metadata]
 #'

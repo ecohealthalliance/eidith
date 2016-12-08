@@ -34,13 +34,13 @@ db_other_indexes <- list(
 #' Each time it is run it clears out the previous data and downloads all the data,
 #' as such it takes a few minutes.  In the future, we will allow for updating only with new and changed records.
 #'
-#' The function will prompt for username and password unless you have [cached your credentials][eidith_auth].
+#' The function will prompt for username and password unless you have [cached your credentials][ed_auth].
 #'
 #' @importFrom dplyr db_list_tables db_drop_table copy_to
 #' @param verbose Show messages while in progress?
 #' @export
-download_db <- function(verbose=interactive()) {
-  auth <- eidith_auth(verbose = verbose)
+ed_db_download <- function(verbose=interactive()) {
+  auth <- ed_auth(verbose = verbose)
   if(verbose) message("Downloading and processing EIDITH data. This may take a few minutes.")
   tables <- lapply(endpoints, ed_get, postprocess=TRUE, verbose=verbose, auth=auth)
   lapply(dplyr:: db_list_tables(eidith_db()$con), function(x) {
@@ -66,7 +66,7 @@ download_db <- function(verbose=interactive()) {
 db_status <- function(path=NULL) {
   edb <- eidith_db(path)
   if(!(all(db_tables %in% db_list_tables(edb$con)))) {
-    dbstatus<- list(status_msg = "Local EIDITH database is empty, out-of-date, or corrupt.  Run download_db() to update")
+    dbstatus<- list(status_msg = "Local EIDITH database is empty, out-of-date, or corrupt.  Run ed_db_download() to update")
   } else {
     records = tbl(edb, "sqlite_stat1") %>% collect() %>%
       filter_('tbl != "status"') %>%
@@ -118,7 +118,7 @@ check_db_updates <- function(path = NULL) {
   last_download <- stri_replace_first_fixed(
     collect(tbl(eidith_db(path), "status"))$last_download,
     " ", "T")
-  auth <- eidith_auth()
+  auth <- ed_auth()
   check_at <- endpoints[endpoints !="TestIDSpecimenID"]
   new_rows <- lapply(check_at, function(endpoint) {
          newdat <- ed_get(endpoint = endpoint, verbose = FALSE, lmdate_from = last_download, postprocess = FALSE, auth = auth)
@@ -129,7 +129,7 @@ check_db_updates <- function(path = NULL) {
   if(all(!is_new_data)) {
     message("No new data since ", last_download, ".")
   } else {
-  message("New data at endpoints: [", paste0(check_at[is_new_data], collapse=","), "]. Use download_db() to update.")
+  message("New data at endpoints: [", paste0(check_at[is_new_data], collapse=","), "]. Use ed_db_download() to update.")
   }
   return(is_new_data)
 }

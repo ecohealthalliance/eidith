@@ -42,29 +42,29 @@ devtools::install_github("ecohealthalliance/eidith")
 ### Authentication
 
 To download data from EIDITH, you must provide logon credentials.  If you run
-`download_db()` or the `get_*()` functions from the R console, your EIDITH username
+`ed_db_download()` or the `get_*()` functions from the R console, your EIDITH username
 and password will be requested.  To use these functions in scripts, you 
 must provide these credentials as *environment variables*.  
 
 You can cache your credentials and login automatically by putting them in a hidden
 `.Renviron` file, which defines environment variables for your R session. For
-more information see the `?eidith_auth` help file.
+more information see the `?ed_auth` help file.
 
 ### Downloading data
 
 The **eidith** package downloads data from EIDITH and stores it locally on your
 computer in a database so you don't have to download from the web repeatedly.
 Once you've installed the package, you'll need to populated this database with
-the `download_db()` command, like so:
+the `ed_db_download()` command, like so:
 
 ```
 library(eidith)
-download_db()
+ed_db_download()
 ```
 This may take a few minutes to complete depending on the speed of your internet
 connection.
 
-`download_db()` may be run again to update your local database with the latest
+`ed_db_download()` may be run again to update your local database with the latest
 data.  You should also run it after installing a new version of the **eidith**
 package, as a new version may change the structure of the database.
 
@@ -81,4 +81,4 @@ details.
 
 If you want to access data from the web API directly (for instance, if you want
 to compare differences between raw data and the automatically-cleaned version
-`download_db()` creates), you can use the `get_*()` functions, such as `get_ed_events()`.
+`ed_db_download()` creates), you can use the `get_*()` functions, such as `get_ed_events()`.

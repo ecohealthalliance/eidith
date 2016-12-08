@@ -1,6 +1,6 @@
 #' EIDITH logon credentials
 #'
-#' Any function that downloads data from EIDITH, such as [download_db()] or
+#' Any function that downloads data from EIDITH, such as [ed_db_download()] or
 #' the [raw download functions][ed_get()] requires login credentials.  These
 #' functions will ask for a username and password.  To get an EIDITH account
 #' with data access permissions, contact technology@eidith.org.
@@ -21,25 +21,25 @@
 #' Restart R, and you will be automatically logged in to download data from EIDITH
 #' when working on this computer.
 #'
-#' @rdname eidith_auth
-#' @name eidith_auth
+#' @rdname ed_auth
+#' @name ed_auth
 NULL
 
 #' @param verbose Show messages?
 #' @param force Ask for logon credentials even if environment variables are
 #' provided.
 #' @noRd
-eidith_auth <- function(verbose=interactive(), force=FALSE) {
+ed_auth <- function(verbose=interactive(), force=FALSE) {
   user <- Sys.getenv("EIDITH_USERNAME")
   pwd <- Sys.getenv("EIDITH_PASSWORD")
 
   if(identical(user, "") || identical(pwd, "") || force) {
     if(interactive()) {
-      message("We recommend saving EIDITH credentials as environment variables.See ?eidith_auth")
+      message("We recommend saving EIDITH credentials as environment variables.See ?ed_auth")
       user <- readline("EIDITH username: ")
       pwd <- getPass::getPass("EIDITH password: ")
     } else {
-      stop("No credentials supplied. See ?eidith_auth.")
+      stop("No credentials supplied. See ?ed_auth.")
     }
   } else {
     if (verbose) message("Using env vars EIDITH_USERNAME and EIDITH_PASSWORD for logon")

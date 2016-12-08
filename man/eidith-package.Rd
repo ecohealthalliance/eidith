@@ -16,8 +16,8 @@ The \strong{eidith} package contains no data. To access data, you must be
 \section{Topics}{
 
 \itemize{
-\item \link[=eidith_auth]{Authentication with EIDITH credentials}
-\item Downloading EIDITH data to a \link[=download_db]{local store} and \link[=ed_get]{direct API access}
+\item \link[=ed_auth]{Authentication with EIDITH credentials}
+\item Downloading EIDITH data to a \link[=ed_db_download]{local store} and \link[=ed_get]{direct API access}
 \item \link[=ed_process]{Data cleaning}
 \item \link[=ed_metadata]{Metadata for tables and fields in the EIDITH database}
 }
