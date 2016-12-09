@@ -1,5 +1,9 @@
 #This script generates a lookup table to generate matches between EIDITH
-#species and standardized ITIS species names
+#species and standardized ITIS species names.
+#
+#Our list of exceptions to ITIS lookups is at https://docs.google.com/spreadsheets/d/1n_Q-Rhi3HQfxj-a9ay3ZLae6hMaTXAQNS6DFl8NFCO4
+#It also pulls our google sheet of metadata, used to rename and order data from the database.
+#It is found at https://docs.google.com/spreadsheets/d/1eHCpzYCL5-GRMZLhqJc4fj2iVUhjVhydNEp20oQW5H0
 
 library(magrittr)
 library(tidyverse)
@@ -47,7 +51,7 @@ itis_search_safe <- function(term, fuzz=0.4, binomial_only = FALSE) {
 }
 
 #load data
-animals <- ed_animals_raw(postprocess = FALSE)
+animals <- ed_get_animals(postprocess = FALSE)
 
 #get fallback table
 manual_matches <- gs_read(gs_url("https://docs.google.com/spreadsheets/d/1n_Q-Rhi3HQfxj-a9ay3ZLae6hMaTXAQNS6DFl8NFCO4")) %>%
@@ -135,7 +139,7 @@ taxa9 <- taxa8 %>%
   taxa9$itis_name =  case_when(!is.na(taxa9$itis_species) ~ taxa9$itis_name,
                                !is.na(taxa9$itis_genus) ~ paste(taxa9$itis_genus, "sp."),
                                !is.na(taxa9$itis_family) ~ paste(taxa9$itis_family, "sp."),
-                               !is.na(taxa9$itis_order) ~ paste(taxa9$itis_order, "sp."),
+                               !is.na(taxa9$itis_order) ~ paste(taxa9$itis_order, "sp."),d
                                !is.na(taxa9$itis_class) ~ paste(taxa9$itis_class, "sp."),
                                TRUE ~ taxa9$eidith_name)
 
@@ -148,4 +152,10 @@ eidith_itis_lookup <- taxa9
   #                eidith_genus != itis_genus |
   #                eidith_species != itis_species ) %>% View
 write_csv(eidith_itis_lookup, P("data-raw/eidith_itis_lookup.csv"))
-devtools::use_data(eidith_itis_lookup, internal = TRUE, overwrite = TRUE)
+
+
+ed_metadata_ <- gs_read_csv(gs_url("https://docs.google.com/spreadsheets/d/1eHCpzYCL5-GRMZLhqJc4fj2iVUhjVhydNEp20oQW5H0/"))
+
+readr::write_csv(ed_metadata_, P("data-raw/ed_metadata.csv"))
+devtools::use_data(eidith_itis_lookup, ed_metadata_, internal = TRUE, overwrite = TRUE)
+

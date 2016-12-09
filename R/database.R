@@ -13,7 +13,7 @@ db_other_indexes <- list(
   events = list("country"),
   animals = list("event_id"),
   specimens = list("animal_id", "specimen_id_name"),
-  tests = list("specimen_id_name"),
+  tests = list("specimen_id_names"),
   viruses = list("test_id"),
   test_specimen_ids = list("test_id", "specimen_id")
 )
@@ -51,11 +51,12 @@ ed_db_download <- function(verbose=interactive()) {
     dplyr::copy_to(eidith_db(), tables[[x]], name=db_tables[x], temporary = FALSE,
                    unique_indexes = db_unique_indexes[[x]], indexes = db_other_indexes[[x]])
   })
+
   dplyr::copy_to(eidith_db(), data.frame(last_download=as.character(Sys.time())),
                  name="status", temporary=FALSE)
   if(verbose) {
     message("Database updated!")
-    message(ed_db_status()[["status_msg"]])
+    message(ed_db_status_msg(ed_db_status()))
   }
 }
 
@@ -98,25 +99,29 @@ ed_db_status <- function(path=NULL) {
                    last_modified_record = max(last_modified_records),
                    last_table = db_tables[1:5][last_modified_records == last_modified_record],
                    last_download = DBI::dbGetQuery(edb$con, "SELECT last_download FROM status")[[1]],
-                   records = records,
-                   status_msg = paste0(c(
-                     paste(strwrap(paste0(c(
-                       "Local EIDITH database holds data from ", n_countries, " countries: ",
-                       paste(countries, collapse = "; ")
-                       ), collapse=""), width=80, exdent=2), collapse="\n"), "\n",
-                     paste(strwrap(paste0(c(
-                       "Records: ", paste(records$string, collapse="; ")
-                       ), collapse = ""), width=80, exdent=2), collapse="\n"), "\n",
-                     "Last download: ", as.character(last_download), "\n",
-                     "Last updated record: ", as.character(last_modified_record), " in ", last_table, " table"), collapse=""))
+                   records = records)
   }
   class(dbstatus) <- c("dbstatus", class(dbstatus))
   dbstatus
 }
 
+ed_db_status_msg <- function(status) {
+  list2env(status, environment())
+  status_msg = paste0(c(
+    paste(strwrap(paste0(c(
+      "Local EIDITH database holds data from ", n_countries, " countries: ",
+      paste(countries, collapse = "; ")
+    ), collapse=""), width=80, exdent=2), collapse="\n"), "\n",
+    paste(strwrap(paste0(c(
+      "Records: ", paste(records$string, collapse="; ")
+    ), collapse = ""), width=80, exdent=2), collapse="\n"), "\n",
+    "Last download: ", as.character(last_download), "\n",
+    "Last updated record: ", as.character(last_modified_record), " in ", last_table, " table"), collapse="")
+}
+
 #'@export
 print.dbstatus <- function(dbstatus) {
-  cat(dbstatus$status_msg)
+  cat(ed_db_status_msg(dbstatus))
 }
 
 #' Export the local EIDITH database to a file

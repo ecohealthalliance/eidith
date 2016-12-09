@@ -27,5 +27,5 @@
 #' @rdname ed_metadata
 #' @export
 ed_metadata <- function() {
-  readr::read_csv(system.file("ed_metadata.csv", package="eidith"), col_types="cccc")
+ ed_metadata_
 }
