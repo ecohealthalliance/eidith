@@ -106,8 +106,11 @@ ed_db_status <- function(path=NULL) {
 }
 
 ed_db_status_msg <- function(status) {
+  if(is.null(status[["n_countries"]])) {
+    status_msg <- status[["status_msg"]]
+  } else {
   list2env(status, environment())
-  status_msg = paste0(c(
+  status_msg <- paste0(c(
     paste(strwrap(paste0(c(
       "Local EIDITH database holds data from ", n_countries, " countries: ",
       paste(countries, collapse = "; ")
@@ -117,6 +120,8 @@ ed_db_status_msg <- function(status) {
     ), collapse = ""), width=80, exdent=2), collapse="\n"), "\n",
     "Last download: ", as.character(last_download), "\n",
     "Last updated record: ", as.character(last_modified_record), " in ", last_table, " table"), collapse="")
+  }
+  return(status_msg)
 }
 
 #'@export
