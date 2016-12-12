@@ -143,7 +143,7 @@ ed_db_export <- function(filename, ...) {  #Exports the database file to new loc
    file.copy(from = eidith_db()$path, to = filename, ...)
 }
 
-#' Check the online EIDITH databse for updates since your last download.
+#' Check the online EIDITH database for updates since your last download.
 #'
 #' This function checks to see if the EIDITH online database has been updated
 #' since the last time [ed_db_download()] was run. If it has, you may run

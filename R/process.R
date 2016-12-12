@@ -11,7 +11,7 @@
 #' -   Converting some variable names to clearer ones:  all `_id` variables are
 #' numeric primary keys, other identifiers now go by `_id_name`.
 #' -   Where there are multiple `_id_name`-type columns that are very similar except for a small set of cases, we drop all but one for ease of use. These can be retrieved from raw data if needed.
-#' -   Droping columns that are entirely blank
+#' -   Dropping columns that are entirely blank
 #' -   Dropping redundant columns
 #' -   Cleaning up whitespace and capitalization variability
 #' -   Re-arranging table order to put the most pertinent information first.
@@ -22,7 +22,7 @@
 #' -   Extracting common TRUE/FALSE variables from free-form text of viral interpretation (Genbank numbers, whether virus is known, whether virus is known to affect humans).
 #'
 #' @param dat The data as exported from EIDITH and imported via the [ed_get()] functions (without preprocessing).
-#' @param endpt The name of the API endpoint uaws: one of "Event",
+#' @param endpt The name of the API URL endpoints: one of "Event",
 #' "Animal",  "Specimen", "Test", "Virus", or "TestIDSpecimenID" (for test-specimen cross referencing).  Note these are different
 #' than the names of the tables stored locally (which are lowercase and plural).
 #' @importFrom dplyr na_if as_data_frame rename_ %>% mutate_ select_ if_else data_frame arrange_

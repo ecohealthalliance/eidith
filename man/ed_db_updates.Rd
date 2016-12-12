@@ -2,7 +2,7 @@
 % Please edit documentation in R/database.R
 \name{ed_db_updates}
 \alias{ed_db_updates}
-\title{Check the online EIDITH databse for updates since your last download.}
+\title{Check the online EIDITH database for updates since your last download.}
 \usage{
 ed_db_updates(path = NULL)
 }

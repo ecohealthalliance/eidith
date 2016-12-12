@@ -100,7 +100,7 @@ call this function directly - it is called by both <code><a href='ed_db_download
       <dt>dat</dt>
       <dd>The data as exported from EIDITH and imported via the <code><a href='ed_get.html'>ed_get()</a></code> functions (without preprocessing).</dd>
       <dt>endpt</dt>
-      <dd>The name of the API endpoint uaws: one of &quot;Event&quot;,
+      <dd>The name of the API URL endpoints: one of &quot;Event&quot;,
 &quot;Animal&quot;,  &quot;Specimen&quot;, &quot;Test&quot;, &quot;Virus&quot;, or &quot;TestIDSpecimenID&quot; (for test-specimen cross referencing).  Note these are different
 than the names of the tables stored locally (which are lowercase and plural).</dd>
     </dl>
@@ -117,7 +117,7 @@ numeric primary keys, other identifiers now go by <code>_id_name</code>.
 </li>
 <li> Where there are multiple <code>_id_name</code>-type columns that are very similar except for a small set of cases, we drop all but one for ease of use. These can be retrieved from raw data if needed.
 </li>
-<li> Droping columns that are entirely blank
+<li> Dropping columns that are entirely blank
 </li>
 <li> Dropping redundant columns
 </li>
