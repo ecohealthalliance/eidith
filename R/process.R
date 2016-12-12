@@ -47,7 +47,7 @@ ed_process <- function(dat, endpt) {
 
   # Change the field names to the local, simplified versions
   used <- data_frame(original_name=names(dat)) %>%
-    left_join(filter_(emd, ~replacement_name != "DROP" | is.na(replacement_name)), by="original_name")
+    full_join(filter_(emd, ~replacement_name != "DROP" | is.na(replacement_name)), by="original_name")
   names(dat) <- used %>% filter_(~!is.na(original_name)) %>% use_series("new_name")
 
   # General cleanups
@@ -56,7 +56,8 @@ ed_process <- function(dat, endpt) {
   dat <- as_data_frame(dat)
 
   # Table-specific cleanups
-  dat <- do.call(paste0("pp_", endpt), list(dat))
+  process_fn <- get(paste0("pp_", endpt), envir=asNamespace("eidith"))
+  dat <- process_fn(dat)
 
   # Sort
   names_order <-  arrange_(used, "order")[["new_name"]]
