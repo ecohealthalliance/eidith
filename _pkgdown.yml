@@ -9,8 +9,12 @@ navbar:
   - text: Home
     icon: fa-home
     href: index.html
-  - text: Overview
-    href: articles/eidith.html
+  - text: Documentation
+    menu:
+    - text: Tutorial
+      href: articles/eidith.html
+    - text: Web API
+      href: articles/eidith_API.html
   - text: Reference
     href: reference/index.html
   - text: Release Notes

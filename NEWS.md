@@ -1,3 +1,7 @@
+# eidith 0.1.0
+
+* Add documentation of web API
+
 # eidith 0.0.1
 
 * Beta release
