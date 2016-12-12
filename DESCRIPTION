@@ -1,6 +1,6 @@
 Package: eidith
 Title: Data access and analytical tools for the PREDICT EIDITH database
-Version: 0.0.1
+Version: 0.1.0
 Authors@R: c(
     person("Noam", "Ross", , "ross@ecohealthalliance.org", role = c("aut", "cre")),
     person("Nistara", "Randhawa", , "nrandhawa@ucdavis.edu", role = c("aut")),
