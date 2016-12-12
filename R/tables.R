@@ -29,7 +29,7 @@ datetime_vars <- c("date_created", "date_modified", "database_date")
 #' @export
 #' @rdname ed_table
 ed_table_ <- function(table, .dots) {
-  tbl(eidith_db, table) %>%
+  tbl(eidith_db(), table) %>%
     filter_(.dots=.dots) %>%
     collect(n=Inf) %>%
     fix_classes()

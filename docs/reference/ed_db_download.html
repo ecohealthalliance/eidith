@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Standard post-processing of EIDITH exports — ed_process • EIDITH</title>
+<title>Download EIDITH data to local storage — ed_db_download • EIDITH</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -84,58 +84,43 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Standard post-processing of EIDITH exports</h1>
+    <h1>Download EIDITH data to local storage</h1>
     </div>
 
     
-    <p>This function takes raw data downloaded from EIDITH and puts it through
-various preprocessing and cleaning steps.  In general there is no need to
-call this function directly - it is called by both <code><a href='ed_db_download.html'>ed_db_download()</a></code> and the <a href='ed_get.html'>direct download functions</a>.</p>
+    <p>This function fetches all available tables from the EIDITH database and
+caches the data locally for further use with the <a href='ed_table_.html'>table functions</a>.
+The database persists between R sessions, so you only need to run this when
+you want to update data.  You should also run it when updating to new
+versions of the <strong>eidith</strong> package.</p>
     
 
-    <pre><span class='fu'>ed_process</span>(<span class='no'>dat</span>, <span class='no'>endpt</span>)</pre>
+    <pre><span class='fu'>ed_db_download</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>dat</dt>
-      <dd>The data as exported from EIDITH and imported via the <code><a href='ed_get.html'>ed_get()</a></code> functions (without preprocessing).</dd>
-      <dt>endpt</dt>
-      <dd>The name of the API endpoint uaws: one of &quot;Event&quot;,
-&quot;Animal&quot;,  &quot;Specimen&quot;, &quot;Test&quot;, &quot;Virus&quot;, or &quot;TestIDSpecimenID&quot; (for test-specimen cross referencing).  Note these are different
-than the names of the tables stored locally (which are lowercase and plural).</dd>
+      <dt>verbose</dt>
+      <dd>Show messages while in progress?</dd>
     </dl>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Steps taken to clean the data include:
+    <p>This function does a few things:
 <ul>
-<li> Converting variable names from <code>camelCase</code> to <code>snake_case</code> to make it easy
-to distinguish between raw and cleaned data.
+<li> Fetches all tables from EIDITH (events, animals, specimens, tests, viruses, and test-specimen cross-references)
 </li>
-<li> Converting some variable names to clearer ones:  all <code>_id</code> variables are
-numeric primary keys, other identifiers now go by <code>_id_name</code>.
+<li> Cleans and pre-processes the data with <code><a href='ed_process.html'>ed_process()</a></code>.
 </li>
-<li> Where there are multiple <code>_id_name</code>-type columns that are very similar except for a small set of cases, we drop all but one for ease of use. These can be retrieved from raw data if needed.
-</li>
-<li> Droping columns that are entirely blank
-</li>
-<li> Dropping redundant columns
-</li>
-<li> Cleaning up whitespace and capitalization variability
-</li>
-<li> Re-arranging table order to put the most pertinent information first.
-</li>
-<li> Normalizing all animal taxonomic information to match the <a href = 'ITIS'>https://www.itis.gov/</a> database.
-</li>
-<li> Coercing some free-form entries (e.g. <code>specimen_type</code>) to a standard set of categories
-</li>
-<li> Converting yes/no fields to TRUE/FALSE
-</li>
-<li> Fixing spelling errors
-</li>
-<li> Extracting common TRUE/FALSE variables from free-form text of viral interpretation (Genbank numbers, whether virus is known, whether virus is known to affect humans).
+<li> Stores the data in an SQLite database in your <a href='http://www.rdocumentation.org/packages/rappdirs/topics/user_data_dir'>user data directory</a>.
 </li>
 </ul></p>
+    <p>Each time it is run it clears out the previous data and downloads all the data,
+as such it takes a few minutes.  In the future, we will allow for updating only with new and changed records.</p>
+    <p>The function will prompt for username and password unless you have <a href='ed_auth.html'>cached your credentials</a>.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p><code><a href='ed_db_status.html'>ed_db_status()</a></code>, <code><a href='ed_db_updates.html'>ed_db_updates()</a></code>, <code><a href='ed_db_export.html'>ed_db_export()</a></code></p>
     
 
   </div>
@@ -145,6 +130,8 @@ numeric primary keys, other identifiers now go by <code>_id_name</code>.
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
           </ul>
 
   </div>

@@ -2,35 +2,35 @@
 % Please edit documentation in R/api_calls.R
 \name{ed_get}
 \alias{ed_get}
-\alias{get_ed_events}
-\alias{get_ed_animals}
-\alias{get_ed_specimens}
-\alias{get_ed_tests}
-\alias{get_ed_viruses}
-\alias{get_ed_test_specimen_ids}
+\alias{ed_get_events}
+\alias{ed_get_animals}
+\alias{ed_get_specimens}
+\alias{ed_get_tests}
+\alias{ed_get_viruses}
+\alias{ed_get_testspecimen}
 \title{Functions to download EIDITH tables via API}
 \usage{
-get_ed_events(verbose = interactive(), postprocess = TRUE,
+ed_get_events(verbose = interactive(), postprocess = TRUE,
   header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
   + 1, ...)
 
-get_ed_animals(verbose = interactive(), postprocess = TRUE,
+ed_get_animals(verbose = interactive(), postprocess = TRUE,
   header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
   + 1, ...)
 
-get_ed_specimens(verbose = interactive(), postprocess = TRUE,
+ed_get_specimens(verbose = interactive(), postprocess = TRUE,
   header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
   + 1, ...)
 
-get_ed_tests(verbose = interactive(), postprocess = TRUE,
+ed_get_tests(verbose = interactive(), postprocess = TRUE,
   header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
   + 1, ...)
 
-get_ed_viruses(verbose = interactive(), postprocess = TRUE,
+ed_get_viruses(verbose = interactive(), postprocess = TRUE,
   header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
   + 1, ...)
 
-get_ed_test_specimen_ids(verbose = interactive(), postprocess = TRUE,
+ed_get_testspecimen(verbose = interactive(), postprocess = TRUE,
   header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
   + 1, ...)
 }
@@ -58,4 +58,3 @@ against data updated in the database, or processed vs. unprocessed data.
 The \link[=ed_table]{table functions} load data from the local database instead,
 and are thus faster and work without an internet connection.
 }
-

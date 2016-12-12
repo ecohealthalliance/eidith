@@ -89,33 +89,33 @@
 
     
     <p>These function download data directly from the EIDITH API.  They require
-<a href='eidith_auth.html'>authorization</a>.  They can be useful for comparing local data
+authorization.  They can be useful for comparing local data
 against data updated in the database, or processed vs. unprocessed data.
 The <a href='ed_table_.html'>table functions</a> load data from the local database instead,
 and are thus faster and work without an internet connection.</p>
     
 
-    <pre><span class='fu'>get_ed_events</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+    <pre><span class='fu'>ed_get_events</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>header_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lmdate_from</span> <span class='kw'>=</span> <span class='st'>"2000-01-01"</span>, <span class='kw'>lmdate_to</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>()
   + <span class='fl'>1</span>, <span class='no'>...</span>)
 
-<span class='fu'>get_ed_animals</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+<span class='fu'>ed_get_animals</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>header_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lmdate_from</span> <span class='kw'>=</span> <span class='st'>"2000-01-01"</span>, <span class='kw'>lmdate_to</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>()
   + <span class='fl'>1</span>, <span class='no'>...</span>)
 
-<span class='fu'>get_ed_specimens</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+<span class='fu'>ed_get_specimens</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>header_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lmdate_from</span> <span class='kw'>=</span> <span class='st'>"2000-01-01"</span>, <span class='kw'>lmdate_to</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>()
   + <span class='fl'>1</span>, <span class='no'>...</span>)
 
-<span class='fu'>get_ed_tests</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+<span class='fu'>ed_get_tests</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>header_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lmdate_from</span> <span class='kw'>=</span> <span class='st'>"2000-01-01"</span>, <span class='kw'>lmdate_to</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>()
   + <span class='fl'>1</span>, <span class='no'>...</span>)
 
-<span class='fu'>get_ed_viruses</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+<span class='fu'>ed_get_viruses</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>header_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lmdate_from</span> <span class='kw'>=</span> <span class='st'>"2000-01-01"</span>, <span class='kw'>lmdate_to</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>()
   + <span class='fl'>1</span>, <span class='no'>...</span>)
 
-<span class='fu'>get_ed_test_specimen_ids</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+<span class='fu'>ed_get_testspecimen</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>header_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lmdate_from</span> <span class='kw'>=</span> <span class='st'>"2000-01-01"</span>, <span class='kw'>lmdate_to</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>()
   + <span class='fl'>1</span>, <span class='no'>...</span>)</pre>
     

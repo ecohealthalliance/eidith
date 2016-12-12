@@ -13,7 +13,7 @@ db_other_indexes <- list(
   events = list("country"),
   animals = list("event_id"),
   specimens = list("animal_id", "specimen_id_name"),
-  tests = list("specimen_id_name"),
+  tests = list("specimen_id_names"),
   viruses = list("test_id"),
   test_specimen_ids = list("test_id", "specimen_id")
 )
@@ -34,37 +34,144 @@ db_other_indexes <- list(
 #' Each time it is run it clears out the previous data and downloads all the data,
 #' as such it takes a few minutes.  In the future, we will allow for updating only with new and changed records.
 #'
-#' The function will prompt for username and password unless you have [cached your credentials][eidith_auth].
+#' The function will prompt for username and password unless you have [cached your credentials][ed_auth].
 #'
 #' @importFrom dplyr db_list_tables db_drop_table copy_to
 #' @param verbose Show messages while in progress?
+#' @seealso [ed_db_status()], [ed_db_updates()], [ed_db_export()]
 #' @export
-download_db <- function(verbose=interactive()) {
-  auth <- eidith_auth(verbose = verbose)
+ed_db_download <- function(verbose=interactive()) {
+  auth <- ed_auth(verbose = verbose)
   if(verbose) message("Downloading and processing EIDITH data. This may take a few minutes.")
-    tables <- lapply(endpoints, ed_get, postprocess=TRUE, verbose=FALSE, auth=auth)
-  lapply(dplyr:: db_list_tables(eidith_db$con), function(x) {
-    dplyr::db_drop_table(eidith_db$con, x)}
-    )
+  tables <- lapply(endpoints, ed_get, postprocess=TRUE, verbose=verbose, auth=auth)
+  lapply(dplyr:: db_list_tables(eidith_db()$con), function(x) {
+    dplyr::db_drop_table(eidith_db()$con, x)}
+  )
   lapply(seq_along(tables), function(x) {
-    dplyr::copy_to(eidith_db, tables[[x]], name=db_tables[x], temporary = FALSE,
-                      unique_indexes = db_unique_indexes[[x]], indexes = db_other_indexes[[x]])
+    dplyr::copy_to(eidith_db(), tables[[x]], name=db_tables[x], temporary = FALSE,
+                   unique_indexes = db_unique_indexes[[x]], indexes = db_other_indexes[[x]])
   })
-  if(verbose) message("Database updated!")
+
+  dplyr::copy_to(eidith_db(), data.frame(last_download=as.character(Sys.time())),
+                 name="status", temporary=FALSE)
+  if(verbose) {
+    message("Database updated!")
+    message(ed_db_status_msg(ed_db_status()))
+  }
 }
 
-#' #' @importFrom magrittr use_series
-#' db_status <- function() {
-#'   countries <- tbl(eidith_db, "events") %>% group_by(country) %>% summarise(n=n()) %>% collect() %>% use_series("country")
-#'   n_countries <- length(countries)
-#'   countries_str <- stri_paste(countries, collapse = ", ")
-#'   last_db_update <- tbl(eidith_db, "events") %>% summarise(n = n()) %>% collect %>% use_series("n")
+#' Get the status of the locally stored EIDITH database
+#'
+#' @description
+#' This function provides:
+#'  - Countries in the database
+#'  - Size of each table in the database
+#'  - The most recent download date
+#'  - The last-updated records in local database
+#'
+#' @return A list of database status information, pretty-printed.
+#' @param path if provided, the filename of the sqlite database to check. By default,
+#'   the function checks the status of the internal database or that with the global option `"ed_sql_path"`.
+#' @seealso  [ed_db_download()], [ed_db_updates()], [ed_db_export()]
+#' @importFrom magrittr use_series
+#' @importFrom purrr map_chr
+#' @importFrom dplyr tbl group_by_ summarise_ collect lst db_list_tables mutate_
+#' @importFrom tidyr separate_
+#' @export
+ed_db_status <- function(path=NULL) {
+  edb <- eidith_db(path)
+  if(!(all(db_tables %in% db_list_tables(edb$con)))) {
+    dbstatus<- list(status_msg = "Local EIDITH database is empty, out-of-date, or corrupt.  Run ed_db_download() to update")
+  } else {
+    records = tbl(edb, "sqlite_stat1") %>% collect() %>%
+      filter_('tbl != "status"') %>%
+      separate_("stat", into=c("rows", "columns"), sep=" ", convert=TRUE) %>%
+      group_by_("tbl") %>%
+      summarise_(rows=~max(rows)) %>%
+      arrange_("rows") %>%
+      mutate_(string = ~paste(prettyNum(rows, big.mark=","), tbl))
+    dbstatus <-lst(countries = tbl(edb, "events") %>%
+                     group_by_("country") %>% summarise_(n=~n()) %>% collect() %>% use_series("country") %>% sort(),
+                   n_countries = length(countries),
+                   last_modified_records = quicktime2(map_chr(db_tables[1:5], function(db_table) {
+                     DBI::dbGetQuery(edb$con, paste0("SELECT MAX(date_modified) FROM ", db_table ))[[1]]
+                   })),
+                   last_modified_record = max(last_modified_records),
+                   last_table = db_tables[1:5][last_modified_records == last_modified_record],
+                   last_download = DBI::dbGetQuery(edb$con, "SELECT last_download FROM status")[[1]],
+                   records = records)
+  }
+  class(dbstatus) <- c("dbstatus", class(dbstatus))
+  dbstatus
+}
+
+ed_db_status_msg <- function(status) {
+  list2env(status, environment())
+  status_msg = paste0(c(
+    paste(strwrap(paste0(c(
+      "Local EIDITH database holds data from ", n_countries, " countries: ",
+      paste(countries, collapse = "; ")
+    ), collapse=""), width=80, exdent=2), collapse="\n"), "\n",
+    paste(strwrap(paste0(c(
+      "Records: ", paste(records$string, collapse="; ")
+    ), collapse = ""), width=80, exdent=2), collapse="\n"), "\n",
+    "Last download: ", as.character(last_download), "\n",
+    "Last updated record: ", as.character(last_modified_record), " in ", last_table, " table"), collapse="")
+}
+
+#'@export
+print.dbstatus <- function(dbstatus) {
+  cat(ed_db_status_msg(dbstatus))
+}
+
+#' Export the local EIDITH database to a file
+#'
+#' This function allows you to export the local EIDITH database to a file that
+#' can then be used by others.  The database is in [SQLite](https://sqlite.org/) format.
+#' @param filename The filename to export to. We suggest something ending in `.sqlite`.
+#' @seealso  [ed_db_status()], [ed_db_updates()], [ed_db_export()]
+#' @examples
+#' \dontrun{
+#'   #Here's an example of how to export and then use the exported database
+#'
+#'   ed_db_export("mydb.sqlite")
+#'   options(ed_sql_path = "mydb.sqlite") # This switches to working with the exported database
+#'   ed_db_status()  #get status of the current (exported) database
 #' }
+#' @export
+ed_db_export <- function(filename, ...) {  #Exports the database file to new location.  options(eidith_db) should let you change it.
+   file.copy(from = eidith_db()$path, to = filename, ...)
+}
+
+#' Check the online EIDITH databse for updates since your last download.
 #'
-#' update_db <- function() {
+#' This function checks to see if the EIDITH online database has been updated
+#' since the last time [ed_db_download()] was run. If it has, you may run
+#' [ed_db_download()] to get the latest data.
 #'
-#' }
-#'
-#' export_db <- function() {  #Exports the database file to new location.  options(eidith_db) should let you change it.
-#'
-#' }
+#' @param path if provided, the filename of the sqlite database to check. By default,
+#'   the function checks the status of the internal database or that with the global option `"ed_sql_path"`.
+#' @return A named vector, showing TRUE for tables that have been updated.  A message is also printed.
+#' @seealso  [ed_db_status()], [ed_db_download()],  [ed_db_export()]
+#'@importFrom stringi stri_replace_first_fixed
+#'@importFrom dplyr collect tbl
+#'@export
+ed_db_updates <- function(path = NULL) {
+  last_download <- stri_replace_first_fixed(
+    collect(tbl(eidith_db(path), "status"))$last_download,
+    " ", "T")
+  auth <- ed_auth()
+  check_at <- endpoints[endpoints !="TestIDSpecimenID"]
+  new_rows <- lapply(check_at, function(endpoint) {
+         newdat <- ed_get(endpoint = endpoint, verbose = FALSE, lmdate_from = last_download, postprocess = FALSE, auth = auth)
+         nrow(newdat)
+    })
+  is_new_data <- as.logical(unlist(new_rows))
+  names(is_new_data) <- check_at
+  if(all(!is_new_data)) {
+    message("No new data since ", last_download, ".")
+  } else {
+  message("New data at endpoints: [", paste0(check_at[is_new_data], collapse=","), "]. Use ed_db_download() to update.")
+  }
+  return(is_new_data)
+}

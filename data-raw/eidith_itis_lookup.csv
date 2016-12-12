@@ -27,8 +27,8 @@ Cephalophus leucogaster,Mammalia,Artiodactyla,Bovidae,Cephalophus,leucogaster,Ce
 Aonyx congicus,Mammalia,Carnivora,Mustelidae,Aonyx,congicus,Aonyx capensis congicus,Mammalia,Carnivora,Mustelidae,Aonyx,capensis,congicus,Aonyx capensis
 Cercopithecus pogonias,Mammalia,Primates,Cercopithecidae,Cercopithecus,pogonias,Cercopithecus pogonias,Mammalia,Primates,Cercopithecidae,Cercopithecus,pogonias,NA,Cercopithecus pogonias
 Herpestidae sp.,Mammalia,Carnivora,Herpestidae,NA,NA,Herpestidae sp.,Mammalia,Carnivora,Herpestidae,NA,NA,NA,NA
-Uromanis tetradactyla,Mammalia,Pholidota,Manidae,Uromanis,tetradactyla,Manis tetradactyla,Mammalia,Pholidota,Manidae,Manis,tetradactyla,NA,Manis tetradactyla
 Hyemoschus aquaticus,Mammalia,Artiodactyla,Tragulidae,Hyemoschus,aquaticus,Hyemoschus aquaticus,Mammalia,Artiodactyla,Tragulidae,Hyemoschus,aquaticus,NA,Hyemoschus aquaticus
+Uromanis tetradactyla,Mammalia,Pholidota,Manidae,Uromanis,tetradactyla,Manis tetradactyla,Mammalia,Pholidota,Manidae,Manis,tetradactyla,NA,Manis tetradactyla
 Cercopithecus neglectus,Mammalia,Primates,Cercopithecidae,Cercopithecus,neglectus,Cercopithecus neglectus,Mammalia,Primates,Cercopithecidae,Cercopithecus,neglectus,NA,Cercopithecus neglectus
 Civettictis civetta,Mammalia,Carnivora,Viverridae,Civettictis,civetta,Civettictis civetta,Mammalia,Carnivora,Viverridae,Civettictis,civetta,NA,Civettictis civetta
 Tragelaphus spekii,Mammalia,Artiodactyla,Bovidae,Tragelaphus,spekii,Tragelaphus spekii,Mammalia,Artiodactyla,Bovidae,Tragelaphus,spekii,NA,Tragelaphus spekii
@@ -47,9 +47,9 @@ Genetta servalina,Mammalia,Carnivora,Viverridae,Genetta,servalina,Genetta serval
 Papio anubis,Mammalia,Primates,Cercopithecidae,Papio,anubis,Papio anubis,Mammalia,Primates,Cercopithecidae,Papio,anubis,NA,Papio anubis
 Cercocebus agilis,Mammalia,Primates,Cercopithecidae,Cercocebus,agilis,Cercocebus agilis,Mammalia,Primates,Cercopithecidae,Cercocebus,agilis,NA,Cercocebus agilis
 Cercopithecus tantalus,Mammalia,Primates,Cercopithecidae,Cercopithecus,tantalus,Chlorocebus tantalus,Mammalia,Primates,Cercopithecidae,Chlorocebus,tantalus,NA,Chlorocebus tantalus
+Nycteris grandis,Mammalia,Chiroptera,Nycteridae,Nycteris,grandis,Nycteris grandis,Mammalia,Chiroptera,Nycteridae,Nycteris,grandis,NA,Nycteris grandis
 Rhinolophus landeri,Mammalia,Chiroptera,Rhinolophidae,Rhinolophus,landeri,Rhinolophus landeri,Mammalia,Chiroptera,Rhinolophidae,Rhinolophus,landeri,NA,Rhinolophus landeri
 Micropteropus pusillus,Mammalia,Chiroptera,Pteropodidae,Micropteropus,pusillus,Micropteropus pusillus,Mammalia,Chiroptera,Pteropodidae,Micropteropus,pusillus,NA,Micropteropus pusillus
-Nycteris grandis,Mammalia,Chiroptera,Nycteridae,Nycteris,grandis,Nycteris grandis,Mammalia,Chiroptera,Nycteridae,Nycteris,grandis,NA,Nycteris grandis
 Alethe castanea,Aves,Passeriformes,Turdidae,Alethe,castanea,Alethe castanea,Aves,Passeriformes,Turdidae,Alethe,castanea,NA,Alethe castanea
 Cossypha natalensis,Aves,Passeriformes,Muscicapidae,Cossypha,natalensis,Cossypha natalensis,Aves,Passeriformes,Muscicapidae,Cossypha,natalensis,NA,Cossypha natalensis
 Strix woodfordii,Aves,Strigiformes,Strigidae,Strix,woodfordii,Strix woodfordii,Aves,Strigiformes,Strigidae,Strix,woodfordii,NA,Strix woodfordii
@@ -58,12 +58,12 @@ Andropadus virens,Aves,Passeriformes,Pycnonotidae,Andropadus,virens,Eurillas vir
 Phyllastrephus albigularis,Aves,Passeriformes,Pycnonotidae,Phyllastrephus,albigularis,Phyllastrephus albigularis,Aves,Passeriformes,Pycnonotidae,Phyllastrephus,albigularis,NA,Phyllastrephus albigularis
 Chlorocichla simplex,Aves,Passeriformes,Pycnonotidae,Chlorocichla,simplex,Chlorocichla simplex,Aves,Passeriformes,Pycnonotidae,Chlorocichla,simplex,NA,Chlorocichla simplex
 Dyaphorophyia castanea,Aves,Passeriformes,Platysteiridae,Dyaphorophyia,castanea,Platysteira castanea,Aves,Passeriformes,Platysteiridae,Platysteira,castanea,NA,Platysteira castanea
-Praomys sp.,Mammalia,Rodentia,Muridae,Praomys,NA,Praomys sp.,Mammalia,Rodentia,Muridae,Praomys,NA,NA,NA
-Epomops franqueti,Mammalia,Chiroptera,Pteropodidae,Epomops,franqueti,Epomops franqueti,Mammalia,Chiroptera,Pteropodidae,Epomops,franqueti,NA,Epomops franqueti
 Soricidae sp.,Mammalia,Soricomorpha,Soricidae,NA,NA,Soricidae sp.,Mammalia,Soricomorpha,Soricidae,NA,NA,NA,NA
-Mus setulosus,Mammalia,Rodentia,Muridae,Mus,setulosus,Mus setulosus,Mammalia,Rodentia,Muridae,Mus,setulosus,NA,Mus setulosus
 Lophuromys nudicaudus,Mammalia,Rodentia,Muridae,Lophuromys,nudicaudus,Lophuromys nudicaudus,Mammalia,Rodentia,Muridae,Lophuromys,nudicaudus,NA,Lophuromys nudicaudus
+Praomys sp.,Mammalia,Rodentia,Muridae,Praomys,NA,Praomys sp.,Mammalia,Rodentia,Muridae,Praomys,NA,NA,NA
+Mus setulosus,Mammalia,Rodentia,Muridae,Mus,setulosus,Mus setulosus,Mammalia,Rodentia,Muridae,Mus,setulosus,NA,Mus setulosus
 Rodentia,Mammalia,Rodentia,NA,NA,NA,Rodentia sp.,Mammalia,Rodentia,NA,NA,NA,NA,NA
+Epomops franqueti,Mammalia,Chiroptera,Pteropodidae,Epomops,franqueti,Epomops franqueti,Mammalia,Chiroptera,Pteropodidae,Epomops,franqueti,NA,Epomops franqueti
 Colobus satanas,Mammalia,Primates,Cercopithecidae,Colobus,satanas,Colobus satanas,Mammalia,Primates,Cercopithecidae,Colobus,satanas,NA,Colobus satanas
 Myonycteris torquata,Mammalia,Chiroptera,Pteropodidae,Myonycteris,torquata,Myonycteris torquata,Mammalia,Chiroptera,Pteropodidae,Myonycteris,torquata,NA,Myonycteris torquata
 Mops brachypterus,Mammalia,Chiroptera,Molossidae,Mops,brachypterus,Mops brachypterus,Mammalia,Chiroptera,Molossidae,Mops,brachypterus,NA,Mops brachypterus
@@ -81,8 +81,8 @@ Lophocebus aterrimus,Mammalia,Primates,Cercopithecidae,Lophocebus,aterrimus,Loph
 Guttera pucherani,Aves,Galliformes,Numididae,Guttera,pucherani,Guttera pucherani,Aves,Galliformes,Numididae,Guttera,pucherani,NA,Guttera pucherani
 Gorilla beringei beringei,Mammalia,Primates,Hominidae,Gorilla,beringei,Gorilla beringei beringei,Mammalia,Primates,Hominidae,Gorilla,beringei,beringei,Gorilla beringei
 Cercopithecus mitis kandti,Mammalia,Primates,Cercopithecidae,Cercopithecus,mitis,Cercopithecus mitis,Mammalia,Primates,Cercopithecidae,Cercopithecus,mitis,NA,Cercopithecus mitis
-Gorilla beringei graueri,Mammalia,Primates,Hominidae,Gorilla,beringei,Gorilla beringei graueri,Mammalia,Primates,Hominidae,Gorilla,beringei,graueri,Gorilla beringei
 Chlorocebus pygerythrus,Mammalia,Primates,Cercopithecidae,Chlorocebus,pygerythrus,Chlorocebus pygerythrus,Mammalia,Primates,Cercopithecidae,Chlorocebus,pygerythrus,NA,Chlorocebus pygerythrus
+Gorilla beringei graueri,Mammalia,Primates,Hominidae,Gorilla,beringei,Gorilla beringei graueri,Mammalia,Primates,Hominidae,Gorilla,beringei,graueri,Gorilla beringei
 Crocidura sp.,Mammalia,Soricomorpha,Soricidae,Crocidura,NA,Crocidura sp.,Mammalia,Soricomorpha,Soricidae,Crocidura,NA,NA,NA
 Mammalia,NA,NA,NA,Mammalia,,Mammalia sp.,Mammalia,NA,NA,NA,NA,NA,NA
 Oenomys hypoxanthus,Mammalia,Rodentia,Muridae,Oenomys,hypoxanthus,Oenomys hypoxanthus,Mammalia,Rodentia,Muridae,Oenomys,hypoxanthus,NA,Oenomys hypoxanthus
@@ -91,12 +91,12 @@ Hylomyscus sp.,Mammalia,Rodentia,Muridae,Hylomyscus,NA,Hylomyscus sp.,Mammalia,R
 Rattus sp.,Mammalia,Rodentia,Muridae,Rattus,,Rattus sp.,Mammalia,Rodentia,Muridae,Rattus,NA,NA,NA
 Aethomys,Mammalia,Rodentia,Muridae,Aethomys,,Aethomys sp.,Mammalia,Rodentia,Muridae,Aethomys,NA,NA,NA
 Thamnomys sp.,Mammalia,Rodentia,Muridae,Thamnomys,,Thamnomys sp.,Mammalia,Rodentia,Muridae,Thamnomys,NA,NA,NA
-Guttera plumifera,Aves,Galliformes,Numididae,Guttera,plumifera,Guttera plumifera,Aves,Galliformes,Numididae,Guttera,plumifera,NA,Guttera plumifera
 Cercopithecus mona,Mammalia,Primates,Cercopithecidae,Cercopithecus,mona,Cercopithecus mona,Mammalia,Primates,Cercopithecidae,Cercopithecus,mona,NA,Cercopithecus mona
+Guttera plumifera,Aves,Galliformes,Numididae,Guttera,plumifera,Guttera plumifera,Aves,Galliformes,Numididae,Guttera,plumifera,NA,Guttera plumifera
 Phasianidae sp.,Aves,Galliformes,Phasianidae,NA,NA,Phasianidae sp.,Aves,Galliformes,Phasianidae,NA,NA,NA,NA
-Crossarchus obscurus,Mammalia,Carnivora,Herpestidae,Crossarchus,obscurus,Crossarchus obscurus,Mammalia,Carnivora,Herpestidae,Crossarchus,obscurus,NA,Crossarchus obscurus
 Cercopithecus erythrotis,Mammalia,Primates,Cercopithecidae,Cercopithecus,erythrotis,Cercopithecus erythrotis,Mammalia,Primates,Cercopithecidae,Cercopithecus,erythrotis,NA,Cercopithecus erythrotis
 Osteolaemus tetraspis,Reptilia,Crocodilia,Crocodylidae,Osteolaemus,tetraspis,Osteolaemus tetraspis,Reptilia,Crocodilia,Crocodylidae,Osteolaemus,tetraspis,NA,Osteolaemus tetraspis
+Crossarchus obscurus,Mammalia,Carnivora,Herpestidae,Crossarchus,obscurus,Crossarchus obscurus,Mammalia,Carnivora,Herpestidae,Crossarchus,obscurus,NA,Crossarchus obscurus
 Cephalophus ogilbyi,Mammalia,Artiodactyla,Bovidae,Cephalophus,ogilbyi,Cephalophus ogilbyi,Mammalia,Artiodactyla,Bovidae,Cephalophus,ogilbyi,NA,Cephalophus ogilbyi
 Hipposideros commersoni,Mammalia,Chiroptera,Hipposideridae,Hipposideros,commersoni,Hipposideros commersonii,Mammalia,Chiroptera,Hipposideridae,Hipposideros,commersonii,NA,Hipposideros commersonii
 Halcyon malimbica,Aves,Coraciiformes,Alcedinidae,Halcyon,malimbica,Halcyon malimbica,Aves,Coraciiformes,Alcedinidae,Halcyon,malimbica,NA,Halcyon malimbica
@@ -106,8 +106,8 @@ Mops condylurus,Mammalia,Chiroptera,Molossidae,Mops,condylurus,Mops condylurus,M
 Profelis aurata,Mammalia,Carnivora,Felidae,Profelis,aurata,Profelis aurata,Mammalia,Carnivora,Felidae,Profelis,aurata,NA,Profelis aurata
 Manis tetradactyla,Mammalia,Pholidota,Manidae,Manis,tetradactyla,Manis tetradactyla,Mammalia,Pholidota,Manidae,Manis,tetradactyla,NA,Manis tetradactyla
 Poiana richardsonii,Mammalia,Carnivora,Viverridae,Poiana,richardsonii,Poiana richardsonii,Mammalia,Carnivora,Viverridae,Poiana,richardsonii,NA,Poiana richardsonii
-Potamochoerus porcus,Mammalia,Artiodactyla,Suidae,Potamochoerus,porcus,Potamochoerus porcus,Mammalia,Artiodactyla,Suidae,Potamochoerus,porcus,NA,Potamochoerus porcus
 Galagoides thomasi,Mammalia,Primates,Galagidae,Galagoides,thomasi,Galagoides thomasi,Mammalia,Primates,Galagidae,Galagoides,thomasi,NA,Galagoides thomasi
+Potamochoerus porcus,Mammalia,Artiodactyla,Suidae,Potamochoerus,porcus,Potamochoerus porcus,Mammalia,Artiodactyla,Suidae,Potamochoerus,porcus,NA,Potamochoerus porcus
 Genetta victoriae,Mammalia,Carnivora,Viverridae,Genetta,victoriae,Genetta victoriae,Mammalia,Carnivora,Viverridae,Genetta,victoriae,NA,Genetta victoriae
 Funisciurus isabella,Mammalia,Rodentia,Sciuridae,Funisciurus,isabella,Funisciurus isabella,Mammalia,Rodentia,Sciuridae,Funisciurus,isabella,NA,Funisciurus isabella
 Xerus erythropus,Mammalia,Rodentia,Sciuridae,Xerus,erythropus,Xerus erythropus,Mammalia,Rodentia,Sciuridae,Xerus,erythropus,NA,Xerus erythropus
@@ -169,10 +169,10 @@ Suncus sp.,Mammalia,Soricomorpha,Soricidae,Suncus,NA,Suncus sp.,Mammalia,Soricom
 Casinycteris argynnis,Mammalia,Chiroptera,Pteropodidae,Casinycteris,argynnis,Casinycteris argynnis,Mammalia,Chiroptera,Pteropodidae,Casinycteris,argynnis,NA,Casinycteris argynnis
 Gorilla gorilla gorilla,Mammalia,Primates,Hominidae,Gorilla,gorilla,Gorilla gorilla gorilla,Mammalia,Primates,Hominidae,Gorilla,gorilla,gorilla,Gorilla gorilla
 Deomys ferrugineus,Mammalia,Rodentia,Muridae,Deomys,ferrugineus,Deomys ferrugineus,Mammalia,Rodentia,Muridae,Deomys,ferrugineus,NA,Deomys ferrugineus
-Python sebae,Reptilia,Squamata,Pythonidae,Python,sebae,Python sebae,Reptilia,Squamata,Pythonidae,Python,sebae,NA,Python sebae
-Bucerotidae sp.,Aves,Bucerotiformes,Bucerotidae,NA,NA,Bucerotidae sp.,Aves,Bucerotiformes,Bucerotidae,NA,NA,NA,NA
 Manis gigantea,Mammalia,Pholidota,Manidae,Manis,gigantea,Manis gigantea,Mammalia,Pholidota,Manidae,Manis,gigantea,NA,Manis gigantea
 Animalia,,,,,,Animalia,NA,NA,NA,NA,NA,NA,NA
+Python sebae,Reptilia,Squamata,Pythonidae,Python,sebae,Python sebae,Reptilia,Squamata,Pythonidae,Python,sebae,NA,Python sebae
+Bucerotidae sp.,Aves,Bucerotiformes,Bucerotidae,NA,NA,Bucerotidae sp.,Aves,Bucerotiformes,Bucerotidae,NA,NA,NA,NA
 Papio hamadryas,Mammalia,Primates,Cercopithecidae,Papio,hamadryas,Papio hamadryas,Mammalia,Primates,Cercopithecidae,Papio,hamadryas,NA,Papio hamadryas
 Chlorocebus aethiops,Mammalia,Primates,Cercopithecidae,Chlorocebus,aethiops,Chlorocebus aethiops,Mammalia,Primates,Cercopithecidae,Chlorocebus,aethiops,NA,Chlorocebus aethiops
 Gorilla gorilla,Mammalia,Primates,Hominidae,Gorilla,gorilla,Gorilla gorilla,Mammalia,Primates,Hominidae,Gorilla,gorilla,NA,Gorilla gorilla
@@ -219,8 +219,8 @@ Sus,Mammalia,Artiodactyla,Suidae,Sus,,Sus sp.,Mammalia,Artiodactyla,Suidae,Sus,N
 Calidris pusilla,Aves,Charadriiformes,Scolopacidae,Calidris,pusilla,Calidris pusilla,Aves,Charadriiformes,Scolopacidae,Calidris,pusilla,NA,Calidris pusilla
 Actitis macularius,Aves,Charadriiformes,Scolopacidae,Actitis,macularius,Actitis macularius,Aves,Charadriiformes,Scolopacidae,Actitis,macularius,NA,Actitis macularius
 Himantopus mexicanus,Aves,Charadriiformes,Recurvirostridae,Himantopus,mexicanus,Himantopus mexicanus,Aves,Charadriiformes,Recurvirostridae,Himantopus,mexicanus,NA,Himantopus mexicanus
-Vanellus chilensis,Aves,Charadriiformes,Charadriidae,Vanellus,chilensis,Vanellus chilensis,Aves,Charadriiformes,Charadriidae,Vanellus,chilensis,NA,Vanellus chilensis
 Haematopus palliatus,Aves,Charadriiformes,Haematopodidae,Haematopus,palliatus,Haematopus palliatus,Aves,Charadriiformes,Haematopodidae,Haematopus,palliatus,NA,Haematopus palliatus
+Vanellus chilensis,Aves,Charadriiformes,Charadriidae,Vanellus,chilensis,Vanellus chilensis,Aves,Charadriiformes,Charadriidae,Vanellus,chilensis,NA,Vanellus chilensis
 Arenaria interpres,Aves,Charadriiformes,Scolopacidae,Arenaria,interpres,Arenaria interpres,Aves,Charadriiformes,Scolopacidae,Arenaria,interpres,NA,Arenaria interpres
 Calidris canutus,Aves,Charadriiformes,Scolopacidae,Calidris,canutus,Calidris canutus,Aves,Charadriiformes,Scolopacidae,Calidris,canutus,NA,Calidris canutus
 Charadrius semipalmatus,Aves,Charadriiformes,Charadriidae,Charadrius,semipalmatus,Charadrius semipalmatus,Aves,Charadriiformes,Charadriidae,Charadrius,semipalmatus,NA,Charadrius semipalmatus
@@ -243,8 +243,8 @@ Aramides saracura,Aves,Gruiformes,Rallidae,Aramides,saracura,Aramides saracura,A
 Coleura afra,Mammalia,Chiroptera,Emballonuridae,Coleura,afra,Coleura afra,Mammalia,Chiroptera,Emballonuridae,Coleura,afra,NA,Coleura afra
 Mastomys sp.,Mammalia,Rodentia,Muridae,Mastomys,NA,Mastomys sp.,Mammalia,Rodentia,Muridae,Mastomys,NA,NA,NA
 Hylomyscus aeta,Mammalia,Rodentia,Muridae,Hylomyscus,aeta,Hylomyscus aeta,Mammalia,Rodentia,Muridae,Hylomyscus,aeta,NA,Hylomyscus aeta
-Miniopterus inflatus,Mammalia,Chiroptera,Miniopteridae,Miniopterus,inflatus,Miniopterus inflatus,Mammalia,Chiroptera,Miniopteridae,Miniopterus,inflatus,NA,Miniopterus inflatus
 Rhinolophus sp.,Mammalia,Chiroptera,Rhinolophidae,Rhinolophus,NA,Rhinolophus sp.,Mammalia,Chiroptera,Rhinolophidae,Rhinolophus,NA,NA,NA
+Miniopterus inflatus,Mammalia,Chiroptera,Miniopteridae,Miniopterus,inflatus,Miniopterus inflatus,Mammalia,Chiroptera,Miniopteridae,Miniopterus,inflatus,NA,Miniopterus inflatus
 Praomys jacksoni,Mammalia,Rodentia,Muridae,Praomys,jacksoni,Praomys jacksoni,Mammalia,Rodentia,Muridae,Praomys,jacksoni,NA,Praomys jacksoni
 Rattus norvegicus,Mammalia,Rodentia,Muridae,Rattus,norvegicus,Rattus norvegicus,Mammalia,Rodentia,Muridae,Rattus,norvegicus,NA,Rattus norvegicus
 Muriculus imberbis,Mammalia,Rodentia,Muridae,Muriculus,imberbis,Muriculus imberbis,Mammalia,Rodentia,Muridae,Muriculus,imberbis,NA,Muriculus imberbis
@@ -275,9 +275,9 @@ Acomys johannis,Mammalia,Rodentia,Muridae,Acomys,johannis,Acomys johannis,Mammal
 Tatera kempi,Mammalia,Rodentia,Muridae,Tatera,kempi,Gerbilliscus kempii,Mammalia,Rodentia,Muridae,Gerbilliscus,kempii,NA,Gerbilliscus kempii
 Dasymys rufulus,Mammalia,Rodentia,Muridae,Dasymys,rufulus,Dasymys rufulus,Mammalia,Rodentia,Muridae,Dasymys,rufulus,NA,Dasymys rufulus
 Lophuromys sikapusi,Mammalia,Rodentia,Muridae,Lophuromys,sikapusi,Lophuromys sikapusi,Mammalia,Rodentia,Muridae,Lophuromys,sikapusi,NA,Lophuromys sikapusi
+Lemniscomys striatus,Mammalia,Rodentia,Muridae,Lemniscomys,striatus,Lemniscomys striatus,Mammalia,Rodentia,Muridae,Lemniscomys,striatus,NA,Lemniscomys striatus
 Muridae sp.,Mammalia,Rodentia,Muridae,NA,NA,Muridae sp.,Mammalia,Rodentia,Muridae,NA,NA,NA,NA
 Malacomys longipes,Mammalia,Rodentia,Muridae,Malacomys,longipes,Malacomys longipes,Mammalia,Rodentia,Muridae,Malacomys,longipes,NA,Malacomys longipes
-Lemniscomys striatus,Mammalia,Rodentia,Muridae,Lemniscomys,striatus,Lemniscomys striatus,Mammalia,Rodentia,Muridae,Lemniscomys,striatus,NA,Lemniscomys striatus
 Epomophorus gambianus,Mammalia,Chiroptera,Pteropodidae,Epomophorus,gambianus,Epomophorus gambianus,Mammalia,Chiroptera,Pteropodidae,Epomophorus,gambianus,NA,Epomophorus gambianus
 Manis sp.,Mammalia,Pholidota,Manidae,Manis,NA,Manis sp.,Mammalia,Pholidota,Manidae,Manis,NA,NA,NA
 Euoticus pallidus,Mammalia,Primates,Galagidae,Euoticus,pallidus,Euoticus pallidus,Mammalia,Primates,Galagidae,Euoticus,pallidus,NA,Euoticus pallidus
@@ -307,12 +307,12 @@ Camaroptera brachyura,Aves,Passeriformes,Cisticolidae,Camaroptera,brachyura,Cama
 Cisticola anonymus,Aves,Passeriformes,Cisticolidae,Cisticola,anonymus,Cisticola anonymus,Aves,Passeriformes,Cisticolidae,Cisticola,anonymus,NA,Cisticola anonymus
 Spermophaga haematina,Aves,Passeriformes,Estrildidae,Spermophaga,haematina,Spermophaga haematina,Aves,Passeriformes,Estrildidae,Spermophaga,haematina,NA,Spermophaga haematina
 Ploceus ocularis,Aves,Passeriformes,Ploceidae,Ploceus,ocularis,Ploceus ocularis,Aves,Passeriformes,Ploceidae,Ploceus,ocularis,NA,Ploceus ocularis
-Ceyx pictus,Aves,Coraciiformes,Alcedinidae,Ceyx,pictus,Ceyx pictus,Aves,Coraciiformes,Alcedinidae,Ceyx,pictus,NA,Ceyx pictus
-Ploceus cucullatus,Aves,Passeriformes,Ploceidae,Ploceus,cucullatus,Ploceus cucullatus,Aves,Passeriformes,Ploceidae,Ploceus,cucullatus,NA,Ploceus cucullatus
 Estrilda melpoda,Aves,Passeriformes,Estrildidae,Estrilda,melpoda,Estrilda melpoda,Aves,Passeriformes,Estrildidae,Estrilda,melpoda,NA,Estrilda melpoda
 Spermestes bicolor,Aves,Passeriformes,Estrildidae,Spermestes,bicolor,Lonchura bicolor,Aves,Passeriformes,Estrildidae,Lonchura,bicolor,NA,Lonchura bicolor
 Hirundo preussi,Aves,Passeriformes,Hirundinidae,Hirundo,preussi,Petrochelidon preussi,Aves,Passeriformes,Hirundinidae,Petrochelidon,preussi,NA,Petrochelidon preussi
+Ploceus cucullatus,Aves,Passeriformes,Ploceidae,Ploceus,cucullatus,Ploceus cucullatus,Aves,Passeriformes,Ploceidae,Ploceus,cucullatus,NA,Ploceus cucullatus
 Hirundo aethiopica,Aves,Passeriformes,Hirundinidae,Hirundo,aethiopica,Hirundo aethiopica,Aves,Passeriformes,Hirundinidae,Hirundo,aethiopica,NA,Hirundo aethiopica
+Ceyx pictus,Aves,Coraciiformes,Alcedinidae,Ceyx,pictus,Ceyx pictus,Aves,Coraciiformes,Alcedinidae,Ceyx,pictus,NA,Ceyx pictus
 Ploceus nigerrimus,Aves,Passeriformes,Ploceidae,Ploceus,nigerrimus,Ploceus nigerrimus,Aves,Passeriformes,Ploceidae,Ploceus,nigerrimus,NA,Ploceus nigerrimus
 Colius striatus,Aves,Coliiformes,Coliidae,Colius,striatus,Colius striatus,Aves,Coliiformes,Coliidae,Colius,striatus,NA,Colius striatus
 Eidolon helvum,Mammalia,Chiroptera,Pteropodidae,Eidolon,helvum,Eidolon helvum,Mammalia,Chiroptera,Pteropodidae,Eidolon,helvum,NA,Eidolon helvum
@@ -430,10 +430,10 @@ Rattus andamanensis,Mammalia,Rodentia,Muridae,Rattus,andamanensis,Rattus andaman
 Nectarinia verticalis,Aves,Passeriformes,Nectariniidae,Nectarinia,verticalis,Cyanomitra verticalis,Aves,Passeriformes,Nectariniidae,Cyanomitra,verticalis,NA,Cyanomitra verticalis
 Alcedo cristata,Aves,Coraciiformes,Alcedinidae,Alcedo,cristata,Alcedo cristata,Aves,Coraciiformes,Alcedinidae,Alcedo,cristata,NA,Alcedo cristata
 Turdoides plebejus,Aves,Passeriformes,Leiothrichidae,Turdoides,plebejus,Turdoides plebejus,Aves,Passeriformes,Leiothrichidae,Turdoides,plebejus,NA,Turdoides plebejus
-Merops bulocki,Aves,Coraciiformes,Meropidae,Merops,bulocki,Merops bulocki,Aves,Coraciiformes,Meropidae,Merops,bulocki,NA,Merops bulocki
 Ceyx lecontei,Aves,Coraciiformes,Alcedinidae,Ceyx,lecontei,Ceyx lecontei,Aves,Coraciiformes,Alcedinidae,Ceyx,lecontei,NA,Ceyx lecontei
-Mandingoa nitidula,Aves,Passeriformes,Estrildidae,Mandingoa,nitidula,Mandingoa nitidula,Aves,Passeriformes,Estrildidae,Mandingoa,nitidula,NA,Mandingoa nitidula
+Merops bulocki,Aves,Coraciiformes,Meropidae,Merops,bulocki,Merops bulocki,Aves,Coraciiformes,Meropidae,Merops,bulocki,NA,Merops bulocki
 Pipistrellus nanulus,Mammalia,Chiroptera,Vespertilionidae,Pipistrellus,nanulus,Pipistrellus nanulus,Mammalia,Chiroptera,Vespertilionidae,Pipistrellus,nanulus,NA,Pipistrellus nanulus
+Mandingoa nitidula,Aves,Passeriformes,Estrildidae,Mandingoa,nitidula,Mandingoa nitidula,Aves,Passeriformes,Estrildidae,Mandingoa,nitidula,NA,Mandingoa nitidula
 Lagonosticta rufopicta,Aves,Passeriformes,Estrildidae,Lagonosticta,rufopicta,Lagonosticta rufopicta,Aves,Passeriformes,Estrildidae,Lagonosticta,rufopicta,NA,Lagonosticta rufopicta
 Euplectes hordeaceus,Aves,Passeriformes,Ploceidae,Euplectes,hordeaceus,Euplectes hordeaceus,Aves,Passeriformes,Ploceidae,Euplectes,hordeaceus,NA,Euplectes hordeaceus
 Oryzomys sp.,Mammalia,Rodentia,Muridae,Oryzomys,NA,Oryzomys sp.,Mammalia,Rodentia,Cricetidae,Oryzomys,NA,NA,NA
@@ -481,9 +481,9 @@ Syncerus caffer nanus,Mammalia,Artiodactyla,Bovidae,Syncerus,caffer,Syncerus caf
 Hydrictis maculicollis,Mammalia,Carnivora,Mustelidae,Hydrictis,maculicollis,Hydrictis maculicollis,Mammalia,Carnivora,Mustelidae,Hydrictis,maculicollis,NA,Hydrictis maculicollis
 Primates sp.,Mammalia,Primates,NA,NA,NA,Primates sp.,Mammalia,Primates,NA,NA,NA,NA,NA
 Funisciurus pyrropus,Mammalia,Rodentia,Sciuridae,Funisciurus,pyrropus,Funisciurus pyrropus,Mammalia,Rodentia,Sciuridae,Funisciurus,pyrropus,NA,Funisciurus pyrropus
+Anomalurus sp.,Mammalia,Rodentia,Anomaluridae,Anomalurus,NA,Anomalurus sp.,Mammalia,Rodentia,Anomaluridae,Anomalurus,NA,NA,NA
 Dendrohyrax sp.,Mammalia,Hyracoidea,Procaviidae,Dendrohyrax,NA,Dendrohyrax sp.,Mammalia,Hyracoidea,Procaviidae,Dendrohyrax,NA,NA,NA
 Procolobus tholloni,Mammalia,Primates,Cercopithecidae,Procolobus,tholloni,Piliocolobus tholloni,Mammalia,Primates,Cercopithecidae,Piliocolobus,tholloni,NA,Piliocolobus tholloni
-Anomalurus sp.,Mammalia,Rodentia,Anomaluridae,Anomalurus,NA,Anomalurus sp.,Mammalia,Rodentia,Anomaluridae,Anomalurus,NA,NA,NA
 Allenopithecus nigroviridis,Mammalia,Primates,Cercopithecidae,Allenopithecus,nigroviridis,Allenopithecus nigroviridis,Mammalia,Primates,Cercopithecidae,Allenopithecus,nigroviridis,NA,Allenopithecus nigroviridis
 Rhinolophus ferrumequinum,Mammalia,Chiroptera,Rhinolophidae,Rhinolophus,ferrumequinum,Rhinolophus ferrumequinum,Mammalia,Chiroptera,Rhinolophidae,Rhinolophus,ferrumequinum,NA,Rhinolophus ferrumequinum
 Hipposideros pratti,Mammalia,Chiroptera,Hipposideridae,Hipposideros,pratti,Hipposideros pratti,Mammalia,Chiroptera,Hipposideridae,Hipposideros,pratti,NA,Hipposideros pratti
@@ -571,11 +571,11 @@ Puma concolor,Mammalia,Carnivora,Felidae,Puma,concolor,Puma concolor,Mammalia,Ca
 Tapirus terrestris,Mammalia,Perissodactyla,Tapiridae,Tapirus,terrestris,Tapirus terrestris,Mammalia,Perissodactyla,Tapiridae,Tapirus,terrestris,NA,Tapirus terrestris
 Dasypus novemcinctus,Mammalia,Cingulata,Dasypodidae,Dasypus,novemcinctus,Dasypus novemcinctus,Mammalia,Cingulata,Dasypodidae,Dasypus,novemcinctus,NA,Dasypus novemcinctus
 Pipile cumanensis,Aves,Galliformes,Cracidae,Pipile,cumanensis,Aburria cumanensis,Aves,Galliformes,Cracidae,Aburria,cumanensis,NA,Aburria cumanensis
-Myiopsitta monachus,Aves,Psittaciformes,Psittacidae,Myiopsitta,monachus,Myiopsitta monachus,Aves,Psittaciformes,Psittacidae,Myiopsitta,monachus,NA,Myiopsitta monachus
 Ara severa,Aves,Psittaciformes,Psittacidae,Ara,severa,Ara severus,Aves,Psittaciformes,Psittacidae,Ara,severus,NA,Ara severus
+Podocnemis expansa,Reptilia,Testudines,Podocnemididae,Podocnemis,expansa,Podocnemis expansa,Reptilia,Testudines,Podocnemididae,Podocnemis,expansa,NA,Podocnemis expansa
 Podocnemis unifilis,Reptilia,Testudines,Podocnemididae,Podocnemis,unifilis,Podocnemis unifilis,Reptilia,Testudines,Podocnemididae,Podocnemis,unifilis,NA,Podocnemis unifilis
 Eira barbara,Mammalia,Carnivora,Mustelidae,Eira,barbara,Eira barbara,Mammalia,Carnivora,Mustelidae,Eira,barbara,NA,Eira barbara
-Podocnemis expansa,Reptilia,Testudines,Podocnemididae,Podocnemis,expansa,Podocnemis expansa,Reptilia,Testudines,Podocnemididae,Podocnemis,expansa,NA,Podocnemis expansa
+Myiopsitta monachus,Aves,Psittaciformes,Psittacidae,Myiopsitta,monachus,Myiopsitta monachus,Aves,Psittaciformes,Psittacidae,Myiopsitta,monachus,NA,Myiopsitta monachus
 Pteronotus parnellii,Mammalia,Chiroptera,Mormoopidae,Pteronotus,parnellii,Pteronotus parnellii,Mammalia,Chiroptera,Mormoopidae,Pteronotus,parnellii,NA,Pteronotus parnellii
 Mimon crenulatum,Mammalia,Chiroptera,Phyllostomidae,Mimon,crenulatum,Mimon crenulatum,Mammalia,Chiroptera,Phyllostomidae,Mimon,crenulatum,NA,Mimon crenulatum
 Eumops sp.,Mammalia,Chiroptera,Molossidae,Eumops,NA,Eumops sp.,Mammalia,Chiroptera,Molossidae,Eumops,NA,NA,NA

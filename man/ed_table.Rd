@@ -50,4 +50,3 @@ These functions take \code{\link[dplyr:filter]{dplyr::filter()}} arguments to su
 these, the data is subsetted via SQL \emph{before} it is loaded into memory.
 For large tables, such as the \emph{tests} table, this is useful for reducing the memory footprint of your R session.
 }
-

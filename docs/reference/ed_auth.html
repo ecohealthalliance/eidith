@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Standard post-processing of EIDITH exports — ed_process • EIDITH</title>
+<title>EIDITH logon credentials — ed_auth • EIDITH</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -84,65 +84,36 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Standard post-processing of EIDITH exports</h1>
+    <h1>EIDITH logon credentials</h1>
     </div>
 
     
-    <p>This function takes raw data downloaded from EIDITH and puts it through
-various preprocessing and cleaning steps.  In general there is no need to
-call this function directly - it is called by both <code><a href='ed_db_download.html'>ed_db_download()</a></code> and the <a href='ed_get.html'>direct download functions</a>.</p>
+    <p>Any function that downloads data from EIDITH, such as <code><a href='ed_db_download.html'>ed_db_download()</a></code> or
+the <a href='ed_get.html'>raw download functions</a> requires login credentials.  These
+functions will ask for a username and password.  To get an EIDITH account
+with data access permissions, contact technology@eidith.org.</p>
     
 
-    <pre><span class='fu'>ed_process</span>(<span class='no'>dat</span>, <span class='no'>endpt</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>dat</dt>
-      <dd>The data as exported from EIDITH and imported via the <code><a href='ed_get.html'>ed_get()</a></code> functions (without preprocessing).</dd>
-      <dt>endpt</dt>
-      <dd>The name of the API endpoint uaws: one of &quot;Event&quot;,
-&quot;Animal&quot;,  &quot;Specimen&quot;, &quot;Test&quot;, &quot;Virus&quot;, or &quot;TestIDSpecimenID&quot; (for test-specimen cross referencing).  Note these are different
-than the names of the tables stored locally (which are lowercase and plural).</dd>
-    </dl>
-    
+        
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Steps taken to clean the data include:
-<ul>
-<li> Converting variable names from <code>camelCase</code> to <code>snake_case</code> to make it easy
-to distinguish between raw and cleaned data.
-</li>
-<li> Converting some variable names to clearer ones:  all <code>_id</code> variables are
-numeric primary keys, other identifiers now go by <code>_id_name</code>.
-</li>
-<li> Where there are multiple <code>_id_name</code>-type columns that are very similar except for a small set of cases, we drop all but one for ease of use. These can be retrieved from raw data if needed.
-</li>
-<li> Droping columns that are entirely blank
-</li>
-<li> Dropping redundant columns
-</li>
-<li> Cleaning up whitespace and capitalization variability
-</li>
-<li> Re-arranging table order to put the most pertinent information first.
-</li>
-<li> Normalizing all animal taxonomic information to match the <a href = 'ITIS'>https://www.itis.gov/</a> database.
-</li>
-<li> Coercing some free-form entries (e.g. <code>specimen_type</code>) to a standard set of categories
-</li>
-<li> Converting yes/no fields to TRUE/FALSE
-</li>
-<li> Fixing spelling errors
-</li>
-<li> Extracting common TRUE/FALSE variables from free-form text of viral interpretation (Genbank numbers, whether virus is known, whether virus is known to affect humans).
-</li>
-</ul></p>
+    <p>For frequent or programmatic use, we recommend caching your logon credentials
+as environment variables.  <strong>eidith</strong> functions will automatically search
+for your credentials in the <code>EIDITH_USERNAME</code> and <code>EIDITH_PASSWORD</code> environment
+variables.</p>
+    <p>To cache your credentials across multiple R sessions, save them in your
+personal <code>.Renviron</code> file by running the following code in your R console
+(replacing <code>YOUR_USERNAME</code> and <code>YOUR_PASSWORD</code> with actual values).<pre>cat(&quot;EIDITH_USERNAME=YOUR_USERNAME\nEIDITH_PASSWORD=YOUR_PASSWORD&quot;,
+    file = file.path(normalizePath(&quot;~/&quot;), &quot;.Renviron&quot;), append = TRUE)
+</pre></p>
+    <p>Restart R, and you will be automatically logged in to download data from EIDITH
+when working on this computer.</p>
     
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#details">Details</a></li>
           </ul>

@@ -4,19 +4,19 @@
 \alias{ed_process}
 \title{Standard post-processing of EIDITH exports}
 \usage{
-ed_process(dat, endpoint)
+ed_process(dat, endpt)
 }
 \arguments{
-\item{dat}{The dat as exported from EIDITH and imported via}
+\item{dat}{The data as exported from EIDITH and imported via the \code{\link[=ed_get]{ed_get()}} functions (without preprocessing).}
 
-\item{endpoint}{The name of the API endpoint: one of "Event",
+\item{endpt}{The name of the API endpoint uaws: one of "Event",
 "Animal",  "Specimen", "Test", "Virus", or "TestIDSpecimenID" (for test-specimen cross referencing).  Note these are different
 than the names of the tables stored locally (which are lowercase and plural).}
 }
 \description{
 This function takes raw data downloaded from EIDITH and puts it through
 various preprocessing and cleaning steps.  In general there is no need to
-call this function directly - it is called by both \code{\link[=download_db]{download_db()}} and the \link[=ed_get]{direct download functions}.
+call this function directly - it is called by both \code{\link[=ed_db_download]{ed_db_download()}} and the \link[=ed_get]{direct download functions}.
 }
 \details{
 Steps taken to clean the data include:
@@ -25,6 +25,9 @@ Steps taken to clean the data include:
 to distinguish between raw and cleaned data.
 \item Converting some variable names to clearer ones:  all \code{_id} variables are
 numeric primary keys, other identifiers now go by \code{_id_name}.
+\item Where there are multiple \code{_id_name}-type columns that are very similar except for a small set of cases, we drop all but one for ease of use. These can be retrieved from raw data if needed.
+\item Droping columns that are entirely blank
+\item Dropping redundant columns
 \item Cleaning up whitespace and capitalization variability
 \item Re-arranging table order to put the most pertinent information first.
 \item Normalizing all animal taxonomic information to match the \href{https://www.itis.gov/}{ITIS} database.
@@ -34,4 +37,3 @@ numeric primary keys, other identifiers now go by \code{_id_name}.
 \item Extracting common TRUE/FALSE variables from free-form text of viral interpretation (Genbank numbers, whether virus is known, whether virus is known to affect humans).
 }
 }
-
