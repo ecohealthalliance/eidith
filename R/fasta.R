@@ -36,7 +36,7 @@ ed_fasta_ <- function(.data, file="", sequence="sequence", ..., .dots) {
   meta_str = purrr::map2(names(meta), meta, ~paste(.x, .y, sep=": "))
   meta_str = do.call("paste", args = c(meta_str, sep = " / "))
   meta_str = paste0(">", meta_str, "\n", seq)
-  cat(meta_str, file=file, sep = "\n", overwrite = TRUE)
+  cat(meta_str, file=file, sep = "\n")
   invisible(meta_str)
 }
 
