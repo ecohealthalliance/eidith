@@ -1,3 +1,7 @@
+# eidith 0.1.0.9000
+
+* Add a FASTA export function
+
 # eidith 0.1.0
 
 * Add documentation of web API
