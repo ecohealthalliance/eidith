@@ -42,6 +42,9 @@ reference:
       - ed_specimens
       - ed_tests
       - ed_testspecimen
+  - title: "Reports and Analyses"
+    contents:
+      - ed_fasta
   - title: "Raw data"
     contents:
       - ed_get
