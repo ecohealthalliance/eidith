@@ -44,7 +44,9 @@ ed_fasta_ <- function(.data, file="", sequence="sequence", ..., .dots) {
 #' @export
 #' @importFrom dplyr %>% left_join right_join group_by summarise
 ed_tests_report <- function() {
+  ## First we select tests for which interpretation isn't complete and aren't pool positives
   tests <- ed_table_("tests", .dots=c(~!(test_status %in% c("Interpretation completed", "Pooled test positive")),  ~!is.na(sequence)))
+  # Then join together with other data to get other fields for metadata
   test_spec <- ed_table_("test_specimen_ids", ~test_id %in% tests[["test_id"]])
   spec <- ed_table_("specimens", ~specimen_id %in% test_spec[["specimen_id"]])
   anim <- ed_table_("animals", ~animal_id %in% spec[["animal_id"]])
@@ -54,6 +56,7 @@ ed_tests_report <- function() {
     right_join(anim, by="animal_id") %>%
     right_join(events, by="event_id") %>%
     group_by(test_id) %>%
+    ## These are the fields that end up in the metadata of the report
     summarise(specimen_ids = paste(unique(specimen_id), collapse=","),
               species = paste(unique(species_scientific_name), collapse=","),
               country = paste(unique(country), collapse=","),
