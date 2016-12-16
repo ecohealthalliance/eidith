@@ -11,7 +11,11 @@ ed_fasta(.data, file = "", sequence = "sequence", ...)
 
 ed_fasta_(.data, file = "", sequence = "sequence", ..., .dots)
 
-ed_tests_report()
+ed_tests_report(status = c("Result finalized, interpretation pending"),
+  test_ids = NULL, meta_fields = c(sp_idname = "specimen_id_name", sp =
+  "species_scientific_name", country = "country", an_idname = "animal_id_name",
+  lab = "diagnostic_laboratory_name", test_rq = "test_requested", meth =
+  "methodology_reference", seq_id = "virus_id", test_id = "test_id"))
 }
 \arguments{
 \item{.data}{The data frame}
@@ -23,6 +27,16 @@ ed_tests_report()
 \item{...}{Additional columns to include as metadata, using \code{\link[dplyr:select]{dplyr::select()}} syntax.  If nothing is included, all columns are used.}
 
 \item{.dots}{Columns specified using standard evaluation.}
+
+\item{status}{For \code{ed_test_report()}, the status of tests that should be pulled.
+A vector of any of "Interpretation completed", "Active testing ongoing - pooled test positive",
+"Pooled test positive", "Active testing ongoing", or "Under Sequence Review". A warning will be
+printed if some tests have no sequence data.}
+
+\item{test_ids}{For \code{ed_test_report()}. If provided, \code{status} is ignored and tests are pulled by numeric test_id values}
+
+\item{meta_fields}{For \code{ed_test_report()}. A vector of names of metadata to provide.  If named, fields will be renamed,
+which is useful for abbreviating fields for FASTA export}
 }
 \value{
 The FASTA file is written to a file or the console.  Also, a character vector of each FASTA record is returned invisibly.  \code{ed_tests_report()} returns a data frame.

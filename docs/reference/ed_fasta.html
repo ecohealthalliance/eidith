@@ -107,7 +107,11 @@
 
 <span class='fu'>ed_fasta_</span>(<span class='no'>.data</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>sequence</span> <span class='kw'>=</span> <span class='st'>"sequence"</span>, <span class='no'>...</span>, <span class='no'>.dots</span>)
 
-<span class='fu'>ed_tests_report</span>()</pre>
+<span class='fu'>ed_tests_report</span>(<span class='kw'>status</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Result finalized, interpretation pending"</span>),
+  <span class='kw'>test_ids</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>meta_fields</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='kw'>sp_idname</span> <span class='kw'>=</span> <span class='st'>"specimen_id_name"</span>, <span class='kw'>sp</span> <span class='kw'>=</span>
+  <span class='st'>"species_scientific_name"</span>, <span class='kw'>country</span> <span class='kw'>=</span> <span class='st'>"country"</span>, <span class='kw'>an_idname</span> <span class='kw'>=</span> <span class='st'>"animal_id_name"</span>,
+  <span class='kw'>lab</span> <span class='kw'>=</span> <span class='st'>"diagnostic_laboratory_name"</span>, <span class='kw'>test_rq</span> <span class='kw'>=</span> <span class='st'>"test_requested"</span>, <span class='kw'>meth</span> <span class='kw'>=</span>
+  <span class='st'>"methodology_reference"</span>, <span class='kw'>seq_id</span> <span class='kw'>=</span> <span class='st'>"virus_id"</span>, <span class='kw'>test_id</span> <span class='kw'>=</span> <span class='st'>"test_id"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
@@ -121,6 +125,16 @@
       <dd>Additional columns to include as metadata, using <code><a href='http://www.rdocumentation.org/packages/dplyr/topics/select'>dplyr::select()</a></code> syntax.  If nothing is included, all columns are used.</dd>
       <dt>.dots</dt>
       <dd>Columns specified using standard evaluation.</dd>
+      <dt>status</dt>
+      <dd>For <code>ed_test_report()</code>, the status of tests that should be pulled.
+A vector of any of &quot;Interpretation completed&quot;, &quot;Active testing ongoing - pooled test positive&quot;,
+&quot;Pooled test positive&quot;, &quot;Active testing ongoing&quot;, or &quot;Under Sequence Review&quot;. A warning will be
+printed if some tests have no sequence data.</dd>
+      <dt>test_ids</dt>
+      <dd>For <code>ed_test_report()</code>. If provided, <code>status</code> is ignored and tests are pulled by numeric test_id values</dd>
+      <dt>meta_fields</dt>
+      <dd>For <code>ed_test_report()</code>. A vector of names of metadata to provide.  If named, fields will be renamed,
+which is useful for abbreviating fields for FASTA export</dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
