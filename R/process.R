@@ -156,7 +156,7 @@ pp_Virus <- function(dat) {
 
   if("interpretation" %in% names(dat)) {
     dat <- mutate_(dat, known_genbank_accession = ~get_genbank(interpretation),
-                   known_human_risk = ~get_interest(interpretation))
+                   evidence_human_infection = ~get_interest(interpretation))
   }
   return(dat)
 }
