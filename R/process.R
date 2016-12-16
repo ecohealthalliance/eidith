@@ -121,10 +121,13 @@ pp_Specimen <- function(dat) {
   return(dat)
 }
 
-#' @importFrom dplyr rename_ select_ mutate_ arrange_ distinct_
+#' @importFrom dplyr rename_ select_ mutate_ arrange_ distinct_ left_join
 #' @importFrom stringi stri_replace_all_fixed stri_replace_all_regex
 pp_Test <- function(dat) {
 
+  if("diagnostic_laboratory_name" %in% names(dat)) {
+    dat <- left_join(dat, ed_lab_shortnames, by="diagnostic_laboratory_name")
+  }
   if("specimen_id_names" %in% names(dat)) {
     dat <- mutate_(dat,
                    specimen_id_names = ~stri_replace_all_fixed(specimen_id_names, "Lung, Liver", "Lung-Liver") %>%
@@ -153,7 +156,7 @@ pp_Virus <- function(dat) {
 
   if("interpretation" %in% names(dat)) {
     dat <- mutate_(dat, known_genbank_accession = ~get_genbank(interpretation),
-                   known_human_risk = ~get_interest(interpretation))
+                   evidence_human_infection = ~get_interest(interpretation))
   }
   return(dat)
 }

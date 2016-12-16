@@ -155,7 +155,7 @@ write_csv(eidith_itis_lookup, P("data-raw/eidith_itis_lookup.csv"))
 
 
 ed_metadata_ <- gs_read_csv(gs_url("https://docs.google.com/spreadsheets/d/1eHCpzYCL5-GRMZLhqJc4fj2iVUhjVhydNEp20oQW5H0/"))
-
+ed_lab_shortnames <- readr::read_csv(P("data-raw/ed_lab_shortnames.csv"), col_types="cc")
 readr::write_csv(ed_metadata_, P("data-raw/ed_metadata.csv"))
-devtools::use_data(eidith_itis_lookup, ed_metadata_, internal = TRUE, overwrite = TRUE)
+devtools::use_data(eidith_itis_lookup, ed_metadata_, ed_lab_shortnames, internal = TRUE, overwrite = TRUE)
 
