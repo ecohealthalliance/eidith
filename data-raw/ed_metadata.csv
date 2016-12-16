@@ -38,13 +38,13 @@ events,Event,38,DateLastUpdated,date_last_updated,database_date,Last date of exp
 events,Event,36,CRDate,crdate,date_created,Date record was first created within the EIDITH database,NA
 events,Event,37,LMDate,lmdate,date_modified,Last-modified date of record within the EIDITH database,NA
 animals,Animal,2,GAINS3_EventID,gains3_event_id,event_id,Numerical event ID,NA
-animals,Animal,1,GAINS3_SampleUnitID,gains3_sample_unit_id,animal_id,Numerical animal ID. Not every record is exactly one animal but the vast majority are.,Renamed to
+animals,Animal,1,GAINS3_SampleUnitID,gains3_sample_unit_id,animal_id,"Numerical animal ID. Not every record is exactly one animal (e.g., some represent samples from market meat, etc.) but one ""sample unit""",Renamed to
 animals,Animal,8,ContainerID,container_id,DROP,NA,dropped because all NA
 animals,Animal,9,ContainerType,container_type,NA,Type of container sample group was in,NA
 animals,Animal,10,Quantity,quantity,NA,NA,NA
 animals,Animal,11,QuantityCertainty,quantity_certainty,NA,NA,NA
 animals,Animal,12,QuantityUnit,quantity_unit,NA,NA,NA
-animals,Animal,13,SampleUnitID,sample_unit_id,NA,NA,NA
+animals,Animal,13,SampleUnitID,sample_unit_id,DROP,NA,NA
 animals,Animal,3,AnimalID (GAINS),animal_id_gains,animal_id_name,Alphanumeric animal ID,NA
 animals,Animal,14,AnimalID from Country,animal_id_from_country,DROP,NA,dropped because of multiple ID name columns
 animals,Animal,15,PriortizedForTesting,priortized_for_testing,prioritized_for_testing,NA,NA
@@ -109,9 +109,9 @@ animals,Animal,69,genus,genus,NA,Integrated Taxonomic Information System Genus,C
 animals,Animal,70,species,species,NA,Integrated Taxonomic Information System Species,Changed by lookup to ITIS
 animals,Animal,71,NA,subspecies,subspecies,Subspecies as reported or found in ITIS lookup,Inserted by itis lookup
 animals,Animal,72,NA,binomal,binomial,"Genus and species, but not subspecies name, NA when species is unknown",NA
-animals,Animal,74,DateLastUpdated,date_last_updated,database_date,NA,NA
-animals,Animal,72,CRDate,crdate,date_created,Date record was first created within the EIDITH database,NA
-animals,Animal,73,LMDate,lmdate,date_modified,Last-modified date of record within the EIDITH database,NA
+animals,Animal,75,DateLastUpdated,date_last_updated,database_date,NA,NA
+animals,Animal,73,CRDate,crdate,date_created,Date record was first created within the EIDITH database,NA
+animals,Animal,74,LMDate,lmdate,date_modified,Last-modified date of record within the EIDITH database,NA
 animals,Animal,NA,SampleIndividualName,sample_individual_name,DROP,NA,NA
 animals,Animal,NA,Country,country,DROP,NA,dropped because of redundancy
 specimens,Specimen,2,GAINS3_SampleUnitID,gains3_sample_unit_id,animal_id,NA,NA
@@ -145,6 +145,7 @@ specimens,Specimen,NA,Country,country,DROP,NA,NA
 tests,Test,3,Pooled,pooled,NA,Whether tests are pooled or single samples,NA
 tests,Test,2,SpecimenName,specimen_name,specimen_id_names,NA,NA
 tests,Test,8,DiagnosticLaboratoryName,diagnostic_laboratory_name,NA,Name of diagnostic laboratory,NA
+tests,Test,32,NA,diag_lab_shortname,NA,NA,NA
 tests,Test,11,LabStorageMethod,lab_storage_method,NA,Description of storage method,NA
 tests,Test,12,LabSubmissionDate,lab_submission_date,NA,Date of submission specimens to laboratory,NA
 tests,Test,13,TestDate,test_date,NA,Date of test,NA
@@ -176,9 +177,9 @@ tests,Test,29,InterpretationNotes,interpretation_notes,NA,NA,NA
 tests,Test,30,Comments,comments,NA,NA,NA
 tests,Test,31,PredictProtocol,predict_protocol,NA,NA,NA
 tests,Test,1,TestID,test_id,NA,Numerical Test ID,NA
-tests,Test,34,DateLastUpdated,date_last_updated,NA,NA,NA
-tests,Test,32,CRDate,crdate,NA,Date record was first created within the EIDITH database,NA
-tests,Test,33,LMDate,lmdate,NA,Last-modified date of record within the EIDITH database,NA
+tests,Test,35,DateLastUpdated,date_last_updated,database_date,NA,NA
+tests,Test,33,CRDate,crdate,date_created,Date record was first created within the EIDITH database,NA
+tests,Test,34,LMDate,lmdate,date_modified,Last-modified date of record within the EIDITH database,NA
 tests,Test,NA,Country,country,DROP,NA,NA
 viruses,Virus,1,GAINS3_SequenceID,gains3_sequence_id,virus_id,Numerical Sequence ID,NA
 viruses,Virus,2,GAINS3_TestID,gains3_test_id,test_id,Numerical Test ID,NA
@@ -190,9 +191,9 @@ viruses,Virus,4,ViralGenus,viral_genus,NA,ICTV Viral Genus,NA
 viruses,Virus,11,Interpretation,interpretation,NA,NA,NA
 viruses,Virus,5,VirusStatus,virus_status,known,NA,NA
 viruses,Virus,7,GenbankAccessionNumber,genbank_accession_number,new_genbank_accession,Genbank Accession Number for novel strain or novel virus sequences,NA
-viruses,Virus,12,DateLastUpdated,date_last_updated,NA,NA,NA
-viruses,Virus,13,CRDate,crdate,NA,Date record was first created within the EIDITH database,NA
-viruses,Virus,14,LMDate,lmdate,NA,Last-modified date of record within the EIDITH database,NA
+viruses,Virus,12,DateLastUpdated,date_last_updated,database_date,NA,NA
+viruses,Virus,13,CRDate,crdate,date_created,Date record was first created within the EIDITH database,NA
+viruses,Virus,14,LMDate,lmdate,date_modified,Last-modified date of record within the EIDITH database,NA
 viruses,Virus,NA,Country,country,DROP,NA,NA
 viruses,Virus,6,NA,known_human_risk,NA,NA,NA
 viruses,Virus,8,NA,known_genbank_accession,NA,NA,NA
