@@ -10,7 +10,7 @@ eidith_db <- function(path = NULL) {
   } else {
     current_path <- getOption("ed_sql_path", default_sql_path)
     if(!dir.exists(dirname(current_path))) {
-      dir.create(dirname(current_path))
+      dir.create(dirname(current_path), recursive=TRUE)
     }
     if(is.null(.eidith_db) || .eidith_db$path != current_path) {
       .eidith_db <<- dplyr::src_sqlite(current_path, create=TRUE)
