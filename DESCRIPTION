@@ -33,20 +33,11 @@ Imports:
     magrittr,
     lazyeval,
     lubridate,
-    readr,
     DT
 Suggests:
     testthat,
-    covr,
     rmarkdown,
-    pkgdown,
     knitr,
-    roxygen2,
-    goodpractice
-Remotes:
-    klutometis/roxygen,
-    hadley/pkgdown
-    MangoTheCat/goodpractice
-    jimhester/covr
+    readr
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr

@@ -14,3 +14,4 @@
 ^CONTRIBUTING\.md$
 ^codecov\.yml$
 ^.httr-oauth$
+^index.*$

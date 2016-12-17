@@ -33,14 +33,20 @@ you have questions, bug reports, or feature requests, please post them on our
 
 ### Installation
 
-**eidith** is installed from GitHub rather than CRAN.  To install, you will
-require the [**devtools**](https://CRAN.R-project.org/package=devtools) package.
-Use the following command to install the package:
+**eidith** is installed from our own package repository rather than CRAN.  To
+install the latest stable version, run the following command:
 
 ```{r install, eval = FALSE}
-if (!require(devtools)) install.packages("devtools")
-devtools::install_github("ecohealthalliance/eidith")
+install.packages("eidith", repos=c("https://ecohealthalliance.github.io/eidith/", getOption("repos")), type="source")
 ```
+
+If you wish to install the latest *development* (unstable) version, you will
+require the [**devtools**] package.
+
+```{r install-dev, eval = FALSE}
+devtools::install_github('ecohealthalliance/eidith@dev')
+```
+
 ### Authentication
 
 To download data from EIDITH, you must provide logon credentials.  If you run

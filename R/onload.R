@@ -1,4 +1,6 @@
+
 .eidith_db <- NULL
+#' @importFrom rappdirs user_data_dir
 default_sql_path <-  getOption("ed_sql_path",
                                file.path(rappdirs::user_data_dir(),
                                          "eidith", "eidith_db.sqlite"))

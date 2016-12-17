@@ -77,6 +77,8 @@ ed_db_download <- function(verbose=interactive()) {
 #' @importFrom purrr map_chr
 #' @importFrom dplyr tbl group_by_ summarise_ collect lst db_list_tables mutate_ lst_
 #' @importFrom tidyr separate_
+#' @importFrom DBI dbGetQuery
+#' @importFrom RSQLite dbGetQuery
 #' @export
 ed_db_status <- function(path=NULL) {
   edb <- eidith_db(path)
