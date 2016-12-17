@@ -1,15 +1,28 @@
-# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
-
 language: r
+
 r:
-  - oldrel
-  - release
-  - devel
+- oldrel
+- release
+os:
+- linux
+- osx
+
 sudo: false
 cache: packages
 
-r_github_packages:
-  - jimhester/covr
+branches:
+  only:
+  - master
+  - dev
 
 after_success:
-  - Rscript -e 'covr::codecov()'
+- Rscript -e 'covr::codecov()'
+- Rscript -e 'library(goodpractice);gp(checks=all_checks()[!grepl("(rcmdcheck|covr)",all_checks())])'
+- Rscript -e 'devtools::spell_check()'
+
+notifications:
+  email:
+    recipients:
+      - ross@ecohealthalliance.org
+    on_success: change
+    on_failure: change

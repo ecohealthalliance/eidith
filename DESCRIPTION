@@ -41,9 +41,12 @@ Suggests:
     rmarkdown,
     pkgdown,
     knitr,
-    roxygen2
+    roxygen2,
+    goodpractice
 Remotes:
-  klutometis/roxygen,
-  hadley/pkgdown
+    klutometis/roxygen,
+    hadley/pkgdown
+    MangoTheCat/goodpractice
+    jimhester/covr
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
