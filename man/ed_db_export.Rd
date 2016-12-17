@@ -8,6 +8,8 @@ ed_db_export(filename, ...)
 }
 \arguments{
 \item{filename}{The filename to export to. We suggest something ending in \code{.sqlite}.}
+
+\item{...}{Other options passed to \code{\link[=file.copy]{file.copy()}}}
 }
 \description{
 This function allows you to export the local EIDITH database to a file that

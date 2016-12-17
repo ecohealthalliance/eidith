@@ -12,3 +12,5 @@
 ^\.travis\.yml$
 ^CONDUCT\.md$
 ^CONTRIBUTING\.md$
+^codecov\.yml$
+^.httr-oauth$

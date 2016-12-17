@@ -6,7 +6,7 @@ default_sql_path <-  getOption("ed_sql_path",
 
 eidith_db <- function(path = NULL) {
   if(!is.null(path)) {
-    return(plyr::src_sqlite(path, create=TRUE))
+    return(dplyr::src_sqlite(path, create=TRUE))
   } else {
     current_path <- getOption("ed_sql_path", default_sql_path)
     if(!dir.exists(dirname(current_path))) {

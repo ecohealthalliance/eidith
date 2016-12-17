@@ -53,7 +53,7 @@ a \link[tibble:tibble]{tibble}-style data frame
 }
 \description{
 These function download data directly from the EIDITH API.  They require
-\link[=eidith_auth]{authorization}.  They can be useful for comparing local data
+\link[=ed_auth]{authorization}.  They can be useful for comparing local data
 against data updated in the database, or processed vs. unprocessed data.
 The \link[=ed_table]{table functions} load data from the local database instead,
 and are thus faster and work without an internet connection.
