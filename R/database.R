@@ -1,4 +1,5 @@
-db_tables <- c("events", "animals", "specimens", "tests", "viruses", "test_specimen_ids", "status")
+db_tables <- c("events", "animals", "specimens", "tests", "viruses",
+               "test_specimen_ids", "status")
 
 db_unique_indexes <- list(
   events = list("event_id"),
@@ -83,9 +84,9 @@ ed_db_download <- function(verbose=interactive()) {
 ed_db_status <- function(path=NULL) {
   edb <- eidith_db(path)
   if(!(all(db_tables %in% db_list_tables(edb$con)))) {
-    dbstatus<- list(status_msg = "Local EIDITH database is empty, out-of-date, or corrupt.  Run ed_db_download() to update")
+    dbstatus <- list(status_msg ="Local EIDITH database is empty, out-of-date, or corrupt.\nRun ed_db_download() to update")
   } else {
-    records = tbl(edb, "sqlite_stat1") %>% collect() %>%
+    records <- tbl(edb, "sqlite_stat1") %>% collect() %>%
       filter_('tbl != "status"') %>%
       separate_("stat", into=c("rows", "columns"), sep=" ", convert=TRUE) %>%
       group_by_("tbl") %>%
@@ -94,7 +95,11 @@ ed_db_status <- function(path=NULL) {
       mutate_(string = ~paste(prettyNum(rows, big.mark=","), tbl))
     dbstatus <-lst_(list(
       countries = ~tbl(edb, "events") %>%
-        group_by_("country") %>% summarise_(n=~n()) %>% collect() %>% use_series("country") %>% sort(),
+        group_by_("country") %>%
+        summarise_(n=~n()) %>%
+        collect() %>%
+        use_series("country") %>%
+        sort(),
       n_countries = ~length(countries),
       last_modified_records = ~quicktime2(map_chr(db_tables[1:5], function(db_table) {
         DBI::dbGetQuery(edb$con, paste0("SELECT MAX(date_modified) FROM ", db_table ))[[1]]
@@ -122,7 +127,8 @@ ed_db_status_msg <- function(status) {
         "Records: ", paste(status[["records"]][["string"]], collapse="; ")
       ), collapse = ""), width=80, exdent=2), collapse="\n"), "\n",
       "Last download: ", as.character(status[["last_download"]]), "\n",
-      "Last updated record: ", as.character(status[["last_modified_record"]]), " in ", status[["last_table"]], " table"), collapse="")
+      "Last updated record: ", as.character(status[["last_modified_record"]]),
+        " in ", status[["last_table"]], " table"), collapse="")
   }
   return(status_msg)
 }
@@ -172,7 +178,8 @@ ed_db_updates <- function(path = NULL) {
   auth <- ed_auth()
   check_at <- endpoints[endpoints !="TestIDSpecimenID"]
   new_rows <- lapply(check_at, function(endpoint) {
-    newdat <- ed_get(endpoint = endpoint, verbose = FALSE, lmdate_from = last_download, postprocess = FALSE, auth = auth)
+    newdat <- ed_get(endpoint = endpoint, verbose = FALSE,
+                     lmdate_from = last_download, postprocess = FALSE, auth = auth)
     nrow(newdat)
   })
   is_new_data <- as.logical(unlist(new_rows))
@@ -180,7 +187,9 @@ ed_db_updates <- function(path = NULL) {
   if(all(!is_new_data)) {
     message("No new data since ", last_download, ".")
   } else {
-    message("New data at endpoints: [", paste0(check_at[is_new_data], collapse=","), "]. Use ed_db_download() to update.")
+    message("New data at endpoints: [",
+            paste0(check_at[is_new_data], collapse=","),
+            "]. Use ed_db_download() to update.")
   }
   return(is_new_data)
 }

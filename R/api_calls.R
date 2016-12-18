@@ -1,5 +1,6 @@
 eidith_base_url <- "https://predict2api.eidith.org/api/app/"
-endpoints <- c("Event", "Animal", "Specimen", "Test", "Virus", "TestIDSpecimenID")
+endpoints <- c("Event", "Animal", "Specimen", "Test", "Virus",
+               "TestIDSpecimenID")
 
 #' Functions to download EIDITH tables via API
 #'
@@ -26,28 +27,33 @@ NULL
 #' @importFrom httr GET status_code progress authenticate content modify_url
 #' @importFrom jsonlite fromJSON
 #' @importFrom tibble as_tibble
-ed_get <- function(endpoint, verbose=interactive(), postprocess=TRUE, header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, auth=NULL, ...) {
+ed_get <- function(endpoint, verbose=interactive(), postprocess=TRUE,
+                   header_only=FALSE, lmdate_from="2000-01-01",
+                   lmdate_to=Sys.Date() + 1, auth=NULL, ...) {
   url <- modify_url(url =  paste0(eidith_base_url, endpoint),
                     query = list(header_only = ifelse(header_only, "y", "n"),
                                  lmdate_from = lmdate_from,
                                  lmdate_to = lmdate_to))
   if(verbose) {
-    pbar = progress()
+    pbar <- progress()
     message(paste("Downloading", endpoint, "table..."))
   } else {
-    pbar=NULL
+    pbar <- NULL
   }
 
   if(is.null(auth)) auth <- ed_auth()
 
-  request <- GET(url=url, authenticate(auth[1], auth[2], type="basic"), pbar, ...)
+  request <- GET(url=url, authenticate(auth[1], auth[2], type="basic"),
+                 pbar, ...)
 
   if(status_code(request) == 401) {
-    stop("Unauthorized (HTTP 401). Your username or password do not match an account. See ?eidith_auth.")
+    stop("Unauthorized (HTTP 401). Your username or password do not match an account.
+See ?ed_auth.")
   }
 
   if(status_code(request) == 403) {
-    stop("Forbidden (HTTP 403). Your account does not have access permissions. Contact technology@eidith.org.")
+    stop("Forbidden (HTTP 403). Your account does not have access permissions.
+Contact technology@eidith.org.")
   }
 
   if(verbose) message("Importing...")
@@ -56,46 +62,61 @@ ed_get <- function(endpoint, verbose=interactive(), postprocess=TRUE, header_onl
   if(header_only) {
     return(data)
   } else {
-    data = as_tibble(data)
+    data <- as_tibble(data)
   }
 
-  if(postprocess) data = ed_process(data, endpoint)
+  if(postprocess) data <- ed_process(data, endpoint)
 
   return(data)
 }
 
 #' @rdname ed_get
 #' @export
-ed_get_events <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+ed_get_events <- function(verbose=interactive(), postprocess=TRUE,
+                          header_only=FALSE, lmdate_from="2000-01-01",
+                          lmdate_to=Sys.Date() + 1, ...) {
   ed_get("Event", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }
 
 #' @rdname ed_get
 #' @export
-ed_get_animals <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+ed_get_animals <- function(verbose=interactive(), postprocess=TRUE,
+                           header_only=FALSE, lmdate_from="2000-01-01",
+                           lmdate_to=Sys.Date() + 1, ...) {
   ed_get("Animal", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }
 
 #' @rdname ed_get
 #' @export
-ed_get_specimens <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
-  ed_get("Specimen", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
+ed_get_specimens <- function(verbose=interactive(), postprocess=TRUE,
+                             header_only=FALSE, lmdate_from="2000-01-01",
+                             lmdate_to=Sys.Date() + 1, ...) {
+  ed_get("Specimen", verbose, postprocess, header_only,
+         lmdate_from, lmdate_to, ...)
 }
 
 #' @rdname ed_get
 #' @export
-ed_get_tests <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
+ed_get_tests <- function(verbose=interactive(), postprocess=TRUE,
+                         header_only=FALSE, lmdate_from="2000-01-01",
+                         lmdate_to=Sys.Date() + 1, ...) {
   ed_get("Test", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }
 
 #' @rdname ed_get
 #' @export
-ed_get_viruses <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
-  ed_get("Virus", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
+ed_get_viruses <- function(verbose=interactive(), postprocess=TRUE,
+                           header_only=FALSE, lmdate_from="2000-01-01",
+                           lmdate_to=Sys.Date() + 1, ...) {
+  ed_get("Virus", verbose, postprocess, header_only,
+         lmdate_from, lmdate_to, ...)
 }
 
 #' @rdname ed_get
 #' @export
-ed_get_testspecimen <- function(verbose=interactive(), postprocess=TRUE,  header_only=FALSE, lmdate_from="2000-01-01", lmdate_to=Sys.Date() + 1, ...) {
-  ed_get("TestIDSpecimenID", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
+ed_get_testspecimen <- function(verbose=interactive(), postprocess=TRUE,
+                                header_only=FALSE, lmdate_from="2000-01-01",
+                                lmdate_to=Sys.Date() + 1, ...) {
+  ed_get("TestIDSpecimenID", verbose, postprocess, header_only,
+         lmdate_from, lmdate_to, ...)
 }

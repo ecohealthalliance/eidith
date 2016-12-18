@@ -35,7 +35,7 @@ ed_auth <- function(verbose=interactive(), force=FALSE) {
 
   if(identical(user, "") || identical(pwd, "") || force) {
     if(interactive()) {
-      message("We recommend saving EIDITH credentials as environment variables.See ?ed_auth")
+      message("We recommend saving EIDITH credentials as environment variables. See ?ed_auth")
       user <- readline("EIDITH username: ")
       pwd <- getPass::getPass("EIDITH password: ")
     } else {

@@ -47,42 +47,42 @@ fix_classes <- function(table) {
 
 #' @export
 #' @rdname ed_table
-ed_table = function(table, ...) {
+ed_table <- function(table, ...) {
   ed_table_(table, .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
 #' @rdname ed_table
-ed_events = function(...) {
+ed_events <- function(...) {
   ed_table_("events", .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
 #' @rdname ed_table
-ed_animals = function(...) {
+ed_animals <- function(...) {
   ed_table_("animals", .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
 #' @rdname ed_table
-ed_specimens = function(...) {
+ed_specimens <- function(...) {
   ed_table_("specimens", .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
 #' @rdname ed_table
-ed_tests = function(...) {
+ed_tests <- function(...) {
   ed_table_("tests", .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
 #' @rdname ed_table
-ed_viruses = function(...) {
+ed_viruses <- function(...) {
   ed_table_("viruses", .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
 #' @rdname ed_table
-ed_testspecimen = function(...) {
+ed_testspecimen <- function(...) {
   ed_table_("test_specimen_ids", .dots = lazyeval::lazy_dots(...))
 }
