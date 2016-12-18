@@ -18,7 +18,7 @@ sudo: false
 cache: packages
 
 before_install:
-  - if [ "$TRAVIS_OS_NAME" == "osx" ] && [ "$TRAVIS_R_VERSION"=="3.2.4"]; then echo "options(pkgType='source')" >> $R_PROFILE; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ] && [ "$TRAVIS_R_VERSION"=="3.2.4"]; then echo "options(pkgType='source')" >> $R_PROFILE; cat $R_PROFILE; fi
 
 warnings_are_errors: true
 
