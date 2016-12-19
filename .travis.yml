@@ -23,6 +23,8 @@ before_install:
 
 before_script:
   - if [ "$DEVELOPMENT_PKGS" == "true" ]; then echo "Installing in-development packages"; Rscript -e 'devtools::install_github(c("rstats-db/RSQLite", "rstats-db/DBI", "hadley/dplyr"))'; fi
+  - Rscript -e 'options(pkgType="source"); if(!require(covr)) devtools::install_github("jimhester/covr"); if(!require(goodpractice)) devtools::install_github("MangoTheCat/goodpractice"); if(!require(hunspell)) devtools::install_github("ropensci/hunspell")'
+
 
 warnings_are_errors: true
 
@@ -39,7 +41,6 @@ env:
   - DEVELOPMENT_PKGS=false
 
 after_success:
-  - Rscript -e 'options(pkgType="source"); if(!require(covr)) devtools::install_github("jimhester/covr"); if(!require(goodpractice)) devtools::install_github("MangoTheCat/goodpractice"); if(!require(hunspell)) devtools::install_github("ropensci/hunspell")'
   - Rscript -e 'covr::codecov()'
   - Rscript -e 'library(goodpractice);gp(checks=all_checks()[!grepl("(rcmdcheck|covr)",all_checks())])'
   - Rscript -e 'devtools::spell_check()'
