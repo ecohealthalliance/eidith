@@ -22,7 +22,7 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" == "osx" ] && [ "$TRAVIS_R_VERSION"=="3.2.4"]; then echo "options(pkgType='source')" >> $R_PROFILE; cat $R_PROFILE; fi
 
 before_script:
-  - if [ "$DEVELOPMENT_PKGS" == "true" ]; then echo "Installing in-development packages"; Rscript -e 'devtools::install_github(c("rstats-db/RSQLite", "rstats-db/DBI", "hadley/dplyr"))'; fi
+  - if [ "$DEVELOPMENT_PKGS" == "true" ]; then echo "\033[0;33mInstalling in-development packages\033[0m"; Rscript -e 'devtools::install_github(c("rstats-db/RSQLite", "rstats-db/DBI", "hadley/dplyr"))'; fi
 
 warnings_are_errors: true
 
