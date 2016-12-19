@@ -1,16 +1,23 @@
-
 .eidith_db <- NULL
 #' @importFrom rappdirs user_data_dir
-default_sql_path <-  getOption("ed_sql_path",
-                               file.path(rappdirs::user_data_dir(),
-                                         "eidith", "eidith_db.sqlite"))
+default_sql_path <-
+  getOption("ed_sql_path",
+            dplyr::if_else(
+              file.access(rappdirs::user_data_dir(), 2) == 0,
+              file.path(rappdirs::user_data_dir(),
+                        "eidith", "eidith_db.sqlite"),
+              file.path(
+                system.file(package = "eidith", mustWork = FALSE),
+                "eidith", "eidith_db.sqlite")))
+
 
 
 eidith_db <- function(path = NULL) {
   if(!is.null(path)) {
     return(dplyr::src_sqlite(path, create=TRUE))
   } else {
-    current_path <- getOption("ed_sql_path", default_sql_path)
+    current_path <- normalizePath(getOption("ed_sql_path", default_sql_path),
+                                  mustWork=FALSE)
     if(!dir.exists(dirname(current_path))) {
       dir.create(dirname(current_path), recursive=TRUE)
     }
