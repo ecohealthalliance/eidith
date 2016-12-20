@@ -27,6 +27,7 @@ NULL
 #' @importFrom httr GET status_code progress authenticate content modify_url
 #' @importFrom jsonlite fromJSON
 #' @importFrom tibble as_tibble
+#' @export
 ed_get <- function(endpoint, verbose=interactive(), postprocess=TRUE,
                    header_only=FALSE, lmdate_from="2000-01-01",
                    lmdate_to=Sys.Date() + 1, auth=NULL, ...) {
