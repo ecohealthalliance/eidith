@@ -13,7 +13,7 @@ See the [package tutorial](https://ecohealthalliance.github.io/eidith/articles/e
 
 If you'd like to contribute to the project, please see the [contributing guidelines](CONTRIBUTING.md). Please note that this project is governed by a [code of conduct](CONDUCT.md).
 
-### Package Status
+### Package Testing Status
 
 <table style="width:100%;">
 <colgroup>

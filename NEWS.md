@@ -1,10 +1,10 @@
-# eidith 0.2.0
-
 When updating to a new version of the eidith package, be sure to run
-`ed_db_dowbload()` after.
+`ed_db_download()` after.
 
 You can install previous versions of eidith from GitHub, e.g.,
 `devtools::install_github('ecohealthalliance/eidith@v0.1.0')`
+
+# eidith 0.2.0
 
 ## New functionality
 
@@ -19,6 +19,7 @@ You can install previous versions of eidith from GitHub, e.g.,
 ## Changes to development
 
  - Moved to separate stable (`master`) and development (`dev`) branches.
+ - Set up continuous integration tests, run daily, for all main OSs and R versions. 
  
 # eidith v0.1.0
 

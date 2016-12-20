@@ -37,11 +37,11 @@ you have questions, bug reports, or feature requests, please post them on our
 install the latest stable version, run the following command:
 
 ```{r install, eval = FALSE}
-install.packages("eidith", repos=c("https://ecohealthalliance.github.io/eidith/", getOption("repos")), type="source")
+install.packages("eidith", repos=c("https://ecohealthalliance.github.io/eidith/", getOption("repos")), type="both")
 ```
 
 If you wish to install the latest *development* (unstable) version, you will
-require the [**devtools**] package.
+require the [**devtools**] package, like so:
 
 ```{r install-dev, eval = FALSE}
 devtools::install_github('ecohealthalliance/eidith@dev')
