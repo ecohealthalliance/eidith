@@ -26,6 +26,8 @@
 #
 #' @rdname ed_metadata
 #' @export
+#' @importFrom DT datatable
+#' @importFrom htmlwidgets saveWidget
 ed_metadata <- function() {
   ed_metadata_
 }

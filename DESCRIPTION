@@ -33,6 +33,7 @@ Imports:
     magrittr,
     lazyeval,
     lubridate,
+    htmlwidgets,
     DT
 Suggests:
     testthat,
