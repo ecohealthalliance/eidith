@@ -59,6 +59,7 @@ ed_db_download <- function(verbose=interactive()) {
     message("Database updated!")
     message(ed_db_status_msg(ed_db_status()))
   }
+  invisible(0)
 }
 
 #' Get the status of the locally stored EIDITH database

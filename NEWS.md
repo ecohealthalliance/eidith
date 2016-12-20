@@ -9,7 +9,7 @@ You can install previous versions of eidith from GitHub, e.g.,
 ## New functionality
 
 - Add a FASTA export function: `ed_fasta()`
-- Add a function for reports on recents test: `ed_tests_report()`
+- Add a function for reports on recents tests: `ed_tests_report()`
 
 ## Changes to data processing
 

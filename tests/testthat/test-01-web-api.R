@@ -23,7 +23,11 @@ if(HAS_INTERNET && HAS_GLOBAL_CRED) {
   })
 
   test_that("Database download takes place", {
-    expect_success(ed_db_download())
+
+    withr::with_envvar(c("EIDITH_USERNAME"=Sys.getenv("EIDITH_GLOBAL_USERNAME"),
+                         "EIDITH_PASSWORD"=Sys.getenv("EIDITH_GLOBAL_PASSWORD")), {
+                           expect_equal(ed_db_download(verbose = TRUE), 0)
+                         })
   })
 
 }

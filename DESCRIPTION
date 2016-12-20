@@ -38,6 +38,7 @@ Imports:
 Suggests:
     curl,
     testthat,
+    withr,
     rmarkdown,
     knitr,
     readr
