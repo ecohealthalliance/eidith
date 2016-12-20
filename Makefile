@@ -18,8 +18,12 @@ site: docs readme index.Rmd
 	rm -f index.md index.html
 
 drat: site
-	mkdir -p docs/src/contrib
-	${RSCRIPT} -e "pf <- devtools::build(); drat::insertPackage(pf, 'docs'); unlink(pf)"
+	mkdir -p docs/src/contrib docs/bin/windows/contrib docs/bin/macosx/contrib
+	${RSCRIPT} -e "src_pkg <- devtools::build(); drat::insertPackage(src_pkg, 'docs'); unlink(src_pkg)"
+	##${RSCRIPT} -e "if(Sys.info()['sysname'] == 'Darwin') { osx_pkg <- devtools::build(binary = TRUE, args = c('--preclean')); drat::insertPackage(osx_pkg, 'docs'); unlink(osx_pkg) }"
+  ## WINDOWS CURRENTLY BUILT MANUALLY OR PULLED FROM CI. Then run drat::insertPackage(WINDOWS_ZIP_FILE, 'docs')
+
+
 
 test:
 	${RSCRIPT} -e "library(methods); devtools::test()"
