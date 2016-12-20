@@ -50,7 +50,7 @@ ed_fasta_ <- function(.data, file="", sequence="sequence", ..., .dots) {
 #' @param meta_fields For `ed_test_report()`. A vector of names of metadata to provide.  If named, fields will be renamed,
 #'   which is useful for abbreviating fields for FASTA export
 #' @export
-#' @importFrom dplyr %>% left_join right_join group_by_ summarise_at select_
+#' @importFrom dplyr %>% left_join right_join group_by_ summarise_at select_ coalesce
 ed_tests_report <- function(status = c("Result finalized, interpretation pending"),
                             test_ids = NULL,
                             meta_fields = c(sp_idname="specimen_id_name",
@@ -94,7 +94,7 @@ ed_tests_report <- function(status = c("Result finalized, interpretation pending
     group_by_("test_id") %>%
     ## These are the fields that end up in the metadata of the report
     summarise_at(.cols = c(meta_fields[!(meta_fields == "test_id")], "sequence"),
-                 .funs = funs(paste(unique(.), collapse=","))) %>%
+                 .funs = funs_(dots='paste(unique(.), collapse=",")')) %>%
     group_by_() %>%
     select_(.dots=c(coalesce(na_if(names(meta_fields), ""), meta_fields), "sequence"))
 

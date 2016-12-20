@@ -14,7 +14,7 @@ ed_fasta_(.data, file = "", sequence = "sequence", ..., .dots)
 ed_tests_report(status = c("Result finalized, interpretation pending"),
   test_ids = NULL, meta_fields = c(sp_idname = "specimen_id_name", sp =
   "species_scientific_name", country = "country", an_idname = "animal_id_name",
-  lab = "diagnostic_laboratory_name", test_rq = "test_requested", meth =
+  lab = "diag_lab_shortname", test_rq = "test_requested", meth =
   "methodology_reference", seq_id = "virus_id", test_id = "test_id"))
 }
 \arguments{
