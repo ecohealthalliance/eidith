@@ -1,14 +1,13 @@
 .eidith_db <- NULL
 #' @importFrom rappdirs user_data_dir
 default_sql_path <-
-  getOption("ed_sql_path",
-            dplyr::if_else(
-              file.access(rappdirs::user_data_dir(), 2) == 0,
-              file.path(rappdirs::user_data_dir(),
-                        "eidith", "eidith_db.sqlite"),
-              file.path(
-                system.file(package = "eidith", mustWork = FALSE),
-                "eidith", "eidith_db.sqlite")))
+  dplyr::if_else(
+    file.access(rappdirs::user_data_dir(), 2) == 0,
+    file.path(rappdirs::user_data_dir(),
+              "eidith", "eidith_db.sqlite"),
+    file.path(
+      system.file(package = "eidith", mustWork = FALSE),
+      "eidith", "eidith_db.sqlite"))
 
 
 

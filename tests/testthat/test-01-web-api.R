@@ -26,6 +26,7 @@ if(HAS_INTERNET && HAS_GLOBAL_CRED) {
 
     withr::with_envvar(c("EIDITH_USERNAME"=Sys.getenv("EIDITH_GLOBAL_USERNAME"),
                          "EIDITH_PASSWORD"=Sys.getenv("EIDITH_GLOBAL_PASSWORD")), {
+                           cat("\n")
                            expect_equal(ed_db_download(verbose = TRUE), 0)
                          })
   })

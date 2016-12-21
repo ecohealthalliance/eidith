@@ -44,13 +44,15 @@ db_other_indexes <- list(
 ed_db_download <- function(verbose=interactive()) {
   auth <- ed_auth(verbose = verbose)
   if(verbose) message("Downloading and processing EIDITH data. This may take a few minutes.")
-  tables <- lapply(endpoints, ed_get, postprocess=TRUE, verbose=verbose, auth=auth)
   lapply(dplyr:: db_list_tables(eidith_db()$con), function(x) {
     dplyr::db_drop_table(eidith_db()$con, x)}
   )
-  lapply(seq_along(tables), function(x) {
-    dplyr::copy_to(eidith_db(), tables[[x]], name=db_tables[x], temporary = FALSE,
+  lapply(seq_along(endpoints), function(x) {
+    tb <- ed_get(endpoints[x], postprocess=TRUE, verbose=verbose, auth=auth)
+    dplyr::copy_to(eidith_db(), tb, name=db_tables[x], temporary = FALSE,
                    unique_indexes = db_unique_indexes[[x]], indexes = db_other_indexes[[x]])
+    rm(tb);
+    gc(verbose=FALSE)
   })
 
   dplyr::copy_to(eidith_db(), data.frame(last_download=as.character(Sys.time())),

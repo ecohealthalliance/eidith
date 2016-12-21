@@ -26,7 +26,6 @@ before_install:
 before_script:
   - if [ "$DEVELOPMENT_PKGS" == "true" ]; then echo "Installing in-development packages"; Rscript -e 'devtools::install_github(c("rstats-db/RSQLite", "rstats-db/DBI", "hadley/dplyr"))'; fi
 
-
 warnings_are_errors: true
 
 env:

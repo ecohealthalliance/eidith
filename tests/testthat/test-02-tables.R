@@ -26,3 +26,6 @@ if(!DB_EXISTS) {
     }
   })
 }
+
+unlink(getOption("ed_sql_path"))
+
