@@ -7,13 +7,13 @@ suppressPackageStartupMessages({
 
 context("Web API")
 
-if(HAS_INTERNET && HAS_GLOBAL_CRED) {
+if(HAS_INTERNET && HAS_EHA_CRED) {
 
   test_that("Server API has expected fields", {
     for(endpt in eidith:::endpoints[1:5]) {
       url <- modify_url(paste0(eidith:::eidith_base_url, endpt),
                         query = list(header_only="y"))
-      headers = GET(url, authenticate(Sys.getenv("EIDITH_GLOBAL_USERNAME"), Sys.getenv("EIDITH_GLOBAL_PASSWORD"))) %>%
+      headers = GET(url, authenticate(Sys.getenv("EIDITH_EHA_USERNAME"), Sys.getenv("EIDITH_EHA_PASSWORD"))) %>%
         content() %>%
         unlist()
       expected_fields <- filter(ed_metadata(), endpoint==endpt) %>% use_series(original_name) %>% na.omit
@@ -24,8 +24,8 @@ if(HAS_INTERNET && HAS_GLOBAL_CRED) {
 
   test_that("Database download takes place", {
 
-    withr::with_envvar(c("EIDITH_USERNAME"=Sys.getenv("EIDITH_GLOBAL_USERNAME"),
-                         "EIDITH_PASSWORD"=Sys.getenv("EIDITH_GLOBAL_PASSWORD")), {
+    withr::with_envvar(c("EIDITH_USERNAME"=Sys.getenv("EIDITH_EHA_USERNAME"),
+                         "EIDITH_PASSWORD"=Sys.getenv("EIDITH_EHA_PASSWORD")), {
                            cat("\n")
                            expect_equal(ed_db_download(verbose = TRUE), 0)
                          })
