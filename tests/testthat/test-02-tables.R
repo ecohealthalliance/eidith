@@ -29,4 +29,4 @@ if(!DB_EXISTS) {
 
 
 unlink(getOption("ed_sql_path"))
-option(ed_eql_path=NULL)
+options(ed_eql_path=NULL)
