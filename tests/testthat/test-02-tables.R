@@ -7,8 +7,10 @@ if(!DB_EXISTS) {
 } else {
 
   test_that("Table extracts work", {
-    expect_identical(ed_events(event_date == "2010-07-12"),
-                     dplyr::filter_(ed_events(), ~event_date=="2010-07-12"))
+
+    expect_identical(ed_events(deep_forest_data==0),
+                     dplyr::filter_(ed_events(), ~deep_forest_data==FALSE))
+
     expect_identical(ed_animals(sex == "Female"),
                      dplyr::filter_(ed_animals(), ~sex=="Female"))
   })
