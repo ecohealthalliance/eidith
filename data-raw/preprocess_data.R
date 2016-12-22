@@ -139,11 +139,16 @@ taxa9 <- taxa8 %>%
   taxa9$itis_name =  case_when(!is.na(taxa9$itis_species) ~ taxa9$itis_name,
                                !is.na(taxa9$itis_genus) ~ paste(taxa9$itis_genus, "sp."),
                                !is.na(taxa9$itis_family) ~ paste(taxa9$itis_family, "sp."),
-                               !is.na(taxa9$itis_order) ~ paste(taxa9$itis_order, "sp."),d
+                               !is.na(taxa9$itis_order) ~ paste(taxa9$itis_order, "sp."),
                                !is.na(taxa9$itis_class) ~ paste(taxa9$itis_class, "sp."),
                                TRUE ~ taxa9$eidith_name)
 
-eidith_itis_lookup <- taxa9
+
+manual_lookup <- readr::read_csv(P("data-raw/ed_manual_species_lookup.csv"), col_types="cccccccccccccc")
+
+taxa10 <- taxa9 %>% filter(!(eidith_name %in% manual_lookup$eidith_name))
+
+eidith_itis_lookup <- bind_rows(taxa10, manual_lookup)
 
   # taxa9 %>% filter(eidith_name != itis_name   |
   #                eidith_class != itis_class |
@@ -156,6 +161,7 @@ write_csv(eidith_itis_lookup, P("data-raw/eidith_itis_lookup.csv"))
 
 ed_metadata_ <- gs_read_csv(gs_url("https://docs.google.com/spreadsheets/d/1eHCpzYCL5-GRMZLhqJc4fj2iVUhjVhydNEp20oQW5H0/"))
 ed_lab_shortnames <- readr::read_csv(P("data-raw/ed_lab_shortnames.csv"), col_types="cc")
+ed_taxagroups_ <- readr::read_csv(P("data-raw/ed_taxagroups.csv"), col_types="cc")
 readr::write_csv(ed_metadata_, P("data-raw/ed_metadata.csv"))
-devtools::use_data(eidith_itis_lookup, ed_metadata_, ed_lab_shortnames, internal = TRUE, overwrite = TRUE)
+devtools::use_data(eidith_itis_lookup, ed_metadata_, ed_lab_shortnames, ed_taxagroups_, internal = TRUE, overwrite = TRUE)
 

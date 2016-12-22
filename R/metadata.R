@@ -1,7 +1,8 @@
 #' EIDITH table metadata
 #'
 #' Descriptions of fields in the EIDITH database.  Running `ed_metadata()` will
-#' return a data frame with this information.
+#' return a data frame with this information. `ed_taxagroups` returns a table
+#' of taxagroup-to-order mapping.
 #'
 #' More information can be found at [the EIDITH resources page](https://eidith.org/Resources.aspx).
 #'
@@ -30,4 +31,11 @@
 #' @importFrom htmlwidgets saveWidget
 ed_metadata <- function() {
   ed_metadata_
+}
+
+
+#' @export
+#' @rdname ed_metadata
+ed_taxagroups <- function() {
+  ed_taxagroups_
 }

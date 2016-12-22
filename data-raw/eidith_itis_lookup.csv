@@ -843,7 +843,6 @@ Mus bufo,Mammalia,Rodentia,Muridae,Mus,bufo,Mus bufo,Mammalia,Rodentia,Muridae,M
 Lophuromys flavopunctatus,Mammalia,Rodentia,Muridae,Lophuromys,flavopunctatus,Lophuromys flavopunctatus,Mammalia,Rodentia,Muridae,Lophuromys,flavopunctatus,NA,Lophuromys flavopunctatus
 Praomys delectorum,Mammalia,Rodentia,Muridae,Praomys,delectorum,Praomys delectorum,Mammalia,Rodentia,Muridae,Praomys,delectorum,NA,Praomys delectorum
 Cebuella pygmaea,Mammalia,Primates,Callitrichidae,Cebuella,pygmaea,Cebuella pygmaea,Mammalia,Primates,Callitrichidae,Cebuella,pygmaea,NA,Cebuella pygmaea
-Dracaena guianensis,Reptilia,Squamata,Teiidae,Dracaena,guianensis,Dracaena guianensis,NA,NA,NA,NA,NA,NA,NA
 Saguinus nigricollis,Mammalia,Primates,Callitrichidae,Saguinus,nigricollis,Leontocebus nigricollis,Mammalia,Primates,Callitrichidae,Leontocebus,nigricollis,NA,Leontocebus nigricollis
 Choloepus didactylus,Mammalia,Pilosa,Megalonychidae,Choloepus,didactylus,Choloepus didactylus,Mammalia,Pilosa,Megalonychidae,Choloepus,didactylus,NA,Choloepus didactylus
 Nyctibius grandis,Aves,Caprimulgiformes,Nyctibiidae,Nyctibius,grandis,Nyctibius grandis,Aves,Caprimulgiformes,Nyctibiidae,Nyctibius,grandis,NA,Nyctibius grandis
@@ -1102,7 +1101,6 @@ Felis bengalensis,Mammalia,Carnivora,Felidae,Felis,bengalensis,Prionailurus beng
 Mycteria cinerea,Aves,Ciconiiformes,Ciconiidae,Mycteria,cinerea,Mycteria cinerea,Aves,Ciconiiformes,Ciconiidae,Mycteria,cinerea,NA,Mycteria cinerea
 Manis javanica,Mammalia,Pholidota,Manidae,Manis,javanica,Manis javanica,Mammalia,Pholidota,Manidae,Manis,javanica,NA,Manis javanica
 Cervus timorensis,Mammalia,Artiodactyla,Cervidae,Cervus,timorensis,Rusa timorensis,Mammalia,Artiodactyla,Cervidae,Rusa,timorensis,NA,Rusa timorensis
-Semnopithecus cristatus,Mammalia,Primates,Cercopithecidae,Semnopithecus,cristatus,Semnopithecus cristatus,NA,NA,NA,NA,NA,NA,NA
 Muntiacus atherodes,Mammalia,Artiodactyla,Cervidae,Muntiacus,atherodes,Muntiacus atherodes,Mammalia,Artiodactyla,Cervidae,Muntiacus,atherodes,NA,Muntiacus atherodes
 Varanus albigularis,Reptilia,Squamata,Varanidae,Varanus,albigularis,Varanus albigularis,Reptilia,Squamata,Varanidae,Varanus,albigularis,NA,Varanus albigularis
 Maxomys whiteheadi,Mammalia,Rodentia,Muridae,Maxomys,whiteheadi,Maxomys whiteheadi,Mammalia,Rodentia,Muridae,Maxomys,whiteheadi,NA,Maxomys whiteheadi
@@ -1239,7 +1237,6 @@ Pteropus vampyrus,Mammalia,Chiroptera,Pteropodidae,Pteropus,vampyrus,Pteropus va
 Myotis muricola,Mammalia,Chiroptera,Vespertilionidae,Myotis,muricola,Myotis muricola,Mammalia,Chiroptera,Vespertilionidae,Myotis,muricola,NA,Myotis muricola
 Varanus salvator,Reptilia,Squamata,Varanidae,Varanus,salvator,Varanus salvator,Reptilia,Squamata,Varanidae,Varanus,salvator,NA,Varanus salvator
 Python reticulatus,Reptilia,Squamata,Pythonidae,Python,reticulatus,Python reticulatus,Reptilia,Squamata,Pythonidae,Python,reticulatus,NA,Python reticulatus
-Coelognathus radiatus,Reptilia,Squamata,Colubridae,Coelognathus,radiatus,Coelognathus radiatus,NA,NA,NA,NA,NA,NA,NA
 Naja sumatrana,Reptilia,Squamata,Elapidae,Naja,sumatrana,Naja sumatrana,Reptilia,Squamata,Elapidae,Naja,sumatrana,NA,Naja sumatrana
 Presbytis melalophos,Mammalia,Primates,Cercopithecidae,Presbytis,melalophos,Presbytis melalophos,Mammalia,Primates,Cercopithecidae,Presbytis,melalophos,NA,Presbytis melalophos
 Phoniscus atrox,Mammalia,Chiroptera,Vespertilionidae,Phoniscus,atrox,Phoniscus atrox,Mammalia,Chiroptera,Vespertilionidae,Phoniscus,atrox,NA,Phoniscus atrox
@@ -1285,3 +1282,6 @@ Platyrrhinus fusciventris,Mammalia,Chiroptera,Phyllostomidae,Platyrrhinus,fusciv
 Saccopteryx canescens,Mammalia,Chiroptera,Emballonuridae,Saccopteryx,canescens,Saccopteryx canescens,Mammalia,Chiroptera,Emballonuridae,Saccopteryx,canescens,NA,Saccopteryx canescens
 Lionycteris spurrelli,Mammalia,Chiroptera,Phyllostomidae,Lionycteris,spurrelli,Lionycteris spurrelli,Mammalia,Chiroptera,Phyllostomidae,Lionycteris,spurrelli,NA,Lionycteris spurrelli
 Stenella attenuata,Mammalia,Cetacea,Delphinidae,Stenella,attenuata,Stenella attenuata,Mammalia,Cetacea,Delphinidae,Stenella,attenuata,NA,Stenella attenuata
+Dracaena guianensis,Reptilia,Squamata,Teiidae,Dracaena,guianensis,Dracaena guianensis,Reptilia,Squamata,Teiidae,Dracaena,guianensis,NA,Dracaena guianensis
+Semnopithecus cristatus,Mammalia,Primates,Cercopithecidae,Semnopithecus,cristatus,Trachypithecus cristatus,Mammalia,Primates,Cercopithecidae,Trachypithecus,cristatus,NA,Trachypithecus cristatus
+Coelognathus radiatus,Reptilia,Squamata,Colubridae,Coelognathus,radiatus,Coelognathus radiatus,Reptilia,Squamata,Colubridae,Coelognathus,radiatus,NA,Coelognathus radiatus

@@ -64,7 +64,7 @@ animals,Animal,28,RateSaleSold,rate_sale_sold,NA,Estimate of turnover based on n
 animals,Animal,29,IdentifiedBy,identified_by,NA,Who identified wildife,NA
 animals,Animal,30,CircumstanceObservation,circumstance_observation,NA,IDENTICAL to circumstance_of_observation?,NA
 animals,Animal,31,AnimalClassification,animal_classification,NA,Animal category: captive wild; domestic; feral domestic; wild,NA
-animals,Animal,32,Taxagroup,taxagroup,NA,NA,NA
+animals,Animal,32,Taxagroup,taxagroup,NA,"Broad, multi-order groups of taxa deemed of interest to PREDICT.  Corrected from field values.  See ed_taxagroups() for a table of mappings between orders and taxagroups",NA
 animals,Animal,4,SpeciesScientificName,species_scientific_name,NA,"Scientific name of animal, ""sp."" used for known genus or higher taxon but uncertain or unspecified species.",Changed to ITIS standard name by lookup
 animals,Animal,5,SpeciesCommonNameEnglish,species_common_name_english,NA,Species common name,NA
 animals,Animal,33,SpeciesCommonNameLocal,species_common_name_local,NA,Common name of animal in national language of country where animal collected,NA
@@ -145,7 +145,7 @@ specimens,Specimen,NA,Country,country,DROP,NA,NA
 tests,Test,3,Pooled,pooled,NA,Whether tests are pooled or single samples,NA
 tests,Test,2,SpecimenName,specimen_name,specimen_id_names,NA,NA
 tests,Test,8,DiagnosticLaboratoryName,diagnostic_laboratory_name,NA,Name of diagnostic laboratory,NA
-tests,Test,32,NA,diag_lab_shortname,NA,NA,NA
+tests,Test,32,NA,diag_lab_shortname,NA,A shorter name of diagnostic laboratory for easier reporting,NA
 tests,Test,11,LabStorageMethod,lab_storage_method,NA,Description of storage method,NA
 tests,Test,12,LabSubmissionDate,lab_submission_date,NA,Date of submission specimens to laboratory,NA
 tests,Test,13,TestDate,test_date,NA,Date of test,NA
@@ -195,7 +195,7 @@ viruses,Virus,12,DateLastUpdated,date_last_updated,database_date,NA,NA
 viruses,Virus,13,CRDate,crdate,date_created,Date record was first created within the EIDITH database,NA
 viruses,Virus,14,LMDate,lmdate,date_modified,Last-modified date of record within the EIDITH database,NA
 viruses,Virus,NA,Country,country,DROP,NA,NA
-viruses,Virus,6,NA,known_human_risk,NA,NA,NA
+viruses,Virus,6,NA,evidence_human_infection,NA,Whether there is current evidence that the virus infects or is very closely related to a virus that infects humans.,NA
 viruses,Virus,8,NA,known_genbank_accession,NA,NA,NA
 test_specimen_id,TestIDSpecimenID,2,GAINS3_SpecimenID,gains3_specimen_id,specimen_id,NA,NA
 test_specimen_id,TestIDSpecimenID,1,GAINS3_TestID,gains3_test_id,test_id,NA,NA

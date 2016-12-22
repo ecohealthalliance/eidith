@@ -154,7 +154,11 @@ pp_Animal <- function(dat) {
           "binomial" = "itis_binomial"
         )
       )
-  }
+  dat <- select_(dat, .dots=c("-taxagroup"))
+  dat <- left_join(dat, ed_taxagroups_, by="order")
+  dat <- mutate_(dat, taxagroup = ~if_else((is.na(taxagroup) | taxagroup=="Unknown") & (class == "Aves"), "Birds", taxagroup))
+  dat <- mutate_(dat, taxagroup = ~if_else((is.na(taxagroup) | taxagroup=="Unknown") & (class == "Reptilia"), "Reptiles", taxagroup))
+    }
   return(dat)
 }
 
