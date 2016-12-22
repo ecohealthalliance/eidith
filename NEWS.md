@@ -28,7 +28,8 @@ devtools::install_github('ecohealthalliance/eidith@v0.1.0')`
  
 ## Changes to development
 
- - Moved to separate stable (`master`) and development (`dev`) branches.
+ - Moved to separate stable (`master`) and development (`dev`) branches. Stable
+   branch can now be installed without devtools.
  - Set up continuous integration tests, run daily, for all main OSs and R versions. These will tell us if patches
    or new data break something in the package.
  
