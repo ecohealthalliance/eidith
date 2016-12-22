@@ -34,7 +34,7 @@ If you'd like to contribute to the project, please see the [contributing guideli
 
 | Branch        | Travis CI (Mac/Linux) | Appveyor (Windows) | Testing Coverage |
 |:------------- |:---------------------:|:------------------:|:----------------:|
-| Current Release (`master` branch)  |[![Travis-CI Build Status](https://travis-ci.org/ecohealthalliance/eidith.svg?branch=master)](https://travis-ci.org/ecohealthalliance/eidith) | [![Build status](https://ci.appveyor.com/api/projects/status/j1nsmtbqj7sr3pti?svg=true)](https://ci.appveyor.com/project/NoamRoss/eidith) | [![Coverage Status](https://img.shields.io/codecov/c/github/ecohealthalliance/eidith/master.svg)](https://codecov.io/github/ecohealthalliance/eidith/branch/master)        |
+| Current Release (`master` branch)  |[![Travis-CI Build Status](https://travis-ci.org/ecohealthalliance/eidith.svg?branch=master)](https://travis-ci.org/ecohealthalliance/eidith) | [![Build status](https://ci.appveyor.com/api/projects/status/j1nsmtbqj7sr3pti/branch/master?svg=true)](https://ci.appveyorgithub.com/project/NoamRoss/eidith/branch/master) | [![Coverage Status](https://img.shields.io/codecov/c/github/ecohealthalliance/eidith/master.svg)](https://codecov.io/github/ecohealthalliance/eidith/branch/master)        |
 | Upcoming release (`dev` branch) | [![Travis-CI Build Status](https://travis-ci.org/ecohealthalliance/eidith.svg?branch=dev)](https://travis-ci.org/ecohealthalliance/eidith) | [![Build status](https://ci.appveyor.com/api/projects/status/j1nsmtbqj7sr3pti/branch/dev?svg=true)](https://ci.appveyor.com/project/NoamRoss/eidith/branch/dev) | [![codecov](https://codecov.io/gh/ecohealthalliance/eidith/branch/dev/graph/badge.svg)](https://codecov.io/gh/ecohealthalliance/eidith/branch/dev) |
 
 

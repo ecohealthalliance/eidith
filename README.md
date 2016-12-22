@@ -34,7 +34,7 @@ If you'd like to contribute to the project, please see the [contributing guideli
 <tr class="odd">
 <td align="left">Current Release (<code>master</code> branch)</td>
 <td align="center"><a href="https://travis-ci.org/ecohealthalliance/eidith"><img src="https://travis-ci.org/ecohealthalliance/eidith.svg?branch=master" alt="Travis-CI Build Status" /></a></td>
-<td align="center"><a href="https://ci.appveyor.com/project/NoamRoss/eidith"><img src="https://ci.appveyor.com/api/projects/status/j1nsmtbqj7sr3pti?svg=true" alt="Build status" /></a></td>
+<td align="center"><a href="https://ci.appveyorgithub.com/project/NoamRoss/eidith/branch/master"><img src="https://ci.appveyor.com/api/projects/status/j1nsmtbqj7sr3pti/branch/master?svg=true" alt="Build status" /></a></td>
 <td align="center"><a href="https://codecov.io/github/ecohealthalliance/eidith/branch/master"><img src="https://img.shields.io/codecov/c/github/ecohealthalliance/eidith/master.svg" alt="Coverage Status" /></a></td>
 </tr>
 <tr class="even">
