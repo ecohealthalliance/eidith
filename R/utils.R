@@ -52,10 +52,18 @@ reduce_dashes <- function(c){
 
 #' @importFrom lubridate fast_strptime
 quicktime <- function(datestring) {
-  as.Date(fast_strptime(datestring, format='%Y-%m-%d'))
+  if(length(datestring) == 0) {
+    return(as.Date(character(0)))
+  } else {
+  return(as.Date(fast_strptime(datestring, format='%Y-%m-%d')))
+  }
 }
 
 #' @importFrom lubridate fast_strptime
 quicktime2 <- function(datestring) {
+  if(length(datestring) == 0) {
+    return(as.POSIXct(character(0)))
+  } else {
   as.POSIXct(fast_strptime(datestring, format='%Y-%m-%dT%H:%M:%OS'))
+  }
 }
