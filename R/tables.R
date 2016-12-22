@@ -20,6 +20,12 @@ datetime_vars <- c("date_created", "date_modified", "database_date")
 #' these, the data is subsetted via SQL *before* it is loaded into memory.
 #' For large tables, such as the *tests* table, this is useful for reducing the memory footprint of your R session.
 #'
+#' Note that subsetting in SQL is more limited:
+#'
+#' -  Use `0` or `1` instead of `TRUE` or `FALSE`
+#' -  Dates are stored as character strings, but as they are in YYYY-MM-DD
+#'    format, filtering such as `event_date > "2014-01-01"` still works.
+#'
 #' @param table one of the EIDITH database tables. One of "events", "animals",
 #' "specimens", "tests", "viruses", or "test_specimen_ids".
 #' @param ... arguments passed to [dplyr::filter()] to subset data
