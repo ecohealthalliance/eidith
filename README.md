@@ -15,33 +15,33 @@ If you'd like to contribute to the project, please see the [contributing guideli
 
 ### Package Testing Status
 
-<table style="width:100%;">
+<table>
 <colgroup>
-<col width="19%" />
-<col width="31%" />
-<col width="27%" />
-<col width="21%" />
+<col width="18%" />
+<col width="30%" />
+<col width="26%" />
+<col width="24%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="left">Branch</th>
 <th align="center">Travis CI (Mac/Linux)</th>
 <th align="center">Appveyor (Windows)</th>
-<th align="center">Code Coverage</th>
+<th align="center">Testing Coverage</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Current Release (<code>master</code>)</td>
+<td align="left">Current Release (<code>master</code> branch)</td>
 <td align="center"><a href="https://travis-ci.org/ecohealthalliance/eidith"><img src="https://travis-ci.org/ecohealthalliance/eidith.svg?branch=master" alt="Travis-CI Build Status" /></a></td>
 <td align="center"><a href="https://ci.appveyor.com/project/NoamRoss/eidith"><img src="https://ci.appveyor.com/api/projects/status/j1nsmtbqj7sr3pti?svg=true" alt="Build status" /></a></td>
-<td align="center"><a href="https://codecov.io/github/ecohealthalliance/eidith?branch=master"><img src="https://img.shields.io/codecov/c/github/ecohealthalliance/eidith/master.svg" alt="Coverage Status" /></a></td>
+<td align="center"><a href="https://codecov.io/github/ecohealthalliance/eidith/branch/master"><img src="https://img.shields.io/codecov/c/github/ecohealthalliance/eidith/master.svg" alt="Coverage Status" /></a></td>
 </tr>
 <tr class="even">
-<td align="left">Upcoming release (<code>dev</code>)</td>
+<td align="left">Upcoming release (<code>dev</code> branch)</td>
 <td align="center"><a href="https://travis-ci.org/ecohealthalliance/eidith"><img src="https://travis-ci.org/ecohealthalliance/eidith.svg?branch=dev" alt="Travis-CI Build Status" /></a></td>
 <td align="center"><a href="https://ci.appveyor.com/project/NoamRoss/eidith/branch/dev"><img src="https://ci.appveyor.com/api/projects/status/j1nsmtbqj7sr3pti/branch/dev?svg=true" alt="Build status" /></a></td>
-<td align="center"><a href="https://codecov.io/gh/ecohealthalliance/eidith?branch=dev"><img src="https://codecov.io/gh/ecohealthalliance/eidith/branch/dev/graph/badge.svg" alt="codecov" /></a></td>
+<td align="center"><a href="https://codecov.io/gh/ecohealthalliance/eidith/branch/dev"><img src="https://codecov.io/gh/ecohealthalliance/eidith/branch/dev/graph/badge.svg" alt="codecov" /></a></td>
 </tr>
 </tbody>
 </table>
