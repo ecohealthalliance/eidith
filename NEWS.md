@@ -1,8 +1,12 @@
-When updating to a new version of the eidith package, be sure to run
-`ed_db_download()` after.
+When updating to a new version of the eidith package (or downgrading), be sure to run
+`ed_db_download()` afterwards to update your databse.
 
-You can install previous versions of eidith from GitHub, e.g.,
-`devtools::install_github('ecohealthalliance/eidith@v0.1.0')`
+You can install previous versions of eidith from GitHub using the **devtools**
+package, like so:
+
+```
+devtools::install_github('ecohealthalliance/eidith@v0.1.0')`
+```
 
 # eidith 0.2.0
 
@@ -15,6 +19,9 @@ You can install previous versions of eidith from GitHub, e.g.,
 
  - New column in tests table - `diag_lab_shortname` - an abbreviated lab name for easier reporting
  - Renamed `known_human_risk` to `evidence_human_infection` and added more clarifying text to metadata
+ 
+## Bug Fixes
+ - No longer fail when database extracts are zero-length
  
 ## Changes to development
 
