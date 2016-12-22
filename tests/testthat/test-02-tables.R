@@ -40,4 +40,4 @@ if(!DB_EXISTS) {
 
 options(ed_sql_path=NULL)
 
-unlink(normalizePath(file.path(Sys.getenv("HOME"), ".test_ed_db.sqlite"))
+unlink(normalizePath(file.path(Sys.getenv("HOME"), ".test_ed_db.sqlite")))
