@@ -4,8 +4,8 @@ Depends: R (>= 3.1.2)
 Imports: httr, jsonlite, dplyr, tidyr, tibble, RSQLite, DBI, getPass,
         rappdirs, purrr, stringi, magrittr, lazyeval, lubridate,
         htmlwidgets, DT
-Suggests: curl, testthat, rmarkdown, knitr, readr
+Suggests: curl, testthat, withr, rmarkdown, knitr, readr
 License: MIT + file LICENSE
-MD5sum: f2f9aa32164f39f7b1e66fe73abc4aeb
+MD5sum: 4446429508d1778df15642c0631d048f
 NeedsCompilation: no
 

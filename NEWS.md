@@ -19,14 +19,18 @@ devtools::install_github('ecohealthalliance/eidith@v0.1.0')`
 
  - New column in tests table - `diag_lab_shortname` - an abbreviated lab name for easier reporting
  - Renamed `known_human_risk` to `evidence_human_infection` and added more clarifying text to metadata
+ - Taxagroups are now one-to-one mapped to orders. `ed_taxagroups()` will return a table with the
+   mapping between them.  Metadata notes updated to reflect this. (See [Issue #32](https://github.com/ecohealthalliance/eidith/issues/32))
  
 ## Bug Fixes
+
  - No longer fail when database extracts are zero-length
  
 ## Changes to development
 
  - Moved to separate stable (`master`) and development (`dev`) branches.
- - Set up continuous integration tests, run daily, for all main OSs and R versions. 
+ - Set up continuous integration tests, run daily, for all main OSs and R versions. These will tell us if patches
+   or new data break something in the package.
  
 # eidith v0.1.0
 

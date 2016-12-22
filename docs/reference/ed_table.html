@@ -143,6 +143,14 @@ for the individual tables.</p>
     <p>These functions take <code><a href='http://www.rdocumentation.org/packages/dplyr/topics/filter'>dplyr::filter()</a></code> arguments to sub-set the data.  Using
 these, the data is subsetted via SQL <em>before</em> it is loaded into memory.
 For large tables, such as the <em>tests</em> table, this is useful for reducing the memory footprint of your R session.</p>
+    <p>Note that subsetting in SQL is more limited:
+<ul>
+<li> Use <code>0</code> or <code>1</code> instead of <code>TRUE</code> or <code>FALSE</code>
+</li>
+<li> Dates are stored as character strings, but as they are in YYYY-MM-DD
+format, filtering such as <code>event_date &gt; &quot;2014-01-01&quot;</code> still works.
+</li>
+</ul></p>
     
 
   </div>
