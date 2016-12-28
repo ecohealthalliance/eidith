@@ -31,12 +31,30 @@ datetime_vars <- c("date_created", "date_modified", "database_date")
 #' @param ... arguments passed to [dplyr::filter()] to subset data
 #' @param .dots standard-evaluation versions of subsetting arguments
 #' @return a [tibble][tibble::tibble]-style data frame.
-#' @importFrom dplyr tbl tbl_df filter_ mutate_each_ funs_ funs collect
+#' @importFrom dplyr tbl tbl_df filter_ mutate_each_ funs_ funs collect partial_eval
+#' @importFrom stringi stri_replace_first_regex stri_extract_last_regex
 #' @export
 #' @rdname ed_table
-ed_table_ <- function(table, .dots) {
-  tbl(eidith_db(), table) %>%
-    filter_(.dots=.dots) %>%
+ed_table_ <- function(table, ..., .dots) {
+  dots <- lazyeval::all_dots(.dots, ...)
+  ed_tb <- tbl(eidith_db(), table)
+  dots = lazyeval::as.lazy_dots(   #This stuff deals with the dplyr bug found at https://github.com/hadley/dplyr/issues/511 by modifying "%in%" calls
+    lapply(dots, function(dot_expr) {
+      new_expr <- deparse(partial_eval(dot_expr[["expr"]], tbl=ed_tb, env=dot_expr[["env"]]))
+      if(stri_detect_fixed(new_expr, "%in%")) {
+        matched_expr <- stri_extract_last_regex(new_expr, "(?<=%in%\\s).*$")
+        if(length(eval(parse(text=matched_expr))) ==  0 ) {
+          new_expr <- stri_replace_first_fixed(new_expr, matched_expr, "('')")
+        }
+        else if(length(eval(parse(text=matched_expr))) == 1) {
+          new_expr <- stri_replace_first_fixed(new_expr, matched_expr,
+                                               paste0("(", matched_expr, ")"))
+        }
+      }
+      lazyeval::as.lazy(new_expr, env=dot_expr[["env"]])
+    }))
+  ed_tb %>%
+    filter_(.dots=dots) %>%
     collect(n=Inf) %>%
     fix_classes()
 }

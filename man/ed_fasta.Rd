@@ -39,7 +39,7 @@ printed if some tests have no sequence data.}
 which is useful for abbreviating fields for FASTA export}
 }
 \value{
-The FASTA file is written to a file or the console.  Also, a character vector of each FASTA record is returned invisibly.  \code{ed_tests_report()} returns a data frame.
+The FASTA file is written to a file or the console (default).  Also, a character vector of each FASTA record is returned invisibly.  \code{ed_tests_report()} returns a data frame.
 }
 \description{
 \code{ed_fasta()} and \code{ed_fasta_()} convert a data frame to a FASTA file.  \code{ed_tests_report()} is a standard report returning a data frame of all uninterpreted test sequences, along with a set of metadata, which is commonly printed to FASTA

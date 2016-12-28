@@ -11,7 +11,7 @@
 \alias{ed_testspecimen}
 \title{Load EIDITH data from the local database}
 \usage{
-ed_table_(table, .dots)
+ed_table_(table, ..., .dots)
 
 ed_table(table, ...)
 
@@ -31,9 +31,9 @@ ed_testspecimen(...)
 \item{table}{one of the EIDITH database tables. One of "events", "animals",
 "specimens", "tests", "viruses", or "test_specimen_ids".}
 
-\item{.dots}{standard-evaluation versions of subsetting arguments}
-
 \item{...}{arguments passed to \code{\link[dplyr:filter]{dplyr::filter()}} to subset data}
+
+\item{.dots}{standard-evaluation versions of subsetting arguments}
 }
 \value{
 a \link[tibble:tibble]{tibble}-style data frame.

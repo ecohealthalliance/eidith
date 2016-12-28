@@ -7,7 +7,7 @@
 #' @param sequence the column name in the data frame that contains the sequence.  Default is "sequence".
 #' @param ... Additional columns to include as metadata, using [dplyr::select()] syntax.  If nothing is included, all columns are used.
 #'
-#' @return The FASTA file is written to a file or the console.  Also, a character vector of each FASTA record is returned invisibly.  `ed_tests_report()` returns a data frame.
+#' @return The FASTA file is written to a file or the console (default).  Also, a character vector of each FASTA record is returned invisibly.  `ed_tests_report()` returns a data frame.
 #' @export
 #' @rdname ed_fasta
 #' @aliases fasta
@@ -65,9 +65,7 @@ ed_tests_report <- function(status = c("Result finalized, interpretation pending
   ## First we select tests for which interpretation isn't complete and aren't pool positives
   if(!is.null(test_ids)) {
     tests <- ed_table_("tests", .dots=c(~test_id %in% test_ids))
-  } else if (length(status) == 1) {
-    tests <- ed_table_("tests", .dots=c(~test_status == status))
-  } else if (length(status) > 1) {
+  } else if (!is.null(status)) {
     tests <- ed_table_("tests", .dots=c(~test_status %in% status))
   } else {
     stop("Neither status nor test_ids specified.")

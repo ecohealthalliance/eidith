@@ -1,5 +1,4 @@
-
-options(ed_sql_path = normalizePath(file.path(Sys.getenv("HOME"), ".test_ed_db.sqlite"), mustWork=FALSE))
+TEST_SQL_PATH =  normalizePath(file.path(tempdir(), ".test_ed_db.sqlite"), mustWork=FALSE)
 
 HAS_INTERNET <- curl::has_internet()
 HAS_GLOBAL_CRED <- (Sys.getenv("EIDITH_GLOBAL_USERNAME") != "") &&

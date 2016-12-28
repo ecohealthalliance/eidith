@@ -107,7 +107,7 @@ equivalent, useful for programming.  The other functions are convenience aliases
 for the individual tables.</p>
     
 
-    <pre><span class='fu'>ed_table_</span>(<span class='no'>table</span>, <span class='no'>.dots</span>)
+    <pre><span class='fu'>ed_table_</span>(<span class='no'>table</span>, <span class='no'>...</span>, <span class='no'>.dots</span>)
 
 <span class='fu'>ed_table</span>(<span class='no'>table</span>, <span class='no'>...</span>)
 
@@ -128,10 +128,10 @@ for the individual tables.</p>
       <dt>table</dt>
       <dd>one of the EIDITH database tables. One of &quot;events&quot;, &quot;animals&quot;,
 &quot;specimens&quot;, &quot;tests&quot;, &quot;viruses&quot;, or &quot;test_specimen_ids&quot;.</dd>
-      <dt>.dots</dt>
-      <dd>standard-evaluation versions of subsetting arguments</dd>
       <dt>...</dt>
       <dd>arguments passed to <code><a href='http://www.rdocumentation.org/packages/dplyr/topics/filter'>dplyr::filter()</a></code> to subset data</dd>
+      <dt>.dots</dt>
+      <dd>standard-evaluation versions of subsetting arguments</dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
