@@ -7,16 +7,16 @@ package, like so:
 ```
 devtools::install_github('ecohealthalliance/eidith@v0.1.0')`
 ```
-# eidith 0.2.1 (patch)
-
-- Fix bug in `ed_table_` when parsing long expressions, showing up in
-  `ed_tests_reprort()`
-
 # eidith 0.3.0
 
 ## Misc
 
 - Fix typos in vignette
+
+# eidith 0.2.1 (patch)
+
+- Fix bug in `ed_table_` when parsing long expressions, showing up in
+  `ed_tests_reprort()`
 
 # eidith 0.2.0
 
