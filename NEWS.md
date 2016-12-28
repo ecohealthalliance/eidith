@@ -8,6 +8,12 @@ package, like so:
 devtools::install_github('ecohealthalliance/eidith@v0.1.0')`
 ```
 
+# eidith 0.3.0
+
+## Misc
+
+- Fix typos in vignette
+
 # eidith 0.2.0
 
 ## New functionality
