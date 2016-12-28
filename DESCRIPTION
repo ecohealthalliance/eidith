@@ -1,6 +1,6 @@
 Package: eidith
 Title: Data access and analytical tools for the PREDICT EIDITH database
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: c(
     person("Noam", "Ross", , "ross@ecohealthalliance.org", role = c("aut", "cre")),
     person("Nistara", "Randhawa", , "nrandhawa@ucdavis.edu", role = c("aut")),
@@ -22,6 +22,7 @@ Imports:
     httr,
     jsonlite,
     dplyr,
+    tidyr,
     tibble,
     RSQLite,
     DBI,
@@ -32,17 +33,14 @@ Imports:
     magrittr,
     lazyeval,
     lubridate,
-    readr,
+    htmlwidgets,
     DT
 Suggests:
+    curl,
     testthat,
-    covr,
+    withr,
     rmarkdown,
-    pkgdown,
     knitr,
-    roxygen2
-Remotes:
-  klutometis/roxygen,
-  hadley/pkgdown
+    readr
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr

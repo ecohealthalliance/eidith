@@ -107,7 +107,7 @@ equivalent, useful for programming.  The other functions are convenience aliases
 for the individual tables.</p>
     
 
-    <pre><span class='fu'>ed_table_</span>(<span class='no'>table</span>, <span class='no'>.dots</span>)
+    <pre><span class='fu'>ed_table_</span>(<span class='no'>table</span>, <span class='no'>...</span>, <span class='no'>.dots</span>)
 
 <span class='fu'>ed_table</span>(<span class='no'>table</span>, <span class='no'>...</span>)
 
@@ -128,10 +128,10 @@ for the individual tables.</p>
       <dt>table</dt>
       <dd>one of the EIDITH database tables. One of &quot;events&quot;, &quot;animals&quot;,
 &quot;specimens&quot;, &quot;tests&quot;, &quot;viruses&quot;, or &quot;test_specimen_ids&quot;.</dd>
-      <dt>.dots</dt>
-      <dd>standard-evaluation versions of subsetting arguments</dd>
       <dt>...</dt>
       <dd>arguments passed to <code><a href='http://www.rdocumentation.org/packages/dplyr/topics/filter'>dplyr::filter()</a></code> to subset data</dd>
+      <dt>.dots</dt>
+      <dd>standard-evaluation versions of subsetting arguments</dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -143,6 +143,14 @@ for the individual tables.</p>
     <p>These functions take <code><a href='http://www.rdocumentation.org/packages/dplyr/topics/filter'>dplyr::filter()</a></code> arguments to sub-set the data.  Using
 these, the data is subsetted via SQL <em>before</em> it is loaded into memory.
 For large tables, such as the <em>tests</em> table, this is useful for reducing the memory footprint of your R session.</p>
+    <p>Note that subsetting in SQL is more limited:
+<ul>
+<li> Use <code>0</code> or <code>1</code> instead of <code>TRUE</code> or <code>FALSE</code>
+</li>
+<li> Dates are stored as character strings, but as they are in YYYY-MM-DD
+format, filtering such as <code>event_date &gt; &quot;2014-01-01&quot;</code> still works.
+</li>
+</ul></p>
     
 
   </div>

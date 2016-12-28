@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Export the local EIDITH database to a file — ed_db_export • EIDITH</title>
+<title>Export FASTA files — ed_fasta • EIDITH</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -96,36 +96,56 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Export the local EIDITH database to a file</h1>
+    <h1>Export FASTA files</h1>
     </div>
 
     
-    <p>This function allows you to export the local EIDITH database to a file that
-can then be used by others.  The database is in <a href = 'SQLite'>https://sqlite.org/</a> format.</p>
+    <p><code>ed_fasta()</code> and <code>ed_fasta_()</code> convert a data frame to a FASTA file.  <code>ed_tests_report()</code> is a standard report returning a data frame of all uninterpreted test sequences, along with a set of metadata, which is commonly printed to FASTA</p>
     
 
-    <pre><span class='fu'>ed_db_export</span>(<span class='no'>filename</span>, <span class='no'>...</span>)</pre>
+    <pre><span class='fu'>ed_fasta</span>(<span class='no'>.data</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>sequence</span> <span class='kw'>=</span> <span class='st'>"sequence"</span>, <span class='no'>...</span>)
+
+<span class='fu'>ed_fasta_</span>(<span class='no'>.data</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>sequence</span> <span class='kw'>=</span> <span class='st'>"sequence"</span>, <span class='no'>...</span>, <span class='no'>.dots</span>)
+
+<span class='fu'>ed_tests_report</span>(<span class='kw'>status</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Result finalized, interpretation pending"</span>),
+  <span class='kw'>test_ids</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>meta_fields</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='kw'>sp_idname</span> <span class='kw'>=</span> <span class='st'>"specimen_id_name"</span>, <span class='kw'>sp</span> <span class='kw'>=</span>
+  <span class='st'>"species_scientific_name"</span>, <span class='kw'>country</span> <span class='kw'>=</span> <span class='st'>"country"</span>, <span class='kw'>an_idname</span> <span class='kw'>=</span> <span class='st'>"animal_id_name"</span>,
+  <span class='kw'>lab</span> <span class='kw'>=</span> <span class='st'>"diag_lab_shortname"</span>, <span class='kw'>test_rq</span> <span class='kw'>=</span> <span class='st'>"test_requested"</span>, <span class='kw'>meth</span> <span class='kw'>=</span>
+  <span class='st'>"methodology_reference"</span>, <span class='kw'>seq_id</span> <span class='kw'>=</span> <span class='st'>"virus_id"</span>, <span class='kw'>test_id</span> <span class='kw'>=</span> <span class='st'>"test_id"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>filename</dt>
-      <dd>The filename to export to. We suggest something ending in <code>.sqlite</code>.</dd>
+      <dt>.data</dt>
+      <dd>The data frame</dd>
+      <dt>file</dt>
+      <dd>name of file to write to. If &quot;&quot; (default), the output is written to console.</dd>
+      <dt>sequence</dt>
+      <dd>the column name in the data frame that contains the sequence.  Default is &quot;sequence&quot;.</dd>
       <dt>...</dt>
-      <dd>Other options passed to <code>file.copy()</code></dd>
+      <dd>Additional columns to include as metadata, using <code><a href='http://www.rdocumentation.org/packages/dplyr/topics/select'>dplyr::select()</a></code> syntax.  If nothing is included, all columns are used.</dd>
+      <dt>.dots</dt>
+      <dd>Columns specified using standard evaluation.</dd>
+      <dt>status</dt>
+      <dd>For <code>ed_test_report()</code>, the status of tests that should be pulled.
+A vector of any of &quot;Interpretation completed&quot;, &quot;Active testing ongoing - pooled test positive&quot;,
+&quot;Pooled test positive&quot;, &quot;Active testing ongoing&quot;, or &quot;Under Sequence Review&quot;. A warning will be
+printed if some tests have no sequence data.</dd>
+      <dt>test_ids</dt>
+      <dd>For <code>ed_test_report()</code>. If provided, <code>status</code> is ignored and tests are pulled by numeric test_id values</dd>
+      <dt>meta_fields</dt>
+      <dd>For <code>ed_test_report()</code>. A vector of names of metadata to provide.  If named, fields will be renamed,
+which is useful for abbreviating fields for FASTA export</dd>
     </dl>
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code><a href='ed_db_status.html'>ed_db_status()</a></code>, <code><a href='ed_db_updates.html'>ed_db_updates()</a></code>, <code>ed_db_export()</code></p>
+    <p>The FASTA file is written to a file or the console (default).  Also, a character vector of each FASTA record is returned invisibly.  <code>ed_tests_report()</code> returns a data frame.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Not run: ------------------------------------</span>
-<span class='co'>#   #Here's an example of how to export and then use the exported database</span>
-<span class='co'># </span>
-<span class='co'>#   ed_db_export("mydb.sqlite")</span>
-<span class='co'>#   options(ed_sql_path = "mydb.sqlite") # This switches to working with the exported database</span>
-<span class='co'>#   ed_db_status()  #get status of the current (exported) database</span>
+<span class='co'>#  ed_fasta(ed_tests_report())</span>
+<span class='co'>#  </span>
 <span class='co'>## ---------------------------------------------</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -133,7 +153,7 @@ can then be used by others.  The database is in <a href = 'SQLite'>https://sqlit
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#value">Value</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

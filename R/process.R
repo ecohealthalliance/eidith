@@ -30,33 +30,65 @@
 #' @importFrom stringi stri_trim_both
 #' @importFrom purrr map_if
 ed_process <- function(dat, endpt) {
-  emd <-filter_(ed_metadata(), ~ endpoint == endpt) %>%
-    mutate_(new_name = ~if_else(is.na(replacement_name), auto_processed_name, replacement_name))
-  expected_fields <- emd %>% filter_(~!is.na(original_name)) %>% use_series("original_name")
+  emd <- filter_(ed_metadata(), ~ endpoint == endpt) %>%
+    mutate_(new_name = ~ if_else(
+      is.na(replacement_name),
+      auto_processed_name,
+      replacement_name
+    ))
+  expected_fields <-
+    emd %>% filter_( ~ !is.na(original_name)) %>% use_series("original_name")
   # First, check that the data is as expected
-  unexpected_fields <- names(dat)[!(names(dat) %in% expected_fields)]
-  missing_fields <- expected_fields[!(expected_fields %in% names(dat))]
-  wrn_con <- "\nRe-install the eidith package and try again. If warning persists see ?ed_contact"
+  unexpected_fields <-
+    names(dat)[!(names(dat) %in% expected_fields)]
+  missing_fields <-
+    expected_fields[!(expected_fields %in% names(dat))]
+  wrn_con <-
+    "\nRe-install the eidith package and try again. If warning persists see ?ed_contact"
 
-  if(length(missing_fields)) warning("Expected fields missing in ", endpt, " download: ", paste0(missing_fields, collapse=", "), ".", wrn_con)
-  if(length(unexpected_fields)) warning("Unexpected fields  in ", endpt, " download: ", paste0(unexpected_fields, collapse=", "), ". These fields will be dropped.", wrn_con)
+  if (length(missing_fields))
+    warning(
+      "Expected fields missing in ",
+      endpt,
+      " download: ",
+      paste0(missing_fields, collapse = ", "),
+      ".",
+      wrn_con
+    )
+  if (length(unexpected_fields))
+    warning(
+      "Unexpected fields  in ",
+      endpt,
+      " download: ",
+      paste0(unexpected_fields, collapse = ", "),
+      ". These fields will be dropped.",
+      wrn_con
+    )
 
   # Drop any other fields we want to drop
-  drop_cols <- filter_(emd, ~replacement_name == "DROP")[["original_name"]]
-  dat <- select_(dat, .dots = as.list(which(!names(dat) %in% c(drop_cols, unexpected_fields))))
+  drop_cols <-
+    filter_(emd, ~ replacement_name == "DROP")[["original_name"]]
+  dat <-
+    select_(dat, .dots = as.list(which(
+      !names(dat) %in% c(drop_cols, unexpected_fields)
+    )))
 
   # Change the field names to the local, simplified versions
-  used <- data_frame(original_name=names(dat)) %>%
-    full_join(filter_(emd, ~replacement_name != "DROP" | is.na(replacement_name)), by="original_name")
-  names(dat) <- used %>% filter_(~!is.na(original_name)) %>% use_series("new_name")
+  used <- data_frame(original_name = names(dat)) %>%
+    full_join(filter_(emd, ~ replacement_name != "DROP" |
+                        is.na(replacement_name)), by = "original_name")
+  names(dat) <-
+    used %>% filter_( ~ !is.na(original_name)) %>% use_series("new_name")
 
   # General cleanups
-  dat <- map_if(dat, is.character, ~na_if(stri_trim_both(.), ""))
-  dat <- map_if(dat, ~all(. %in% c("yes", "no", NA_character_)),  ~ . == "yes")
+  dat <- map_if(dat, is.character, ~ na_if(stri_trim_both(.), ""))
+  dat <-
+    map_if(dat, ~ all(. %in% c("yes", "no", NA_character_)),  ~ . == "yes")
   dat <- as_data_frame(dat)
 
   # Table-specific cleanups
-  process_fn <- get(paste0("pp_", endpt), envir=asNamespace("eidith"))
+  process_fn <-
+    get(paste0("pp_", endpt), envir = asNamespace("eidith"))
   dat <- process_fn(dat)
 
   # Sort
@@ -68,63 +100,115 @@ ed_process <- function(dat, endpt) {
 
 #' @importFrom dplyr rename_ select_ mutate_ arrange_ recode distinct_
 pp_Event <- function(dat) {
-  if("habitat_type" %in% names(dat)) {
-    dat <- mutate_(dat, habitat_type = ~recode(habitat_type, `lowland forest`='Lowland forest', `Grassland `='Grassland', `river/stream`='River/stream'))
+  if ("habitat_type" %in% names(dat)) {
+    dat <-
+      mutate_(
+        dat,
+        habitat_type = ~ recode(
+          habitat_type,
+          `lowland forest` = 'Lowland forest',
+          `Grassland ` = 'Grassland',
+          `river/stream` = 'River/stream'
+        )
+      )
   }
   return(dat)
 }
 
 #' @importFrom dplyr rename_ select_ mutate_  arrange_ left_join starts_with distinct_
 pp_Animal <- function(dat) {
-  if(all(c("species_scientific_name", "class", "order", "family", "genus", "species") %in% names(dat))) {
-    dat <- left_join(dat, eidith_itis_lookup, by=c("species_scientific_name"="eidith_name")) %>%
-      select_(.dots=c("-species_scientific_name", "-class", "-order", "-family", "-genus", "-species")) %>%
-      select_(~-starts_with("eidith_")) %>%
-      rename_(.dots=c("species_scientific_name"="itis_name",
-                      "class"="itis_class",
-                      "order"="itis_order",
-                      "family"="itis_family",
-                      "genus"="itis_genus",
-                      "species"="itis_species",
-                      "subspecies"="itis_subspecies",
-                      "binomial"="itis_binomial"))
-  }
+  if (all(
+    c(
+      "species_scientific_name",
+      "class",
+      "order",
+      "family",
+      "genus",
+      "species"
+    ) %in% names(dat)
+  )) {
+    dat <-
+      left_join(dat,
+                eidith_itis_lookup,
+                by = c("species_scientific_name" = "eidith_name")) %>%
+      select_(
+        .dots = c(
+          "-species_scientific_name",
+          "-class",
+          "-order",
+          "-family",
+          "-genus",
+          "-species"
+        )
+      ) %>%
+      select_( ~ -starts_with("eidith_")) %>%
+      rename_(
+        .dots = c(
+          "species_scientific_name" = "itis_name",
+          "class" = "itis_class",
+          "order" = "itis_order",
+          "family" = "itis_family",
+          "genus" = "itis_genus",
+          "species" = "itis_species",
+          "subspecies" = "itis_subspecies",
+          "binomial" = "itis_binomial"
+        )
+      )
+  dat <- select_(dat, .dots=c("-taxagroup"))
+  dat <- left_join(dat, ed_taxagroups_, by="order")
+  dat <- mutate_(dat, taxagroup = ~if_else((is.na(taxagroup) | taxagroup=="Unknown") & (class == "Aves"), "Birds", taxagroup))
+  dat <- mutate_(dat, taxagroup = ~if_else((is.na(taxagroup) | taxagroup=="Unknown") & (class == "Reptilia"), "Reptiles", taxagroup))
+    }
   return(dat)
 }
 
 #' @importFrom dplyr rename_ select_ mutate_ arrange_ distinct_
 #' @importFrom stringi stri_replace_first_fixed
 pp_Specimen <- function(dat) {
-
-  if("specimen_id" %in% names(dat)) {
-    dat <- mutate_(dat, specimen_id = ~as.integer(specimen_id))
+  if ("specimen_id" %in% names(dat)) {
+    dat <- mutate_(dat, specimen_id = ~ as.integer(specimen_id))
   }
 
-  if("specimen_type" %in% names(dat)) {
-    dat <- mutate_(dat, specimen_type = ~stri_replace_first_fixed(specimen_type, "Smear, thin", "thin smear") %>%
-                     stri_replace_first_fixed("Smear, thick", "thick smear") %>%
-                     clean_csc())
+  if ("specimen_type" %in% names(dat)) {
+    dat <-
+      mutate_(
+        dat,
+        specimen_type = ~ stri_replace_first_fixed(specimen_type, "Smear, thin", "thin smear") %>%
+          stri_replace_first_fixed("Smear, thick", "thick smear") %>%
+          clean_csc()
+      )
   }
 
-  if("specimen_type_id" %in% names(dat)) {
-    dat <- mutate_(dat, specimen_type_id = ~stri_replace_first_fixed(specimen_type_id, "Smear, thin", "thin smear") %>%
-                     stri_replace_first_fixed("Smear, thick", "thick smear"))
+  if ("specimen_type_id" %in% names(dat)) {
+    dat <-
+      mutate_(
+        dat,
+        specimen_type_id = ~ stri_replace_first_fixed(specimen_type_id, "Smear, thin", "thin smear") %>%
+          stri_replace_first_fixed("Smear, thick", "thick smear")
+      )
   }
 
-  if("specimen_id_name" %in% names(dat)) {
-    dat <- mutate_(dat, specimen_id_name = ~stri_replace_first_fixed(specimen_id_name, "Lung, Liver", "Lung-Liver") %>%
-                     stri_replace_first_fixed("kushtia", "Kushtia") %>%
-                     despace() %>%
-                     destrange() %>%
-                     reduce_dashes())
+  if ("specimen_id_name" %in% names(dat)) {
+    dat <-
+      mutate_(
+        dat,
+        specimen_id_name = ~ stri_replace_first_fixed(specimen_id_name, "Lung, Liver", "Lung-Liver") %>%
+          stri_replace_first_fixed("kushtia", "Kushtia") %>%
+          despace() %>%
+          destrange() %>%
+          reduce_dashes()
+      )
   }
   return(dat)
 }
 
-#' @importFrom dplyr rename_ select_ mutate_ arrange_ distinct_
+#' @importFrom dplyr rename_ select_ mutate_ arrange_ distinct_ left_join
 #' @importFrom stringi stri_replace_all_fixed stri_replace_all_regex
 pp_Test <- function(dat) {
 
+  if("diagnostic_laboratory_name" %in% names(dat)) {
+    dat <- left_join(dat, ed_lab_shortnames, by="diagnostic_laboratory_name")
+  }
   if("specimen_id_names" %in% names(dat)) {
     dat <- mutate_(dat,
                    specimen_id_names = ~stri_replace_all_fixed(specimen_id_names, "Lung, Liver", "Lung-Liver") %>%
@@ -136,24 +220,24 @@ pp_Test <- function(dat) {
                      clean_csc(to_lower=FALSE) %>%
                      despace() %>%
                      reduce_dashes())
+
   }
 
-  if("specimen_type" %in% names(dat)) {
-    dat <- mutate_(dat, specimen_type = ~clean_csc(specimen_type))
+  if ("specimen_type" %in% names(dat)) {
+    dat <- mutate_(dat, specimen_type = ~ clean_csc(specimen_type))
   }
   return(dat)
 }
 
 #' @importFrom dplyr rename_ select_ mutate_ arrange_ distinct_
 pp_Virus <- function(dat) {
-
-  if("known" %in% names(dat)) {
-    dat <- mutate_(dat, known = ~known=="known")
+  if ("known" %in% names(dat)) {
+    dat <- mutate_(dat, known = ~ known == "known")
   }
 
   if("interpretation" %in% names(dat)) {
     dat <- mutate_(dat, known_genbank_accession = ~get_genbank(interpretation),
-                   known_human_risk = ~get_interest(interpretation))
+                   evidence_human_infection = ~get_interest(interpretation))
   }
   return(dat)
 }
@@ -166,7 +250,8 @@ pp_TestIDSpecimenID <- function(dat) {
 #' @importFrom stringi stri_extract_all_regex stri_replace_all_fixed
 #' @importFrom dplyr na_if
 get_genbank <- function(interpretations) {
-  accession <- stri_extract_all_regex(interpretations,"([A-Z]{1,2}_?[0-9]{5,6})")
+  accession <-
+    stri_extract_all_regex(interpretations, "([A-Z]{1,2}_?[0-9]{5,6})")
   accession <- stri_replace_all_fixed(accession, "_", "")
   accession <- na_if(accession, "character(0)")
   return(accession)
@@ -178,6 +263,8 @@ get_interest <- function(interpretations) {
     interpretations,
     "[Tt]here is(\\scurrently)? not? evidence(\\sat this time)?(\\sto suggest)?(\\sthat)? ((this virus)|(it))(es)?(\\sa)? (poses?)?(might be)? ((any risk)|(a threat)) to human health.?"
   ) &
-    !stri_detect_fixed(interpretations,
-                       "there is no evidence at this time that Simian adenoviruses pose a threat to human health")
+    !stri_detect_fixed(
+      interpretations,
+      "there is no evidence at this time that Simian adenoviruses pose a threat to human health"
+    )
 }

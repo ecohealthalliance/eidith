@@ -7,6 +7,8 @@ knitr::opts_chunk$set(
   fig.height = 8)
 
 ## ----install, eval = FALSE-----------------------------------------------
-#  if (!require(devtools)) install.packages("devtools")
-#  devtools::install_github("ecohealthalliance/eidith")
+#  install.packages("eidith", repos=c("https://ecohealthalliance.github.io/eidith/", getOption("repos")), type="both")
+
+## ----install-dev, eval = FALSE-------------------------------------------
+#  devtools::install_github('ecohealthalliance/eidith@dev')
 

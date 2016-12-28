@@ -11,7 +11,7 @@
 \alias{ed_testspecimen}
 \title{Load EIDITH data from the local database}
 \usage{
-ed_table_(table, .dots)
+ed_table_(table, ..., .dots)
 
 ed_table(table, ...)
 
@@ -31,9 +31,9 @@ ed_testspecimen(...)
 \item{table}{one of the EIDITH database tables. One of "events", "animals",
 "specimens", "tests", "viruses", or "test_specimen_ids".}
 
-\item{.dots}{standard-evaluation versions of subsetting arguments}
-
 \item{...}{arguments passed to \code{\link[dplyr:filter]{dplyr::filter()}} to subset data}
+
+\item{.dots}{standard-evaluation versions of subsetting arguments}
 }
 \value{
 a \link[tibble:tibble]{tibble}-style data frame.
@@ -49,4 +49,11 @@ for the individual tables.
 These functions take \code{\link[dplyr:filter]{dplyr::filter()}} arguments to sub-set the data.  Using
 these, the data is subsetted via SQL \emph{before} it is loaded into memory.
 For large tables, such as the \emph{tests} table, this is useful for reducing the memory footprint of your R session.
+
+Note that subsetting in SQL is more limited:
+\itemize{
+\item Use \code{0} or \code{1} instead of \code{TRUE} or \code{FALSE}
+\item Dates are stored as character strings, but as they are in YYYY-MM-DD
+format, filtering such as \code{event_date > "2014-01-01"} still works.
+}
 }

@@ -1,7 +1,7 @@
 logical_vars <- c("archived_data", "deep_forest_data", "prioritized_for_testing",
                   "pooled", "message_sent_to_country", "message_sent_to_govt",
                   "govt_approved_release", "predict_protocol", "known",
-                  "known_human_risk")
+                  "evidence_human_infection")
 
 date_vars <- c("event_date", "sample_date", "specimen_date",
                "test_date", "lab_submission_date", "results_date")
@@ -20,17 +20,41 @@ datetime_vars <- c("date_created", "date_modified", "database_date")
 #' these, the data is subsetted via SQL *before* it is loaded into memory.
 #' For large tables, such as the *tests* table, this is useful for reducing the memory footprint of your R session.
 #'
+#' Note that subsetting in SQL is more limited:
+#'
+#' -  Use `0` or `1` instead of `TRUE` or `FALSE`
+#' -  Dates are stored as character strings, but as they are in YYYY-MM-DD
+#'    format, filtering such as `event_date > "2014-01-01"` still works.
+#'
 #' @param table one of the EIDITH database tables. One of "events", "animals",
 #' "specimens", "tests", "viruses", or "test_specimen_ids".
 #' @param ... arguments passed to [dplyr::filter()] to subset data
 #' @param .dots standard-evaluation versions of subsetting arguments
 #' @return a [tibble][tibble::tibble]-style data frame.
-#' @importFrom dplyr tbl tbl_df filter_ mutate_each_ funs_ funs collect
+#' @importFrom dplyr tbl tbl_df filter_ mutate_each_ funs_ funs collect partial_eval
+#' @importFrom stringi stri_replace_first_regex stri_extract_last_regex
 #' @export
 #' @rdname ed_table
-ed_table_ <- function(table, .dots) {
-  tbl(eidith_db(), table) %>%
-    filter_(.dots=.dots) %>%
+ed_table_ <- function(table, ..., .dots) {
+  dots <- lazyeval::all_dots(.dots, ...)
+  ed_tb <- tbl(eidith_db(), table)
+  dots = lazyeval::as.lazy_dots(   #This stuff deals with the dplyr bug found at https://github.com/hadley/dplyr/issues/511 by modifying "%in%" calls
+    lapply(dots, function(dot_expr) {
+      new_expr <- deparse(partial_eval(dot_expr[["expr"]], tbl=ed_tb, env=dot_expr[["env"]]))
+      if(stri_detect_fixed(new_expr, "%in%")) {
+        matched_expr <- stri_extract_last_regex(new_expr, "(?<=%in%\\s).*$")
+        if(length(eval(parse(text=matched_expr))) ==  0 ) {
+          new_expr <- stri_replace_first_fixed(new_expr, matched_expr, "('')")
+        }
+        else if(length(eval(parse(text=matched_expr))) == 1) {
+          new_expr <- stri_replace_first_fixed(new_expr, matched_expr,
+                                               paste0("(", matched_expr, ")"))
+        }
+      }
+      lazyeval::as.lazy(new_expr, env=dot_expr[["env"]])
+    }))
+  ed_tb %>%
+    filter_(.dots=dots) %>%
     collect(n=Inf) %>%
     fix_classes()
 }
@@ -47,42 +71,42 @@ fix_classes <- function(table) {
 
 #' @export
 #' @rdname ed_table
-ed_table = function(table, ...) {
+ed_table <- function(table, ...) {
   ed_table_(table, .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
 #' @rdname ed_table
-ed_events = function(...) {
+ed_events <- function(...) {
   ed_table_("events", .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
 #' @rdname ed_table
-ed_animals = function(...) {
+ed_animals <- function(...) {
   ed_table_("animals", .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
 #' @rdname ed_table
-ed_specimens = function(...) {
+ed_specimens <- function(...) {
   ed_table_("specimens", .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
 #' @rdname ed_table
-ed_tests = function(...) {
+ed_tests <- function(...) {
   ed_table_("tests", .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
 #' @rdname ed_table
-ed_viruses = function(...) {
+ed_viruses <- function(...) {
   ed_table_("viruses", .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
 #' @rdname ed_table
-ed_testspecimen = function(...) {
+ed_testspecimen <- function(...) {
   ed_table_("test_specimen_ids", .dots = lazyeval::lazy_dots(...))
 }

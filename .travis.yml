@@ -1,15 +1,52 @@
-# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
-
 language: r
+
 r:
-  - oldrel
-  - release
-  - devel
+- oldrel
+- release
+- devel
+
+os:
+- linux
+- osx
+
+matrix:
+  allow_failures:
+  - os: osx
+    r: devel
+  - env: DEVELOPMENT_PKGS=true
+
 sudo: false
 cache: packages
 
-r_github_packages:
-  - jimhester/covr
+r_packages: covr
+
+before_install:
+  - if [ "$TRAVIS_OS_NAME" == "osx" ] && [ "$TRAVIS_R_VERSION"=="3.2.4" ]; then echo "options(pkgType='source')" >> $R_PROFILE; cat $R_PROFILE; fi
+
+before_script:
+  - if [ "$DEVELOPMENT_PKGS" == "true" ]; then echo "Installing in-development packages"; Rscript -e 'devtools::install_github(c("rstats-db/RSQLite", "rstats-db/DBI", "hadley/dplyr"))'; fi
+
+warnings_are_errors: true
+
+env:
+  global:
+  - XDG_DATA_HOME=$HOME/.eidith_data
+  - secure: Bqo3/n6skZ+EWWRhr35zUpfpvDQhgy+FGNBofwLJe/43GUr7xpf7vyLzgmtzklBVvhWhd//o8ZCZx/4mp5I0hJ9qmPFSJ/u8IBOTrEvwuDFytF18799gkYRZlgDpLUpNcFBULnlinNeg0vawu/tAqCrVqgqAUClR0NDr51fi12+6y9Mv+U4317dNHk370vuVLT+u3ySvWA+VLfexIcWekY//7XPFKsI/4bjuxUBisDixFz6LJfFH2AEsWy4s8+Ai+LUnyyHkEXTnIba/vAQuCgIOyzA0+T0IH7cJ15ywQtR6s4EIG9J7BsNemVwQ91UvrCyQDP+z0K+Sn5QJeuoOgDUruQF8eTinhe/ULYlAIiV6uDx6I3+DpuRqdJPYE/n/zaLJ5znfa6A5tExzgHeqsGf5T2rHsoWzthaaP2YaxwV6kQG+SU5LJFq692W3bU+WvOJwQ0h0aW2BJ+4fLYShqwu1paNowyICECGvNuzW70g871OEf5akzSWboseVxivk/IvcqfRjZAHk9NEvbMKRLuxVaQw9pO2A/1v73asE5p52Vc9JGkG6DkannquiOJouXzJw1lsoTmrAjDP6uK428EdndicUx0ZB4IxfR1rtLY9kF1Y+NdZGmxEqHYxtEpqqH07RVoHwGonCpsKVa6Gg1txbKAFed48oGl0jhkuAeu4=
+  - secure: OjP0gixl/X4WJ2ubirPQqdunEkJCVka1jTleh662MRWcBhRg3fDQJXRgJOS2DtZzZaReqvcJKwxKOEaxbFPesqjCiFU9nL/z1uwlmQ74VnDAQPcd8L8Cah5VSRhPZTDduQfyMZh2W3KPwMX/Y2GcHxQVgnGM1xxgqLheBXov5xVnU/9ZppNFoSGIlydXG24U1+h1IhIgZAK4OEfDFnpplzsgaAJvlV5FW4oo1fxCX8ntXPxJV+Q5pcFJ8N/Cwi4U1Z5+a1+HpcN0IYMnDEk5LLdWC5ag1JqDpZZanuUjum01ZHZohyQrZ8RATe/5Pc9iMIr8HhQLW7ssJYb0jq9hpz080Fvu7TzGz9SJ6QYsNGEQHDcMOpbANT2JyOht0QR3aWPTdMIPMbdvrao4AWkiJocsKKN2C7NSDto5r9COrcLhZknJ3eYwCTQtkkjo/CpePV+Scvg4p8N1DiJ2PTbpQSQ9EKCr7qRfPF7W67VS+NQUDPQd2aTYJMj2HVNX5FFPhJs6h/scAH0HoAxxYLswNd8B5/To/PXvcyg3qEYVmB10NQxQxhQRrJJcoHTJYqWTjZQsoPg01XqKxDgPDvMVIfgEgkvXxxxyCIAouMiWIyk7LC/e3qFNojiQstN+GWQn4KN3XyJvCSzR8NbsGLGBa/aPHMVP3rl2/+iR76TzOZA=
+  - secure: zDO7N3IDAukZCwFCRJSwF5fgsflghtku27+AI8hU6Oufs+JKs0Fra1tW5MVHI31Lb5Hhw9yLZFip8PB08D2XnbYQaE0C3toUN4CakRjh+cihBcCXGnnJ+tcEM5dGov89OmIgfZfcKBUZ51zY/9v5gEdbuREMMzxpyJMNn/K28SkPiVG7rDSI3+7Nn6Jl/6bPsRHXoWtnPxbG9MTZ+E2kTLBnDfFhZ6lrk/V2iA5U/95vT2PtEu3Mr6N/aHAKpUm4QDt4stDgxA0mZLUO6g2C2PoEInnB7OrAOAxHNp3rdItDAvhdtR71Dg0h4MMJeqvXK9W29iHlRCzGHgGi1sT+jljt4Z+RaOvKakgiGG/Nr1PxYpdbYUJMU0V2z2qZMPX8n7FmTwaDXt8MUqAvo4DXZsKlkEEojA2xdeA+iWMWHxRMbcM9we7bhqk54D2mIh18Z9IodG9jiDTi3IsITe04sx19yMS4ey/n1sIdxNH5rHD/WaJr29uj4MbFO5g8Pyhz76qSvmBcaTwN3mMrl11LGwKgZW/WsC9CmA9ZO2zFChZW2TMR+K/vHLKKE5CZc1tirFVBJ2dkr49cwdqUPpR6vCd/EcDgXbwGk6veLQDrKRowwAULY+wUMEvf1B2KW5vxgGdPkpQyEiXxS/jmgZYZ6XrGbp05IytwLaRlNKbjfZQ=
+  - secure: wftr/5KBDZok9LVuU3jRUToMOVhGP2mr77xgyqwtWRPk+JGgKK2UthICBNsnc3CzQhsoQP2drjwdRx5wKYslCfmrakA/S2kg+3q4Dxa+4iFlop7+4PssafHkJGtkQwpYGTz7A4wpHVFF0W1dDPbZcjjXzlpwE2plMAC4GYcj+Q4RdoImBsM6Mot+7ns7lQVU4lh+A8UbATvRzmSwoPBfYztyugRxy03sump3xhEU71pcOZYzLqp7r0j5CMuD3wavokyO3+NJMHNAlq/VSRsHqz0VJ6nRUCJUodt9fM4viW92FCaO5ksfMV1OwwYLvBekYNa5jh6UbufGjj+yn3KJlNMStmOBAkC6VbiVSGHMJTvAa22uiE3TDkwB6C1KOeQe4pZxNN8jplHKElE8+ZBcdQ1VWQRz5rAKxFIAXLa9nhFbY5eUa6vfx1dBsFTVaMaXg9gL4ekSb63aqzaH9h+Zb784yRb1astNoEl6eEFRv/gj96PRZW989FnBrgCpp8xDZtyXcL+FPncn1y6vjxgM2/rX07rCPGBYsdHuqz/OJffPlcqgpI0p72yp4GUtTPFftj13QURMjiRVxo0y3keaaiv5vfzutESrNwHZCsGPAK7e+Kz+56oycsrg3SdeO0P66rPU9njdh+Qo7clLjbMXVea9p82D0E8EBZ++6X/lrbo=
+  - secure: sdHVdZjPWlX9ziOqe86TXjRTB4gWOIi3Y4AhL33uz8P1R9M+zw62LAw8d6GKOArlHlsM0jzrPSlr+KdUY8s4p0Sp/JLSjY0q4D9WD9IyKBhIgio+2UWCMugA2kPs1Tg3y6za7IykUUfTAe3xr9QackeSqgaBsIX+SL6cUzbdfGve3lpcowdmntbHIzN2wSoMSBjDSTl1lCW3kvYuJWAU/9lpPWUW0/THr6Le7UR/YBvI4c19tvGV/UYqkSusyl/RpH8ra/YkZ62LnpMHyqiBcK2OFEP+W3RggpkqlgaWhnOId8M4WL0+oYiunCeqMJ46ON1iyGiUsdWwfQvXPJgzbR9B8YPf4mL/HxIorMlxwRv2gxWiDggYTtEr0eLI8tUQ9VeqLvZkPQpJHT7a08QwhQGJwEjHXDbLh4jmwO60hIKA+v1CatwilaeAgPJg+V8JkJ1qWQZqa7iLP4RivsDU51U3ATJOaTyt8kW718+iG2mecK9eg4T33OcUwSqcdiwHZzANGeL36XT3TajOltffgEQ/6oHhq2QE1F1tjJYem7It/5FWh5DrSnc+3Qfjh2MdBJX+2lmRe/9KfLG8XcopJacs9nNUHI8zSi1/dXWo8YxnPr313IiQvAgSCXUikXra13gGqzCUSuiEKLoa5oh9/vSYCrBD6tK6pkQy02cjKak=
+  matrix:
+  - DEVELOPMENT_PKGS=true
+  - DEVELOPMENT_PKGS=false
 
 after_success:
   - Rscript -e 'covr::codecov()'
+
+
+notifications:
+  email:
+    recipients:
+    - ross@ecohealthalliance.org
+    on_success: change
+    on_failure: change

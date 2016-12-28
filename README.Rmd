@@ -15,15 +15,6 @@ knitr::opts_chunk$set(
 
 ![](inst/images/README-eidith-logo-2014.png)
 
-[![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
-[![MIT Licensed - Copyright 2016 EcoHealth Alliance](https://img.shields.io/badge/license-MIT-blue.svg)](https://badges.mit-license.org/)
-<a href="https://travis-ci.org/ecohealthalliance/eidith">
-  <object data="https://img.shields.io/badge/build-unknown-lightgrey.svg" type="image/png">
-    <img src="https://travis-ci.org/ecohealthalliance/eidith.svg?branch=master" />
-  </object>
-</a>
-
-
 # The EIDITH R Package
 
 The **eidith** R package provides programmatic access and analytical tools for
@@ -36,5 +27,17 @@ privileges. If you have a question about your access level, contact technology@e
 
 See the [package tutorial](https://ecohealthalliance.github.io/eidith/articles/eidith.html) and [help files](https://ecohealthalliance.github.io/eidith/reference/index.html) for
 installation and usage information.
+
+If you'd like to contribute to the project, please see the [contributing guidelines](CONTRIBUTING.md). Please note that this project is governed by a [code of conduct](CONDUCT.md). 
+
+### Package Testing Status
+
+| Branch        | Travis CI (Mac/Linux) | Appveyor (Windows) | Testing Coverage |
+|:------------- |:---------------------:|:------------------:|:----------------:|
+| Current Release (`master` branch)  |[![Travis-CI Build Status](https://travis-ci.org/ecohealthalliance/eidith.svg?branch=master)](https://travis-ci.org/ecohealthalliance/eidith) | [![Build status](https://ci.appveyor.com/api/projects/status/j1nsmtbqj7sr3pti/branch/master?svg=true)](https://ci.appveyorgithub.com/project/NoamRoss/eidith/branch/master) | [![Coverage Status](https://img.shields.io/codecov/c/github/ecohealthalliance/eidith/master.svg)](https://codecov.io/github/ecohealthalliance/eidith/branch/master)        |
+| Upcoming release (`dev` branch) | [![Travis-CI Build Status](https://travis-ci.org/ecohealthalliance/eidith.svg?branch=dev)](https://travis-ci.org/ecohealthalliance/eidith) | [![Build status](https://ci.appveyor.com/api/projects/status/j1nsmtbqj7sr3pti/branch/dev?svg=true)](https://ci.appveyor.com/project/NoamRoss/eidith/branch/dev) | [![codecov](https://codecov.io/gh/ecohealthalliance/eidith/branch/dev/graph/badge.svg)](https://codecov.io/gh/ecohealthalliance/eidith/branch/dev) |
+
+
+
 
 ![](inst/images/README-predictfooter.png)
