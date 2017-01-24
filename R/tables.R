@@ -40,7 +40,10 @@ ed_table_ <- function(table, ..., .dots) {
   ed_tb <- tbl(eidith_db(), table)
   dots = lazyeval::as.lazy_dots(   #This stuff deals with the dplyr bug found at https://github.com/hadley/dplyr/issues/511 by modifying "%in%" calls
     lapply(dots, function(dot_expr) {
-      new_expr <- deparse(partial_eval(dot_expr[["expr"]], tbl=ed_tb, env=dot_expr[["env"]]))
+      new_expr <- paste0(
+        deparse(partial_eval(dot_expr[["expr"]], tbl=ed_tb, env=dot_expr[["env"]]),
+                          width.cutoff = 500L),
+        collapse = "")
       if(stri_detect_fixed(new_expr, "%in%")) {
         matched_expr <- stri_extract_last_regex(new_expr, "(?<=%in%\\s).*$")
         if(length(eval(parse(text=matched_expr))) ==  0 ) {
