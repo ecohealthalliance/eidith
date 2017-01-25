@@ -101,35 +101,51 @@
     </div>
 
     <div class="contents">
+    <div id="eidith-0-2-1-patch" class="section level1">
+<h1 class="hasAnchor">
+<a href="#eidith-0-2-1-patch" class="anchor"> </a>eidith 0.2.1 (patch)</h1>
+<ul>
+<li>Fix bug in <code>ed_table_</code> when parsing long expressions, showing up in <code>ed_tests_reprort()</code>
+</li>
+</ul>
+</div>
     <div id="eidith-0-2-0" class="section level1">
 <h1 class="hasAnchor">
 <a href="#eidith-0-2-0" class="anchor"> </a>eidith 0.2.0</h1>
 <div id="new-functionality" class="section level2">
 <h2 class="hasAnchor">
 <a href="#new-functionality" class="anchor"> </a>New functionality</h2>
-<ul><li>Add a FASTA export function: <code><a href="../reference/ed_fasta.html">ed_fasta()</a></code>
+<ul>
+<li>Add a FASTA export function: <code><a href="../reference/ed_fasta.html">ed_fasta()</a></code>
 </li>
 <li>Add a function for reports on recents tests: <code><a href="../reference/ed_fasta.html">ed_tests_report()</a></code>
 </li>
-</ul></div>
+</ul>
+</div>
 <div id="changes-to-data-processing" class="section level2">
 <h2 class="hasAnchor">
 <a href="#changes-to-data-processing" class="anchor"> </a>Changes to data processing</h2>
-<ul><li>New column in tests table - <code>diag_lab_shortname</code> - an abbreviated lab name for easier reporting</li>
+<ul>
+<li>New column in tests table - <code>diag_lab_shortname</code> - an abbreviated lab name for easier reporting</li>
 <li>Renamed <code>known_human_risk</code> to <code>evidence_human_infection</code> and added more clarifying text to metadata</li>
 <li>Taxagroups are now one-to-one mapped to orders. <code><a href="../reference/ed_metadata.html">ed_taxagroups()</a></code> will return a table with the mapping between them. Metadata notes updated to reflect this. (See <a href="https://github.com/ecohealthalliance/eidith/issues/32">Issue #32</a>)</li>
-</ul></div>
+</ul>
+</div>
 <div id="bug-fixes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bug-fixes" class="anchor"> </a>Bug Fixes</h2>
-<ul><li>No longer fail when database extracts are zero-length</li>
-</ul></div>
+<ul>
+<li>No longer fail when database extracts are zero-length</li>
+</ul>
+</div>
 <div id="changes-to-development" class="section level2">
 <h2 class="hasAnchor">
 <a href="#changes-to-development" class="anchor"> </a>Changes to development</h2>
-<ul><li>Moved to separate stable (<code>master</code>) and development (<code>dev</code>) branches. Stable branch can now be installed without devtools.</li>
+<ul>
+<li>Moved to separate stable (<code>master</code>) and development (<code>dev</code>) branches. Stable branch can now be installed without devtools.</li>
 <li>Set up continuous integration tests, run daily, for all main OSs and R versions. These will tell us if patches or new data break something in the package.</li>
-</ul></div>
+</ul>
+</div>
 </div>
     </div>
   </div>
@@ -138,6 +154,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#eidith-0-2-1-patch">0.2.1</a></li>
         <li><a href="#eidith-0-2-0">0.2.0</a></li>
       </ul>
     </div>
