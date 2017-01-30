@@ -1,0 +1,65 @@
+---
+title: "Generating Reports and FASTA Files"
+author: "Cale Basaraba"
+date: "1/30/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(eidith)
+library(tidyverse)
+library(printr)
+```
+
+## Initializing EIDITH R package:
+
+In order to do anything with the EIDITH R package, you need to 
+
+
+## Using EIDITH R package to generate FASTA files:
+
+The EIDITH R package has a built-in function for retrieving a summary of sequences ready for interpretation: `ed_tests_report()`. Running the default `ed_tests_report()` will generate a table of all tests whose status is `"Result finalized, interpretation pending"`. You can retrieve tests with other statuses by using `ed_tests_report()` with the `status =` option. For example, if we were interested in retrieving a table of tests whose status was `"Under Sequence Review"` or `"Active testing ongoing"`, we would run:  
+```{r example, echo = TRUE, eval = FALSE}
+ed_tests_report(status = c("Under Sequence Review", "Active testing ongoing"))
+```
+
+If some of these tests do not have sequence data entered in EIDITH, a warning will appear in the R console informing the user.
+
+The `ed_tests_report()` function constructs a summary table that includes a sequence field, and this information can easily be exported to FASTA format using the function `ed_fasta()`. If we had assigned the result of our `ed_tests_report()` to a variable, such as:  
+
+```{r report, echo = TRUE, eval = FALSE}
+report <- ed_tests_report()  
+```
+
+we could then create a FASTA file of this report by:  
+```{r report2, echo = TRUE, eval = FALSE}
+ed_fasta(report, "report.fasta")  
+```
+
+Alternatively, we could skip a step and call `ed_fasta(ed_tests_report(), "report.fasta")` directly.
+
+## Subset tests by Viral Family or Protocol:  
+
+If we are interested in subsetting a report, we can easily do that by using `filter()`. For instance, if we wanted a report of only Enteroviruses, we could subset:
+
+```{r subset, echo = TRUE, eval = FALSE}
+report <- ed_tests_report()
+entero_report <- filter(report, test_rq == "Enteroviruses")
+
+```
+
+The `entero_report` dataframe now only contains records for Enterovirus tests, and can be saved in FASTA format by:
+
+```{r save-entero, echo = TRUE, eval = FALSE}
+ed_fasta(entero_report, "entero.fasta")
+```
+
+The same can be done 
+
+
+## Automatic Grouping by Viral Family or Protocol:  
+
+The function `eidith_fasta_group()` will group 
+
+

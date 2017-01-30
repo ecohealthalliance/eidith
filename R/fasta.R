@@ -59,7 +59,7 @@ ed_tests_report <- function(status = c("Result finalized, interpretation pending
                                             an_idname="animal_id_name",
                                             lab="diag_lab_shortname",
                                             test_rq="test_requested",
-                                            meth="methodology_reference",
+                                            meth="test_requested_protocol",
                                             seq_id="virus_id",
                                             test_id="test_id")) {
   ## First we select tests for which interpretation isn't complete and aren't pool positives
@@ -97,4 +97,19 @@ ed_tests_report <- function(status = c("Result finalized, interpretation pending
     select_(.dots=c(coalesce(na_if(names(meta_fields), ""), meta_fields), "sequence"))
 
 }
+
+#' @rdname ed_fasta
+#' @param grouping The variable used to group sequences into separate FASTA files.
+#' @param filepath File path indicating where grouped FASTA files should be saved.
+#' @export
+ed_fasta_group <- function(.data, filepath = "", sequence = "sequence", grouping = "virus",...){
+  if(grouping == "virus"){
+    dat <- split(.data, .data$test_rq)
+    purrr::map(dat, ~ed_fasta_(.,file = paste0(filepath,.$test_rq[1], ".fasta"), sequence = sequence, .dots = lazyeval::lazy_dots(...)))
+  }else if(grouping == "method"){
+    dat <- split(.data, .data$meth)
+    purrr::map(dat, ~ed_fasta_(.,file = paste0(filepath,.$meth[1], ".fasta"), sequence = sequence, .dots = lazyeval::lazy_dots(...)))
+  }else {stop(paste0("The option '", grouping, "' is not valid for grouping FASTA files. Try 'virus' or 'method'."))}
+}
+
 
