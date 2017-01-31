@@ -6,7 +6,7 @@ db_unique_indexes <- list(
   animals = list("animal_id"),
   specimens = list("specimen_id"),
   tests = list("test_id"),
-  viruses = list("virus_id"),
+  viruses = list("sequence_id"),
   test_specimen_ids = list()
 )
 
