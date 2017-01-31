@@ -123,28 +123,42 @@ $(document).ready(function () {
 </div>
 
 
-<div id="initializing-eidith-r-package" class="section level2">
-<h2>Initializing EIDITH R package:</h2>
-<p>In order to do anything with the EIDITH R package, you need to</p>
+<div id="initializing-eidith-r-package" class="section level4">
+<h4>Initializing EIDITH R package:</h4>
+<p>In order to do anything with the EIDITH R package, you need to first make sure to load the <code>eidith</code> library. For straightforward data manipulation we will also load the <code>tidyverse</code> package:</p>
+<pre class="r"><code>library(eidith)
+library(tidyverse)</code></pre>
 </div>
-<div id="using-eidith-r-package-to-generate-fasta-files" class="section level2">
-<h2>Using EIDITH R package to generate FASTA files:</h2>
-<p>The EIDITH R package has a built-in function for retrieving a summary of sequences ready for interpretation: <code>ed_tests_report()</code>. Running the default <code>ed_tests_report()</code> will generate a table of all tests whose status is <code>&quot;Result finalized, interpretation pending&quot;</code>. You can retrieve tests with other statuses by using <code>ed_tests_report()</code> with the <code>status =</code> option. For example, if we were interested in retrieving a table of tests whose status was <code>&quot;Under Sequence Review&quot;</code> or <code>&quot;Active testing ongoing&quot;</code>, we would run:</p>
+<div id="using-eidith-r-package-to-generate-fasta-files" class="section level4">
+<h4>Using EIDITH R package to generate FASTA files:</h4>
+<p>The EIDITH R package has a built-in function for retrieving a summary of sequences ready for interpretation: <code>ed_tests_report()</code>. Running the default <code>ed_tests_report()</code> function will generate a table of all tests whose status is <code>&quot;Result finalized, interpretation pending&quot;</code>. You can retrieve tests with other statuses by using <code>ed_tests_report()</code> with the <code>status =</code> option. For example, if we are interested in retrieving a table of tests whose status was <code>&quot;Under Sequence Review&quot;</code> or <code>&quot;Active testing ongoing&quot;</code>, we can run:</p>
 <pre class="r"><code>ed_tests_report(status = c(&quot;Under Sequence Review&quot;, &quot;Active testing ongoing&quot;))</code></pre>
 <p>If some of these tests do not have sequence data entered in EIDITH, a warning will appear in the R console informing the user.</p>
 <p>The <code>ed_tests_report()</code> function constructs a summary table that includes a sequence field, and this information can easily be exported to FASTA format using the function <code>ed_fasta()</code>. If we had assigned the result of our <code>ed_tests_report()</code> to a variable, such as:</p>
 <pre class="r"><code>report &lt;- ed_tests_report()  </code></pre>
-<p>we could then create a FASTA file of this report by:</p>
+<p>We could then create a FASTA file of this report by:</p>
 <pre class="r"><code>ed_fasta(report, &quot;report.fasta&quot;)  </code></pre>
 <p>Alternatively, we could skip a step and call <code>ed_fasta(ed_tests_report(), &quot;report.fasta&quot;)</code> directly.</p>
 </div>
-<div id="subset-tests-by-viral-family-or-protocol" class="section level2">
-<h2>Subset tests by Viral Family or Protocol:</h2>
-<p>If we are interested in subsetting a report, we can easily do that by using <code>filter()</code>. For instance, if we wanted a report of only Enteroviruses, we could subset:</p>
+<div id="manually-subset-by-viral-family-or-method" class="section level4">
+<h4>Manually Subset by Viral Family or Method:</h4>
+<p>If we are interested in subsetting a report, we can easily do that by using <code>filter()</code>. For instance, if we wanted a report of only Enteroviruses, we could subset by running:</p>
 <pre class="r"><code>report &lt;- ed_tests_report()
 entero_report &lt;- filter(report, test_rq == &quot;Enteroviruses&quot;)</code></pre>
 <p>The <code>entero_report</code> dataframe now only contains records for Enterovirus tests, and can be saved in FASTA format by:</p>
-<pre class="r"><code>ed_fasta(entero_report, &quot;entero.FASTA&quot;)</code></pre>
+<pre class="r"><code>ed_fasta(entero_report, &quot;entero.fasta&quot;)</code></pre>
+<p>We could subset by the value of any field in our report table. For instance, if we are interested in only sequences derived by the “Johne, VP1 gene” protocol, we can run:</p>
+<pre class="r"><code>report &lt;- ed_tests_report()
+johne_report &lt;- filter(report, meth == &quot;Johne, VP1 gene&quot;)</code></pre>
+</div>
+<div id="automatically-grouped-fasta-files-by-viral-family-or-method" class="section level4">
+<h4>Automatically Grouped FASTA files by Viral Family or Method:</h4>
+<p>The function <code>eidith_fasta_group()</code> will automatically create FASTA files that have been grouped by either Viral Family or Method. The name of these files will correspond to the grouping variable. If we want to output grouped FASTA files based on Viral family, we can run:</p>
+<pre class="r"><code>ed_fasta_group(report, grouping = &quot;virus&quot;)</code></pre>
+<p>And R will create several FASTA files with names reflecting the type of Viral Family sequences they contain (e.g. <em>“Orthopoxviruses.fasta”</em>, <em>“Enteroviruses.fasta”</em>, <em>“Polyomaviruses.fasta”</em>).</p>
+<p>If we are interested in grouping by the method/protocol we can instead run:</p>
+<pre class="r"><code>ed_fasta_group(report, grouping = &quot;method&quot;)</code></pre>
+<p>And we would have a series of FASTA files grouped by method (e.g. <em>“Nitsch et al, RdRp gene.fasta”</em>, <em>“Chmielewicz et al, Term gene.fasta”</em>).</p>
 </div>
 
 

@@ -60,7 +60,7 @@ ed_tests_report <- function(status = c("Result finalized, interpretation pending
                                             lab="diag_lab_shortname",
                                             test_rq="test_requested",
                                             meth="test_requested_protocol",
-                                            seq_id="virus_id",
+                                            seq_id="sequence_id",
                                             test_id="test_id")) {
   ## First we select tests for which interpretation isn't complete and aren't pool positives
   if(!is.null(test_ids)) {
@@ -80,7 +80,7 @@ ed_tests_report <- function(status = c("Result finalized, interpretation pending
   anim <- ed_table_("animals", ~animal_id %in% spec[["animal_id"]])
   events <- ed_table_("events", ~event_id %in% anim[["event_id"]])
   viruses <- ed_table_("viruses", ~test_id %in% tests[["test_id"]]) %>%
-    select_(.dots=c("virus_id", "test_id"))
+    select_(.dots=c("sequence_id", "test_id"))
 
   combined_tables <- left_join(tests, test_spec, by="test_id") %>%
     right_join(spec, by="specimen_id") %>%
@@ -105,10 +105,10 @@ ed_tests_report <- function(status = c("Result finalized, interpretation pending
 ed_fasta_group <- function(.data, filepath = "", sequence = "sequence", grouping = "virus",...){
   if(grouping == "virus"){
     dat <- split(.data, .data$test_rq)
-    purrr::map(dat, ~ed_fasta_(.,file = paste0(filepath,.$test_rq[1], ".fasta"), sequence = sequence, .dots = lazyeval::lazy_dots(...)))
+    invisible(purrr::map(dat, ~ed_fasta_(.,file = paste0(filepath,.$test_rq[1], ".fasta"), sequence = sequence, .dots = lazyeval::lazy_dots(...))))
   }else if(grouping == "method"){
     dat <- split(.data, .data$meth)
-    purrr::map(dat, ~ed_fasta_(.,file = paste0(filepath,.$meth[1], ".fasta"), sequence = sequence, .dots = lazyeval::lazy_dots(...)))
+    invisible(purrr::map(dat, ~ed_fasta_(.,file = paste0(filepath,.$meth[1], ".fasta"), sequence = sequence, .dots = lazyeval::lazy_dots(...))))
   }else {stop(paste0("The option '", grouping, "' is not valid for grouping FASTA files. Try 'virus' or 'method'."))}
 }
 

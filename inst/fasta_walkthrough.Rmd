@@ -9,22 +9,28 @@ output: html_document
 knitr::opts_chunk$set(echo = FALSE)
 library(eidith)
 library(tidyverse)
-library(printr)
+```
+  
+  
+#### Initializing EIDITH R package:
+
+In order to do anything with the EIDITH R package, you need to first make sure to load the `eidith` library. For straightforward data manipulation we will also load the `tidyverse` package:
+```{r false-setup, echo = TRUE, eval = FALSE}
+library(eidith)
+library(tidyverse)
 ```
 
-## Initializing EIDITH R package:
+  
+  
+#### Using EIDITH R package to generate FASTA files:
 
-In order to do anything with the EIDITH R package, you need to 
-
-
-## Using EIDITH R package to generate FASTA files:
-
-The EIDITH R package has a built-in function for retrieving a summary of sequences ready for interpretation: `ed_tests_report()`. Running the default `ed_tests_report()` will generate a table of all tests whose status is `"Result finalized, interpretation pending"`. You can retrieve tests with other statuses by using `ed_tests_report()` with the `status =` option. For example, if we were interested in retrieving a table of tests whose status was `"Under Sequence Review"` or `"Active testing ongoing"`, we would run:  
+The EIDITH R package has a built-in function for retrieving a summary of sequences ready for interpretation: `ed_tests_report()`. Running the default `ed_tests_report()` function will generate a table of all tests whose status is `"Result finalized, interpretation pending"`. You can retrieve tests with other statuses by using `ed_tests_report()` with the `status =` option. For example, if we are interested in retrieving a table of tests whose status was `"Under Sequence Review"` or `"Active testing ongoing"`, we can run:  
 ```{r example, echo = TRUE, eval = FALSE}
 ed_tests_report(status = c("Under Sequence Review", "Active testing ongoing"))
 ```
 
 If some of these tests do not have sequence data entered in EIDITH, a warning will appear in the R console informing the user.
+
 
 The `ed_tests_report()` function constructs a summary table that includes a sequence field, and this information can easily be exported to FASTA format using the function `ed_fasta()`. If we had assigned the result of our `ed_tests_report()` to a variable, such as:  
 
@@ -32,16 +38,17 @@ The `ed_tests_report()` function constructs a summary table that includes a sequ
 report <- ed_tests_report()  
 ```
 
-we could then create a FASTA file of this report by:  
+We could then create a FASTA file of this report by:  
 ```{r report2, echo = TRUE, eval = FALSE}
 ed_fasta(report, "report.fasta")  
 ```
 
 Alternatively, we could skip a step and call `ed_fasta(ed_tests_report(), "report.fasta")` directly.
+  
+  
+#### Manually Subset by Viral Family or Method:  
 
-## Subset tests by Viral Family or Protocol:  
-
-If we are interested in subsetting a report, we can easily do that by using `filter()`. For instance, if we wanted a report of only Enteroviruses, we could subset:
+If we are interested in subsetting a report, we can easily do that by using `filter()`. For instance, if we wanted a report of only Enteroviruses, we could subset by running:
 
 ```{r subset, echo = TRUE, eval = FALSE}
 report <- ed_tests_report()
@@ -51,15 +58,34 @@ entero_report <- filter(report, test_rq == "Enteroviruses")
 
 The `entero_report` dataframe now only contains records for Enterovirus tests, and can be saved in FASTA format by:
 
-```{r save-entero, echo = TRUE, eval = FALSE}
+```{r subset-entero, echo = TRUE, eval = FALSE}
 ed_fasta(entero_report, "entero.fasta")
 ```
 
-The same can be done 
+We could subset by the value of any field in our report table. For instance, if we are interested in only sequences derived by the "Johne, VP1 gene" protocol, we can run:
+```{r subset-prot, echo = TRUE, eval = FALSE}
+report <- ed_tests_report()
+johne_report <- filter(report, meth == "Johne, VP1 gene")
+```
+  
+  
+#### Automatically Grouped FASTA files by Viral Family or Method:  
+
+The function `eidith_fasta_group()` will automatically create FASTA files that have been grouped by either Viral Family or Method. The name of these files will correspond to the grouping variable. If we want to output grouped FASTA files based on Viral family, we can run:
+
+```{r fake-virus, echo = TRUE, eval = FALSE}
+ed_fasta_group(report, grouping = "virus")
+
+```
+
+And R will create several FASTA files with names reflecting the type of Viral Family sequences they contain (e.g. *"Orthopoxviruses.fasta"*, *"Enteroviruses.fasta"*, *"Polyomaviruses.fasta"*).  
+
+If we are interested in grouping by the method/protocol we can instead run:
+
+```{r fake-protocol, echo = TRUE, eval = FALSE}
+ed_fasta_group(report, grouping = "method")
 
 
-## Automatic Grouping by Viral Family or Protocol:  
+```
 
-The function `eidith_fasta_group()` will group 
-
-
+And we would have a series of FASTA files grouped by method (e.g. *"Nitsch et al, RdRp gene.fasta"*, *"Chmielewicz et al, Term gene.fasta"*).
