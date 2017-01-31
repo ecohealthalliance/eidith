@@ -103,6 +103,7 @@ ed_tests_report <- function(status = c("Result finalized, interpretation pending
 #' @param grouping The variable used to group sequences into separate FASTA files.
 #' @param filepath File path indicating where grouped FASTA files should be saved.
 #' @export
+#' @importFrom purrr map
 ed_fasta_group <- function(.data, filepath = "", sequence = "sequence", grouping = "virus",...){
   if(grouping == "virus"){
     dat <- split(.data, .data$test_rq)
@@ -111,6 +112,17 @@ ed_fasta_group <- function(.data, filepath = "", sequence = "sequence", grouping
     dat <- split(.data, .data$meth)
     invisible(purrr::map(dat, ~ed_fasta_(.,file = paste0(filepath,.$meth[1], ".fasta"), sequence = sequence, .dots = lazyeval::lazy_dots(...))))
   }else {stop(paste0("The option '", grouping, "' is not valid for grouping FASTA files. Try 'virus' or 'method'."))}
+}
+
+#' @rdname ed_fasta
+#' @importFrom dplyr %>% rename mutate select
+#' @importFrom readr write_excel_csv
+#' @export
+ed_report_excel <- function(report, filename){
+  output <- report %>%
+    rename(`Specimen ID`= sp_idname , Sequence=sequence, Country = country, TestRequested = test_rq, Protocol = meth, SequenceID = seq_id, TestID = test_id, AnimalID = an_idname, Species = sp, Laboratory = lab) %>%
+    mutate(Project = "", `Genbank Accession Number` = "", `PREDICT virus name` = "", Notes = "", `Interpretation for EIDITH` = "")
+  write_excel_csv(output, filename)
 }
 
 
