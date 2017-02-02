@@ -32,19 +32,22 @@ db_other_indexes <- list(
 #' -  Cleans and pre-processes the data with [ed_process()].
 #' -  Stores the data in an SQLite database in your [user data directory][rappdirs::user_data_dir].
 #'
-#' Each time it is run it clears out the previous data and downloads all the data,
+#' Each time it is run it downloads into a temporary database and checks for the presence of
+#' all tables before it clears out the previous data, preventing the local database from becoming damaged if
+#' there are problems with the download. Each function run will download the entire database, and
 #' as such it takes a few minutes.  In the future, we will allow for updating only with new and changed records.
 #'
 #' The function will prompt for username and password unless you have [cached your credentials][ed_auth].
 #'
 #' @importFrom dplyr db_list_tables db_drop_table copy_to
+#' @importFrom RSQLite sqliteCopyDatabase
 #' @param verbose Show messages while in progress?
 #' @seealso [ed_db_status()], [ed_db_updates()], [ed_db_export()]
 #' @export
 ed_db_download <- function(verbose=interactive()) {
   auth <- ed_auth(verbose = verbose)
   if(verbose) message("Downloading and processing EIDITH data. This may take a few minutes.")
-  lapply(dplyr:: db_list_tables(eidith_db(temp_sql_path)$con), function(x) {
+  lapply(dplyr::db_list_tables(eidith_db(temp_sql_path)$con), function(x) {
     dplyr::db_drop_table(eidith_db(temp_sql_path)$con, x)}
   )
   lapply(seq_along(endpoints), function(x) {
@@ -54,20 +57,27 @@ ed_db_download <- function(verbose=interactive()) {
     rm(tb);
     gc(verbose=FALSE)
   })
-
   dplyr::copy_to(eidith_db(temp_sql_path), data.frame(last_download=as.character(Sys.time())),
                  name="status", temporary=FALSE)
-  if(verbose) {
-    message("Database downloaded!")
-  }
   if(!(all(db_tables %in% db_list_tables(eidith_db(temp_sql_path)$con)))){
     message("Newly downloaded EIDITH database is empty or corrupt, using previous version.")
-  }else{message("This might be working")}
-  if(verbose) {
-    message(ed_db_status_msg(ed_db_status()))
+    if(verbose) {
+      message(ed_db_status_msg(ed_db_status()))
+    }
+    return(invisible(0))
+  }else{
+    if(verbose) {
+      message("Database successfully downloaded!")
+    }
+    lapply(dplyr::db_list_tables(eidith_db()$con), function(x) {
+      dplyr::db_drop_table(eidith_db()$con, x)}
+    )
+    RSQLite::sqliteCopyDatabase(eidith_db(temp_sql_path)$con, eidith_db()$con)
+    lapply(dplyr::db_list_tables(eidith_db(temp_sql_path)$con), function(x) {
+      dplyr::db_drop_table(eidith_db(temp_sql_path)$con, x)}
+    )
+  return(invisible(0))
   }
-
-  invisible(0)
 }
 
 
