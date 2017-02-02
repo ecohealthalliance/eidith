@@ -65,6 +65,7 @@ ed_db_download <- function(verbose=interactive()) {
       message("Old Database Status:")
       message(ed_db_status_msg(ed_db_status()))
     }
+    file.remove(temp_sql_path)
     return(invisible(0))
   }else{
     if(verbose) {
