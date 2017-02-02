@@ -60,9 +60,9 @@ ed_db_download <- function(verbose=interactive()) {
   dplyr::copy_to(eidith_db(temp_sql_path), data.frame(last_download=as.character(Sys.time())),
                  name="status", temporary=FALSE)
   if(!(all(db_tables %in% db_list_tables(eidith_db(temp_sql_path)$con)))){
-    message("WARNING:Newly downloaded EIDITH database is empty or corrupt, using previous version.")
+    message("NOTE: Newly downloaded EIDITH database is empty or corrupt, using previous version.")
     if(verbose) {
-      message("OLD DATABASE STATUS:")
+      message("Old Database Status:")
       message(ed_db_status_msg(ed_db_status()))
     }
     file.remove(temp_sql_path)
@@ -75,9 +75,8 @@ ed_db_download <- function(verbose=interactive()) {
       dplyr::db_drop_table(eidith_db()$con, x)}
     )
     RSQLite::sqliteCopyDatabase(eidith_db(temp_sql_path)$con, eidith_db()$con)
-    lapply(dplyr::db_list_tables(eidith_db(temp_sql_path)$con), function(x) {
-      dplyr::db_drop_table(eidith_db(temp_sql_path)$con, x)}
-    )
+    file.remove(temp_sql_path)
+    message(ed_db_status_msg(ed_db_status()))
   return(invisible(0))
   }
 }
