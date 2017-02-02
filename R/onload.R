@@ -9,11 +9,18 @@ default_sql_path <-
       system.file(package = "eidith", mustWork = FALSE),
       "eidith", "eidith_db.sqlite"))
 
-
+temp_sql_path <-
+  dplyr::if_else(
+    file.access(rappdirs::user_data_dir(), 2) == 0, #if user has write permissions
+    file.path(rappdirs::user_data_dir(),            #then write to eidith/eidith_db.sqlite
+              "eidith", "temp_db.sqlite"),
+    file.path(                                      #else write to this file-path
+      system.file(package = "eidith", mustWork = FALSE),
+      "eidith", "temp_db.sqlite"))
 
 eidith_db <- function(path = NULL) {
   if(!is.null(path)) {
-    return(dplyr::src_sqlite(path, create=TRUE))
+    return(dplyr::src_sqlite(path, create=TRUE))      #creates a new sqlite if there's a specific path
   } else {
     current_path <- normalizePath(getOption("ed_sql_path", default_sql_path),
                                   mustWork=FALSE)

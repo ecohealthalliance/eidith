@@ -44,25 +44,33 @@ db_other_indexes <- list(
 ed_db_download <- function(verbose=interactive()) {
   auth <- ed_auth(verbose = verbose)
   if(verbose) message("Downloading and processing EIDITH data. This may take a few minutes.")
-  lapply(dplyr:: db_list_tables(eidith_db()$con), function(x) {
-    dplyr::db_drop_table(eidith_db()$con, x)}
+  lapply(dplyr:: db_list_tables(eidith_db(temp_sql_path)$con), function(x) {
+    dplyr::db_drop_table(eidith_db(temp_sql_path)$con, x)}
   )
   lapply(seq_along(endpoints), function(x) {
     tb <- ed_get(endpoints[x], postprocess=TRUE, verbose=verbose, auth=auth)
-    dplyr::copy_to(eidith_db(), tb, name=db_tables[x], temporary = FALSE,
+    dplyr::copy_to(eidith_db(temp_sql_path), tb, name=db_tables[x], temporary = FALSE,
                    unique_indexes = db_unique_indexes[[x]], indexes = db_other_indexes[[x]])
     rm(tb);
     gc(verbose=FALSE)
   })
 
-  dplyr::copy_to(eidith_db(), data.frame(last_download=as.character(Sys.time())),
+  dplyr::copy_to(eidith_db(temp_sql_path), data.frame(last_download=as.character(Sys.time())),
                  name="status", temporary=FALSE)
   if(verbose) {
-    message("Database updated!")
+    message("Database downloaded!")
+  }
+  if(!(all(db_tables %in% db_list_tables(eidith_db(temp_sql_path)$con)))){
+    message("Newly downloaded EIDITH database is empty or corrupt, using previous version.")
+  }else{message("This might be working")}
+  if(verbose) {
     message(ed_db_status_msg(ed_db_status()))
   }
+
   invisible(0)
 }
+
+
 
 #' Get the status of the locally stored EIDITH database
 #'
