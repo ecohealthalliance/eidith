@@ -1,4 +1,4 @@
-eidith_base_url <- "https://predict2api.eidith.org/api/app/"
+eidith_base_url <- "https://predict2api.eidith.org/api/BROKEN?/"
 endpoints <- c("Event", "Animal", "Specimen", "Test", "Virus",
                "TestIDSpecimenID")
 
