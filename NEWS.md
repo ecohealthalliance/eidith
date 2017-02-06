@@ -7,11 +7,10 @@ package, like so:
 ```
 devtools::install_github('ecohealthalliance/eidith@v0.1.0')`
 ```
-# eidith 0.3.0
 
-## Misc
+# eidith 0.2.2 (patch)
 
-- Fix typos in vignette
+- Switch API endpoints to new URLs
 
 # eidith 0.2.1 (patch)
 
