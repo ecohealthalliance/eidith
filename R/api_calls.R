@@ -1,6 +1,6 @@
 eidith_base_url <- "https://predict2api.eidith.org/api/modeling/"
-endpoints <- c("Event", "Animal", "Specimen", "Test", "Virus",
-               "TestIDSpecimenID")
+endpoints <- c("Event", "Animal", "Specimen", "Test", "Virus") #,
+               #"TestIDSpecimenID")
 
 #' Functions to download EIDITH tables via API
 #'
