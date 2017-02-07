@@ -1,0 +1,341 @@
+---
+title: "ITIS Taxonomy Questions"
+author: "Cale Basaraba"
+date: "1/19/2017"
+output: 
+  html_document:
+    toc: TRUE
+    code_download: TRUE
+    keep_md: TRUE
+---
+
+
+```{r setup, include = TRUE, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(eidith)
+library(tidyverse)
+library(DT)
+library(knitr)
+library(printr)
+```
+
+
+```{r raw-data-setup, cache = TRUE}
+eraw <- ed_get_events(postprocess = FALSE)
+araw <- ed_get_animals(postprocess = FALSE)
+sraw <- ed_get_specimens(postprocess = FALSE)
+tsraw <- ed_get_testspecimen(postprocess = FALSE)
+traw <- ed_get_tests(postprocess = FALSE)
+vraw <- ed_get_viruses(postprocess = FALSE)
+
+aeraw <- left_join(araw, eraw, by = "GAINS3_EventID")
+
+```
+
+
+
+```{r addtnl-data, cache = TRUE, message= FALSE}
+eidith_itis_lookup <- read_csv("/Users/Basaraba/R/eidith/data-raw/eidith_itis_lookup.csv")
+
+```
+
+## ITIS Taxonomy
+In the course of developing the Eidith-R package, we identified some inconsistencies between Eidith taxonomic entries and ITIS (*Integrated Taxonomic Information System*) taxonomic information in the *animals* table. These inconsistencies may be due to data entry errors, processing errors, or alternate / deprecated taxonomic conventions. We reproduce the inconsistencies below at different taxonomic levels along with context for each suggested change and links to the ITIS Taxonomy database. 
+
+##Family Level Inconsistencies
+
+```{r family-level}
+family_names <- eidith_itis_lookup %>%
+  filter(eidith_family != itis_family)
+
+family_names %>%
+  select(eidith_name, eidith_family, itis_name, itis_family) %>%
+  datatable()
+```
+
+###Eidith to ITIS changes by Family
+
+```{r kable fl}
+families <- table(family_names$eidith_family, family_names$itis_family) %>%
+  as.data.frame() %>%
+  filter(Freq > 0) %>%
+  rename(Eidith = Var1, ITIS = Var2, Number = Freq) %>%
+  arrange(desc(Number))
+families
+
+```
+
+There were no inconsistencies at the Class or Order taxonomic level, but there were `r dim(family_names)[1]` entries with inconsistent Family taxa. 
+
+__EIDITH Taxonomy $\rightarrow$ ITIS Taxonomy__:
+
+__Family Muridae__:  
+Molecular studies in the early 2000s revealed phylogenetic relationships that led researchers to split the traditional Family Muridae into several Families. ITIS still recognizes Family Muridae as a [valid Family](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=180360#null), but a number of Genera have been moved to other Families of the Superfamily Muroidae. The links to the ITIS database below list references for each change.
+
+__Muridae $\rightarrow$ Cricetidae__:  
+In raw EIDITH data, the following Genera are listed as members of Family Muridae, but the same Genera are listed under Family Cricetidae in ITIS: [Akodon](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=632625#null), [Calomys](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=632633#null), [Eothenomys](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=632599#null), [Necromys](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=970236#null), [Oecomys](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=632667#null), [Oligoryzomys](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=632668#null), [Oryzomys](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=180335#null), [Ototylomys](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=632671#null), [Peromyscus](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=180275#null), [Reithrodontomys](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=180340#null), [Rhipidomys](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=632681#null), [Sigmodon](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=180346#null). All of the Species entered in EIDITH that are listed as Family Muridae exist in ITIS under the above Genera.  
+Two EIDITH entries have names which assign them to Genus Hylaemys and Nephelomys in Family Cricetidae (*Hylaeamys sp.* and *Nephelomys sp.*), but have Genus and Species entries of "Oryzomys", likely due to a data entry error (*Oryzomys oryzomys* does not have taxonomic history).
+
+__Muridae $\rightarrow$ Nesomyidae__:  
+In EIDITH, the following three Genera are listed as members of Family Muridae, but these Genera are listed under Family Nesomyidae in ITIS: [Cricetomys](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=632582#null), [Dendromus](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=632560#null), [Steatomys](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=632567#null). The Species listed in EIDITH under Family Muridae and these Genera are all found in ITIS under Family Nesomyidae. 
+
+__Muridae $\rightarrow$ Spalacidae__:  
+In EIDITH Genus Rhizomys and Genus Tachyoryctes are assigned to Family Muridae, but [Rhizomys](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=632579#null) and [Tachyoryctes](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=632580#null) are both listed in Family Spalacidae in ITIS.  
+
+__Galagonidae $\rightarrow$ Galagidae__:  
+Galagonidae is listed as an older, invalid name for Family Galagidae in the [ITIS database](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=572772#null).
+
+__Emberizidae $\rightarrow$ Thraupidae__:  
+Three species of birds are identified in EIDITH as belonging to Family Emberizidae: *Paroaria coronata*, *Sicalis flaveola*, and *Sporophila luctuosa*. However, [according to ITIS](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=179880#null) these species are all Tanagers in Family Thraupidae.
+
+__Eutheria $\rightarrow$ Hystricidae__ &  
+__*Atherurus africanus centralis* $\rightarrow$ *Atherurus africanus*__:  
+In the EIDITH data, *Atherurus africanus centralis* is listed as belonging to Family Eutheria; however, [in ITIS](https://www.itis.gov/servlet/SingleRpt/SingleRpt) Eutheria is listed as a Infraclass of the Subclass Theria, Class Mammalia or as a Genus. [ITIS lists]((https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=584678#null)) *Atherurus africanus* within Family Hystricidae, and there is no entry for the subspecies *Atherurus africanus centralis* within *Atherurus africanus*. The EIDITH attribution of this Species to Family "Eutheria" may be a processing error due to more detailed taxonomy (Infraclass) being included. 
+
+##Genus Level Inconsistencies
+
+```{r genus-level}
+genus_names <- eidith_itis_lookup %>%
+  filter(eidith_genus != itis_genus)
+
+genus_names %>%
+  filter(eidith_genus %in% family_names$eidith_genus == FALSE) %>%
+  select(eidith_name, eidith_genus, itis_name, itis_genus) %>%
+  datatable()
+```
+
+###Eidith to ITIS changes by Genus
+
+
+```{r kable gl}
+genuses <- table(genus_names$eidith_genus, genus_names$itis_genus) %>%
+  as.data.frame() %>%
+  filter(Freq > 0) %>%
+  rename(Eidith = Var1, ITIS = Var2, Number = Freq) %>%
+  arrange(desc(Number))
+
+datatable(genuses)
+
+
+```
+
+There are `r dim(genus_names)[1]-3` Species with inconsistent Genus taxa (excluding those already mentioned in the above Family section). 
+
+The following suggested changes all follow the same pattern: EIDITH Genus entries which are listed in ITIS as invalid or older designations that have been given a new Genus / Species designation. Each suggested change below includes a link to the ITIS database that identifies the EIDITH entry as invalid and identifies the valid ITIS classification. 
+
+
+__EIDITH Taxonomy $\rightarrow$ ITIS Taxonomy__:
+
+Changes in Taxonomy due to Research / Phylogenetics:
+The following Genus-level changes are due to research over the last ~ 15 years that have moved some species from one Genus to another or have split Genera into new classifications. Each link to the ITIS database includes citations for the relevant publications defending these changes.  
+
+[__Agelaius icterocephalus $\rightarrow$ Chrysomus icterocephalus__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=558470#null)  
+[__Alethe poliocephala $\rightarrow$ Pseudalethe poliocephala__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=558522#null)  
+[__Andropadus latirostris $\rightarrow$ Eurillas latirostris__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=558587#null)  
+[__Andropadus virens $\rightarrow$ Eurillas virens__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=558594#null)  
+[__Apalis pulchra $\rightarrow$ Oreolais pulcher__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=558692#null)  
+[__Artibeus anderseni $\rightarrow$ Demanura anderseni__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=631831#null)  
+[__Artibeus cinereus $\rightarrow$ Demanura cinerea__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=631833#null)  
+[__Artibeus glaucus $\rightarrow$ Demanura glauca__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=631835#null)  
+[__Artibeus gnomus $\rightarrow$ Demanura gnoma__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=946069#null)  
+[__Artibeus phaeotis $\rightarrow$ Demanura phaeotis__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=631842#null)  
+[__Artibeus watsoni $\rightarrow$ Demanura watsoni__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=946071#null)  
+[__Callithrix pygmaea $\rightarrow$ Cebuella pygmaea pygmaea__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=572917#null)  
+[__Cebus apella $\rightarrow$ Sapajus appela__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=572976#null)  
+[__Cebus libidinosus $\rightarrow$ Sapajus libidinosus__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=944399#null)  
+[__Cephalophus monticola $\rightarrow$ Philantomba monticola__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=625167#null)  
+[__Cercopithecus lhoesti $\rightarrow$ Allochrocebus lhoesti__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=573004#null)  
+[__Cercopithecus preussi	$\rightarrow$ Allochrocebus preussi preussi__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=573012#null)  
+[__Cervus timorensis $\rightarrow$ Rusa timorensis__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=625050#null)  
+[__Chalinolobus poensis $\rightarrow$ Glauconycteris poensis__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=631939#null)  
+[__Dasypterus ega $\rightarrow$ Lasiurus ega__](https://www.itis.gov/servlet/SingleRpt/SingleRpt)  
+[__Eptesicus capensis $\rightarrow$ Neoromicia capensis capensis__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=631948#null)  
+[__Eptesicus tenuipinnis $\rightarrow$ Neoromicia tenuipinnis tenuipinnis__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=631972#null)  
+[__Felis bengalensis $\rightarrow$ Prionailurus bengalensis__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=183793#null)  
+[__Felis pardalis $\rightarrow$ Leopardus pardalis__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=180588#null)  
+[__Geochelone denticulata $\rightarrow$ Chelonoidis denticulata__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=551776#null)  
+[__Hirundo preussi $\rightarrow$ Petrochelidon preussi__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=560481#null)  
+[__Hylobates gabriellae $\rightarrow$ Nomascus gabriellae__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=573071#null)  
+[__Larus ridibundus $\rightarrow$ Chroicocephalus ridibundus__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=176835#null)  
+[__Lonchophylla thomasi $\rightarrow$ Hsunycteris thomasi__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=631798#null)    
+[__Lutra maculicollis $\rightarrow$	Hydrictis maculicollis__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=621917#null)    
+[__Mesophoyx intermedia	$\rightarrow$ Egretta intermedia__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=554343#null)  
+[__Myomys $\rightarrow$ Mastomys__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=585054#null)  
+[__Myomys fumatus $\rightarrow$ Mastomys natalensis__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=585416#null)  
+[__Nectarinia chloropygia $\rightarrow$ Cinnyris chloropygius__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=561492#null)  
+[__Nectarinia olivacea $\rightarrow$ Cyanomitra olivacea__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=561525#null)  
+[__Nectarinia verticalis $\rightarrow$ Cyanomitra verticalis__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=561554#null)  
+[__Pipile cumanensis $\rightarrow$ Aburria cumanensis__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=553811#null)  
+[__Pipistrellus musciculus $\rightarrow$ Hypsugo musciculus__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=632115#null)  
+[__Pipistrellus nanus $\rightarrow$ Neoromicia nana nana__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=632117#null)  
+[__Procolobus pennantii $\rightarrow$ Piliocolobus pennantii__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=573050#null)  
+[__Rousettus angolensis	$\rightarrow$ Lissonycteris angolensis angolensis__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=631668#null)  
+[__Saguinus fuscicollis	$\rightarrow$ Leontocebus fuscicollis__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=572924#null)  
+[__Saguinus nigricollis	$\rightarrow$ Leontocebus nigricollis__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=572932#null)  
+[__Sturnus contra	$\rightarrow$ Gracupica contra__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=563164#null)  
+[__Taphozous saccolaimus $\rightarrow$ Saccolaimus saccolaimus saccolaimus__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=946352#null)  
+[__Tatera kempi	$\rightarrow$ Gerbilliscus kempii__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=633003#null)  
+[__Tayassu tajacu	$\rightarrow$ Pecari tajacu__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=180725#null)  
+[__Tonatia silvicola $\rightarrow$ Lophostoma silvicolum__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=631788#null)  
+[__Vampyressa bidens $\rightarrow$ Vampyriscus bidens__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=631870#null)
+
+Not straightforward:  
+[__Cercocebus albigena $\rightarrow$ Lophocebus albigena__]()  
+[__Cercopithecus patas	$\rightarrow$ Erythrocebus patas__]()  
+[__Cercopithecus tantalus $\rightarrow$ Chlorocebus tantalus__]()  
+[__Cinereus $\rightarrow$ Dermanura cinerea__]()  
+[__Collocalia maxima $\rightarrow$ Aerodramus maximus__]()  
+[__Dyaphorophyia castanea $\rightarrow$ Platysteira castanea__]()  
+[__Felis aurata $\rightarrow$ Profelis aurata__]()  
+[__Herpestes sanguinea $\rightarrow$ Galerella sanguinea__]()  
+[__Marmosa demerarae $\rightarrow$ Micoureus demerarae__]()  
+[__Miconycteris nicefori $\rightarrow$ Trinycteris nicefori__]()  
+[__Myonycteris angolensis $\rightarrow$ Lissonycteris angolensis angolensis__]()  
+[__Phataginus tricuspis $\rightarrow$ Manis tricuspis__]()  
+[__Procolobus gordonorum $\rightarrow$ Piliocolobus gordonorum__]()  
+[__Procolobus tholloni $\rightarrow$ Piliocolobus tholloni__]()  
+[__Rhinopholus sinicus $\rightarrow$ Rhinolophus sinicus__]()  
+[__Semnopithecus cristatus $\rightarrow$ Trachypithecus cristatus__]()  
+[__Smutsia gigantea	$\rightarrow$ Manis gigantea__]()  
+[__Spermestes bicolor	$\rightarrow$ Lonchura bicolor__]()  
+[__Stenonycteris lanosus $\rightarrow$ Rousettus lanosus__]()  
+[__Tadarida plicata	$\rightarrow$ Chaerephon plicatus__]()  
+[__Thecurus crassispinis $\rightarrow$ Hystrix crassispinis__]()  
+[__Tringa minuta $\rightarrow$ Calidris minuta__]()  
+[__Uromanis tetradactyla $\rightarrow$ Manis tetradactyla__]()  
+[__Ursus malayensis $\rightarrow$ Helarctos malayanus__]()  
+
+
+
+##Species Level Inconsistencies
+```{r species-level}
+species_names <- eidith_itis_lookup %>%
+  filter(eidith_species != itis_species)
+
+species_names %>%
+  filter(eidith_species %in% genus_names$eidith_species == FALSE) %>%
+  select(eidith_name, eidith_species, itis_name, itis_species) %>%
+  datatable()
+```
+
+###Eidith to ITIS changes by Species
+
+
+```{r kable sl}
+species <- table(species_names$eidith_species, species_names$itis_species) %>%
+  as.data.frame() %>%
+  filter(Freq > 0) %>%
+  rename(Eidith = Var1, ITIS = Var2, Number = Freq) %>%
+  arrange(desc(Number))
+
+
+ 
+datatable(species)
+
+
+```
+
+__EIDITH Taxonomy $\rightarrow$ ITIS Taxonomy__:
+
+Changes in Taxonomy due to Research / Phylogenetics:
+The following changes are due to the splitting or combining of animal taxonomy at the Species level from work in Phylogenetics or other research. Each ITIS hyperlink contains citations for papers or books which justify these changes. 
+
+[__Aonyx congicus	$\rightarrow$ Aonyx capensis congicus__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=621912#null)  
+[__Lagothrix cana	$\rightarrow$ Lagothrix lagothricha cana__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=944189#null)  
+[__Lagothrix poeppigii	$\rightarrow$ Lagothrix lagothricha poeppigii__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=944190#null)  
+[__Mastomys hildebrandtii	$\rightarrow$ Mastomys hildebrandtii__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=585320#null)  
+[__Pipistrellus mimus	$\rightarrow$ Pipistrellus tenuis mimus__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=632112#null)  
+[__Rattus sikkimensis	$\rightarrow$ Rattus andamanensis__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=585549#null)  
+[__Vespertilio superans	$\rightarrow$ Vespertilio sinensis__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=632160#null)  
+
+
+Gender Concordance or Literature Misspelling:
+ITIS has corrected older Species names so that the Latin gender of each Genus matches the Latin gender of each Species. Additionally, some Species designations have historically been misspelled, and ITIS corrects them. The following changes from EIDITH to ITIS taxonomy represent these two types of updates.
+
+[__Aotus azarai $\rightarrow$ Aotus azarae__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=572943#null)  
+[__Ara severa	$\rightarrow$ Ara severus__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=177671#null)  
+[__Aratinga leucophthalmus $\rightarrow$ Aratinga leucophthalma__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=554902#null)  
+[__Arborophila charltoni $\rightarrow$ Arborophila charltonii__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=176027#null)  
+[__Bleda eximia $\rightarrow$ arborophila Bleda eximius__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=558906#null)  
+[__Chaerephon pumila $\rightarrow$ Chaerephon pumilus__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=632201#null)  
+[__Coelops frithi $\rightarrow$ Coelops frithii__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=631478#null)  
+[__Cynopterus horsfieldi $\rightarrow$ Cynopterus horsfieldii__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=631553#null)  
+[__Galagoides demidovii $\rightarrow$ Galagoides demidoff__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=944094#null)  
+[__Guttera edouardi	$\rightarrow$ Guttera pucherani edouardi__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=176129#null)  
+[__Hipposideros commersoni $\rightarrow$ Hipposideros commersonii__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=631492#null)  
+[__Lagothrix lagotricha $\rightarrow$ Lagothrix lagothricha__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=572960#null)  
+[__Mitu tuberosa $\rightarrow$ Mitu tuberosum__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=553816#null)  
+[__Niviventer coxingi $\rightarrow$ Niviventer coninga__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=585426#null)  
+[__Nycticeinops schlieffeni	$\rightarrow$ Nycticeinops schlieffenii__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=946134#null)  
+[__Pionites melanocephala	$\rightarrow$ Pionites melanocephalus__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=177758#null)  
+[__Rhinopoma hardwickei	$\rightarrow$ Rhinopoma hardwickii__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=631691#null)  
+[__Sundasciurus lowi $\rightarrow$ Sundasciurus lowii__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=632465#null)  
+[__Tamiops rodolphei $\rightarrow$ Tamiops rodolphii__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=632481#null)  
+[__Turdoides striatus	$\rightarrow$ Turdoides striata__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=563560#null)  
+
+
+Not straightforward:
+[__Anas domesticus $\rightarrow$ Anas platyrhynchos__]()  
+[__Horornis vulcania $\rightarrow$ Horornis vulcanius__]()  
+[__Hylomyscus vulcanorum $\rightarrow$ Hylomyscus denniae__]()  
+[__Miniopterus fuliginosus $\rightarrow$ Miniopterus schreibersii fuliginosus__]()  
+[__Petaurista yunanensis $\rightarrow$ Petaurista philippensis yunanensis__]()  
+[__Rattus flavipectus	$\rightarrow$ Rattus tanezumi__]()  
+[__Rattus rattus hainanu $\rightarrow$ Rattus rattus__]()  
+[__Tragelaphus sylvaticus $\rightarrow$ Tragelaphus scriptus sylvaticus__]()  
+
+
+Data entry:
+These entries contain misspellings or what appear to be data entry errors at the Species level:
+
+[__Cercopithecus aethiops	$\rightarrow$ Chlorocebus aethiops__]()   
+[__Lontra longicaudis $\rightarrow$ Lontra longicaudis__]()  
+[__Mazama gouazoubira	$\rightarrow$ Mazama gouazoubira__]()  
+
+
+
+## Double-counting Taxa
+The table below shows the differing EIDITH and ITIS entries that __both appear__ in te EIDITH database. This means that both the non-ITIS designation and the official ITIS designation for a Family / Genus / Species combination appears; therefore any analysis that groups animals by Family, Genus, or Species which contains these combinations will inadvertently inflate the number of Families / Genera / Species. For this reason, __*it is important to consistently use only one naming convention*__. 
+
+
+```{r data}
+
+all_inconsistencies <- bind_rows(family_names, genus_names, species_names) %>%
+  distinct() %>%
+  select(-eidith_name, -eidith_class, -eidith_order, -itis_name, -itis_class, -itis_order, -itis_subspecies, -itis_binomial)
+
+eidith_animals <- araw %>%
+  group_by(family, genus, species) %>%
+  summarize(raw_eidith_number = n())
+
+all_inconsistencies <- left_join(all_inconsistencies, eidith_animals, by = c("eidith_family" = "family", "eidith_genus" = "genus", "eidith_species" = "species"))
+
+itis_animals <- araw %>%
+  group_by(family, genus, species) %>%
+  summarize(raw_itis_number = n())
+
+all_inconsistencies <- left_join(all_inconsistencies, itis_animals, by = c("itis_family" = "family", "itis_genus" = "genus", "itis_species" = "species"))
+
+mismatches <- all_inconsistencies %>%
+  filter(!is.na(raw_itis_number), !is.na(raw_eidith_number))
+  
+
+datatable(mismatches)
+```
+
+
+##Animal Numbers in Raw Data
+This is a lookup table showing the number of animals assigned to each Family / Genus / Species combination in the raw EIDITH data. 
+
+```{r lookup}
+animal_numbers <- araw %>%
+  group_by(family, genus, species) %>%
+  summarize(num_animals = n())
+
+datatable(animal_numbers)
+
+
+```
+
+
+
