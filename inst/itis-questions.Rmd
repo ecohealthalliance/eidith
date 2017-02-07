@@ -39,7 +39,7 @@ eidith_itis_lookup <- read_csv("/Users/Basaraba/R/eidith/data-raw/eidith_itis_lo
 
 ```
 
-## ITIS Taxonomy
+## Overview
 In the course of developing the Eidith-R package, we identified some inconsistencies between Eidith taxonomic entries and ITIS (*Integrated Taxonomic Information System*) taxonomic information in the *animals* table. These inconsistencies may be due to data entry errors, processing errors, or alternate / deprecated taxonomic conventions. We reproduce the inconsistencies below at different taxonomic levels along with context for each suggested change and links to the ITIS Taxonomy database. 
 
 ##Family Level Inconsistencies
@@ -118,11 +118,6 @@ datatable(genuses)
 
 
 ```
-
-There are `r dim(genus_names)[1]-3` Species with inconsistent Genus taxa (excluding those already mentioned in the above Family section). 
-
-The following suggested changes all follow the same pattern: EIDITH Genus entries which are listed in ITIS as invalid or older designations that have been given a new Genus / Species designation. Each suggested change below includes a link to the ITIS database that identifies the EIDITH entry as invalid and identifies the valid ITIS classification. 
-
 
 __EIDITH Taxonomy $\rightarrow$ ITIS Taxonomy__:
 
@@ -237,7 +232,7 @@ datatable(species)
 
 __EIDITH Taxonomy $\rightarrow$ ITIS Taxonomy__:
 
-Changes in Taxonomy due to Research / Phylogenetics:
+Changes in Taxonomy due to Research / Phylogenetics:  
 The following changes are due to the splitting or combining of animal taxonomy at the Species level from work in Phylogenetics or other research. Each ITIS hyperlink contains citations for papers or books which justify these changes. 
 
 [__Aonyx congicus	$\rightarrow$ Aonyx capensis congicus__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=621912#null)  
@@ -249,7 +244,7 @@ The following changes are due to the splitting or combining of animal taxonomy a
 [__Vespertilio superans	$\rightarrow$ Vespertilio sinensis__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=632160#null)  
 
 
-Gender Concordance or Literature Misspelling:
+Gender Concordance or Literature Misspelling:  
 ITIS has corrected older Species names so that the Latin gender of each Genus matches the Latin gender of each Species. Additionally, some Species designations have historically been misspelled, and ITIS corrects them. The following changes from EIDITH to ITIS taxonomy represent these two types of updates.
 
 [__Aotus azarai $\rightarrow$ Aotus azarae__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=572943#null)  
@@ -274,7 +269,7 @@ ITIS has corrected older Species names so that the Latin gender of each Genus ma
 [__Turdoides striatus	$\rightarrow$ Turdoides striata__](https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=563560#null)  
 
 
-Not straightforward:
+Not straightforward:  
 [__Anas domesticus $\rightarrow$ Anas platyrhynchos__]()  
 [__Horornis vulcania $\rightarrow$ Horornis vulcanius__]()  
 [__Hylomyscus vulcanorum $\rightarrow$ Hylomyscus denniae__]()  
@@ -285,7 +280,7 @@ Not straightforward:
 [__Tragelaphus sylvaticus $\rightarrow$ Tragelaphus scriptus sylvaticus__]()  
 
 
-Data entry:
+Data entry:  
 These entries contain misspellings or what appear to be data entry errors at the Species level:
 
 [__Cercopithecus aethiops	$\rightarrow$ Chlorocebus aethiops__]()   
