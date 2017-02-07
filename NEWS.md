@@ -7,6 +7,10 @@ package, like so:
 ```
 devtools::install_github('ecohealthalliance/eidith@v0.1.0')`
 ```
+# eidith 0.2.2 (patch)
+
+- Change API endpoint URLs
+
 # eidith 0.2.1 (patch)
 
 - Fix bug in `ed_table_` when parsing long expressions, showing up in
