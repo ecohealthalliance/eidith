@@ -111,7 +111,10 @@ ed_fasta_group <- function(.data, filepath = "", sequence = "sequence", grouping
   }else if(grouping == "method"){
     dat <- split(.data, .data$meth)
     invisible(purrr::map(dat, ~ed_fasta_(.,file = paste0(filepath,.$meth[1], ".fasta"), sequence = sequence, .dots = lazyeval::lazy_dots(...))))
-  }else {stop(paste0("The option '", grouping, "' is not valid for grouping FASTA files. Try 'virus' or 'method'."))}
+  }else if(grouping == "both"){
+    dat <- split(.data, list(.data$test_rq, .data$meth), drop = TRUE)
+    invisible(purrr::map(dat, ~ed_fasta_(., file = paste0(filepath,.$test_rq[1],"-", .$meth[1], ".fasta"), sequence = sequence, .dots = lazyeval::lazy_dots(...))))
+  }else {stop(paste0("The option '", grouping, "' is not valid for grouping FASTA files. Try 'virus', 'method', or 'both'."))}
 }
 
 #' @rdname ed_fasta
