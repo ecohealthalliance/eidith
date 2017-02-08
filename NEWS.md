@@ -13,6 +13,7 @@ devtools::install_github('ecohealthalliance/eidith@v0.1.0')`
 - Fix typos in vignette
 - Additional functionality for FASTA export and interpretation: `ed_fasta_group`,
   `ed_report_excel()`.
+- Change `virus_id` to `sequence_id`
 - Make lat/long numeric and compatible with `SpatialPointsDataFrame`
 
 # eidith 0.2.2 (patch)
