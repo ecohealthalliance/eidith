@@ -11,7 +11,7 @@
 \usage{
 ed_fasta(.data, filename = "", sequence = "sequence", ...)
 
-ed_fasta_(.data, file = "", sequence = "sequence", ..., .dots)
+ed_fasta_(.data, filename = "", sequence = "sequence", ..., .dots)
 
 ed_tests_report(status = c("Result finalized, interpretation pending"),
   test_ids = NULL, meta_fields = c(sp_idname = "specimen_id_name", sp =
@@ -22,7 +22,7 @@ ed_tests_report(status = c("Result finalized, interpretation pending"),
 ed_fasta_group(.data, filepath = "", sequence = "sequence",
   grouping = "virus", ...)
 
-ed_report_excel(report, filename)
+ed_report_excel(.data, filename)
 }
 \arguments{
 \item{.data}{The data frame}
