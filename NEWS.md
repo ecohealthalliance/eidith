@@ -8,6 +8,12 @@ package, like so:
 devtools::install_github('ecohealthalliance/eidith@v0.1.0')`
 ```
 
+# eidith 0.2.2.90000 (dev)
+
+- Fix typos in vignette
+- Additional functionality for FASTA export and interpretation: `ed_fasta_group`,
+  `ed_report_excel()`.
+
 # eidith 0.2.2 (patch)
 
 - Switch API endpoints to new URLs

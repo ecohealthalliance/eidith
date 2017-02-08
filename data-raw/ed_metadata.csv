@@ -181,7 +181,7 @@ tests,Test,35,DateLastUpdated,date_last_updated,database_date,NA,NA
 tests,Test,33,CRDate,crdate,date_created,Date record was first created within the EIDITH database,NA
 tests,Test,34,LMDate,lmdate,date_modified,Last-modified date of record within the EIDITH database,NA
 tests,Test,NA,Country,country,DROP,NA,NA
-viruses,Virus,1,GAINS3_SequenceID,gains3_sequence_id,virus_id,Numerical Sequence ID,NA
+viruses,Virus,1,GAINS3_SequenceID,gains3_sequence_id,sequence_id,Numerical Sequence ID,NA
 viruses,Virus,2,GAINS3_TestID,gains3_test_id,test_id,Numerical Test ID,NA
 viruses,Virus,11,Sequence,sequence,NA,NA,NA
 viruses,Virus,10,VirusCode,virus_code,NA,NA,NA
