@@ -5,9 +5,11 @@
 \alias{fasta}
 \alias{ed_fasta_}
 \alias{ed_tests_report}
-\title{Export FASTA files}
+\alias{ed_fasta_group}
+\alias{ed_report_excel}
+\title{Export FASTA files for viral interpretation}
 \usage{
-ed_fasta(.data, file = "", sequence = "sequence", ...)
+ed_fasta(.data, filename = "", sequence = "sequence", ...)
 
 ed_fasta_(.data, file = "", sequence = "sequence", ..., .dots)
 
@@ -15,12 +17,17 @@ ed_tests_report(status = c("Result finalized, interpretation pending"),
   test_ids = NULL, meta_fields = c(sp_idname = "specimen_id_name", sp =
   "species_scientific_name", country = "country", an_idname = "animal_id_name",
   lab = "diag_lab_shortname", test_rq = "test_requested", meth =
-  "methodology_reference", seq_id = "virus_id", test_id = "test_id"))
+  "test_requested_protocol", seq_id = "sequence_id", test_id = "test_id"))
+
+ed_fasta_group(.data, filepath = "", sequence = "sequence",
+  grouping = "virus", ...)
+
+ed_report_excel(report, filename)
 }
 \arguments{
 \item{.data}{The data frame}
 
-\item{file}{name of file to write to. If "" (default), the output is written to console.}
+\item{filename}{name of file to write to. If "" (default), the output is written to console.}
 
 \item{sequence}{the column name in the data frame that contains the sequence.  Default is "sequence".}
 
@@ -37,12 +44,18 @@ printed if some tests have no sequence data.}
 
 \item{meta_fields}{For \code{ed_test_report()}. A vector of names of metadata to provide.  If named, fields will be renamed,
 which is useful for abbreviating fields for FASTA export}
+
+\item{filepath}{File path indicating where grouped FASTA files should be saved.}
+
+\item{grouping}{The variable used to group sequences into separate FASTA files. One of "virus", "method", or "both".}
 }
 \value{
-The FASTA file is written to a file or the console (default).  Also, a character vector of each FASTA record is returned invisibly.  \code{ed_tests_report()} returns a data frame.
+For \code{ed_fasta()}, \code{ed_fasta_group()}, and \code{ed_report_excel()}, the file(s) will be written to a file or the console (default).  Also, a character vector of each FASTA record is returned invisibly
+\code{ed_tests_report()} returns a data frame.
 }
 \description{
-\code{ed_fasta()} and \code{ed_fasta_()} convert a data frame to a FASTA file.  \code{ed_tests_report()} is a standard report returning a data frame of all uninterpreted test sequences, along with a set of metadata, which is commonly printed to FASTA
+\code{ed_fasta()} and \code{ed_fasta_group()} convert a data frame to a FASTA file.  \code{ed_tests_report()} is a standard report returning a data frame of all uninterpreted test sequences, along with a set of metadata, which is commonly printed to FASTA.
+\code{ed_report_excel()} is a convenience function for creating excel-ready CSVs for reporting.  See the \href{https://ecohealthalliance.github.io/eidith/articles/fasta_walkthrough.html}{FASTA vignette} for more guidance.
 }
 \examples{
 \dontrun{
