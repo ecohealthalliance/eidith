@@ -6,8 +6,8 @@ events,Event,8,Region,region,NA,NA,NA
 events,Event,2,Country,country,NA,Country of collection site,NA
 events,Event,9,StateProv,state_prov,NA,State or province of collection site,NA
 events,Event,10,District,district,NA,District of collection site,NA
-events,Event,11,Latitude,latitude,NA,Decimal degrees,NA
-events,Event,12,Longitude,longitude,NA,Decimal degrees,NA
+events,Event,12,Latitude,latitude,NA,Decimal degrees,NA
+events,Event,11,Longitude,longitude,NA,Decimal degrees,NA
 events,Event,13,HabitatType,habitat_type,NA,Primary habitat within home range of animals sampled,Category capitalization normalized
 events,Event,14,HabitatComment,habitat_comment,NA,Free text notes to describe habitat,NA
 events,Event,15,LandscapeConversionGradient,landscape_conversion_gradient,NA,NA,NA

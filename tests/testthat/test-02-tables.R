@@ -56,6 +56,12 @@ withr::with_options(list(ed_sql_path = TEST_SQL_PATH), {
         expect_true(all(names(expected_fields %in% ed_tb)))
       }
     })
+
+    test_that("Long and lat are numeric", {
+      evs <- ed_events()
+      expect_is(evs$longitude, "numeric")
+      expect_is(evs$latitude, "numeric")
+    })
   }
 })
 
