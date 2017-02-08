@@ -41,7 +41,6 @@ Suggests:
     testthat,
     withr,
     rmarkdown,
-    knitr,
-    readr
+    knitr
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
