@@ -159,7 +159,7 @@ eidith_itis_lookup <- bind_rows(taxa10, manual_lookup)
 write_csv(eidith_itis_lookup, P("data-raw/eidith_itis_lookup.csv"))
 
 
-ed_metadata_ <- gs_read_csv(gs_url("https://docs.google.com/spreadsheets/d/1eHCpzYCL5-GRMZLhqJc4fj2iVUhjVhydNEp20oQW5H0/"))
+ed_metadata_ <- gs_read_csv(gs_url("https://docs.google.com/spreadsheets/d/1eHCpzYCL5-GRMZLhqJc4fj2iVUhjVhydNEp20oQW5H0"))
 ed_lab_shortnames <- readr::read_csv(P("data-raw/ed_lab_shortnames.csv"), col_types="cc")
 ed_taxagroups_ <- readr::read_csv(P("data-raw/ed_taxagroups.csv"), col_types="cc")
 readr::write_csv(ed_metadata_, P("data-raw/ed_metadata.csv"))

@@ -109,7 +109,9 @@ pp_Event <- function(dat) {
           `lowland forest` = 'Lowland forest',
           `Grassland ` = 'Grassland',
           `river/stream` = 'River/stream'
-        )
+        ),
+        longitude = ~as.numeric(longitude),
+        latitude = ~as.numeric(latitude)
       )
   }
   return(dat)
