@@ -1,13 +1,15 @@
-#' Export FASTA files
+#' Export FASTA files for viral interpretation
 #'
-#' `ed_fasta()` and `ed_fasta_()` convert a data frame to a FASTA file.  `ed_tests_report()` is a standard report returning a data frame of all uninterpreted test sequences, along with a set of metadata, which is commonly printed to FASTA
+#' @description `ed_fasta()` and `ed_fasta_group()` convert a data frame to a FASTA file.  `ed_tests_report()` is a standard report returning a data frame of all uninterpreted test sequences, along with a set of metadata, which is commonly printed to FASTA.
+#'  `ed_report_excel()` is a convenience function for creating excel-ready CSVs for reporting.  See the [FASTA vignette](https://ecohealthalliance.github.io/eidith/articles/fasta_walkthrough.html) for more guidance.
 #'
 #' @param .data The data frame
-#' @param file name of file to write to. If "" (default), the output is written to console.
+#' @param filename name of file to write to. If "" (default), the output is written to console.
 #' @param sequence the column name in the data frame that contains the sequence.  Default is "sequence".
 #' @param ... Additional columns to include as metadata, using [dplyr::select()] syntax.  If nothing is included, all columns are used.
 #'
-#' @return The FASTA file is written to a file or the console (default).  Also, a character vector of each FASTA record is returned invisibly.  `ed_tests_report()` returns a data frame.
+#' @return For `ed_fasta()`, `ed_fasta_group()`, and `ed_report_excel()`, the file(s) will be written to a file or the console (default).  Also, a character vector of each FASTA record is returned invisibly
+#' `ed_tests_report()` returns a data frame.
 #' @export
 #' @rdname ed_fasta
 #' @aliases fasta
@@ -15,7 +17,7 @@
 #' \dontrun{
 #'  ed_fasta(ed_tests_report())
 #'  }
-ed_fasta <- function(.data, file = "", sequence="sequence", ...) {
+ed_fasta <- function(.data, filename = "", sequence="sequence", ...) {
   ed_fasta_(.data=.data, file=file, sequence=sequence, .dots = lazyeval::lazy_dots(...))
 }
 
@@ -100,7 +102,7 @@ ed_tests_report <- function(status = c("Result finalized, interpretation pending
 }
 
 #' @rdname ed_fasta
-#' @param grouping The variable used to group sequences into separate FASTA files.
+#' @param grouping The variable used to group sequences into separate FASTA files. One of "virus", "method", or "both".
 #' @param filepath File path indicating where grouped FASTA files should be saved.
 #' @export
 #' @importFrom purrr map

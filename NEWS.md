@@ -12,6 +12,8 @@ devtools::install_github('ecohealthalliance/eidith@v0.1.0')`
 ## Misc
 
 - Fix typos in vignette
+- Additional functionality for FASTA export and interpretation: `ed_fasta_group`,
+  `ed_report_excel()`.
 
 # eidith 0.2.1 (patch)
 
