@@ -1,5 +1,6 @@
 library(tidyverse)
 library(jsonlite)
+library(stringi)
 devtools::load_all()
 mock_events <- fromJSON("https://predict2api4devsite.eidith.org/api/modeling/EventMock")
 mock_animals <- fromJSON("https://predict2api4devsite.eidith.org/api/modeling/AnimalMock")
@@ -18,6 +19,9 @@ real_testspecimen <- ed_get_testspecimen(postprocess = FALSE)
 # mock_events lacks CRDate and LMDate values
 mock_events_fixed = mock_events %>%
   mutate(CRDate = DateLastUpdated, LMDate = DateLastUpdated)
+mock_events_fixed = mock_events_fixed[, names(real_events)]
+
+
 
 names(real_animals)
 names(mock_animals)[]
@@ -26,7 +30,7 @@ mock_animals_fixed = mock_animals %>%
   rename(GAINS3_SampleUnitID=AnimalID_int, GAINS3_EventID=EventID_int, `Necropsy/exam`=`Necropsy/Exam`) %>%
   mutate(CRDate = DateLastUpdated, LMDate = DateLastUpdated) %>%
   mutate(SampleIndividualName = `AnimalID (GAINS)`, SampleUnitID = `AnimalID (GAINS)`)
-
+mock_animals_fixed = mock_animals_fixed[, names(real_animals)]
 # names(real_animals)
 # names(mock_animals_fixed)
 # names(real_animals)[!names(real_animals) %in% names(mock_animals_fixed)]
@@ -39,22 +43,25 @@ mock_specimens_fixed <- mock_specimens %>%
   rename(GAINS3_SampleUnitID=AnimalID_int, GAINS3_SpecimenID=SpecimenID_int) %>%
   mutate(CRDate = DateLastUpdated, LMDate = DateLastUpdated,
          SpecimenTypeID = SpecimenType, SpecimenNotes = NA)
+mock_specimens_fixed = mock_specimens_fixed[, names(real_specimens)]
 
 # names(real_specimens)[!names(real_specimens) %in% names(mock_specimens_fixed)]
 # names(mock_specimens_fixed)[!names(mock_specimens_fixed) %in% names(real_specimens)]
 
 # names(real_tests)
 # names(mock_tests)
-extra_test_fields <- which((!names(mock_tests) %in% c(names(real_tests), "SpecimenIDUnique") | names(mock_tests) %in% c("testID_int1")))
+extra_test_fields <-which((!names(mock_tests) %in% c(names(real_tests), "SpecimenIDUnique")))
 mock_tests_fixed <- mock_tests %>%
   rename(SpecimenName=SpecimenIDUnique) %>%
+  mutate(TestID = testID_int1) %>%
   select(-extra_test_fields) %>%
   mutate(CRDate = DateLastUpdated, LMDate = DateLastUpdated)
+mock_tests_fixed = mock_tests_fixed[, names(real_tests)]
 
 # names(real_tests)[!names(real_tests) %in% names(mock_tests_fixed)]
 # names(mock_tests_fixed)[!names(mock_tests_fixed) %in% names(real_tests)]
-names(real_viruses)
-names(mock_viruses)
+# names(real_viruses)
+# names(mock_viruses)
 
 extra_virus_fields <- which((!names(mock_viruses) %in% c(names(real_viruses), "TestID_int", "VirusID_Int")))
 mock_viruses_fixed <- mock_viruses %>%
@@ -62,8 +69,27 @@ mock_viruses_fixed <- mock_viruses %>%
   rename(GAINS3_SequenceID=VirusID_Int, GAINS3_TestID=TestID_int) %>%
   mutate(CRDate = DateLastUpdated, LMDate = DateLastUpdated,
          GenbankAccessionNumber = NA, VirusCode=NA, VirusStatus=NA)
+mock_viruses_fixed = mock_viruses_fixed[, names(real_viruses)]
 
-names(real_viruses)[!names(real_viruses) %in% names(mock_viruses_fixed)]
-names(mock_viruses_fixed)[!names(mock_viruses_fixed) %in% names(real_viruses)]
+# names(real_viruses)[!names(real_viruses) %in% names(mock_viruses_fixed)]
+# names(mock_viruses_fixed)[!names(mock_viruses_fixed) %in% names(real_viruses)]
 
-mock_testspecimen_fixed = mock_tests %>%
+
+
+test_interim <- mock_tests %>%
+  select(testID_int1, SpecimenID_Int, Pooled, SpecimenID, SpecimenIDUnique) %>%
+  separate(SpecimenID, into=c("SpecimenID_1", "SpecimenID_2"), sep = "[\\,]+", fill="right") %>%
+  mutate_each(funs(stri_trim_both), SpecimenID_1, SpecimenID_2) %>%
+  gather("SpecimentID_no", "SpecimenID", SpecimenID_1, SpecimenID_2) %>%
+  mutate(join_id = coalesce(SpecimenIDUnique, SpecimenID)) %>%
+  select(testID_int1, join_id)
+specimen_interim <- mock_specimens %>%
+  select(GAINS3_SpecimenID, SpecimenIDUnique) %>%
+  rename(join_id = SpecimenIDUnique)
+
+mock_testspecimen_fixed <- left_join(test_interim, specimen_interim, by="join_id") %>%
+  rename(GAINS3_TestID = testID_int1) %>%
+  select(-join_id)
+
+mock_testspecimen_fixed = mock_testspecimen[, names(real_testspecimen)]
+
