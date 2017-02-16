@@ -6,11 +6,60 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```
+### Setup
+Before exploring the tables in the EIDITH database using the eidith package, make sure to load it:  
+```{r 1}
+library(eidith)
+``` 
+
+For the purposes of this vignette, you also will want to download / use the tidyverse package:
+```{r 2}
+install.packages("tidyverse")  
+library(tidyverse)
 ```
 
-## EIDITH Database Structure
+If you are having trouble installing the eidith R package, logon credentials, permissions, or have not downloaded the local database, please follow the instructions in the [main package tutorial](https://ecohealthalliance.github.io/eidith/articles/eidith.html).
 
-![](table-structure.png)
+### EIDITH Database Structure
 
-Draft of EIDITH database structure image
+Like many databases, EIDITH is divided into several tables that are linked by unique ID fields (integers in this case). Below is a sketch of the six EIDITH tables and their basic linking structure. The lines connecting tables identify the fields, or columns, that link one table to the next. The fields with yellow keys next to their names are unique IDs -- this means that no two rows in that table can have the same value for this field.
+  
+![](tables.png)
+In the `events` table, for instance, each event (or row) has a unique `event_id`, while in the `animals` table, each animal (or row) has a unique `animal_id`. Importantly, each animal in the `animals` table also has an `event_id`, which links it to an event. Since `event_id` is not unique in the `animals` table, there can be more than one animal entry with the same `event_id` -- this makes perfect sense, since there are likely multiple animals attached to a particular event.  
+  
+These ID fields tie all of the tables together, allowing us to join tables together that contain information we are interested in analyzing. EIDITH is a large database with many fields per table, so it can be challenging at first to determine which table contains the relevant information. Generally, the location of the information we are looking for should be in the table that it is most closely tied to: if we are looking for the species of an animal, that field should be in the `animals` table, if we are looking for the genetic sequence of a virus, that information should be in the `viruses` table. If we are having a hard time finding the field we need, we can use the `?ed_metadata` command to load the built-in help file that contains a searchable list of all EIDITH fields.
+
+#### Testspecimens Table
+The `testspecimens` table is different from the other five EIDITH tables: it is a lookup table whose only purpose is to allow the joining of the `tests` and `specimens` tables. It is necessary because one specimen can be linked to multiple tests and (due to pooled tests) one test can be linked to multiple specimens.  
+
+  
+### Joining Tables  
+Let's walk through an example of joining tables in order to get information about the specimens taken during different events. Specifically, we will examine different sampling methods by country. Looking at the database structure diagram above, we will need the `events`, `animals`, and `specimens` tables to link together information about events (country) with information about specimens (sampling method). Notice we cannot link rows in the `specimens` table directly to the `events` table. This is because the `specimens` table contains information about which animal the specimen was obtained from, but only the `animals` table has information about which animal is connected to a particular event. 
+  
+First, we need to load these three tables from our locally stored EIDITH database into R:
+```{r 3}
+events <- ed_events()
+animals <- ed_animals()
+specimens <- ed_specimens()
+```
+
+We can take a look at all the fields / columns in these tables by running `names(events)`, `names(animals)`, or `names(specimens)` which will print out all the column names from these tables into our console. If we do this, we can see that, along with many other fields, each table has the ID fields highlighted in the database structure diagram above.  
+  
+We will have to perform two joins in this example. First, we will join the `events` table to the `animals` table:
+```{r 4}
+ea <- inner_join(events, animals, by = "event_id")
+```
+
+In this example we used the `inner_join()` function from the `dplyr` package. Note that we use the `by = "event_id"` argument to specify that we want to join based on the linking key. This type of join will combine all columns from both tables, but will drop entries from the `events` table that have no linked entries in the `animals` table and vice versa. Depending on what kind of analysis we are interested in, we may want to perform a different kind of join. Running `?dplyr::join` to read the `dplyr` join help file explains different joining options.  
+  
+If we run `names(ea)` we can see that we now have a dataframe with all the columns from both the `events` and `animals` tables. Our next step is to join this table to the specimens table:
+```{r 5}
+eas <- inner_join(ea, specimens, by = "animal_id")
+```
+  
+We now have a table that combines information from all three tables, and can create a visualization that conveys sampling method by country.
+  
+
+
