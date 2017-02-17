@@ -106,7 +106,7 @@ raw_mock_data <- list(events = mock_events_fixed,
                       specimens = mock_specimens_fixed,
                       tests = mock_tests_fixed,
                       viruses = mock_viruses_fixed,
-                      testspecimen = mock_testspecimen_fixed)
+                      test_specimen_ids = mock_testspecimen_fixed)
 raw_mock_data <- map(raw_mock_data, as_tibble)
 
 walk2(raw_mock_data, names(raw_mock_data), ~readr::write_csv(.x, P("data-raw", paste0("mock_", .y, ".csv"))))
