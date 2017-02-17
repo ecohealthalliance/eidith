@@ -2,6 +2,8 @@ library(tidyverse)
 library(jsonlite)
 library(stringi)
 devtools::load_all()
+P <- rprojroot::find_package_root_file
+
 mock_events <- fromJSON("https://predict2api4devsite.eidith.org/api/modeling/EventMock")
 mock_animals <- fromJSON("https://predict2api4devsite.eidith.org/api/modeling/AnimalMock")
 mock_specimens <- fromJSON("https://predict2api4devsite.eidith.org/api/modeling/SpecimenMock")
@@ -71,6 +73,11 @@ mock_viruses_fixed <- mock_viruses %>%
          GenbankAccessionNumber = NA, VirusCode=NA, VirusStatus=NA)
 mock_viruses_fixed = mock_viruses_fixed[, names(real_viruses)]
 
+mock_viruses_fixed = mock_viruses_fixed %>%
+  filter(!is.na(Sequence)) %>%
+  distinct(Sequence, .keep_all=TRUE) %>%
+  mutate(GAINS3_TestID=382)
+
 # names(real_viruses)[!names(real_viruses) %in% names(mock_viruses_fixed)]
 # names(mock_viruses_fixed)[!names(mock_viruses_fixed) %in% names(real_viruses)]
 
@@ -91,5 +98,21 @@ mock_testspecimen_fixed <- left_join(test_interim, specimen_interim, by="join_id
   rename(GAINS3_TestID = testID_int1) %>%
   select(-join_id)
 
-mock_testspecimen_fixed = mock_testspecimen[, names(real_testspecimen)]
+mock_testspecimen_fixed = mock_testspecimen_fixed[, names(real_testspecimen)]
+
+
+raw_mock_data <- list(events = mock_events_fixed,
+                      animals = mock_animals_fixed,
+                      specimens = mock_specimens_fixed,
+                      tests = mock_tests_fixed,
+                      viruses = mock_viruses_fixed,
+                      testspecimen = mock_testspecimen_fixed)
+raw_mock_data <- map(raw_mock_data, as_tibble)
+
+walk2(raw_mock_data, names(raw_mock_data), ~readr::write_csv(.x, P("data-raw", paste0("mock_", .y, ".csv"))))
+
+processed_mock_data <- purrr::map2(raw_mock_data,
+                                   c("Event", "Animal",  "Specimen", "Test", "Virus", "TestIDSpecimenID" ),
+                                   ed_process)
+
 
