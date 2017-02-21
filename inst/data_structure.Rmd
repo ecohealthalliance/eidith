@@ -50,26 +50,26 @@ mock_specimens <- ed_specimens_mock()
 
 We can take a look at all the fields / columns in these tables by running `names(mock_events)`, `names(mock_animals)`, or `names(mock_specimens)` which will print out all the column names from these tables into our console. If we do this, we can see that, along with many other fields, each table has the ID fields highlighted in the database structure diagram above.  
   
-We will have to perform two joins in this example. First, we will join the `events` table to the `animals` table:
+We will have to perform two joins in this example. First, we will join the `mock_events` table to the `mock_animals` table:
 ```{r 4, eval = TRUE}
 mock_ea <- inner_join(mock_events, mock_animals, by = "event_id")
 ```
 
 In this example we used the `inner_join()` function from the `dplyr` package. Note that we use the `by = "event_id"` argument to specify that we want to join based on the linking key. This type of join will combine all columns from both tables, but will drop entries from the `events` table that have no linked entries in the `animals` table and vice versa. Depending on what kind of analysis we are interested in, we may want to perform a different kind of join. Running `?dplyr::join` to read the `dplyr` join help file explains different joining options.  
   
-If we run `names(mock_ea)` we can see that we now have a dataframe with all the columns from both the `events` and `animals` tables. Our next step is to join this table to the specimens table:
+If we run `names(mock_ea)` we can see that we now have a dataframe with all the columns from both the `mock_events` and `mock_animals` tables. Our next step is to join this table to the `mock_specimens` table:
 ```{r 5, eval = TRUE}
 mock_eas <- inner_join(mock_ea, mock_specimens, by = "animal_id")
 ```
   
-We now have a table that combines information from all three tables, and can create a visualization that conveys sampling method by country. We can use the `ggplot2` package to create a clean stacked-bar graph:
+We now have a table that combines information from all three tables, and can create a visualization of specimen type by habitat type. We can use the `ggplot2` package to create a clean stacked-bar graph. We can install and load the `ggplot2` package using the code below:
   
 ```{r 6}
 install.packages("ggplot2")
 library(ggplot2)
 ```
 
-The following code creates a stacked-bar graph using the `ggplot2` package.
+The following code creates a stacked-bar graph using the `ggplot2` package. 
 
 ```{r 7, eval = TRUE}
 ggplot(data = mock_eas) +       
@@ -78,4 +78,5 @@ ggplot(data = mock_eas) +
   labs(title = "Specimen Type by Habitat Type (Mock Data)", x = "Specimen Type", y = "Count (specimens)", fill = "Habitat Type")
 ```
 
-
+### Conclusion
+This vignette describes the data structure of the EIDITH database and leads the user through some simple joins to link information from the `events` and `specimens` tables. The same process can be done to visualize or analyze information from across any of the tables in EIDITH database. 
