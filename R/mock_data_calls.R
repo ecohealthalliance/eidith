@@ -40,6 +40,10 @@ ed_table_mock <- function(mock_table, ...) {
 ed_events_mock <- function(...) {
   ed_table_mock_("events", .dots = lazyeval::lazy_dots(...))
 }
+
+#' @export
+#' @rdname ed_mock
+#' @aliases ed_mock
 ed_animals_mock <- function(...) {
   ed_table_mock_("animals", .dots = lazyeval::lazy_dots(...))
 }
