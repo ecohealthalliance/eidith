@@ -73,5 +73,5 @@ ed_viruses_mock <- function(...) {
 #' @rdname ed_mock
 #' @aliases ed_mock
 ed_testspecimen_mock <- function(...) {
-  ed_table_mock_("test_specimen_ids", .dots = lazyeval::lazy_dots(...))
+  ed_table_mock_("testspecimen", .dots = lazyeval::lazy_dots(...))
 }
