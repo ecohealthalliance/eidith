@@ -4,7 +4,7 @@ endpoints <- c("Event", "Animal", "Specimen", "Test", "Virus",
 
 #' Functions to download EIDITH tables via API
 #'
-#' These function download data directly from the EIDITH API.  They require
+#' These functions download data directly from the EIDITH API.  They require
 #' [authorization][ed_auth].  They can be useful for comparing local data
 #' against data updated in the database, or processed vs. unprocessed data.
 #' The [table functions][ed_table] load data from the local database instead,
