@@ -2,6 +2,7 @@
 
 S3method(print,dbstatus)
 export(ed_animals)
+export(ed_animals_mock)
 export(ed_db_download)
 export(ed_db_export)
 export(ed_db_status)

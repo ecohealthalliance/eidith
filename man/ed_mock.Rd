@@ -7,6 +7,8 @@
 \alias{ed_mock}
 \alias{ed_events_mock}
 \alias{ed_mock}
+\alias{ed_animals_mock}
+\alias{ed_mock}
 \alias{ed_specimens_mock}
 \alias{ed_mock}
 \alias{ed_tests_mock}
@@ -22,6 +24,8 @@ ed_table_mock_(mock_table, ..., .dots, raw = FALSE)
 ed_table_mock(mock_table, ...)
 
 ed_events_mock(...)
+
+ed_animals_mock(...)
 
 ed_specimens_mock(...)
 
