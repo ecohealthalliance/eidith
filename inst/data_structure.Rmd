@@ -7,6 +7,9 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+library(eidith)
+library(tidyverse)
+library(ggplot2)
 ```
 ### Setup
 Before exploring the tables in the EIDITH database using the eidith package, make sure to load it:  
@@ -36,10 +39,10 @@ The `testspecimens` table is different from the other five EIDITH tables: it is 
 
   
 ### Joining Tables  
-Let's walk through an example of joining tables in order to get information about the specimens taken during different events. Specifically, we will examine different sampling methods by country. Looking at the database structure diagram above, we will need the `events`, `animals`, and `specimens` tables to link together information about events (country) with information about specimens (sampling method). Notice we cannot link rows in the `specimens` table directly to the `events` table. This is because the `specimens` table contains information about which animal the specimen was obtained from, but only the `animals` table has information about which animal is connected to a particular event. 
+Let's walk through an example of joining tables in order to get information about the specimens taken during different events. Specifically, we will examine different specimen types by habitat Looking at the database structure diagram above, we will need the `events`, `animals`, and `specimens` tables to link together information about events (habitat) with information about specimens (speciment type). Notice we cannot link rows in the `specimens` table directly to the `events` table. This is because the `specimens` table contains information about which animal the specimen was obtained from, but only the `animals` table has information about which animal is connected to a particular event. 
   
 First, we need to load these three tables from our locally stored EIDITH database into R. If you have EIDITH database access, you can use the functions `ed_events()`, `ed_animals()` and `ed_specimens()` to access your data, but for the purposes of this vignette we will use the mock data available using the `ed_mock` calls. For more information on the mock data included in the package, `?ed_mock` will open a helpfile in RStudio. 
-```{r 3}
+```{r 3, eval = TRUE}
 mock_events <- ed_events_mock()
 mock_animals <- ed_animals_mock()
 mock_specimens <- ed_specimens_mock()
@@ -48,18 +51,31 @@ mock_specimens <- ed_specimens_mock()
 We can take a look at all the fields / columns in these tables by running `names(mock_events)`, `names(mock_animals)`, or `names(mock_specimens)` which will print out all the column names from these tables into our console. If we do this, we can see that, along with many other fields, each table has the ID fields highlighted in the database structure diagram above.  
   
 We will have to perform two joins in this example. First, we will join the `events` table to the `animals` table:
-```{r 4}
+```{r 4, eval = TRUE}
 mock_ea <- inner_join(mock_events, mock_animals, by = "event_id")
 ```
 
 In this example we used the `inner_join()` function from the `dplyr` package. Note that we use the `by = "event_id"` argument to specify that we want to join based on the linking key. This type of join will combine all columns from both tables, but will drop entries from the `events` table that have no linked entries in the `animals` table and vice versa. Depending on what kind of analysis we are interested in, we may want to perform a different kind of join. Running `?dplyr::join` to read the `dplyr` join help file explains different joining options.  
   
 If we run `names(mock_ea)` we can see that we now have a dataframe with all the columns from both the `events` and `animals` tables. Our next step is to join this table to the specimens table:
-```{r 5}
+```{r 5, eval = TRUE}
 mock_eas <- inner_join(mock_ea, mock_specimens, by = "animal_id")
 ```
   
-We now have a table that combines information from all three tables, and can create a visualization that conveys sampling method by country:
+We now have a table that combines information from all three tables, and can create a visualization that conveys sampling method by country. We can use the `ggplot2` package to create a clean stacked-bar graph:
   
+```{r 6}
+install.packages("ggplot2")
+library(ggplot2)
+```
+
+The following code creates a stacked-bar graph using the `ggplot2` package.
+
+```{r 7, eval = TRUE}
+ggplot(data = mock_eas) +       
+  geom_bar(aes(x = specimen_type_id, fill = habitat_type)) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1), legend.text = element_text("")) +
+  labs(title = "Specimen Type by Habitat Type (Mock Data)", x = "Specimen Type", y = "Count (specimens)", fill = "Habitat Type")
+```
 
 
