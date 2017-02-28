@@ -14,7 +14,8 @@ datetime_vars <- c("date_created", "date_modified", "database_date")
 #' and cleaned EIDITH data. `ed_table` is a general function, and `ed_table_`
 #' it's [standard evaluation](https://cran.r-project.org/web/packages/dplyr/vignettes/nse.html)
 #' equivalent, useful for programming.  The other functions are convenience aliases
-#' for the individual tables.
+#' for the individual tables. Alternate versions return [mock data][ed_mock()] for
+#' tutorials and practice.
 #'
 #' These functions take [dplyr::filter()] arguments to sub-set the data.  Using
 #' these, the data is subsetted via SQL *before* it is loaded into memory.

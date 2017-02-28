@@ -163,5 +163,7 @@ ed_metadata_ <- gs_read_csv(gs_url("https://docs.google.com/spreadsheets/d/1eHCp
 ed_lab_shortnames <- readr::read_csv(P("data-raw/ed_lab_shortnames.csv"), col_types="cc")
 ed_taxagroups_ <- readr::read_csv(P("data-raw/ed_taxagroups.csv"), col_types="cc")
 readr::write_csv(ed_metadata_, P("data-raw/ed_metadata.csv"))
-devtools::use_data(eidith_itis_lookup, ed_metadata_, ed_lab_shortnames, ed_taxagroups_, internal = TRUE, overwrite = TRUE)
+source(P("data-raw", "fix-mock-data.R"))
+devtools::use_data(eidith_itis_lookup, ed_metadata_, ed_lab_shortnames, ed_taxagroups_, raw_mock_data, processed_mock_data, internal = TRUE, overwrite = TRUE)
 
+#load("R/sysdata.rda")

@@ -43,7 +43,8 @@ These functions load data from the locally-stored SQLite database of downloaded
 and cleaned EIDITH data. \code{ed_table} is a general function, and \code{ed_table_}
 it's \href{https://cran.r-project.org/web/packages/dplyr/vignettes/nse.html}{standard evaluation}
 equivalent, useful for programming.  The other functions are convenience aliases
-for the individual tables.
+for the individual tables. Alternate versions return \link[=ed_mock]{mock data} for
+tutorials and practice.
 }
 \details{
 These functions take \code{\link[dplyr:filter]{dplyr::filter()}} arguments to sub-set the data.  Using
