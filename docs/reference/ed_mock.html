@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Export the local EIDITH database to a file — ed_db_export • EIDITH</title>
+<title>Load mock EIDITH data for tutorials — ed_table_mock_ • EIDITH</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -103,47 +103,58 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Export the local EIDITH database to a file</h1>
+    <h1>Load mock EIDITH data for tutorials</h1>
     </div>
 
     
-    <p>This function allows you to export the local EIDITH database to a file that
-can then be used by others.  The database is in <a href = 'SQLite'>https://sqlite.org/</a> format.</p>
+    <p>These functions load mock versions of the EIDITH data tables to be used
+for demonstrations, tutorials, and practice.  They are drop-in replacements
+for the <code><a href='ed_table_.html'>ed_table()</a></code> functions.</p>
     
 
-    <pre><span class='fu'>ed_db_export</span>(<span class='no'>filename</span>, <span class='no'>...</span>)</pre>
+    <pre><span class='fu'>ed_table_mock_</span>(<span class='no'>mock_table</span>, <span class='no'>...</span>, <span class='no'>.dots</span>, <span class='kw'>raw</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='fu'>ed_table_mock</span>(<span class='no'>mock_table</span>, <span class='no'>...</span>)
+
+<span class='fu'>ed_events_mock</span>(<span class='no'>...</span>)
+
+<span class='fu'>ed_animals_mock</span>(<span class='no'>...</span>)
+
+<span class='fu'>ed_specimens_mock</span>(<span class='no'>...</span>)
+
+<span class='fu'>ed_tests_mock</span>(<span class='no'>...</span>)
+
+<span class='fu'>ed_viruses_mock</span>(<span class='no'>...</span>)
+
+<span class='fu'>ed_testspecimen_mock</span>(<span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>filename</dt>
-      <dd>The filename to export to. We suggest something ending in <code>.sqlite</code>.</dd>
+      <dt>mock_table</dt>
+      <dd>one of the EIDITH database tables. One of &quot;events&quot;, &quot;animals&quot;,
+&quot;specimens&quot;, &quot;tests&quot;, &quot;viruses&quot;, or &quot;test_specimen_ids&quot;.</dd>
       <dt>...</dt>
-      <dd>Other options passed to <code>file.copy()</code></dd>
+      <dd>arguments passed to <code><a href='http://www.rdocumentation.org/packages/dplyr/topics/filter'>dplyr::filter()</a></code> to subset data</dd>
+      <dt>.dots</dt>
+      <dd>standard-evaluation versions of subsetting arguments</dd>
+      <dt>raw</dt>
+      <dd>Whether to return the unprocessed form of the mock data.  This
+is equivalent to calling the <code><a href='ed_get.html'>ed_get()</a></code> functions with <code>postprocess=FALSE</code></dd>
     </dl>
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code><a href='ed_db_status.html'>ed_db_status()</a></code>, <code><a href='ed_db_updates.html'>ed_db_updates()</a></code>, <code>ed_db_export()</code></p>
+    <p>a <a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a>-style data frame.</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Not run: ------------------------------------</span>
-<span class='co'>#   #Here's an example of how to export and then use the exported database</span>
-<span class='co'># </span>
-<span class='co'>#   ed_db_export("mydb.sqlite")</span>
-<span class='co'>#   options(ed_sql_path = "mydb.sqlite") # This switches to working with the exported database</span>
-<span class='co'>#   ed_db_status()  #get status of the current (exported) database</span>
-<span class='co'>## ---------------------------------------------</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>

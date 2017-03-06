@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Export the local EIDITH database to a file — ed_db_export • EIDITH</title>
+<title>Connecting eidith tables — ed_tables_conn • EIDITH</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -103,44 +103,89 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Export the local EIDITH database to a file</h1>
+    <h1>Connecting eidith tables</h1>
     </div>
 
     
-    <p>This function allows you to export the local EIDITH database to a file that
-can then be used by others.  The database is in <a href = 'SQLite'>https://sqlite.org/</a> format.</p>
+    <p>To understand how various eidith tables are connected via their column names.
+Visualizing these connections is helpful in determining how to join
+<code>eidith</code> tables for further analyses.</p>
     
 
-    <pre><span class='fu'>ed_db_export</span>(<span class='no'>filename</span>, <span class='no'>...</span>)</pre>
+    <pre><span class='fu'>ed_tables_conn</span>(<span class='kw'>cols</span> <span class='kw'>=</span> <span class='st'>"id"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>filename</dt>
-      <dd>The filename to export to. We suggest something ending in <code>.sqlite</code>.</dd>
-      <dt>...</dt>
-      <dd>Other options passed to <code>file.copy()</code></dd>
+      <dt>cols</dt>
+      <dd>can be either <code>all</code> or <code>id</code>. If <code>all</code>, all common columns are
+presented. If <code>id</code>, only unique id columns are shown.
+Default value of <code>type</code> is <code>id</code>.</dd>
     </dl>
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code><a href='ed_db_status.html'>ed_db_status()</a></code>, <code><a href='ed_db_updates.html'>ed_db_updates()</a></code>, <code>ed_db_export()</code></p>
+    <p>a data frame with three columns: <code>T1</code> and <code>T2</code> corresponding to eidith
+tables, and <code>conn</code>, the connecting column.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Not run: ------------------------------------</span>
-<span class='co'>#   #Here's an example of how to export and then use the exported database</span>
-<span class='co'># </span>
-<span class='co'>#   ed_db_export("mydb.sqlite")</span>
-<span class='co'>#   options(ed_sql_path = "mydb.sqlite") # This switches to working with the exported database</span>
-<span class='co'>#   ed_db_status()  #get status of the current (exported) database</span>
-<span class='co'>## ---------------------------------------------</span></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>ed_tables_conn</span>()</div><div class='output co'>#&gt;         T1               T2        conn
+#&gt; 1    Event           Animal    event_id
+#&gt; 2   Animal         Specimen   animal_id
+#&gt; 3 Specimen TestIDSpecimenID specimen_id
+#&gt; 4     Test            Virus     test_id
+#&gt; 5     Test TestIDSpecimenID     test_id
+#&gt; 6    Virus TestIDSpecimenID     test_id</div><div class='input'><span class='fu'>ed_tables_conn</span>(<span class='kw'>cols</span> <span class='kw'>=</span> <span class='st'>"all"</span>)</div><div class='output co'>#&gt;          T1               T2                conn
+#&gt; 1     Event           Animal       database_date
+#&gt; 2     Event           Animal        date_created
+#&gt; 3     Event           Animal       date_modified
+#&gt; 4     Event           Animal            event_id
+#&gt; 5     Event         Specimen       database_date
+#&gt; 6     Event         Specimen        date_created
+#&gt; 7     Event         Specimen       date_modified
+#&gt; 8     Event             Test       database_date
+#&gt; 9     Event             Test        date_created
+#&gt; 10    Event             Test       date_modified
+#&gt; 11    Event            Virus       database_date
+#&gt; 12    Event            Virus        date_created
+#&gt; 13    Event            Virus       date_modified
+#&gt; 14   Animal         Specimen           animal_id
+#&gt; 15   Animal         Specimen       database_date
+#&gt; 16   Animal         Specimen        date_created
+#&gt; 17   Animal         Specimen       date_modified
+#&gt; 18   Animal             Test       database_date
+#&gt; 19   Animal             Test        date_created
+#&gt; 20   Animal             Test       date_modified
+#&gt; 21   Animal            Virus       database_date
+#&gt; 22   Animal            Virus        date_created
+#&gt; 23   Animal            Virus       date_modified
+#&gt; 24 Specimen             Test       database_date
+#&gt; 25 Specimen             Test        date_created
+#&gt; 26 Specimen             Test       date_modified
+#&gt; 27 Specimen             Test       specimen_type
+#&gt; 28 Specimen             Test specimen_type_group
+#&gt; 29 Specimen            Virus       database_date
+#&gt; 30 Specimen            Virus        date_created
+#&gt; 31 Specimen            Virus       date_modified
+#&gt; 32 Specimen TestIDSpecimenID         specimen_id
+#&gt; 33     Test            Virus       database_date
+#&gt; 34     Test            Virus        date_created
+#&gt; 35     Test            Virus       date_modified
+#&gt; 36     Test            Virus      interpretation
+#&gt; 37     Test            Virus            sequence
+#&gt; 38     Test            Virus             test_id
+#&gt; 39     Test            Virus          virus_name
+#&gt; 40     Test TestIDSpecimenID             test_id
+#&gt; 41    Virus TestIDSpecimenID             test_id</div><div class='input'>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#value">Value</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

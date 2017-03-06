@@ -1,9 +1,12 @@
 ---
 title: "Generating Reports and FASTA Files"
 author: "Cale Basaraba"
-date: "1/30/2017"
 output: 
-  html_document
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{pkgdown}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include=FALSE}

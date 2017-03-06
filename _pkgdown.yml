@@ -11,8 +11,14 @@ navbar:
     href: index.html
   - text: Documentation
     menu:
-    - text: Tutorial
+    - text: Installation / Authentication
       href: articles/eidith.html
+    - text: Data Preprocessing
+      href:
+    - text: Database Structure / Joining
+      href: articles/data_structure.html
+    - text: Generating Reports and FASTA
+      href: articles/fasta_walkthrough.html
     - text: Web API
       href: articles/eidith_API.html
   - text: Reference
@@ -36,6 +42,7 @@ reference:
   - title: "EIDITH data"
     contents:
       - ed_metadata
+      - ed_tables_conn
       - ed_table
       - ed_events
       - ed_animals
@@ -54,3 +61,6 @@ reference:
       - ed_get_tests
       - ed_get_testspecimen
       - ed_process
+  - title: "Mock data"
+    contents:
+      - ed_mock

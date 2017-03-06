@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Export FASTA files — ed_fasta • EIDITH</title>
+<title>Export FASTA files for viral interpretation — ed_fasta • EIDITH</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -63,7 +63,14 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/eidith.html">Tutorial</a>
+      <a href="../articles/eidith.html">Installation / Authentication</a>
+    </li>
+    <li class="dropdown-header">Data Preprocessing</li>
+    <li>
+      <a href="../articles/data_structure.html">Database Structure / Joining</a>
+    </li>
+    <li>
+      <a href="../articles/fasta_walkthrough.html">Generating Reports and FASTA</a>
     </li>
     <li>
       <a href="../articles/eidith_API.html">Web API</a>
@@ -96,28 +103,34 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Export FASTA files</h1>
+    <h1>Export FASTA files for viral interpretation</h1>
     </div>
 
     
-    <p><code>ed_fasta()</code> and <code>ed_fasta_()</code> convert a data frame to a FASTA file.  <code>ed_tests_report()</code> is a standard report returning a data frame of all uninterpreted test sequences, along with a set of metadata, which is commonly printed to FASTA</p>
+    <p><code>ed_fasta()</code> and <code>ed_fasta_group()</code> convert a data frame to a FASTA file.  <code>ed_tests_report()</code> is a standard report returning a data frame of all uninterpreted test sequences, along with a set of metadata, which is commonly printed to FASTA.
+<code>ed_report_excel()</code> is a convenience function for creating excel-ready CSVs for reporting.  See the <a href = 'FASTA vignette'>https://ecohealthalliance.github.io/eidith/articles/fasta_walkthrough.html</a> for more guidance.</p>
     
 
-    <pre><span class='fu'>ed_fasta</span>(<span class='no'>.data</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>sequence</span> <span class='kw'>=</span> <span class='st'>"sequence"</span>, <span class='no'>...</span>)
+    <pre><span class='fu'>ed_fasta</span>(<span class='no'>.data</span>, <span class='kw'>filename</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>sequence</span> <span class='kw'>=</span> <span class='st'>"sequence"</span>, <span class='no'>...</span>)
 
-<span class='fu'>ed_fasta_</span>(<span class='no'>.data</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>sequence</span> <span class='kw'>=</span> <span class='st'>"sequence"</span>, <span class='no'>...</span>, <span class='no'>.dots</span>)
+<span class='fu'>ed_fasta_</span>(<span class='no'>.data</span>, <span class='kw'>filename</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>sequence</span> <span class='kw'>=</span> <span class='st'>"sequence"</span>, <span class='no'>...</span>, <span class='no'>.dots</span>)
 
 <span class='fu'>ed_tests_report</span>(<span class='kw'>status</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Result finalized, interpretation pending"</span>),
   <span class='kw'>test_ids</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>meta_fields</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='kw'>sp_idname</span> <span class='kw'>=</span> <span class='st'>"specimen_id_name"</span>, <span class='kw'>sp</span> <span class='kw'>=</span>
   <span class='st'>"species_scientific_name"</span>, <span class='kw'>country</span> <span class='kw'>=</span> <span class='st'>"country"</span>, <span class='kw'>an_idname</span> <span class='kw'>=</span> <span class='st'>"animal_id_name"</span>,
   <span class='kw'>lab</span> <span class='kw'>=</span> <span class='st'>"diag_lab_shortname"</span>, <span class='kw'>test_rq</span> <span class='kw'>=</span> <span class='st'>"test_requested"</span>, <span class='kw'>meth</span> <span class='kw'>=</span>
-  <span class='st'>"methodology_reference"</span>, <span class='kw'>seq_id</span> <span class='kw'>=</span> <span class='st'>"virus_id"</span>, <span class='kw'>test_id</span> <span class='kw'>=</span> <span class='st'>"test_id"</span>))</pre>
+  <span class='st'>"test_requested_protocol"</span>, <span class='kw'>seq_id</span> <span class='kw'>=</span> <span class='st'>"sequence_id"</span>, <span class='kw'>test_id</span> <span class='kw'>=</span> <span class='st'>"test_id"</span>))
+
+<span class='fu'>ed_fasta_group</span>(<span class='no'>.data</span>, <span class='kw'>filepath</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>sequence</span> <span class='kw'>=</span> <span class='st'>"sequence"</span>,
+  <span class='kw'>grouping</span> <span class='kw'>=</span> <span class='st'>"virus"</span>, <span class='no'>...</span>)
+
+<span class='fu'>ed_report_excel</span>(<span class='no'>.data</span>, <span class='no'>filename</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>.data</dt>
       <dd>The data frame</dd>
-      <dt>file</dt>
+      <dt>filename</dt>
       <dd>name of file to write to. If &quot;&quot; (default), the output is written to console.</dd>
       <dt>sequence</dt>
       <dd>the column name in the data frame that contains the sequence.  Default is &quot;sequence&quot;.</dd>
@@ -135,11 +148,16 @@ printed if some tests have no sequence data.</dd>
       <dt>meta_fields</dt>
       <dd>For <code>ed_test_report()</code>. A vector of names of metadata to provide.  If named, fields will be renamed,
 which is useful for abbreviating fields for FASTA export</dd>
+      <dt>filepath</dt>
+      <dd>File path indicating where grouped FASTA files should be saved.</dd>
+      <dt>grouping</dt>
+      <dd>The variable used to group sequences into separate FASTA files. One of &quot;virus&quot;, &quot;method&quot;, or &quot;both&quot;.</dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The FASTA file is written to a file or the console (default).  Also, a character vector of each FASTA record is returned invisibly.  <code>ed_tests_report()</code> returns a data frame.</p>
+    <p>For <code>ed_fasta()</code>, <code>ed_fasta_group()</code>, and <code>ed_report_excel()</code>, the file(s) will be written to a file or the console (default).  Also, a character vector of each FASTA record is returned invisibly
+<code>ed_tests_report()</code> returns a data frame.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

@@ -29,49 +29,42 @@ ed_table_mock_ <- function(mock_table, ..., .dots, raw=FALSE) {
 
 #' @export
 #' @rdname ed_mock
-#' @aliases ed_mock
 ed_table_mock <- function(mock_table, ...) {
   ed_table_mock_(mock_table, .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
 #' @rdname ed_mock
-#' @aliases ed_mock
 ed_events_mock <- function(...) {
   ed_table_mock_("events", .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
 #' @rdname ed_mock
-#' @aliases ed_mock
 ed_animals_mock <- function(...) {
   ed_table_mock_("animals", .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
 #' @rdname ed_mock
-#' @aliases ed_mock
 ed_specimens_mock  <- function(...) {
   ed_table_mock_("specimens", .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
 #' @rdname ed_mock
-#' @aliases ed_mock
 ed_tests_mock <- function(...) {
   ed_table_mock_("tests", .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
 #' @rdname ed_mock
-#' @aliases ed_mock
 ed_viruses_mock <- function(...) {
   ed_table_mock_("viruses", .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export
 #' @rdname ed_mock
-#' @aliases ed_mock
 ed_testspecimen_mock <- function(...) {
   ed_table_mock_("testspecimen", .dots = lazyeval::lazy_dots(...))
 }
