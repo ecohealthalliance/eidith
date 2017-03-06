@@ -4,19 +4,12 @@
 \alias{ed_table_mock_}
 \alias{ed_mock}
 \alias{ed_table_mock}
-\alias{ed_mock}
 \alias{ed_events_mock}
-\alias{ed_mock}
 \alias{ed_animals_mock}
-\alias{ed_mock}
 \alias{ed_specimens_mock}
-\alias{ed_mock}
 \alias{ed_tests_mock}
-\alias{ed_mock}
 \alias{ed_viruses_mock}
-\alias{ed_mock}
 \alias{ed_testspecimen_mock}
-\alias{ed_mock}
 \title{Load mock EIDITH data for tutorials}
 \usage{
 ed_table_mock_(mock_table, ..., .dots, raw = FALSE)

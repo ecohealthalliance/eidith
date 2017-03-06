@@ -199,3 +199,4 @@ viruses,Virus,6,NA,evidence_human_infection,NA,Whether there is current evidence
 viruses,Virus,8,NA,known_genbank_accession,NA,NA,NA
 test_specimen_id,TestIDSpecimenID,2,GAINS3_SpecimenID,gains3_specimen_id,specimen_id,NA,NA
 test_specimen_id,TestIDSpecimenID,1,GAINS3_TestID,gains3_test_id,test_id,NA,NA
+viruses,Virus,15,HumanThreat,human_threat,NA,Human health threat flag,NA
