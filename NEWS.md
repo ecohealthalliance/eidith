@@ -7,11 +7,27 @@ package, like so:
 ```
 devtools::install_github('ecohealthalliance/eidith@v0.1.0')`
 ```
+# eidith 0.3
+
+## New functionality
+
+- Mock data sets now available: `ed_table_mock()`
+- EIDITH table connections now listed in dataframe via `ed_tables_conn()`
+
+## New documentation
+
+- 
+- Data Structure and Table Joining vignette with mock data example
+- Report generation and FASTA file walkthrough
+
+## Changes to data / processing
+
+- New `human_health` field in viruses flags human health risk
 
 # eidith 0.2.2.90000 (dev)
 
 - Fix typos in vignette
-- Additional functionality for FASTA export and interpretation: `ed_fasta_group`,
+- Additional functionality for FASTA export and interpretation: `ed_fasta_group()`,
   `ed_report_excel()`.
 - Change `virus_id` to `sequence_id`
 - Make lat/long numeric and compatible with `SpatialPointsDataFrame`
