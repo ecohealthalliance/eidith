@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tutorial: The eidith R Package • EIDITH</title>
+<title>Eidith R Package Setup • EIDITH</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
@@ -43,17 +43,19 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/eidith.html">Installation / Authentication</a>
+      <a href="../articles/eidith.html">Installation / Authentication / Downloading Database</a>
     </li>
-    <li class="dropdown-header">Data Preprocessing</li>
     <li>
-      <a href="../articles/data_structure.html">Database Structure / Joining</a>
+      <a href="../articles/preprocessing.html">Automatic Data Processing / Raw Data</a>
+    </li>
+    <li>
+      <a href="../articles/data_structure.html">Database Structure / Table Joining</a>
     </li>
     <li>
       <a href="../articles/fasta_walkthrough.html">Generating Reports and FASTA</a>
     </li>
     <li>
-      <a href="../articles/eidith_API.html">Web API</a>
+      <a href="../articles/eidith_API.html">Web API Details</a>
     </li>
   </ul>
 </li>
@@ -83,7 +85,7 @@
       </header><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
-      <h1>Tutorial: The eidith R Package</h1>
+      <h1>Eidith R Package Setup</h1>
                         <h4 class="author">Noam Ross</h4>
             
           </div>
@@ -123,11 +125,6 @@ ed_db_download()</code></pre>
 <html><body><a href="#loading-data" class="anchor"> </a></body></html>Loading data</h3>
 <p>Once you’ve populated your local database, you can look up EIDITH data with the <em>table functions</em>, each of which loads data from the different table in the database: <code><a href="../reference/ed_table_.html">ed_events()</a></code>, <code><a href="../reference/ed_table_.html">ed_animals()</a></code>, <code><a href="../reference/ed_table_.html">ed_specimens()</a></code>, <code><a href="../reference/ed_table_.html">ed_tests()</a></code>, and <code><a href="../reference/ed_table_.html">ed_viruses()</a></code>, as well as <code><a href="../reference/ed_table_.html">ed_testspecimen()</a></code>, which contains cross-references between the test and specimen tables. See the help for these functions for more details.</p>
 <p><code><a href="../reference/ed_metadata.html">ed_metadata()</a></code> contains a list of all variables across these tables and some information on them. If you lookup this in R help in RStudio with <code><a href="../reference/ed_metadata.html">?ed_metadata</a></code> you’ll find this metadata in searchable form.</p>
-</div>
-<div id="direct-api-access" class="section level3">
-<h3 class="hasAnchor">
-<html><body><a href="#direct-api-access" class="anchor"> </a></body></html>Direct API access</h3>
-<p>If you want to access data from the web API directly (for instance, if you want to compare differences between raw data and the automatically-cleaned version <code><a href="../reference/ed_db_download.html">ed_db_download()</a></code> creates), you can use the <code><a href="../reference/ed_get.html">ed_get()</a></code> functions, such as <code>get_ed_events()</code>. In this case you would use <code><a href="../reference/ed_get.html">ed_get_events(postprocess=FALSE)</a></code>, to get unprocessed data.</p>
 </div>
 </div>
   </div>

@@ -78,7 +78,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="installation" class="section level3">
 <h3>Installation</h3>
 <p><strong>eidith</strong> is installed from our own package repository rather than CRAN. To install the latest stable version, run the following command:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;eidith&quot;</span>, <span class="dt">repos=</span><span class="kw">c</span>(<span class="st">&quot;https://ecohealthalliance.github.io/eidith/&quot;</span>, <span class="kw">getOption</span>(<span class="st">&quot;repos&quot;</span>)), <span class="dt">type=</span><span class="st">&quot;both&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;eidith&quot;</span>, <span class="dt">repos=</span><span class="kw">c</span>(<span class="st">&quot;https://ecohealthalliance.github.io/eidith/&quot;</span>, <span class="st">&quot;https://cran.rstudio.com&quot;</span>), <span class="dt">type=</span><span class="st">&quot;both&quot;</span>)</code></pre></div>
 <p>If you wish to install the latest <em>development</em> (unstable) version, you will require the <strong>devtools</strong> package, like so:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">install_github</span>(<span class="st">'ecohealthalliance/eidith@dev'</span>)</code></pre></div>
 </div>
@@ -100,10 +100,6 @@ ed_db_download()</code></pre>
 <h3>Loading data</h3>
 <p>Once you’ve populated your local database, you can look up EIDITH data with the <em>table functions</em>, each of which loads data from the different table in the database: <code>ed_events()</code>, <code>ed_animals()</code>, <code>ed_specimens()</code>, <code>ed_tests()</code>, and <code>ed_viruses()</code>, as well as <code>ed_testspecimen()</code>, which contains cross-references between the test and specimen tables. See the help for these functions for more details.</p>
 <p><code>ed_metadata()</code> contains a list of all variables across these tables and some information on them. If you lookup this in R help in RStudio with <code>?ed_metadata</code> you’ll find this metadata in searchable form.</p>
-</div>
-<div id="direct-api-access" class="section level3">
-<h3>Direct API access</h3>
-<p>If you want to access data from the web API directly (for instance, if you want to compare differences between raw data and the automatically-cleaned version <code>ed_db_download()</code> creates), you can use the <code>ed_get()</code> functions, such as <code>get_ed_events()</code>. In this case you would use <code>ed_get_events(postprocess=FALSE)</code>, to get unprocessed data.</p>
 </div>
 
 

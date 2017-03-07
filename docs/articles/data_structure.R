@@ -4,7 +4,7 @@ library(eidith)
 library(tidyverse)
 library(ggplot2)
 source('~/R/eidith/R/tables_conn.R')
-P <- rprojroot::find_rstudio_root_file()
+P <- rprojroot::find_package_root_file()
 
 ## ----1-------------------------------------------------------------------
 #  library(eidith)

@@ -1,51 +1,17 @@
 table,endpoint,order,original_name,auto_processed_name,replacement_name,description,processing_notes
-events,Event,1,GAINS3_EventID,gains3_event_id,event_id,"Numerical event ID (unique, primary key)",NA
-events,Event,5,SiteName,site_name,NA,Unique name of site where data was collected,NA
-events,Event,7,EventName,event_name,NA,Unique name of event where data was collected,NA
-events,Event,8,Region,region,NA,NA,NA
-events,Event,2,Country,country,NA,Country of collection site,NA
-events,Event,9,StateProv,state_prov,NA,State or province of collection site,NA
-events,Event,10,District,district,NA,District of collection site,NA
-events,Event,12,Latitude,latitude,NA,Decimal degrees,NA
-events,Event,11,Longitude,longitude,NA,Decimal degrees,NA
-events,Event,13,HabitatType,habitat_type,NA,Primary habitat within home range of animals sampled,Category capitalization normalized
-events,Event,14,HabitatComment,habitat_comment,NA,Free text notes to describe habitat,NA
-events,Event,15,LandscapeConversionGradient,landscape_conversion_gradient,NA,NA,NA
-events,Event,16,AnthropogenicChange,anthropogenic_change,NA,Anthropogenic change which has occurred within home range of animals sampled within the past 6 months,NA
-events,Event,17,AnthropogenicChangeOther,anthropogenic_change_other,NA,NA,NA
-events,Event,18,AnthropogenicChangeSecondary,anthropogenic_change_secondary,NA,Anthropogenic change which has also occurred within home range of animals sampled within past 6 months,NA
-events,Event,19,AnthropogenicChangeSecondaryOther,anthropogenic_change_secondary_other,NA,NA,NA
-events,Event,20,DomesticAnimals,domestic_animals,NA,Which domestic species may have come in contact with animals sampled,NA
-events,Event,21,OtherDomesticAnimals,other_domestic_animals,NA,"Only required if not in the ""DomesticAnimals"" list.",NA
-events,Event,4,EventDate,event_date,NA,Date,NA
-events,Event,22,DurationOfEventDays,duration_of_event_days,NA,"Duration of event, in days",NA
-events,Event,23,RecorderName,recorder_name,NA,Name of person collecting data,NA
-events,Event,24,RecorderOther,recorder_other,NA,NA,NA
-events,Event,3,Organization,organization,NA,Organization,NA
-events,Event,25,ArchivedData,archived_data,NA,Whether these samples have been obtained by archives of collaborators,NA
-events,Event,26,DeepForestData,deep_forest_data,NA,NA,NA
-events,Event,27,SourceCertainty,source_certainty,NA,NA,NA
-events,Event,6,PrimaryInterface,primary_interface,NA,"Category which best describes the situation in which animals were handled and sampled, or the primary reason for sampling at this site",NA
-events,Event,28,OtherPrimaryInterface,other_primary_interface,NA,"Description if ""other"" seelcted for primary interface",NA
-events,Event,29,SecondaryInterface,secondary_interface,NA,Category which next besst describes the situation in whcih animals were handled/sampled or a secondary reason for sampling at this site,NA
-events,Event,30,OtherSecondaryInterface,other_secondary_interface,NA,"Description if ""other"" selected for secondary interface",NA
-events,Event,31,ReasonForCollection,reason_for_collection,NA,Description of reason for collection,NA
-events,Event,32,SourceKnown,source_known,NA,Whether the source was previously known to recorders,NA
-events,Event,33,EventCustomColumns,event_custom_columns,NA,Site custom data that does not transfer to other events,NA
-events,Event,34,PrimaryInterfaceGroup,primary_interface_group,NA,NA,NA
-events,Event,35,SecondaryInterfaceGroup,secondary_interface_group,NA,NA,NA
-events,Event,38,DateLastUpdated,date_last_updated,database_date,Last date of export from EIDITH database to the API,NA
-events,Event,36,CRDate,crdate,date_created,Date record was first created within the EIDITH database,NA
-events,Event,37,LMDate,lmdate,date_modified,Last-modified date of record within the EIDITH database,NA
-animals,Animal,2,GAINS3_EventID,gains3_event_id,event_id,Numerical event ID,NA
 animals,Animal,1,GAINS3_SampleUnitID,gains3_sample_unit_id,animal_id,"Numerical animal ID. Not every record is exactly one animal (e.g., some represent samples from market meat, etc.) but one ""sample unit""",Renamed to
+animals,Animal,2,GAINS3_EventID,gains3_event_id,event_id,Numerical event ID,NA
+animals,Animal,3,AnimalID (GAINS),animal_id_gains,animal_id_name,Alphanumeric animal ID,NA
+animals,Animal,4,SpeciesScientificName,species_scientific_name,NA,"Scientific name of animal, ""sp."" used for known genus or higher taxon but uncertain or unspecified species.",Changed to ITIS standard name by lookup
+animals,Animal,5,SpeciesCommonNameEnglish,species_common_name_english,NA,Species common name,NA
+animals,Animal,6,Sex,sex,NA,Sex of animal,NA
+animals,Animal,7,AgeClass,age_class,NA,Age class of animal,NA
 animals,Animal,8,ContainerID,container_id,DROP,NA,dropped because all NA
 animals,Animal,9,ContainerType,container_type,NA,Type of container sample group was in,NA
 animals,Animal,10,Quantity,quantity,NA,NA,NA
 animals,Animal,11,QuantityCertainty,quantity_certainty,NA,NA,NA
 animals,Animal,12,QuantityUnit,quantity_unit,NA,NA,NA
 animals,Animal,13,SampleUnitID,sample_unit_id,DROP,NA,NA
-animals,Animal,3,AnimalID (GAINS),animal_id_gains,animal_id_name,Alphanumeric animal ID,NA
 animals,Animal,14,AnimalID from Country,animal_id_from_country,DROP,NA,dropped because of multiple ID name columns
 animals,Animal,15,PriortizedForTesting,priortized_for_testing,prioritized_for_testing,NA,NA
 animals,Animal,16,SampleDate,sample_date,NA,NA,NA
@@ -65,13 +31,9 @@ animals,Animal,29,IdentifiedBy,identified_by,NA,Who identified wildife,NA
 animals,Animal,30,CircumstanceObservation,circumstance_observation,NA,IDENTICAL to circumstance_of_observation?,NA
 animals,Animal,31,AnimalClassification,animal_classification,NA,Animal category: captive wild; domestic; feral domestic; wild,NA
 animals,Animal,32,Taxagroup,taxagroup,NA,"Broad, multi-order groups of taxa deemed of interest to PREDICT.  Corrected from field values.  See ed_taxagroups() for a table of mappings between orders and taxagroups",NA
-animals,Animal,4,SpeciesScientificName,species_scientific_name,NA,"Scientific name of animal, ""sp."" used for known genus or higher taxon but uncertain or unspecified species.",Changed to ITIS standard name by lookup
-animals,Animal,5,SpeciesCommonNameEnglish,species_common_name_english,NA,Species common name,NA
 animals,Animal,33,SpeciesCommonNameLocal,species_common_name_local,NA,Common name of animal in national language of country where animal collected,NA
 animals,Animal,34,IdentificationCertainty,identification_certainty,NA,Level of certainty of wildlife identification,NA
 animals,Animal,35,TagBandID,tag_band_id,NA,NA,NA
-animals,Animal,6,Sex,sex,NA,Sex of animal,NA
-animals,Animal,7,AgeClass,age_class,NA,Age class of animal,NA
 animals,Animal,36,Pregnant,pregnant,NA,NA,NA
 animals,Animal,37,WithYoung,with_young,NA,Whether the animal has young with them at capture,NA
 animals,Animal,38,Lactating,lactating,NA,NA,NA
@@ -109,21 +71,58 @@ animals,Animal,69,genus,genus,NA,Integrated Taxonomic Information System Genus,C
 animals,Animal,70,species,species,NA,Integrated Taxonomic Information System Species,Changed by lookup to ITIS
 animals,Animal,71,NA,subspecies,subspecies,Subspecies as reported or found in ITIS lookup,Inserted by itis lookup
 animals,Animal,72,NA,binomal,binomial,"Genus and species, but not subspecies name, NA when species is unknown",NA
-animals,Animal,75,DateLastUpdated,date_last_updated,database_date,NA,NA
 animals,Animal,73,CRDate,crdate,date_created,Date record was first created within the EIDITH database,NA
 animals,Animal,74,LMDate,lmdate,date_modified,Last-modified date of record within the EIDITH database,NA
+animals,Animal,75,DateLastUpdated,date_last_updated,database_date,NA,NA
 animals,Animal,NA,SampleIndividualName,sample_individual_name,DROP,NA,NA
 animals,Animal,NA,Country,country,DROP,NA,dropped because of redundancy
-specimens,Specimen,2,GAINS3_SampleUnitID,gains3_sample_unit_id,animal_id,NA,NA
+events,Event,1,GAINS3_EventID,gains3_event_id,event_id,"Numerical event ID (unique, primary key)",NA
+events,Event,2,Country,country,NA,Country of collection site,NA
+events,Event,3,Organization,organization,NA,Organization,NA
+events,Event,4,EventDate,event_date,NA,Date,NA
+events,Event,5,SiteName,site_name,NA,Unique name of site where data was collected,NA
+events,Event,6,PrimaryInterface,primary_interface,NA,"Category which best describes the situation in which animals were handled and sampled, or the primary reason for sampling at this site",NA
+events,Event,7,EventName,event_name,NA,Unique name of event where data was collected,NA
+events,Event,8,Region,region,NA,NA,NA
+events,Event,9,StateProv,state_prov,NA,State or province of collection site,NA
+events,Event,10,District,district,NA,District of collection site,NA
+events,Event,11,Longitude,longitude,NA,Decimal degrees,NA
+events,Event,12,Latitude,latitude,NA,Decimal degrees,NA
+events,Event,13,HabitatType,habitat_type,NA,Primary habitat within home range of animals sampled,Category capitalization normalized
+events,Event,14,HabitatComment,habitat_comment,NA,Free text notes to describe habitat,NA
+events,Event,15,LandscapeConversionGradient,landscape_conversion_gradient,NA,NA,NA
+events,Event,16,AnthropogenicChange,anthropogenic_change,NA,Anthropogenic change which has occurred within home range of animals sampled within the past 6 months,NA
+events,Event,17,AnthropogenicChangeOther,anthropogenic_change_other,NA,NA,NA
+events,Event,18,AnthropogenicChangeSecondary,anthropogenic_change_secondary,NA,Anthropogenic change which has also occurred within home range of animals sampled within past 6 months,NA
+events,Event,19,AnthropogenicChangeSecondaryOther,anthropogenic_change_secondary_other,NA,NA,NA
+events,Event,20,DomesticAnimals,domestic_animals,NA,Which domestic species may have come in contact with animals sampled,NA
+events,Event,21,OtherDomesticAnimals,other_domestic_animals,NA,"Only required if not in the ""DomesticAnimals"" list.",NA
+events,Event,22,DurationOfEventDays,duration_of_event_days,NA,"Duration of event, in days",NA
+events,Event,23,RecorderName,recorder_name,NA,Name of person collecting data,NA
+events,Event,24,RecorderOther,recorder_other,NA,NA,NA
+events,Event,25,ArchivedData,archived_data,NA,Whether these samples have been obtained by archives of collaborators,NA
+events,Event,26,DeepForestData,deep_forest_data,NA,NA,NA
+events,Event,27,SourceCertainty,source_certainty,NA,NA,NA
+events,Event,28,OtherPrimaryInterface,other_primary_interface,NA,"Description if ""other"" seelcted for primary interface",NA
+events,Event,29,SecondaryInterface,secondary_interface,NA,Category which next besst describes the situation in whcih animals were handled/sampled or a secondary reason for sampling at this site,NA
+events,Event,30,OtherSecondaryInterface,other_secondary_interface,NA,"Description if ""other"" selected for secondary interface",NA
+events,Event,31,ReasonForCollection,reason_for_collection,NA,Description of reason for collection,NA
+events,Event,32,SourceKnown,source_known,NA,Whether the source was previously known to recorders,NA
+events,Event,33,EventCustomColumns,event_custom_columns,NA,Site custom data that does not transfer to other events,NA
+events,Event,34,PrimaryInterfaceGroup,primary_interface_group,NA,NA,NA
+events,Event,35,SecondaryInterfaceGroup,secondary_interface_group,NA,NA,NA
+events,Event,36,CRDate,crdate,date_created,Date record was first created within the EIDITH database,NA
+events,Event,37,LMDate,lmdate,date_modified,Last-modified date of record within the EIDITH database,NA
+events,Event,38,DateLastUpdated,date_last_updated,database_date,Last date of export from EIDITH database to the API,NA
 specimens,Specimen,1,GAINS3_SpecimenID,gains3_specimen_id,specimen_id,Numerical Specimen ID,NA
-specimens,Specimen,NA,SpecimenID,specimen_id,DROP,NA,NA
+specimens,Specimen,2,GAINS3_SampleUnitID,gains3_sample_unit_id,animal_id,NA,NA
 specimens,Specimen,3,SpecimenIDUnique,specimen_idunique,specimen_id_name,Name of the specimen,NA
-specimens,Specimen,7,AliquotID,aliquot_id,NA,Unique ID assigned to sample aliquot. Each aliquot should be entered in its own row in the template: same Specimen ID for each aliquot.,NA
-specimens,Specimen,6,SpecimenDate,specimen_date,NA,NA,NA
 specimens,Specimen,4,SpecimenType,specimen_type,NA,Type of specimen sample,NA
+specimens,Specimen,5,SamplingMethod,sampling_method,NA,Description of sample collection method,NA
+specimens,Specimen,6,SpecimenDate,specimen_date,NA,NA,NA
+specimens,Specimen,7,AliquotID,aliquot_id,NA,Unique ID assigned to sample aliquot. Each aliquot should be entered in its own row in the template: same Specimen ID for each aliquot.,NA
 specimens,Specimen,8,SpecimenTypeGroup,specimen_type_group,NA,NA,NA
 specimens,Specimen,9,SpecimenCondition,specimen_condition,NA,Description of specimen condition at storage,NA
-specimens,Specimen,5,SamplingMethod,sampling_method,NA,Description of sample collection method,NA
 specimens,Specimen,10,SampleContainer,sample_container,NA,Description of container holding sample,NA
 specimens,Specimen,11,StorageMedium,storage_medium,NA,Description of storage medium,NA
 specimens,Specimen,12,LabratoryStorageMethod,labratory_storage_method,NA,NA,NA
@@ -137,66 +136,67 @@ specimens,Specimen,19,TimeFromCollectionToFreezing,time_from_collection_to_freez
 specimens,Specimen,20,SpecimenComments,specimen_comments,NA,Comment on the specimen sample,NA
 specimens,Specimen,21,SpecimenNotes,specimen_notes,NA,Notes on specimen sample,NA
 specimens,Specimen,22,SpecimenCustomColumns,specimen_custom_columns,NA,Specimen custom columns,NA
-specimens,Specimen,26,DateLastUpdated,date_last_updated,database_date,Date of last database update,NA
 specimens,Specimen,23,SpecimenTypeID,specimen_type_id,NA,NA,NA
 specimens,Specimen,24,CRDate,crdate,date_created,Date record was first created within the EIDITH database,NA
 specimens,Specimen,25,LMDate,lmdate,date_modified,Last-modified date of record within the EIDITH database,NA
+specimens,Specimen,26,DateLastUpdated,date_last_updated,database_date,Date of last database update,NA
+specimens,Specimen,NA,SpecimenID,specimen_id,DROP,NA,NA
 specimens,Specimen,NA,Country,country,DROP,NA,NA
-tests,Test,3,Pooled,pooled,NA,Whether tests are pooled or single samples,NA
+test_specimen_id,TestIDSpecimenID,1,GAINS3_TestID,gains3_test_id,test_id,NA,NA
+test_specimen_id,TestIDSpecimenID,2,GAINS3_SpecimenID,gains3_specimen_id,specimen_id,NA,NA
+tests,Test,1,TestID,test_id,NA,Numerical Test ID,NA
 tests,Test,2,SpecimenName,specimen_name,specimen_id_names,NA,NA
+tests,Test,3,Pooled,pooled,NA,Whether tests are pooled or single samples,NA
+tests,Test,4,TestRequested,test_requested,NA,Name of test requested (for PCR and Serology),NA
+tests,Test,5,TestResult,test_result,NA,Categorical result of test,NA
+tests,Test,6,ConfirmatoryTesting,confirmatory_testing,NA,Test type run for confirmation,NA
+tests,Test,7,ConfirmationResult,confirmation_result,NA,Result from the confirmatory testing,NA
 tests,Test,8,DiagnosticLaboratoryName,diagnostic_laboratory_name,NA,Name of diagnostic laboratory,NA
-tests,Test,32,NA,diag_lab_shortname,NA,A shorter name of diagnostic laboratory for easier reporting,NA
+tests,Test,8,TestTypeBroad,test_type_broad,NA,Type of test,NA
+tests,Test,9,TestTypeSpecific,test_type_specific,NA,Specific type of test,NA
 tests,Test,11,LabStorageMethod,lab_storage_method,NA,Description of storage method,NA
 tests,Test,12,LabSubmissionDate,lab_submission_date,NA,Date of submission specimens to laboratory,NA
 tests,Test,13,TestDate,test_date,NA,Date of test,NA
 tests,Test,14,SpecimenType,specimen_type,NA,Description of sample type submitted,NA
 tests,Test,15,SpecimenTypeGroup,specimen_type_group,NA,NA,NA
-tests,Test,8,TestTypeBroad,test_type_broad,NA,Type of test,NA
-tests,Test,9,TestTypeSpecific,test_type_specific,NA,Specific type of test,NA
-tests,Test,19,OtherTestType,other_test_type,NA,Description of test type (if not listed),NA
-tests,Test,4,TestRequested,test_requested,NA,Name of test requested (for PCR and Serology),NA
 tests,Test,16,OtherTestRequested,other_test_requested,NA,Description of test requested (if not listed),NA
 tests,Test,17,TestRequestedProtocol,test_requested_protocol,NA,NA,NA
+tests,Test,19,OtherTestType,other_test_type,NA,Description of test type (if not listed),NA
 tests,Test,19,OtherTestRequestedProtocol,other_test_requested_protocol,NA,NA,NA
 tests,Test,19,MethodologyReference,methodology_reference,NA,Reference for test methodology,NA
 tests,Test,20,ResultsDate,results_date,NA,Date of test results,NA
-tests,Test,5,TestResult,test_result,NA,Categorical result of test,NA
 tests,Test,21,RawResult,raw_result,NA,Quantitative value of test result,NA
-tests,Test,6,ConfirmatoryTesting,confirmatory_testing,NA,Test type run for confirmation,NA
-tests,Test,7,ConfirmationResult,confirmation_result,NA,Result from the confirmatory testing,NA
 tests,Test,22,ResultDescriptor,result_descriptor,NA,Description of sequencing and microarray details for positive confirmation results,NA
-tests,Test,27,Sequence,sequence,NA,NA,NA
 tests,Test,23,VirusName,virus_name,NA,NA,NA
-tests,Test,28,Interpretation,interpretation,NA,Completed by Tracey Goldstein et al. when test result has been finalized,NA
 tests,Test,24,TestStatus,test_status,NA,Status of the test,NA
 tests,Test,25,MessageSentToCountry,message_sent_to_country,NA,NA,NA
 tests,Test,26,MessageSentToGovt,message_sent_to_govt,NA,NA,NA
+tests,Test,27,Sequence,sequence,NA,NA,NA
 tests,Test,27,GovtApprovedRelease,govt_approved_release,NA,NA,NA
+tests,Test,28,Interpretation,interpretation,NA,Completed by Tracey Goldstein et al. when test result has been finalized,NA
 tests,Test,28,Notes,notes,NA,NA,NA
 tests,Test,29,InterpretationNotes,interpretation_notes,NA,NA,NA
 tests,Test,30,Comments,comments,NA,NA,NA
 tests,Test,31,PredictProtocol,predict_protocol,NA,NA,NA
-tests,Test,1,TestID,test_id,NA,Numerical Test ID,NA
-tests,Test,35,DateLastUpdated,date_last_updated,database_date,NA,NA
+tests,Test,32,NA,diag_lab_shortname,NA,A shorter name of diagnostic laboratory for easier reporting,NA
 tests,Test,33,CRDate,crdate,date_created,Date record was first created within the EIDITH database,NA
 tests,Test,34,LMDate,lmdate,date_modified,Last-modified date of record within the EIDITH database,NA
+tests,Test,35,DateLastUpdated,date_last_updated,database_date,NA,NA
 tests,Test,NA,Country,country,DROP,NA,NA
 viruses,Virus,1,GAINS3_SequenceID,gains3_sequence_id,sequence_id,Numerical Sequence ID,NA
 viruses,Virus,2,GAINS3_TestID,gains3_test_id,test_id,Numerical Test ID,NA
-viruses,Virus,11,Sequence,sequence,NA,NA,NA
-viruses,Virus,10,VirusCode,virus_code,NA,NA,NA
-viruses,Virus,9,VirusName,virus_name,NA,Virus Name,NA
 viruses,Virus,3,ViralFamily,viral_family,NA,ICTV Viral Family,NA
 viruses,Virus,4,ViralGenus,viral_genus,NA,ICTV Viral Genus,NA
-viruses,Virus,11,Interpretation,interpretation,NA,NA,NA
 viruses,Virus,5,VirusStatus,virus_status,known,NA,NA
+viruses,Virus,6,NA,evidence_human_infection,NA,Whether there is current evidence that the virus infects or is very closely related to a virus that infects humans.,NA
 viruses,Virus,7,GenbankAccessionNumber,genbank_accession_number,new_genbank_accession,Genbank Accession Number for novel strain or novel virus sequences,NA
+viruses,Virus,8,NA,known_genbank_accession,NA,NA,NA
+viruses,Virus,9,VirusName,virus_name,NA,Virus Name,NA
+viruses,Virus,10,VirusCode,virus_code,NA,NA,NA
+viruses,Virus,11,Sequence,sequence,NA,NA,NA
+viruses,Virus,11,Interpretation,interpretation,NA,NA,NA
 viruses,Virus,12,DateLastUpdated,date_last_updated,database_date,NA,NA
 viruses,Virus,13,CRDate,crdate,date_created,Date record was first created within the EIDITH database,NA
 viruses,Virus,14,LMDate,lmdate,date_modified,Last-modified date of record within the EIDITH database,NA
-viruses,Virus,NA,Country,country,DROP,NA,NA
-viruses,Virus,6,NA,evidence_human_infection,NA,Whether there is current evidence that the virus infects or is very closely related to a virus that infects humans.,NA
-viruses,Virus,8,NA,known_genbank_accession,NA,NA,NA
-test_specimen_id,TestIDSpecimenID,2,GAINS3_SpecimenID,gains3_specimen_id,specimen_id,NA,NA
-test_specimen_id,TestIDSpecimenID,1,GAINS3_TestID,gains3_test_id,test_id,NA,NA
 viruses,Virus,15,HumanThreat,human_threat,NA,Human health threat flag,NA
+viruses,Virus,NA,Country,country,DROP,NA,NA

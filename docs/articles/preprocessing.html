@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The EIDITH Web API • EIDITH</title>
+<title>Automatic Data Processing / Accessing Raw Data • EIDITH</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
@@ -85,45 +85,50 @@
       </header><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
-      <h1>The EIDITH Web API</h1>
-                        <h4 class="author">Noam Ross</h4>
+      <h1>Automatic Data Processing / Accessing Raw Data</h1>
+                        <h4 class="author">Cale Basaraba</h4>
             
           </div>
 
     
     
 <div class="contents">
-<p>The <strong>eidith</strong> R package makes use of the EIDITH web API. This short document describes that API.</p>
-<p>The API uses basic username/password authentication - in general usernames and passwords are the same as those used for login to the interactive site at <a href="https://www.eidith.org/" class="uri">https://www.eidith.org/</a>.</p>
-<p>Each table in the EIDITH database has a different API endpoint. They are:</p>
+<div id="eidith-package-data-processing" class="section level3">
+<h3 class="hasAnchor">
+<html><body><a href="#eidith-package-data-processing" class="anchor"> </a></body></html>Eidith Package Data Processing</h3>
+<p>The <strong>eidith</strong> package downloads data from the EIDITH database to a local database stored on your machine. Default calls to the <code><a href="../reference/ed_get.html">ed_get()</a></code> or <code><a href="../reference/ed_db_download.html">ed_db_download()</a></code> will automatically process the data in several ways after it is downloaded to your local database.</p>
+<p><em>Importantly, the R package does not change any data in the main EIDITH database, it only processes the downloaded data in your local database</em>.</p>
+<p>The main automatic processing steps are:</p>
 <ul>
-<li><a href="https://predict2api.eidith.org/api/modeling/Event" class="uri">https://predict2api.eidith.org/api/modeling/Event</a></li>
-<li><a href="https://predict2api.eidith.org/api/modeling/Animal" class="uri">https://predict2api.eidith.org/api/modeling/Animal</a></li>
-<li><a href="https://predict2api.eidith.org/api/modeling/Specimen" class="uri">https://predict2api.eidith.org/api/modeling/Specimen</a></li>
-<li><a href="https://predict2api.eidith.org/api/modeling/Test" class="uri">https://predict2api.eidith.org/api/modeling/Test</a></li>
-<li><a href="https://predict2api.eidith.org/api/modeling/Virus" class="uri">https://predict2api.eidith.org/api/modeling/Virus</a></li>
-<li><a href="https://predict2api.eidith.org/api/modeling/TestIDSpecimenID" class="uri">https://predict2api.eidith.org/api/modeling/TestIDSpecimenID</a></li>
-</ul>
-<p>Querying an endpoint using an EIDITH account credentials will provide all records that account has access to. Records are provided as JSON (<code>application/JSON</code>). For a list of the fields for each record, see <code><a href="../reference/ed_metadata.html">?ed_metadata</a></code> in the R package documentation.</p>
-<p>In addition, each endpoint, except <code>TestIDSpecimenID</code>, can take one of several filter parameters:</p>
-<ul>
-<li>
-<p><code>header_only</code> will return only a vector of the table headers. This is useful for checking if you have data access or if database structure has changed, e.g.:</p>
-<pre><code>https://predict2api.eidith.org/api/modeling/Specimen?header_only=y
-
-https://predict2api.eidith.org/api/modeling/Event?header_only=y</code></pre>
+<li>Converting variable names from <code>camelCase</code> to <code>snake_case</code> to make it easy to distinguish between raw and cleaned data.<br>
 </li>
-<li>
-<p><code>lmdate_from</code> and <code>lmdate_to</code> allow you to filter records by their last date modified, e.g.:</p>
-<pre><code>https://predict2api.eidith.org/api/modeling/Test?lmdate_from=2015-01-01
-
-https://predict2api.eidith.org/api/modeling/Test?lmdate_from=2015-03-01&amp;lmdate_to=2016-11-17
-
-https://predict2api.eidith.org/api/modeling/Specimen?lmdate_from=2015-01-01
-
-https://predict2api.eidith.org/api/modeling/Specimen?lmdate_from=2015-01-01&amp;lmdate_to=2016-11-17</code></pre>
+<li>Converting some variable names to clearer ones: all <code>_id</code> variables are numeric primary keys, other identifiers now go by <code>_id_name</code>.<br>
 </li>
+<li>Where there are multiple <code>_id_name</code>-type columns that are very similar except for a small set of cases, we drop all but one for ease of use. These can be retrieved from raw data if needed.<br>
+</li>
+<li>Dropping columns that are entirely blank</li>
+<li>Dropping redundant columns</li>
+<li>Cleaning up whitespace and capitalization variability</li>
+<li>Re-arranging table order to put the most pertinent information first.</li>
+<li>Normalizing all animal taxonomic information to match the <a href="https://www.itis.gov/">ITIS</a> database.</li>
+<li>Coercing some free-form entries (e.g. <code>specimen_type</code>) to a standard set of categories</li>
+<li>Converting yes/no fields to TRUE/FALSE</li>
+<li>Fixing obvious spelling errors</li>
+<li>Extracting variables from free-form text of viral interpretation (Genbank numbers, whether virus is known, whether virus is known to effect humans).</li>
 </ul>
+<p>For column name details, including descriptions of fields (when available), the command <code><a href="../reference/ed_metadata.html">?ed_metadata</a></code> will open a datatable that contains details about how each field name was processed, renamed, or dropped.</p>
+</div>
+<div id="direct-api-access-and-raw-data" class="section level3">
+<h3 class="hasAnchor">
+<html><body><a href="#direct-api-access-and-raw-data" class="anchor"> </a></body></html>Direct API Access and Raw Data</h3>
+<p>The eidith R package automatic processing steps <strong>do not permanently alter or delete any upstream data</strong>.</p>
+<p>If you want to access raw EIDITH data from the web API directly (for instance, if you want to compare differences between raw data and the automatically-cleaned version <code><a href="../reference/ed_db_download.html">ed_db_download()</a></code> creates), you can use the <code><a href="../reference/ed_get.html">ed_get()</a></code> functions, such as <code>get_ed_events()</code>, with the <code>postprocess = FALSE</code> option:</p>
+<p>For events:</p>
+<pre><code><a href="../reference/ed_get.html">ed_get_events(postprocess=FALSE)</a></code></pre>
+<p>For animals:</p>
+<pre><code><a href="../reference/ed_get.html">ed_get_animals(postprocess=FALSE)</a></code></pre>
+<p>And so on. These raw data tables can be saved in your R environment and can be compared to the eidith R package tables – simply use <code><a href="../reference/ed_metadata.html">ed_metadata()</a></code> to load the metadata table, or from within RStudio use <code><a href="../reference/ed_metadata.html">?ed_metadata</a></code> to open a searchable datatable.</p>
+</div>
 </div>
   </div>
 

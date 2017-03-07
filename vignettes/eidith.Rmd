@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: The eidith R Package"
+title: "Eidith R Package Setup"
 output: 
   rmarkdown::html_vignette
 author: "Noam Ross"
@@ -93,10 +93,3 @@ details.
 `ed_metadata()` contains a list of all variables across these tables
 and some information on them.  If you lookup this in R help in RStudio with
 `?ed_metadata` you'll find this metadata in searchable form.
-
-### Direct API access
-
-If you want to access data from the web API directly (for instance, if you want
-to compare differences between raw data and the automatically-cleaned version
-`ed_db_download()` creates), you can use the `ed_get()` functions, such as `get_ed_events()`.
-In this case you would use `ed_get_events(postprocess=FALSE)`, to get unprocessed data.

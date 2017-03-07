@@ -13,16 +13,18 @@ devtools::install_github('ecohealthalliance/eidith@v0.1.0')`
 
 - Mock data sets now available: `ed_table_mock()`
 - EIDITH table connections now listed in dataframe via `ed_tables_conn()`
+- Database downloads more robust to errors, only overwrites old data after new data is checked
 
 ## New documentation
 
-- 
+- Automatic Processing / Raw Data vignette
 - Data Structure and Table Joining vignette with mock data example
-- Report generation and FASTA file walkthrough
+- Report generation and FASTA file vignette
 
 ## Changes to data / processing
 
 - New `human_health` field in viruses flags human health risk
+- Reordering metadata to make more intelligible
 
 # eidith 0.2.2.90000 (dev)
 
@@ -39,7 +41,7 @@ devtools::install_github('ecohealthalliance/eidith@v0.1.0')`
 # eidith 0.2.1 (patch)
 
 - Fix bug in `ed_table_` when parsing long expressions, showing up in
-  `ed_tests_reprort()`
+  `ed_tests_report()`
 
 # eidith 0.2.0
 

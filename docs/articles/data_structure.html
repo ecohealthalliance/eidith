@@ -43,17 +43,19 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/eidith.html">Installation / Authentication</a>
+      <a href="../articles/eidith.html">Installation / Authentication / Downloading Database</a>
     </li>
-    <li class="dropdown-header">Data Preprocessing</li>
     <li>
-      <a href="../articles/data_structure.html">Database Structure / Joining</a>
+      <a href="../articles/preprocessing.html">Automatic Data Processing / Raw Data</a>
+    </li>
+    <li>
+      <a href="../articles/data_structure.html">Database Structure / Table Joining</a>
     </li>
     <li>
       <a href="../articles/fasta_walkthrough.html">Generating Reports and FASTA</a>
     </li>
     <li>
-      <a href="../articles/eidith_API.html">Web API</a>
+      <a href="../articles/eidith_API.html">Web API Details</a>
     </li>
   </ul>
 </li>
@@ -99,15 +101,13 @@
 <p>For the purposes of this vignette, you also will want to download / use the tidyverse package:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"tidyverse"</span>)  
 <span class="kw">library</span>(tidyverse)</code></pre></div>
-<p>If you are having trouble installing the eidith R package, logon credentials, permissions, or have not downloaded the local database, please follow the instructions in the <a href="https://ecohealthalliance.github.io/eidith/articles/eidith.html">main package tutorial</a>.</p>
+<p>If you are having trouble installing the eidith R package, logon credentials, permissions, or have not downloaded the local database, please follow the instructions in the <a href="https://ecohealthalliance.github.io/eidith/articles/eidith.html">package setup tutorial</a>.</p>
 </div>
 <div id="eidith-database-structure" class="section level3">
 <h3 class="hasAnchor">
 <html><body><a href="#eidith-database-structure" class="anchor"> </a></body></html>EIDITH Database Structure</h3>
 <p>Like many databases, EIDITH is divided into several tables that are linked by unique ID fields (integers in this case). Below is a sketch of the six EIDITH tables and their basic linking structure. The lines connecting tables identify the fields, or columns, that link one table to the next. The fields with yellow keys next to their names are unique IDs – this means that no two rows in that table can have the same value for this field.</p>
-<div class="figure">
-<img src="tables.png">
-</div>
+<p><img src="/Users/Basaraba/R/eidith/inst/images/tables.png" width="825px"></p>
 <p>In the <code>events</code> table, for instance, each event (or row) has a unique <code>event_id</code>, while in the <code>animals</code> table, each animal (or row) has a unique <code>animal_id</code>. Importantly, each animal in the <code>animals</code> table also has an <code>event_id</code>, which links it to an event. Since <code>event_id</code> is not unique in the <code>animals</code> table, there can be more than one animal entry with the same <code>event_id</code> – this makes perfect sense, since there are likely multiple animals attached to a particular event. Using the <code><a href="../reference/ed_tables_conn.html">ed_tables_conn()</a></code> function at any time will display a table listing the ID fields linking tables together:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ed_tables_conn.html">ed_tables_conn</a></span>()</code></pre></div>
 <pre><code>##         T1               T2        conn

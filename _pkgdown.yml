@@ -11,15 +11,15 @@ navbar:
     href: index.html
   - text: Documentation
     menu:
-    - text: Installation / Authentication
+    - text: Installation / Authentication / Downloading Database
       href: articles/eidith.html
-    - text: Data Preprocessing
-      href:
-    - text: Database Structure / Joining
+    - text: Automatic Data Processing / Raw Data
+      href: articles/preprocessing.html
+    - text: Database Structure / Table Joining
       href: articles/data_structure.html
     - text: Generating Reports and FASTA
       href: articles/fasta_walkthrough.html
-    - text: Web API
+    - text: Web API Details
       href: articles/eidith_API.html
   - text: Reference
     href: reference/index.html
