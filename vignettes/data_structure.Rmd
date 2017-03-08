@@ -12,7 +12,7 @@ vignette: >
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 library(eidith)
-library(tidyverse)
+library(dplyr)
 library(ggplot2)
 
 source('~/R/eidith/R/tables_conn.R')
@@ -24,10 +24,10 @@ Before exploring the tables in the EIDITH database using the eidith package, mak
 library(eidith)
 ``` 
 
-For the purposes of this vignette, you also will want to download / use the tidyverse package:
+For the purposes of this vignette, you also will want to download / use the `dplyr` package:
 ```{r 2}
-install.packages("tidyverse")  
-library(tidyverse)
+install.packages("dplyr")  
+library(dplyr)
 ```
 
 If you are having trouble installing the eidith R package, logon credentials, permissions, or have not downloaded the local database, please follow the instructions in the [package setup tutorial](https://ecohealthalliance.github.io/eidith/articles/eidith.html).

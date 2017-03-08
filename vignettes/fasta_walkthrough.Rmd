@@ -12,16 +12,16 @@ vignette: >
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(eidith)
-library(tidyverse)
+library(dplyr)
 ```
   
   
 ### Initializing EIDITH R package:
 
-In order to do anything with the EIDITH R package, we need to first make sure to load the `eidith` library. For straightforward data manipulation we will also load the `tidyverse` package:
+In order to do anything with the EIDITH R package, we need to first make sure to load the `eidith` library. For straightforward data manipulation we will also load the `dplyr` package:
 ```{r false-setup, echo = TRUE, eval = FALSE}
 library(eidith)
-library(tidyverse)
+library(dplyr)
 ```
 
   
