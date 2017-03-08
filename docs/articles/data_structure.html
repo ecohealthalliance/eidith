@@ -98,9 +98,9 @@
 <html><body><a href="#setup" class="anchor"> </a></body></html>Setup</h3>
 <p>Before exploring the tables in the EIDITH database using the eidith package, make sure to load it:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(eidith)</code></pre></div>
-<p>For the purposes of this vignette, you also will want to download / use the tidyverse package:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"tidyverse"</span>)  
-<span class="kw">library</span>(tidyverse)</code></pre></div>
+<p>For the purposes of this vignette, you also will want to download / use the <code>dplyr</code> package:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"dplyr"</span>)  
+<span class="kw">library</span>(dplyr)</code></pre></div>
 <p>If you are having trouble installing the eidith R package, logon credentials, permissions, or have not downloaded the local database, please follow the instructions in the <a href="https://ecohealthalliance.github.io/eidith/articles/eidith.html">package setup tutorial</a>.</p>
 </div>
 <div id="eidith-database-structure" class="section level3">
@@ -110,13 +110,13 @@
 <p><img src="/Users/Basaraba/R/eidith/inst/images/tables.png" width="825px"></p>
 <p>In the <code>events</code> table, for instance, each event (or row) has a unique <code>event_id</code>, while in the <code>animals</code> table, each animal (or row) has a unique <code>animal_id</code>. Importantly, each animal in the <code>animals</code> table also has an <code>event_id</code>, which links it to an event. Since <code>event_id</code> is not unique in the <code>animals</code> table, there can be more than one animal entry with the same <code>event_id</code> – this makes perfect sense, since there are likely multiple animals attached to a particular event. Using the <code><a href="../reference/ed_tables_conn.html">ed_tables_conn()</a></code> function at any time will display a table listing the ID fields linking tables together:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ed_tables_conn.html">ed_tables_conn</a></span>()</code></pre></div>
-<pre><code>##         T1               T2        conn
-## 1    Event           Animal    event_id
-## 2   Animal         Specimen   animal_id
-## 3 Specimen TestIDSpecimenID specimen_id
-## 4     Test            Virus     test_id
-## 5     Test TestIDSpecimenID     test_id
-## 6    Virus TestIDSpecimenID     test_id</code></pre>
+<pre><code>##                 T1               T2        conn
+## 1         Specimen TestIDSpecimenID specimen_id
+## 2           Animal         Specimen   animal_id
+## 3           Animal            Event    event_id
+## 4             Test            Virus     test_id
+## 5 TestIDSpecimenID             Test     test_id
+## 6 TestIDSpecimenID            Virus     test_id</code></pre>
 <p>These ID fields tie all of the tables together, allowing us to join tables together that contain information we are interested in analyzing. EIDITH is a large database with many fields per table, so it can be challenging at first to determine which table contains the relevant information. Generally, the location of the information we are looking for should be in the table that it is most closely tied to: if we are looking for the species of an animal, that field should be in the <code>animals</code> table, if we are looking for the genetic sequence of a virus, that information should be in the <code>viruses</code> table. If we are having a hard time finding the field we need, we can use the <code><a href="../reference/ed_metadata.html">?ed_metadata</a></code> command to load the built-in help file that contains a searchable list of all EIDITH fields.</p>
 <div id="testspecimens-table" class="section level4">
 <h4 class="hasAnchor">

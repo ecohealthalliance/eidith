@@ -124,7 +124,7 @@ ed_db_status <- function(path=NULL) {
         sort(),
       n_countries = ~length(countries),
       last_modified_records = ~quicktime2(map_chr(db_tables[1:5], function(db_table) {
-        DBI::dbGetQuery(edb$con, paste0("SELECT MAX(date_modified) FROM ", db_table ))[[1]]
+        DBI::dbGetQuery(edb$con, paste0("SELECT MAX(date_modified_",db_table,") FROM ", db_table ))[[1]]
       })),
       last_modified_record = ~max(last_modified_records),
       last_table = ~db_tables[1:5][last_modified_records == last_modified_record],

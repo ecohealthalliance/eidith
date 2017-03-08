@@ -41,6 +41,7 @@ Suggests:
     testthat,
     withr,
     rmarkdown,
-    knitr
+    knitr,
+    ggplot2
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr

@@ -131,54 +131,22 @@ tables, and <code>conn</code>, the connecting column.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>ed_tables_conn</span>()</div><div class='output co'>#&gt;         T1               T2        conn
-#&gt; 1    Event           Animal    event_id
-#&gt; 2   Animal         Specimen   animal_id
-#&gt; 3 Specimen TestIDSpecimenID specimen_id
-#&gt; 4     Test            Virus     test_id
-#&gt; 5     Test TestIDSpecimenID     test_id
-#&gt; 6    Virus TestIDSpecimenID     test_id</div><div class='input'><span class='fu'>ed_tables_conn</span>(<span class='kw'>cols</span> <span class='kw'>=</span> <span class='st'>"all"</span>)</div><div class='output co'>#&gt;          T1               T2                conn
-#&gt; 1     Event           Animal       database_date
-#&gt; 2     Event           Animal        date_created
-#&gt; 3     Event           Animal       date_modified
-#&gt; 4     Event           Animal            event_id
-#&gt; 5     Event         Specimen       database_date
-#&gt; 6     Event         Specimen        date_created
-#&gt; 7     Event         Specimen       date_modified
-#&gt; 8     Event             Test       database_date
-#&gt; 9     Event             Test        date_created
-#&gt; 10    Event             Test       date_modified
-#&gt; 11    Event            Virus       database_date
-#&gt; 12    Event            Virus        date_created
-#&gt; 13    Event            Virus       date_modified
-#&gt; 14   Animal         Specimen           animal_id
-#&gt; 15   Animal         Specimen       database_date
-#&gt; 16   Animal         Specimen        date_created
-#&gt; 17   Animal         Specimen       date_modified
-#&gt; 18   Animal             Test       database_date
-#&gt; 19   Animal             Test        date_created
-#&gt; 20   Animal             Test       date_modified
-#&gt; 21   Animal            Virus       database_date
-#&gt; 22   Animal            Virus        date_created
-#&gt; 23   Animal            Virus       date_modified
-#&gt; 24 Specimen             Test       database_date
-#&gt; 25 Specimen             Test        date_created
-#&gt; 26 Specimen             Test       date_modified
-#&gt; 27 Specimen             Test       specimen_type
-#&gt; 28 Specimen             Test specimen_type_group
-#&gt; 29 Specimen            Virus       database_date
-#&gt; 30 Specimen            Virus        date_created
-#&gt; 31 Specimen            Virus       date_modified
-#&gt; 32 Specimen TestIDSpecimenID         specimen_id
-#&gt; 33     Test            Virus       database_date
-#&gt; 34     Test            Virus        date_created
-#&gt; 35     Test            Virus       date_modified
-#&gt; 36     Test            Virus      interpretation
-#&gt; 37     Test            Virus            sequence
-#&gt; 38     Test            Virus             test_id
-#&gt; 39     Test            Virus          virus_name
-#&gt; 40     Test TestIDSpecimenID             test_id
-#&gt; 41    Virus TestIDSpecimenID             test_id</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>ed_tables_conn</span>()</div><div class='output co'>#&gt;                 T1               T2        conn
+#&gt; 1         Specimen TestIDSpecimenID specimen_id
+#&gt; 2           Animal         Specimen   animal_id
+#&gt; 3           Animal            Event    event_id
+#&gt; 4             Test            Virus     test_id
+#&gt; 5 TestIDSpecimenID             Test     test_id
+#&gt; 6 TestIDSpecimenID            Virus     test_id</div><div class='input'><span class='fu'>ed_tables_conn</span>(<span class='kw'>cols</span> <span class='kw'>=</span> <span class='st'>"all"</span>)</div><div class='output co'>#&gt;                 T1               T2                conn
+#&gt; 1         Specimen TestIDSpecimenID         specimen_id
+#&gt; 2         Specimen             Test       specimen_type
+#&gt; 3         Specimen             Test specimen_type_group
+#&gt; 4           Animal         Specimen           animal_id
+#&gt; 5           Animal            Event            event_id
+#&gt; 6             Test            Virus      interpretation
+#&gt; 7             Test            Virus             test_id
+#&gt; 8 TestIDSpecimenID             Test             test_id
+#&gt; 9 TestIDSpecimenID            Virus             test_id</div><div class='input'>
 
 </div></pre>
   </div>
