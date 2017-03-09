@@ -71,9 +71,9 @@ animals,Animal,69,genus,genus,NA,Integrated Taxonomic Information System Genus,C
 animals,Animal,70,species,species,NA,Integrated Taxonomic Information System Species,Changed by lookup to ITIS
 animals,Animal,71,NA,subspecies,subspecies,Subspecies as reported or found in ITIS lookup,Inserted by itis lookup
 animals,Animal,72,NA,binomal,binomial,"Genus and species, but not subspecies name, NA when species is unknown",NA
-animals,Animal,73,CRDate,crdate,date_created,Date record was first created within the EIDITH database,NA
-animals,Animal,74,LMDate,lmdate,date_modified,Last-modified date of record within the EIDITH database,NA
-animals,Animal,75,DateLastUpdated,date_last_updated,database_date,NA,NA
+animals,Animal,73,CRDate,crdate,date_created_animals,Date record was first created within the EIDITH database,NA
+animals,Animal,74,LMDate,lmdate,date_modified_animals,Last-modified date of record within the EIDITH database,NA
+animals,Animal,75,DateLastUpdated,date_last_updated,database_date_animals,Date of last database update,NA
 animals,Animal,NA,SampleIndividualName,sample_individual_name,DROP,NA,NA
 animals,Animal,NA,Country,country,DROP,NA,dropped because of redundancy
 events,Event,1,GAINS3_EventID,gains3_event_id,event_id,"Numerical event ID (unique, primary key)",NA
@@ -111,17 +111,17 @@ events,Event,32,SourceKnown,source_known,NA,Whether the source was previously kn
 events,Event,33,EventCustomColumns,event_custom_columns,NA,Site custom data that does not transfer to other events,NA
 events,Event,34,PrimaryInterfaceGroup,primary_interface_group,NA,NA,NA
 events,Event,35,SecondaryInterfaceGroup,secondary_interface_group,NA,NA,NA
-events,Event,36,CRDate,crdate,date_created,Date record was first created within the EIDITH database,NA
-events,Event,37,LMDate,lmdate,date_modified,Last-modified date of record within the EIDITH database,NA
-events,Event,38,DateLastUpdated,date_last_updated,database_date,Last date of export from EIDITH database to the API,NA
+events,Event,36,CRDate,crdate,date_created_events,Date record was first created within the EIDITH database,NA
+events,Event,37,LMDate,lmdate,date_modified_events,Last-modified date of record within the EIDITH database,NA
+events,Event,38,DateLastUpdated,date_last_updated,database_date_events,Date of last database update,NA
 specimens,Specimen,1,GAINS3_SpecimenID,gains3_specimen_id,specimen_id,Numerical Specimen ID,NA
 specimens,Specimen,2,GAINS3_SampleUnitID,gains3_sample_unit_id,animal_id,NA,NA
 specimens,Specimen,3,SpecimenIDUnique,specimen_idunique,specimen_id_name,Name of the specimen,NA
-specimens,Specimen,4,SpecimenType,specimen_type,NA,Type of specimen sample,NA
+specimens,Specimen,4,SpecimenType,specimen_type,specimen_type,Type of specimen sample,NA
 specimens,Specimen,5,SamplingMethod,sampling_method,NA,Description of sample collection method,NA
 specimens,Specimen,6,SpecimenDate,specimen_date,NA,NA,NA
 specimens,Specimen,7,AliquotID,aliquot_id,NA,Unique ID assigned to sample aliquot. Each aliquot should be entered in its own row in the template: same Specimen ID for each aliquot.,NA
-specimens,Specimen,8,SpecimenTypeGroup,specimen_type_group,NA,NA,NA
+specimens,Specimen,8,SpecimenTypeGroup,specimen_type_group,specimen_type_group,NA,NA
 specimens,Specimen,9,SpecimenCondition,specimen_condition,NA,Description of specimen condition at storage,NA
 specimens,Specimen,10,SampleContainer,sample_container,NA,Description of container holding sample,NA
 specimens,Specimen,11,StorageMedium,storage_medium,NA,Description of storage medium,NA
@@ -137,9 +137,9 @@ specimens,Specimen,20,SpecimenComments,specimen_comments,NA,Comment on the speci
 specimens,Specimen,21,SpecimenNotes,specimen_notes,NA,Notes on specimen sample,NA
 specimens,Specimen,22,SpecimenCustomColumns,specimen_custom_columns,NA,Specimen custom columns,NA
 specimens,Specimen,23,SpecimenTypeID,specimen_type_id,NA,NA,NA
-specimens,Specimen,24,CRDate,crdate,date_created,Date record was first created within the EIDITH database,NA
-specimens,Specimen,25,LMDate,lmdate,date_modified,Last-modified date of record within the EIDITH database,NA
-specimens,Specimen,26,DateLastUpdated,date_last_updated,database_date,Date of last database update,NA
+specimens,Specimen,24,CRDate,crdate,date_created_specimens,Date record was first created within the EIDITH database,NA
+specimens,Specimen,25,LMDate,lmdate,date_modified_specimens,Last-modified date of record within the EIDITH database,NA
+specimens,Specimen,26,DateLastUpdated,date_last_updated,database_date_specimens,Date of last database update,NA
 specimens,Specimen,NA,SpecimenID,specimen_id,DROP,NA,NA
 specimens,Specimen,NA,Country,country,DROP,NA,NA
 test_specimen_id,TestIDSpecimenID,1,GAINS3_TestID,gains3_test_id,test_id,NA,NA
@@ -157,8 +157,8 @@ tests,Test,9,TestTypeSpecific,test_type_specific,NA,Specific type of test,NA
 tests,Test,11,LabStorageMethod,lab_storage_method,NA,Description of storage method,NA
 tests,Test,12,LabSubmissionDate,lab_submission_date,NA,Date of submission specimens to laboratory,NA
 tests,Test,13,TestDate,test_date,NA,Date of test,NA
-tests,Test,14,SpecimenType,specimen_type,NA,Description of sample type submitted,NA
-tests,Test,15,SpecimenTypeGroup,specimen_type_group,NA,NA,NA
+tests,Test,14,SpecimenType,specimen_type,specimen_type_test,Description of sample type submitted,NA
+tests,Test,15,SpecimenTypeGroup,specimen_type_group,specimen_type_group_test,NA,NA
 tests,Test,16,OtherTestRequested,other_test_requested,NA,Description of test requested (if not listed),NA
 tests,Test,17,TestRequestedProtocol,test_requested_protocol,NA,NA,NA
 tests,Test,19,OtherTestType,other_test_type,NA,Description of test type (if not listed),NA
@@ -167,21 +167,21 @@ tests,Test,19,MethodologyReference,methodology_reference,NA,Reference for test m
 tests,Test,20,ResultsDate,results_date,NA,Date of test results,NA
 tests,Test,21,RawResult,raw_result,NA,Quantitative value of test result,NA
 tests,Test,22,ResultDescriptor,result_descriptor,NA,Description of sequencing and microarray details for positive confirmation results,NA
-tests,Test,23,VirusName,virus_name,NA,NA,NA
+tests,Test,23,VirusName,virus_name,DROP,NA,NA
 tests,Test,24,TestStatus,test_status,NA,Status of the test,NA
 tests,Test,25,MessageSentToCountry,message_sent_to_country,NA,NA,NA
 tests,Test,26,MessageSentToGovt,message_sent_to_govt,NA,NA,NA
-tests,Test,27,Sequence,sequence,NA,NA,NA
+tests,Test,27,Sequence,sequence,test_sequences,NA,NA
 tests,Test,27,GovtApprovedRelease,govt_approved_release,NA,NA,NA
-tests,Test,28,Interpretation,interpretation,NA,Completed by Tracey Goldstein et al. when test result has been finalized,NA
+tests,Test,28,Interpretation,interpretation,test_interpretations,Completed by Tracey Goldstein et al. when test result has been finalized,NA
 tests,Test,28,Notes,notes,NA,NA,NA
 tests,Test,29,InterpretationNotes,interpretation_notes,NA,NA,NA
 tests,Test,30,Comments,comments,NA,NA,NA
 tests,Test,31,PredictProtocol,predict_protocol,NA,NA,NA
 tests,Test,32,NA,diag_lab_shortname,NA,A shorter name of diagnostic laboratory for easier reporting,NA
-tests,Test,33,CRDate,crdate,date_created,Date record was first created within the EIDITH database,NA
-tests,Test,34,LMDate,lmdate,date_modified,Last-modified date of record within the EIDITH database,NA
-tests,Test,35,DateLastUpdated,date_last_updated,database_date,NA,NA
+tests,Test,33,CRDate,crdate,date_created_tests,Date record was first created within the EIDITH database,NA
+tests,Test,34,LMDate,lmdate,date_modified_tests,Last-modified date of record within the EIDITH database,NA
+tests,Test,35,DateLastUpdated,date_last_updated,database_date_tests,Date of last database update,NA
 tests,Test,NA,Country,country,DROP,NA,NA
 viruses,Virus,1,GAINS3_SequenceID,gains3_sequence_id,sequence_id,Numerical Sequence ID,NA
 viruses,Virus,2,GAINS3_TestID,gains3_test_id,test_id,Numerical Test ID,NA
@@ -195,8 +195,8 @@ viruses,Virus,9,VirusName,virus_name,NA,Virus Name,NA
 viruses,Virus,10,VirusCode,virus_code,NA,NA,NA
 viruses,Virus,11,Sequence,sequence,NA,NA,NA
 viruses,Virus,11,Interpretation,interpretation,NA,NA,NA
-viruses,Virus,12,DateLastUpdated,date_last_updated,database_date,NA,NA
-viruses,Virus,13,CRDate,crdate,date_created,Date record was first created within the EIDITH database,NA
-viruses,Virus,14,LMDate,lmdate,date_modified,Last-modified date of record within the EIDITH database,NA
+viruses,Virus,12,DateLastUpdated,date_last_updated,database_date_viruses,Date of last database update,NA
+viruses,Virus,13,CRDate,crdate,date_created_viruses,Date record was first created within the EIDITH database,NA
+viruses,Virus,14,LMDate,lmdate,date_modified_viruses,Last-modified date of record within the EIDITH database,NA
 viruses,Virus,15,HumanThreat,human_threat,NA,Human health threat flag,NA
 viruses,Virus,NA,Country,country,DROP,NA,NA
