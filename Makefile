@@ -11,6 +11,9 @@ README.md: README.Rmd
 docs:
 	${RSCRIPT} -e "library(methods); devtools::document(roclets=c('rd', 'collate', 'namespace', 'vignette'))"
 
+vignettes:
+	${RSCRIPT} -e "library(methods); devtools::build_vignettes()"
+
 site: docs readme index.Rmd
 	${RSCRIPT} -e "library(methods); options(repos = c(CRAN='https://cran.rstudio.com')); pkgdown::build_site()"
 	mkdir -p docs/inst

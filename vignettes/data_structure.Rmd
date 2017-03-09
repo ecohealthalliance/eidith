@@ -38,7 +38,7 @@ If you are having trouble installing the eidith R package, logon credentials, pe
 Like many databases, EIDITH is divided into several tables that are linked by unique ID fields (integers in this case). Below is a sketch of the six EIDITH tables and their basic linking structure. The lines connecting tables identify the fields, or columns, that link one table to the next. The fields with yellow keys next to their names are unique IDs -- this means that no two rows in that table can have the same value for this field.
 
 ```{r picture, eval = TRUE, echo = FALSE, results = 'asis', upload.fun = image_uri}  
-uri <- knitr::image_uri("../inst/images/tables.png")
+uri <- knitr::image_uri(P("inst","images","tables.png"))
 cat(sprintf("<img src=\"%s\" style=\"width:825px\">", uri))
 
 ```
