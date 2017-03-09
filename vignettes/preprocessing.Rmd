@@ -37,7 +37,7 @@ The main automatic processing steps are:
 - Coercing some free-form entries (e.g. `specimen_type`) to a standard set of categories
 - Converting yes/no fields to TRUE/FALSE
 - Fixing obvious spelling errors
-- Extracting variables from free-form text of viral interpretation (Genbank numbers, whether virus is known, whether virus is known to effect humans).
+- Extracting variables from free-form text of viral interpretation (Genbank numbers and whether virus is known).
 
 For column name details, including descriptions of fields (when available), the command `?ed_metadata` will open a datatable that contains details about how each field name was processed, renamed, or dropped.
 

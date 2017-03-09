@@ -188,7 +188,6 @@ viruses,Virus,2,GAINS3_TestID,gains3_test_id,test_id,Numerical Test ID,NA
 viruses,Virus,3,ViralFamily,viral_family,NA,ICTV Viral Family,NA
 viruses,Virus,4,ViralGenus,viral_genus,NA,ICTV Viral Genus,NA
 viruses,Virus,5,VirusStatus,virus_status,known,NA,NA
-viruses,Virus,6,NA,evidence_human_infection,NA,Whether there is current evidence that the virus infects or is very closely related to a virus that infects humans.,NA
 viruses,Virus,7,GenbankAccessionNumber,genbank_accession_number,new_genbank_accession,Genbank Accession Number for novel strain or novel virus sequences,NA
 viruses,Virus,8,NA,known_genbank_accession,NA,NA,NA
 viruses,Virus,9,VirusName,virus_name,NA,Virus Name,NA

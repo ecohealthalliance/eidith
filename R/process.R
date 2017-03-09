@@ -19,7 +19,7 @@
 #' -   Coercing some free-form entries (e.g. `specimen_type`) to a standard set of categories
 #' -   Converting yes/no fields to TRUE/FALSE
 #' -   Fixing spelling errors
-#' -   Extracting common TRUE/FALSE variables from free-form text of viral interpretation (Genbank numbers, whether virus is known, whether virus is known to affect humans).
+#' -   Extracting common TRUE/FALSE variables from free-form text of viral interpretation (Genbank numbers and whether virus is known).
 #'
 #' @param dat The data as exported from EIDITH and imported via the [ed_get()] functions (without preprocessing).
 #' @param endpt The name of the API URL endpoints: one of "Event",
@@ -238,8 +238,7 @@ pp_Virus <- function(dat) {
   }
 
   if("interpretation" %in% names(dat)) {
-    dat <- mutate_(dat, known_genbank_accession = ~get_genbank(interpretation),
-                   evidence_human_infection = ~get_interest(interpretation))
+    dat <- mutate_(dat, known_genbank_accession = ~get_genbank(interpretation))
   }
   return(dat)
 }
@@ -257,16 +256,4 @@ get_genbank <- function(interpretations) {
   accession <- stri_replace_all_fixed(accession, "_", "")
   accession <- na_if(accession, "character(0)")
   return(accession)
-}
-
-#' @importFrom stringi stri_detect_regex stri_detect_fixed
-get_interest <- function(interpretations) {
-  !stri_detect_regex(
-    interpretations,
-    "[Tt]here is(\\scurrently)? not? evidence(\\sat this time)?(\\sto suggest)?(\\sthat)? ((this virus)|(it))(es)?(\\sa)? (poses?)?(might be)? ((any risk)|(a threat)) to human health.?"
-  ) &
-    !stri_detect_fixed(
-      interpretations,
-      "there is no evidence at this time that Simian adenoviruses pose a threat to human health"
-    )
 }
