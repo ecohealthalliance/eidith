@@ -16,7 +16,7 @@ library(dplyr)
 library(ggplot2)
 
 source('~/R/eidith/R/tables_conn.R')
-P <- rprojroot::find_package_root_file()
+P <- rprojroot::find_package_root_file
 ```
 ### Setup
 Before exploring the tables in the EIDITH database using the eidith package, make sure to load it:  
@@ -37,7 +37,7 @@ If you are having trouble installing the eidith R package, logon credentials, pe
 Like many databases, EIDITH is divided into several tables that are linked by unique ID fields (integers in this case). Below is a sketch of the six EIDITH tables and their basic linking structure. The lines connecting tables identify the fields, or columns, that link one table to the next. The fields with yellow keys next to their names are unique IDs -- this means that no two rows in that table can have the same value for this field.
 
 ```{r picture, eval = TRUE, echo = FALSE, out.width = "825px"}  
-knitr::include_graphics(rprojroot::find_package_root_file("inst", "images", "tables.png"))
+knitr::include_graphics(P("inst", "images", "tables.png"))
 ```
 
 In the `events` table, for instance, each event (or row) has a unique `event_id`, while in the `animals` table, each animal (or row) has a unique `animal_id`. Importantly, each animal in the `animals` table also has an `event_id`, which links it to an event. Since `event_id` is not unique in the `animals` table, there can be more than one animal entry with the same `event_id` -- this makes perfect sense, since there are likely multiple animals attached to a particular event. Using the `ed_tables_conn()` function at any time will display a table listing the ID fields linking tables together:

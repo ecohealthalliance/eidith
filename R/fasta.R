@@ -73,7 +73,7 @@ ed_tests_report <- function(status = c("Result finalized, interpretation pending
   } else {
     stop("Neither status nor test_ids specified.")
   }
-  miss_seq <- tests[["test_id"]][is.na(tests[["sequence"]])]
+  miss_seq <- tests[["test_id"]][is.na(tests[["test_sequences"]])]
   if(length(miss_seq)) {
     warning("Missing sequences in tests ", paste(miss_seq, collapse = ", "))
   }
@@ -83,7 +83,7 @@ ed_tests_report <- function(status = c("Result finalized, interpretation pending
   anim <- ed_table_("animals", ~animal_id %in% spec[["animal_id"]])
   events <- ed_table_("events", ~event_id %in% anim[["event_id"]])
   viruses <- ed_table_("viruses", ~test_id %in% tests[["test_id"]]) %>%
-    select_(.dots=c("sequence_id", "test_id"))
+    select_(.dots=c("sequence_id", "test_id", "sequence"))
 
   combined_tables <- left_join(tests, test_spec, by="test_id") %>%
     right_join(spec, by="specimen_id") %>%

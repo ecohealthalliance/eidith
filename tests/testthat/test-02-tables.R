@@ -10,7 +10,7 @@ withr::with_options(list(ed_sql_path = TEST_SQL_PATH), {
     context("Tables")
 
     test_that("No fails on zero-length tables", {
-      expect_error(ed_specimens(date_created > "2018-03-04"), regexp = NA)
+      expect_error(ed_specimens(date_created_specimens > "2018-03-04"), regexp = NA)
     })
 
     test_that("Table extracts work", {
@@ -21,8 +21,8 @@ withr::with_options(list(ed_sql_path = TEST_SQL_PATH), {
       expect_equivalent(ed_animals(sex == "Female"),
                         dplyr::filter_(ed_animals(), ~sex=="Female"))
 
-      expect_equivalent(ed_specimens(date_created > "2018-03-04"),
-                        dplyr::filter_(ed_specimens(), ~date_created > "2018-03-04"))
+      expect_equivalent(ed_specimens(date_created_specimens > "2018-03-04"),
+                        dplyr::filter_(ed_specimens(), ~date_created_specimens > "2018-03-04"))
     })
 
     test_that("Tables can use %in% with zero-length vectors", {
