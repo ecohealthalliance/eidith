@@ -1,17 +1,24 @@
 ## ----setup, include=FALSE------------------------------------------------
+library(knitr)
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 library(eidith)
-library(tidyverse)
+library(dplyr)
 library(ggplot2)
+
 source('~/R/eidith/R/tables_conn.R')
-P <- rprojroot::find_package_root_file()
+P <- rprojroot::find_package_root_file
 
 ## ----1-------------------------------------------------------------------
 #  library(eidith)
 
 ## ----2-------------------------------------------------------------------
-#  install.packages("tidyverse")
-#  library(tidyverse)
+#  install.packages("dplyr")
+#  library(dplyr)
+
+## ----picture, eval = TRUE, echo = FALSE, results = 'asis', upload.fun = image_uri----
+uri <- knitr::image_uri("../inst/images/tables.png")
+cat(sprintf("<img src=\"%s\" style=\"width:825px\">", uri))
+
 
 ## ----conn, eval = TRUE---------------------------------------------------
 ed_tables_conn()

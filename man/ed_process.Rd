@@ -34,6 +34,6 @@ numeric primary keys, other identifiers now go by \code{_id_name}.
 \item Coercing some free-form entries (e.g. \code{specimen_type}) to a standard set of categories
 \item Converting yes/no fields to TRUE/FALSE
 \item Fixing spelling errors
-\item Extracting common TRUE/FALSE variables from free-form text of viral interpretation (Genbank numbers, whether virus is known, whether virus is known to affect humans).
+\item Extracting common TRUE/FALSE variables from free-form text of viral interpretation (Genbank numbers and whether virus is known).
 }
 }

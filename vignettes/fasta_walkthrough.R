@@ -1,11 +1,11 @@
 ## ----setup, include=FALSE------------------------------------------------
 knitr::opts_chunk$set(echo = FALSE)
 library(eidith)
-library(tidyverse)
+library(dplyr)
 
 ## ----false-setup, echo = TRUE, eval = FALSE------------------------------
 #  library(eidith)
-#  library(tidyverse)
+#  library(dplyr)
 
 ## ----example, echo = TRUE, eval = FALSE----------------------------------
 #  ed_tests_report(status = c("Under Sequence Review", "Active testing ongoing"))

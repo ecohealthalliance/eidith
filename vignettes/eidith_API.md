@@ -1,0 +1,55 @@
+---
+title: "The EIDITH Web API"
+output: 
+  rmarkdown::html_vignette
+author: "Noam Ross"
+vignette: >
+  %\VignetteIndexEntry{pkgdown}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+  
+
+
+The **eidith** R package makes use of the EIDITH web API.  This short document
+describes that API.
+
+The API uses basic username/password authentication - in general usernames
+and passwords are the same as those used for login to the interactive site at
+https://www.eidith.org/.
+
+Each table in the EIDITH database has a different API endpoint.  They are:
+
+- https://predict2api.eidith.org/api/modeling/Event
+- https://predict2api.eidith.org/api/modeling/Animal
+- https://predict2api.eidith.org/api/modeling/Specimen
+- https://predict2api.eidith.org/api/modeling/Test
+- https://predict2api.eidith.org/api/modeling/Virus
+- https://predict2api.eidith.org/api/modeling/TestIDSpecimenID
+
+Querying an endpoint using an EIDITH account credentials will provide all records
+that account has access to.  Records are provided as JSON (`application/JSON`).
+For a list of the fields for each record, see `?ed_metadata` in the R package documentation.
+
+In addition, each endpoint, except `TestIDSpecimenID`, can take one of several
+filter parameters:
+
+-  `header_only` will return only a vector of the table headers. This is useful
+for checking if you have data access or if database structure has changed, e.g.:
+
+        https://predict2api.eidith.org/api/modeling/Specimen?header_only=y
+        
+        https://predict2api.eidith.org/api/modeling/Event?header_only=y
+        
+- `lmdate_from` and `lmdate_to` allow you to filter records by their last date
+   modified, e.g.:
+
+        https://predict2api.eidith.org/api/modeling/Test?lmdate_from=2015-01-01
+        
+        https://predict2api.eidith.org/api/modeling/Test?lmdate_from=2015-03-01&lmdate_to=2016-11-17
+        
+        https://predict2api.eidith.org/api/modeling/Specimen?lmdate_from=2015-01-01
+        
+        https://predict2api.eidith.org/api/modeling/Specimen?lmdate_from=2015-01-01&lmdate_to=2016-11-17
+ 
+
