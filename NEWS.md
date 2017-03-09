@@ -11,6 +11,8 @@ devtools::install_github('ecohealthalliance/eidith@v0.1.0')`
 
 ## New functionality
 
+- Additional functionality for FASTA export and interpretation: `ed_fasta_group()`,
+  `ed_report_excel()`.
 - Mock data sets now available: `ed_table_mock()`
 - EIDITH table connections now listed in dataframe via `ed_tables_conn()`
 - Database downloads more robust to errors, only overwrites old data after new data is checked
@@ -21,18 +23,20 @@ devtools::install_github('ecohealthalliance/eidith@v0.1.0')`
 - Data Structure and Table Joining vignette with mock data example
 - Report generation and FASTA file vignette
 
-## Changes to data / processing
+## *Breaking changes in data processing*
 
-- New `human_health` field in viruses flags human health risk
-- Reordering metadata to make more intelligible
-
-# eidith 0.2.2.90000 (dev)
-
-- Fix typos in vignette
-- Additional functionality for FASTA export and interpretation: `ed_fasta_group()`,
-  `ed_report_excel()`.
-- Change `virus_id` to `sequence_id`
+- New `human_health` field in viruses flags human health risk, old `evidence_human_infection` field is removed.
+- Reordering metadata to make more intelligible.
+- Change `virus_id` to `sequence_id`.
 - Make lat/long numeric and compatible with `SpatialPointsDataFrame`
+- Altering `date_created`, `date_modified`, and `database_date` fields to reflect tables, e.g `date_created_animals` or `database_date_specimens`.
+- The `sequence` field in `tests` table has been renamed `test_sequences` to avoid confusion
+- The `interpretation` field in `tests` table has been renamed `test_interpretations` to avoid confusion
+- The `specimen_type` field in `tests` tables has been renamed `specimen_type_test` and the `speciment_type_group` has been renamed `specimen_type_group_test` to avoid confusion.
+
+__Note: A new local database download (`ed_db_download`) will be needed for the user to see these data processing changes. The change in field names may break previous scripts, the user should consider saving current state of their local database using `ed_db_export()`.__
+
+
 
 # eidith 0.2.2 (patch)
 
