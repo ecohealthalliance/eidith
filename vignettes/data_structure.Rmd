@@ -15,9 +15,8 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 library(eidith)
 library(dplyr)
 library(ggplot2)
-
-source('~/R/eidith/R/tables_conn.R')
 P <- rprojroot::find_package_root_file
+source(P('R/tables_conn.R'))
 ```
 ### Setup
 Before exploring the tables in the EIDITH database using the eidith package, make sure to load it:  
