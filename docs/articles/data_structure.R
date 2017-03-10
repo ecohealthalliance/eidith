@@ -16,7 +16,7 @@ P <- rprojroot::find_package_root_file
 #  library(dplyr)
 
 ## ----picture, eval = TRUE, echo = FALSE, results = 'asis', upload.fun = image_uri----
-uri <- knitr::image_uri("../inst/images/tables.png")
+uri <- knitr::image_uri(P("inst","images","tables.png"))
 cat(sprintf("<img src=\"%s\" style=\"width:825px\">", uri))
 
 
