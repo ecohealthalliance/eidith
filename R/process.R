@@ -26,7 +26,6 @@
 #' "Animal",  "Specimen", "Test", "Virus", or "TestIDSpecimenID" (for test-specimen cross referencing).  Note these are different
 #' than the names of the tables stored locally (which are lowercase and plural).
 #' @importFrom dplyr na_if as_data_frame rename_ %>% mutate_ select_ if_else data_frame arrange_ full_join
-#' @importFrom magrittr use_series
 #' @importFrom stringi stri_trim_both
 #' @importFrom purrr map_if
 ed_process <- function(dat, endpt) {
@@ -37,7 +36,7 @@ ed_process <- function(dat, endpt) {
       replacement_name
     ))
   expected_fields <-
-    emd %>% filter_( ~ !is.na(original_name)) %>% use_series("original_name")
+    emd %>% filter_( ~ !is.na(original_name)) %>% `$`("original_name")
   # First, check that the data is as expected
   unexpected_fields <-
     names(dat)[!(names(dat) %in% expected_fields)]
@@ -78,7 +77,7 @@ ed_process <- function(dat, endpt) {
     full_join(filter_(emd, ~ replacement_name != "DROP" |
                         is.na(replacement_name)), by = "original_name")
   names(dat) <-
-    used %>% filter_( ~ !is.na(original_name)) %>% use_series("new_name")
+    used %>% filter_( ~ !is.na(original_name)) %>% `$`("new_name")
 
   # General cleanups
   dat <- map_if(dat, is.character, ~ na_if(stri_trim_both(.), ""))

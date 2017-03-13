@@ -49,7 +49,7 @@ withr::with_options(list(ed_sql_path = TEST_SQL_PATH), {
         ed_tb <- tbl(eidith_db(), tb) %>% head %>% collect
         expected_fields <- filter(ed_metadata(), table == tb) %>%
           mutate(nname = coalesce(replacement_name, auto_processed_name)) %>%
-          use_series(nname) %>%
+          `$`(nname) %>%
           na.omit() %>%
           stringi::stri_subset_fixed("DROP", negate=TRUE)
         expect_true(all(names(ed_tb %in% expected_fields)))

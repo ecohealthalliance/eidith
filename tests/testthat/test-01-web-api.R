@@ -18,7 +18,7 @@ if(HAS_INTERNET && HAS_EHA_CRED) {
         headers = GET(url, authenticate(Sys.getenv("EIDITH_EHA_USERNAME"), Sys.getenv("EIDITH_EHA_PASSWORD"))) %>%
           content() %>%
           unlist()
-        expected_fields <- filter(ed_metadata(), endpoint==endpt) %>% use_series(original_name) %>% na.omit
+        expected_fields <- filter(ed_metadata(), endpoint==endpt) %>% `$`(original_name) %>% na.omit
         expect_true(all(headers %in% expected_fields))
         expect_true(all(expected_fields %in% headers))
       }

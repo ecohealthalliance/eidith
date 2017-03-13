@@ -1,4 +1,4 @@
-#' @importFrom magrittr %>%
+#' @importFrom dplyr %>%
 #' @importFrom stringi stri_replace_all_regex stri_replace_all_fixed stri_trans_tolower
 fix_names <- function(names) {
   new_names <- names %>%

@@ -47,25 +47,25 @@ db_other_indexes <- list(
 ed_db_download <- function(verbose=interactive()) {
   auth <- ed_auth(verbose = verbose)
   if(verbose) message("Downloading and processing EIDITH data. This may take a few minutes.")
-  lapply(dplyr::db_list_tables(eidith_db(temp_sql_path)$con), function(x) {
-    dplyr::db_drop_table(eidith_db(temp_sql_path)$con, x)}
+  lapply(dplyr::db_list_tables(eidith_db(temp_sql_path())$con), function(x) {
+    dplyr::db_drop_table(eidith_db(temp_sql_path())$con, x)}
   )
   lapply(seq_along(endpoints), function(x) {
     tb <- ed_get(endpoints[x], postprocess=TRUE, verbose=verbose, auth=auth)
-    dplyr::copy_to(eidith_db(temp_sql_path), tb, name=db_tables[x], temporary = FALSE,
+    dplyr::copy_to(eidith_db(temp_sql_path()), tb, name=db_tables[x], temporary = FALSE,
                    unique_indexes = db_unique_indexes[[x]], indexes = db_other_indexes[[x]])
     rm(tb);
     gc(verbose=FALSE)
   })
-  dplyr::copy_to(eidith_db(temp_sql_path), data.frame(last_download=as.character(Sys.time())),
+  dplyr::copy_to(eidith_db(temp_sql_path()), data.frame(last_download=as.character(Sys.time())),
                  name="status", temporary=FALSE)
-  if(!(all(db_tables %in% db_list_tables(eidith_db(temp_sql_path)$con)))){
+  if(!(all(db_tables %in% db_list_tables(eidith_db(temp_sql_path())$con)))){
     message("NOTE: Newly downloaded EIDITH database is empty or corrupt, using previous version.")
     if(verbose) {
       message("Old Database Status:")
       message(ed_db_status_msg(ed_db_status()))
     }
-    file.remove(temp_sql_path)
+    file.remove(temp_sql_path())
     return(invisible(0))
   }else{
     if(verbose) {
@@ -74,8 +74,8 @@ ed_db_download <- function(verbose=interactive()) {
     lapply(dplyr::db_list_tables(eidith_db()$con), function(x) {
       dplyr::db_drop_table(eidith_db()$con, x)}
     )
-    RSQLite::sqliteCopyDatabase(eidith_db(temp_sql_path)$con, eidith_db()$con)
-    file.remove(temp_sql_path)
+    RSQLite::sqliteCopyDatabase(eidith_db(temp_sql_path())$con, eidith_db()$con)
+    file.remove(temp_sql_path())
     message(ed_db_status_msg(ed_db_status()))
   return(invisible(0))
   }
@@ -96,7 +96,6 @@ ed_db_download <- function(verbose=interactive()) {
 #' @param path if provided, the filename of the sqlite database to check. By default,
 #'   the function checks the status of the internal database or that with the global option `"ed_sql_path"`.
 #' @seealso  [ed_db_download()], [ed_db_updates()], [ed_db_export()]
-#' @importFrom magrittr use_series
 #' @importFrom purrr map_chr
 #' @importFrom dplyr tbl group_by_ summarise_ collect lst db_list_tables mutate_ lst_
 #' @importFrom tidyr separate_
@@ -120,7 +119,7 @@ ed_db_status <- function(path=NULL) {
         group_by_("country") %>%
         summarise_(n=~n()) %>%
         collect() %>%
-        use_series("country") %>%
+        `$`("country") %>%
         sort(),
       n_countries = ~length(countries),
       last_modified_records = ~quicktime2(map_chr(db_tables[1:5], function(db_table) {

@@ -31,7 +31,6 @@ Imports:
     rappdirs,
     purrr,
     stringi,
-    magrittr,
     lazyeval,
     lubridate,
     htmlwidgets,
