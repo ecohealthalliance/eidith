@@ -4,7 +4,7 @@ output:
   rmarkdown::html_vignette
 author: "Cale Basaraba"
 vignette: >
-  %\VignetteIndexEntry{pkgdown}
+  %\VignetteIndexEntry{Automatic Data Processing / Accessing Raw Data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

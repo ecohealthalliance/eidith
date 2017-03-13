@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Eidith Package Data Processing</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h3>Eidith Package Data Processing</h3>
+
+<p>The <strong>eidith</strong> package downloads data from the EIDITH database to a local database stored on your machine. Default calls to the <code>ed_get()</code> or <code>ed_db_download()</code> will automatically process the data in several ways after it is downloaded to your local database.  </p>
+
+<p><em>Importantly, the R package does not change any data in the main EIDITH database, it only processes the downloaded data in your local database</em>.  </p>
+
+<p>The main automatic processing steps are:</p>
+
+<ul>
+<li>Converting variable names from <code>camelCase</code> to <code>snake_case</code> to make it easy to distinguish between raw and cleaned data.<br/></li>
+<li>  Converting some variable names to clearer ones:  all <code>_id</code> variables are numeric primary keys, other identifiers now go by <code>_id_name</code>.<br/></li>
+<li>  Where there are multiple <code>_id_name</code>-type columns that are very similar except for a small set of cases, we drop all but one for ease of use. These can be retrieved from raw data if needed.<br/></li>
+<li>Dropping columns that are entirely blank</li>
+<li>Dropping redundant columns</li>
+<li>Cleaning up whitespace and capitalization variability</li>
+<li>Re-arranging table order to put the most pertinent information first.</li>
+<li>Normalizing all animal taxonomic information to match the <a href="https://www.itis.gov/">ITIS</a> database.</li>
+<li>Coercing some free-form entries (e.g. <code>specimen_type</code>) to a standard set of categories</li>
+<li>Converting yes/no fields to TRUE/FALSE</li>
+<li>Fixing obvious spelling errors</li>
+<li>Extracting variables from free-form text of viral interpretation (Genbank numbers and whether virus is known).</li>
+</ul>
+
+<p>For column name details, including descriptions of fields (when available), the command <code>?ed_metadata</code> will open a datatable that contains details about how each field name was processed, renamed, or dropped.</p>
+
+<h3>Direct API Access and Raw Data</h3>
+
+<p>The eidith R package automatic processing steps <strong>do not permanently alter or delete any upstream data</strong>. </p>
+
+<p>If you want to access raw EIDITH data from the web API directly (for instance, if you want
+to compare differences between raw data and the automatically-cleaned version
+<code>ed_db_download()</code> creates), you can use the <code>ed_get()</code> functions, such as <code>get_ed_events()</code>, with the <code>postprocess = FALSE</code> option:</p>
+
+<p>For events: </p>
+
+<pre><code>ed_get_events(postprocess=FALSE)
+</code></pre>
+
+<p>For animals: </p>
+
+<pre><code>ed_get_animals(postprocess=FALSE)
+</code></pre>
+
+<p>And so on. These raw data tables can be saved in your R environment and can be compared to the eidith R package tables &ndash; simply use <code>ed_metadata()</code> to load the metadata table, or from within RStudio use <code>?ed_metadata</code> to open a searchable datatable. </p>
+
+</body>
+
+</html>

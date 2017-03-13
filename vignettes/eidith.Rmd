@@ -4,7 +4,7 @@ output:
   rmarkdown::html_vignette
 author: "Noam Ross"
 vignette: >
-  %\VignetteIndexEntry{pkgdown}
+  %\VignetteIndexEntry{Eidith R Package Setup}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

@@ -4,7 +4,7 @@ author: "Cale Basaraba"
 output: 
   rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{pkgdown}
+  %\VignetteIndexEntry{Data Structure / Table Joining}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
