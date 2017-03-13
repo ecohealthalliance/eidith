@@ -5,5 +5,5 @@
 inst/doc
 *.feather
 .httr-oauth
-index.md
-index.html
+./index.md
+./index.html
