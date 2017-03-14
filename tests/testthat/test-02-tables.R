@@ -52,8 +52,8 @@ withr::with_options(list(ed_sql_path = TEST_SQL_PATH), {
           `$`(nname) %>%
           na.omit() %>%
           stringi::stri_subset_fixed("DROP", negate=TRUE)
-        expect_true(all(names(ed_tb %in% expected_fields)))
-        expect_true(all(names(expected_fields %in% ed_tb)))
+        expect_true(all(names(ed_tb) %in% expected_fields))
+        expect_true(all(names(expected_fields) %in% ed_tb))
       }
     })
 

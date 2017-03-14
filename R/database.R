@@ -29,8 +29,8 @@ ed_db_field_check <- function(tb){
       `$`(nname) %>%
       na.omit() %>%
       stri_subset_fixed("DROP", negate=TRUE)
-    condition_a <- (all(names(ed_tb %in% expected_fields)))
-    condition_b <- (all(names(expected_fields %in% ed_tb)))
+    condition_a <- (all(names(ed_tb) %in% (expected_fields)))
+    condition_b <- (all(names(expected_fields) %in% (ed_tb)))
     return(condition_a & condition_b)
 }
 
@@ -82,7 +82,7 @@ ed_db_download <- function(verbose=interactive()) {
     }
     file.remove(temp_sql_path())
     return(invisible(0))
-  }else if(!all(sapply(db_list_tables(eidith_db(temp_sql_path())$con), function(x) ed_db_field_check(x)))){
+  }else if(!all(sapply(db_tables, function(x) ed_db_field_check(x)))){
     message("NOTE: Newly downloaded EIDITH database lacks the correct fields, using previous version.")
     if(verbose) {
       message("Old Database Status:")
@@ -129,7 +129,7 @@ ed_db_status <- function(path=NULL) {
   edb <- eidith_db(path)
   if(!(all(db_tables %in% db_list_tables(edb$con)))) {
     dbstatus <- list(status_msg ="Local EIDITH database tables are empty, out-of-date, or corrupt.\nRun ed_db_download() to update")
-  } else if(!all(sapply(db_list_tables(edb$con), function(x) ed_db_field_check(x)))){
+  } else if(!all(sapply(db_tables, function(x) ed_db_field_check(x)))){
     dbstatus <- list(status_msg ="Local EIDITH database fields are empty, out-of-date, or corrupt.\nRun ed_db_download() to update")
   } else {
     records <- tbl(edb, "sqlite_stat1") %>% collect() %>%
