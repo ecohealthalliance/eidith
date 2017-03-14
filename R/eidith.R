@@ -21,6 +21,9 @@
 #' -   Online version of this documentation found at [https://ecohealthalliance.github.io/eidith/](https://github.com/ecohealthalliance/eidith/issues)
 #' -   Questions related to your EIDITH credentials should be directed to [technology@eidith.org](mailto:technology@eidith.org).
 #'
-#' @name eidith-package
+#' To learn more about eidith, start with the vignettes:
+#' `browseVignettes(package = "eidith")`
+#'
+#' @name eidith
 #' @docType package
 NULL
