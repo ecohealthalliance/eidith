@@ -20,9 +20,11 @@ db_other_indexes <- list(
 )
 
 #' @importFrom stringi stri_subset_fixed
+#' @importFrom dplyr filter collect %>% coalesce mutate
 ed_db_field_check <- function(tb){
     ed_tb <- tbl(eidith_db(), tb) %>% head %>% collect
-    expected_fields <- filter(ed_metadata(), table == tb) %>%
+    df <- ed_metadata()
+    expected_fields <- filter(df, df$table == tb) %>%
       mutate(nname = coalesce(replacement_name, auto_processed_name)) %>%
       `$`(nname) %>%
       na.omit() %>%
