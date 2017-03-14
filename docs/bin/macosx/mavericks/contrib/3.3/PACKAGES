@@ -1,8 +1,0 @@
-Package: eidith
-Version: 0.3.0
-Depends: R (>= 3.1.2)
-Imports: httr, jsonlite, dplyr, readr, tidyr, tibble, RSQLite, DBI, getPass, rappdirs, purrr, stringi, lazyeval, lubridate, htmlwidgets, DT
-Suggests: curl, testthat, withr, rmarkdown, knitr, ggplot2
-License: MIT + file LICENSE
-MD5sum: c6150ba31841e2b075848d2e979980b7
-

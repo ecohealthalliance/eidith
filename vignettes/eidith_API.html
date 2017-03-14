@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title></title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<p>The <strong>eidith</strong> R package makes use of the EIDITH web API.  This short document
+describes that API.</p>
+
+<p>The API uses basic username/password authentication - in general usernames
+and passwords are the same as those used for login to the interactive site at
+<a href="https://www.eidith.org/">https://www.eidith.org/</a>.</p>
+
+<p>Each table in the EIDITH database has a different API endpoint.  They are:</p>
+
+<ul>
+<li><a href="https://predict2api.eidith.org/api/modeling/Event">https://predict2api.eidith.org/api/modeling/Event</a></li>
+<li><a href="https://predict2api.eidith.org/api/modeling/Animal">https://predict2api.eidith.org/api/modeling/Animal</a></li>
+<li><a href="https://predict2api.eidith.org/api/modeling/Specimen">https://predict2api.eidith.org/api/modeling/Specimen</a></li>
+<li><a href="https://predict2api.eidith.org/api/modeling/Test">https://predict2api.eidith.org/api/modeling/Test</a></li>
+<li><a href="https://predict2api.eidith.org/api/modeling/Virus">https://predict2api.eidith.org/api/modeling/Virus</a></li>
+<li><a href="https://predict2api.eidith.org/api/modeling/TestIDSpecimenID">https://predict2api.eidith.org/api/modeling/TestIDSpecimenID</a></li>
+</ul>
+
+<p>Querying an endpoint using an EIDITH account credentials will provide all records
+that account has access to.  Records are provided as JSON (<code>application/JSON</code>).
+For a list of the fields for each record, see <code>?ed_metadata</code> in the R package documentation.</p>
+
+<p>In addition, each endpoint, except <code>TestIDSpecimenID</code>, can take one of several
+filter parameters:</p>
+
+<ul>
+<li><p><code>header_only</code> will return only a vector of the table headers. This is useful
+for checking if you have data access or if database structure has changed, e.g.:</p>
+
+<pre><code>https://predict2api.eidith.org/api/modeling/Specimen?header_only=y
+
+https://predict2api.eidith.org/api/modeling/Event?header_only=y
+</code></pre></li>
+<li><p><code>lmdate_from</code> and <code>lmdate_to</code> allow you to filter records by their last date
+modified, e.g.:</p>
+
+<pre><code>https://predict2api.eidith.org/api/modeling/Test?lmdate_from=2015-01-01
+
+https://predict2api.eidith.org/api/modeling/Test?lmdate_from=2015-03-01&amp;lmdate_to=2016-11-17
+
+https://predict2api.eidith.org/api/modeling/Specimen?lmdate_from=2015-01-01
+
+https://predict2api.eidith.org/api/modeling/Specimen?lmdate_from=2015-01-01&amp;lmdate_to=2016-11-17
+</code></pre></li>
+</ul>
+
+</body>
+
+</html>
