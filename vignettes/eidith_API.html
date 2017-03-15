@@ -38,28 +38,28 @@
 <p>The API uses basic username/password authentication - in general usernames and passwords are the same as those used for login to the interactive site at <a href="https://www.eidith.org/" class="uri">https://www.eidith.org/</a>.</p>
 <p>Each table in the EIDITH database has a different API endpoint. They are:</p>
 <ul>
-<li><a href="https://predict2api.eidith.org/api/app/Event" class="uri">https://predict2api.eidith.org/api/app/Event</a></li>
-<li><a href="https://predict2api.eidith.org/api/app/Animal" class="uri">https://predict2api.eidith.org/api/app/Animal</a></li>
-<li><a href="https://predict2api.eidith.org/api/app/Specimen" class="uri">https://predict2api.eidith.org/api/app/Specimen</a></li>
-<li><a href="https://predict2api.eidith.org/api/app/Test" class="uri">https://predict2api.eidith.org/api/app/Test</a></li>
-<li><a href="https://predict2api.eidith.org/api/app/Virus" class="uri">https://predict2api.eidith.org/api/app/Virus</a></li>
-<li><a href="https://predict2api.eidith.org/api/app/TestIDSpecimenID" class="uri">https://predict2api.eidith.org/api/app/TestIDSpecimenID</a></li>
+<li><a href="https://predict2api.eidith.org/api/modeling/Event" class="uri">https://predict2api.eidith.org/api/modeling/Event</a></li>
+<li><a href="https://predict2api.eidith.org/api/modeling/Animal" class="uri">https://predict2api.eidith.org/api/modeling/Animal</a></li>
+<li><a href="https://predict2api.eidith.org/api/modeling/Specimen" class="uri">https://predict2api.eidith.org/api/modeling/Specimen</a></li>
+<li><a href="https://predict2api.eidith.org/api/modeling/Test" class="uri">https://predict2api.eidith.org/api/modeling/Test</a></li>
+<li><a href="https://predict2api.eidith.org/api/modeling/Virus" class="uri">https://predict2api.eidith.org/api/modeling/Virus</a></li>
+<li><a href="https://predict2api.eidith.org/api/modeling/TestIDSpecimenID" class="uri">https://predict2api.eidith.org/api/modeling/TestIDSpecimenID</a></li>
 </ul>
 <p>Querying an endpoint using an EIDITH account credentials will provide all records that account has access to. Records are provided as JSON (<code>application/JSON</code>). For a list of the fields for each record, see <code>?ed_metadata</code> in the R package documentation.</p>
 <p>In addition, each endpoint, except <code>TestIDSpecimenID</code>, can take one of several filter parameters:</p>
 <ul>
 <li><p><code>header_only</code> will return only a vector of the table headers. This is useful for checking if you have data access or if database structure has changed, e.g.:</p>
-<pre><code>https://predict2api.eidith.org/api/app/Specimen?header_only=y
+<pre><code>https://predict2api.eidith.org/api/modeling/Specimen?header_only=y
 
-https://predict2api.eidith.org/api/app/Event?header_only=y</code></pre></li>
+https://predict2api.eidith.org/api/modeling/Event?header_only=y</code></pre></li>
 <li><p><code>lmdate_from</code> and <code>lmdate_to</code> allow you to filter records by their last date modified, e.g.:</p>
-<pre><code>https://predict2api.eidith.org/api/app/Test?lmdate_from=2015-01-01
+<pre><code>https://predict2api.eidith.org/api/modeling/Test?lmdate_from=2015-01-01
 
-https://predict2api.eidith.org/api/app/Test?lmdate_from=2015-03-01&amp;lmdate_to=2016-11-17
+https://predict2api.eidith.org/api/modeling/Test?lmdate_from=2015-03-01&amp;lmdate_to=2016-11-17
 
-https://predict2api.eidith.org/api/app/Specimen?lmdate_from=2015-01-01
+https://predict2api.eidith.org/api/modeling/Specimen?lmdate_from=2015-01-01
 
-https://predict2api.eidith.org/api/app/Specimen?lmdate_from=2015-01-01&amp;lmdate_to=2016-11-17</code></pre></li>
+https://predict2api.eidith.org/api/modeling/Specimen?lmdate_from=2015-01-01&amp;lmdate_to=2016-11-17</code></pre></li>
 </ul>
 
 

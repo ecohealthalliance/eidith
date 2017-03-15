@@ -24,7 +24,9 @@ This function does a few things:
 \item Stores the data in an SQLite database in your \link[rappdirs:user_data_dir]{user data directory}.
 }
 
-Each time it is run it clears out the previous data and downloads all the data,
+Each time it is run it downloads into a temporary database and checks for the presence of
+all tables before it clears out the previous data, preventing the local database from becoming damaged if
+there are problems with the download. Each function run will download the entire database, and
 as such it takes a few minutes.  In the future, we will allow for updating only with new and changed records.
 
 The function will prompt for username and password unless you have \link[=ed_auth]{cached your credentials}.

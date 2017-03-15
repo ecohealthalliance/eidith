@@ -6,6 +6,6 @@ Imports: httr, jsonlite, dplyr, tidyr, tibble, RSQLite, DBI, getPass,
         htmlwidgets, DT
 Suggests: curl, testthat, withr, rmarkdown, knitr, readr
 License: MIT + file LICENSE
-MD5sum: 692c341b190312686b0125e4ccd85502
+MD5sum: c2c330c831d324ea0bcb231b4879e6aa
 NeedsCompilation: no
 

@@ -17,9 +17,9 @@ knitr::opts_chunk$set(
 
 [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![MIT Licensed - Copyright 2016 EcoHealth Alliance](https://img.shields.io/badge/license-MIT-blue.svg)](https://badges.mit-license.org/)
-[![Travis-CI Build Status](https://travis-ci.org/ecohealthalliance/eidith.svg?branch=master)](https://travis-ci.org/ecohealthalliance/eidith)
-[![Build status](https://ci.appveyor.com/api/projects/status/j1nsmtbqj7sr3pti?svg=true)](https://ci.appveyor.com/project/NoamRoss/eidith)
-[![Coverage Status](https://img.shields.io/codecov/c/github/ecohealthalliance/eidith/master.svg)](https://codecov.io/github/ecohealthalliance/eidith?branch=master)
+[![Travis-CI Build Status](https://img.shields.io/travis/ecohealthalliance/eidith/master.svg?label=Mac%20%26%20Linux)](https://travis-ci.org/ecohealthalliance/eidith)
+[![Build status](https://img.shields.io/appveyor/ci/NoamRoss/eidith/master.svg?label=Windows)](https://ci.appveyor.com/project/NoamRoss/eidith)
+[![Coverage Status](https://codecov.io/gh/ecohealthalliance/eidith/branch/master/graph/badge.svg)](https://codecov.io/gh/ecohealthalliance/eidith)
 
 # The EIDITH R Package
 

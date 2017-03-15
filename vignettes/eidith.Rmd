@@ -41,7 +41,7 @@ install.packages("eidith", repos=c("https://ecohealthalliance.github.io/eidith/"
 ```
 
 If you wish to install the latest *development* (unstable) version, you will
-require the [**devtools**] package, like so:
+require the **devtools** package, like so:
 
 ```{r install-dev, eval = FALSE}
 devtools::install_github('ecohealthalliance/eidith@dev')
