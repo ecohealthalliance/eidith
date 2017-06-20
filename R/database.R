@@ -201,7 +201,7 @@ print.dbstatus <- function(x, ...) {
 #' }
 #' @export
 ed_db_export <- function(filename, ...) {  #Exports the database file to new location.  options(eidith_db) should let you change it.
-  file.copy(from = eidith_db()$path, to = filename, ...)
+  file.copy(from = eidith_db()$con@dbname, to = filename, ...)
 }
 
 #' Check the online EIDITH database for updates since your last download.

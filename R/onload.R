@@ -29,7 +29,7 @@ eidith_db <- function(path = NULL) {
     if(!dir.exists(dirname(current_path))) {
       dir.create(dirname(current_path), recursive=TRUE)
     }
-    if(is.null(.eidith_db) || .eidith_db$path != current_path) {
+    if(is.null(.eidith_db) || .eidith_db$con@dbname != current_path) {
       .eidith_db <<- dplyr::src_sqlite(current_path, create=TRUE) #connect to database and create if it isn't there
     }
     return(.eidith_db)
