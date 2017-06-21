@@ -200,8 +200,9 @@ print.dbstatus <- function(x, ...) {
 #'   ed_db_status()  #get status of the current (exported) database
 #' }
 #' @export
+#' @importFrom RSQLite sqliteCopyDatabase
 ed_db_export <- function(filename, ...) {  #Exports the database file to new location.  options(eidith_db) should let you change it.
-  file.copy(from = eidith_db()$con@dbname, to = filename, ...)
+  sqliteCopyDatabase(eidith_db()$con, filename, ...)
 }
 
 #' Check the online EIDITH database for updates since your last download.
