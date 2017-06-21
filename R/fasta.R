@@ -94,7 +94,7 @@ ed_tests_report <- function(status = c("Result finalized, interpretation pending
   combined_tables %>%
     group_by_("test_id") %>%
     ## These are the fields that end up in the metadata of the report
-    summarise_at(.cols = c(meta_fields[!(meta_fields == "test_id")], "sequence"),
+    summarise_at(.vars = c(meta_fields[!(meta_fields == "test_id")], "sequence"),
                  .funs = funs_(dots='paste(unique(.), collapse=",")')) %>%
     group_by_() %>%
     select_(.dots=c(coalesce(na_if(names(meta_fields), ""), meta_fields), "sequence"))

@@ -32,19 +32,18 @@ datetime_vars <- c("date_created", "date_modified", "database_date")
 #' @param ... arguments passed to [dplyr::filter()] to subset data
 #' @param .dots standard-evaluation versions of subsetting arguments
 #' @return a [tibble][tibble::tibble]-style data frame.
-#' @importFrom dplyr tbl tbl_df filter_ mutate_each_ funs_ funs collect
 #' @importFrom dbplyr partial_eval
+#' @importFrom dplyr tbl tbl_df filter_ mutate_at funs_ funs collect
 #' @importFrom stringi stri_replace_first_regex stri_extract_last_regex stri_detect_fixed
 #' @export
 #' @rdname ed_table
 ed_table_ <- function(table, ..., .dots) {
   dots <- lazyeval::all_dots(.dots, ...)
-  ed_tb <- tbl(eidith_db(), table)
   dots = lazyeval::as.lazy_dots(   #This stuff deals with the dplyr bug found at https://github.com/hadley/dplyr/issues/511 by modifying "%in%" calls
     lapply(dots, function(dot_expr) {
       new_expr <- paste0(
-        deparse(partial_eval(dot_expr[["expr"]], tbl=ed_tb, env=dot_expr[["env"]]),
-                          width.cutoff = 500L),
+        deparse(partial_eval(dot_expr[["expr"]], env=dot_expr[["env"]]),
+                width.cutoff = 500L),
         collapse = "")
       if(stri_detect_fixed(new_expr, "%in%")) {
         matched_expr <- stri_extract_last_regex(new_expr, "(?<=%in%\\s).*$")
@@ -58,6 +57,7 @@ ed_table_ <- function(table, ..., .dots) {
       }
       lazyeval::as.lazy(new_expr, env=dot_expr[["env"]])
     }))
+  ed_tb <- tbl(eidith_db(), table)
   ed_tb %>%
     filter_(.dots=dots) %>%
     collect(n=Inf) %>%
@@ -68,9 +68,9 @@ fix_classes <- function(table) {
   logical_cols <- names(table)[names(table) %in% logical_vars]
   date_cols <-  names(table)[names(table) %in% date_vars]
   datetime_cols <- names(table)[names(table)  %in% datetime_vars]
-  if(length(logical_cols) != 0) table <- mutate_each_(table, funs_("as.logical"), logical_cols)
-  if(length(date_cols) != 0) table <- mutate_each_(table, funs(quicktime), date_cols)
-  if(length(datetime_cols) != 0) table <- mutate_each_(table, funs(quicktime2), datetime_cols)
+  if(length(logical_cols) != 0) table <- mutate_at(table, vars(logical_cols), funs_("as.logical"))
+  if(length(date_cols) != 0) table <- mutate_at(table, vars(date_cols), funs(quicktime))
+  if(length(datetime_cols) != 0) table <- mutate_at(table, vars(datetime_cols), funs(quicktime2))
   return(table)
 }
 
