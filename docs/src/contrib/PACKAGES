@@ -1,10 +1,10 @@
 Package: eidith
-Version: 0.3.0
+Version: 0.3.1
 Depends: R (>= 3.1.2)
-Imports: httr, jsonlite, dplyr, dbplyr, readr, tidyr, tibble, RSQLite, DBI, getPass, rappdirs, purrr, stringi,
-             lazyeval, lubridate, htmlwidgets, DT
+Imports: httr, jsonlite, dplyr (>= 0.7.0), dbplyr, readr, tidyr,
+        tibble, RSQLite, DBI, getPass, rappdirs, purrr, stringi,
+        lazyeval, lubridate, htmlwidgets, DT
 Suggests: curl, testthat, withr, rmarkdown, knitr, ggplot2
 License: MIT + file LICENSE
-MD5sum: f80ebce669a08d4e7eee95c186cf755c
+MD5sum: 387160437e8b7de1f42e652dd3d840ed
 NeedsCompilation: no
-
