@@ -23,14 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -112,11 +115,11 @@
     <p>These functions download data directly from the EIDITH API.  They require
 <a href='ed_auth.html'>authorization</a>.  They can be useful for comparing local data
 against data updated in the database, or processed vs. unprocessed data.
-The <a href='ed_table_.html'>table functions</a> load data from the local database instead,
+The <a href='ed_table.html'>table functions</a> load data from the local database instead,
 and are thus faster and work without an internet connection.</p>
     
 
-    <pre><span class='fu'>ed_get_events</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+    <pre class="usage"><span class='fu'>ed_get_events</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>header_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lmdate_from</span> <span class='kw'>=</span> <span class='st'>"2000-01-01"</span>, <span class='kw'>lmdate_to</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>()
   + <span class='fl'>1</span>, <span class='no'>...</span>)
 
@@ -141,21 +144,34 @@ and are thus faster and work without an internet connection.</p>
   + <span class='fl'>1</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>verbose</dt>
-      <dd>Show a progress bar and other messages?</dd>
-      <dt>postprocess</dt>
-      <dd>Should data be cleaned via <code><a href='ed_process.html'>ed_process()</a></code> or returned raw?</dd>
-      <dt>header_only</dt>
-      <dd>Return only the table header.  Useful for checking if
-API access works</dd>
-      <dt>lmdate_from</dt>
-      <dd>filter records by earliest date, in YYYY-MM-DD format</dd>
-      <dt>lmdate_to</dt>
-      <dd>filter records by latest date, in YYYY-MM-DD format (see details)</dd>
-      <dt>...</dt>
-      <dd>additional arguments passed to <code><a href='http://www.rdocumentation.org/packages/httr/topics/GET'>httr::GET()</a></code></dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>verbose</th>
+      <td><p>Show a progress bar and other messages?</p></td>
+    </tr>
+    <tr>
+      <th>postprocess</th>
+      <td><p>Should data be cleaned via <code><a href='ed_process.html'>ed_process()</a></code> or returned raw?</p></td>
+    </tr>
+    <tr>
+      <th>header_only</th>
+      <td><p>Return only the table header.  Useful for checking if
+API access works</p></td>
+    </tr>
+    <tr>
+      <th>lmdate_from</th>
+      <td><p>filter records by earliest date, in YYYY-MM-DD format</p></td>
+    </tr>
+    <tr>
+      <th>lmdate_to</th>
+      <td><p>filter records by latest date, in YYYY-MM-DD format (see details)</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>additional arguments passed to <code><a href='http://www.rdocumentation.org/packages/httr/topics/GET'>httr::GET()</a></code></p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
