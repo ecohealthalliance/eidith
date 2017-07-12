@@ -9,7 +9,7 @@
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- mathjax --><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
@@ -98,21 +98,21 @@
 <p>This package is currently in development. We anticipate additional functionality for common analytical tasks. It also currently only accesses data from PREDICT-1. If you have questions, bug reports, or feature requests, please post them on our <a href="https://github.com/ecohealthalliance/eidith/issues">issue tracker</a>.</p>
 <div id="installation" class="section level3">
 <h3 class="hasAnchor">
-<html><body><a href="#installation" class="anchor"> </a></body></html>Installation</h3>
+<a href="#installation" class="anchor"></a>Installation</h3>
 <p><strong>eidith</strong> is installed from our own package repository rather than CRAN. To install the latest stable version, run the following command:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"eidith"</span>, <span class="dt">repos=</span><span class="kw">c</span>(<span class="st">"https://ecohealthalliance.github.io/eidith/"</span>, <span class="st">"https://cran.rstudio.com"</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">"https://install-github.me/ecohealthalliance/eidith/"</span>)</code></pre></div>
 <p>If you wish to install the latest <em>development</em> (unstable) version, you will require the <strong>devtools</strong> package, like so:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">'ecohealthalliance/eidith@dev'</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">'ecohealthalliance/eidith@dev'</span>)</code></pre></div>
 </div>
 <div id="authentication" class="section level3">
 <h3 class="hasAnchor">
-<html><body><a href="#authentication" class="anchor"> </a></body></html>Authentication</h3>
+<a href="#authentication" class="anchor"></a>Authentication</h3>
 <p>To download data from EIDITH, you must provide logon credentials. If you run <code><a href="../reference/ed_db_download.html">ed_db_download()</a></code> or the <code><a href="../reference/ed_get.html">ed_get()</a></code> functions from the R console, your EIDITH username and password will be requested. To use these functions in scripts, you must provide these credentials as <em>environment variables</em>.</p>
 <p>You can cache your credentials and login automatically by putting them in a hidden <code>.Renviron</code> file, which defines environment variables for your R session. For more information see the <code><a href="../reference/ed_auth.html">ed_auth()</a></code> help file.</p>
 </div>
 <div id="downloading-data" class="section level3">
 <h3 class="hasAnchor">
-<html><body><a href="#downloading-data" class="anchor"> </a></body></html>Downloading data</h3>
+<a href="#downloading-data" class="anchor"></a>Downloading data</h3>
 <p>The <strong>eidith</strong> package downloads data from EIDITH and stores it locally on your computer in a database so you don’t have to download from the web repeatedly. Once you’ve installed the package, you’ll need to populated this database with the <code><a href="../reference/ed_db_download.html">ed_db_download()</a></code> command, like so:</p>
 <pre><code>library(eidith)
 ed_db_download()</code></pre>
@@ -122,8 +122,8 @@ ed_db_download()</code></pre>
 </div>
 <div id="loading-data" class="section level3">
 <h3 class="hasAnchor">
-<html><body><a href="#loading-data" class="anchor"> </a></body></html>Loading data</h3>
-<p>Once you’ve populated your local database, you can look up EIDITH data with the <em>table functions</em>, each of which loads data from the different table in the database: <code><a href="../reference/ed_table_.html">ed_events()</a></code>, <code><a href="../reference/ed_table_.html">ed_animals()</a></code>, <code><a href="../reference/ed_table_.html">ed_specimens()</a></code>, <code><a href="../reference/ed_table_.html">ed_tests()</a></code>, and <code><a href="../reference/ed_table_.html">ed_viruses()</a></code>, as well as <code><a href="../reference/ed_table_.html">ed_testspecimen()</a></code>, which contains cross-references between the test and specimen tables. See the help for these functions for more details.</p>
+<a href="#loading-data" class="anchor"></a>Loading data</h3>
+<p>Once you’ve populated your local database, you can look up EIDITH data with the <em>table functions</em>, each of which loads data from the different table in the database: <code><a href="../reference/ed_table.html">ed_events()</a></code>, <code><a href="../reference/ed_table.html">ed_animals()</a></code>, <code><a href="../reference/ed_table.html">ed_specimens()</a></code>, <code><a href="../reference/ed_table.html">ed_tests()</a></code>, and <code><a href="../reference/ed_table.html">ed_viruses()</a></code>, as well as <code><a href="../reference/ed_table.html">ed_testspecimen()</a></code>, which contains cross-references between the test and specimen tables. See the help for these functions for more details.</p>
 <p><code><a href="../reference/ed_metadata.html">ed_metadata()</a></code> contains a list of all variables across these tables and some information on them. If you lookup this in R help in RStudio with <code><a href="../reference/ed_metadata.html">?ed_metadata</a></code> you’ll find this metadata in searchable form.</p>
 </div>
 </div>

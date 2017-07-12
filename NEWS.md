@@ -7,6 +7,10 @@ package, like so:
 ```
 devtools::install_github('ecohealthalliance/eidith@v0.1.0')`
 ```
+# eidith 0.3.1 (patch)
+
+- Internal changes to be compatible with dplyr 0.7.0 ([#55](https://github.com/ecohealthalliance/eidith/pull/55))
+
 # eidith 0.3
 
 ## New functionality

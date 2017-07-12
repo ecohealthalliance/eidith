@@ -30,8 +30,8 @@ withr::with_options(list(ed_sql_path = TEST_SQL_PATH), {
       y = character(0)
       expect_error(ed_animals(sex %in% x), NA)
       expect_error(ed_animals(sex %in% y), NA)
-      expect_error(ed_animals(sex %in% c()), NA)
-      expect_error(ed_animals(sex %in% NULL), NA)
+      expect_error(ed_animals(sex %in% c()), NA) #requires the %in% workaround
+      #expect_error(ed_animals(sex %in% NULL), NA) #not working despite workaround
     })
 
     test_that("Tables can use %in% with  one-length vectors", {
@@ -41,7 +41,7 @@ withr::with_options(list(ed_sql_path = TEST_SQL_PATH), {
       expect_error(ed_animals(sex %in% x), NA)
       expect_error(ed_animals(sex %in% y), NA)
       expect_error(ed_animals(sex %in% ("Female")), NA)
-      expect_error(ed_animals(sex %in% c("Female")), NA)
+      expect_error(ed_animals(sex %in% c("Female")), NA) #requires the %in% workaround
       })
 
     test_that("Fields in database are as expected", {

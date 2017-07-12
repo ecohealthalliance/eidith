@@ -1,6 +1,6 @@
 Package: eidith
 Title: Data access and analytical tools for the PREDICT EIDITH database
-Version: 0.3.0
+Version: 0.3.1
 Authors@R: c(
     person("Noam", "Ross", , "ross@ecohealthalliance.org", role = c("aut", "cre")),
     person("Nistara", "Randhawa", , "nrandhawa@ucdavis.edu", role = c("aut")),
@@ -21,7 +21,8 @@ Depends:
 Imports:
     httr,
     jsonlite,
-    dplyr,
+    dplyr (>= 0.7.0),
+    dbplyr,
     readr,
     tidyr,
     tibble,

@@ -86,7 +86,7 @@ mock_viruses_fixed = mock_viruses_fixed %>%
 test_interim <- mock_tests %>%
   select(testID_int1, SpecimenID_Int, Pooled, SpecimenID, SpecimenIDUnique) %>%
   separate(SpecimenID, into=c("SpecimenID_1", "SpecimenID_2"), sep = "[\\,]+", fill="right") %>%
-  mutate_each(funs(stri_trim_both), SpecimenID_1, SpecimenID_2) %>%
+  mutate_at(vars(SpecimenID_1, SpecimenID_2),funs(stri_trim_both)) %>%
   gather("SpecimentID_no", "SpecimenID", SpecimenID_1, SpecimenID_2) %>%
   mutate(join_id = coalesce(SpecimenIDUnique, SpecimenID)) %>%
   select(testID_int1, join_id)

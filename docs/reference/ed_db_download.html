@@ -23,14 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -110,36 +113,35 @@
 
     
     <p>This function fetches all available tables from the EIDITH database and
-caches the data locally for further use with the <a href='ed_table_.html'>table functions</a>.
+caches the data locally for further use with the <a href='ed_table.html'>table functions</a>.
 The database persists between R sessions, so you only need to run this when
 you want to update data.  You should also run it when updating to new
 versions of the <strong>eidith</strong> package.</p>
     
 
-    <pre><span class='fu'>ed_db_download</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>())</pre>
+    <pre class="usage"><span class='fu'>ed_db_download</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>verbose</dt>
-      <dd>Show messages while in progress?</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>verbose</th>
+      <td><p>Show messages while in progress?</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function does a few things:
-<ul>
-<li> Fetches all tables from EIDITH (events, animals, specimens, tests, viruses, and test-specimen cross-references)
-</li>
-<li> Cleans and pre-processes the data with <code><a href='ed_process.html'>ed_process()</a></code>.
-</li>
-<li> Stores the data in an SQLite database in your <a href='http://www.rdocumentation.org/packages/rappdirs/topics/user_data_dir'>user data directory</a>.
-</li>
-</ul></p>
+    <p>This function does a few things:</p><ul>
+<li><p>Fetches all tables from EIDITH (events, animals, specimens, tests, viruses, and test-specimen cross-references)</p></li>
+<li><p>Cleans and pre-processes the data with <code><a href='ed_process.html'>ed_process()</a></code>.</p></li>
+<li><p>Stores the data in an SQLite database in your <a href='http://www.rdocumentation.org/packages/rappdirs/topics/user_data_dir'>user data directory</a>.</p></li>
+</ul>
     <p>Each time it is run it downloads into a temporary database and checks for the presence of
 all tables before it clears out the previous data, preventing the local database from becoming damaged if
 there are problems with the download. Each function run will download the entire database, and
 as such it takes a few minutes.  In the future, we will allow for updating only with new and changed records.</p>
-    <p>The function will prompt for username and password unless you have <a href='ed_auth.html'>cached your credentials</a>.</p>
+<p>The function will prompt for username and password unless you have <a href='ed_auth.html'>cached your credentials</a>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

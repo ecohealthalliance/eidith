@@ -9,7 +9,7 @@
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- mathjax --><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
@@ -95,14 +95,14 @@
 <div class="contents">
 <div id="initializing-eidith-r-package" class="section level3">
 <h3 class="hasAnchor">
-<html><body><a href="#initializing-eidith-r-package" class="anchor"> </a></body></html>Initializing EIDITH R package:</h3>
+<a href="#initializing-eidith-r-package" class="anchor"></a>Initializing EIDITH R package:</h3>
 <p>In order to do anything with the EIDITH R package, we need to first make sure to load the <code>eidith</code> library. For straightforward data manipulation we will also load the <code>dplyr</code> package:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(eidith)
 <span class="kw">library</span>(dplyr)</code></pre></div>
 </div>
 <div id="using-eidith-r-package-to-generate-fasta-files" class="section level3">
 <h3 class="hasAnchor">
-<html><body><a href="#using-eidith-r-package-to-generate-fasta-files" class="anchor"> </a></body></html>Using EIDITH R package to generate FASTA files:</h3>
+<a href="#using-eidith-r-package-to-generate-fasta-files" class="anchor"></a>Using EIDITH R package to generate FASTA files:</h3>
 <p>The EIDITH R package has a built-in function for retrieving a summary of sequences ready for interpretation: <code><a href="../reference/ed_fasta.html">ed_tests_report()</a></code>. Running the default <code><a href="../reference/ed_fasta.html">ed_tests_report()</a></code> function will generate a table of all tests whose status is <code>"Result finalized, interpretation pending"</code>. We can retrieve tests with other statuses by using <code><a href="../reference/ed_fasta.html">ed_tests_report()</a></code> with the <code>status =</code> option. For example, if we are interested in retrieving a table of tests whose status was <code>"Under Sequence Review"</code> or <code>"Active testing ongoing"</code>, we can run:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ed_fasta.html">ed_tests_report</a></span>(<span class="dt">status =</span> <span class="kw">c</span>(<span class="st">"Under Sequence Review"</span>, <span class="st">"Active testing ongoing"</span>))</code></pre></div>
 <p>If some of these tests do not have sequence data entered in EIDITH, a warning will appear in the R console informing the user.</p>
@@ -114,19 +114,19 @@
 </div>
 <div id="manually-subset-by-viral-family-or-method" class="section level3">
 <h3 class="hasAnchor">
-<html><body><a href="#manually-subset-by-viral-family-or-method" class="anchor"> </a></body></html>Manually Subset by Viral Family or Method:</h3>
-<p>If we are interested in subsetting a report, we can easily do that by using <code>filter()</code>. For instance, if we wanted a report of only Enteroviruses, we could subset by running:</p>
+<a href="#manually-subset-by-viral-family-or-method" class="anchor"></a>Manually Subset by Viral Family or Method:</h3>
+<p>If we are interested in subsetting a report, we can easily do that by using <code><a href="http://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>. For instance, if we wanted a report of only Enteroviruses, we could subset by running:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">report &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ed_fasta.html">ed_tests_report</a></span>()
-entero_report &lt;-<span class="st"> </span><span class="kw">filter</span>(report, test_rq <span class="op">==</span><span class="st"> "Enteroviruses"</span>)</code></pre></div>
+entero_report &lt;-<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(report, test_rq <span class="op">==</span><span class="st"> "Enteroviruses"</span>)</code></pre></div>
 <p>The <code>entero_report</code> dataframe now only contains records for Enterovirus tests, and can be saved in FASTA format by:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ed_fasta.html">ed_fasta</a></span>(entero_report, <span class="st">"entero.fasta"</span>)</code></pre></div>
 <p>We could subset by the value of any field in our report table. For instance, if we are interested in only sequences derived by the “Johne, VP1 gene” protocol, we can run:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">report &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ed_fasta.html">ed_tests_report</a></span>()
-johne_report &lt;-<span class="st"> </span><span class="kw">filter</span>(report, meth <span class="op">==</span><span class="st"> "Johne, VP1 gene"</span>)</code></pre></div>
+johne_report &lt;-<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(report, meth <span class="op">==</span><span class="st"> "Johne, VP1 gene"</span>)</code></pre></div>
 </div>
 <div id="automatically-grouped-fasta-files-by-viral-family-method-or-both" class="section level3">
 <h3 class="hasAnchor">
-<html><body><a href="#automatically-grouped-fasta-files-by-viral-family-method-or-both" class="anchor"> </a></body></html>Automatically Grouped FASTA files by Viral Family, Method, or Both:</h3>
+<a href="#automatically-grouped-fasta-files-by-viral-family-method-or-both" class="anchor"></a>Automatically Grouped FASTA files by Viral Family, Method, or Both:</h3>
 <p>The function <code><a href="../reference/ed_fasta.html">ed_fasta_group()</a></code> will automatically create FASTA files that have been grouped by either Viral Family or Method. The name of these files will correspond to the grouping variable. If we want to output grouped FASTA files based on Viral family, we can run:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ed_fasta.html">ed_fasta_group</a></span>(report, <span class="dt">grouping =</span> <span class="st">"virus"</span>)</code></pre></div>
 <p>And R will create several FASTA files with names reflecting the type of Viral Family sequences they contain (e.g. <em>“Orthopoxviruses.fasta”</em>, <em>“Enteroviruses.fasta”</em>, <em>“Polyomaviruses.fasta”</em>).</p>
@@ -139,7 +139,7 @@ johne_report &lt;-<span class="st"> </span><span class="kw">filter</span>(report
 </div>
 <div id="creating-excel-files-to-return-to-eidith" class="section level3">
 <h3 class="hasAnchor">
-<html><body><a href="#creating-excel-files-to-return-to-eidith" class="anchor"> </a></body></html>Creating Excel files to return to EIDITH</h3>
+<a href="#creating-excel-files-to-return-to-eidith" class="anchor"></a>Creating Excel files to return to EIDITH</h3>
 <p>The function <code><a href="../reference/ed_fasta.html">ed_report_excel()</a></code> will take a report and output a .csv file that can easily be opened in Excel for entering data that can be returned to EIDITH. This function will work for the default report generated by <code><a href="../reference/ed_fasta.html">ed_tests_report()</a></code> or any subsetted part of that report. For example, the following code will create an Excel file for the default report and save it as <em>“report.csv”</em>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">report &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ed_fasta.html">ed_tests_report</a></span>()
 <span class="kw"><a href="../reference/ed_fasta.html">ed_report_excel</a></span>(report, <span class="st">"report.csv"</span>)</code></pre></div>
