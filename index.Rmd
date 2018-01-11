@@ -31,7 +31,6 @@ The **eidith** package contains no data.  To access data, you must be a
 [registered](https://www.eidith.org/register.aspx) EIDITH user with data access
 privileges. If you have a question about your access level, contact technology@eidith.org.
 
-See the [package tutorial](https://ecohealthalliance.github.io/eidith/articles/eidith.html) and [help files](https://ecohealthalliance.github.io/eidith/reference/index.html) for
-installation and usage information.
+See the package tutorials under "Documentation" above for guides on how to [install the package, download data](https://ecohealthalliance.github.io/eidith/articles/eidith.html), [pull raw, processsed data](https://ecohealthalliance.github.io/eidith/articles/preprocessing.html) and [work across multiple data sets](https://ecohealthalliance.github.io/eidith/articles/data_structure.html). The [help files](https://ecohealthalliance.github.io/eidith/reference/index.html) document individual package functions.
 
 ![](inst/images/README-predictfooter.png)
