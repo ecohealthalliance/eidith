@@ -64,12 +64,3 @@ reference:
   - title: "Mock data"
     contents:
       - ed_mock
-
-authors:
-  Noam Ross:
-    href: mailto:ross@ecohealthalliance.org
-    html: <img src="inst/images/eha-favicon.png" height="24" /> Noam Ross, EcoHealth Alliance
-  Cale Basaraba:
-    html: <img src="inst/images/eha-favicon.png" height="24" /> Cale Basaraba, EcoHealth Alliance
-  Nistara Randhawa:
-    html: <img src="inst/images/official_svm_logo.gif" height="24" /> Nistara Randhawa, UC Davis
