@@ -1,4 +1,12 @@
 eidith_base_url <- "https://predict2api.eidith.org/api/modeling/"
+
+eidith2_base_url <- "https://predict2api.eidith.org/api/Extract/"
+
+endpoints2 <- c("Event", "Animal", "Specimen", "AnimalProduction", "CropProduction", "Dwellings",
+                "ExtractiveIndustry", "MarketValueChain", "NaturalAreas", "WildlifeRestaurant", "ZooSanctuary",
+                "Human", "HumanCropProduction", "HumanAnimalProduction", "HumanExtractiveIndustry", "HumanHospitalWorker",
+                "HumanHunter", "HumanMarket", "HumanRestaurant", "HumanSickPerson", "HumanTemporarySettlements", "HumanZoo")
+
 endpoints <- c("Event", "Animal", "Specimen", "Test", "Virus",
                "TestIDSpecimenID")
 
@@ -37,7 +45,7 @@ ed_get <- function(endpoint, verbose=interactive(), postprocess=TRUE,
                                  lmdate_to = lmdate_to))
   if(verbose) {
     pbar <- progress()
-    message(paste("Downloading", endpoint, "table..."))
+    message(paste("Downloading PREDICT-1", endpoint, "table..."))
   } else {
     pbar <- NULL
   }
@@ -71,6 +79,66 @@ Contact technology@eidith.org.")
   return(data)
 }
 
+
+#' @param verbose Show a progress bar and other messages?
+#' @param header_only Return only the table header.  Useful for checking if
+#' API access works
+#' @param lmdate_from filter records by earliest date, in YYYY-MM-DD format
+#' @param lmdate_to filter records by latest date, in YYYY-MM-DD format (see details)
+#' @param ... additional arguments passed to [httr::GET()]
+#' @return a [tibble][tibble::tibble()]-style data frame
+#' @rdname ed2_get
+#' @name ed2_get
+
+
+#' @noRd
+#' @importFrom httr GET status_code progress authenticate content modify_url
+#' @importFrom jsonlite fromJSON
+#' @importFrom tibble as_tibble
+#' @export
+ed2_get <- function(endpoint2, postprocess=TRUE, verbose=interactive(),
+                   header_only=FALSE, lmdate_from="2000-01-01",
+                   lmdate_to=Sys.Date() + 1, auth=NULL, ...) {
+  url <- modify_url(url = paste0(eidith2_base_url, "Extract", endpoint2, "Data"),
+                    query = list(header_only = ifelse(header_only, "y", "n"),
+                                 lmdate_from = lmdate_from,
+                                 lmdate_to = lmdate_to))
+  if(verbose) {
+    pbar <- progress()
+    message(paste("Downloading PREDICT-2", endpoint2, "table..."))
+  } else {
+    pbar <- NULL
+  }
+
+  if(is.null(auth)) auth <- ed_auth()
+
+  request <- GET(url=url, authenticate(auth[1], auth[2], type="basic"),
+                 pbar, ...)
+
+  if(status_code(request) == 401) {
+    stop("Unauthorized (HTTP 401). Your username or password do not match an account.
+         See ?ed_auth.")
+  }
+
+  if(status_code(request) == 403) {
+    stop("Forbidden (HTTP 403). Your account does not have access permissions.
+         Contact technology@eidith.org.")
+  }
+
+  if(verbose) message("Importing...")
+  data <- fromJSON(content(request, as = "text", encoding="UTF-8"))
+
+  if(header_only) {
+    return(data)
+  } else {
+    data <- as_tibble(data)
+  }
+
+  if(postprocess) data <- ed2_process(data, endpoint2)
+
+  return(data)
+  }
+
 #' @rdname ed_get
 #' @export
 ed_get_events <- function(verbose=interactive(), postprocess=TRUE,
@@ -78,6 +146,15 @@ ed_get_events <- function(verbose=interactive(), postprocess=TRUE,
                           lmdate_to=Sys.Date() + 1, ...) {
   ed_get("Event", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }
+
+
+
+
+
+
+
+
+
 
 #' @rdname ed_get
 #' @export
