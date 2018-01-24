@@ -33,6 +33,13 @@ ed_metadata <- function() {
   ed_metadata_
 }
 
+#' @rdname ed2_metadata
+#' @export
+#' @importFrom DT datatable
+#' @importFrom htmlwidgets saveWidget
+ed2_metadata <- function() {
+  ed2_metadata_
+}
 
 #' @export
 #' @rdname ed_metadata
