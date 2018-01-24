@@ -1,0 +1,50 @@
+table,endpoint2,order,original_name,auto_processed_name,replacement_name,description,processing_notes
+events_2,Event,NA,Country,country,NA,Country where the site is located,NA
+events_2,Event,NA,SiteName,site_name,NA,Name of the site where the samples were collected,NA
+events_2,Event,NA,ConcurrentSamplingSite,concurrent_sampling_site,NA,NA,NA
+events_2,Event,NA,District,district,NA,District where the site is located - centroid used for sensitive sites,NA
+events_2,Event,NA,StateProv,state_prov,NA,State or province where the site is located,NA
+events_2,Event,NA,SiteLatitude,site_latitude,NA,GPS coordinates calculated to determine the centroid of the site. eg: the center of a park.,NA
+events_2,Event,NA,SiteLongitude,site_longitude,NA,GPS coordinates calculated to determine the centroid of the site. eg: the center of a park.,NA
+events_2,Event,NA,EventLatitude,event_latitude,NA,Defaults to site lat/long. Overwrite field to specific area where sampling is done within site.,NA
+events_2,Event,NA,EventLongitude,event_longitude,NA,Defaults to site lat/long. Overwrite field to specific area where sampling is done within site.,NA
+events_2,Event,NA,EventDate,event_date,NA,"The date that observations, interviews, or sampling began",NA
+events_2,Event,NA,DurationDays,duration_days,NA,The time period in days that the event occurred,NA
+events_2,Event,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA
+events_2,Event,NA,Recorder,recorder,NA,The name of the primary person that recorded the site/event information,NA
+events_2,Event,NA,Organization,organization,NA,The recorder's organization or affiliation,NA
+events_2,Event,NA,HumanDensityImpact,human_density_impact,NA,A measure to describe the human density and the impact at the event site,4-cat var
+events_2,Event,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,NA,What is the target animal-human disease transmission interface for this event? Select all that apply -- each interface chosen will create a corresponding module,semi-colon separated list
+events_2,Event,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,NA,??,These columns summed don't result in DiseaseTransmissionInterfaces??
+events_2,Event,NA,InterfacesHumansSampled,interfaces_humans_sampled,NA,??,These columns summed don't result in DiseaseTransmissionInterfaces??
+events_2,Event,NA,InterfacesNoneSampled,interfaces_none_sampled,NA,??,These columns summed don't result in DiseaseTransmissionInterfaces??
+events_2,Event,NA,VeterinarianCare,veterinarian_care,NA,Does a veterinarian care for animals at the event site?,yes/no
+events_2,Event,NA,SamplingAreaSize,sampling_area_size,NA,"To the best of your knowledge, what is the estimated size of the area for this event in m2?",4-cat var
+events_2,Event,NA,HumansPresent,humans_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
+events_2,Event,NA,RodentsPresent,rodents_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
+events_2,Event,NA,BatsPresent,bats_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
+events_2,Event,NA,NHPPresent,nhp_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
+events_2,Event,NA,BirdsPresent,birds_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
+events_2,Event,NA,CarnivoresPresent,carnivores_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
+events_2,Event,NA,UngulatesPresent,ungulates_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
+events_2,Event,NA,PangolinsPresent,pangolins_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
+events_2,Event,NA,PoultryPresent,poultry_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
+events_2,Event,NA,GoatsPresent,goats_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
+events_2,Event,NA,CamelsPresent,camels_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
+events_2,Event,NA,WwinePresent,swine_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
+events_2,Event,NA,CattlePresent,cattle_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
+events_2,Event,NA,DogsPresent,dogs_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
+events_2,Event,NA,CatsPresent,cats_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
+events_2,Event,NA,drinkingWaterShared,drinking_water_shared,NA,Is drinking water shared between humans and animals?,yes/no/unknown
+events_2,Event,NA,bathingWaterShared,bathing_water_shared,NA,Is bathing water shared between humans and animals?,yes/no/unknown
+events_2,Event,NA,ToiletsAvailable,toilets_available,NA,"Are the toilets, latrines, or other public facilities available for people at this site...","5-cat var, semicolon separated"
+events_2,Event,NA,DrinkingWaterSource,drinking_water_source,NA,Where do people at this site get their drinking water?,"4-cat var, semicolon separated"
+events_2,Event,NA,AverageTripToWater,average_trip_to_water,NA,How long is the average trip to the drinking water sources?,3-cat var
+events_2,Event,NA,InsectVectors,insect_vectors,NA,What types of insect vectors are observed at the site?,"6-cat var, semicolon separated"
+events_2,Event,NA,VectorControlMeasures,vector_control_measures,NA,Are vector control measures used at the site?,yes/no
+events_2,Event,NA,CommunityEngagement?,community_engagement,NA,??,NA
+events_2,Event,NA,CommunityEngagementDate,community_engagement_date,NA,??,NA
+events_2,Event,NA,CommunityEngagementNotes,community_engagement_notes,NA,??,NA
+events_2,Event,NA,NbrBeds,nbr_beds,NA,??,NA
+events_2,Event,NA,IsDeepForest,is_deep_forest,NA,Uses deep forest protocols,yes/no
+events_2,Event,NA,Notes,notes,NA,NA,NA

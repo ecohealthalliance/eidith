@@ -160,11 +160,13 @@ write_csv(eidith_itis_lookup, P("data-raw/eidith_itis_lookup.csv"))
 
 
 ed_metadata_ <- gs_read_csv(gs_url("https://docs.google.com/spreadsheets/d/1eHCpzYCL5-GRMZLhqJc4fj2iVUhjVhydNEp20oQW5H0"))
+ed2_metadata_ <- gs_read_csv(gs_url("https://docs.google.com/spreadsheets/d/1bJwPYMUaUQ7DbL9mQS55gzL-_03cIqXjq2oDyCnjVJw/edit#gid=983692865"))
 ed_metadata_ <- arrange(ed_metadata_, table, order)
 ed_lab_shortnames <- readr::read_csv(P("data-raw/ed_lab_shortnames.csv"), col_types="cc")
 ed_taxagroups_ <- readr::read_csv(P("data-raw/ed_taxagroups.csv"), col_types="cc")
 readr::write_csv(ed_metadata_, P("data-raw/ed_metadata.csv"))
+readr::write_csv(ed2_metadata_, P("data-raw/ed2_metadata.csv"))
 source(P("data-raw", "fix-mock-data.R"))
-devtools::use_data(eidith_itis_lookup, ed_metadata_, ed_lab_shortnames, ed_taxagroups_, raw_mock_data, processed_mock_data, internal = TRUE, overwrite = TRUE)
+devtools::use_data(eidith_itis_lookup, ed_metadata_,ed2_metadata_, ed_lab_shortnames, ed_taxagroups_, raw_mock_data, processed_mock_data, internal = TRUE, overwrite = TRUE)
 
 #load("R/sysdata.rda")
