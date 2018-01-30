@@ -5,7 +5,7 @@ eidith2_base_url <- "https://predict2api.eidith.org/api/Extract/"
 endpoints2 <- c("Event", "Animal", "Specimen", "AnimalProduction", "CropProduction", "Dwellings",
                 "ExtractiveIndustry", "MarketValueChain", "NaturalAreas", "WildlifeRestaurant", "ZooSanctuary",
                 "Human", "HumanCropProduction", "HumanAnimalProduction", "HumanExtractiveIndustry", "HumanHospitalWorker",
-                "HumanHunter", "HumanMarket", "HumanRestaurant", "HumanSickPerson", "HumanTemporarySettlements", "HumanZoo")
+                "HumanHunter", "HumanMarket", "HumanRestaurant", "HumanSickPerson", "HumanTemporarySettlements", "HumanZoo", "Test", "TestDataInterpreted", "TestDataSerology")
 
 endpoints <- c("Event", "Animal", "Specimen", "Test", "Virus",
                "TestIDSpecimenID")
@@ -99,10 +99,19 @@ Contact technology@eidith.org.")
 ed2_get <- function(endpoint2, postprocess=TRUE, verbose=interactive(),
                    header_only=FALSE, lmdate_from="2000-01-01",
                    lmdate_to=Sys.Date() + 1, auth=NULL, ...) {
+
+  if(endpoint2 == "TestDataInterpreted" | endpoint2 == "TestDataSerology"){
+    url <- modify_url(url = paste0(eidith2_base_url, "Extract", endpoint2),
+                      query = list(header_only = ifelse(header_only, "y", "n"),
+                                   lmdate_from = lmdate_from,
+                                   lmdate_to = lmdate_to))
+  }else{
   url <- modify_url(url = paste0(eidith2_base_url, "Extract", endpoint2, "Data"),
                     query = list(header_only = ifelse(header_only, "y", "n"),
                                  lmdate_from = lmdate_from,
                                  lmdate_to = lmdate_to))
+  }
+
   if(verbose) {
     pbar <- progress()
     message(paste("Downloading PREDICT-2", endpoint2, "table..."))
