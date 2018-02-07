@@ -4,7 +4,8 @@
 \alias{ed_db_download}
 \title{Download EIDITH data to local storage}
 \usage{
-ed_db_download(verbose = interactive())
+ed_db_download(p1_tables = endpoints, p2_tables = endpoints2,
+  verbose = interactive())
 }
 \arguments{
 \item{verbose}{Show messages while in progress?}

@@ -42,7 +42,8 @@ eidith_db <- function(path = NULL) {
 
 .onAttach <- function(libname, pkgname) {
   if(interactive())
-    packageStartupMessage(ed_db_status_msg(ed_db_status()))
+    packageStartupMessage(ed_create_banner(), ed_db_status_msg(ed_db_make_details()))
+    packageStartupMessage(ed_db_check_status())
   unlockBinding(".eidith_db", env=asNamespace("eidith"))       #allows .eidith_db to be edited
 }
 
