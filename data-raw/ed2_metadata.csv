@@ -1,7 +1,7 @@
 table,endpoint2,order,original_name,auto_processed_name,replacement_name,description,processing_notes
 events_2,Event,NA,Country,country,NA,Country where the site is located,NA
 events_2,Event,NA,SiteName,site_name,NA,Name of the site where the samples were collected,NA
-events_2,Event,NA,ConcurrentSamplingSite,concurrent_sampling_site,NA,NA,NA
+events_2,Event,NA,ConcurrentSamplingSite,concurrent_sampling_site,NA,??,NA
 events_2,Event,NA,District,district,NA,District where the site is located - centroid used for sensitive sites,NA
 events_2,Event,NA,StateProv,state_prov,NA,State or province where the site is located,NA
 events_2,Event,NA,SiteLatitude,site_latitude,NA,GPS coordinates calculated to determine the centroid of the site. eg: the center of a park.,NA
@@ -10,11 +10,11 @@ events_2,Event,NA,EventLatitude,event_latitude,NA,Defaults to site lat/long. Ove
 events_2,Event,NA,EventLongitude,event_longitude,NA,Defaults to site lat/long. Overwrite field to specific area where sampling is done within site.,NA
 events_2,Event,NA,EventDate,event_date,NA,"The date that observations, interviews, or sampling began",NA
 events_2,Event,NA,DurationDays,duration_days,NA,The time period in days that the event occurred,NA
-events_2,Event,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA
-events_2,Event,NA,Recorder,recorder,NA,The name of the primary person that recorded the site/event information,NA
+events_2,Event,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,ID for joining Events + Animals
+events_2,Event,NA,Recorder,recorder,event_recorder,The name of the primary person that recorded the site/event information,NA
 events_2,Event,NA,Organization,organization,NA,The recorder's organization or affiliation,NA
 events_2,Event,NA,HumanDensityImpact,human_density_impact,NA,A measure to describe the human density and the impact at the event site,4-cat var
-events_2,Event,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,NA,What is the target animal-human disease transmission interface for this event? Select all that apply -- each interface chosen will create a corresponding module,semi-colon separated list
+events_2,Event,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,NA,What is the target animal-human disease transmission interface for this event? Select all that apply -- each interface chosen will create a corresponding module,semicolon separated list
 events_2,Event,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,NA,??,These columns summed don't result in DiseaseTransmissionInterfaces??
 events_2,Event,NA,InterfacesHumansSampled,interfaces_humans_sampled,NA,??,These columns summed don't result in DiseaseTransmissionInterfaces??
 events_2,Event,NA,InterfacesNoneSampled,interfaces_none_sampled,NA,??,These columns summed don't result in DiseaseTransmissionInterfaces??
@@ -31,7 +31,7 @@ events_2,Event,NA,PangolinsPresent,pangolins_present,NA,"To the best of your kno
 events_2,Event,NA,PoultryPresent,poultry_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
 events_2,Event,NA,GoatsPresent,goats_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
 events_2,Event,NA,CamelsPresent,camels_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
-events_2,Event,NA,WwinePresent,swine_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
+events_2,Event,NA,WwinePresent,wwine_present,swine_present,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
 events_2,Event,NA,CattlePresent,cattle_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
 events_2,Event,NA,DogsPresent,dogs_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
 events_2,Event,NA,CatsPresent,cats_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var
@@ -42,9 +42,220 @@ events_2,Event,NA,DrinkingWaterSource,drinking_water_source,NA,Where do people a
 events_2,Event,NA,AverageTripToWater,average_trip_to_water,NA,How long is the average trip to the drinking water sources?,3-cat var
 events_2,Event,NA,InsectVectors,insect_vectors,NA,What types of insect vectors are observed at the site?,"6-cat var, semicolon separated"
 events_2,Event,NA,VectorControlMeasures,vector_control_measures,NA,Are vector control measures used at the site?,yes/no
-events_2,Event,NA,CommunityEngagement?,community_engagement,NA,??,NA
-events_2,Event,NA,CommunityEngagementDate,community_engagement_date,NA,??,NA
-events_2,Event,NA,CommunityEngagementNotes,community_engagement_notes,NA,??,NA
-events_2,Event,NA,NbrBeds,nbr_beds,NA,??,NA
+events_2,Event,NA,CommunityEngagement?,community_engagement,NA,?? - Not included in Site / Event Field Metadata document,NA
+events_2,Event,NA,CommunityEngagementDate,community_engagement_date,NA,?? - Not included in Site / Event Field Metadata document,NA
+events_2,Event,NA,CommunityEngagementNotes,community_engagement_notes,NA,?? - Not included in Site / Event Field Metadata document,NA
+events_2,Event,NA,NbrBeds,nbr_beds,NA,?? - Not included in Site / Event Field Metadata document,NA
 events_2,Event,NA,IsDeepForest,is_deep_forest,NA,Uses deep forest protocols,yes/no
-events_2,Event,NA,Notes,notes,NA,NA,NA
+events_2,Event,NA,Notes,notes,event_notes,Notes,NA
+animals_2,Animal,NA,Country,country,DROP,Event-level information,NA
+animals_2,Animal,NA,SiteName,site_name,DROP,Event-level information,NA
+animals_2,Animal,NA,District,district,DROP,Event-level information,NA
+animals_2,Animal,NA,StateProv,state_prov,DROP,Event-level information,NA
+animals_2,Animal,NA,SiteLatitudeUnrounded,site_latitude_unrounded,DROP,Event-level information,NA
+animals_2,Animal,NA,SiteLongitudeUnrounded,site_longitude_unrounded,DROP,Event-level information,NA
+animals_2,Animal,NA,EventLatitudeUnrounded,event_latitude_unrounded,DROP,Event-level information,NA
+animals_2,Animal,NA,EventLongitudeUnrounded,event_longitude_unrounded,DROP,Event-level information,NA
+animals_2,Animal,NA,EventDate,event_date,DROP,Event-level information,NA
+animals_2,Animal,NA,DurationDays,duration_days,DROP,Event-level information,NA
+animals_2,Animal,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,ID for joining Events + Animals
+animals_2,Animal,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA
+animals_2,Animal,NA,AnimalID,animal_id,NA,"The animal ID is an automatically generated combination: AnimalID = OrganizationCountryTaxaAnimal#. For example, the first bat sampled by UCDavis in Tanzania would be UTZB001",NA
+animals_2,Animal,NA,TaxaGroup,taxa_group,NA,"Animal's taxa group: rodents/shrews, bats, non-human primates, birds, carnivores, ungulates, poultry, goats/sheep, camels, swine, cattle/buffalo, dogs, cats, other.",14-cat variable
+animals_2,Animal,NA,AnimalClass,animal_class,NA,"Animal's classification: captive wild animal, free-randing wild animal, owned domesticated species, unowned domesticated species.",NA
+animals_2,Animal,NA,TagAndOtherID,tag_and_other_id,NA,??,NA
+animals_2,Animal,NA,SpeciesScientificName,species_scientific_name,NA,"If complete genus species is unknown, this should be the next known level of taxonomic classification (i.e. genus, subfamily, family).",NA
+animals_2,Animal,NA,SpeciesEnglishName,species_english_name,NA,Common name of animal,NA
+animals_2,Animal,NA,SpeciesLocalName,species_local_name,NA,Local name of animal,NA
+animals_2,Animal,NA,IDCertainty,id_certainty,NA,"What is the level of certainty of species identification: actual, estimate, unknown?",3-cat variable
+animals_2,Animal,NA,Sex,sex,NA,"Animal's sex: male, female, unknown",NA
+animals_2,Animal,NA,SampleDate,sample_date,NA,Date sample was taken,NA
+animals_2,Animal,NA,SampleLocationLatitude,sample_location_latitude,NA,Decimal degrees (if different than event),NA
+animals_2,Animal,NA,SampleLocationLongitude,sample_location_longitude,NA,Decimal degrees (if different than event),NA
+animals_2,Animal,NA,RecorderName,recorder_name,sample_recorder,Name of person recording sample information,NA
+animals_2,Animal,NA,OrganizationSampled,organization_sampled,NA,Organization doing the sampling -- is this ever different than the Organization doing the Event?,NA
+animals_2,Animal,NA,AgeClass,age_class,NA,"Fetus (in utero); Neonate (newborn); Juvenile (dependent); Subadult (immature, independent); Adult (reproductive age); Unknown.",6-cat var
+animals_2,Animal,NA,ConditionAtSampling,condition_at_sampling,NA,"Estimate condition at sampling: alive, alive (non-invasive sample collection), dead (fresh carcass), dead (> 48 hours).",NA
+animals_2,Animal,NA,nonInvasiveComment,non_invasive_comment,NA,??,NA
+animals_2,Animal,NA,ReleasedAlive,released_alive,NA,??,NA
+animals_2,Animal,NA,NecropsyExam,necropsy_exam,exam_type,"Was a necropscy exam conducted: necropsy, physical exam, no?",NA
+animals_2,Animal,NA,NecropsyExamResult,necropsy_exam_result,exam_result,"What are the physical signs/signalment regarding the animals, to get information such as edema, bruising, hemorrhage, skin lesions, conjunctivitis, excessive discharge, etc. This would help define sentinel syndromes.",NA
+animals_2,Animal,NA,PreservationMethodIfDead,preservation_method_if_dead,NA,Cooked; dried; fermented; frozen; powdered; preserved in liquid; salted; smoked; not preserved,NA
+animals_2,Animal,NA,HealthStatus,health_status,NA,"Estimate health status at sampling: apparently healthy, sick, injured, unknown?",4-cat var
+animals_2,Animal,NA,ClinicalSignsIfSick,clinical_signs_if_sick,NA,"Specify clinical signs if found sick of injured. Select all that apply: abscesses, abdominal mass, amputated body parts, broken bones, contusions, dermatitis, diarrhea, emaciated, external parasites, hair loss, in shock, lacerations, lethargic, nasal discharge, non-responsive, paralysis, respiratory symptoms, skin lesions, skin mass, swelling, other.",semicolon separated list
+animals_2,Animal,NA,ClinicalSignsOther,clinical_signs_other,NA,POSSIBLE DROP?,NA
+animals_2,Animal,NA,AnimalHumanInterfaces,animal_human_interfaces,NA,Select the animal to human interfaces that best describe the animal’s contact with people in this setting. Select all that apply.,semicolon separated list
+animals_2,Animal,NA,AnimalUseProducedSold,animal_use_produced_sold,NA,"If this animal or animal product is being produced or sold, what is the intended use of the animal product? Select all that apply.",semicolon separated list
+animals_2,Animal,NA,BatEarHeight,bat_ear_height,NA,NA,NA
+animals_2,Animal,NA,BatTailLength,bat_tail_length,NA,NA,NA
+animals_2,Animal,NA,BatHindFoodLength,bat_hind_foot_length,NA,NA,NA
+animals_2,Animal,NA,BatForearmLength,bat_forearm_length,NA,NA,NA
+animals_2,Animal,NA,BatHeadBodyLength,bat_head_body_length,NA,NA,NA
+animals_2,Animal,NA,BatWeight,bat_weight,NA,NA,NA
+animals_2,Animal,NA,NHPBodyLength,nhp_body_length,NA,NA,NA
+animals_2,Animal,NA,NHPHeadLength,nhp_head_length,NA,NA,NA
+animals_2,Animal,NA,NHPRightEarWidth,nhp_right_ear_width,NA,NA,NA
+animals_2,Animal,NA,NHPHeadWidth,nhp_head_width,NA,NA,NA
+animals_2,Animal,NA,NHPRightEarHeight,nhp_right_ear_height,NA,NA,NA
+animals_2,Animal,NA,NHPLeftEarWidth,nhp_left_ear_width,NA,NA,NA
+animals_2,Animal,NA,NHPLeftEarHeight,nhp_left_ear_height,NA,NA,NA
+animals_2,Animal,NA,NHPWeight,nhp_weight,NA,NA,NA
+animals_2,Animal,NA,RodentOtherRightEarHeight,rodent_other_right_ear_height,NA,NA,NA
+animals_2,Animal,NA,RodentOtherTailLength,rodent_other_tail_length,NA,NA,NA
+animals_2,Animal,NA,RodentOtherRHindFoot,rodent_other_rhind_foot,NA,NA,NA
+animals_2,Animal,NA,RodentOtherBodyLength,rodent_other_body_length,NA,NA,NA
+animals_2,Animal,NA,RodentOtherWeight,rodent_other_weight,NA,NA,NA
+specimens_2,Specimen,NA,Country,country,DROP,Event-level information,NA
+specimens_2,Specimen,NA,SiteName,site_name,DROP,Event-level information,NA
+specimens_2,Specimen,NA,District,district,DROP,Event-level information,NA
+specimens_2,Specimen,NA,StateProv,state_prov,DROP,Event-level information,NA
+specimens_2,Specimen,NA,SiteLatitudeUnrounded,site_latitude_unrounded,DROP,Event-level information,NA
+specimens_2,Specimen,NA,SiteLongitudeUnrounded,site_longitude_unrounded,DROP,Event-level information,NA
+specimens_2,Specimen,NA,EventLatitudeUnrounded,event_latitude_unrounded,DROP,Event-level information,NA
+specimens_2,Specimen,NA,EventLongitudeUnrounded,event_longitude_unrounded,DROP,Event-level information,NA
+specimens_2,Specimen,NA,EventDate,event_date,DROP,Event-level information,NA
+specimens_2,Specimen,NA,DurationDays,duration_days,DROP,Event-level information,NA
+specimens_2,Specimen,NA,EventName,event_name,DROP,Event-level information,NA
+specimens_2,Specimen,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA
+specimens_2,Specimen,NA,AnimalID,animal_id,NA,"The specimen will be attached to the animal through the barcode, but can be added here for quick reference on the sheets.",NA
+specimens_2,Specimen,NA,TaxaGroup,taxa_group,DROP,Animal-level information,NA
+specimens_2,Specimen,NA,AnimalClass,animal_class,DROP,Animal-level information,NA
+specimens_2,Specimen,NA,SpeciesScientificName,species_scientific_name,DROP,Animal-level information,NA
+specimens_2,Specimen,NA,SpeciesEnglishName,species_english_name,DROP,Animal-level information,NA
+specimens_2,Specimen,NA,Sex,sex,DROP,Animal-level information,NA
+specimens_2,Specimen,NA,SpecimenID,specimen_id,NA,Preferred format:  AnimalIDSpecimenTypeSpecimen# The first oral swab sampled from the animal above would be UTZB001.O1,NA
+specimens_2,Specimen,NA,SpecimenType,specimen_type,NA,Possible combination of Specimen Type and Specimen Tissue Type fields from metadata documents,NA
+specimens_2,Specimen,NA,Medium,medium,NA,Specimen medium,NA
+specimens_2,Specimen,NA,Container,container,NA,Specimen container,NA
+specimens_2,Specimen,NA,StorageMethod,storage_method,NA,Specimen storage method,NA
+specimens_2,Specimen,NA,StorageFacility,storage_facility,NA,Storage facility,NA
+specimens_2,Specimen,NA,StorageLocation,storage_location,NA,Storage location within facility,NA
+specimens_2,Specimen,NA,Notes,notes,specimen_notes,NA,NA
+specimens_2,Specimen,NA,DateOfSpecimenCollection (humans only),date_of_specimen_collection_humans_only,NA,??,NA
+specimens_2,Specimen,NA,TimeOfSpecimenCollection (humans only),time_of_specimen_collection_humans_only,NA,??,NA
+specimens_2,Specimen,NA,SpecimenCollectedForDiagnosis (humans only),specimen_collected_for_diagnosis_humans_only,NA,??,NA
+animal_production_2,AnimalProduction,NA,Country,country,DROP,Event-level information,NA
+animal_production_2,AnimalProduction,NA,SiteName,site_name,DROP,Event-level information,NA
+animal_production_2,AnimalProduction,NA,District,district,DROP,Event-level information,NA
+animal_production_2,AnimalProduction,NA,StateProv,state_prov,DROP,Event-level information,NA
+animal_production_2,AnimalProduction,NA,SiteLatitudeUnrounded,site_latitude_unrounded,DROP,Event-level information,NA
+animal_production_2,AnimalProduction,NA,SiteLongitudeUnrounded,site_longitude_unrounded,DROP,Event-level information,NA
+animal_production_2,AnimalProduction,NA,EventLatitudeUnrounded,event_latitude_unrounded,DROP,Event-level information,NA
+animal_production_2,AnimalProduction,NA,EventLongutudeUnrounded,event_longituded_unrounded,DROP,Event-level information,NA
+animal_production_2,AnimalProduction,NA,EventDate,event_date,DROP,Event-level information,NA
+animal_production_2,AnimalProduction,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA
+animal_production_2,AnimalProduction,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA
+animal_production_2,AnimalProduction,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA
+animal_production_2,AnimalProduction,NA,TypeOfProduction,type_of_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var
+animal_production_2,AnimalProduction,NA,RodentsInProduction,rodents_in_production,NA,What is the number of taxa animals in production at this facility? none; 1-10; 11-100; 101-1000; > 1000,5-cat var
+animal_production_2,AnimalProduction,NA,RodentsNbrEnclosures,rodents_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,RodentsAvgNbrEnclosure,rodents_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,RodentsAvgSizeEnclosure,rodents_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,RodentsFreerangingTethered,rodents_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,RodentsPurposeOfProduction,rodents_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,RodentsTypeOfEnclosure,rodents_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,BatsInProduction,bats_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var
+animal_production_2,AnimalProduction,NA,NHPInProduction,nhp_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var
+animal_production_2,AnimalProduction,NA,BirdsInProduction,birds_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var
+animal_production_2,AnimalProduction,NA,CarnivoresInProduction,carnivores_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var
+animal_production_2,AnimalProduction,NA,UngulatesInProduction,ungulates_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var
+animal_production_2,AnimalProduction,NA,PangolinsInProduction,pangolins_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var
+animal_production_2,AnimalProduction,NA,PoultryInProduction,poultry_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var
+animal_production_2,AnimalProduction,NA,GoatsInProduction,goats_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var
+animal_production_2,AnimalProduction,NA,CamelsInProduction,camels_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var
+animal_production_2,AnimalProduction,NA,SwineInProduction,swine_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var
+animal_production_2,AnimalProduction,NA,CattleInProduction,cattle_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var
+animal_production_2,AnimalProduction,NA,HorsesInProduction,horses_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var
+animal_production_2,AnimalProduction,NA,DogsInProduction,dogs_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var
+animal_production_2,AnimalProduction,NA,CatsInProduction,cats_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var
+animal_production_2,AnimalProduction,NA,BatsNbrEnclosures,bats_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,NHPNbrEnclosures,nhp_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,BirdsNbrEnclosures,birds_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CarnivoresNbrEnclosures,carnivores_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,UngulatesNbrEnclosures,ungulates_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,PangolinsNbrEnclosures,pangolins_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,PoultryNbrEnclosures,poultry_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,GoatsNbrEnclosures,goats_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CamelsNbrEnclosures,camels_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,SwineNbrEnclosures,swine_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CattleNbrEnclosures,cattle_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,HorsesNbrEnclosures,horses_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,DogsNbrEnclosures,dogs_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CatsNbrEnclosures,cats_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,BatsAvgNbrEnclosure,bats_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,NHPAvgNbrEnclosure,nhp_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,BirdsAvgNbrEnclosure,birds_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CarnivoresAvgNbrEnclosure,carnivores_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,UngulatesAvgNbrEnclosure,ungulates_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,PangolinsAvgNbrEnclosure,pangolins_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,PoultryAvgNbrEnclosure,poultry_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,GoatsAvgNbrEnclosure,goats_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CamelsAvgNbrEnclosure,camels_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,SwineAvgNbrEnclosure,swine_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CattleAvgNbrEnclosure,cattle_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,HorsesAvgNbrEnclosure,horses_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,DogsAvgNbrEnclosure,dogs_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CatsAvgNbrEnclosure,cats_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,BatsAvgSizeEnclosure,bats_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,NHPAvgSizeEnclosure,nhp_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,BirdsAvgSizeEnclosure,birds_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CarnivoresAvgSizeEnclosure,carnivores_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,UngulatesAvgSizeEnclosure,ungulates_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,PangolinsAvgSizeEnclosure,pangolins_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,PoultryAvgSizeEnclosure,poultry_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,GoatsAvgSizeEnclosure,goats_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CamelsAvgSizeEnclosure,camels_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,SwineAvgSizeEnclosure,swine_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CattleAvgSizeEnclosure,cattle_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,HorsesAvgSizeEnclosure,horses_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,DogsAvgSizeEnclosure,dogs_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CatsAvgSizeEnclosure,cats_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,BatsFreerangingTethered,bats_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,NHPFreerangingTethered,nhp_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,BirdsFreerangingTethered,birds_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CarnivoresFreerangingTethered,carnivores_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,UngulatesFreerangingTethered,ungulates_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,PangolinsFreerangingTethered,pangolins_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,PoultryFreerangingTethered,poultry_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,GoatsFreerangingTethered,goats_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CamelsFreerangingTethered,camels_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,SwineFreerangingTethered,swine_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CattleFreerangingTethered,cattle_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,HorsesFreerangingTethered,horses_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,DogsFreerangingTethered,dogs_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CatsFreerangingTethered,cats_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A"""
+animal_production_2,AnimalProduction,NA,BatsPurposeOfProduction,bats_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,NHPPurposeOfProduction,nhp_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,BirdsPurposeOfProduction,birds_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CarnivoresPurposeOfProduction,carnivores_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,UngulatesPurposeOfProduction,ungulates_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,PangolinsPurposeOfProduction,pangolins_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,PoultryPurposeOfProduction,poultry_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,GoatsPurposeOfProduction,goats_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CamelsPurposeOfProduction,camels_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,SwinePurposeOfProduction,swine_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CattlePurposeOfProduction,cattle_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,HorsesPurposeOfProduction,horses_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,DogsPurposeOfProduction,dogs_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CatsPurposeOfProduction,cats_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,BatsTypeOfEnclosure,bats_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,NHPTypeOfEnclosure,nhp_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,BirdsTypeOfEnclosure,birds_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CarnivoresTypeOfEnclosure,carnivores_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,UngulatesTypeOfEnclosure,ungulates_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,PangolinsTypeOfEnclosure,pangolins_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,PoultryTypeOfEnclosure,poultry_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,GoatsTypeOfEnclosure,goats_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CamelsTypeOfEnclosure,camels_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,SwineTypeOfEnclosure,swine_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CattleTypeOfEnclosure,cattle_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,HorsesTypeOfEnclosure,horses_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,DogsTypeOfEnclosure,dogs_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,CatsTypeOfEnclosure,cats_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A"""
+animal_production_2,AnimalProduction,NA,TaxaTogether,taxa_together,NA,Are there multiple taxa in one holding area or cage?,yes/no
+animal_production_2,AnimalProduction,NA,WildDomesticTogether,wild_domestic_together,NA,Are wild animals and domesticated animals held together in one holding area or cage?,yes/no
+animal_production_2,AnimalProduction,NA,SlaughteredButcheredOnsite,slaughtered_butchered_onsite,NA,Are animals slaughtered and butchered onsite?,yes/no
+animal_production_2,AnimalProduction,NA,DesignatedSlaughterArea,designated_slaughter_area,NA,"If animals are slaughtered and butchered onsite, is there a designated area for slaughtering and butchering?","yes/no/""N/A"""
+animal_production_2,AnimalProduction,NA,AnimalWastePresent,animal_waste_present,NA,What type of animal waste is present at the site/event? Select all that apply: feces;l soiled bedding (urine and feces); animal tissue and/or blood; none.,semicolon separated
+animal_production_2,AnimalProduction,NA,BiosecurityMeasures,biosecurity_measures,NA,What types of biosecurity measures are practiced at the facility? Select all that apply:,semicolon separated
+animal_production_2,AnimalProduction,NA,AnimalsInDwellings,animals_in_dwellings,NA,Are there animals living in the human dwellings?,yes/no
