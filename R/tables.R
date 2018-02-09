@@ -115,3 +115,12 @@ ed_viruses <- function(...) {
 ed_testspecimen <- function(...) {
   ed_table_("test_specimen_ids", .dots = lazyeval::lazy_dots(...))
 }
+
+#' @export
+#' @importFrom DBI dbReadTable
+ed2_key_errors <- function() {
+  dbReadTable(eidith_db()$con, "p2_unique_id_errors")
+}
+
+
+
