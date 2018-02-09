@@ -141,7 +141,9 @@ animal_production_2,AnimalProduction,NA,StateProv,state_prov,DROP,Event-level in
 animal_production_2,AnimalProduction,NA,SiteLatitudeUnrounded,site_latitude_unrounded,DROP,Event-level information,NA
 animal_production_2,AnimalProduction,NA,SiteLongitudeUnrounded,site_longitude_unrounded,DROP,Event-level information,NA
 animal_production_2,AnimalProduction,NA,EventLatitudeUnrounded,event_latitude_unrounded,DROP,Event-level information,NA
-animal_production_2,AnimalProduction,NA,EventLongutudeUnrounded,event_longituded_unrounded,DROP,Event-level information,NA
+animal_production_2,AnimalProduction,NA,EventLongitudeUnrounded,event_longituded_unrounded,DROP,Event-level information,NA
+animal_production_2,AnimalProduction,NA,DurationDays,duration_days,DROP,Event-level information,NA
+animal_production_2,AnimalProduction,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA
 animal_production_2,AnimalProduction,NA,EventDate,event_date,DROP,Event-level information,NA
 animal_production_2,AnimalProduction,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA
 animal_production_2,AnimalProduction,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA
@@ -259,3 +261,90 @@ animal_production_2,AnimalProduction,NA,DesignatedSlaughterArea,designated_slaug
 animal_production_2,AnimalProduction,NA,AnimalWastePresent,animal_waste_present,NA,What type of animal waste is present at the site/event? Select all that apply: feces;l soiled bedding (urine and feces); animal tissue and/or blood; none.,semicolon separated
 animal_production_2,AnimalProduction,NA,BiosecurityMeasures,biosecurity_measures,NA,What types of biosecurity measures are practiced at the facility? Select all that apply:,semicolon separated
 animal_production_2,AnimalProduction,NA,AnimalsInDwellings,animals_in_dwellings,NA,Are there animals living in the human dwellings?,yes/no
+crop_production_2,CropProduction,NA,Country,country,DROP,Event-level information,NA
+crop_production_2,CropProduction,NA,SiteName,site_name,DROP,Event-level information,NA
+crop_production_2,CropProduction,NA,District,district,DROP,Event-level information,NA
+crop_production_2,CropProduction,NA,StateProv,state_prov,DROP,Event-level information,NA
+crop_production_2,CropProduction,NA,SiteLatitudeUnrounded,site_latitude_unrounded,DROP,Event-level information,NA
+crop_production_2,CropProduction,NA,SiteLongitudeUnrounded,site_longitude_unrounded,DROP,Event-level information,NA
+crop_production_2,CropProduction,NA,EventLatitudeUnrounded,event_latitude_unrounded,DROP,Event-level information,NA
+crop_production_2,CropProduction,NA,EventLongitudeUnrounded,event_longitude_unrounded,DROP,Event-level information,NA
+crop_production_2,CropProduction,NA,EventDate,event_date,DROP,Event-level information,NA
+crop_production_2,CropProduction,NA,DurationDays,duration_days,DROP,Event-level information,NA
+crop_production_2,CropProduction,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA
+crop_production_2,CropProduction,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA
+crop_production_2,CropProduction,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA
+crop_production_2,CropProduction,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA
+crop_production_2,CropProduction,NA,CropsPlanted,crops_planted,NA,Which crops are planted at the site? Select all that apply.,semicolon separated
+crop_production_2,CropProduction,NA,TypeOfSystem,type_of_system,NA,What type of crop production system is it? Select one option: family owned; corporate; government.,3-cat var
+crop_production_2,CropProduction,NA,PurposeHouseholdLevel,purpose_household_level,household_crops,Which crops are grown for household purposes?,semicolon separated
+crop_production_2,CropProduction,NA,PurposeVillageLevel,purpose_village_level,village_crops,Which crops are grown for village purposes?,semicolon separated
+crop_production_2,CropProduction,NA,PurposeLargeScaleProduction,purpose_large_scale_production,large_scale_production_crops,Which crops are grown for large scale production purposes?,semicolon separated
+crop_production_2,CropProduction,NA,CropRaidingPestPrevention,crop_raiding_pest_prevention,NA,What are the observed practices or signs of practices used for preventing crop raiding and pest damage? Select all that apply,semicolon separated
+crop_production_2,CropProduction,NA,FertilizersUsed,fertilizers_used,NA,What types of fertilizers are used on the crops? Select all that apply: chemical fertilizer; animal manure or guano; none.,semicolon separated
+crop_production_2,CropProduction,NA,PoultyFertilizer,poulty_fertilizer,poultry_fertilizer,Is this the source of manure fertilizer? Select all that apply: composted or dried manure; fresh manure; none; N/A.,semicolon separated
+crop_production_2,CropProduction,NA,CamelFertilizer,camel_fertilizer,NA,Is this the source of manure fertilizer? Select all that apply: composted or dried manure; fresh manure; none; N/A.,NA
+crop_production_2,CropProduction,NA,CattleFertilizer,cattle_fertilizer,NA,Is this the source of manure fertilizer? Select all that apply: composted or dried manure; fresh manure; none; N/A.,NA
+crop_production_2,CropProduction,NA,SwineFertilizer,swine_fertilizer,NA,Is this the source of manure fertilizer? Select all that apply: composted or dried manure; fresh manure; none; N/A.,NA
+crop_production_2,CropProduction,NA,BatGuanoFertilizer,bat_guano_fertilizer,NA,Is this the source of manure fertilizer? Select all that apply: composted or dried manure; fresh manure; none; N/A.,NA
+crop_production_2,CropProduction,NA,BirdGuanoFertilizer,bird_guano_fertilizer,NA,Is this the source of manure fertilizer? Select all that apply: composted or dried manure; fresh manure; none; N/A.,NA
+crop_production_2,CropProduction,NA,GoatFertilizer,goat_fertilizer,NA,Is this the source of manure fertilizer? Select all that apply: composted or dried manure; fresh manure; none; N/A.,NA
+crop_production_2,CropProduction,NA,CropStorageAtSite,crop_storage_at_site,NA,Are crops stored at this site after harvest? Select all that apply: yes; no; unknown.,NA
+crop_production_2,CropProduction,NA,CropsStoredInDwellings,crops_stored_in_dwellings,NA,Which crops are stored in dwellings? Select all that apply.,semicolon separated
+crop_production_2,CropProduction,NA,CropsStoredOutsideSacks,crops_stored_outside_sacks,NA,Which crops are stored in outside sacks? Select all that apply.,NA
+crop_production_2,CropProduction,NA,CropsStoredSiloGranary,crops_stored_silo_granary,NA,Which crops are stored in silo / granary? Select all that apply.,NA
+crop_production_2,CropProduction,NA,CropsStoredNotObserved,crops_stored_not_observed,NA,Which crops are not observed being stored? Select all that apply.,NA
+crop_production_2,CropProduction,NA,CropsStoredOther,crops_stored_other,NA,Which crops are stored in other places? Select all that apply.,NA
+crop_production_2,CropProduction,NA,RodentsInCrops,rodents_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",semicolon separated
+crop_production_2,CropProduction,NA,BatsInCrops,bats_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA
+crop_production_2,CropProduction,NA,NHPInCrops,nhp_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA
+crop_production_2,CropProduction,NA,BirdsInCrops,birds_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA
+crop_production_2,CropProduction,NA,CarnivoresInCrops,carnivores_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA
+crop_production_2,CropProduction,NA,UngulatesInCrops,ungulates_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA
+crop_production_2,CropProduction,NA,ElephantsInCrops,elephants_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA
+crop_production_2,CropProduction,NA,PangolinsInCrops,pangolins_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA
+crop_production_2,CropProduction,NA,PoultryInCrops,poultry_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA
+crop_production_2,CropProduction,NA,GoatsInCrops,goats_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA
+crop_production_2,CropProduction,NA,CamelsInCrops,camels_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA
+crop_production_2,CropProduction,NA,SwineInCrops,swine_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA
+crop_production_2,CropProduction,NA,CattleInCrops,cattle_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA
+crop_production_2,CropProduction,NA,HorsesInCrops,horses_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA
+crop_production_2,CropProduction,NA,DogsInCrops,dogs_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA
+crop_production_2,CropProduction,NA,CatsInCrops,cats_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA
+dwellings_2,Dwellings,NA,Country,country,DROP,Event-level information,NA
+dwellings_2,Dwellings,NA,SiteName,site_name,DROP,Event-level information,NA
+dwellings_2,Dwellings,NA,District,district,DROP,Event-level information,NA
+dwellings_2,Dwellings,NA,StateProv,state_prov,DROP,Event-level information,NA
+dwellings_2,Dwellings,NA,SiteLatitudeUnrounded,site_latitude_unrounded,DROP,Event-level information,NA
+dwellings_2,Dwellings,NA,SiteLongitudeUnrounded,site_longitude_unrounded,DROP,Event-level information,NA
+dwellings_2,Dwellings,NA,EventLatitudeUnrounded,event_latitude_unrounded,DROP,Event-level information,NA
+dwellings_2,Dwellings,NA,EventLongitudeUnrounded,event_longitude_unrounded,DROP,Event-level information,NA
+dwellings_2,Dwellings,NA,EventDate,event_date,DROP,Event-level information,NA
+dwellings_2,Dwellings,NA,DurationDays,duration_days,DROP,Event-level information,NA
+dwellings_2,Dwellings,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA
+dwellings_2,Dwellings,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA
+dwellings_2,Dwellings,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA
+dwellings_2,Dwellings,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA
+dwellings_2,Dwellings,NA,TypeOfSettlement,type_of_settlement,NA,Are there temporary or permanent human settlements in this area? Select all that apply: permanent; temporary.,comma-separated
+dwellings_2,Dwellings,NA,TypeOfDwelling,type_of_dwelling,NA,What are the types of dwellings at sampling site/event? Select all that apply.,comma-separated
+dwellings_2,Dwellings,NA,RodentsInDwelling,rodents_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated
+dwellings_2,Dwellings,NA,BatsInDwelling,bats_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated
+dwellings_2,Dwellings,NA,NHPInDwelling,nhp_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated
+dwellings_2,Dwellings,NA,BirdsInDwelling,birds_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated
+dwellings_2,Dwellings,NA,CarnivoresInDwelling,carnivores_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated
+dwellings_2,Dwellings,NA,UngulatesInDwelling,ungulates_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated
+dwellings_2,Dwellings,NA,PangolinsInDwelling,pangolins_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated
+dwellings_2,Dwellings,NA,PoultryInDwelling,poultry_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated
+dwellings_2,Dwellings,NA,GoatsInDwelling,goats_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated
+dwellings_2,Dwellings,NA,CamelsInDwelling,camels_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated
+dwellings_2,Dwellings,NA,SwineInDwelling,swine_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated
+dwellings_2,Dwellings,NA,CattleInDwelling,cattle_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated
+dwellings_2,Dwellings,NA,HorsesInDwelling,horses_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated
+dwellings_2,Dwellings,NA,DogsInDwelling,dogs_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated
+dwellings_2,Dwellings,NA,catsInDwelling,cats_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated
+dwellings_2,Dwellings,NA,UnknownTaxaInDwelling,unknown_taxa_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated
+dwellings_2,Dwellings,NA,HealthcareFacilityAvailable,healthcare_facility_available,NA,Is there a healthcare facility that can be accessed within 1 day?,yes/no
+dwellings_2,Dwellings,NA,CapacityForMedicalTreatment,capacity_for_medical_treatment,NA,"If there is a healthcare facility, does it have the capacity for medical treatment?","yes/no/""N/A"""
+dwellings_2,Dwellings,NA,CapacityForPreventativeServices,capacity_for_preventative_services,NA,"If there is a healthcare facility, does it have the capacity for preventative services?","yes/no/""N/A"""
+dwellings_2,Dwellings,NA,PostedPreparednessPlan,posted_preparedness_plan,NA,"If there is a healthcare facility, does it have posted ebola or other disease outbreak preparedness plan?","yes/no/""N/A"""
+dwellings_2,Dwellings,NA,CapacityForPharmacyServices,capacity_for_pharmacy_services,NA,"If there is a healthcare facility, does it have the capacity for pharmacy services?","yes/no/""N/A"""

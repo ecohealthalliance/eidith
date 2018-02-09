@@ -1,7 +1,8 @@
 db_tables <- c("events", "animals", "specimens", "tests", "viruses",
                "test_specimen_ids", "status")
 
-db2_tables <- c("events_2", "animals_2", "specimens_2", "animal_production_2")
+db2_tables <- c("events_2", "animals_2", "specimens_2", "animal_production_2", "crop_production_2",
+                "dwellings_2")
 
 p1_table_names <- list(
   Event = "events",
@@ -16,7 +17,9 @@ p2_table_names <- list(
   Event = "events_2",
   Animal = "animals_2",
   Specimen = "specimens_2",
-  AnimalProduction = "animal_production_2"
+  AnimalProduction = "animal_production_2",
+  CropProduction = "crop_production_2",
+  Dwellings = "dwellings_2"
 )
 
 
@@ -30,7 +33,9 @@ db_unique_indexes <- list(
   events_2 = list("integer_id"),
   animals_2 = list("integer_id"),
   specimens_2 = list("integer_id"),
-  animal_production_2 = list("integer_id")
+  animal_production_2 = list("integer_id"),
+  crop_production_2 = list("integer_id"),
+  dwellings_2 = list("integer_id")
   )
 
 db_other_indexes <- list(
@@ -43,7 +48,9 @@ db_other_indexes <- list(
   events_2 = list("event_name"),
   animals_2 = list("animal_id"),
   specimens_2 = list("specimen_id"),
-  animal_production_2 = list("event_name")
+  animal_production_2 = list("event_name"),
+  crop_production_2 = list("event_name"),
+  dwellings_2 = list("event_name")
 )
 
 #' @importFrom stringi stri_subset_fixed
@@ -162,6 +169,11 @@ ed_db_download <- function(p1_tables = endpoints, p2_tables = endpoints2, verbos
       temp_tbl <- RSQLite::dbReadTable(eidith_db(temp_sql_path())$con, x)
       dbWriteTable(eidith_db()$con, value = temp_tbl, name = x, overwrite = TRUE)
     })
+
+    if("p2_unique_id_errors" %in% dbListTables(eidith_db(temp_sql_path())$con)){
+      dbWriteTable(eidith_db()$con, value = dbReadTable(eidith_db(temp_sql_path())$con, "p2_unique_id_errors"),
+                  name = "p2_unique_id_errors", append = TRUE)
+    }
 
     # creating status
     status_df <- data.frame(unique_id = seq_along(c(p1_dls, p2_dls)), t_name = unlist(c(p1_dls, p2_dls)), last_download = as.character(Sys.time()))
@@ -301,7 +313,8 @@ suppressWarnings({
 
     p_opt <- menu(c("Yes", "No"), title = "Would you like to download EIDITH database?")
     if(p_opt == 1){
-      ed_db_download(p2_tables = c("Event", "Animal", "Specimen"))
+      ed_db_download(p2_tables = c("Event", "Animal", "Specimen", "AnimalProduction",
+                                   "CropProduction", "Dwellings"))
     }
   }
   )
