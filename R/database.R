@@ -2,7 +2,7 @@ db_tables <- c("events", "animals", "specimens", "tests", "viruses",
                "test_specimen_ids", "status")
 
 db2_tables <- c("events_2", "animals_2", "specimens_2", "animal_production_2", "crop_production_2",
-                "dwellings_2")
+                "dwellings_2", "human_2")
 
 p1_table_names <- list(
   Event = "events",
@@ -19,7 +19,8 @@ p2_table_names <- list(
   Specimen = "specimens_2",
   AnimalProduction = "animal_production_2",
   CropProduction = "crop_production_2",
-  Dwellings = "dwellings_2"
+  Dwellings = "dwellings_2",
+  Human = "humans_2"
 )
 
 
@@ -35,7 +36,8 @@ db_unique_indexes <- list(
   specimens_2 = list("integer_id"),
   animal_production_2 = list("integer_id"),
   crop_production_2 = list("integer_id"),
-  dwellings_2 = list("integer_id")
+  dwellings_2 = list("integer_id"),
+  humans_2 = list("integer_id")
   )
 
 db_other_indexes <- list(
@@ -50,7 +52,8 @@ db_other_indexes <- list(
   specimens_2 = list("specimen_id"),
   animal_production_2 = list("event_name"),
   crop_production_2 = list("event_name"),
-  dwellings_2 = list("event_name")
+  dwellings_2 = list("event_name"),
+  human_2 = list("event_name")
 )
 
 #' @importFrom stringi stri_subset_fixed
