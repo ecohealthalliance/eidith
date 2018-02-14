@@ -2,7 +2,7 @@ db_tables <- c("events", "animals", "specimens", "tests", "viruses",
                "test_specimen_ids", "status")
 
 db2_tables <- c("events_2", "animals_2", "specimens_2", "animal_production_2", "crop_production_2",
-                "dwellings_2", "human_2")
+                "dwellings_2", "human_2", "market_value_chain_2", "natural_areas_2", "zoo_sanctuary_2", "wildlife_restaurant_2")
 
 p1_table_names <- list(
   Event = "events",
@@ -20,7 +20,11 @@ p2_table_names <- list(
   AnimalProduction = "animal_production_2",
   CropProduction = "crop_production_2",
   Dwellings = "dwellings_2",
-  Human = "humans_2"
+  NaturalAreas = "natural_areas_2",
+  MarketValueChain = "market_value_chain_2",
+  ZooSanctuary = "zoo_sanctuary_2",
+  WildlifeRestaurant = "wildlife_restaurant_2",
+  Human = "human_2"
 )
 
 
@@ -37,7 +41,11 @@ db_unique_indexes <- list(
   animal_production_2 = list("integer_id"),
   crop_production_2 = list("integer_id"),
   dwellings_2 = list("integer_id"),
-  humans_2 = list("integer_id")
+  market_value_chain_2 = list("integer_id"),
+  natural_areas_2 = list("integer_id"),
+  zoo_sanctuary_2 = list("integer_id"),
+  wildlife_restaurant_2 = list("integer_id"),
+  human_2 = list("integer_id")
   )
 
 db_other_indexes <- list(
@@ -53,6 +61,10 @@ db_other_indexes <- list(
   animal_production_2 = list("event_name"),
   crop_production_2 = list("event_name"),
   dwellings_2 = list("event_name"),
+  market_value_chain_2 = list("event_name"),
+  natural_areas_2 = list("event_name"),
+  zoo_sanctuary_2 = list("event_name"),
+  wildlife_restaurant_2 = list("event_name"),
   human_2 = list("event_name")
 )
 
@@ -390,13 +402,6 @@ ed_db_status_msg <- function(status) {
         crayon::blue(paste0("Local EIDITH database holds data from ", status[["n_countries"]], " countries: ")), crayon::green("PREDICT-1 countries: "),
         crayon::black(paste(status[["p1_countries"]], collapse = "; ")), crayon::green("PREDICT-2 countries: "), crayon::black(paste(status[["p2_countries"]], collapse = "; "))
       )), width=80, exdent=2), "\n")
-
-
-
-
-
-
-
 
        # paste(strwrap(paste0(c(
       #   "Records: ", paste(status[["records"]][["string"]], collapse="; ")
