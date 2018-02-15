@@ -118,7 +118,7 @@ ed_db_field_check <- function(tb, path){
 #' @param verbose Show messages while in progress?
 #' @seealso [ed_db_status()], [ed_db_updates()], [ed_db_export()]
 #' @export
-ed_db_download <- function(p1_tables = endpoints, p2_tables = endpoints2, verbose=interactive()) {
+ed_db_download <- function(p1_tables = endpoints, p2_tables = finished_endpoints2, verbose=interactive()) {
   auth <- ed_auth(verbose = verbose)
   if(verbose) message("Downloading and processing EIDITH data. This may take a few minutes.")
   lapply(dplyr::db_list_tables(eidith_db(temp_sql_path())$con), function(x) {

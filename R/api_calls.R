@@ -7,6 +7,9 @@ endpoints2 <- c("Event", "Animal", "Specimen", "AnimalProduction", "CropProducti
                 "Human", "HumanCropProduction", "HumanAnimalProduction", "HumanExtractiveIndustry", "HumanHospitalWorker",
                 "HumanHunter", "HumanMarket", "HumanRestaurant", "HumanSickPerson", "HumanTemporarySettlements", "HumanZoo", "Test", "TestDataInterpreted", "TestDataSerology")
 
+finished_endpoints2 <- c("Event", "Animal", "Specimen", "AnimalProduction", "CropProduction", "Dwellings", "MarketValueChain", "NaturalAreas", "WildlifeRestaurant",
+                         "ZooSanctuary", "Human")
+
 endpoints <- c("Event", "Animal", "Specimen", "Test", "Virus",
                "TestIDSpecimenID")
 
