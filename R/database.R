@@ -2,7 +2,8 @@ db_tables <- c("events", "animals", "specimens", "tests", "viruses",
                "test_specimen_ids", "status")
 
 db2_tables <- c("events_2", "animals_2", "specimens_2", "animal_production_2", "crop_production_2",
-                "dwellings_2", "human_2", "market_value_chain_2", "natural_areas_2", "zoo_sanctuary_2", "wildlife_restaurant_2")
+                "dwellings_2", "human_2", "market_value_chain_2", "natural_areas_2", "zoo_sanctuary_2",
+                "wildlife_restaurant_2", "tests_2", "test_data_interpreted_2")
 
 p1_table_names <- list(
   Event = "events",
@@ -24,7 +25,9 @@ p2_table_names <- list(
   MarketValueChain = "market_value_chain_2",
   ZooSanctuary = "zoo_sanctuary_2",
   WildlifeRestaurant = "wildlife_restaurant_2",
-  Human = "human_2"
+  Human = "human_2",
+  Test = "tests_2",
+  TestDataInterpreted = "test_data_interpreted_2"
 )
 
 
@@ -45,7 +48,9 @@ db_unique_indexes <- list(
   natural_areas_2 = list("integer_id"),
   zoo_sanctuary_2 = list("integer_id"),
   wildlife_restaurant_2 = list("integer_id"),
-  human_2 = list("integer_id")
+  human_2 = list("integer_id"),
+  tests_2 = list("integer_id"),
+  test_data_interpreted_2 = list("integer_id")
   )
 
 db_other_indexes <- list(
@@ -65,7 +70,9 @@ db_other_indexes <- list(
   natural_areas_2 = list("event_name"),
   zoo_sanctuary_2 = list("event_name"),
   wildlife_restaurant_2 = list("event_name"),
-  human_2 = list("event_name")
+  human_2 = list("event_name"),
+  tests_2 = list("test_id"),
+  test_data_interpreted_2 = list("test_id")
 )
 
 #' @importFrom stringi stri_subset_fixed
@@ -121,8 +128,10 @@ ed_db_field_check <- function(tb, path){
 ed_db_download <- function(p1_tables = endpoints, p2_tables = finished_endpoints2, verbose=interactive()) {
   auth <- ed_auth(verbose = verbose)
   if(verbose) message("Downloading and processing EIDITH data. This may take a few minutes.")
+  safely(
   lapply(dplyr::db_list_tables(eidith_db(temp_sql_path())$con), function(x) {
     dplyr::db_drop_table(eidith_db(temp_sql_path())$con, x)}
+  )
   )
   #P1 tables
   lapply(p1_tables, function(x) {
@@ -328,8 +337,7 @@ suppressWarnings({
 
     p_opt <- menu(c("Yes", "No"), title = "Would you like to download EIDITH database?")
     if(p_opt == 1){
-      ed_db_download(p2_tables = c("Event", "Animal", "Specimen", "AnimalProduction",
-                                   "CropProduction", "Dwellings"))
+      ed_db_download(p2_tables = finished_endpoints2)
     }
   }
   )
