@@ -3,7 +3,7 @@ db_tables <- c("events", "animals", "specimens", "tests", "viruses",
 
 db2_tables <- c("events_2", "animals_2", "specimens_2", "animal_production_2", "crop_production_2",
                 "dwellings_2", "human_2", "market_value_chain_2", "natural_areas_2", "zoo_sanctuary_2",
-                "wildlife_restaurant_2", "tests_2", "test_data_interpreted_2")
+                "wildlife_restaurant_2", "tests_2", "test_data_interpreted_2", "test_data_serology_2")
 
 p1_table_names <- list(
   Event = "events",
@@ -27,7 +27,8 @@ p2_table_names <- list(
   WildlifeRestaurant = "wildlife_restaurant_2",
   Human = "human_2",
   Test = "tests_2",
-  TestDataInterpreted = "test_data_interpreted_2"
+  TestDataInterpreted = "test_data_interpreted_2",
+  TestDataSerology = "test_data_serology_2"
 )
 
 
@@ -50,7 +51,8 @@ db_unique_indexes <- list(
   wildlife_restaurant_2 = list("integer_id"),
   human_2 = list("integer_id"),
   tests_2 = list("integer_id"),
-  test_data_interpreted_2 = list("integer_id")
+  test_data_interpreted_2 = list("integer_id"),
+  test_data_serology_2 = list("integer_id")
   )
 
 db_other_indexes <- list(
@@ -70,9 +72,10 @@ db_other_indexes <- list(
   natural_areas_2 = list("event_name"),
   zoo_sanctuary_2 = list("event_name"),
   wildlife_restaurant_2 = list("event_name"),
-  human_2 = list("event_name"),
+  human_2 = list("participant_id"),
   tests_2 = list("test_id"),
-  test_data_interpreted_2 = list("test_id")
+  test_data_interpreted_2 = list("test_id"),
+  test_data_serology_2 = list("test_id")
 )
 
 #' @importFrom stringi stri_subset_fixed
@@ -122,6 +125,7 @@ ed_db_field_check <- function(tb, path){
 #' @importFrom dplyr db_list_tables db_drop_table group_by %>% pull
 #' @importFrom RSQLite sqliteCopyDatabase
 #' @importFrom DBI dbWriteTable
+#' @importFrom purrr safely
 #' @param verbose Show messages while in progress?
 #' @seealso [ed_db_status()], [ed_db_updates()], [ed_db_export()]
 #' @export
@@ -344,6 +348,8 @@ suppressWarnings({
 }
 
 
+
+
 #' @importFrom DBI dbListTables
 ed_db_make_details <- function(path = NULL){
   edb <- eidith_db(path)
@@ -386,14 +392,14 @@ ed_db_make_details <- function(path = NULL){
   dbstatus <-list(
     p1_countries = p1_countries,
     p2_countries = p2_countries,
-    n_countries = n_countries,
+    n_countries = n_countries
     # last_modified_records = ~quicktime2(map_chr(db_tables[1:5], function(db_table) {
     #   DBI::dbGetQuery(edb$con, paste0("SELECT MAX(date_modified_",db_table,") FROM ", db_table ))[[1]]
     # })),
     # last_modified_record = ~max(last_modified_records),
     # last_table = ~db_tables[1:5][last_modified_records == last_modified_record],
     # last_download = ~DBI::dbGetQuery(edb$con, "SELECT last_download FROM status")[[1]],
-    records = records
+    # records = records
   )
 
 class(dbstatus) <- c("dbstatus", class(dbstatus))

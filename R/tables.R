@@ -122,5 +122,68 @@ ed2_key_errors <- function() {
   dbReadTable(eidith_db()$con, "p2_unique_id_errors")
 }
 
+#' @export
+ed2_events <- function(...){
+  ed_table_("events_2", .dots = lazyeval::lazy_dots(...))
+}
 
+#' @export
+ed2_animals <- function(...) {
+  ed_table_("animals_2", .dots = lazyeval::lazy_dots(...))
+}
+
+#' @export
+ed2_specimens <- function(...) {
+  ed_table_("specimens_2", .dots = lazyeval::lazy_dots(...))
+}
+
+#' @export
+ed2_animal_production <- function(...){
+  ed_table_("animal_production_2", .dots = lazyeval::lazy_dots(...))
+}
+
+#' @export
+ed2_crop_production <- function(...){
+  ed_table_("crop_production_2", .dots = lazyeval::lazy_dots(...))
+}
+
+#' @export
+ed2_zoo_sanctuary <- function(...){
+  ed_table_("zoo_sanctuary_2", .dots = lazyeval::lazy_dots(...))
+}
+
+#' @export
+ed2_wildlife_restaurant <- function(...){
+  ed_table_("wildlife_restaurant_2", .dots = lazyeval::lazy_dots(...))
+}
+
+#' @export
+ed2_natural_areas <- function(...){
+  ed_table_("natural_areas_2", .dots = lazyeval::lazy_dots(...))
+}
+
+#' @export
+ed2_market_value_chain <- function(...){
+  ed_table_("market_value_chain_2", .dots = lazyeval::lazy_dots(...))
+}
+
+#' @export
+ed2_human <- function(...){
+  ed_table_("human_2", .dots = lazyeval::lazy_dots(...))
+}
+
+#' @export
+ed2_tests <- function(...){
+  ed_table_("tests_2", .dots = lazyeval::lazy_dots(...))
+}
+
+#' @export
+ed2_test_serology <- function(...){
+  ed_table_("test_data_serology_2", .dots = lazyeval::lazy_dots(...))
+}
+
+#' @export
+ed2_test_interpreted <- function(...){
+  ed_table_("test_data_interpreted", .dots = lazyeval::lazy_dots(...))
+}
 

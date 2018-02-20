@@ -8,7 +8,7 @@ endpoints2 <- c("Event", "Animal", "Specimen", "AnimalProduction", "CropProducti
                 "HumanHunter", "HumanMarket", "HumanRestaurant", "HumanSickPerson", "HumanTemporarySettlements", "HumanZoo", "Test", "TestDataInterpreted", "TestDataSerology")
 
 finished_endpoints2 <- c("Event", "Animal", "Specimen", "AnimalProduction", "CropProduction", "Dwellings", "MarketValueChain", "NaturalAreas", "WildlifeRestaurant",
-                         "ZooSanctuary", "Human")
+                         "ZooSanctuary", "Human", "Test", "TestDataInterpreted", "TestDataSerology")
 
 endpoints <- c("Event", "Animal", "Specimen", "Test", "Virus",
                "TestIDSpecimenID")
@@ -77,6 +77,12 @@ Contact technology@eidith.org.")
     data <- as_tibble(data)
   }
 
+  if(nrow(data) == 0){
+    message(paste0("Download for the ", endpoint, " table failed. Please contact technology@eidith.org"))
+    return(invisible(0))
+  }
+
+
   if(postprocess) data <- ed_process(data, endpoint)
 
   return(data)
@@ -144,6 +150,11 @@ ed2_get <- function(endpoint2, postprocess=TRUE, verbose=interactive(),
     return(data)
   } else {
     data <- as_tibble(data)
+  }
+
+  if(nrow(data) == 0){
+    message((paste0("Download for the ", endpoint2, " table failed. Please contact technology@eidith.org")))
+    return(invisible(0))
   }
 
   if(postprocess) data <- ed2_process(data, endpoint2)
