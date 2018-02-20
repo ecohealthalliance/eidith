@@ -57,12 +57,68 @@ ed_table_ <- function(table, ..., .dots) {
       }
       lazyeval::as.lazy(new_expr, env=dot_expr[["env"]])
     }))
-  ed_tb <- tbl(eidith_db(), table)
-  ed_tb %>%
-    filter_(.dots=dots) %>%
-    collect(n=Inf) %>%
-    fix_classes()
+
+
+  #add class attributes to P2 tables
+  if(stri_detect_fixed(table, "2")){
+    ed_tb <- dbReadTable(eidith_db()$con, table)
+    #adding notes
+    note_cols <- which(stri_detect_fixed(names(ed_tb), "notes"))
+    attr(ed_tb, "notes") <- note_cols
+    #adding duplicate rows
+    intended_key <- db_other_indexes[[table]][[1]]
+    group_var <- as.name(intended_key)
+    key_errors <- ed_tb %>%
+      group_by(!!group_var) %>%
+      summarize(count = n()) %>%
+      filter(count > 1) %>%
+      dplyr::pull(!!group_var)
+    attr(ed_tb, "duplicate_keys") <- key_errors
+    indices <- which(ed_tb[[intended_key]] == key_errors)
+    attr(ed_tb, "duplicate_indices") <- indices
+
+    class(ed_tb) <- c("eidith_tbl", class(ed_tb))
+
+  }else{
+    ed_tb <- tbl(eidith_db(), table)
+    ed_tb %>%
+      filter_(.dots=dots) %>%
+      collect(n=Inf) %>%
+      fix_classes()
+  }
+ed_tb
 }
+
+#'@importFrom stringr str_detect
+#'@importFrom cli cat_line
+#'@importFrom crayon cyan magenta
+#'@importFrom tibble as.tibble
+#'@export
+print.eidith_tbl <- function(x,...){
+  note_cols <- attributes(x)$notes
+  print(as.tibble(unclass(x)))
+  if(length(note_cols > 0)){
+    cat_line("")
+    cat_line(cyan("There are notes attached to this dataframe which may contain important information! Please look at the following column(s):"))
+    cat_line(paste("    ", magenta(names(x)[note_cols])))
+  }
+  duplicate_keys <- attributes(x)$duplicate_keys
+  duplicate_indices <- attributes(x)$duplicate_indices
+  if(length(duplicate_keys > 0)){
+    cat_line("")
+    cat_line(red("IMPORTANT: There are multiple rows with duplicate unique ID's in this table!"))
+    cat_line(black("              The duplicate IDs are:"))
+    cat_line(paste("                  ", red(duplicate_keys)))
+    cat_line(black("              This affects the following rows:"))
+    cat_line(paste("                  ", red(duplicate_indices)))
+  }
+}
+
+
+
+
+
+
 
 fix_classes <- function(table) {
   logical_cols <- names(table)[names(table) %in% logical_vars]

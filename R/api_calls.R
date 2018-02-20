@@ -171,14 +171,6 @@ ed_get_events <- function(verbose=interactive(), postprocess=TRUE,
 }
 
 
-
-
-
-
-
-
-
-
 #' @rdname ed_get
 #' @export
 ed_get_animals <- function(verbose=interactive(), postprocess=TRUE,

@@ -4,7 +4,7 @@
 \alias{ed_db_download}
 \title{Download EIDITH data to local storage}
 \usage{
-ed_db_download(p1_tables = endpoints, p2_tables = endpoints2,
+ed_db_download(p1_tables = endpoints, p2_tables = finished_endpoints2,
   verbose = interactive())
 }
 \arguments{
