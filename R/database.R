@@ -3,7 +3,7 @@ db_tables <- c("events", "animals", "specimens", "tests", "viruses",
 
 db2_tables <- c("events_2", "animals_2", "specimens_2", "animal_production_2", "crop_production_2",
                 "dwellings_2", "human_2", "market_value_chain_2", "natural_areas_2", "zoo_sanctuary_2",
-                "wildlife_restaurant_2", "tests_2", "test_data_interpreted_2", "test_data_serology_2")
+                "wildlife_restaurant_2", "tests_2", "test_data_interpreted_2", "test_data_serology_2", "human_animal_production_2")
 
 p1_table_names <- list(
   Event = "events",
@@ -28,7 +28,8 @@ p2_table_names <- list(
   Human = "human_2",
   Test = "tests_2",
   TestDataInterpreted = "test_data_interpreted_2",
-  TestDataSerology = "test_data_serology_2"
+  TestDataSerology = "test_data_serology_2",
+  HumanAnimalProduction = "human_animal_production_2"
 )
 
 
@@ -52,7 +53,8 @@ db_unique_indexes <- list(
   human_2 = list("integer_id"),
   tests_2 = list("integer_id"),
   test_data_interpreted_2 = list("integer_id"),
-  test_data_serology_2 = list("integer_id")
+  test_data_serology_2 = list("integer_id"),
+  human_animal_production_2 = list("integer_id")
   )
 
 db_other_indexes <- list(
@@ -75,7 +77,8 @@ db_other_indexes <- list(
   human_2 = list("participant_id"),
   tests_2 = list("test_id"),
   test_data_interpreted_2 = list("test_id"),
-  test_data_serology_2 = list("test_id")
+  test_data_serology_2 = list("test_id"),
+  human_animal_production_2 = list("participant_id")
 )
 
 #' @importFrom stringi stri_subset_fixed

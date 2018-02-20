@@ -184,6 +184,11 @@ ed2_test_serology <- function(...){
 
 #' @export
 ed2_test_interpreted <- function(...){
-  ed_table_("test_data_interpreted", .dots = lazyeval::lazy_dots(...))
+  ed_table_("test_data_interpreted_2", .dots = lazyeval::lazy_dots(...))
+}
+
+#' @export
+ed2_human_animal_production <- function(...){
+  ed_table_("human_animal_production_2", .dots = lazyeval::lazy_dots(...))
 }
 
