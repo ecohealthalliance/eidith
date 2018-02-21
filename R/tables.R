@@ -248,3 +248,7 @@ ed2_human_animal_production <- function(...){
   ed_table_("human_animal_production_2", .dots = lazyeval::lazy_dots(...))
 }
 
+#' @export
+ed2_extractive_industry <- function(...){
+  ed_table_("extractive_industry_2", .dots = lazyeval::lazy_dots(...))
+}
