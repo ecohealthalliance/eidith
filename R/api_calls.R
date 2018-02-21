@@ -7,8 +7,11 @@ endpoints2 <- c("Event", "Animal", "Specimen", "AnimalProduction", "CropProducti
                 "Human", "HumanCropProduction", "HumanAnimalProduction", "HumanExtractiveIndustry", "HumanHospitalWorker",
                 "HumanHunter", "HumanMarket", "HumanRestaurant", "HumanSickPerson", "HumanTemporarySettlements", "HumanZoo", "Test", "TestDataInterpreted", "TestDataSerology")
 
-finished_endpoints2 <- c("Event", "Animal", "Specimen", "AnimalProduction", "CropProduction", "Dwellings", "MarketValueChain", "NaturalAreas", "WildlifeRestaurant",
-                         "ZooSanctuary", "Human", "Test", "TestDataInterpreted", "TestDataSerology", "HumanAnimalProduction")
+finished_endpoints2 <- endpoints2
+
+
+metadata_endpoints <- c("Event", "Animal", "Specimen", "AnimalProduction", "CropProduction", "Dwellings", "MarketValueChain", "NaturalAreas", "WildlifeRestaurant",
+                         "ZooSanctuary", "Human", "Test", "TestDataInterpreted", "TestDataSerology", "HumanAnimalProduction", "ExtractiveIndustry")
 
 endpoints <- c("Event", "Animal", "Specimen", "Test", "Virus",
                "TestIDSpecimenID")
@@ -31,7 +34,6 @@ endpoints <- c("Event", "Animal", "Specimen", "Test", "Virus",
 #' @return a [tibble][tibble::tibble()]-style data frame
 #' @rdname ed_get
 #' @name ed_get
-NULL
 
 
 #' @noRd
@@ -157,7 +159,24 @@ ed2_get <- function(endpoint2, postprocess=TRUE, verbose=interactive(),
     return(invisible(0))
   }
 
-  if(postprocess) data <- ed2_process(data, endpoint2)
+  if("ExceptionMessage" %in% names(data)){
+    message(paste0("Download for the ", endpoint2, " table failed. Please contact technology@eidith.org"))
+    return(invisible(0))
+  }
+
+  if(postprocess){
+   data <- tryCatch(ed2_process(data, endpoint2),
+      error = function(e){
+  message(paste0("Error: There are unexpected fields in the ", endpoint2, " download. Please contact technology@eidith.org."))
+  return(NULL)
+        },  warning = function(w){
+  message(paste0("Warning: There are unexpected fields in the ", endpoint2, " download. Please contact technology@eidith.org."))
+  return(NULL)
+})
+
+}
+
+  #if(postprocess) data <- ed2_process(data, endpoint2)
 
   return(data)
   }

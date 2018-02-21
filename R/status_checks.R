@@ -42,11 +42,10 @@ ed_db_field_check <- function(tb, path){
 #' @export
 ed_db_check_status <- function(path=NULL) {
   edb <- eidith_db(path)
-  dbstatus <- ""
-  if(!(all(c(db_tables, db2_tables) %in% db_list_tables(edb$con)))) {
+  if(!(all(c(db_tables, metadata_tables) %in% db_list_tables(edb$con)))) {
     #find out which tables are missing and then ask the user if they wish to download them?
     missing_p1_tables <- db_tables[which(db_tables %in% db_list_tables(edb$con) == FALSE)]
-    missing_p2_tables <- db2_tables[which(db2_tables %in% db_list_tables(edb$con) == FALSE)]
+    missing_p2_tables <- metadata_tables[which(metadata_tables %in% db_list_tables(edb$con) == FALSE)]
     dl_p1_tables <- names(purrr::keep(p1_table_names, function(x) x %in% missing_p1_tables))
     dl_p2_tables <- names(purrr::keep(p2_table_names, function(x) x %in% missing_p2_tables))
 
@@ -55,19 +54,24 @@ ed_db_check_status <- function(path=NULL) {
     if(dl_opt == 1) ed_db_download(dl_p1_tables, dl_p2_tables)
     if(dl_opt == 2) dbstatus <- list(status_msg ="Local EIDITH database is available, but missing tables.\nRun ed_db_download() to update")
 
-  }else if(!all(sapply(c(db_tables[-7], db2_tables), function(x) ed_db_field_check(x, NULL)))){
+  }else if(!all(sapply(c(db_tables[-7], metadata_tables), function(x) ed_db_field_check(x, NULL)))){
     #find out which tables have errors
     error_p1_tables <- sapply(db_tables[-7], function(x) ed_db_field_check(x, NULL))
-    error_p2_tables <- sapply(db2_tables, function(x) ed_db_field_check(x, NULL))
+    error_p2_tables <- sapply(metadata_tables, function(x) ed_db_field_check(x, NULL))
     dl_p1_tables <- names(purrr::keep(p1_table_names, function(x) x %in% error_p1_tables))
     dl_p2_tables <- names(purrr::keep(p2_table_names, function(x) x %in% error_p2_tables))
     dl_opt <- menu(c("Yes", "No"), title = "Local EIDITH database has tables with corrupt or empty fields.\nWould you like to re-download these tables to correct errors?")
 
     if(dl_opt == 1) ed_db_download(dl_p1_tables, dl_p2_tables)
     if(dl_opt == 2) dbstatus <- list(status_msg ="Local EIDITH database fields are empty or corrupt.")
+  }else{
+
+    #message(ed_create_banner(path))
+    #class(dbstatus) <- c("dbstatus", class(dbstatus))
+    dbstatus <- "Local EIDITH database contains all tables with all expected fields!"
   }
-  class(dbstatus) <- c("dbstatus", class(dbstatus))
-  dbstatus
+  cat(green(dbstatus))
+  cat_line("")
 }
 
 
@@ -97,8 +101,8 @@ ed_db_presence <- function(){
 #' @importFrom cli rule symbol
 #' @importFrom crayon cyan black green red magenta
 #' @importFrom stringr str_detect
-ed_create_banner <- function(){
-  edb <- eidith_db()
+ed_create_banner <- function(path = NULL){
+  edb <- eidith_db(path)
   tryCatch(expr = {
     download_dates <- dbReadTable(edb$con, "status") %>%
       group_by(t_name) %>%
@@ -152,7 +156,7 @@ ed_create_banner <- function(){
                       crayon::black(crayon::italic("PREDICT-1 Table Status:")),
                       collapse(p1_status_list, sep = "\n"),
                       crayon::black(crayon::italic("PREDICT-2 Table Status:")),
-                      collapse(p2_status_list, sep = "\n"), "\n",
+                      collapse(p2_status_list, sep = "\n"), "\n","",
                       .sep = "\n")
 
     return(ed_banner)
@@ -247,8 +251,8 @@ ed_db_status_msg <- function(status) {
 }
 
 #'@export
-print.dbstatus <- function(x, ...) {
-  cat(ed_db_status_msg(ed_db_make_status_msg(x)))
+print.dbstatus <- function(x,...) {
+  cat(ed_db_status_msg(ed_db_make_status_msg()))
 }
 
 

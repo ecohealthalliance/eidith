@@ -3,7 +3,16 @@ db_tables <- c("events", "animals", "specimens", "tests", "viruses",
 
 db2_tables <- c("events_2", "animals_2", "specimens_2", "animal_production_2", "crop_production_2",
                 "dwellings_2", "human_2", "market_value_chain_2", "natural_areas_2", "zoo_sanctuary_2",
-                "wildlife_restaurant_2", "tests_2", "test_data_interpreted_2", "test_data_serology_2", "human_animal_production_2")
+                "wildlife_restaurant_2", "tests_2", "test_data_interpreted_2", "test_data_serology_2",
+                "human_animal_production_2", "extractive_industry_2", "human_crop_production_2",
+                "human_extractive_industry_2", "human_hospital_worker_2", "human_hunter_2",
+                "human_market_2", "human_restaurant_2", "human_sick_person_2", "human_temporary_settlements_2",
+                "human_zoo_2")
+
+metadata_tables <- c("events_2", "animals_2", "specimens_2", "animal_production_2", "crop_production_2",
+                     "dwellings_2", "human_2", "market_value_chain_2", "natural_areas_2", "zoo_sanctuary_2",
+                     "wildlife_restaurant_2", "tests_2", "test_data_interpreted_2", "test_data_serology_2",
+                     "human_animal_production_2", "extractive_industry_2")
 
 p1_table_names <- list(
   Event = "events",
@@ -29,7 +38,17 @@ p2_table_names <- list(
   Test = "tests_2",
   TestDataInterpreted = "test_data_interpreted_2",
   TestDataSerology = "test_data_serology_2",
-  HumanAnimalProduction = "human_animal_production_2"
+  HumanAnimalProduction = "human_animal_production_2",
+  ExtractiveIndustry = "extractive_industry_2",
+  HumanCropProduction = "human_crop_production_2",
+  HumanExtractiveIndustry = "human_extractive_industry_2",
+  HumanHospitalWorker = "human_hospital_worker_2",
+  HumanHunter = "human_hunter_2",
+  HumanMarket = "human_market_2",
+  HumanRestaurant = "human_restaurant_2",
+  HumanSickPerson = "human_sick_person_2",
+  HumanTemporarySettlements = "human_temporary_settlements_2",
+  HumanZoo = "human_zoo_2"
 )
 
 
@@ -54,7 +73,17 @@ db_unique_indexes <- list(
   tests_2 = list("integer_id"),
   test_data_interpreted_2 = list("integer_id"),
   test_data_serology_2 = list("integer_id"),
-  human_animal_production_2 = list("integer_id")
+  human_animal_production_2 = list("integer_id"),
+  extractive_industry_2 = list("integer_id"),
+  human_crop_production_2 = list("integer_id"),
+  human_extractive_industry_2 = list("integer_id"),
+  human_hospital_worker_2 = list("integer_id"),
+  human_hunter_2 = list("integer_id"),
+  human_market_2 = list("integer_id"),
+  human_restaurant_2 = list("integer_id"),
+  human_sick_person_2 = list("integer_id"),
+  human_temporary_settlements_2 = list("integer_id"),
+  human_zoo_2 = list("integer_id")
   )
 
 db_other_indexes <- list(
@@ -78,7 +107,17 @@ db_other_indexes <- list(
   tests_2 = list("test_id"),
   test_data_interpreted_2 = list("test_id"),
   test_data_serology_2 = list("test_id"),
-  human_animal_production_2 = list("participant_id")
+  human_animal_production_2 = list("participant_id"),
+  extractive_industry_2 = list("event_name"),
+  human_crop_production_2 = list("ParticipantID"),
+  human_extractive_industry_2 = list("ParticipantID"),
+  human_hospital_worker_2 = list("ParticipantID"),
+  human_hunter_2 = list("ParticipantID"),
+  human_market_2 = list("ParticipantID"),
+  human_restaurant_2 = list("ParticipantID"),
+  human_sick_person_2 = list("ParticipantID"),
+  human_temporary_settlements_2 = list("ParticipantID"),
+  human_zoo_2 = list("ParticipantID")
 )
 
 
@@ -130,11 +169,12 @@ ed_db_download <- function(p1_tables = endpoints, p2_tables = finished_endpoints
   p2_key_errors <- data_frame(table = character(), field_name = character(), multiple_id = character())
   lapply(p2_tables, function(x) {
     tb <- ed2_get(x, postprocess=TRUE, verbose=verbose, auth=auth)
+    #escaping if there is an error with the download
+    if(is.null(tb)) return(invisible(0))
+    #key errors
     lc_name <- p2_table_names[[x]]
-
     intended_key <- db_other_indexes[[lc_name]][[1]]
     group_var <- as.name(intended_key)
-
     key_check <- tb %>%
       group_by(!!group_var) %>%
       summarize(count = n()) %>%
@@ -194,7 +234,7 @@ ed_db_download <- function(p1_tables = endpoints, p2_tables = finished_endpoints
                    name="status", row.names = FALSE)
     }
     file.remove(temp_sql_path())
-    message(ed_db_presence(), ed_db_status_msg(ed_db_make_status_msg()))
+    message(ed_db_presence(), ed_db_status_msg(ed_db_make_status_msg()), ed_db_check_status())
   return(invisible(0))
   }
 }
@@ -231,9 +271,9 @@ ed_db_export <- function(filename, ...) {  #Exports the database file to new loc
 #'   the function checks the status of the internal database or that with the global option `"ed_sql_path"`.
 #' @return A named vector, showing TRUE for tables that have been updated.  A message is also printed.
 #' @seealso  [ed_db_status()], [ed_db_download()],  [ed_db_export()]
-#'@importFrom stringi stri_replace_first_fixed
-#'@importFrom dplyr collect tbl
-#'@export
+#' @importFrom stringi stri_replace_first_fixed
+#' @importFrom dplyr collect tbl
+#' @export
 ed_db_updates <- function(path = NULL) {    # NEEDS TO BE RE-WORKED
   last_download <- stri_replace_first_fixed(
     collect(tbl(eidith_db(path), "status"))$last_download,
