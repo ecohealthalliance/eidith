@@ -27,6 +27,8 @@ Imports:
     tidyr,
     tibble,
     RSQLite,
+    cli,
+    crayon,
     DBI,
     getPass,
     rappdirs,
