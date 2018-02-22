@@ -176,10 +176,12 @@ ed_create_banner <- function(path = NULL){
     return(ed_banner)
   },
   error = function(err){
-    message("There are errors in the local EIDITH database.")
+    message(green("This is the first time you are loading the updated EIDITH package, now with PREDICT-2 data, or there are unspecified errors in the local EIDITH database."))
+    if(interactive()){
     p_opt <- menu(c("Yes", "No"), title = "Would you like to perform a clean download of the local database?")
     if(p_opt == 1){
       ed_db_download(p2_tables = finished_endpoints2)
+    }
     }
   }
   )
