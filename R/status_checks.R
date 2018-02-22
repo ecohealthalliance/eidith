@@ -55,21 +55,29 @@ ed_db_check_status <- function(path=NULL) {
     dl_p1_tables <- names(purrr::keep(p1_table_names, function(x) x %in% missing_p1_tables))
     dl_p2_tables <- names(purrr::keep(p2_table_names, function(x) x %in% missing_p2_tables))
 
+    if(interactive()){
     dl_opt <- menu(c("Yes", "No"), title = "Local EIDITH database is missing tables.\nWould you like to download missing tables?")
 
     if(dl_opt == 1) ed_db_download(dl_p1_tables, dl_p2_tables)
-    if(dl_opt == 2) dbstatus <- list(status_msg ="Local EIDITH database is available, but missing tables.\nRun ed_db_download() to update")
-
+    if(dl_opt == 2)
+    }else{
+      dbstatus <- list(status_msg ="Local EIDITH database is available, but missing tables.\nRun ed_db_download() to update")
+    }
   }else if(!all(sapply(c(db_tables[-7], metadata_tables), function(x) ed_db_field_check(x, NULL)))){
     #find out which tables have errors
     error_p1_tables <- sapply(db_tables[-7], function(x) ed_db_field_check(x, NULL))
     error_p2_tables <- sapply(metadata_tables, function(x) ed_db_field_check(x, NULL))
     dl_p1_tables <- names(purrr::keep(p1_table_names, function(x) x %in% error_p1_tables))
     dl_p2_tables <- names(purrr::keep(p2_table_names, function(x) x %in% error_p2_tables))
+
+    if(interactive()){
     dl_opt <- menu(c("Yes", "No"), title = "Local EIDITH database has tables with corrupt or empty fields.\nWould you like to re-download these tables to correct errors?")
 
     if(dl_opt == 1) ed_db_download(dl_p1_tables, dl_p2_tables)
-    if(dl_opt == 2) dbstatus <- list(status_msg ="Local EIDITH database fields are empty or corrupt.")
+    if(dl_opt == 2) dbstatus <- list(status_msg ="Local EIDITH database fields are empty or corrupt. Use ed_db_download() to attempt a clean install.")
+    }else{
+      dbstatus <- list(status_msg ="Local EIDITH database fields are empty or corrupt. Use ed_db_download() to attempt a clean install.")
+    }
   }else{
 
     #message(ed_create_banner(path))
