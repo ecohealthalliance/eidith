@@ -14,6 +14,12 @@ ed_db_field_check <- function(tb, path){
     `$`(nname) %>%
     na.omit() %>%
     stri_subset_fixed("DROP", negate=TRUE)
+
+  #temporary metadata issue fix
+  if(tb %in% metadata_tables){
+    return(TRUE)
+  }
+
   table_names <- names(ed_tb)[names(ed_tb) != "integer_id"]
   condition_a <- (all(table_names %in% (expected_fields)))
   condition_b <- (all(expected_fields %in% table_names))
