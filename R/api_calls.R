@@ -34,9 +34,6 @@ endpoints <- c("Event", "Animal", "Specimen", "Test", "Virus",
 #' @return a [tibble][tibble::tibble()]-style data frame
 #' @rdname ed_get
 #' @name ed_get
-
-
-#' @noRd
 #' @importFrom httr GET status_code progress authenticate content modify_url
 #' @importFrom jsonlite fromJSON
 #' @importFrom tibble as_tibble

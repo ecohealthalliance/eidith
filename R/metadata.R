@@ -1,4 +1,4 @@
-#' EIDITH table metadata
+#' EIDITH PREDICT-1 & PREDICT-2 table metadata
 #'
 #' Descriptions of fields in the EIDITH database.  Running `ed_metadata()` will
 #' return a data frame with this information. `ed_taxagroups` returns a table
@@ -33,7 +33,7 @@ ed_metadata <- function() {
   ed_metadata_
 }
 
-#' @rdname ed2_metadata
+#' @rdname ed_metadata
 #' @export
 #' @importFrom DT datatable
 #' @importFrom htmlwidgets saveWidget

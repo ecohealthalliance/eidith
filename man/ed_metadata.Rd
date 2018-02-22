@@ -2,10 +2,13 @@
 % Please edit documentation in R/metadata.R
 \name{ed_metadata}
 \alias{ed_metadata}
+\alias{ed2_metadata}
 \alias{ed_taxagroups}
-\title{EIDITH table metadata}
+\title{EIDITH PREDICT-1 & PREDICT-2 table metadata}
 \usage{
 ed_metadata()
+
+ed2_metadata()
 
 ed_taxagroups()
 }
