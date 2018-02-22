@@ -80,12 +80,25 @@ Contact technology@eidith.org.")
   }
 
   if(nrow(data) == 0){
+    message((paste0("Download for the ", endpoint, " table failed. Please contact technology@eidith.org")))
+    return(invisible(0))
+  }
+
+  if("ExceptionMessage" %in% names(data)){
     message(paste0("Download for the ", endpoint, " table failed. Please contact technology@eidith.org"))
     return(invisible(0))
   }
 
-
-  if(postprocess) data <- ed_process(data, endpoint)
+  if(postprocess){
+    data <- tryCatch(ed_process(data, endpoint),
+                     error = function(e){
+                       message(paste0("Error: There are unexpected fields in the ", endpoint, " download. Please contact technology@eidith.org."))
+                       return(NULL)
+                     },  warning = function(w){
+                       message(paste0("Warning: There are unexpected fields in the ", endpoint, " download. Please contact technology@eidith.org."))
+                       return(NULL)
+                     })
+}
 
   return(data)
 }

@@ -195,27 +195,29 @@ ed_db_download <- function(p1_tables = endpoints, p2_tables = finished_endpoints
   #Check that requested tables have downloaded:
   p1_dls <- unname(sapply(p1_tables, function(x) p1_table_names[[x]]))
   p2_dls <- unname(sapply(p2_tables, function(x) p2_table_names[[x]]))
-  if(!(all(c(p1_dls, p2_dls) %in% db_list_tables(eidith_db(temp_sql_path())$con)))){
-    message("NOTE: Newly downloaded EIDITH database is empty or corrupt, using previous version.")
-    if(verbose) {
-      message("Old Database Status:")
-      message(ed_db_status_msg(ed_db_check_status()))
-    }
-    return(invisible(0))
-  }else if(!all(sapply(c(p1_dls, p2_dls), function(x) ed_db_field_check(x,temp_sql_path())))){
-    message("NOTE: Newly downloaded EIDITH database lacks the correct fields, using previous version.")
-    if(verbose) {
-      message("Old Database Status:")
-      message(ed_db_status_msg(ed_db_check_status()))
-    }
-    return(invisible(0))
-  }else{
-    if(verbose) {
-      message("Database successfully downloaded!")
-    }
 
-    lapply(c(p1_dls, p2_dls), function(x){
-      temp_tbl <- RSQLite::dbReadTable(eidith_db(temp_sql_path())$con, x)
+  downloaded_tables <- c(p1_dls, p2_dls)
+  if(!(all(downloaded_tables %in% db_list_tables(eidith_db(temp_sql_path())$con)))) {
+    downloaded_tables <- downloaded_tables[which(downloaded_tables %in% db_list_tables(eidith_db(temp_sql_path()$con)))]
+  }
+
+  if(!all(sapply(downloaded_tables, function(x) ed_db_field_check(x, NULL)))){
+    downloaded_tables <- downloaded_tables[which(sapply(downloaded_tables, function(x) ed_db_field_check(x, NULL)))]
+
+  }
+  if(verbose) {
+      if(length(downloaded_tables) == length(c(p1_dls, p2_dls))){
+      message("All database tables have successfully downloaded!")
+      } else if(length(downloaded_tables < length(c(p1_dls, p2_dls)))){
+        message("Problems with remote EIDITH database / API prevented some tables from downloading. Please look at output and contact technology@eidith.org")
+      }
+    else{
+      message("Problems with remote EIDITH database / API prevented all requested tables from downloading. Please contact technology@eidith.org")
+        return(invisible(0))
+    }
+}
+    lapply(downloaded_tables, function(x){
+      temp_tbl <- dbReadTable(eidith_db(temp_sql_path())$con, x)
       dbWriteTable(eidith_db()$con, value = temp_tbl, name = x, overwrite = TRUE)
     })
 
@@ -225,7 +227,7 @@ ed_db_download <- function(p1_tables = endpoints, p2_tables = finished_endpoints
     }
 
     # creating status
-    status_df <- data.frame(unique_id = seq_along(c(p1_dls, p2_dls)), t_name = unlist(c(p1_dls, p2_dls)), last_download = as.character(Sys.time()))
+    status_df <- data.frame(unique_id = seq_along(downloaded_tables), t_name = unlist(downloaded_tables), last_download = as.character(Sys.time()))
 
     if("status" %in% db_list_tables(eidith_db()$con)){
       dbWriteTable(eidith_db()$con, name = "status", value = status_df, append = TRUE, row.names = FALSE)
@@ -234,10 +236,11 @@ ed_db_download <- function(p1_tables = endpoints, p2_tables = finished_endpoints
                    name="status", row.names = FALSE)
     }
     file.remove(temp_sql_path())
-    message(ed_db_presence(), ed_db_status_msg(ed_db_make_status_msg()), ed_db_check_status())
+    message(ed_db_presence(), ed_db_status_msg(ed_db_make_status_msg()))
+    message(ed_db_check_status())
   return(invisible(0))
   }
-}
+
 
 
 #' Export the local EIDITH database to a file
