@@ -24,6 +24,7 @@ Imports:
     dplyr (>= 0.7.0),
     dbplyr,
     readr,
+    rlang (>= 0.1.6),
     tidyr,
     tibble,
     RSQLite,
