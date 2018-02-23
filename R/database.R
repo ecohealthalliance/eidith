@@ -170,7 +170,7 @@ ed_db_download <- function(p1_tables = endpoints, p2_tables = finished_endpoints
   lapply(p2_tables, function(x) {
     tb <- ed2_get(x, postprocess=TRUE, verbose=verbose, auth=auth)
     #escaping if there is an error with the download
-    if(tb == "") return(invisible(0))
+    if(any(typeof(tb) != "list")) return(invisible(0))
     #key errors
     lc_name <- p2_table_names[[x]]
     intended_key <- db_other_indexes[[lc_name]][[1]]
