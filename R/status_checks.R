@@ -95,8 +95,7 @@ ed_db_presence <- function(){
   status <- "status" %in% dbListTables(edb$con)
   if(status == FALSE){
     cat(cli::rule(crayon::bold("Welcome to the EIDITH R Package!")))
-    cat("\n")
-    cat(red("There is no local EIDITH database, please follow the prompts or use ed_db_download() to download EIDITH data."))
+    cat(red("There is no local EIDITH database, please follow the prompts or use ed_db_download() to download EIDITH data.\n"))
     if(interactive()){
     p_opt <- menu(c("Yes", "No"), title = "Would you like to download EIDITH database?")
     if(p_opt == 1){
@@ -142,7 +141,7 @@ ed_create_banner <- function(path = NULL){
     suppressWarnings({
       p1_status_list <- purrr::map(endpoints, function(x){
         ind <- which(predict_1$display_name == x)
-        if(ind == 0){
+        if(length(ind) == 0){
           return(glue(crayon::red(cli::symbol$cross), "  ", x))
         }else{
           return(glue(crayon::green(cli::symbol$tick), "  ", crayon::cyan(x), crayon::black(" Table"),
@@ -177,9 +176,9 @@ ed_create_banner <- function(path = NULL){
     return(ed_banner)
   },
   error = function(err){
-    cat(green("This is the first time you are loading the updated EIDITH package (with PREDICT-2 data available), or there are unspecified errors in the local EIDITH database."))
+    cat(green("This is the first time you are loading the updated EIDITH package (with PREDICT-2 data available), or there are unspecified errors in the local EIDITH database.\n"))
     if(interactive()){
-    p_opt <- menu(c("Yes", "No"), title = "Would you like to perform a clean download of the local database?")
+    p_opt <- menu(c("Yes", "No"), title = "Would you like to perform a clean download of the EIDITH database?")
     if(p_opt == 1){
       ed_db_download(p2_tables = finished_endpoints2)
     }
@@ -193,6 +192,7 @@ ed_create_banner <- function(path = NULL){
 #' @importFrom DBI dbListTables
 ed_db_make_status_msg <- function(path = NULL){
   edb <- eidith_db(path)
+  if("status" %in% dbListTables(edb$con)){
   dbExecute(edb$con, "analyze")
   download_dates <- dbReadTable(edb$con, "status") %>%
     group_by(t_name) %>%
@@ -241,13 +241,16 @@ ed_db_make_status_msg <- function(path = NULL){
     # last_download = ~DBI::dbGetQuery(edb$con, "SELECT last_download FROM status")[[1]],
     # records = records
   )
-
+  } else{
+    dbstatus <- ""
+  }
   class(dbstatus) <- c("dbstatus", class(dbstatus))
   dbstatus
 }
 
 
 ed_db_status_msg <- function(status) {
+  if(length(status) == 1) return("")
   if(is.null(status[["n_countries"]])) {
     status_msg <- status[["status_msg"]]
   } else {

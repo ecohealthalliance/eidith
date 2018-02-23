@@ -170,7 +170,7 @@ ed_db_download <- function(p1_tables = endpoints, p2_tables = finished_endpoints
   lapply(p2_tables, function(x) {
     tb <- ed2_get(x, postprocess=TRUE, verbose=verbose, auth=auth)
     #escaping if there is an error with the download
-    if(is.null(tb)) return(invisible(0))
+    if(tb == "") return(invisible(0))
     #key errors
     lc_name <- p2_table_names[[x]]
     intended_key <- db_other_indexes[[lc_name]][[1]]
@@ -196,15 +196,15 @@ ed_db_download <- function(p1_tables = endpoints, p2_tables = finished_endpoints
   p1_dls <- unname(sapply(p1_tables, function(x) p1_table_names[[x]]))
   p2_dls <- unname(sapply(p2_tables, function(x) p2_table_names[[x]]))
 
-  downloaded_tables <- c(p1_dls, p2_dls)
+  downloaded_tables <- unlist(c(p1_dls, p2_dls))
   if(!(all(downloaded_tables %in% db_list_tables(eidith_db(temp_sql_path())$con)))) {
     downloaded_tables <- downloaded_tables[which(downloaded_tables %in% db_list_tables(eidith_db(temp_sql_path()$con)))]
   }
 
-  if(!all(sapply(downloaded_tables, function(x) ed_db_field_check(x, NULL)))){
-    downloaded_tables <- downloaded_tables[which(sapply(downloaded_tables, function(x) ed_db_field_check(x, NULL)))]
-
+  if(!all(sapply(downloaded_tables, function(x) ed_db_field_check(x, temp_sql_path())))){
+    downloaded_tables <- downloaded_tables[which(sapply(downloaded_tables, function(x) ed_db_field_check(x, temp_sql_path())))]
   }
+
   if(verbose) {
       if(length(downloaded_tables) == length(c(p1_dls, p2_dls))){
       message("All database tables have successfully downloaded!")
@@ -236,8 +236,8 @@ ed_db_download <- function(p1_tables = endpoints, p2_tables = finished_endpoints
                    name="status", row.names = FALSE)
     }
     file.remove(temp_sql_path())
-    message(ed_db_presence(), ed_db_status_msg(ed_db_make_status_msg()))
-    message(ed_db_check_status())
+    cat(ed_db_presence(), ed_db_status_msg(ed_db_make_status_msg()))
+    cat(ed_db_check_status())
   return(invisible(0))
   }
 
