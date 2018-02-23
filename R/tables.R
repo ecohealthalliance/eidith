@@ -89,6 +89,11 @@ ed_table_ <- function(table, ..., .dots) {
 ed_tb
 }
 
+
+
+
+# Add mention of attributes on pull call
+
 #'@importFrom stringr str_detect
 #'@importFrom cli cat_line
 #'@importFrom crayon cyan magenta

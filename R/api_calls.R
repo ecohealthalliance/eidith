@@ -103,10 +103,8 @@ Contact technology@eidith.org.")
                      error = function(e){
                        cat_line(red(paste0("Error: There are unexpected fields in the ", endpoint, " download. Please contact technology@eidith.org.\n")))
                        return(invisible(NULL))
-                     },  warning = function(w){
-                       cat_line(red(paste0("Warning: There are unexpected fields in the ", endpoint, " download. Please contact technology@eidith.org.\n")))
-                       return(invisible(NULL))
                      })
+
 }
 
   return(data)
