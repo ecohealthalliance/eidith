@@ -191,7 +191,8 @@ ed2_get <- function(endpoint2, postprocess=TRUE, verbose=interactive(),
   return(invisible(0))
         },  warning = function(w){
   cat_line(red(paste0("Warning: There are unexpected fields in the ", endpoint2, " download. Please contact technology@eidith.org.")))
-  return(invisible(0))
+  cat_line(w)
+          return(invisible(0))
 })
 
 }
