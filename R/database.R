@@ -198,7 +198,7 @@ ed_db_download <- function(p1_tables = endpoints, p2_tables = finished_endpoints
 
   downloaded_tables <- unlist(c(p1_dls, p2_dls))
   if(!(all(downloaded_tables %in% db_list_tables(eidith_db(temp_sql_path())$con)))) {
-    downloaded_tables <- downloaded_tables[which(downloaded_tables %in% db_list_tables(eidith_db(temp_sql_path()$con)))]
+    downloaded_tables <- downloaded_tables[which(downloaded_tables %in% db_list_tables(eidith_db(temp_sql_path())$con))]
   }
 
   if(!all(sapply(downloaded_tables, function(x) ed_db_field_check(x, temp_sql_path())))){
