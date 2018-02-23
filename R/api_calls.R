@@ -16,6 +16,18 @@ metadata_endpoints <- c("Event", "Animal", "Specimen", "AnimalProduction", "Crop
 endpoints <- c("Event", "Animal", "Specimen", "Test", "Virus",
                "TestIDSpecimenID")
 
+
+create_empty_p2_table(e2){
+  meta <- ed2_metadata()
+  headers <- filter(meta, endpoint2 == e2, replacement_name %in% "DROP" == FALSE) %>%
+    mutate(new_name = ifelse(is.na(replacement_name), auto_processed_name, replacement_name)) %>%
+    pull(new_name)
+  df <- data.frame(matrix(ncol = length(headers), nrow = 0))
+  names(df) <- headers
+  return(df)
+}
+
+
 #' Functions to download EIDITH tables via API
 #'
 #' These functions download data directly from the EIDITH API.  They require
@@ -164,10 +176,10 @@ ed2_get <- function(endpoint2, postprocess=TRUE, verbose=interactive(),
     data <- as_tibble(data)
   }
 
-  # if(nrow(data) == 0){
-  #   message((paste0("Download for the ", endpoint2, " table failed. Please contact technology@eidith.org")))
-  #   return(invisible(0))
-  # }
+  if(nrow(data) == 0){
+    data <- create_empty_p2_table(endpoint2)
+    return(data)
+  }
 
   if("ExceptionMessage" %in% names(data)){
     cat_line(red(paste0("Download for the ", endpoint2, " table failed. Please contact technology@eidith.org")))
@@ -189,7 +201,16 @@ ed2_get <- function(endpoint2, postprocess=TRUE, verbose=interactive(),
   #if(postprocess) data <- ed2_process(data, endpoint2)
 
   return(data)
-  }
+}
+
+
+
+
+
+
+
+
+
 
 #' @rdname ed_get
 #' @export
