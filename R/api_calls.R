@@ -17,7 +17,7 @@ endpoints <- c("Event", "Animal", "Specimen", "Test", "Virus",
                "TestIDSpecimenID")
 
 
-create_empty_p2_table(e2){
+create_empty_p2_table <- function(e2){
   meta <- ed2_metadata()
   headers <- filter(meta, endpoint2 == e2, replacement_name %in% "DROP" == FALSE) %>%
     mutate(new_name = ifelse(is.na(replacement_name), auto_processed_name, replacement_name)) %>%
