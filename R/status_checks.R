@@ -275,7 +275,12 @@ print.dbstatus <- function(x,...) {
   cat(ed_db_status_msg(ed_db_make_status_msg()))
 }
 
-
+#'@export
+ed_detailed_db_status <- function() {
+  cat(ed_db_presence())
+  cat(ed_create_banner())
+  cat(ed_db_status_msg(ed_db_make_status_msg()))
+}
 
 
 
