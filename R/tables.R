@@ -64,7 +64,9 @@ ed_table_ <- function(table, ..., .dots) {
     ed_tb <- dbReadTable(eidith_db()$con, table)
     #adding notes
     note_cols <- which(stri_detect_fixed(names(ed_tb), "notes"))
-    attr(ed_tb, "notes") <- note_cols
+    filled_notes <- sapply(note_cols, function(x) all(!is.na(ed_tb[,x])))
+    msg_notes <- note_cols[filled_notes]
+    if(length(msg_notes > 0)) attr(ed_tb, "notes") <- msg_notes
     #adding duplicate rows
     intended_key <- db_other_indexes[[table]][[1]]
     group_var <- as.name(intended_key)
@@ -74,25 +76,13 @@ ed_table_ <- function(table, ..., .dots) {
       filter(count > 1) %>%
       dplyr::pull(!!group_var)
     attr(ed_tb, "duplicate_keys") <- key_errors
-    indices <- which(ed_tb[[intended_key]] == key_errors)
+    indices <- which(ed_tb[[intended_key]] %in% key_errors)
     attr(ed_tb, "duplicate_indices") <- indices
     class(ed_tb) <- c("eidith_tbl", class(ed_tb))
 
     #print details on local database pull"
     if(interactive()){
-    if(length(note_cols > 0)){
-      cat_line("")
-      cat_line(cyan("There are notes attached to this dataframe which may contain important information! Please look at the following column(s):"))
-      cat_line(paste("    ", magenta(names(ed_tb)[note_cols])))
-    }
-    if(length(key_errors > 0)){
-      cat_line("")
-      cat_line(red("IMPORTANT: There are multiple rows with duplicate unique ID's in this table!"))
-      cat_line(black("              The duplicate IDs are:"))
-      cat_line(paste("                  ", red(duplicate_keys)))
-      cat_line(black("              This affects the following rows:"))
-      cat_line(paste("                  ", red(duplicate_indices)))
-    }
+    print(ed_tb, tibble_print = FALSE)
   }
   }else{
     ed_tb <- tbl(eidith_db(), table)
@@ -114,9 +104,9 @@ ed_tb
 #'@importFrom crayon cyan magenta
 #'@importFrom tibble as.tibble
 #'@export
-print.eidith_tbl <- function(x,...){
+print.eidith_tbl <- function(x, tibble_print = TRUE, ...){
+  if(tibble_print) print(as.tibble(unclass(x)), ...)
   note_cols <- attributes(x)$notes
-  print(as.tibble(unclass(x)))
   if(length(note_cols > 0)){
     cat_line("")
     cat_line(cyan("There are notes attached to this dataframe which may contain important information! Please look at the following column(s):"))
@@ -126,10 +116,10 @@ print.eidith_tbl <- function(x,...){
   duplicate_indices <- attributes(x)$duplicate_indices
   if(length(duplicate_keys > 0)){
     cat_line("")
-    cat_line(red("IMPORTANT: There are multiple rows with duplicate unique ID's in this table!"))
+    cat_line(red(paste0("IMPORTANT: There are ", length(duplicate_indices)," rows with duplicate unique ID's in this table!")))
     cat_line(black("              The duplicate IDs are:"))
     cat_line(paste("                  ", red(duplicate_keys)))
-    cat_line(black("              This affects the following rows:"))
+    cat_line(black(paste0("              This affects the following ", length(duplicate_indices)," rows:")))
     cat_line(paste("                  ", red(duplicate_indices)))
   }
 }
