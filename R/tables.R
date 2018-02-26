@@ -76,9 +76,24 @@ ed_table_ <- function(table, ..., .dots) {
     attr(ed_tb, "duplicate_keys") <- key_errors
     indices <- which(ed_tb[[intended_key]] == key_errors)
     attr(ed_tb, "duplicate_indices") <- indices
-
     class(ed_tb) <- c("eidith_tbl", class(ed_tb))
 
+    #print details on local database pull"
+    if(interactive()){
+    if(length(note_cols > 0)){
+      cat_line("")
+      cat_line(cyan("There are notes attached to this dataframe which may contain important information! Please look at the following column(s):"))
+      cat_line(paste("    ", magenta(names(ed_tb)[note_cols])))
+    }
+    if(length(key_errors > 0)){
+      cat_line("")
+      cat_line(red("IMPORTANT: There are multiple rows with duplicate unique ID's in this table!"))
+      cat_line(black("              The duplicate IDs are:"))
+      cat_line(paste("                  ", red(duplicate_keys)))
+      cat_line(black("              This affects the following rows:"))
+      cat_line(paste("                  ", red(duplicate_indices)))
+    }
+  }
   }else{
     ed_tb <- tbl(eidith_db(), table)
     ed_tb %>%

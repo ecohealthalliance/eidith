@@ -52,7 +52,7 @@ ed_db_check_status <- function(path=NULL) {
   if(!(all(c(db_tables, db2_tables) %in% db_list_tables(edb$con)))) {
     #find out which tables are missing and then ask the user if they wish to download them?
     missing_p1_tables <- db_tables[which(db_tables %in% db_list_tables(edb$con) == FALSE)]
-    missing_p2_tables <- metadata_tables[which(metadata_tables %in% db_list_tables(edb$con) == FALSE)]
+    missing_p2_tables <- db2_tables[which(db2_tables %in% db_list_tables(edb$con) == FALSE)]
     dl_p1_tables <- names(purrr::keep(p1_table_names, function(x) x %in% missing_p1_tables))
     dl_p2_tables <- names(purrr::keep(p2_table_names, function(x) x %in% missing_p2_tables))
 
