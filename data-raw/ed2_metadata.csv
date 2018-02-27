@@ -868,41 +868,41 @@ test_data_serology_2,TestDataSerology,NA,ConfirmationResultInterpretation,confir
 test_data_serology_2,TestDataSerology,NA,TestStatus,test_status,NA,Status of testing / interpretation.,NA,NA
 test_data_serology_2,TestDataSerology,NA,Notes,notes,NA,Laboratory notes for the initial test.,NA,NA
 test_data_serology_2,TestDataSerology,NA,ConfirmationNotes,confirmation_notes,NA,Laboratory notes for the confirmation test.,NA,NA
-human_zoo_2,HumanZoo,NA,Country,Country,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,SiteName,SiteName,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,District,District,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,StateProv,StateProv,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,SiteLatitudeUnrounded,SiteLatitudeUnrounded,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,SiteLongitudeUnrounded,SiteLongitudeUnrounded,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,EventLatitudeUnrounded,EventLatitudeUnrounded,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,EventLongitudeUnrounded,EventLongitudeUnrounded,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,EventDate,EventDate,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,DurationDays,DurationDays,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,EventName,EventName,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,DiseaseTransmissionInterfaces,DiseaseTransmissionInterfaces,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,InterfacesAnimalsSampled,InterfacesAnimalsSampled,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,InterfacesHumansSampled,InterfacesHumansSampled,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,ParticipantID,ParticipantID,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,Livelihood(s),Livelihood(s),NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,MostTimeSpent,MostTimeSpent,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,Q1 LiveOnSite,Q1 LiveOnSite,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,Q2 #WorkAtSite,Q2 #WorkAtSite,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,Q3 HowLongWorked,Q3 HowLongWorked,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,Q4 AnimalsWorkWith,Q4 AnimalsWorkWith,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,Q5 PPEUsed,Q5 PPEUsed,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,Q6 PPEquipment,Q6 PPEquipment,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,Q7 WhenPPEUsed,Q7 WhenPPEUsed,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,Q8 UseDisinfectantToClean,Q8 UseDisinfectantToClean,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,Q9 DisinfectantsUsedFor,Q9 DisinfectantsUsedFor,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,Q10 AnimalEnclosuresCleanedFrequency,Q10 AnimalEnclosuresCleanedFrequency,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,Q11 DesignatedAreaForAnimalWaste,Q11 DesignatedAreaForAnimalWaste,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,Q12 DesignatedAreaForAnimalWasteUsed,Q12 DesignatedAreaForAnimalWasteUsed,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,Q13 QuarantinePeriodNewAnimals,Q13 QuarantinePeriodNewAnimals,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,Q14 PreventativeMedProgram,Q14 PreventativeMedProgram,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,Q15 AnimalsRaidFood,Q15 AnimalsRaidFood,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,Q16 WhichAnimalsRaidFood,Q16 WhichAnimalsRaidFood,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,Q17 RaidingPrevention,Q17 RaidingPrevention,NA,NA,NA,NA
-human_zoo_2,HumanZoo,NA,notes,notes,NA,NA,NA,NA
+human_zoo_2,HumanZoo,NA,Country,country,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,District,district,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,SiteLatitudeUnrounded,site_latitude,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,SiteLongitudeUnrounded,site_longitude,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,EventLatitudeUnrounded,event_latitude,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,EventLongitudeUnrounded,event_longitude,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+human_zoo_2,HumanZoo,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,ParticipantID,participant_id,NA,Interview participant's unique identifier.,NA,NA
+human_zoo_2,HumanZoo,NA,Livelihood(s),livelihoods,DROP,Human-level information.,NA,NA
+human_zoo_2,HumanZoo,NA,MostTimeSpent,most_time_spent,DROP,Human-level information.,NA,NA
+human_zoo_2,HumanZoo,NA,Q1 LiveOnSite,live_on_site,NA,Do you live on site?,yes/no,Q1
+human_zoo_2,HumanZoo,NA,Q2 #WorkAtSite,work_at_site,NA,"To the best of your knowledge, how many people work at this site?",5-cat var,Q2
+human_zoo_2,HumanZoo,NA,Q3 HowLongWorked,how_long_worked,NA,How long have you worked here?,4-cat var,Q3
+human_zoo_2,HumanZoo,NA,Q4 AnimalsWorkWith,animals_work_with,NA,What species do you work with? Select all that apply.,semicolon-separated,Q4
+human_zoo_2,HumanZoo,NA,Q5 PPEUsed,ppe_used,NA,"Do you have special protective equipment (Example: shoes, masks, gloves) only worn at work?",yes/no,Q5
+human_zoo_2,HumanZoo,NA,Q6 PPEquipment,pp_equipment,which_ppe,"If you have special work protective equipment, which kind? Select all that apply.",semicolon-separated,Q6
+human_zoo_2,HumanZoo,NA,Q7 WhenPPEUsed,when_ppe_used,NA,When do you use protective equipment? Select all that apply.,semicolon-separated,Q7
+human_zoo_2,HumanZoo,NA,Q8 UseDisinfectantToClean,use_disinfectant_to_clean,NA,Do you always use disinfectant to clean?,yes/no,Q8
+human_zoo_2,HumanZoo,NA,Q9 DisinfectantsUsedFor,disinfectants_used_for,NA,"If you always use disinfectants, do you always use disinfectants to clean the following: Select all that apply",semicolon-separated,Q9
+human_zoo_2,HumanZoo,NA,Q10 AnimalEnclosuresCleanedFrequency,animal_enclosures_cleaned_frequency,NA,How often are the animal enclosures cleaned?,5-cat var,Q10
+human_zoo_2,HumanZoo,NA,Q11 DesignatedAreaForAnimalWaste,designated_area_for_animal_waste,NA,Is there a designated area for the disposal of animal waste?,yes/no,Q11
+human_zoo_2,HumanZoo,NA,Q12 DesignatedAreaForAnimalWasteUsed,designated_area_for_animal_waste_used,NA,"If there is a disposal area, do people use the dedicated area for animal waste?","yes/no/""N/A""",Q12
+human_zoo_2,HumanZoo,NA,Q13 QuarantinePeriodNewAnimals,quarantine_period_new_animals,NA,Is there a quarantine period for new animals?,yes/no,Q13
+human_zoo_2,HumanZoo,NA,Q14 PreventativeMedProgram,preventative_med_program,NA,Is there a preventative medicine program for the animals?,yes/no,Q14
+human_zoo_2,HumanZoo,NA,Q15 AnimalsRaidFood,animals_raid_food,NA,Do any animals raid or destroy food supplies?,yes/no,Q15
+human_zoo_2,HumanZoo,NA,Q16 WhichAnimalsRaidFood,which_animals_raid_food,NA,"If animals raid food, which animals? Select all that apply",semicolon-separated,Q16
+human_zoo_2,HumanZoo,NA,Q17 RaidingPrevention,raiding_prevention,NA,What is done to stop animals from raiding or destroying food supplies? Select all that apply,semicolon-separated,Q17
+human_zoo_2,HumanZoo,NA,notes,human_zoo_notes,NA,Human Zoo interview notes,NA,NA
 human_temporary_settlements_2,HumanTemporarySettlements,NA,Country,Country,NA,NA,NA,NA
 human_temporary_settlements_2,HumanTemporarySettlements,NA,SiteName,SiteName,NA,NA,NA,NA
 human_temporary_settlements_2,HumanTemporarySettlements,NA,District,District,NA,NA,NA,NA
@@ -1149,27 +1149,27 @@ human_market_2,HumanMarket,NA,Q24 AnimalsDestroyed,Q24 AnimalsDestroyed,NA,NA,NA
 human_market_2,HumanMarket,NA,Q25 WhichAnimalsDestroyed,Q25 WhichAnimalsDestroyed,NA,NA,NA,NA
 human_market_2,HumanMarket,NA,Q26 RaidingPrevention,Q26 RaidingPrevention,NA,NA,NA,NA
 human_market_2,HumanMarket,NA,Notes,Notes,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,Country,Country,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,SiteName,SiteName,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,District,District,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,StateProv,StateProv,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,SiteLatitudeUnrounded,SiteLatitudeUnrounded,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,SiteLongitudeUnrounded,SiteLongitudeUnrounded,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,EventLatitudeUnrounded,EventLatitudeUnrounded,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,EventLongitudeUnrounded,EventLongitudeUnrounded,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,EventDate,EventDate,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,DurationDays,DurationDays,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,EventName,EventName,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,DiseaseTransmissionInterfaces,DiseaseTransmissionInterfaces,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,InterfacesAnimalsSampled,InterfacesAnimalsSampled,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,InterfacesHumansSampled,InterfacesHumansSampled,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,ParticipantID,ParticipantID,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,Livelihood(s),Livelihood(s),NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,MostTimeSpent,MostTimeSpent,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,Q1 HealthActivities,Q1 HealthActivities,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,Q2 PPEUsed,Q2 PPEUsed,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,Q3 WhichPPE,Q3 WhichPPE,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,Q4 WhenPPEUsed,Q4 WhenPPEUsed,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,Q5 PPECleaned,Q5 PPECleaned,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,Q6 UseDisinfectantToClean,Q6 UseDisinfectantToClean,NA,NA,NA,NA
-human_hospital_worker_2,HumanHospitalWorker,NA,Notes,Notes,NA,NA,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,Country,country,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,District,district,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,SiteLatitudeUnrounded,site_latitude,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,SiteLongitudeUnrounded,site_longitude,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,EventLatitudeUnrounded,event_latitude,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,EventLongitudeUnrounded,event_longitude,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,ParticipantID,participant_id,NA,Interview participant's unique identifier.,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,Livelihood(s),livelihoods,DROP,Human-level information.,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,MostTimeSpent,most_time_spent,DROP,Human-level information.,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,Q1 HealthActivities,health_activities,NA,What are your human health activities?,data entered as numbers,Q1
+human_hospital_worker_2,HumanHospitalWorker,NA,Q2 PPEUsed,ppe_used,NA,"Do you have special protective equipment (Example: shoes, masks, gloves) only worn at work?",yes/no,Q2
+human_hospital_worker_2,HumanHospitalWorker,NA,Q3 WhichPPE,which_ppe,NA,"If you have special work protective equipment, which kind? Select all that apply.",semicolon-separated 5-cat var,Q3
+human_hospital_worker_2,HumanHospitalWorker,NA,Q4 WhenPPEUsed,when_ppe_used,NA,Is the protective equipment used every time you examine or collect specimens from a patient?,yes/no,Q4
+human_hospital_worker_2,HumanHospitalWorker,NA,Q5 PPECleaned,ppe_cleaned,NA,"Is the protective equipment cleaned, sterilized, or discarded after each use?",yes/no,Q5
+human_hospital_worker_2,HumanHospitalWorker,NA,Q6 UseDisinfectantToClean,use_disinfectant_to_clean,NA,Do you always use disinfectant to clean equipment and hospital areas?,yes/no,Q6
+human_hospital_worker_2,HumanHospitalWorker,NA,Notes,human_hospital_notes,NA,Notes from the Human Hospital interview,NA,NA

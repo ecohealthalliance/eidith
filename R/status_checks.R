@@ -100,7 +100,7 @@ ed_db_presence <- function(){
     if(interactive()){
     p_opt <- menu(c("Yes", "No"), title = "Would you like to download EIDITH database?")
     if(p_opt == 1){
-      ed_db_download(p2_tables = finished_endpoints2)
+      ed_db_download()
     }
     }
   }else{
