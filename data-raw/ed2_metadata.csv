@@ -728,9 +728,9 @@ human_animal_production_2,HumanAnimalProduction,NA,Q8 WhoPaysGrowCrops,who_pays_
 human_animal_production_2,HumanAnimalProduction,NA,Q9 BushMeatOnsite,bush_meat_on_site,meat_on_site,Is there meat available for consumption?,yes/no,Q9
 human_animal_production_2,HumanAnimalProduction,NA,Q10 MeatSource,meat_source,NA,"If there is meat available, where does the meat come from? Select all that apply.",semicolon-separated 6-cat var,Q10
 human_animal_production_2,HumanAnimalProduction,NA,Q11 ConsumeBushMeatOnSite,consume_bush_meat_on_site,NA,Is it possible to consume bushmeat/wild animal meat on or near the site?,yes/no,Q11
-human_animal_production_2,HumanAnimalProduction,NA,Q12 PPEUsed,ppe_used,NA,"Do you have special protective equipment (Example: shoes, masks, gloves) only worn at work?",yes/no,Q12
-human_animal_production_2,HumanAnimalProduction,NA,Q13 WhichPPE,which_ppe,NA,"If you have special work protective equipment, which kind? Select all that apply.",semicolon-separated 5-cat var,Q13
-human_animal_production_2,HumanAnimalProduction,NA,Q14 WhenPPEUsed,when_ppe_used,NA,When do you use protective equipment?,semicolon-separated,Q14
+human_animal_production_2,HumanAnimalProduction,NA,Q12 PPEUsed,ppe_used,animal_production_ppe_used,"Do you have special protective equipment (Example: shoes, masks, gloves) only worn at work?",yes/no,Q12
+human_animal_production_2,HumanAnimalProduction,NA,Q13 WhichPPE,which_ppe,animal_production_which_ppe,"If you have special work protective equipment, which kind? Select all that apply.",semicolon-separated 5-cat var,Q13
+human_animal_production_2,HumanAnimalProduction,NA,Q14 WhenPPEUsed,when_ppe_used,animal_production_when_ppe_used,When do you use protective equipment?,semicolon-separated,Q14
 human_animal_production_2,HumanAnimalProduction,NA,Q15 UseDisinfectantToClean,use_disinfectant_to_clean,NA,Do you always use disinfectant to clean?,yes/no,Q15
 human_animal_production_2,HumanAnimalProduction,NA,Q16 DisinfectantsUsedFor,disinfectants_used_for,NA,"If you always use disinfectants, do you always use disinfectants to clean the following: Select all that apply",semiciolon-separated 7-cat var,Q16
 human_animal_production_2,HumanAnimalProduction,NA,Q17 AnimalEnclosuresCleanedFrequency,animal_enclosures_cleaned_frequency,NA,How often are the animal enclosures cleaned?,5-cat var,Q17
@@ -756,7 +756,7 @@ human_animal_production_2,HumanAnimalProduction,NA,Q27 CamelsOutbreakDeaths,came
 human_animal_production_2,HumanAnimalProduction,NA,Q27 SwineOutbreakDeaths,swine_outbreak_deaths,NA,"If there has been an outbreak in this taxa in the last year, indicate the percentage that died during the outbreak).",NA,Q27
 human_animal_production_2,HumanAnimalProduction,NA,Q27 CattleOutbreakDeaths,cattle_outbreak_deaths,NA,"If there has been an outbreak in this taxa in the last year, indicate the percentage that died during the outbreak).",NA,Q27
 human_animal_production_2,HumanAnimalProduction,NA,Q27 HorsesOutbreakDeaths,horses_outbreak_deaths,NA,"If there has been an outbreak in this taxa in the last year, indicate the percentage that died during the outbreak).",NA,Q27
-human_animal_production_2,HumanAnimalProduction,NA,Q27 DogsOutbreakDeaths,dogs_outbkreak_deaths,NA,"If there has been an outbreak in this taxa in the last year, indicate the percentage that died during the outbreak).",NA,Q27
+human_animal_production_2,HumanAnimalProduction,NA,Q27 DogsOutbreakDeaths,dogs_outbreak_deaths,NA,"If there has been an outbreak in this taxa in the last year, indicate the percentage that died during the outbreak).",NA,Q27
 human_animal_production_2,HumanAnimalProduction,NA,Q27 CatsOutbreakDeaths,cats_outbreak_deaths,NA,"If there has been an outbreak in this taxa in the last year, indicate the percentage that died during the outbreak).",NA,Q27
 human_animal_production_2,HumanAnimalProduction,NA,Q28 AnimalsRaidFood,animals_raid_food,NA,Do any animals raid or destroy food supplies,yes/no,Q28
 human_animal_production_2,HumanAnimalProduction,NA,Q29 WhichAnimalsRaidFood,which_animals_raid_food,NA,"If animals raid food, which animals? Select all that apply",semicolon-separated 14-cat var,Q29
@@ -1000,74 +1000,74 @@ human_extractive_industry_2,HumanExtractiveIndustry,NA,Q13 AnimalsRaidFood,Q13 A
 human_extractive_industry_2,HumanExtractiveIndustry,NA,Q14 WhichAnimalsRaidFood,Q14 WhichAnimalsRaidFood,NA,NA,NA,NA
 human_extractive_industry_2,HumanExtractiveIndustry,NA,Q15 RaidingPrevention,Q15 RaidingPrevention,NA,NA,NA,NA
 human_extractive_industry_2,HumanExtractiveIndustry,NA,Notes,Notes,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,Country,Country,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,SiteName,SiteName,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,District,District,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,StateProv,StateProv,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,SiteLatitudeUnrounded,SiteLatitudeUnrounded,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,SiteLongitudeUnrounded,SiteLongitudeUnrounded,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,EventLatitudeUnrounded,EventLatitudeUnrounded,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,EventLongitudeUnrounded,EventLongitudeUnrounded,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,EventDate,EventDate,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,DurationDays,DurationDays,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,EventName,EventName,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,DiseaseTransmissionInterfaces,DiseaseTransmissionInterfaces,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,InterfacesAnimalsSampled,InterfacesAnimalsSampled,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,InterfacesHumansSampled,InterfacesHumansSampled,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,ParticipantID,ParticipantID,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,Livelihood(s),Livelihood(s),NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,MostTimeSpent,MostTimeSpent,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,Q1 AnimalsHunted,Q1 AnimalsHunted,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,Q2 MethodsUsedToHuntTrap,Q2 MethodsUsedToHuntTrap,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,Q3 RodentsHuntTrapPurpose,Q3 RodentsHuntTrapPurpose,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,Q3 BatsHuntTrapPurpose,Q3 BatsHuntTrapPurpose,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,Q3 NHPHuntTrapPurpose,Q3 NHPHuntTrapPurpose,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,Q3 BirdsHuntTrapPurpose,Q3 BirdsHuntTrapPurpose,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,Q3 CarnivoresHuntTrapPurpose,Q3 CarnivoresHuntTrapPurpose,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,Q3 UngulatesHuntTrapPurpose,Q3 UngulatesHuntTrapPurpose,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,Q3 PangolinsHuntTrapPurpose,Q3 PangolinsHuntTrapPurpose,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,Q4 ExposedToBloodLastYear,Q4 ExposedToBloodLastYear,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,Q5 ScratchedBittenLastYear,Q5 ScratchedBittenLastYear,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,Q6 OutbreakLastYear,Q6 OutbreakLastYear,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,Q7 OutbreakDeaths,Q7 OutbreakDeaths,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,Q8 ActionWhenDeadAnimalFound,Q8 ActionWhenDeadAnimalFound,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,Q9 TransportDeadAnimal,Q9 TransportDeadAnimal,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,Q10 PPEUsed,Q10 PPEUsed,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,Q11 WhichPPE,Q11 WhichPPE,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,Q12 WhenPPEUsed,Q12 WhenPPEUsed,NA,NA,NA,NA
-human_hunter_2,HumanHunter,NA,Notes,Notes,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,Country,Country,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,SiteName,SiteName,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,District,District,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,StateProv,StateProv,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,SiteLatitudeUnrounded,SiteLatitudeUnrounded,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,SiteLongitudeUnrounded,SiteLongitudeUnrounded,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,EventLatitudeUnrounded,EventLatitudeUnrounded,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,EventLongitudeUnrounded,EventLongitudeUnrounded,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,EventDate,EventDate,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,DurationDays,DurationDays,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,EventName,EventName,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,DiseaseTransmissionInterfaces,DiseaseTransmissionInterfaces,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,InterfacesAnimalsSampled,InterfacesAnimalsSampled,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,InterfacesHumansSampled,InterfacesHumansSampled,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,ParticipantID,ParticipantID,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,Livelihood(s),Livelihood(s),NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,MostTimeSpent,MostTimeSpent,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,Q1 Diagnosis,Q1 Diagnosis,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,Q2 DateHospitalization,Q2 DateHospitalization,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,Q3 CountOfSpecimensCollected,Q3 CountOfSpecimensCollected,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,Q4 AntiviralUsed,Q4 AntiviralUsed,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,Q5 WhichAntivirals,Q5 WhichAntivirals,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,Q6 BodyTemp,Q6 BodyTemp,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,Q7 DaysWithFever,Q7 DaysWithFever,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,Q8 DateSymptomOnset,Q8 DateSymptomOnset,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,Q9 Symptoms,Q9 Symptoms,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,Q10 ChronicSymptoms,Q10 ChronicSymptoms,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,Q11 PregnancyStatus,Q11 PregnancyStatus,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,Q12 MonthsPregnant,Q12 MonthsPregnant,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,Q13 OthersWithSymptoms,Q13 OthersWithSymptoms,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,Q14 WhichSymptoms,Q14 WhichSymptoms,NA,NA,NA,NA
-human_sick_person_2,HumanSickPerson,NA,Q15 NbrLabTestResults,Q15 NbrLabTestResults,NA,NA,NA,NA
+human_hunter_2,HumanHunter,NA,Country,country,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,District,district,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,SiteLatitudeUnrounded,site_latitude,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,SiteLongitudeUnrounded,site_longitude,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,EventLatitudeUnrounded,event_latitude,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,EventLongitudeUnrounded,event_longitude,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+human_hunter_2,HumanHunter,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,ParticipantID,participant_id,NA,Interview participant's unique identifier.,NA,NA
+human_hunter_2,HumanHunter,NA,Livelihood(s),livelihoods,DROP,Human-level information.,NA,NA
+human_hunter_2,HumanHunter,NA,MostTimeSpent,most_time_spent,DROP,Human-level information.,NA,NA
+human_hunter_2,HumanHunter,NA,Q1 AnimalsHunted,animals_hunted,NA,What animals have you hunted since this time last year? Select all that apply.,semicolon-separated 8-cat var,Q1
+human_hunter_2,HumanHunter,NA,Q2 MethodsUsedToHuntTrap,methods_used_to_hunt_trap,NA,"Since this time last year, what methods have you used to hunt/trap animals? Select all that apply.",semicolon-separated,Q2
+human_hunter_2,HumanHunter,NA,Q3 RodentsHuntTrapPurpose,rodents_hunt_trap_purpose,NA,What is the purpose of your trapping or hunting this taxa? Select all that apply.,semicolon-separated 7-cat var,Q3
+human_hunter_2,HumanHunter,NA,Q3 BatsHuntTrapPurpose,bats_hunt_trap_purpose,NA,What is the purpose of your trapping or hunting this taxa? Select all that apply.,semicolon-separated 7-cat var,Q3
+human_hunter_2,HumanHunter,NA,Q3 NHPHuntTrapPurpose,nhp_hunt_trap_purpose,NA,What is the purpose of your trapping or hunting this taxa? Select all that apply.,semicolon-separated 7-cat var,Q3
+human_hunter_2,HumanHunter,NA,Q3 BirdsHuntTrapPurpose,birds_hunt_trap_purpose,NA,What is the purpose of your trapping or hunting this taxa? Select all that apply.,semicolon-separated 7-cat var,Q3
+human_hunter_2,HumanHunter,NA,Q3 CarnivoresHuntTrapPurpose,carnivores_hunt_trap_purpose,NA,What is the purpose of your trapping or hunting this taxa? Select all that apply.,semicolon-separated 7-cat var,Q3
+human_hunter_2,HumanHunter,NA,Q3 UngulatesHuntTrapPurpose,ungulates_hunt_trap_purpose,NA,What is the purpose of your trapping or hunting this taxa? Select all that apply.,semicolon-separated 7-cat var,Q3
+human_hunter_2,HumanHunter,NA,Q3 PangolinsHuntTrapPurpose,pangolins_hunt_trap_purpose,NA,What is the purpose of your trapping or hunting this taxa? Select all that apply.,semicolon-separated 7-cat var,Q3
+human_hunter_2,HumanHunter,NA,Q4 ExposedToBloodLastYear,exposed_to_blood_last_year,NA,"Since this time last year, when you hunt or trap: Are you exposed to blood?",yes/no,Q4
+human_hunter_2,HumanHunter,NA,Q5 ScratchedBittenLastYear,scratched_bitten_last_year,NA,"Since this time last year, when you hunt or trap: Have you been scratched or bitten?",yes/no,Q5
+human_hunter_2,HumanHunter,NA,Q6 OutbreakLastYear,outbreak_last_year,NA,"Since this time last year, have you seen an outbreak of dead wild animals?",yes/no,Q6
+human_hunter_2,HumanHunter,NA,Q7 OutbreakDeaths,outbreak_deaths,NA,"If you have seen an outbreak of dead wild animals since this time last year, which wild animals? Select all that apply.",semicolon-separated 7-cat var,Q7
+human_hunter_2,HumanHunter,NA,Q8 ActionWhenDeadAnimalFound,action_when_dead_animal_found,NA,What do you do when you find an animal dead (not in a trap or shot by another hunter)? Select all that apply.,semicolon-separated,Q8
+human_hunter_2,HumanHunter,NA,Q9 TransportDeadAnimal,transport_dead_animal,NA,"How do you transport a dead animal, if you take it? Select all that apply.",semicolon-separated,Q9
+human_hunter_2,HumanHunter,NA,Q10 PPEUsed,ppe_used,hunter_ppe_used,"Do you have special protective equipment (Example: shoes, masks, gloves)?",yes/no,Q10
+human_hunter_2,HumanHunter,NA,Q11 WhichPPE,which_ppe,hunter_which_ppe,"If you have special PPE, which protective equipment? Select all that apply.",semicolon-separated 5-cat var,Q11
+human_hunter_2,HumanHunter,NA,Q12 WhenPPEUsed,when_ppe_used,hunter_when_ppe_used,When do you use protective equipment? Select all that apply.,semicolon-separated,Q12
+human_hunter_2,HumanHunter,NA,Notes,notes,hunter_notes,Notes on Human Hunter interview.,NA,NA
+human_sick_person_2,HumanSickPerson,NA,Country,country,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,District,district,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,SiteLatitudeUnrounded,site_latitude,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,SiteLongitudeUnrounded,site_longitude,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,EventLatitudeUnrounded,event_latitude,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,EventLongitudeUnrounded,event_longitude,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+human_sick_person_2,HumanSickPerson,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,ParticipantID,participant_id,NA,Interview participant's unique identifier.,NA,NA
+human_sick_person_2,HumanSickPerson,NA,Livelihood(s),livelihoods,DROP,Human-level information.,NA,NA
+human_sick_person_2,HumanSickPerson,NA,MostTimeSpent,most_time_spent,DROP,Human-level information.,NA,NA
+human_sick_person_2,HumanSickPerson,NA,Q1 Diagnosis,diagnosis,NA,Clinical Diagnosis as determined by a physician or health care provider (from medical record if available),write-in field,Q1
+human_sick_person_2,HumanSickPerson,NA,Q2 DateHospitalization,date_hospitalization,NA,Date of hospitalization for present illness (if applicable),date,Q2
+human_sick_person_2,HumanSickPerson,NA,Q3 CountOfSpecimensCollected,count_of_specimens_collected,NA,Count of specimens collected for this participant.,NA,Q3
+human_sick_person_2,HumanSickPerson,NA,Q4 AntiviralUsed,antiviral_used,NA,Antiviral use for present illness at the time of specimen collection?,yes/no,Q4
+human_sick_person_2,HumanSickPerson,NA,Q5 WhichAntivirals,which_antivirals,NA,"If antiviral used, which medication?",write-in field,Q5
+human_sick_person_2,HumanSickPerson,NA,Q6 BodyTemp,body_temp,NA,Body temperature at the time of sampling (celsius) (In the clinical setting only),NA,Q6
+human_sick_person_2,HumanSickPerson,NA,Q7 DaysWithFever,days_with_fever,NA,For how many days have you had a fever?,NA,Q7
+human_sick_person_2,HumanSickPerson,NA,Q8 DateSymptomOnset,date_symptom_onset,NA,Date of symptom onset,NA,Q8
+human_sick_person_2,HumanSickPerson,NA,Q9 Symptoms,symptoms,NA,Signs and symptoms of present illness. Select all that apply.,NA,Q9
+human_sick_person_2,HumanSickPerson,NA,Q10 ChronicSymptoms,chronic_symptoms,NA,Presence of chronic pre-existing medical illnesses: Select all that apply,NA,Q10
+human_sick_person_2,HumanSickPerson,NA,Q11 PregnancyStatus,pregnancy_status,NA,Pregnancy status,yes/no/don't know,Q11
+human_sick_person_2,HumanSickPerson,NA,Q12 MonthsPregnant,months_pregnant,NA,"If yes, how many months pregnant",NA,Q12
+human_sick_person_2,HumanSickPerson,NA,Q13 OthersWithSymptoms,others_with_symptoms,NA,Other symptom in family member of member of household?,yes/no,Q13
+human_sick_person_2,HumanSickPerson,NA,Q14 WhichSymptoms,which_symptoms,NA,"If other symptom in family member or member of household, whom an what symptom?",symptom(family member),Q14
+human_sick_person_2,HumanSickPerson,NA,Q15 NbrLabTestResults,nbr_lab_test_results,NA,Number of lab test results,NA,Q15
 human_restaurant_2,HumanRestaurant,NA,Country,Country,NA,NA,NA,NA
 human_restaurant_2,HumanRestaurant,NA,SiteName,SiteName,NA,NA,NA,NA
 human_restaurant_2,HumanRestaurant,NA,District,District,NA,NA,NA,NA

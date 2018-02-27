@@ -95,8 +95,8 @@ ed_db_presence <- function(){
   edb <- eidith_db()
   status <- "status" %in% dbListTables(edb$con)
   if(status == FALSE){
-    cat(cli::rule(crayon::bold("Welcome to the EIDITH R Package!")))
-    cat(red("There is no local EIDITH database, please follow the prompts or use ed_db_download() to download EIDITH data.\n"))
+    cat_line(cli::rule(crayon::bold("Welcome to the EIDITH R Package!")))
+    cat_line(red("There is no local EIDITH database, please follow the prompts or use ed_db_download() to download EIDITH data.\n"))
     if(interactive()){
     p_opt <- menu(c("Yes", "No"), title = "Would you like to download EIDITH database?")
     if(p_opt == 1){
