@@ -903,38 +903,38 @@ human_zoo_2,HumanZoo,NA,Q15 AnimalsRaidFood,animals_raid_food,NA,Do any animals 
 human_zoo_2,HumanZoo,NA,Q16 WhichAnimalsRaidFood,which_animals_raid_food,NA,"If animals raid food, which animals? Select all that apply",semicolon-separated,Q16
 human_zoo_2,HumanZoo,NA,Q17 RaidingPrevention,raiding_prevention,NA,What is done to stop animals from raiding or destroying food supplies? Select all that apply,semicolon-separated,Q17
 human_zoo_2,HumanZoo,NA,notes,human_zoo_notes,NA,Human Zoo interview notes,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,Country,Country,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,SiteName,SiteName,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,District,District,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,StateProv,StateProv,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,SiteLatitudeUnrounded,SiteLatitudeUnrounded,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,SiteLongitudeUnrounded,SiteLongitudeUnrounded,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,EventLatitudeUnrounded,EventLatitudeUnrounded,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,EventLongitudeUnrounded,EventLongitudeUnrounded,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,EventDate,EventDate,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,DurationDays,DurationDays,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,EventName,EventName,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,DiseaseTransmissionInterfaces,DiseaseTransmissionInterfaces,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,InterfacesAnimalsSampled,InterfacesAnimalsSampled,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,InterfacesHumansSampled,InterfacesHumansSampled,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,ParticipantID,ParticipantID,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,Livelihood(s),Livelihood(s),NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,MostTimeSpent,MostTimeSpent,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,Q1 Nationality,Q1 Nationality,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,Q2 LengthLived,Q2 LengthLived,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,Q3 #LiveAtSite,Q3 #LiveAtSite,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,Q4 AllPeopleFromCountry,Q4 AllPeopleFromCountry,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,Q5 ReasonForSettlement,Q5 ReasonForSettlement,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,Q6 OnSiteFoodProduction,Q6 OnSiteFoodProduction,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,Q7 MeatOnsite,Q7 MeatOnsite,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,Q8 MeatSource,Q8 MeatSource,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,Q9 BushMeatOnSite,Q9 BushMeatOnSite,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,Q10 AnimalsConsume,Q10 AnimalsConsume,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,Q11 DesignatedAreaForRubbish,Q11 DesignatedAreaForRubbish,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,Q12 DesignatedAreaForRubbishUsed,Q12 DesignatedAreaForRubbishUsed,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,Q13 AnimalsRaidFood,Q13 AnimalsRaidFood,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,Q14 WhichAnimalsRaidFood,Q14 WhichAnimalsRaidFood,NA,NA,NA,NA
-human_temporary_settlements_2,HumanTemporarySettlements,NA,Q15 RaidingPrevention,Q15 RaidingPrevention,NA,NA,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Country,country,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,District,district,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,SiteLatitudeUnrounded,site_latitude,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,SiteLongitudeUnrounded,site_longitude,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,EventLatitudeUnrounded,event_latitude,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,EventLongitudeUnrounded,event_longitude,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,ParticipantID,participant_id,NA,Interview participant's unique identifier.,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Livelihood(s),livelihoods,DROP,Human-level information.,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,MostTimeSpent,most_time_spent,DROP,Human-level information.,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q1 Nationality,nationality,NA,What is your nationality?,NA,Q1
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q2 LengthLived,length_lived,NA,How long have you lived at this settlement?,6-cat var,Q2
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q3 #LiveAtSite,live_at_site,NA,"To the best of your knowledge, how many people live at this site?",5-cat var,Q3
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q4 AllPeopleFromCountry,all_people_from_country,NA,Are all the people living here from this country?,yes/no,Q4
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q5 ReasonForSettlement,reason_for_settlement,NA,Why did you settle here? Select all that apply.,semicolon-separated 6-cat var,Q5
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q6 OnSiteFoodProduction,on_site_food_production,NA,Is there on-site food production?,yes/no,Q6
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q7 MeatOnsite,meat_on_site,NA,Is there meat available for consumption?,yes/no,Q7
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q8 MeatSource,meat_source,NA,"If there is meat available, where does the meat come from? Select all that apply.",semicolon-separated 6-cat var,Q8
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q9 BushMeatOnSite,bush_meat_on_site,NA,Note: This question has been removed from survey.,NA,Q9
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q10 AnimalsConsume,animals_consume,NA,Which animals are available for consumption? Select all that apply.,semicolon-separated 14-cat var,Q10
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q11 DesignatedAreaForRubbish,designated_area_for_rubbish,NA,"Is there a designated area for rubbish, including animal waste from slaughter/butcher and animal excrement?",yes/no,Q11
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q12 DesignatedAreaForRubbishUsed,designated_area_for_rubbish_used,NA,"If there is a designated area for rubbish, do people use it?","yes/no/""N/A""",Q12
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q13 AnimalsRaidFood,animals_raid_food,NA,Do any animals raid food supplies or destroy crops?,yes/no,Q13
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q14 WhichAnimalsRaidFood,which_animals_raid_food,NA,"If animals raid food supplies or crops, which animals? Select all that apply.",semicolon-separated 14-cat var,Q14
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q15 RaidingPrevention,raiding_prevention,NA,What is done to stop animals from raiding or destroying food supplies? Select all that apply,semicolon-separated 11-cat var,Q15
 human_crop_production_2,HumanCropProduction,NA,Country,Country,NA,NA,NA,NA
 human_crop_production_2,HumanCropProduction,NA,SiteName,SiteName,NA,NA,NA,NA
 human_crop_production_2,HumanCropProduction,NA,District,District,NA,NA,NA,NA
@@ -1032,7 +1032,7 @@ human_hunter_2,HumanHunter,NA,Q6 OutbreakLastYear,outbreak_last_year,NA,"Since t
 human_hunter_2,HumanHunter,NA,Q7 OutbreakDeaths,outbreak_deaths,NA,"If you have seen an outbreak of dead wild animals since this time last year, which wild animals? Select all that apply.",semicolon-separated 7-cat var,Q7
 human_hunter_2,HumanHunter,NA,Q8 ActionWhenDeadAnimalFound,action_when_dead_animal_found,NA,What do you do when you find an animal dead (not in a trap or shot by another hunter)? Select all that apply.,semicolon-separated,Q8
 human_hunter_2,HumanHunter,NA,Q9 TransportDeadAnimal,transport_dead_animal,NA,"How do you transport a dead animal, if you take it? Select all that apply.",semicolon-separated,Q9
-human_hunter_2,HumanHunter,NA,Q10 PPEUsed,ppe_used,hunter_ppe_used,"Do you have special protective equipment (Example: shoes, masks, gloves)?",yes/no,Q10
+human_hunter_2,HumanHunter,NA,Q10 PPEUsed,ppe_used,hunter_ppe_used,NA,yes/no,Q10
 human_hunter_2,HumanHunter,NA,Q11 WhichPPE,which_ppe,hunter_which_ppe,"If you have special PPE, which protective equipment? Select all that apply.",semicolon-separated 5-cat var,Q11
 human_hunter_2,HumanHunter,NA,Q12 WhenPPEUsed,when_ppe_used,hunter_when_ppe_used,When do you use protective equipment? Select all that apply.,semicolon-separated,Q12
 human_hunter_2,HumanHunter,NA,Notes,notes,hunter_notes,Notes on Human Hunter interview.,NA,NA
@@ -1068,43 +1068,43 @@ human_sick_person_2,HumanSickPerson,NA,Q12 MonthsPregnant,months_pregnant,NA,"If
 human_sick_person_2,HumanSickPerson,NA,Q13 OthersWithSymptoms,others_with_symptoms,NA,Other symptom in family member of member of household?,yes/no,Q13
 human_sick_person_2,HumanSickPerson,NA,Q14 WhichSymptoms,which_symptoms,NA,"If other symptom in family member or member of household, whom an what symptom?",symptom(family member),Q14
 human_sick_person_2,HumanSickPerson,NA,Q15 NbrLabTestResults,nbr_lab_test_results,NA,Number of lab test results,NA,Q15
-human_restaurant_2,HumanRestaurant,NA,Country,Country,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,SiteName,SiteName,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,District,District,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,StateProv,StateProv,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,SiteLatitudeUnrounded,SiteLatitudeUnrounded,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,SiteLongitudeUnrounded,SiteLongitudeUnrounded,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,EventLatitudeUnrounded,EventLatitudeUnrounded,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,EventLongitudeUnrounded,EventLongitudeUnrounded,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,EventDate,EventDate,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,DurationDays,DurationDays,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,EventName,EventName,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,DiseaseTransmissionInterfaces,DiseaseTransmissionInterfaces,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,InterfacesAnimalsSampled,InterfacesAnimalsSampled,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,InterfacesHumansSampled,InterfacesHumansSampled,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,ParticipantID,ParticipantID,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,Livelihood(s),Livelihood(s),NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,MostTimeSpent,MostTimeSpent,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,Q1 LiveOnSite,Q1 LiveOnSite,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,Q2 #WorkAtSite,Q2 #WorkAtSite,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,Q3 HowLongWorked,Q3 HowLongWorked,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,Q4 AnimalsOnMenu,Q4 AnimalsOnMenu,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,Q5 LiveAnimalsOnSite,Q5 LiveAnimalsOnSite,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,Q6 AnimalSource,Q6 AnimalSource,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,Q7 AnimalsToRestaurant,Q7 AnimalsToRestaurant,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,Q8 LiveAnimalsStoredNight,Q8 LiveAnimalsStoredNight,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,Q9 AnimalsSlaughted,Q9 AnimalsSlaughted,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,Q10 PPEUsed,Q10 PPEUsed,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,Q11 PPEquipment,Q11 PPEquipment,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,Q12 WhenPPEUsed,Q12 WhenPPEUsed,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,Q13 UseDisinfectantToClean,Q13 UseDisinfectantToClean,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,Q14 DisinfectantsUsedFor,Q14 DisinfectantsUsedFor,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,Q15 DesignatedAreaRubbish,Q15 DesignatedAreaRubbish,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,Q16 DesignatedAreaForRubbishUsed,Q16 DesignatedAreaForRubbishUsed,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,Q17 AnimalsRaidFood,Q17 AnimalsRaidFood,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,Q18 WhichAnimalsRaidFood,Q18 WhichAnimalsRaidFood,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,Q19 RaidingPrevention,Q19 RaidingPrevention,NA,NA,NA,NA
-human_restaurant_2,HumanRestaurant,NA,Notes,Notes,NA,NA,NA,NA
+human_restaurant_2,HumanRestaurant,NA,Country,country,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,District,district,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,SiteLatitudeUnrounded,site_latitude,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,SiteLongitudeUnrounded,site_longitude,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,EventLatitudeUnrounded,event_latitude,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,EventLongitudeUnrounded,event_longitude,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+human_restaurant_2,HumanRestaurant,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,ParticipantID,participant_id,NA,Interview participant's unique identifier.,NA,NA
+human_restaurant_2,HumanRestaurant,NA,Livelihood(s),livelihoods,DROP,Human-level information.,NA,NA
+human_restaurant_2,HumanRestaurant,NA,MostTimeSpent,most_time_spent,DROP,Human-level information.,NA,NA
+human_restaurant_2,HumanRestaurant,NA,Q1 LiveOnSite,live_on_site,NA,Do you live on site?,yes/no,Q1
+human_restaurant_2,HumanRestaurant,NA,Q2 #WorkAtSite,work_at_site,NA,"To the best of your knowledge, how many people work at this site?",5-cat var,Q2
+human_restaurant_2,HumanRestaurant,NA,Q3 HowLongWorked,how_long_worked,NA,How long have you worked here? Select one option.,4-cat var,Q3
+human_restaurant_2,HumanRestaurant,NA,Q4 AnimalsOnMenu,animals_on_menu,NA,What wild animals are on the menu today? Select all that apply.,semicolon-separated,Q4
+human_restaurant_2,HumanRestaurant,NA,Q5 LiveAnimalsOnSite,live_animals_on_site,NA,"Since this time last year, have you had live animals on site?",yes/no,Q5
+human_restaurant_2,HumanRestaurant,NA,Q6 AnimalSource,animal_source,NA,"If there have been live animals on site, where do they come from? Select all that apply.",semicolon-separated,Q6
+human_restaurant_2,HumanRestaurant,NA,Q7 AnimalsToRestaurant,animals_to_restaurant,NA,How do the live animals get to the restaurant? Select all that apply.,semicolon-separated,Q7
+human_restaurant_2,HumanRestaurant,NA,Q8 LiveAnimalsStoredNight,live_animals_stored_night,NA,How are live animals stored at night? Select all that apply.,3-cat var,Q8
+human_restaurant_2,HumanRestaurant,NA,Q9 AnimalsSlaughted,animals_slaughted,NA,Are live animals slaughtered at the restaurant?,yes/no,Q9
+human_restaurant_2,HumanRestaurant,NA,Q10 PPEUsed,ppe_used,NA,"Do you have special protective equipment (Example: shoes, masks, gloves) only worn at work?",yes/no,Q10
+human_restaurant_2,HumanRestaurant,NA,Q11 PPEquipment,pp_equipment,NA,"If you have special work protective equipment, which kind? Select all that apply.",semicolon-separated 5-cat var,Q11
+human_restaurant_2,HumanRestaurant,NA,Q12 WhenPPEUsed,when_ppe_used,NA,When do you use protective equipment?,semicolon-separated,Q12
+human_restaurant_2,HumanRestaurant,NA,Q13 UseDisinfectantToClean,use_disinfectant_to_clean,NA,Do you always use disinfectant to clean?,yes/no,Q13
+human_restaurant_2,HumanRestaurant,NA,Q14 DisinfectantsUsedFor,disinfectants_used_for,NA,"If you always use disinfectants, do you always use disinfectants to clean the following: Select all that apply",semiciolon-separated 7-cat var,Q14
+human_restaurant_2,HumanRestaurant,NA,Q15 DesignatedAreaRubbish,designated_area_rubbish,NA,"Is there a designated area for rubbish, including animal waste from slaughter/butcher and animal excrement?",yes/no,Q15
+human_restaurant_2,HumanRestaurant,NA,Q16 DesignatedAreaForRubbishUsed,designated_area_for_rubbish_used,NA,"If there is a designated area for rubbish, do people use it?","yes/no/""N/A""",Q16
+human_restaurant_2,HumanRestaurant,NA,Q17 AnimalsRaidFood,animals_raid_food,NA,Do any animals raid food or destroy supplies?,yes/no,Q17
+human_restaurant_2,HumanRestaurant,NA,Q18 WhichAnimalsRaidFood,which_animals_raid_food,NA,"If animals raid food or destroy supplies, which animals? Select all that apply.",semicolon-separated 14-cat var,Q18
+human_restaurant_2,HumanRestaurant,NA,Q19 RaidingPrevention,raiding_prevention,NA,What is done to stop animals from raiding or destroying food supplies? Select all that apply.,semicolon-separated 11-cat var,Q19
+human_restaurant_2,HumanRestaurant,NA,Notes,notes,human_restaurant_notes,Notes from the Human Restaurant interview.,NA,NA
 human_market_2,HumanMarket,NA,Country,Country,NA,NA,NA,NA
 human_market_2,HumanMarket,NA,SiteName,SiteName,NA,NA,NA,NA
 human_market_2,HumanMarket,NA,District,District,NA,NA,NA,NA
