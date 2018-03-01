@@ -149,8 +149,14 @@ ed2_process <- function(dat, endpt) {
     used %>% filter_( ~ !is.na(original_name)) %>% `$`("new_name")
   #
   # # General cleanups
-  # dat <- map_if(dat, is.character, ~ na_if(stri_trim_both(.), ""))
-  # dat <-
+  dat <- map_dfc(dat, function(x){
+    if(is.character(x)){
+      return(stri_trim_both(x))
+    }
+  })
+
+
+    # dat <-
   #   map_if(dat, ~ all(. %in% c("yes", "no", NA_character_)),  ~ . == "yes")
   # dat <- as_data_frame(dat)
   #
