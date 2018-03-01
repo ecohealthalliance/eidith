@@ -13,7 +13,7 @@ metadata_tables <- c("events_2", "animals_2", "specimens_2", "animal_production_
                      "dwellings_2", "human_2", "market_value_chain_2", "natural_areas_2", "zoo_sanctuary_2",
                      "wildlife_restaurant_2", "tests_2", "test_data_interpreted_2", "test_data_serology_2",
                      "human_animal_production_2", "extractive_industry_2", "human_hunter_2", "human_sick_person_2",
-                     "human_zoo_2", "human_hospital_worker_2")
+                     "human_zoo_2", "human_hospital_worker_2", "human_restaurant_2", "human_temporary_settlements_2")
 
 p1_table_names <- list(
   Event = "events",
@@ -115,9 +115,9 @@ db_other_indexes <- list(
   human_hospital_worker_2 = list("participant_id"),
   human_hunter_2 = list("participant_id"),
   human_market_2 = list("ParticipantID"),
-  human_restaurant_2 = list("ParticipantID"),
+  human_restaurant_2 = list("participant_id"),
   human_sick_person_2 = list("participant_id"),
-  human_temporary_settlements_2 = list("ParticipantID"),
+  human_temporary_settlements_2 = list("participant_id"),
   human_zoo_2 = list("participant_id")
 )
 

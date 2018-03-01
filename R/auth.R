@@ -11,14 +11,22 @@
 #' variables.
 #'
 #' To cache your credentials across multiple R sessions, save them in your
-#' personal `.Renviron` file by running the following code in your R console
-#' (replacing `YOUR_USERNAME` and `YOUR_PASSWORD` with actual values).
+#' personal `.Renviron` file. You can also use the `usethis` package to easily access
+#' and edit your `.Renviron` file:
 #'
 #' ```
-#' cat("EIDITH_USERNAME=YOUR_USERNAME\nEIDITH_PASSWORD=YOUR_PASSWORD",
-#'     file = file.path(normalizePath("~/"), ".Renviron"), append = TRUE)
+#' install.packages("usethis")`
+#' usethis::edit_r_environ()
 #' ```
-#' Restart R, and you will be automatically logged in to download data from EIDITH
+#'
+#' This should open up your `.Renviron` file in a new tab, and you add the lines:
+#'
+#' ```
+#' EIDITH_USERNAME=your_username
+#' EIDITH_PASSWORD=your_password
+#' ```
+#'
+#' Save this file, restart R, and you will be automatically logged in to download data from EIDITH
 #' when working on this computer.
 #'
 #' @rdname ed_auth
