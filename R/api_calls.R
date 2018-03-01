@@ -188,7 +188,8 @@ ed2_get <- function(endpoint2, postprocess=TRUE, verbose=interactive(),
    data <- tryCatch(ed2_process(data, endpoint2),
       error = function(e){
   cat_line(red(paste0("Error: There are unexpected fields in the ", endpoint2, " download. Please contact technology@eidith.org.")))
-  return(invisible(0))
+  cat_line(e)
+        return(invisible(0))
         },  warning = function(w){
   cat_line(red(paste0("Warning: There are unexpected fields in the ", endpoint2, " download. Please contact technology@eidith.org.")))
   cat_line(w)
