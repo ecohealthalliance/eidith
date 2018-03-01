@@ -64,9 +64,11 @@ ed_table_ <- function(table, ..., .dots) {
     ed_tb <- dbReadTable(eidith_db()$con, table)
     #adding notes
     note_cols <- which(stri_detect_fixed(names(ed_tb), "notes"))
-    filled_notes <- sapply(note_cols, function(x) all(!is.na(ed_tb[,x])))
-    msg_notes <- note_cols[filled_notes]
-    if(length(msg_notes > 0)) attr(ed_tb, "notes") <- msg_notes
+    if(length(note_cols > 0)){
+      filled_notes <- sapply(note_cols, function(x) all(!is.na(ed_tb[,x])))
+      msg_notes <- note_cols[filled_notes]
+      if(length(msg_notes > 0)) attr(ed_tb, "notes") <- msg_notes
+    }
     #adding duplicate rows
     intended_key <- db_other_indexes[[table]][[1]]
     group_var <- as.name(intended_key)
@@ -123,11 +125,6 @@ print.eidith_tbl <- function(x, tibble_print = TRUE, ...){
     cat_line(paste("                  ", red(duplicate_indices)))
   }
 }
-
-
-
-
-
 
 
 fix_classes <- function(table) {
