@@ -935,38 +935,38 @@ human_temporary_settlements_2,HumanTemporarySettlements,NA,Q12 DesignatedAreaFor
 human_temporary_settlements_2,HumanTemporarySettlements,NA,Q13 AnimalsRaidFood,animals_raid_food,NA,Do any animals raid food supplies or destroy crops?,yes/no,Q13
 human_temporary_settlements_2,HumanTemporarySettlements,NA,Q14 WhichAnimalsRaidFood,which_animals_raid_food,NA,"If animals raid food supplies or crops, which animals? Select all that apply.",semicolon-separated 14-cat var,Q14
 human_temporary_settlements_2,HumanTemporarySettlements,NA,Q15 RaidingPrevention,raiding_prevention,NA,What is done to stop animals from raiding or destroying food supplies? Select all that apply,semicolon-separated 11-cat var,Q15
-human_crop_production_2,HumanCropProduction,NA,Country,Country,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,SiteName,SiteName,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,District,District,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,StateProv,StateProv,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,SiteLatitudeUnrounded,SiteLatitudeUnrounded,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,SiteLongitudeUnrounded,SiteLongitudeUnrounded,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,EventLatitudeUnrounded,EventLatitudeUnrounded,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,EventLongitudeUnrounded,EventLongitudeUnrounded,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,EventDate,EventDate,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,DurationDays,DurationDays,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,EventName,EventName,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,DiseaseTransmissionInterfaces,DiseaseTransmissionInterfaces,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,InterfacesAnimalsSampled,InterfacesAnimalsSampled,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,InterfacesHumansSampled,InterfacesHumansSampled,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,ParticipantID,ParticipantID,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,Livelihood(s),Livelihood(s),NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,MostTimeSpent,MostTimeSpent,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,Q1 LiveOnSite,Q1 LiveOnSite,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,Q2 #WorkAtSite,Q2 #WorkAtSite,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,Q3 HowLongWorked,Q3 HowLongWorked,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,Q4 CropsAtSite,Q4 CropsAtSite,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,Q5 ManureFertilizersUsed,Q5 ManureFertilizersUsed,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,Q6 TypesOfFertilizers,Q6 TypesOfFertilizers,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,Q7 MeatOnsite,Q7 MeatOnsite,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,Q8 MeatSource,Q8 MeatSource,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,Q9 BushMeatOnSite,Q9 BushMeatOnSite,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,Q10 DesignatedAreaForRubbish,Q10 DesignatedAreaForRubbish,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,Q11 DesignatedAreaForRubbishUsed,Q11 DesignatedAreaForRubbishUsed,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,Q12 AnimalsRaidFood,Q12 AnimalsRaidFood,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,Q13 WhichAnimalsRaidFood,Q13 WhichAnimalsRaidFood,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,Q14 RaidingPrevention,Q14 RaidingPrevention,NA,NA,NA,NA
-human_crop_production_2,HumanCropProduction,NA,Notes,Notes,NA,NA,NA,NA
+human_crop_production_2,HumanCropProduction,NA,Country,country,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,District,district,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,SiteLatitudeUnrounded,site_latitude,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,SiteLongitudeUnrounded,site_longitude,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,EventLatitudeUnrounded,event_latitude,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,EventLongitudeUnrounded,event_longitude,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+human_crop_production_2,HumanCropProduction,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,ParticipantID,participant_id,NA,Interview participant's unique identifier.,NA,NA
+human_crop_production_2,HumanCropProduction,NA,Livelihood(s),livelihoods,DROP,Human-level information.,NA,NA
+human_crop_production_2,HumanCropProduction,NA,MostTimeSpent,most_time_spent,DROP,Human-level information.,NA,NA
+human_crop_production_2,HumanCropProduction,NA,Q1 LiveOnSite,live_on_site,NA,Do you live on the work site?,yes/no,Q1
+human_crop_production_2,HumanCropProduction,NA,Q2 #WorkAtSite,work_at_site,NA,"To the best of your knowledge, how many people work at this site?",5-cat var,Q2
+human_crop_production_2,HumanCropProduction,NA,Q3 HowLongWorked,how_long_worked,NA,How long have you worked at the site?,4-cat var,Q3
+human_crop_production_2,HumanCropProduction,NA,Q4 CropsAtSite,crops_at_site,NA,Which crops are at the site? Select all that apply?,semicolon-separated 13-cat var,Q4
+human_crop_production_2,HumanCropProduction,NA,Q5 ManureFertilizersUsed,manure_fertilizers_used,NA,"Does the farm use manure, guano or night soil to fertilize the crops?",yes/no,Q5
+human_crop_production_2,HumanCropProduction,NA,Q6 TypesOfFertilizers,types_of_fertilizers,NA,"If they use fertilizer, which types? Select all that apply.",semicolon-separated 7-cat var,Q6
+human_crop_production_2,HumanCropProduction,NA,Q7 MeatOnsite,meat_on_site,NA,Is there meat available for consumption?,yes/no,Q7
+human_crop_production_2,HumanCropProduction,NA,Q8 MeatSource,meat_source,NA,"If there is meat available, where does the meat come from? Select all that apply.",semicolon-separated 6-cat var,Q8
+human_crop_production_2,HumanCropProduction,NA,Q9 BushMeatOnSite,bush_meat_on_site,NA,Is it possible to consume bushmeat/wild meat on or near the site?,yes/no,Q9
+human_crop_production_2,HumanCropProduction,NA,Q10 DesignatedAreaForRubbish,designated_area_for_rubbish,NA,"Is there a designated area for rubbish, including animal waste from slaughter/butcher and animal excrement?",yes/no,Q10
+human_crop_production_2,HumanCropProduction,NA,Q11 DesignatedAreaForRubbishUsed,designated_area_for_rubbish_used,NA,"If there is a designated area for rubbish, do people use it?","yes/no/""N/A""",Q11
+human_crop_production_2,HumanCropProduction,NA,Q12 AnimalsRaidFood,animals_raid_food,NA,Do any animals raid food supplies or destroy crops?,yes/no,Q12
+human_crop_production_2,HumanCropProduction,NA,Q13 WhichAnimalsRaidFood,which_animals_raid_food,NA,"If animals raid food supplies or crops, which animals? Select all that apply.",semicolon-separated 14-cat var,Q13
+human_crop_production_2,HumanCropProduction,NA,Q14 RaidingPrevention,raiding_prevention,NA,What is done to stop animals from raiding or destroying food supplies? Select all that apply,semicolon-separated 11-cat var,Q14
+human_crop_production_2,HumanCropProduction,NA,Notes,human_crop_production_notes,NA,Human Crop Production interview notes.,NA,NA
 human_extractive_industry_2,HumanExtractiveIndustry,NA,Country,Country,NA,NA,NA,NA
 human_extractive_industry_2,HumanExtractiveIndustry,NA,SiteName,SiteName,NA,NA,NA,NA
 human_extractive_industry_2,HumanExtractiveIndustry,NA,District,District,NA,NA,NA,NA
