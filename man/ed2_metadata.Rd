@@ -2,7 +2,7 @@
 % Please edit documentation in R/metadata.R
 \name{ed2_metadata}
 \alias{ed2_metadata}
-\title{EIDITH PREDICT-1 table metadata}
+\title{EIDITH PREDICT-2 table metadata}
 \usage{
 ed2_metadata()
 }

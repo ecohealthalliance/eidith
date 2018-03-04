@@ -34,7 +34,7 @@ ed_metadata <- function() {
 }
 
 
-#' EIDITH PREDICT-1 table metadata
+#' EIDITH PREDICT-2 table metadata
 #'
 #' Descriptions of fields in the EIDITH database.  Running `ed2_metadata()` will
 #' return a data frame with this information.

@@ -27,7 +27,7 @@
 #' than the names of the tables stored locally (which are lowercase and plural).
 #' @importFrom dplyr na_if as_data_frame rename_ %>% mutate_ select_ if_else data_frame arrange_ full_join
 #' @importFrom stringi stri_trim_both
-#' @importFrom purrr map_if
+#' @importFrom purrr map_if map_dfc
 ed_process <- function(dat, endpt) {
   emd <- filter_(ed_metadata(), ~ endpoint == endpt) %>%
     mutate_(new_name = ~ if_else(
