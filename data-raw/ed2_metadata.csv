@@ -50,6 +50,7 @@ events_2,Event,NA,IsDeepForest,is_deep_forest,NA,Uses deep forest protocols,yes/
 events_2,Event,NA,Notes,notes,event_notes,Notes,NA,NA
 animals_2,Animal,NA,Country,country,DROP,Event-level information,NA,NA
 animals_2,Animal,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+animals_2,Animal,NA,ConcurrentSamplingSite,concurrent_sampling_site,DROP,Event-level information,NA,NA
 animals_2,Animal,NA,District,district,DROP,Event-level information,NA,NA
 animals_2,Animal,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
 animals_2,Animal,NA,SiteLatitudeUnrounded,site_latitude_unrounded,DROP,Event-level information,NA,NA
@@ -107,6 +108,7 @@ animals_2,Animal,NA,RodentOtherBodyLength,rodent_other_body_length,NA,NA,NA,NA
 animals_2,Animal,NA,RodentOtherWeight,rodent_other_weight,NA,NA,NA,NA
 specimens_2,Specimen,NA,Country,country,DROP,Event-level information,NA,NA
 specimens_2,Specimen,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+specimens_2,Specimen,NA,ConcurrentSamplingSite,concurrent_sampling_site,DROP,Event-level information,NA,NA
 specimens_2,Specimen,NA,District,district,DROP,Event-level information,NA,NA
 specimens_2,Specimen,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
 specimens_2,Specimen,NA,SiteLatitudeUnrounded,site_latitude_unrounded,DROP,Event-level information,NA,NA
@@ -764,6 +766,7 @@ human_animal_production_2,HumanAnimalProduction,NA,Q30 RaidingPrevention,raiding
 human_animal_production_2,HumanAnimalProduction,NA,notes,notes,human_animal_production_notes,Notes from human animal production interview,NA,NA
 tests_2,Test,NA,Country,country,DROP,Event-level information,NA,NA
 tests_2,Test,NA,TestBatchName,test_batch_name,NA,"Test batch name is an inconsistent combination of event name, specimen type, and other fields (date or storage method).",NA,NA
+tests_2,Test,NA,ConcurrentSamplingSite,concurrent_sampling_site,DROP,Event-level information,NA,NA
 tests_2,Test,NA,IsOutbreakTesting,is_outbreak_testing,NA,"Whether the test is part of a response to an outbreak, rather than regular PREDICT surveillance efforts.",NA,NA
 tests_2,Test,NA,TestID,test_id,NA,Unique numeric identifier for identifying a test.,NA,NA
 tests_2,Test,NA,TestName,test_name,NA,"This is a non-unique combination of specimen ID, test requested, and test protocol.",NA,NA
@@ -967,39 +970,39 @@ human_crop_production_2,HumanCropProduction,NA,Q12 AnimalsRaidFood,animals_raid_
 human_crop_production_2,HumanCropProduction,NA,Q13 WhichAnimalsRaidFood,which_animals_raid_food,NA,"If animals raid food supplies or crops, which animals? Select all that apply.",semicolon-separated 14-cat var,Q13
 human_crop_production_2,HumanCropProduction,NA,Q14 RaidingPrevention,raiding_prevention,NA,What is done to stop animals from raiding or destroying food supplies? Select all that apply,semicolon-separated 11-cat var,Q14
 human_crop_production_2,HumanCropProduction,NA,Notes,human_crop_production_notes,NA,Human Crop Production interview notes.,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,Country,Country,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,SiteName,SiteName,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,District,District,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,StateProv,StateProv,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,SiteLatitudeUnrounded,SiteLatitudeUnrounded,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,SiteLongitudeUnrounded,SiteLongitudeUnrounded,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,EventLatitudeUnrounded,EventLatitudeUnrounded,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,EventLongitudeUnrounded,EventLongitudeUnrounded,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,EventDate,EventDate,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,DurationDays,DurationDays,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,EventName,EventName,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,DiseaseTransmissionInterfaces,DiseaseTransmissionInterfaces,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,InterfacesAnimalsSampled,InterfacesAnimalsSampled,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,InterfacesHumansSampled,InterfacesHumansSampled,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,ParticipantID,ParticipantID,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,Livelihood(s),Livelihood(s),NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,MostTimeSpent,MostTimeSpent,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,Q1 TypeOfWorkConducted,Q1 TypeOfWorkConducted,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,Q2 ProductsExtracted,Q2 ProductsExtracted,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,Q3 LiveOnSite,Q3 LiveOnSite,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,Q4 #WorkAtSite,Q4 #WorkAtSite,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,Q5 HowLongWorked,Q5 HowLongWorked,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,Q6 OnSiteFoodProduction,Q6 OnSiteFoodProduction,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,Q7 WhoPaysGrowCrops,Q7 WhoPaysGrowCrops,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,Q8 BushMeatOnsite,Q8 BushMeatOnsite,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,Q9 MeatSource,Q9 MeatSource,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,Q10 BushMeatOnSite,Q10 BushMeatOnSite,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,Q11 DesignatedAreaForRubbish,Q11 DesignatedAreaForRubbish,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,Q12 DesignatedAreaForRubbishUsed,Q12 DesignatedAreaForRubbishUsed,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,Q13 AnimalsRaidFood,Q13 AnimalsRaidFood,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,Q14 WhichAnimalsRaidFood,Q14 WhichAnimalsRaidFood,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,Q15 RaidingPrevention,Q15 RaidingPrevention,NA,NA,NA,NA
-human_extractive_industry_2,HumanExtractiveIndustry,NA,Notes,Notes,NA,NA,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Country,country,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,District,district,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,SiteLatitudeUnrounded,site_latitude,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,SiteLongitudeUnrounded,site_longitude,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,EventLatitudeUnrounded,event_latitude,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,EventLongitudeUnrounded,event_longitude,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,ParticipantID,participant_id,NA,Interview participant's unique identifier.,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Livelihood(s),livelihoods,DROP,Human-level information.,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,MostTimeSpent,most_time_spent,DROP,Human-level information.,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q1 TypeOfWorkConducted,type_of_work_conducted,NA,What type of work or industry is conducted here? Select one option.,NA,Q1
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q2 ProductsExtracted,products_extracted,NA,What products are extracted? Select one option.,NA,Q2
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q3 LiveOnSite,live_on_site,NA,Do you live on the work site?,yes/no,Q3
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q4 #WorkAtSite,work_at_site,NA,"To the best of your knowledge, how many people work at this site?",5-cat var,Q4
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q5 HowLongWorked,how_long_worked,NA,How long have you worked at this site?,4-cat var,Q5
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q6 OnSiteFoodProduction,on_site_food_production,NA,Is there on-site food production?,yes/no,Q6
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q7 WhoPaysGrowCrops,who_pays_grow_crops,NA,"If there is on-site food production, who pays for the cost to grow the food crops?","""the company""/""the workers""",Q7
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q8 BushMeatOnsite,bush_meat_on_site,meat_on_site,Is there meat available for consumption?,yes/no,Q8
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q9 MeatSource,meat_source,NA,"If there is meat available, where does the meat come from? Select all that apply.",semicolon-separated,Q9
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q10 BushMeatOnSite,bush_meat_on_site,NA,Is it possible to consume bushmeat/wild meat on or near the site?,yes/no,Q10
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q11 DesignatedAreaForRubbish,designated_area_for_rubbish,NA,"Is there a designated area for rubbish, including animal waste from slaughter/butcher and animal excrement?",yes/no,Q11
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q12 DesignatedAreaForRubbishUsed,designated_area_for_rubbish_used,NA,"If there is a designated area for rubbish, do people use it?","yes/no/""N/A""",Q12
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q13 AnimalsRaidFood,animals_raid_food,NA,Do any animals raid food supplies or destroy crops?,yes/no,Q13
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q14 WhichAnimalsRaidFood,which_animals_raid_food,NA,"If animals raid food supplies or crops, which animals? Select all that apply.",semicolon-separated 14-cat var,Q14
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q15 RaidingPrevention,raiding_prevention,NA,What is done to stop animals from raiding or destroying food supplies? Select all that apply,semicolon-separated 11-cat var,Q15
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Notes,human_extractive_notes,NA,Notes from Human Extractive Industry interview,NA,NA
 human_hunter_2,HumanHunter,NA,Country,country,DROP,Event-level information,NA,NA
 human_hunter_2,HumanHunter,NA,SiteName,site_name,DROP,Event-level information,NA,NA
 human_hunter_2,HumanHunter,NA,District,district,DROP,Event-level information,NA,NA
@@ -1105,50 +1108,50 @@ human_restaurant_2,HumanRestaurant,NA,Q17 AnimalsRaidFood,animals_raid_food,NA,D
 human_restaurant_2,HumanRestaurant,NA,Q18 WhichAnimalsRaidFood,which_animals_raid_food,NA,"If animals raid food or destroy supplies, which animals? Select all that apply.",semicolon-separated 14-cat var,Q18
 human_restaurant_2,HumanRestaurant,NA,Q19 RaidingPrevention,raiding_prevention,NA,What is done to stop animals from raiding or destroying food supplies? Select all that apply.,semicolon-separated 11-cat var,Q19
 human_restaurant_2,HumanRestaurant,NA,Notes,notes,human_restaurant_notes,Notes from the Human Restaurant interview.,NA,NA
-human_market_2,HumanMarket,NA,Country,Country,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,SiteName,SiteName,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,District,District,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,StateProv,StateProv,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,SiteLatitudeUnrounded,SiteLatitudeUnrounded,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,SiteLongitudeUnrounded,SiteLongitudeUnrounded,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,EventLatitudeUnrounded,EventLatitudeUnrounded,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,EventLongitudeUnrounded,EventLongitudeUnrounded,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,EventDate,EventDate,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,DurationDays,DurationDays,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,EventName,EventName,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,DiseaseTransmissionInterfaces,DiseaseTransmissionInterfaces,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,InterfacesAnimalsSampled,InterfacesAnimalsSampled,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,InterfacesHumansSampled,InterfacesHumansSampled,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,ParticipantID,ParticipantID,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Livelihood(s),Livelihood(s),NA,NA,NA,NA
-human_market_2,HumanMarket,NA,MostTimeSpent,MostTimeSpent,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q1 LiveOnSite,Q1 LiveOnSite,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q2 #WorkAtSite,Q2 #WorkAtSite,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q3 HowLongWorked,Q3 HowLongWorked,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q4 AnimalsSold,Q4 AnimalsSold,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q5 SoldLiveAnimalToday,Q5 SoldLiveAnimalToday,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q6 WhoBuysAnimals,Q6 WhoBuysAnimals,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q7 AnimalSource,Q7 AnimalSource,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q8 AnimalsToMarket,Q8 AnimalsToMarket,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q9 LiveAnimalsStored,Q9 LiveAnimalsStored,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q10 HoursLiveAnimalsKept,Q10 HoursLiveAnimalsKept,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q11 ActionWhenAnimalsSick,Q11 ActionWhenAnimalsSick,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q12 PPEUsed,Q12 PPEUsed,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q13 WhichPPE,Q13 WhichPPE,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q14 WhenPPEUsed,Q14 WhenPPEUsed,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q15 PPEUsedHandling,Q15 PPEUsedHandling,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q16 ViscaraRefuse,Q16 ViscaraRefuse,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q17 UseDisinfectantsToClean,Q17 UseDisinfectantsToClean,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q18 DisinfectantsUsedFor,Q18 DisinfectantsUsedFor,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q19 AnimalEnclosuresCleanedFrequency,Q19 AnimalEnclosuresCleanedFrequency,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q20 DesignatedAreaForAnimalWaste,Q20 DesignatedAreaForAnimalWaste,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q20 DesignatedAreaForAnimalWasteUsed,Q20 DesignatedAreaForAnimalWasteUsed,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q22 MarketClosedFrequency,Q22 MarketClosedFrequency,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q23 HealthOfficalInspectedAnimals,Q23 HealthOfficalInspectedAnimals,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q24 AnimalsDestroyed,Q24 AnimalsDestroyed,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q25 WhichAnimalsDestroyed,Q25 WhichAnimalsDestroyed,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Q26 RaidingPrevention,Q26 RaidingPrevention,NA,NA,NA,NA
-human_market_2,HumanMarket,NA,Notes,Notes,NA,NA,NA,NA
+human_market_2,HumanMarket,NA,Country,country,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,District,district,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,SiteLatitudeUnrounded,site_latitude,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,SiteLongitudeUnrounded,site_longitude,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,EventLatitudeUnrounded,event_latitude,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,EventLongitudeUnrounded,event_longitude,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+human_market_2,HumanMarket,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,ParticipantID,participant_id,NA,Interview participant's unique identifier.,NA,NA
+human_market_2,HumanMarket,NA,Livelihood(s),livelihoods,DROP,Human-level information.,NA,NA
+human_market_2,HumanMarket,NA,MostTimeSpent,most_time_spent,DROP,Human-level information.,NA,NA
+human_market_2,HumanMarket,NA,Q1 LiveOnSite,live_on_site,NA,Do you live on the work site?,yes/no,Q1
+human_market_2,HumanMarket,NA,Q2 #WorkAtSite,work_at_site,NA,"To the best of your knowledge, how many people work at this site?",5-cat var,Q2
+human_market_2,HumanMarket,NA,Q3 HowLongWorked,how_long_worked,NA,How long have you worked at this market?,4-cat var,Q3
+human_market_2,HumanMarket,NA,Q4 AnimalsSold,animals_sold,NA,What animals are you selling today? Select all that apply.,semicolon-separated,Q4
+human_market_2,HumanMarket,NA,Q5 SoldLiveAnimalToday,sold_live_animal_today,NA,Have you sold a live animal today?,yes/no,Q5
+human_market_2,HumanMarket,NA,Q6 WhoBuysAnimals,who_buys_animals,NA,Who buys the live animals you sell? Select all that apply.,semicolon-separated,Q6
+human_market_2,HumanMarket,NA,Q7 AnimalSource,animal_source,NA,Where do the animals come from? Select all that apply.,semicolon-separated,Q7
+human_market_2,HumanMarket,NA,Q8 AnimalsToMarket,animals_to_market,NA,How do the live animals get to the market? Select all that apply.,semicolon-separated,Q8
+human_market_2,HumanMarket,NA,Q9 LiveAnimalsStored,live_animals_stored,NA,How are the live animals stored at night? Select all that apply.,semicolon-separated,Q9
+human_market_2,HumanMarket,NA,Q10 HoursLiveAnimalsKept,hourse_live_animals_kept,NA,How long do you keep alive animals before you sell them? (in hours),NA,Q10
+human_market_2,HumanMarket,NA,Q11 ActionWhenAnimalsSick,action_when_animals_sick,NA,What do you do when an animal gets sick? Select all that apply.,semicolon-separated,Q11
+human_market_2,HumanMarket,NA,Q12 PPEUsed,ppe_used,NA,"Do you have special protective equipment (Example: shoes, masks, gloves) only worn at work?",yes/no,Q12
+human_market_2,HumanMarket,NA,Q13 WhichPPE,which_ppe,NA,"If you have special PPE, which protective equipment? Select all that apply.",semicolon-separated,Q13
+human_market_2,HumanMarket,NA,Q14 WhenPPEUsed,when_ppe_used,NA,When do you use protective equipment? Select all that apply.,semicolon-separated,Q14
+human_market_2,HumanMarket,NA,Q15 PPEUsedHandling,ppe_used_handling,NA,Is protective equipment used every time an animal is handled?,yes/no,Q15
+human_market_2,HumanMarket,NA,Q16 ViscaraRefuse,viscara_refuse,viscera_refuse,"When butchering animals, what happens to the refuse (blood, organs, skin, sinews, etc)? Select all that apply",6-cat var,Q16
+human_market_2,HumanMarket,NA,Q17 UseDisinfectantsToClean,use_disinfectants_to_clean,NA,Do you always use disinfectant to clean?,yes/no,Q17
+human_market_2,HumanMarket,NA,Q18 DisinfectantsUsedFor,disinfectants_used_for,NA,"If you always use disinfectants, do you always use disinfectants to clean the following: Select all that apply",semicolon-separated 7-cat var,Q18
+human_market_2,HumanMarket,NA,Q19 AnimalEnclosuresCleanedFrequency,animal_enclosures_cleaned_frequency,NA,How often are the animal enclosures cleaned? Select one option.,5-cat var,Q19
+human_market_2,HumanMarket,NA,Q20 DesignatedAreaForAnimalWaste,designated_area_for_animal_waste,NA,"Is there a designated area for rubbish, including animal waste from slaughter/butcher and animal excrement?",yes/no,Q20
+human_market_2,HumanMarket,NA,Q20 DesignatedAreaForAnimalWasteUsed,designated_area_for_animal_waste_used,NA,"If there is a designated area for rubbish, do people use it?","yes/no/""N/A""",Q21
+human_market_2,HumanMarket,NA,Q22 MarketClosedFrequency,market_closed_frequency,NA,How often does the market close? Select one option.,6-cat var,Q22
+human_market_2,HumanMarket,NA,Q23 HealthOfficalInspectedAnimals,health_official_inspected_animals,NA,"Since this time last year, has an animal health official inspected your animals?",yes/no,Q23
+human_market_2,HumanMarket,NA,Q24 AnimalsDestroyed,animals_destroyed,NA,"Since this time last year, has anyone destroyed your animals because of infection or disease?",yes/no,Q24
+human_market_2,HumanMarket,NA,Q25 WhichAnimalsDestroyed,which_animals_destroyed,NA,"If animals have been destroyed, which animals? Select all that apply.",semicolon-separated,Q25
+human_market_2,HumanMarket,NA,Q26 RaidingPrevention,raiding_prevention,NA,What is done to stop animals from raiding or destroying food supplies? Select all that apply.,semicolon-separated,Q26
+human_market_2,HumanMarket,NA,Notes,notes,human_market_notes,Human Market interview notes.,NA,NA
 human_hospital_worker_2,HumanHospitalWorker,NA,Country,country,DROP,Event-level information,NA,NA
 human_hospital_worker_2,HumanHospitalWorker,NA,SiteName,site_name,DROP,Event-level information,NA,NA
 human_hospital_worker_2,HumanHospitalWorker,NA,District,district,DROP,Event-level information,NA,NA
