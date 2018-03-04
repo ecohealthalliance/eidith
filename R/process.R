@@ -152,6 +152,8 @@ ed2_process <- function(dat, endpt) {
   dat <- map_dfc(dat, function(x){
     if(is.character(x)){
       return(stri_trim_both(x))
+    }else{
+      return(x)
     }
   })
 
