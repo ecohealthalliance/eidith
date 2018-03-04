@@ -165,18 +165,18 @@ ed_db_download <- function(p1_tables = endpoints, p2_tables = finished_endpoints
   lapply(p2_tables, function(x) {
     tb <- ed2_get(x, postprocess=TRUE, verbose=verbose, auth=auth)
     #escaping if there is an error with the download
-    if(any(typeof(tb) != "list")) return(invisible(0))
-    #key errors
-    lc_name <- p2_table_names[[x]]
-    intended_key <- db_other_indexes[[lc_name]][[1]]
-    group_var <- as.name(intended_key)
-    key_check <- tb %>%
-      group_by(!!group_var) %>%
-      summarize(count = n()) %>%
-      filter(count > 1) %>%
-      dplyr::pull(!!group_var)
-    errors <- data_frame(table = x, field_name = intended_key, multiple_id = key_check)
-    p2_key_errors <<- rbind(p2_key_errors, errors)
+    # if(any(typeof(tb) != "list")) return(invisible(0))
+    # #key errors
+    # lc_name <- p2_table_names[[x]]
+    # intended_key <- db_other_indexes[[lc_name]][[1]]
+    # group_var <- as.name(intended_key)
+    # key_check <- tb %>%
+    #   group_by(!!group_var) %>%
+    #   summarize(count = n()) %>%
+    #   filter(count > 1) %>%
+    #   dplyr::pull(!!group_var)
+    # errors <- data_frame(table = x, field_name = intended_key, multiple_id = key_check)
+    # p2_key_errors <<- rbind(p2_key_errors, errors)
     tb$integer_id <- seq_len(nrow(tb))
     dplyr::copy_to(eidith_db(temp_sql_path()), tb, name=p2_table_names[[x]], temporary = FALSE,
                    unique_indexes = db_unique_indexes[[x]], indexes = db_other_indexes[[x]])
@@ -184,9 +184,9 @@ ed_db_download <- function(p1_tables = endpoints, p2_tables = finished_endpoints
     gc(verbose=FALSE)
   })
 
-  if(nrow(p2_key_errors) > 0){
-    dbWriteTable(eidith_db(temp_sql_path())$con, p2_key_errors, name = "p2_unique_id_errors", append = TRUE)
-  }
+  # if(nrow(p2_key_errors) > 0){
+  #   dbWriteTable(eidith_db(temp_sql_path())$con, p2_key_errors, name = "p2_unique_id_errors", append = TRUE)
+  # }
   #Check that requested tables have downloaded:
   p1_dls <- unname(sapply(p1_tables, function(x) p1_table_names[[x]]))
   p2_dls <- unname(sapply(p2_tables, function(x) p2_table_names[[x]]))
