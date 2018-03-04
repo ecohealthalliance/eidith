@@ -15,11 +15,6 @@ ed_db_field_check <- function(tb, path){
     na.omit() %>%
     stri_subset_fixed("DROP", negate=TRUE)
 
-  #temporary metadata issue fix
-  if(tb %in% metadata_tables){
-    return(TRUE)
-  }
-
   table_names <- names(ed_tb)[names(ed_tb) != "integer_id"]
   condition_a <- (all(table_names %in% (expected_fields)))
   condition_b <- (all(expected_fields %in% table_names))
@@ -64,10 +59,10 @@ ed_db_check_status <- function(path=NULL) {
     }else{
       dbstatus <- list(status_msg1 ="Local EIDITH database is available, but missing tables.\nRun ed_db_check_status() to update")
     }
-  }else if(!all(sapply(c(db_tables[-7], metadata_tables), function(x) ed_db_field_check(x, NULL)))){
+  }else if(!all(sapply(c(db_tables[-7], db2_tables), function(x) ed_db_field_check(x, NULL)))){
     #find out which tables have errors
     error_p1_tables <- sapply(db_tables[-7], function(x) ed_db_field_check(x, NULL))
-    error_p2_tables <- sapply(metadata_tables, function(x) ed_db_field_check(x, NULL))
+    error_p2_tables <- sapply(db2_tables, function(x) ed_db_field_check(x, NULL))
     dl_p1_tables <- names(purrr::keep(p1_table_names, function(x) x %in% error_p1_tables))
     dl_p2_tables <- names(purrr::keep(p2_table_names, function(x) x %in% error_p2_tables))
 
