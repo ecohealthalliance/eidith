@@ -63,6 +63,8 @@ ed_table_ <- function(table, ..., .dots) {
   if(stri_detect_fixed(table, "2")){
     ed_tb <- dbReadTable(eidith_db()$con, table)
     #adding notes
+    ed_tb <- ed_tb %>%
+      filter_(.dots=dots)
     note_cols <- which(stri_detect_fixed(names(ed_tb), "notes"))
     if(length(note_cols > 0)){
       filled_notes <- sapply(note_cols, function(x) all(!is.na(ed_tb[,x])))
