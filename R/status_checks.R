@@ -176,7 +176,7 @@ ed_create_banner <- function(path = NULL){
     if(interactive()){
     p_opt <- menu(c("Yes", "No"), title = "Would you like to perform a clean download of the EIDITH database?")
     if(p_opt == 1){
-      ed_db_download(p2_tables = finished_endpoints2)
+      ed_db_download(p2_tables = endpoints2)
     }
     }
   }

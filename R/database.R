@@ -144,7 +144,7 @@ db_other_indexes <- list(
 #' @param verbose Show messages while in progress?
 #' @seealso [ed_db_status()], [ed_db_updates()], [ed_db_export()]
 #' @export
-ed_db_download <- function(p1_tables = endpoints, p2_tables = finished_endpoints2, verbose=interactive()) {
+ed_db_download <- function(p1_tables = endpoints, p2_tables = endpoints2, verbose=interactive()) {
   auth <- ed_auth(verbose = verbose)
   if(verbose) message("Downloading and processing EIDITH data. This may take a few minutes.")
 
@@ -294,3 +294,20 @@ ed_db_updates <- function(path = NULL) {    # NEEDS TO BE RE-WORKED
   }
   return(is_new_data)
 }
+
+#' @export
+ed_db_delete <- function(path = NULL){
+  suppressMessages({
+    if(is.null(path)){
+      status <- file.remove(default_sql_path())
+      if(status == TRUE){
+        cat_line("Local EIDITH database successfully deleted.")
+      }else{
+        cat_line("There were problems deleting local EIDITH database, check file path!")
+      }
+    }else{
+      file.remove(path)
+    }
+  })
+}
+
