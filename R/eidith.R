@@ -19,7 +19,8 @@
 #' -   Package source code is found at [https://github.com/ecohealthalliance/eidith](https://github.com/ecohealthalliance/eidith)
 #' -   File bug reports and request features at [https://github.com/ecohealthalliance/eidith/issues](https://github.com/ecohealthalliance/eidith/issues)
 #' -   Online version of this documentation found at [https://ecohealthalliance.github.io/eidith/](https://github.com/ecohealthalliance/eidith/issues)
-#' -   Questions related to your EIDITH credentials should be directed to [technology@eidith.org](mailto:technology@eidith.org).
+#' -   Questions related to your EIDITH credentials or incorrect data should be directed to [technology@eidith.org](mailto:technology@eidith.org).
+#' -   More detail at [?ed_contact][ed_contact].
 #'
 #' To learn more about eidith, start with the vignettes:
 #' `browseVignettes(package = "eidith")`

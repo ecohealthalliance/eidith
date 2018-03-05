@@ -27,7 +27,7 @@
 #' than the names of the tables stored locally (which are lowercase and plural).
 #' @importFrom dplyr na_if as_data_frame rename_ %>% mutate_ select_ if_else data_frame arrange_ full_join
 #' @importFrom stringi stri_trim_both
-#' @importFrom purrr map_if
+#' @importFrom purrr map_if map_dfc
 ed_process <- function(dat, endpt) {
   emd <- filter_(ed_metadata(), ~ endpoint == endpt) %>%
     mutate_(new_name = ~ if_else(
@@ -96,6 +96,86 @@ ed_process <- function(dat, endpt) {
   dat <- arrange_(dat, names_order[1])
   return(distinct_(dat))
 }
+
+ed2_process <- function(dat, endpt) {
+  emd <- filter_(ed2_metadata(), ~ endpoint2 == endpt) %>%
+    mutate_(new_name = ~ if_else(
+      is.na(replacement_name),
+      auto_processed_name,
+      replacement_name
+    ))
+  expected_fields <-
+    emd %>% filter_( ~ !is.na(original_name)) %>% `$`("original_name")
+  # First, check that the data is as expected
+  unexpected_fields <-
+    names(dat)[!(names(dat) %in% expected_fields)]
+  missing_fields <-
+    expected_fields[!(expected_fields %in% names(dat))]
+  wrn_con <-
+    "\nRe-install the eidith package and try again. If warning persists see ?ed_contact"
+
+  if (length(missing_fields))
+    warning(
+      "Expected fields missing in ",
+      endpt,
+      " download: ",
+      paste0(missing_fields, collapse = ", "),
+      ".",
+      wrn_con
+    )
+  if (length(unexpected_fields))
+    warning(
+      "Unexpected fields  in ",
+      endpt,
+      " download: ",
+      paste0(unexpected_fields, collapse = ", "),
+      ". These fields will be dropped.",
+      wrn_con
+    )
+
+  # Drop any other fields we want to drop
+  drop_cols <-
+    filter_(emd, ~ replacement_name == "DROP")[["original_name"]]
+  dat <-
+    select_(dat, .dots = as.list(which(
+      !names(dat) %in% c(drop_cols, unexpected_fields)
+    )))
+
+  # Change the field names to the local, simplified versions
+  used <- data_frame(original_name = names(dat)) %>%
+    full_join(filter_(emd, ~ replacement_name != "DROP" |
+                        is.na(replacement_name)), by = "original_name")
+  names(dat) <-
+    used %>% filter_( ~ !is.na(original_name)) %>% `$`("new_name")
+  #
+  # # General cleanups
+  dat <- map_dfc(dat, function(x){
+    if(is.character(x)){
+      return(stri_trim_both(x))
+    }else{
+      return(x)
+    }
+  })
+
+
+    # dat <-
+  #   map_if(dat, ~ all(. %in% c("yes", "no", NA_character_)),  ~ . == "yes")
+  # dat <- as_data_frame(dat)
+  #
+  # # Table-specific cleanups
+  # process_fn <-
+  #   get(paste0("pp_", endpt), envir = asNamespace("eidith"))
+  # dat <- process_fn(dat)
+  #
+  # # Sort
+  # names_order <-  arrange_(used, "order")[["new_name"]]
+  # dat <- select_(dat, .dots = names_order)
+  # dat <- arrange_(dat, names_order[1])
+  return(distinct_(dat))
+}
+
+
+
 
 #' @importFrom dplyr rename_ select_ mutate_ arrange_ recode distinct_
 pp_Event <- function(dat) {

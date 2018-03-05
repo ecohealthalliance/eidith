@@ -1,14 +1,85 @@
 db_tables <- c("events", "animals", "specimens", "tests", "viruses",
                "test_specimen_ids", "status")
 
+db2_tables <- c("events_2", "animals_2", "specimens_2", "animal_production_2", "crop_production_2",
+                "dwellings_2", "human_2", "market_value_chain_2", "natural_areas_2", "zoo_sanctuary_2",
+                "wildlife_restaurant_2", "tests_2", "test_data_interpreted_2", "test_data_serology_2",
+                "human_animal_production_2", "extractive_industry_2", "human_crop_production_2",
+                "human_extractive_industry_2", "human_hospital_worker_2", "human_hunter_2",
+                "human_market_2", "human_restaurant_2", "human_sick_person_2", "human_temporary_settlements_2",
+                "human_zoo_2")
+
+p1_table_names <- list(
+  Event = "events",
+  Animal = "animals",
+  Specimen = "specimens",
+  Test = "tests",
+  Virus = "viruses",
+  TestIDSpecimenID = "test_specimen_ids"
+)
+
+p2_table_names <- list(
+  Event = "events_2",
+  Animal = "animals_2",
+  Specimen = "specimens_2",
+  AnimalProduction = "animal_production_2",
+  CropProduction = "crop_production_2",
+  Dwellings = "dwellings_2",
+  NaturalAreas = "natural_areas_2",
+  MarketValueChain = "market_value_chain_2",
+  ZooSanctuary = "zoo_sanctuary_2",
+  WildlifeRestaurant = "wildlife_restaurant_2",
+  Human = "human_2",
+  Test = "tests_2",
+  TestDataInterpreted = "test_data_interpreted_2",
+  TestDataSerology = "test_data_serology_2",
+  HumanAnimalProduction = "human_animal_production_2",
+  ExtractiveIndustry = "extractive_industry_2",
+  HumanCropProduction = "human_crop_production_2",
+  HumanExtractiveIndustry = "human_extractive_industry_2",
+  HumanHospitalWorker = "human_hospital_worker_2",
+  HumanHunter = "human_hunter_2",
+  HumanMarket = "human_market_2",
+  HumanRestaurant = "human_restaurant_2",
+  HumanSickPerson = "human_sick_person_2",
+  HumanTemporarySettlements = "human_temporary_settlements_2",
+  HumanZoo = "human_zoo_2"
+)
+
+
 db_unique_indexes <- list(
   events = list("event_id"),
   animals = list("animal_id"),
   specimens = list("specimen_id"),
   tests = list("test_id"),
   viruses = list("sequence_id"),
-  test_specimen_ids = list()
-)
+  test_specimen_ids = list(),
+  events_2 = list("integer_id"),
+  animals_2 = list("integer_id"),
+  specimens_2 = list("integer_id"),
+  animal_production_2 = list("integer_id"),
+  crop_production_2 = list("integer_id"),
+  dwellings_2 = list("integer_id"),
+  market_value_chain_2 = list("integer_id"),
+  natural_areas_2 = list("integer_id"),
+  zoo_sanctuary_2 = list("integer_id"),
+  wildlife_restaurant_2 = list("integer_id"),
+  human_2 = list("integer_id"),
+  tests_2 = list("integer_id"),
+  test_data_interpreted_2 = list("integer_id"),
+  test_data_serology_2 = list("integer_id"),
+  human_animal_production_2 = list("integer_id"),
+  extractive_industry_2 = list("integer_id"),
+  human_crop_production_2 = list("integer_id"),
+  human_extractive_industry_2 = list("integer_id"),
+  human_hospital_worker_2 = list("integer_id"),
+  human_hunter_2 = list("integer_id"),
+  human_market_2 = list("integer_id"),
+  human_restaurant_2 = list("integer_id"),
+  human_sick_person_2 = list("integer_id"),
+  human_temporary_settlements_2 = list("integer_id"),
+  human_zoo_2 = list("integer_id")
+  )
 
 db_other_indexes <- list(
   events = list("country"),
@@ -16,23 +87,35 @@ db_other_indexes <- list(
   specimens = list("animal_id", "specimen_id_name"),
   tests = list("specimen_id_names"),
   viruses = list("test_id"),
-  test_specimen_ids = list("test_id", "specimen_id")
+  test_specimen_ids = list("test_id", "specimen_id"),
+  events_2 = list("event_name"),
+  animals_2 = list("animal_id"),
+  specimens_2 = list("specimen_id"),
+  animal_production_2 = list("event_name"),
+  crop_production_2 = list("event_name"),
+  dwellings_2 = list("event_name"),
+  market_value_chain_2 = list("event_name"),
+  natural_areas_2 = list("event_name"),
+  zoo_sanctuary_2 = list("event_name"),
+  wildlife_restaurant_2 = list("event_name"),
+  human_2 = list("participant_id"),
+  tests_2 = list("test_id"),
+  test_data_interpreted_2 = list("test_id"),
+  test_data_serology_2 = list("test_id"),
+  human_animal_production_2 = list("participant_id"),
+  extractive_industry_2 = list("event_name"),
+  human_crop_production_2 = list("participant_id"),
+  human_extractive_industry_2 = list("participant_id"),
+  human_hospital_worker_2 = list("participant_id"),
+  human_hunter_2 = list("participant_id"),
+  human_market_2 = list("participant_id"),
+  human_restaurant_2 = list("participant_id"),
+  human_sick_person_2 = list("participant_id"),
+  human_temporary_settlements_2 = list("participant_id"),
+  human_zoo_2 = list("participant_id")
 )
 
-#' @importFrom stringi stri_subset_fixed
-#' @importFrom dplyr filter collect %>% coalesce mutate
-ed_db_field_check <- function(tb, path){
-    ed_tb <- tbl(eidith_db(path), tb) %>% head %>% collect
-    df <- ed_metadata()
-    expected_fields <- filter(df, df$table == tb) %>%
-      mutate(nname = coalesce(replacement_name, auto_processed_name)) %>%
-      `$`(nname) %>%
-      na.omit() %>%
-      stri_subset_fixed("DROP", negate=TRUE)
-    condition_a <- (all(names(ed_tb) %in% (expected_fields)))
-    condition_b <- (all(names(expected_fields) %in% (ed_tb)))
-    return(condition_a & condition_b)
-}
+
 
 #' Download EIDITH data to local storage
 #'
@@ -54,135 +137,108 @@ ed_db_field_check <- function(tb, path){
 #'
 #' The function will prompt for username and password unless you have [cached your credentials][ed_auth].
 #'
-#' @importFrom dplyr db_list_tables db_drop_table copy_to
+#' @importFrom dplyr db_list_tables db_drop_table group_by %>% pull
 #' @importFrom RSQLite sqliteCopyDatabase
+#' @importFrom DBI dbWriteTable
+#' @importFrom purrr safely
+#' @param p1_tables Which PREDICT-1 tables to download
+#' @param p2_tables which PREDICT-2 tables to download
 #' @param verbose Show messages while in progress?
 #' @seealso [ed_db_status()], [ed_db_updates()], [ed_db_export()]
 #' @export
-ed_db_download <- function(verbose=interactive()) {
+ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_endpoints(), verbose=interactive()) {
   auth <- ed_auth(verbose = verbose)
   if(verbose) message("Downloading and processing EIDITH data. This may take a few minutes.")
+
   lapply(dplyr::db_list_tables(eidith_db(temp_sql_path())$con), function(x) {
     dplyr::db_drop_table(eidith_db(temp_sql_path())$con, x)}
   )
-  lapply(seq_along(endpoints), function(x) {
-    tb <- ed_get(endpoints[x], postprocess=TRUE, verbose=verbose, auth=auth)
-    dplyr::copy_to(eidith_db(temp_sql_path()), tb, name=db_tables[x], temporary = FALSE,
+
+  #P1 tables
+  lapply(p1_tables, function(x) {
+    tb <- ed_get(x, postprocess=TRUE, verbose=verbose, auth=auth)
+    dplyr::copy_to(eidith_db(temp_sql_path()), tb, name=p1_table_names[[x]], temporary = FALSE,
                    unique_indexes = db_unique_indexes[[x]], indexes = db_other_indexes[[x]])
     rm(tb);
     gc(verbose=FALSE)
   })
-  dplyr::copy_to(eidith_db(temp_sql_path()), data.frame(last_download=as.character(Sys.time())),
-                 name="status", temporary=FALSE)
-  if(!(all(db_tables %in% db_list_tables(eidith_db(temp_sql_path())$con)))){
-    message("NOTE: Newly downloaded EIDITH database is empty or corrupt, using previous version.")
-    if(verbose) {
-      message("Old Database Status:")
-      message(ed_db_status_msg(ed_db_status()))
+  # P2
+  p2_key_errors <- data_frame(table = character(), field_name = character(), multiple_id = character())
+  lapply(p2_tables, function(x) {
+    tb <- ed2_get(x, postprocess=TRUE, verbose=verbose, auth=auth)
+    #escaping if there is an error with the download
+    # if(any(typeof(tb) != "list")) return(invisible(0))
+    # #key errors
+    # lc_name <- p2_table_names[[x]]
+    # intended_key <- db_other_indexes[[lc_name]][[1]]
+    # group_var <- as.name(intended_key)
+    # key_check <- tb %>%
+    #   group_by(!!group_var) %>%
+    #   summarize(count = n()) %>%
+    #   filter(count > 1) %>%
+    #   dplyr::pull(!!group_var)
+    # errors <- data_frame(table = x, field_name = intended_key, multiple_id = key_check)
+    # p2_key_errors <<- rbind(p2_key_errors, errors)
+    tb$integer_id <- seq_len(nrow(tb))
+    dplyr::copy_to(eidith_db(temp_sql_path()), tb, name=p2_table_names[[x]], temporary = FALSE,
+                   unique_indexes = db_unique_indexes[[x]], indexes = db_other_indexes[[x]])
+    rm(tb);
+    gc(verbose=FALSE)
+  })
+
+  # if(nrow(p2_key_errors) > 0){
+  #   dbWriteTable(eidith_db(temp_sql_path())$con, p2_key_errors, name = "p2_unique_id_errors", append = TRUE)
+  # }
+  #Check that requested tables have downloaded:
+  p1_dls <- unname(sapply(p1_tables, function(x) p1_table_names[[x]]))
+  p2_dls <- unname(sapply(p2_tables, function(x) p2_table_names[[x]]))
+
+  downloaded_tables <- unlist(c(p1_dls, p2_dls))
+  if(!(all(downloaded_tables %in% db_list_tables(eidith_db(temp_sql_path())$con)))) {
+    downloaded_tables <- downloaded_tables[which(downloaded_tables %in% db_list_tables(eidith_db(temp_sql_path())$con))]
+  }
+
+  if(!all(sapply(downloaded_tables, function(x) ed_db_field_check(x, temp_sql_path())))){
+    downloaded_tables <- downloaded_tables[which(sapply(downloaded_tables, function(x) ed_db_field_check(x, temp_sql_path())))]
+  }
+
+  if(verbose) {
+      if(length(downloaded_tables) == length(c(p1_dls, p2_dls))){
+      message("All database tables have successfully downloaded!")
+      } else if(length(downloaded_tables < length(c(p1_dls, p2_dls)))){
+        message("Problems with remote EIDITH database / API prevented some tables from downloading. Please look at output and contact technology@eidith.org")
+      }
+    else{
+      message("Problems with remote EIDITH database / API prevented all requested tables from downloading. Please contact technology@eidith.org")
+        return(invisible(0))
     }
-    #file.remove(temp_sql_path())
-    return(invisible(0))
-  }else if(!all(sapply(db_tables[-7], function(x) ed_db_field_check(x,temp_sql_path())))){
-    message("NOTE: Newly downloaded EIDITH database lacks the correct fields, using previous version.")
-    if(verbose) {
-      message("Old Database Status:")
-      message(ed_db_status_msg(ed_db_status()))
+}
+    lapply(downloaded_tables, function(x){
+      temp_tbl <- dbReadTable(eidith_db(temp_sql_path())$con, x)
+      dbWriteTable(eidith_db()$con, value = temp_tbl, name = x, overwrite = TRUE)
+    })
+
+    if("p2_unique_id_errors" %in% dbListTables(eidith_db(temp_sql_path())$con)){
+      dbWriteTable(eidith_db()$con, value = dbReadTable(eidith_db(temp_sql_path())$con, "p2_unique_id_errors"),
+                  name = "p2_unique_id_errors", append = TRUE)
     }
-    #file.remove(temp_sql_path())
-    return(invisible(0))
-  }else{
-    if(verbose) {
-      message("Database successfully downloaded!")
+
+    # creating status
+    status_df <- data.frame(unique_id = seq_along(downloaded_tables), t_name = unlist(downloaded_tables), last_download = as.character(Sys.time()))
+
+    if("status" %in% db_list_tables(eidith_db()$con)){
+      dbWriteTable(eidith_db()$con, name = "status", value = status_df, append = TRUE, row.names = FALSE)
+    }else{
+      dbWriteTable(eidith_db()$con, value = status_df,
+                   name="status", row.names = FALSE)
     }
-    lapply(dplyr::db_list_tables(eidith_db()$con), function(x) {
-      dplyr::db_drop_table(eidith_db()$con, x)}
-    )
-    RSQLite::sqliteCopyDatabase(eidith_db(temp_sql_path())$con, eidith_db()$con)
-    file.remove(temp_sql_path())
-    message(ed_db_status_msg(ed_db_status()))
+    suppressWarnings(file.remove(temp_sql_path()))
+    cat(ed_db_presence(), ed_db_status_msg(ed_db_make_status_msg()))
+    cat(ed_db_check_status())
   return(invisible(0))
   }
-}
 
 
-
-#' Get the status of the locally stored EIDITH database
-#'
-#' @description
-#' This function provides:
-#'  - Countries in the database
-#'  - Size of each table in the database
-#'  - The most recent download date
-#'  - The last-updated records in local database
-#'
-#' @return A list of database status information, pretty-printed.
-#' @param path if provided, the filename of the sqlite database to check. By default,
-#'   the function checks the status of the internal database or that with the global option `"ed_sql_path"`.
-#' @seealso  [ed_db_download()], [ed_db_updates()], [ed_db_export()]
-#' @importFrom purrr map_chr
-#' @importFrom dplyr tbl group_by_ summarise_ collect lst db_list_tables mutate_ lst_
-#' @importFrom tidyr separate_
-#' @importFrom DBI dbGetQuery
-#' @importFrom RSQLite dbGetQuery
-#' @export
-ed_db_status <- function(path=NULL) {
-  edb <- eidith_db(path)
-  if(!(all(db_tables %in% db_list_tables(edb$con)))) {
-    dbstatus <- list(status_msg ="Local EIDITH database tables are empty, out-of-date, or corrupt.\nRun ed_db_download() to update")
-  } else if(!all(sapply(db_tables[-7], function(x) ed_db_field_check(x, NULL)))){
-    dbstatus <- list(status_msg ="Local EIDITH database fields are empty, out-of-date, or corrupt.\nRun ed_db_download() to update")
-  } else {
-    records <- tbl(edb, "sqlite_stat1") %>% collect() %>%
-      filter_('tbl != "status"') %>%
-      separate_("stat", into=c("rows", "columns"), sep=" ", convert=TRUE) %>%
-      group_by_("tbl") %>%
-      summarise_(rows=~max(rows)) %>%
-      arrange_("rows") %>%
-      mutate_(string = ~paste(prettyNum(rows, big.mark=","), tbl))
-    dbstatus <-lst_(list(
-      countries = ~tbl(edb, "events") %>%
-        group_by_("country") %>%
-        summarise_(n=~n()) %>%
-        collect() %>%
-        `$`("country") %>%
-        sort(),
-      n_countries = ~length(countries),
-      last_modified_records = ~quicktime2(map_chr(db_tables[1:5], function(db_table) {
-        DBI::dbGetQuery(edb$con, paste0("SELECT MAX(date_modified_",db_table,") FROM ", db_table ))[[1]]
-      })),
-      last_modified_record = ~max(last_modified_records),
-      last_table = ~db_tables[1:5][last_modified_records == last_modified_record],
-      last_download = ~DBI::dbGetQuery(edb$con, "SELECT last_download FROM status")[[1]],
-      records = ~records
-    ))
-  }
-  class(dbstatus) <- c("dbstatus", class(dbstatus))
-  dbstatus
-}
-
-ed_db_status_msg <- function(status) {
-  if(is.null(status[["n_countries"]])) {
-    status_msg <- status[["status_msg"]]
-  } else {
-    status_msg <- paste0(c(
-      paste(strwrap(paste0(c(
-        "Local EIDITH database holds data from ", status[["n_countries"]], " countries: ",
-        paste(status[["countries"]], collapse = "; ")
-      ), collapse=""), width=80, exdent=2), collapse="\n"), "\n",
-      paste(strwrap(paste0(c(
-        "Records: ", paste(status[["records"]][["string"]], collapse="; ")
-      ), collapse = ""), width=80, exdent=2), collapse="\n"), "\n",
-      "Last download: ", as.character(status[["last_download"]]), "\n",
-      "Last updated record: ", as.character(status[["last_modified_record"]]),
-        " in ", status[["last_table"]], " table"), collapse="")
-  }
-  return(status_msg)
-}
-
-#'@export
-print.dbstatus <- function(x, ...) {
-  cat(ed_db_status_msg(x))
-}
 
 #' Export the local EIDITH database to a file
 #'
@@ -215,15 +271,15 @@ ed_db_export <- function(filename, ...) {  #Exports the database file to new loc
 #'   the function checks the status of the internal database or that with the global option `"ed_sql_path"`.
 #' @return A named vector, showing TRUE for tables that have been updated.  A message is also printed.
 #' @seealso  [ed_db_status()], [ed_db_download()],  [ed_db_export()]
-#'@importFrom stringi stri_replace_first_fixed
-#'@importFrom dplyr collect tbl
-#'@export
-ed_db_updates <- function(path = NULL) {
+#' @importFrom stringi stri_replace_first_fixed
+#' @importFrom dplyr collect tbl
+#' @export
+ed_db_updates <- function(path = NULL) {    # NEEDS TO BE RE-WORKED
   last_download <- stri_replace_first_fixed(
     collect(tbl(eidith_db(path), "status"))$last_download,
     " ", "T")
   auth <- ed_auth()
-  check_at <- endpoints[endpoints !="TestIDSpecimenID"]
+  check_at <- p1_api_endpoints()[p1_api_endpoints() !="TestIDSpecimenID"]
   new_rows <- lapply(check_at, function(endpoint) {
     newdat <- ed_get(endpoint = endpoint, verbose = FALSE,
                      lmdate_from = last_download, postprocess = FALSE, auth = auth)
@@ -239,4 +295,20 @@ ed_db_updates <- function(path = NULL) {
             "]. Use ed_db_download() to update.")
   }
   return(is_new_data)
+}
+
+#' @export
+ed_db_delete <- function(path = NULL){
+  suppressMessages({
+    if(is.null(path)){
+      status <- file.remove(default_sql_path())
+      if(status == TRUE){
+        cat_line("Local EIDITH database successfully deleted.")
+      }else{
+        cat_line("There were problems deleting local EIDITH database, check file path!")
+      }
+    }else{
+      file.remove(path)
+    }
+  })
 }

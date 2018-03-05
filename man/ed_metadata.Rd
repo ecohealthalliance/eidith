@@ -3,7 +3,7 @@
 \name{ed_metadata}
 \alias{ed_metadata}
 \alias{ed_taxagroups}
-\title{EIDITH table metadata}
+\title{EIDITH PREDICT-1 table metadata}
 \usage{
 ed_metadata()
 
