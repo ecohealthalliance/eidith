@@ -82,7 +82,7 @@ See ?ed_auth.")
 
   if(status_code(request) == 403) {
     stop("Forbidden (HTTP 403). Your account does not have access permissions.
-Contact technology@eidith.org.")
+Contact technology@eidith.org about permissions. See ?ed_contact.")
   }
 
   if(verbose) cat_line("Importing...\n")
@@ -95,19 +95,19 @@ Contact technology@eidith.org.")
   }
 
   # if(nrow(data) == 0){
-  #   message((paste0("Download for the ", endpoint, " table failed. Please contact technology@eidith.org")))
+  #   message((paste0("Download for the ", endpoint, " table failed. See ?ed_contact for support.")))
   #   return(invisible(0))
   # }
 
   if("ExceptionMessage" %in% names(data)){
-    cat_line(red(paste0("Download for the ", endpoint, " table failed. Please contact technology@eidith.org\n")))
+    cat_line(red(paste0("Download for the ", endpoint, " table failed. See ?ed_contact for support. \n")))
     return(invisible(0))
   }
 
   if(postprocess){
     data <- tryCatch(ed_process(data, endpoint),
                      error = function(e){
-                       cat_line(red(paste0("Error: There are unexpected fields in the ", endpoint, " download. Please contact technology@eidith.org.\n")))
+                       cat_line(red(paste0("Error: There are unexpected fields in the ", endpoint, " download.  See ?ed_contact for support.\n")))
                        return(invisible(NULL))
                      })
 
@@ -186,18 +186,18 @@ ed2_get <- function(endpoint2, postprocess=TRUE, verbose=interactive(),
   }
 
   if("ExceptionMessage" %in% names(data)){
-    cat_line(red(paste0("Download for the ", endpoint2, " table failed. Please contact technology@eidith.org")))
+    cat_line(red(paste0("Download for the ", endpoint2, " table failed. See ?ed_contact for support.")))
     return(invisible(0))
   }
 
   if(postprocess){
    data <- tryCatch(ed2_process(data, endpoint2),
       error = function(e){
-  cat_line(red(paste0("Error: There are unexpected fields in the ", endpoint2, " download. Please contact technology@eidith.org.")))
+  cat_line(red(paste0("Error: There are unexpected fields in the ", endpoint2, " download. ?ed_contact for support.")))
   cat_line(e)
         return(invisible(0))
         },  warning = function(w){
-  cat_line(red(paste0("Warning: There are unexpected fields in the ", endpoint2, " download. Please contact technology@eidith.org.")))
+  cat_line(red(paste0("Warning: There are unexpected fields in the ", endpoint2, " download. ?ed_contact for support.")))
   cat_line(w)
           return(invisible(0))
 })

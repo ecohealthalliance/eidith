@@ -30,7 +30,8 @@ The \strong{eidith} package contains no data. To access data, you must be
 \item Package source code is found at \url{https://github.com/ecohealthalliance/eidith}
 \item File bug reports and request features at \url{https://github.com/ecohealthalliance/eidith/issues}
 \item Online version of this documentation found at \href{https://github.com/ecohealthalliance/eidith/issues}{https://ecohealthalliance.github.io/eidith/}
-\item Questions related to your EIDITH credentials should be directed to \href{mailto:technology@eidith.org}{technology@eidith.org}.
+\item Questions related to your EIDITH credentials or incorrect data should be directed to \href{mailto:technology@eidith.org}{technology@eidith.org}.
+\item More detail at \link[=ed_contact]{?ed_contact}.
 }
 
 To learn more about eidith, start with the vignettes:
