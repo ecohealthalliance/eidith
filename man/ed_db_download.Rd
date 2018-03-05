@@ -4,10 +4,14 @@
 \alias{ed_db_download}
 \title{Download EIDITH data to local storage}
 \usage{
-ed_db_download(p1_tables = endpoints, p2_tables = finished_endpoints2,
-  verbose = interactive())
+ed_db_download(p1_tables = p1_api_endpoints(),
+  p2_tables = p2_api_endpoints(), verbose = interactive())
 }
 \arguments{
+\item{p1_tables}{Which PREDICT-1 tables to download}
+
+\item{p2_tables}{which PREDICT-2 tables to download}
+
 \item{verbose}{Show messages while in progress?}
 }
 \description{

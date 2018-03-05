@@ -135,13 +135,13 @@ ed_create_banner <- function(path = NULL){
 
 
     suppressWarnings({
-      p1_status_list <- purrr::map(endpoints, function(x){
+      p1_status_list <- purrr::map(p1_api_endpoints(), function(x){
         ind <- which(predict_1$display_name == x)
         if(length(ind) == 0){
           return(glue(crayon::red(cli::symbol$cross), "  ", x))
         }else{
           return(glue(crayon::green(cli::symbol$tick), "  ", crayon::cyan(x), crayon::black(" Table"),
-                      collapse(rep(" ", max(nchar(endpoints)) + 5 - nchar(x))),
+                      collapse(rep(" ", max(nchar(p1_api_endpoints())) + 5 - nchar(x))),
                       crayon::magenta(glue("Last Downloaded: ",
                                            as.character(predict_1$most_recent[ind])))))
         }
@@ -149,13 +149,13 @@ ed_create_banner <- function(path = NULL){
     })
 
     suppressWarnings({
-      p2_status_list <- purrr::map(endpoints2, function(x){
+      p2_status_list <- purrr::map(p2_api_endpoints(), function(x){
         ind <- which(predict_2$display_name == x)
         if(length(ind) == 0){
           return(glue(crayon::red(cli::symbol$cross), "  ", crayon::red(x), crayon::black(" Table")))
         }else{
           return(glue(crayon::green(cli::symbol$tick), "  ", crayon::cyan(x), crayon::black(" Table"),
-                      collapse(rep(" ", max(nchar(endpoints2)) + 5 - nchar(x))),
+                      collapse(rep(" ", max(nchar(p2_api_endpoints())) + 5 - nchar(x))),
                       crayon::magenta(glue("Last Downloaded: ",
                                            as.character(predict_2$most_recent[ind])))))
         }
@@ -176,7 +176,7 @@ ed_create_banner <- function(path = NULL){
     if(interactive()){
     p_opt <- menu(c("Yes", "No"), title = "Would you like to perform a clean download of the EIDITH database?")
     if(p_opt == 1){
-      ed_db_download(p2_tables = endpoints2)
+      ed_db_download(p2_tables = p2_api_endpoints())
     }
     }
   }

@@ -141,10 +141,12 @@ db_other_indexes <- list(
 #' @importFrom RSQLite sqliteCopyDatabase
 #' @importFrom DBI dbWriteTable
 #' @importFrom purrr safely
+#' @param p1_tables Which PREDICT-1 tables to download
+#' @param p2_tables which PREDICT-2 tables to download
 #' @param verbose Show messages while in progress?
 #' @seealso [ed_db_status()], [ed_db_updates()], [ed_db_export()]
 #' @export
-ed_db_download <- function(p1_tables = endpoints, p2_tables = endpoints2, verbose=interactive()) {
+ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_endpoints(), verbose=interactive()) {
   auth <- ed_auth(verbose = verbose)
   if(verbose) message("Downloading and processing EIDITH data. This may take a few minutes.")
 
@@ -277,7 +279,7 @@ ed_db_updates <- function(path = NULL) {    # NEEDS TO BE RE-WORKED
     collect(tbl(eidith_db(path), "status"))$last_download,
     " ", "T")
   auth <- ed_auth()
-  check_at <- endpoints[endpoints !="TestIDSpecimenID"]
+  check_at <- p1_api_endpoints()[p1_api_endpoints() !="TestIDSpecimenID"]
   new_rows <- lapply(check_at, function(endpoint) {
     newdat <- ed_get(endpoint = endpoint, verbose = FALSE,
                      lmdate_from = last_download, postprocess = FALSE, auth = auth)

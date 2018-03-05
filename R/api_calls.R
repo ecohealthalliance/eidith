@@ -2,13 +2,25 @@ eidith_base_url <- "https://predict2api.eidith.org/api/modeling/"
 
 eidith2_base_url <- "https://predict2api.eidith.org/api/Extract/"
 
-endpoints2 <- c("Event", "Animal", "Specimen", "AnimalProduction", "CropProduction", "Dwellings",
+#' The names of the tables in the EIDITH database
+#'
+#' @rdname endpoints
+#' @aliases p1_api_endpoints p2_api_endpoints
+#' @export
+p1_api_endpoints <- function() {
+  c("Event", "Animal", "Specimen", "Test", "Virus",
+    "TestIDSpecimenID")
+}
+
+#' @rdname endpoints
+#' @aliases p1_api_endpoints p2_api_endpoints
+#' @export
+p2_api_endpoints <- function() {
+  c("Event", "Animal", "Specimen", "AnimalProduction", "CropProduction", "Dwellings",
                 "ExtractiveIndustry", "MarketValueChain", "NaturalAreas", "WildlifeRestaurant", "ZooSanctuary",
                 "Human", "HumanCropProduction", "HumanAnimalProduction", "HumanExtractiveIndustry", "HumanHospitalWorker",
                 "HumanHunter", "HumanMarket", "HumanRestaurant", "HumanSickPerson", "HumanTemporarySettlements", "HumanZoo", "Test", "TestDataInterpreted", "TestDataSerology")
-
-endpoints <- c("Event", "Animal", "Specimen", "Test", "Virus",
-               "TestIDSpecimenID")
+}
 
 
 create_empty_p2_table <- function(e2){
