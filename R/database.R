@@ -230,7 +230,7 @@ ed_db_download <- function(p1_tables = endpoints, p2_tables = finished_endpoints
       dbWriteTable(eidith_db()$con, value = status_df,
                    name="status", row.names = FALSE)
     }
-    file.remove(temp_sql_path())
+    suppressWarnings(file.remove(temp_sql_path()))
     cat(ed_db_presence(), ed_db_status_msg(ed_db_make_status_msg()))
     cat(ed_db_check_status())
   return(invisible(0))
