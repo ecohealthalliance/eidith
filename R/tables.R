@@ -89,11 +89,11 @@ ed_table_ <- function(table, ..., .dots) {
     print(ed_tb, tibble_print = FALSE)
   }
   }else{
-    ed_tb <- tbl(eidith_db(), table)
-    ed_tb %>%
+    ed_tb <- dbReadTable(eidith_db()$con, table)
+    ed_tb <- ed_tb %>%
       filter_(.dots=dots) %>%
-      collect(n=Inf) %>%
-      fix_classes()
+      fix_classes() %>%
+      as.tibble()
   }
 ed_tb
 }
