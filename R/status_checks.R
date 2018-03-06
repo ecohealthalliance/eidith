@@ -75,9 +75,6 @@ ed_db_check_status <- function(path=NULL) {
       dbstatus <- list(status_msg ="Local EIDITH database fields are empty or corrupt. Use ed_db_download() to attempt a clean install.")
     }
   }else{
-
-    #message(ed_create_banner(path))
-    #class(dbstatus) <- c("dbstatus", class(dbstatus))
     dbstatus <- "Local EIDITH database contains all tables with all expected fields!"
   }
   cat(green(dbstatus))
@@ -90,8 +87,9 @@ ed_db_presence <- function(){
   edb <- eidith_db()
   status <- "status" %in% dbListTables(edb$con)
   if(status == FALSE){
-    cat_line(cli::rule(crayon::bold("Welcome to the EIDITH R Package!")))
-    cat_line(red("There is no local EIDITH database, please follow the prompts or use ed_db_download() to download EIDITH data.\n"))
+    line1 <- (cli::rule(crayon::bold("Welcome to the EIDITH R Package!")))
+    line2 <- (crayon::red("There is no local EIDITH database, please use ed_db_download() to download EIDITH data.\n"))
+    return(paste(line1, line2, sep = "\n"))
     if(interactive()){
     p_opt <- menu(c("Yes", "No"), title = "Would you like to download EIDITH database?")
     if(p_opt == 1){
@@ -133,7 +131,6 @@ ed_create_banner <- function(path = NULL){
       predict_2 <- mutate(predict_2, display_name = unlist(purrr::map(t_name, function(x) unlist(names(purrr::keep(p2_table_names, function(y) y == x))))))
     }
 
-
     suppressWarnings({
       p1_status_list <- purrr::map(p1_api_endpoints(), function(x){
         ind <- which(predict_1$display_name == x)
@@ -172,14 +169,10 @@ ed_create_banner <- function(path = NULL){
     return(ed_banner)
   },
   error = function(err){
-    cat(green("This is the first time you are loading the updated EIDITH package (with PREDICT-2 data available), or there are unspecified errors in the local EIDITH database.\n"))
-    if(interactive()){
-    p_opt <- menu(c("Yes", "No"), title = "Would you like to perform a clean download of the EIDITH database?")
-    if(p_opt == 1){
-      ed_db_download(p2_tables = p2_api_endpoints())
+    error_line <- (green("There are unspecified errors in the local EIDITH database. If problems persist after using ed_db_download(), see ?ed_contact.\n"))
+    return(error_line)
     }
-    }
-  }
+
   )
 }
 

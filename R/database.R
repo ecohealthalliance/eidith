@@ -167,7 +167,7 @@ ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_en
   lapply(p2_tables, function(x) {
     tb <- ed2_get(x, postprocess=TRUE, verbose=verbose, auth=auth)
     #escaping if there is an error with the download
-    # if(any(typeof(tb) != "list")) return(invisible(0))
+    if(any(typeof(tb) != "list")) return(invisible(0))
     # #key errors
     # lc_name <- p2_table_names[[x]]
     # intended_key <- db_other_indexes[[lc_name]][[1]]
@@ -204,12 +204,16 @@ ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_en
 
   if(verbose) {
       if(length(downloaded_tables) == length(c(p1_dls, p2_dls))){
-      message("All database tables have successfully downloaded!")
+      cat_line("All database tables have successfully downloaded!")
       } else if(length(downloaded_tables < length(c(p1_dls, p2_dls)))){
-        message("Problems with remote EIDITH database / API prevented some tables from downloading. Please look at output and contact technology@eidith.org")
+        cat_line("Problems with remote EIDITH database / API prevented some tables from downloading.")
+        cat_line("If problems persist see ?ed_contact for support.")
+        cat_line("")
       }
     else{
-      message("Problems with remote EIDITH database / API prevented all requested tables from downloading. Please contact technology@eidith.org")
+      cat_line("Problems with remote EIDITH database / API prevented all tables from downloading.")
+      cat_line("If problems persist see ?ed_contact for support.")
+      cat_line("")
         return(invisible(0))
     }
 }
@@ -218,10 +222,10 @@ ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_en
       dbWriteTable(eidith_db()$con, value = temp_tbl, name = x, overwrite = TRUE)
     })
 
-    if("p2_unique_id_errors" %in% dbListTables(eidith_db(temp_sql_path())$con)){
-      dbWriteTable(eidith_db()$con, value = dbReadTable(eidith_db(temp_sql_path())$con, "p2_unique_id_errors"),
-                  name = "p2_unique_id_errors", append = TRUE)
-    }
+    # if("p2_unique_id_errors" %in% dbListTables(eidith_db(temp_sql_path())$con)){
+    #   dbWriteTable(eidith_db()$con, value = dbReadTable(eidith_db(temp_sql_path())$con, "p2_unique_id_errors"),
+    #               name = "p2_unique_id_errors", append = TRUE)
+    # }
 
     # creating status
     status_df <- data.frame(unique_id = seq_along(downloaded_tables), t_name = unlist(downloaded_tables), last_download = as.character(Sys.time()))

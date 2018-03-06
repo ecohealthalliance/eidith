@@ -94,10 +94,6 @@ Contact technology@eidith.org about permissions. See ?ed_contact.")
     data <- as_tibble(data)
   }
 
-  # if(nrow(data) == 0){
-  #   message((paste0("Download for the ", endpoint, " table failed. See ?ed_contact for support.")))
-  #   return(invisible(0))
-  # }
 
   if("ExceptionMessage" %in% names(data)){
     cat_line(red(paste0("Download for the ", endpoint, " table failed. See ?ed_contact for support. \n")))
