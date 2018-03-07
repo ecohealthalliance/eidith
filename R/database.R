@@ -308,14 +308,14 @@ ed_db_delete <- function(path = NULL){
       status <- file.remove(default_sql_path())
       if(status == TRUE){
         cat_line("Local EIDITH database successfully deleted.")
-        gc(verbose = F)
+        invisible(gc(verbose = F))
       }else{
         cat_line("There were problems deleting local EIDITH database, check file path!")
-        gc(verbose = F)
+        invisible(gc(verbose = F))
       }
     }else{
       file.remove(path)
-      gc(verbose = F)
+      invisible(gc(verbose = F))
     }
   })
 }
