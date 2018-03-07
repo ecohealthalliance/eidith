@@ -42,6 +42,17 @@ ed_db_field_check <- function(tb, path){
 #' @importFrom RSQLite dbGetQuery dbWriteTable
 #' @export
 ed_db_check_status <- function(path=NULL, inter = T) {
+  status <- length(dbListTables(eidith_db(path)$con)) > 0
+  if(status == FALSE){
+    if(interactive() & inter){
+      dl_opt <- menu(c("Yes", "No"), title = "Local EIDITH database is missing.\nWould you like to download it?")
+
+      if(dl_opt == 1) ed_db_download()
+      if(dl_opt == 2) dbstatus <- list(status_msg1 ="There is no local EIDITH database.\nRun ed_db_download() to download.")
+    }else{
+      dbstatus <- list(status_msg1 ="There is no local EIDITH database.\nRun ed_db_download() to download.")
+    }
+  }else{
   edb <- eidith_db(path)
   dbstatus <- ""
   if(!(all(c(db_tables, db2_tables) %in% db_list_tables(edb$con)))) {
@@ -77,11 +88,13 @@ ed_db_check_status <- function(path=NULL, inter = T) {
   }else{
     dbstatus <- "Local EIDITH database contains all tables with all expected fields!\n"
   }
+  }
   if(interactive() & inter){
    cat_line(green(dbstatus))
   }else{
   return(green(dbstatus))
   }
+
 }
 
 
@@ -96,19 +109,11 @@ ed_db_check_status <- function(path=NULL, inter = T) {
 
 #ON STARTUP CHECK FOR PRESENCE IN STATUS
 ed_db_presence <- function(){
-  edb <- eidith_db()
-  status <- "status" %in% dbListTables(edb$con)
+  status <- length(dbListTables(eidith_db()$con)) > 0
   if(status == FALSE){
     line1 <- (cli::rule(crayon::bold("Welcome to the EIDITH R Package!")))
-    line2 <- (crayon::red("There is no local EIDITH database, please use ed_db_download() to download EIDITH data.\n"))
-    return(paste(line1, line2, sep = "\n"))
-    if(interactive()){
-    p_opt <- menu(c("Yes", "No"), title = "Would you like to download EIDITH database?")
-    if(p_opt == 1){
-      ed_db_download()
-    }
-    }
-  }else{
+    return(line1)
+    }else{
     ed_create_banner()
   }
 }
