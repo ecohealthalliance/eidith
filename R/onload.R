@@ -43,9 +43,12 @@ eidith_db <- function(path = NULL) {
 
 .onAttach <- function(libname, pkgname) {
   if(interactive()){
-    packageStartupMessage(crayon::black(ed_db_presence()))
-    packageStartupMessage(crayon::black(ed_db_status_msg(ed_db_make_status_msg())))
-    packageStartupMessage(crayon::black(ed_db_check_status(path = NULL, inter = F)))
+    banner_message <- purrr::possibly(crayon::black(ed_db_presence), "An error occurred while creating the EIDITH welcome banner.")
+    countries_message <- purrr::possibly(crayon::black(ed_db_status_msg(ed_db_make_status_msg())), "An error occurred while creating the EIDITH countries message.")
+    db_status_message <- purrr::possibly(crayon::black(ed_db_check_status(path = NULL, inter = F)), "An error occurred while creating the database status message.")
+    packageStartupMessage(banner_message)
+    packageStartupMessage(countries_message)
+    packageStartupMessage(db_status_message)
   }
   unlockBinding(".eidith_db", env=asNamespace("eidith"))       #allows .eidith_db to be edited
 }
