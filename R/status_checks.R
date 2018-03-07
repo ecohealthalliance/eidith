@@ -41,7 +41,7 @@ ed_db_field_check <- function(tb, path){
 #' @importFrom DBI dbGetQuery dbExecute
 #' @importFrom RSQLite dbGetQuery dbWriteTable
 #' @export
-ed_db_check_status <- function(path=NULL) {
+ed_db_check_status <- function(path=NULL, inter = T) {
   edb <- eidith_db(path)
   dbstatus <- ""
   if(!(all(c(db_tables, db2_tables) %in% db_list_tables(edb$con)))) {
@@ -51,7 +51,7 @@ ed_db_check_status <- function(path=NULL) {
     dl_p1_tables <- names(purrr::keep(p1_table_names, function(x) x %in% missing_p1_tables))
     dl_p2_tables <- names(purrr::keep(p2_table_names, function(x) x %in% missing_p2_tables))
 
-    if(interactive()){
+    if(interactive() & inter){
     dl_opt <- menu(c("Yes", "No"), title = "Local EIDITH database is missing tables.\nWould you like to download missing tables?")
 
     if(dl_opt == 1) ed_db_download(dl_p1_tables, dl_p2_tables)
@@ -66,7 +66,7 @@ ed_db_check_status <- function(path=NULL) {
     dl_p1_tables <- names(purrr::keep(p1_table_names, function(x) x %in% error_p1_tables))
     dl_p2_tables <- names(purrr::keep(p2_table_names, function(x) x %in% error_p2_tables))
 
-    if(interactive()){
+    if(interactive() & inter){
     dl_opt <- menu(c("Yes", "No"), title = "Local EIDITH database has tables with corrupt or empty fields.\nWould you like to re-download these tables to correct errors?")
 
     if(dl_opt == 1) ed_db_download(dl_p1_tables, dl_p2_tables)
@@ -75,11 +75,23 @@ ed_db_check_status <- function(path=NULL) {
       dbstatus <- list(status_msg ="Local EIDITH database fields are empty or corrupt. Use ed_db_download() to attempt a clean install.")
     }
   }else{
-    dbstatus <- "Local EIDITH database contains all tables with all expected fields!"
+    dbstatus <- "Local EIDITH database contains all tables with all expected fields!\n"
   }
-  cat(green(dbstatus))
-  cat_line("")
+  if(interactive() & inter){
+   cat_line(green(dbstatus))
+  }else{
+  return(green(dbstatus))
+  }
 }
+
+
+
+
+
+
+
+
+
 
 
 #ON STARTUP CHECK FOR PRESENCE IN STATUS
@@ -170,7 +182,7 @@ ed_create_banner <- function(path = NULL){
   },
   error = function(err){
     error_line <- (green("There are unspecified errors in the local EIDITH database. If problems persist after using ed_db_download(), see ?ed_contact.\n"))
-    return(error_line)
+    return(paste(error_line, err, sep = "\n"))
     }
 
   )
