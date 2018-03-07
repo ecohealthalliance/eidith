@@ -42,11 +42,11 @@ eidith_db <- function(path = NULL) {
 }
 
 .onAttach <- function(libname, pkgname) {
-  if(interactive())
-
+  if(interactive()){
     packageStartupMessage(crayon::black(ed_db_presence()))
     packageStartupMessage(crayon::black(ed_db_status_msg(ed_db_make_status_msg())))
     packageStartupMessage(crayon::black(ed_db_check_status(path = NULL, inter = F)))
+  }
   unlockBinding(".eidith_db", env=asNamespace("eidith"))       #allows .eidith_db to be edited
 }
 
