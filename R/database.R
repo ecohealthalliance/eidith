@@ -163,7 +163,7 @@ ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_en
     gc(verbose=FALSE)
   })
   # P2
-  p2_key_errors <- data_frame(table = character(), field_name = character(), multiple_id = character())
+#  p2_key_errors <- data_frame(table = character(), field_name = character(), multiple_id = character())
   lapply(p2_tables, function(x) {
     tb <- ed2_get(x, postprocess=TRUE, verbose=verbose, auth=auth)
     #escaping if there is an error with the download
@@ -217,7 +217,7 @@ ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_en
         return(invisible(0))
     }
 }
-    lapply(downloaded_tables, function(x){
+  lapply(downloaded_tables, function(x){
       temp_tbl <- dbReadTable(eidith_db(temp_sql_path())$con, x)
       dbWriteTable(eidith_db()$con, value = temp_tbl, name = x, overwrite = TRUE)
     })
@@ -228,7 +228,7 @@ ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_en
     # }
 
     # creating status
-    status_df <- data.frame(unique_id = seq_along(downloaded_tables), t_name = unlist(downloaded_tables), last_download = as.character(Sys.time()))
+    status_df <- data_frame(unique_id = seq_along(downloaded_tables), t_name = unlist(downloaded_tables), last_download = as.character(Sys.time()))
 
     if("status" %in% db_list_tables(eidith_db()$con)){
       dbWriteTable(eidith_db()$con, name = "status", value = status_df, append = TRUE, row.names = FALSE)
