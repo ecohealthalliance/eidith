@@ -571,6 +571,7 @@ zoo_sanctuary_2,ZooSanctuary,NA,AnimalWastePresent,animal_waste_present,NA,What 
 zoo_sanctuary_2,ZooSanctuary,NA,BioSecurityMeasures,zoo_biosecurity_measures,NA,What types of biosecurity measures are practiced at the facility? Select all that apply.,semicolon separated 10-cat var,NA
 human_2,Human,NA,Country,country,DROP,Event-level information,NA,NA
 human_2,Human,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+human_2,Human,NA,ConcurrentSamplingSite,concurrent_sampling_site,DROP,Event-level information,NA,NA
 human_2,Human,NA,District,district,DROP,Event-level information,NA,NA
 human_2,Human,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
 human_2,Human,NA,SiteLatitude,site_latitude,DROP,Event-level information,NA,NA
