@@ -67,6 +67,8 @@ animals_2,Animal,NA,AnimalClass,animal_class,NA,"Animal's classification: captiv
 animals_2,Animal,NA,TagAndOtherID,tag_and_other_id,NA,??,NA,NA
 animals_2,Animal,NA,SpeciesScientificName,species_scientific_name,NA,"If complete genus species is unknown, this should be the next known level of taxonomic classification (i.e. genus, subfamily, family).",NA,NA
 animals_2,Animal,NA,SpeciesEnglishName,species_english_name,NA,Common name of animal,NA,NA
+animals_2,Animal,NA,SpeciesScientificNameFieldMorphology,species_scientific_name_field_morphology,NA,"If present, this field represents field species identification and species_scientific_name represents barcoded species identifcation. If absent, species_scientific_name represents field species identification.",NA,NA
+animals_2,Animal,NA,SpeciesEnglishNameFieldMorphology,species_english_name_field_morphology,NA,"If present, this field represents field species identification and species_english_name represents barcoded species identifcation. If absent, species_english_name represents field species identification.",NA,NA
 animals_2,Animal,NA,SpeciesLocalName,species_local_name,NA,Local name of animal,NA,NA
 animals_2,Animal,NA,IDCertainty,id_certainty,NA,"What is the level of certainty of species identification: actual, estimate, unknown?",3-cat variable,NA
 animals_2,Animal,NA,Sex,sex,NA,"Animal's sex: male, female, unknown",NA,NA
@@ -106,6 +108,7 @@ animals_2,Animal,NA,RodentOtherTailLength,rodent_other_tail_length,NA,NA,NA,NA
 animals_2,Animal,NA,RodentOtherRHindFoot,rodent_other_rhind_foot,NA,NA,NA,NA
 animals_2,Animal,NA,RodentOtherBodyLength,rodent_other_body_length,NA,NA,NA,NA
 animals_2,Animal,NA,RodentOtherWeight,rodent_other_weight,NA,NA,NA,NA
+animals_2,Animal,NA,Notes,notes,animal_notes,Notes from Animal table.,NA,NA
 specimens_2,Specimen,NA,Country,country,DROP,Event-level information,NA,NA
 specimens_2,Specimen,NA,SiteName,site_name,DROP,Event-level information,NA,NA
 specimens_2,Specimen,NA,ConcurrentSamplingSite,concurrent_sampling_site,DROP,Event-level information,NA,NA
@@ -119,7 +122,7 @@ specimens_2,Specimen,NA,EventDate,event_date,DROP,Event-level information,NA,NA
 specimens_2,Specimen,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
 specimens_2,Specimen,NA,EventName,event_name,DROP,Event-level information,NA,NA
 specimens_2,Specimen,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
-specimens_2,Specimen,NA,AnimalID,animal_id,NA,"The specimen will be attached to the animal through the barcode, but can be added here for quick reference on the sheets.",NA,NA
+specimens_2,Specimen,NA,Animal/Human ID,animal_human_id,NA,Unique ID linking both Human table via participant_id and Animal table via animal_id.,NA,NA
 specimens_2,Specimen,NA,TaxaGroup,taxa_group,DROP,Animal-level information,NA,NA
 specimens_2,Specimen,NA,AnimalClass,animal_class,DROP,Animal-level information,NA,NA
 specimens_2,Specimen,NA,SpeciesScientificName,species_scientific_name,DROP,Animal-level information,NA,NA
@@ -571,6 +574,7 @@ zoo_sanctuary_2,ZooSanctuary,NA,AnimalWastePresent,animal_waste_present,NA,What 
 zoo_sanctuary_2,ZooSanctuary,NA,BioSecurityMeasures,zoo_biosecurity_measures,NA,What types of biosecurity measures are practiced at the facility? Select all that apply.,semicolon separated 10-cat var,NA
 human_2,Human,NA,Country,country,DROP,Event-level information,NA,NA
 human_2,Human,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+human_2,Human,NA,GAINS4_SampleUnitID,sample_unit_id,DROP,"Deprecated: originally for directly joining humans to tests, better to join via Specimen table.",NA,NA
 human_2,Human,NA,ConcurrentSamplingSite,concurrent_sampling_site,DROP,Event-level information,NA,NA
 human_2,Human,NA,District,district,DROP,Event-level information,NA,NA
 human_2,Human,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
