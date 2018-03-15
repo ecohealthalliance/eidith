@@ -573,6 +573,7 @@ zoo_sanctuary_2,ZooSanctuary,NA,WildDomesticTogether,wild_domestic_together,NA,A
 zoo_sanctuary_2,ZooSanctuary,NA,AnimalWastePresent,animal_waste_present,NA,What type of animal waste is present at the site/event? Select all that apply.,semicolon separated 4-cat var,NA
 zoo_sanctuary_2,ZooSanctuary,NA,BioSecurityMeasures,zoo_biosecurity_measures,NA,What types of biosecurity measures are practiced at the facility? Select all that apply.,semicolon separated 10-cat var,NA
 human_2,Human,NA,Country,country,DROP,Event-level information,NA,NA
+human_2,Human,NA,SpecimensCollected,specimens_collected,NA,NA,NA,NA
 human_2,Human,NA,SiteName,site_name,DROP,Event-level information,NA,NA
 human_2,Human,NA,GAINS4_SampleUnitID,sample_unit_id,DROP,"Deprecated: originally for directly joining humans to tests, better to join via Specimen table.",NA,NA
 human_2,Human,NA,ConcurrentSamplingSite,concurrent_sampling_site,DROP,Event-level information,NA,NA
