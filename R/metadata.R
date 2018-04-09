@@ -96,7 +96,7 @@ ed2_update_metadata <- function(verbose = TRUE){
                                    question = col_character()
                                  ))
   }, error = function(e){
-    if(verbose) cat("Automatic update of PREDICT-2 EIDITH metadata failed, using cached version.\nCheck your internet connection or see ?ed_contact for support.\n")
+    if(verbose) cat("Automatic update of PREDICT-2 EIDITH metadata failed, using cached version.\nCheck your internet connection or see ?ed_contact for support if you continue to get this message.\n")
     return(NULL)
   }
   )
