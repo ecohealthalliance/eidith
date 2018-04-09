@@ -1,9 +1,8 @@
 #' @importFrom stringi stri_subset_fixed
 #' @importFrom dplyr filter collect %>% coalesce mutate
-ed_db_field_check <- function(tb, path){
+ed_db_field_check <- function(tb, path, df2 = ed2_metadata()){
   ed_tb <- tbl(eidith_db(path), tb) %>% head %>% collect
   df <- ed_metadata()
-  df2 <- ed2_metadata()
   expected_fields <- filter(df, df$table == tb) %>%
     mutate(nname = coalesce(replacement_name, auto_processed_name)) %>%
     `$`(nname) %>%
@@ -43,6 +42,7 @@ ed_db_field_check <- function(tb, path){
 #' @export
 ed_db_check_status <- function(path=NULL, inter = T) {
   status <- length(dbListTables(eidith_db(path)$con)) > 0
+  ed2_meta <- ed2_metadata()
   if(status == FALSE){
     if(interactive() & inter){
       dl_opt <- menu(c("Yes", "No"), title = "Local EIDITH database is missing.\nWould you like to download it?")
@@ -70,10 +70,10 @@ ed_db_check_status <- function(path=NULL, inter = T) {
     }else{
       dbstatus <- list(status_msg1 ="Local EIDITH database is available, but missing tables.\nRun ed_db_check_status() to update")
     }
-  }else if(!all(sapply(c(db_tables[-7], db2_tables), function(x) ed_db_field_check(x, NULL)))){
+  }else if(!all(sapply(c(db_tables[-7], db2_tables), function(x) ed_db_field_check(x, NULL, ed2_meta)))){
     #find out which tables have errors
-    error_p1_tables <- sapply(db_tables[-7], function(x) ed_db_field_check(x, NULL))
-    error_p2_tables <- sapply(db2_tables, function(x) ed_db_field_check(x, NULL))
+    error_p1_tables <- sapply(db_tables[-7], function(x) ed_db_field_check(x, NULL, ed2_meta))
+    error_p2_tables <- sapply(db2_tables, function(x) ed_db_field_check(x, NULL, ed2_meta))
     dl_p1_tables <- names(purrr::keep(p1_table_names, function(x) x %in% error_p1_tables))
     dl_p2_tables <- names(purrr::keep(p2_table_names, function(x) x %in% error_p2_tables))
 

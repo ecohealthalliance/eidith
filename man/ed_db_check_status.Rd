@@ -4,7 +4,7 @@
 \alias{ed_db_check_status}
 \title{Get the status of the locally stored EIDITH database}
 \usage{
-ed_db_check_status(path = NULL)
+ed_db_check_status(path = NULL, inter = T)
 }
 \arguments{
 \item{path}{if provided, the filename of the sqlite database to check. By default,

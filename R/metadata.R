@@ -65,7 +65,12 @@ ed_metadata <- function() {
 #' @importFrom DT datatable
 #' @importFrom htmlwidgets saveWidget
 ed2_metadata <- function() {
-  ed2_metadata_
+  out <- ed2_update_metadata()
+  if(is.null(out)){
+    return(ed2_metadata_)
+  }else{
+    return(out)
+  }
 }
 
 #' @export
@@ -73,3 +78,28 @@ ed2_metadata <- function() {
 ed_taxagroups <- function() {
   ed_taxagroups_
 }
+
+#' @importFrom readr read_csv
+ed2_update_metadata <- function(verbose = TRUE){
+
+    updated_metadata <-
+      tryCatch({read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQjx33e5jWhurOkHXIxgk7Hu8-5aVybj4lW0-vS5b1R3X2J0OR1tkFB5fkOID0o0hHQGIJShWMudhCk/pub?gid=983692865&single=true&output=csv",
+                                 col_types = cols(
+                                   table = col_character(),
+                                   endpoint2 = col_character(),
+                                   order = col_integer(),
+                                   original_name = col_character(),
+                                   auto_processed_name = col_character(),
+                                   replacement_name = col_character(),
+                                   description = col_character(),
+                                   processing_notes = col_character(),
+                                   question = col_character()
+                                 ))
+  }, error = function(e){
+    if(verbose) cat("Automatic update of PREDICT-2 EIDITH metadata failed, using cached version.\nCheck your internet connection or see ?ed_contact for support.\n")
+    return(NULL)
+  }
+  )
+}
+
+
