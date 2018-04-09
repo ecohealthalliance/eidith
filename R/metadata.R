@@ -79,7 +79,7 @@ ed_taxagroups <- function() {
   ed_taxagroups_
 }
 
-#' @importFrom readr read_csv cols
+#' @importFrom readr read_csv cols col_character col_integer
 ed2_update_metadata <- function(verbose = TRUE){
 
     updated_metadata <-
