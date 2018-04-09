@@ -83,7 +83,7 @@ ed_taxagroups <- function() {
 ed2_update_metadata <- function(verbose = TRUE){
 
     updated_metadata <-
-      tryCatch({read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQjx33e5jWhurOkHXIxgk7Hu8-5aVybj4lW0-vS5b1R3X2J0OR1tkFB5fkOID0o0hHQGIJShWMudhCk/pub?gid=983692865&single=true&output=csv",
+      tryCatch({readr::read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQjx33e5jWhurOkHXIxgk7Hu8-5aVybj4lW0-vS5b1R3X2J0OR1tkFB5fkOID0o0hHQGIJShWMudhCk/pub?gid=983692865&single=true&output=csv",
                                  col_types = cols(
                                    table = col_character(),
                                    endpoint2 = col_character(),
