@@ -197,9 +197,9 @@ ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_en
   if(!(all(downloaded_tables %in% db_list_tables(eidith_db(temp_sql_path())$con)))) {
     downloaded_tables <- downloaded_tables[which(downloaded_tables %in% db_list_tables(eidith_db(temp_sql_path())$con))]
   }
-
-  if(!all(sapply(downloaded_tables, function(x) ed_db_field_check(x, temp_sql_path())))){
-    downloaded_tables <- downloaded_tables[which(sapply(downloaded_tables, function(x) ed_db_field_check(x, temp_sql_path())))]
+  ed2_meta <- ed2_metadata()
+  if(!all(sapply(downloaded_tables, function(x) ed_db_field_check(x, temp_sql_path(), ed2_meta)))){
+    downloaded_tables <- downloaded_tables[which(sapply(downloaded_tables, function(x) ed_db_field_check(x, temp_sql_path(), ed2_meta)))]
   }
 
   if(verbose) {
@@ -319,3 +319,7 @@ ed_db_delete <- function(path = NULL){
     }
   })
 }
+
+
+
+
