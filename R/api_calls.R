@@ -103,7 +103,7 @@ Contact technology@eidith.org about permissions. See ?ed_contact.")
   if(postprocess){
     data <- tryCatch(ed_process(data, endpoint),
                      error = function(e){
-                       cat_line(red(paste0("Error: There are unexpected fields in the ", endpoint, " download.  See ?ed_contact for support.\n")))
+                       cat_line(red(paste0("Error: The fields in the ", endpoint, " download are not as expected.  See message for details and ?ed_contact for support.\n")))
                        return(invisible(NULL))
                      })
 
@@ -189,11 +189,11 @@ ed2_get <- function(endpoint2, postprocess=TRUE, verbose=interactive(),
   if(postprocess){
    data <- tryCatch(ed2_process(data, endpoint2),
       error = function(e){
-  cat_line(red(paste0("Error: There are unexpected fields in the ", endpoint2, " download. ?ed_contact for support.")))
+  cat_line(red(paste0("Error: The fields in the ", endpoint2, " download are not as expected. See message for details and ?ed_contact for support.")))
   cat_line(e)
         return(invisible(0))
         },  warning = function(w){
-  cat_line(red(paste0("Warning: There are unexpected fields in the ", endpoint2, " download. ?ed_contact for support.")))
+  cat_line(red(paste0("Warning: The fields in the ", endpoint2, " download are not as expected. See message for details and ?ed_contact for support.")))
   cat_line(w)
           return(invisible(0))
 })
