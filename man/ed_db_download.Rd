@@ -24,15 +24,17 @@ versions of the \strong{eidith} package.
 \details{
 This function does a few things:
 \itemize{
-\item Fetches all tables from EIDITH (events, animals, specimens, tests, viruses, and test-specimen cross-references)
+\item Fetches all tables from both EIDITH PREDICT-1 and PREDICT-2 databases.
 \item Cleans and pre-processes the data with \code{\link[=ed_process]{ed_process()}}.
 \item Stores the data in an SQLite database in your \link[rappdirs:user_data_dir]{user data directory}.
 }
 
-Each time it is run it downloads into a temporary database and checks for the presence of
-all tables before it clears out the previous data, preventing the local database from becoming damaged if
-there are problems with the download. Each function run will download the entire database, and
-as such it takes a few minutes.  In the future, we will allow for updating only with new and changed records.
+Each time this function is run it checks for updated metadata about database tables,
+then downloads each table into a temporary database and makes sure that the
+structure of these tables is as expected. Only well-formed tables will be copied
+into the user's permanent database. If a downloaded table is missing fields, has
+extra fields, or is otherwise corrupted, the user will receive an error message.
+In the future, we will allow for updating only with new and changed records.
 
 The function will prompt for username and password unless you have \link[=ed_auth]{cached your credentials}.
 }

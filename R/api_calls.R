@@ -2,7 +2,7 @@ eidith_base_url <- "https://predict2api.eidith.org/api/modeling/"
 
 eidith2_base_url <- "https://predict2api.eidith.org/api/Extract/"
 
-#' The names of the tables in the EIDITH database
+#' This function returns the names of the tables in the PREDICT-1 EIDITH database.
 #'
 #' @rdname endpoints
 #' @aliases p1_api_endpoints p2_api_endpoints
@@ -12,6 +12,7 @@ p1_api_endpoints <- function() {
     "TestIDSpecimenID")
 }
 
+#' This function returns the names of the tables in the PREDICT-2 EIDITH database.
 #' @rdname endpoints
 #' @aliases p1_api_endpoints p2_api_endpoints
 #' @export
@@ -204,14 +205,6 @@ ed2_get <- function(endpoint2, postprocess=TRUE, verbose=interactive(),
 
   return(data)
 }
-
-
-
-
-
-
-
-
 
 
 #' @rdname ed_get

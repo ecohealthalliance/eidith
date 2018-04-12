@@ -9,9 +9,12 @@ ed_db_check_status(path = NULL, inter = T)
 \arguments{
 \item{path}{if provided, the filename of the sqlite database to check. By default,
 the function checks the status of the internal database or that with the global option \code{"ed_sql_path"}.}
+
+\item{inter}{whether function is run interactively}
 }
 \value{
-A list of database status information, pretty-printed.
+A message regarding the status of current EIDITH database, or a prompt allowing the user
+to download missing / corrupt tables
 }
 \description{
 This function provides:

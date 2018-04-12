@@ -28,8 +28,7 @@ ed_viruses(...)
 ed_testspecimen(...)
 }
 \arguments{
-\item{table}{one of the EIDITH database tables. One of "events", "animals",
-"specimens", "tests", "viruses", or "test_specimen_ids".}
+\item{table}{one of the EIDITH PREDICT-1 or PREDICT-2 database tables.}
 
 \item{...}{arguments passed to \code{\link[dplyr:filter]{dplyr::filter()}} to subset data}
 

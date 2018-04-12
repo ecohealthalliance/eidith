@@ -30,9 +30,11 @@ ed_db_field_check <- function(tb, path, df2 = ed2_metadata()){
 #' @description
 #' This function provides:
 #'
-#' @return A list of database status information, pretty-printed.
+#' @return A message regarding the status of current EIDITH database, or a prompt allowing the user
+#'   to download missing / corrupt tables
 #' @param path if provided, the filename of the sqlite database to check. By default,
 #'   the function checks the status of the internal database or that with the global option `"ed_sql_path"`.
+#' @param inter whether function is run interactively
 #' @seealso  [ed_db_download()], [ed_db_updates()], [ed_db_export()]
 #' @importFrom purrr map_chr keep
 #' @importFrom dplyr tbl group_by_ summarise_ collect lst db_list_tables mutate_ lst_
@@ -98,16 +100,6 @@ ed_db_check_status <- function(path=NULL, inter = T) {
 }
 
 
-
-
-
-
-
-
-
-
-
-#ON STARTUP CHECK FOR PRESENCE IN STATUS
 ed_db_presence <- function(){
   status <- length(dbListTables(eidith_db()$con)) > 0
   if(status == FALSE){
@@ -280,6 +272,16 @@ ed_db_status_msg <- function(status) {
 print.dbstatus <- function(x,...) {
   cat(ed_db_status_msg(ed_db_make_status_msg()))
 }
+
+
+#' Obtain and print status of all local EIDITH tables
+#'
+#' @description
+#' This function evaluates and prints a detailed banner of local EIDITH PREDICT-1
+#' and PREDICT-2 table statuses. This includes whether they are currently present,
+#' their last download date, and the PREDICT-1 and PREDICT-2 countries that
+#' are available in the local database.
+#'
 
 #'@export
 ed_detailed_db_status <- function() {

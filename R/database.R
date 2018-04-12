@@ -126,14 +126,16 @@ db_other_indexes <- list(
 #' versions of the **eidith** package.
 #'
 #' This function does a few things:
-#' -  Fetches all tables from EIDITH (events, animals, specimens, tests, viruses, and test-specimen cross-references)
+#' -  Fetches all tables from both EIDITH PREDICT-1 and PREDICT-2 databases.
 #' -  Cleans and pre-processes the data with [ed_process()].
 #' -  Stores the data in an SQLite database in your [user data directory][rappdirs::user_data_dir].
 #'
-#' Each time it is run it downloads into a temporary database and checks for the presence of
-#' all tables before it clears out the previous data, preventing the local database from becoming damaged if
-#' there are problems with the download. Each function run will download the entire database, and
-#' as such it takes a few minutes.  In the future, we will allow for updating only with new and changed records.
+#' Each time this function is run it checks for updated metadata about database tables,
+#' then downloads each table into a temporary database and makes sure that the
+#' structure of these tables is as expected. Only well-formed tables will be copied
+#' into the user's permanent database. If a downloaded table is missing fields, has
+#' extra fields, or is otherwise corrupted, the user will receive an error message.
+#' In the future, we will allow for updating only with new and changed records.
 #'
 #' The function will prompt for username and password unless you have [cached your credentials][ed_auth].
 #'
@@ -265,42 +267,47 @@ ed_db_export <- function(filename, ...) {  #Exports the database file to new loc
   sqliteCopyDatabase(eidith_db()$con, filename, ...)
 }
 
-#' Check the online EIDITH database for updates since your last download.
-#'
-#' This function checks to see if the EIDITH online database has been updated
-#' since the last time [ed_db_download()] was run. If it has, you may run
-#' [ed_db_download()] to get the latest data.
-#'
-#' @param path if provided, the filename of the sqlite database to check. By default,
-#'   the function checks the status of the internal database or that with the global option `"ed_sql_path"`.
-#' @return A named vector, showing TRUE for tables that have been updated.  A message is also printed.
-#' @seealso  [ed_db_status()], [ed_db_download()],  [ed_db_export()]
-#' @importFrom stringi stri_replace_first_fixed
-#' @importFrom dplyr collect tbl
-#' @export
-ed_db_updates <- function(path = NULL) {    # NEEDS TO BE RE-WORKED
-  last_download <- stri_replace_first_fixed(
-    collect(tbl(eidith_db(path), "status"))$last_download,
-    " ", "T")
-  auth <- ed_auth()
-  check_at <- p1_api_endpoints()[p1_api_endpoints() !="TestIDSpecimenID"]
-  new_rows <- lapply(check_at, function(endpoint) {
-    newdat <- ed_get(endpoint = endpoint, verbose = FALSE,
-                     lmdate_from = last_download, postprocess = FALSE, auth = auth)
-    nrow(newdat)
-  })
-  is_new_data <- as.logical(unlist(new_rows))
-  names(is_new_data) <- check_at
-  if(all(!is_new_data)) {
-    message("No new data since ", last_download, ".")
-  } else {
-    message("New data at endpoints: [",
-            paste0(check_at[is_new_data], collapse=","),
-            "]. Use ed_db_download() to update.")
-  }
-  return(is_new_data)
-}
+#' #' Check the online EIDITH database for updates since your last download.
+#' #'
+#' #' This function checks to see if the EIDITH online database has been updated
+#' #' since the last time [ed_db_download()] was run. If it has, you may run
+#' #' [ed_db_download()] to get the latest data.
+#' #'
+#' #' @param path if provided, the filename of the sqlite database to check. By default,
+#' #'   the function checks the status of the internal database or that with the global option `"ed_sql_path"`.
+#' #' @return A named vector, showing TRUE for tables that have been updated.  A message is also printed.
+#' #' @seealso  [ed_db_status()], [ed_db_download()],  [ed_db_export()]
+#' #' @importFrom stringi stri_replace_first_fixed
+#' #' @importFrom dplyr collect tbl
+#' #' @export
+#' ed_db_updates <- function(path = NULL) {    # NEEDS TO BE RE-WORKED
+#'   last_download <- stri_replace_first_fixed(
+#'     collect(tbl(eidith_db(path), "status"))$last_download,
+#'     " ", "T")
+#'   auth <- ed_auth()
+#'   check_at <- p1_api_endpoints()[p1_api_endpoints() !="TestIDSpecimenID"]
+#'   new_rows <- lapply(check_at, function(endpoint) {
+#'     newdat <- ed_get(endpoint = endpoint, verbose = FALSE,
+#'                      lmdate_from = last_download, postprocess = FALSE, auth = auth)
+#'     nrow(newdat)
+#'   })
+#'   is_new_data <- as.logical(unlist(new_rows))
+#'   names(is_new_data) <- check_at
+#'   if(all(!is_new_data)) {
+#'     message("No new data since ", last_download, ".")
+#'   } else {
+#'     message("New data at endpoints: [",
+#'             paste0(check_at[is_new_data], collapse=","),
+#'             "]. Use ed_db_download() to update.")
+#'   }
+#'   return(is_new_data)
+#' }
 
+
+#' Delete the local EIDITH database
+#'
+#' This function allows you to delete the local SQLite EIDITH database.
+#' @param path Path to locate the database if it is not in its default location.
 #' @export
 ed_db_delete <- function(path = NULL){
   suppressMessages({

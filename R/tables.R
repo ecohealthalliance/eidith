@@ -27,8 +27,7 @@ datetime_vars <- c("date_created", "date_modified", "database_date")
 #' -  Dates are stored as character strings, but as they are in YYYY-MM-DD
 #'    format, filtering such as `event_date > "2014-01-01"` still works.
 #'
-#' @param table one of the EIDITH database tables. One of "events", "animals",
-#' "specimens", "tests", "viruses", or "test_specimen_ids".
+#' @param table one of the EIDITH PREDICT-1 or PREDICT-2 database tables.
 #' @param ... arguments passed to [dplyr::filter()] to subset data
 #' @param .dots standard-evaluation versions of subsetting arguments
 #' @return a [tibble][tibble::tibble]-style data frame.

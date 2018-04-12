@@ -9,7 +9,7 @@
 \description{
 The \strong{eidith} R package is maintained by the PREDICT Modeling & Analytics
 team at EcoHealth Alliance.  The EIDITH database is maintained by the PREDICT
-Information Mananagement team at metabiota.
+Information Mananagement team at Metabiota.
 
 For bug reports and issues with the \strong{eidith} R package, please file an
 issue at with EcoHealth Alliance M&A at \url{https://github.com/ecohealthalliance/eidith/issues} and we will
@@ -19,7 +19,7 @@ and Cale Basaraba (\href{mailto:basaraba@ecohealthalliance.org}{basaraba@ecoehal
 For issues related to your EIDITH login credentials or incorrect data,
 contact \href{mailto:technology@eidith.org}{technology@eidith.org}.
 
-Download failures may either be due to issues at the database or package level.
+Download failures may either be due to issues at the database or  at the package level.
 If you are unsure which team is the right one to address your issue, we suggest
 you contact EcoHealth Alliance M&A first.
 }
