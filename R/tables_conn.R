@@ -2,8 +2,8 @@
 #'
 #' To understand how various EIDITH tables are connected via their column names.
 #' Visualizing these connections is helpful in determining how to join `eidith`
-#' tables for further analyses, and is available for both PREDICT 1 `ed_tables_conn()`
-#' and PREDICT 2 `ed2_tables_conn()` databases.
+#' tables for further analyses, and is available for both PREDICT 1 `ed_tables_conn`
+#' and PREDICT 2 `ed2_tables_conn` databases.
 #'
 #' @param cols can be either `all` or `id`. If `all`, all common columns are
 #' presented. If `id`, only unique id columns are shown. Default value is `id`.
