@@ -20,11 +20,12 @@ tables, and \code{conn}, the connecting column.
 \description{
 To understand how various EIDITH tables are connected via their column names.
 Visualizing these connections is helpful in determining how to join \code{eidith}
-tables for further analyses, and is available for both PREDICT 1 \code{ed_tables_conn()}
-and PREDICT 2 \code{ed2_tables_conn()} databases.
+tables for further analyses, and is available for both PREDICT 1 \code{ed_tables_conn}
+and PREDICT 2 \code{ed2_tables_conn} databases.
 }
 \examples{
 ed_tables_conn()
 ed_tables_conn(cols = "all")
 ed2_tables_conn()
+
 }

@@ -7,12 +7,15 @@
 #'
 #' @param cols can be either `all` or `id`. If `all`, all common columns are
 #' presented. If `id`, only unique id columns are shown. Default value is `id`.
+#'
 #' @return a data frame with three columns: `T1` and `T2` corresponding to eidith
 #' tables, and `conn`, the connecting column.
+#'
 #' @examples
 #' ed_tables_conn()
 #' ed_tables_conn(cols = "all")
 #' ed2_tables_conn()
+#'
 #' @export
 ed_tables_conn <- function(cols = "id"){
 
