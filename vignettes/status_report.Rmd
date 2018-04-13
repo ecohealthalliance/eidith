@@ -1,0 +1,165 @@
+---
+title: "PREDICT-2 Example Script"
+author: "Janice Liang & Cale Basaraba"
+output: 
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{PREDICT-2 Example Script}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+library(eidith)
+library(dplyr)
+library(ggplot2)
+library(DT)
+P <- rprojroot::find_package_root_file
+```
+### Introduction
+
+This vignette is an example of a script that might be used for a regular surveillance update, and was originally written by Janice Liang. This vignette assumes you have some familiarity with the structure of the EIDITH R packagem, basic joining, and the `tidyverse` packages. For some explicit examples of that, you can take a look at [this] or [this].
+
+
+### Animals
+
+The first part of this script creates summary tables of animals by event, site, and country.
+
+
+```{r firstchunk, eval= TRUE}
+
+#Load EIDITH, tidyverse, and DT packages 
+library(eidith)
+library(tidyverse)
+
+
+#Create tables for P2 data
+Animal <- ed2_animals()
+Human <- ed2_human()
+Test <- ed2_tests()
+Event <- ed2_events()
+Specimen <- ed2_specimens()
+
+
+#COUNTRY REVIEW:
+
+####Animal review####
+#Join animal table with event table
+Animal_Event <- left_join(Animal, Event, by = "event_name")
+
+#Make new table for number of animals per taxa per EVENT, for bats, rodents, NHPs, and "other" (all other taxa groups), also include country and site columns for easy filtering in Excel
+Animals_byEvent <- Animal_Event %>%
+  filter(!is.na(taxa_group)) %>%
+  mutate(
+    taxa_group = case_when(
+      taxa_group == "bats" ~ "Bats",
+      taxa_group == "rodents/shrews" ~ "Rodents",
+      taxa_group == "non-human primates" ~ "NHPs",
+      taxa_group == "poultry/other fowl" ~ "Poultry",
+      taxa_group == "goats/sheep" | taxa_group == "cattle/buffalo" |
+        taxa_group == "camels" ~ "Livestock",
+      TRUE ~ "Other"
+    )
+  ) %>%
+  group_by(country, site_name, event_name, taxa_group) %>%
+  summarize(n_animals = n_distinct(animal_id, na.rm = TRUE)) %>%
+  reshape2::dcast(., ... ~ taxa_group, fill = 0)
+Animals_byEvent <- Animals_byEvent[c("country", "site_name", "event_name", "Bats", "Rodents", "NHPs", "Poultry", "Livestock", "Other")] #reorder columns
+
+datatable(Animals_byEvent)
+
+#Make new table for number of animals per taxa per SITE, for bats, rodents, NHPs, and "other" (all other taxa groups), also include country column for easy filtering in Excel
+Animals_bySite <- Animal_Event %>%
+  filter(!is.na(taxa_group)) %>%
+  mutate(
+    taxa_group = case_when(
+      taxa_group == "bats" ~ "Bats",
+      taxa_group == "rodents/shrews" ~ "Rodents",
+      taxa_group == "non-human primates" ~ "NHPs",
+      taxa_group == "poultry/other fowl" ~ "Poultry",
+      taxa_group == "goats/sheep" | taxa_group == "cattle/buffalo" |
+        taxa_group == "camels" ~ "Livestock",
+      TRUE ~ "Other"
+    )
+  ) %>%
+  group_by(country, site_name, taxa_group) %>% ##not working: group by site_name!!
+  summarize(n_animals = n_distinct(animal_id, na.rm = TRUE)) %>%
+  reshape2::dcast(., ... ~ taxa_group, fill = 0)
+Animals_bySite <- Animals_bySite[c("country", "site_name", "Bats", "Rodents", "NHPs", "Poultry", "Livestock", "Other")] #reorder columns
+
+#Make new table for number of animals per taxa per COUNTRY, for bats, rodents, NHPs, and "other" (all other taxa groups)
+Animals_byCountry <- Animal_Event %>%
+  filter(!is.na(taxa_group)) %>%
+  mutate(
+    taxa_group = case_when(
+      taxa_group == "bats" ~ "Bats",
+      taxa_group == "rodents/shrews" ~ "Rodents",
+      taxa_group == "non-human primates" ~ "NHPs",
+      taxa_group == "poultry/other fowl" ~ "Poultry",
+      taxa_group == "goats/sheep" | taxa_group == "cattle/buffalo" |
+        taxa_group == "camels" ~ "Livestock",
+      TRUE ~ "Other"
+    )
+  ) %>%
+  group_by(country, taxa_group) %>% ##not working: group by country!!
+  summarize(n_animals = n_distinct(animal_id, na.rm = TRUE)) %>%
+  reshape2::dcast(., ... ~ taxa_group, fill = 0)
+Animals_byCountry <- Animals_byCountry[c("country", "Bats", "Rodents", "NHPs", "Poultry", "Livestock", "Other")] #reorder columns
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+####Human review####
+#Join human table with event table
+Human_Event <- left_join(Human, Event, by = "event_name")
+
+#Make new table for number of humans (questionnaires) per EVENT and number of humans that have been sampled (biological sample) per EVENT, also include country and site columns for easy filtering in Excel
+Humans_byEvent <- Human_Event %>%
+  mutate(biological_sample = ifelse(biological_sample == "yes", 1, 0)) %>%
+  group_by(country, site_name, event_name) %>%
+  summarize(number_humans = n_distinct(participant_id, na.rm = TRUE),
+            number_humans_sampled = sum(biological_sample, na.rm = TRUE)) 
+
+#Make new table for number humans (questionnaires) per SITE and number of humans that have been sampled (biological sample) per SITE, also include country column for easy filtering in Excel
+Humans_bySite <- Human_Event %>%
+  mutate(biological_sample = ifelse(biological_sample == "yes", 1, 0)) %>%
+  group_by(country, site_name) %>%
+  summarize(number_humans = n_distinct(participant_id, na.rm = TRUE),
+            number_humans_sampled = sum(biological_sample, na.rm = TRUE)) 
+
+#Make new table for number humans (questionnaires) per COUNTRY and number of humans that have been sampled (biological sample) per COUNTRY
+Humans_byCountry <- Human_Event %>%
+  mutate(biological_sample = ifelse(biological_sample == "yes", 1, 0)) %>%
+  group_by(country) %>%
+  summarize(number_humans = n_distinct(participant_id, na.rm = TRUE),
+            number_humans_sampled = sum(biological_sample, na.rm = TRUE)) 
+
+
+####Join animal and human reviews for final outputs####
+#By event
+EventLevelReview <- full_join(Animals_byEvent, Humans_byEvent, by = c("event_name", "site_name", "country")) %>%
+  mutate_all(funs(replace(., which(is.na(.)), 0)))
+
+#By site
+SiteLevelReview <- full_join(Animals_bySite, Humans_bySite, by = c("site_name", "country")) %>%
+  mutate_all(funs(replace(., which(is.na(.)), 0)))
+
+#By country 
+CountryLevelReview <- full_join(Animals_byCountry, Humans_byCountry, by = c("country")) %>%
+  mutate_all(funs(replace(., which(is.na(.)), 0)))
+
+#SAMPLES VS TESTING:
+
+#INTERPRETED RESULTS:
