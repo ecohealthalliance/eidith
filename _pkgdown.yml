@@ -15,12 +15,16 @@ navbar:
       href: articles/eidith.html
     - text: Automatic Data Processing / Raw Data
       href: articles/preprocessing.html
-    - text: Database Structure / Table Joining
+    - text: PREDICT-1 Database Structure / Table Joining
       href: articles/data_structure.html
-    - text: Generating Reports and FASTA
+    - text: PREDICT-1 Generating Reports and FASTA
       href: articles/fasta_walkthrough.html
-    - text: Web API Details
+    - text: PREDICT-1 Web API Details
       href: articles/eidith_API.html
+    - text: PREDICT-2 Database Structure / Table Joining
+      href: articles/p2_data_structure.html
+    - text: PREDICT-2 Multiple Response Fields
+      href: articles/multi_response_fields.html
   - text: Reference
     href: reference/index.html
   - text: Release Notes
@@ -36,12 +40,14 @@ reference:
   - title: "Database"
     contents:
       - ed_db_download
-      - ed_db_status
-      - ed_db_updates
       - ed_db_export
+      - ed_db_delete
+      - ed_db_check_status
+      - ed_detailed_db_status
   - title: "EIDITH data"
     contents:
       - ed_metadata
+      - ed2_metadata
       - ed_tables_conn
       - ed_table
       - ed_events
@@ -64,3 +70,6 @@ reference:
   - title: "Mock data"
     contents:
       - ed_mock
+  - title: "Contacts"
+    contents:
+      - ed_contact

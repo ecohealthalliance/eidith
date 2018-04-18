@@ -8,14 +8,17 @@
 <title>Eidith R Package Setup • EIDITH</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><meta property="og:title" content="Eidith R Package Setup">
+<meta property="og:description" content="">
+<meta name="twitter:card" content="summary">
+<!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -24,8 +27,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">EIDITH</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">eidith</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
@@ -49,13 +56,19 @@
       <a href="../articles/preprocessing.html">Automatic Data Processing / Raw Data</a>
     </li>
     <li>
-      <a href="../articles/data_structure.html">Database Structure / Table Joining</a>
+      <a href="../articles/data_structure.html">PREDICT-1 Database Structure / Table Joining</a>
     </li>
     <li>
       <a href="../articles/fasta_walkthrough.html">Generating Reports and FASTA</a>
     </li>
     <li>
-      <a href="../articles/eidith_API.html">Web API Details</a>
+      <a href="../articles/eidith_API.html">PREDICT-1 Web API Details</a>
+    </li>
+    <li>
+      <a href="../articles/p2_data_structure.html">PREDICT-2 Database Structure / Table Joining</a>
+    </li>
+    <li>
+      <a href="../articles/multi_response_fields.html">PREDICT-2 Multiple Response Fields</a>
     </li>
   </ul>
 </li>
@@ -83,16 +96,19 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Eidith R Package Setup</h1>
                         <h4 class="author">Noam Ross</h4>
             
-          </div>
+      
+      <small>Source: <a href="https://github.com/ecohealthalliance/eidith/blob/master/vignettes/eidith.Rmd"><code>vignettes/eidith.Rmd</code></a></small>
+      <div class="hidden name"><code>eidith.Rmd</code></div>
+
+    </div>
 
     
     
-<div class="contents">
 <p>The <strong>eidith</strong> R package provides programmatic access and analytical tools for data from the <a href="http://www.vetmed.ucdavis.edu/ohi/predict/">PREDICT Program</a>, housed at the <a href="https://www.eidith.org/">Emerging Infectious Disease Information Technology Hub</a> (EIDITH).</p>
 <p>The <strong>eidith</strong> package contains no data. To access data, you must be a <a href="https://www.eidith.org/register.aspx">registered</a> EIDITH user with data access privileges. If you have a question about your access level, contact <a href="mailto:technology@eidith.org">technology@eidith.org</a>.</p>
 <p>This package is currently in development. We anticipate additional functionality for common analytical tasks. It also currently only accesses data from PREDICT-1. If you have questions, bug reports, or feature requests, please post them on our <a href="https://github.com/ecohealthalliance/eidith/issues">issue tracker</a>.</p>
@@ -117,15 +133,14 @@
 <pre><code>library(eidith)
 ed_db_download()</code></pre>
 <p>This may take a few minutes to complete depending on the speed of your internet connection.</p>
-<p>Running <code><a href="../reference/ed_db_status.html">ed_db_status()</a></code> will give you a summary of the contents of your database. This is useful to see which countries’ data you have access to or the latest updated you have downloaded.</p>
-<p><code><a href="../reference/ed_db_updates.html">ed_db_updates()</a></code> will check if the online database has been updated since your last download. If it has, <code><a href="../reference/ed_db_download.html">ed_db_download()</a></code> may be run again to update your local database with the latest data. You should also run it after installing a new version of the <strong>eidith</strong> package, as a new version may change the structure of the database.</p>
+<p>Running <code>ed_db_status()</code> will give you a summary of the contents of your database. This is useful to see which countries’ data you have access to or the latest updated you have downloaded.</p>
+<p><code>ed_db_updates()</code> will check if the online database has been updated since your last download. If it has, <code><a href="../reference/ed_db_download.html">ed_db_download()</a></code> may be run again to update your local database with the latest data. You should also run it after installing a new version of the <strong>eidith</strong> package, as a new version may change the structure of the database.</p>
 </div>
 <div id="loading-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#loading-data" class="anchor"></a>Loading data</h3>
 <p>Once you’ve populated your local database, you can look up EIDITH data with the <em>table functions</em>, each of which loads data from the different table in the database: <code><a href="../reference/ed_table.html">ed_events()</a></code>, <code><a href="../reference/ed_table.html">ed_animals()</a></code>, <code><a href="../reference/ed_table.html">ed_specimens()</a></code>, <code><a href="../reference/ed_table.html">ed_tests()</a></code>, and <code><a href="../reference/ed_table.html">ed_viruses()</a></code>, as well as <code><a href="../reference/ed_table.html">ed_testspecimen()</a></code>, which contains cross-references between the test and specimen tables. See the help for these functions for more details.</p>
 <p><code><a href="../reference/ed_metadata.html">ed_metadata()</a></code> contains a list of all variables across these tables and some information on them. If you lookup this in R help in RStudio with <code><a href="../reference/ed_metadata.html">?ed_metadata</a></code> you’ll find this metadata in searchable form.</p>
-</div>
 </div>
   </div>
 
@@ -140,11 +155,13 @@ ed_db_download()</code></pre>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
 </div>
+
+  
 
   </body>
 </html>

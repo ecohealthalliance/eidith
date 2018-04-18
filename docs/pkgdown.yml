@@ -1,0 +1,12 @@
+pandoc: 1.19.2.1
+pkgdown: 0.1.0.9000
+pkgdown_sha: a7aa75eeb866e0e0c891785d8d7bc0c0d2294c36
+articles:
+  data_structure: data_structure.html
+  eidith: eidith.html
+  eidith_API: eidith_API.html
+  fasta_walkthrough: fasta_walkthrough.html
+  multi_response_fields: multi_response_fields.html
+  p2_data_structure: p2_data_structure.html
+  preprocessing: preprocessing.html
+

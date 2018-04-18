@@ -43,6 +43,8 @@ cat(sprintf("<img src=\"%s\" style=\"width:825px\">", uri))
 
 ```
 
+### Unique ID Fields
+
 A requirement of a well-tuned relational database is that each row is unique – for example, a particular animal won’t show up twice in the __Animal__ table, and unlike some spreadsheets or databases you may have worked with, there won’t be a row of totals or summary statistics at the bottom of the table. 
 
 In order to differentiate between entries, there has to be some column (or combination of columns) that is unique for each entry – this is called a unique ID. When two tables can be connected, they will contain their own unique identifier, and the unique identifier of their parent table. This allows us to combine information from different tables by “joining” or “merging” these tables.
@@ -50,6 +52,8 @@ In order to differentiate between entries, there has to be some column (or combi
 In the __Event__ table, for instance, each event (or row) has a unique `event_id`, while in the __Animal__ table, each animal (or row) has a unique `animal_id`. Importantly, each animal in the __Animal__ table also has an `event_id`, which links it to an event. Since `event_id` is not unique in the __Animal__ table, there can be more than one animal entry with the same `event_id` -- this makes perfect sense, since there are likely multiple animals attached to a particular event. 
 
 These ID fields tie all of the tables together, allowing us to join tables that contain information we are interested in analyzing. EIDITH is a large database with many fields per table, so it can be challenging at first to determine which table contains the relevant information. Generally, the location of the information we are looking for should be in the table that it is most closely tied to: if we are looking for the species of an animal, that field should be in the __Animal__ table, if we are looking for the results of a test, that information should be in the __Test__ table. If we are having a hard time finding the field we need, we can use the `?ed2_metadata` command to load the built-in help file that contains a searchable list of all EIDITH fields.
+
+### EIDITH Metadata
 
 Take a look at the `?ed2_metadata` help file now:
 
@@ -69,7 +73,8 @@ This is a dynamic metadata table which shows information about all the fields in
 
 This data table is automatically updated when fields are added or more information becomes available about them. It is also searchable and sortable to make it easier to find fields of interest. 
 
-### Joining Tables  
+### Joining Tables 
+
 Let's walk through a simple example that will illustrate how to join tables to get information that can produce a quick graph or two. In this case, our goals are:
 
 - Make a bar graph with the number of animal species sampled per country 
@@ -133,6 +138,8 @@ ea.reduced <- select(ea.joined,event_name, country, animal_id, species_scientifi
 
 We can see by using `View()` that event information has been duplicated for each animal present in that event, but any event that has no animals linked to it will be filled with an `NA` for those animal variables. Depending on what kind of analysis we are interested in, we may want to perform a different kind of join. Running `?dplyr::join` to read the `dplyr` join help file can help explain different joining options.
 
+### Simple `ggplot2` Bar Graphs
+
 Using `group_by` and `summarize` we can now create a dataframe that summarizes the number of different species per country. This dataframe can then be used to create a simple bar graph with the `ggplot2` package to satisfy our first goal:
 
 - Make a bar graph with the number of animal species sampled per country 
@@ -147,7 +154,7 @@ ea.summary <- group_by(ea.reduced, country, species_scientific_name) %>%
 ggplot(data = ea.summary) +
   geom_bar(aes(x = country)) +
   theme_minimal() + 
-  labs(title = "Number of Species by Country")
+  labs(title = "Number of Species by Country", subtitle = "Note: Scrambled Data")
 
 ```
 
@@ -157,7 +164,8 @@ If we are interested in looking at the number of individual animals (instead of 
 
 ggplot(data = ea.summary) +
   geom_bar(aes(x = country, y = species_num), stat = "identity") +
-  theme_minimal()
+  theme_minimal() +
+  labs(title = "Number of Animals by Country", subtitle = "Note: Scrambled Data")
 
 ```
 
@@ -171,20 +179,19 @@ And finally, we can map the name of each species to the fill color of our graph 
 ggplot(data = ea.summary) +
   geom_bar(aes(x = country, y = species_num, fill = species_scientific_name), stat = "identity") +
   theme_minimal() +
-  theme(legend.position = "none") # removing this line will show the legend with all the species names
-
+  theme(legend.position = "none") + # removing this line will show the legend with all the species names 
+  labs(title = "Number of Animals by Country with Species Colors", subtitle = "Note: Scrambled Data")
 
 ```
 
-There are many options to 
+There are many options that allow customization of `ggplot2` graphs. For these examples we are using a minimal theme (`theme_minimal()`) and removing legends to mask private PREDICT data; if you are interested in learning more about tge `tidyverse` and `ggplot2` visualization, [Hadley Wickham's *R for Data Science*](http://r4ds.had.co.nz/) is a great resource. 
 
 
 ### Conclusion
 
-The purpose of this vignette was to look at an example of joining 
+The purpose of this vignette was to explore the PREDICT-2 EIDITH database structure, introduce the user to tables, unique ID's, and some simple visualization tools. 
 
-
-Due to the introduction of site characterization modules and human questionnaire data, the PREDICT-2 database has a more complex structure than the P1 database; however, the concepts used to manipulate both databases are largely the same. The tutorial on joining P1 data is available here: [(https://ecohealthalliance.github.io/eidith/articles/eidith.html) 
+Due to the introduction of site characterization modules and human questionnaire data, the PREDICT-2 database has a more complex structure than the P1 database; however, the concepts used to manipulate both databases are largely the same. If you are interested in additional joining examples, the tutorial on joining P1 data is available [here](https://ecohealthalliance.github.io/eidith/articles/eidith.html), and additional PREDICT-2 Joining / Visualization examples are available [here] and [here].
 
 
 

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Export the local EIDITH database to a file — ed_db_export • EIDITH</title>
+<title>EIDITH PREDICT-2 table metadata — ed2_metadata • EIDITH</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,10 +25,10 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-<meta property="og:title" content="Export the local EIDITH database to a file — ed_db_export" />
+<meta property="og:title" content="EIDITH PREDICT-2 table metadata — ed2_metadata" />
 
-<meta property="og:description" content="This function allows you to export the local EIDITH database to a file that
-can then be used by others.  The database is in SQLite format." />
+<meta property="og:description" content="Descriptions of fields in the EIDITH database.  Running ed2_metadata() will
+return a data frame with this information." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -128,54 +128,31 @@ can then be used by others.  The database is in SQLite format." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Export the local EIDITH database to a file</h1>
-    <small>Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/database.R'><code>R/database.R</code></a></small>
-    <div class="hidden name"><code>ed_db_export.Rd</code></div>
+    <h1>EIDITH PREDICT-2 table metadata</h1>
+    <small>Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/metadata.R'><code>R/metadata.R</code></a></small>
+    <div class="hidden name"><code>ed2_metadata.Rd</code></div>
     </div>
 
     
-    <p>This function allows you to export the local EIDITH database to a file that
-can then be used by others.  The database is in <a href='https://sqlite.org/'>SQLite</a> format.</p>
+    <p>Descriptions of fields in the EIDITH database.  Running <code>ed2_metadata()</code> will
+return a data frame with this information.</p>
     
 
-    <pre class="usage"><span class='fu'>ed_db_export</span>(<span class='no'>filename</span>, <span class='no'>...</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>filename</th>
-      <td><p>The filename to export to. We suggest something ending in <code>.sqlite</code>.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Other options passed to <code>file.copy()</code></p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <pre class="usage"><span class='fu'>ed2_metadata</span>()</pre>
+        
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <div class='dont-index'><p><code>ed_db_status()</code>, <code>ed_db_updates()</code>, <code>ed_db_export()</code></p></div>
+    <p>More information can be found at <a href='https://eidith.org/Resources.aspx'>the EIDITH resources page</a>.</p>
+<p>In RStudio, this help file includes a searchable table of values.</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-  <span class='co'>#Here's an example of how to export and then use the exported database</span>
-
-  <span class='fu'>ed_db_export</span>(<span class='st'>"mydb.sqlite"</span>)
-  <span class='fu'>options</span>(<span class='kw'>ed_sql_path</span> <span class='kw'>=</span> <span class='st'>"mydb.sqlite"</span>) <span class='co'># This switches to working with the exported database</span>
-  <span class='fu'>ed_db_status</span>()  <span class='co'>#get status of the current (exported) database</span>
-<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      <li><a href="#details">Details</a></li>
+          </ul>
 
   </div>
 </div>
