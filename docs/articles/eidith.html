@@ -59,7 +59,7 @@
       <a href="../articles/data_structure.html">PREDICT-1 Database Structure / Table Joining</a>
     </li>
     <li>
-      <a href="../articles/fasta_walkthrough.html">Generating Reports and FASTA</a>
+      <a href="../articles/fasta_walkthrough.html">PREDICT-1 Generating Reports and FASTA</a>
     </li>
     <li>
       <a href="../articles/eidith_API.html">PREDICT-1 Web API Details</a>
@@ -123,7 +123,7 @@
 <div id="authentication" class="section level3">
 <h3 class="hasAnchor">
 <a href="#authentication" class="anchor"></a>Authentication</h3>
-<p>To download data from EIDITH, you must provide logon credentials. If you run <code><a href="../reference/ed_db_download.html">ed_db_download()</a></code> or the <code><a href="../reference/ed_get.html">ed_get()</a></code> functions from the R console, your EIDITH username and password will be requested. To use these functions in scripts, you must provide these credentials as <em>environment variables</em>.</p>
+<p>To download data from EIDITH, you must provide logon credentials. If you run <code><a href="../reference/ed_db_download.html">ed_db_download()</a></code>, <code><a href="../reference/ed_get.html">ed_get()</a></code>, or <code>ed2_get()</code> functions from the R console, your EIDITH username and password will be requested. To use these functions in scripts, you must provide these credentials as <em>environment variables</em>.</p>
 <p>You can cache your credentials and login automatically by putting them in a hidden <code>.Renviron</code> file, which defines environment variables for your R session. For more information see the <code><a href="../reference/ed_auth.html">ed_auth()</a></code> help file.</p>
 </div>
 <div id="downloading-data" class="section level3">
@@ -133,14 +133,12 @@
 <pre><code>library(eidith)
 ed_db_download()</code></pre>
 <p>This may take a few minutes to complete depending on the speed of your internet connection.</p>
-<p>Running <code>ed_db_status()</code> will give you a summary of the contents of your database. This is useful to see which countries’ data you have access to or the latest updated you have downloaded.</p>
-<p><code>ed_db_updates()</code> will check if the online database has been updated since your last download. If it has, <code><a href="../reference/ed_db_download.html">ed_db_download()</a></code> may be run again to update your local database with the latest data. You should also run it after installing a new version of the <strong>eidith</strong> package, as a new version may change the structure of the database.</p>
 </div>
 <div id="loading-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#loading-data" class="anchor"></a>Loading data</h3>
-<p>Once you’ve populated your local database, you can look up EIDITH data with the <em>table functions</em>, each of which loads data from the different table in the database: <code><a href="../reference/ed_table.html">ed_events()</a></code>, <code><a href="../reference/ed_table.html">ed_animals()</a></code>, <code><a href="../reference/ed_table.html">ed_specimens()</a></code>, <code><a href="../reference/ed_table.html">ed_tests()</a></code>, and <code><a href="../reference/ed_table.html">ed_viruses()</a></code>, as well as <code><a href="../reference/ed_table.html">ed_testspecimen()</a></code>, which contains cross-references between the test and specimen tables. See the help for these functions for more details.</p>
-<p><code><a href="../reference/ed_metadata.html">ed_metadata()</a></code> contains a list of all variables across these tables and some information on them. If you lookup this in R help in RStudio with <code><a href="../reference/ed_metadata.html">?ed_metadata</a></code> you’ll find this metadata in searchable form.</p>
+<p>Once you’ve populated your local database, you can look up EIDITH data with the <em>table functions</em>, each of which loads data from the different table in the PREDICT-1 or PREDICT-2 database: <code><a href="../reference/ed_table.html">ed_events()</a></code>, <code><a href="../reference/ed_table.html">ed_animals()</a></code>, <code><a href="../reference/ed_table.html">ed_specimens()</a></code>, <code>ed2_events()</code>, <code>ed2_animals()</code> and so on. See the help for these functions for more details.</p>
+<p><code><a href="../reference/ed_metadata.html">ed_metadata()</a></code> and <code><a href="../reference/ed2_metadata.html">ed2_metadata()</a></code> contain lists of all variables across these tables and some information on them. If you lookup this in R help in RStudio with <code><a href="../reference/ed_metadata.html">?ed_metadata</a></code> or <code><a href="../reference/ed2_metadata.html">?ed2_metadata</a></code> you’ll find this metadata in searchable form.</p>
 </div>
   </div>
 
