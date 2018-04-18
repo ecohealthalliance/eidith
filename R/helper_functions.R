@@ -9,6 +9,7 @@
 #' @importFrom stringr str_split str_trim str_detect str_match
 #'
 #' @return A long form dataframe with `col` field separated into repeated entries.
+#' @rdname ed2_expand_long
 #' @export
 #' @examples
 #' \dontrun{
@@ -37,7 +38,7 @@ ed2_expand_long <- function(df, col, other_details = TRUE){
 #'
 #' @param df The data frame containing the field to expand
 #' @param col The column name to split into wide form
-#' @param other_details Whether new wide field names should be cleaned. Defaults to TRUE.
+#' @param clean_names Whether new wide field names should be cleaned. Defaults to TRUE.
 #'
 #' @importFrom tidyr %>% unnest spread
 #' @importFrom dplyr mutate
@@ -46,11 +47,12 @@ ed2_expand_long <- function(df, col, other_details = TRUE){
 #'
 #' @return A wide form dataframe with `col` field separated into different columns and filled with TRUE or FALSE values.
 #' @export
+#' @rdname ed2_expand_wide
 #' @examples
 #' \dontrun{
 #' humans <- ed2_human()
 #' humans_reduced <- dplyr::select(humans, event_name, participant_id, travel_reason)
-#' humans_reduced_long <- ed2_expand_wide(humans_reduced, travel_reason)
+#' humans_reduced_wide <- ed2_expand_wide(humans_reduced, travel_reason)
 #' }
 
 ed2_expand_wide <- function(df, col, clean_names = TRUE){
