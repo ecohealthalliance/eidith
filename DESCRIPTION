@@ -38,7 +38,8 @@ Imports:
     lazyeval,
     lubridate,
     htmlwidgets,
-    DT
+    DT,
+    janitor
 Suggests:
     curl,
     testthat,
