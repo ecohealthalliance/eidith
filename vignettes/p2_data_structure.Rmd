@@ -191,7 +191,7 @@ There are many options that allow customization of `ggplot2` graphs. For these e
 
 The purpose of this vignette was to explore the PREDICT-2 EIDITH database structure, introduce the user to tables, unique ID's, and some simple visualization tools. 
 
-Due to the introduction of site characterization modules and human questionnaire data, the PREDICT-2 database has a more complex structure than the P1 database; however, the concepts used to manipulate both databases are largely the same. If you are interested in additional joining examples, the tutorial on joining P1 data is available [here](https://ecohealthalliance.github.io/eidith/articles/eidith.html), and additional PREDICT-2 Joining / Visualization examples are available [here] and [here].
+Due to the introduction of site characterization modules and human questionnaire data, the PREDICT-2 database has a more complex structure than the P1 database; however, the concepts used to manipulate both databases are largely the same. If you are interested in additional joining examples, the tutorial on joining P1 data is available [here](https://ecohealthalliance.github.io/eidith/articles/eidith.html).
 
 
 
