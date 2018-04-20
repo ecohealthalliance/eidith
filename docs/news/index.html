@@ -95,6 +95,9 @@
     <li>
       <a href="../articles/multi_response_fields.html">PREDICT-2 Multiple Response Fields</a>
     </li>
+    <li>
+      <a href="../articles/eidith_r_training.pdf">EIDITH - R Package Workshop Slides</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -128,6 +131,41 @@
       <small>Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="eidith-0-4" class="section level1">
+<h1 class="page-header">
+<a href="#eidith-0-4" class="anchor"></a>eidith 0.4</h1>
+<div id="new-functionality" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-functionality" class="anchor"></a>New functionality</h2>
+<ul>
+<li>PREDICT-2 database now available for download using <code><a href="../reference/ed_db_download.html">ed_db_download()</a></code> which takes two arguments: one for PREDICT-1 tables, the second for PREDICT-2 tables. <code>p1_api_endpoints()</code> and <code>p2_api_endpoints()</code> are functions that list possible table endpoints. Errors in one table download will not affect others.</li>
+<li>PREDICT-2 local database tables available via <code>ed2_*()</code> functions (e.g. <code>ed2_animals()</code>). On pull of these tables from local database, messages print to user about note columns or duplicate IDs.</li>
+<li>New status banner details database status at startup, is also available via <code>ed_db_detailed_status()</code> function. Short database status checking function <code><a href="../reference/ed_db_check_status.html">ed_db_check_status()</a></code> checks each table then prompts downloads when run interactively.</li>
+<li>EIDITH field metadata available via <code><a href="../reference/ed2_metadata.html">ed2_metadata()</a></code> function and searchable <code><a href="../reference/ed2_metadata.html">?ed2_metadata</a></code> help file. Metadata is now automatically updated on database download.</li>
+<li>EIDITH PREDICT-2 table connections available via <code><a href="../reference/ed_tables_conn.html">ed2_tables_conn()</a></code> function.</li>
+<li>Delete local EIDITH database using <code><a href="../reference/ed_db_delete.html">ed_db_delete()</a></code> function.</li>
+<li>Helper functions for expanding multiple-response fields: <code><a href="../reference/ed2_expand_wide.html">ed2_expand_wide()</a></code> and <code><a href="../reference/ed2_expand_long.html">ed2_expand_long()</a></code>.</li>
+</ul>
+</div>
+<div id="new-documentation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-documentation" class="anchor"></a>New documentation</h2>
+<ul>
+<li>PREDICT-2 EIDITH database structure and joining vignette</li>
+<li>PREDICT-2 Multiple-response field helper function vignette</li>
+<li>PREDICT-2 EIDITH-R workshop presentation slides</li>
+<li>Updated help files for old and new functions</li>
+</ul>
+</div>
+<div id="breaking-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#breaking-changes" class="anchor"></a><em>Breaking changes</em>
+</h2>
+<ul>
+<li>New database functions and structure may result in errors for users with pre-existing PREDICT-1 local databases. It is best to install new package version, then run <code><a href="../reference/ed_db_delete.html">ed_db_delete()</a></code> and run a clean <code><a href="../reference/ed_db_download.html">ed_db_download()</a></code> call.</li>
+</ul>
+</div>
+</div>
     <div id="eidith-0-3-1-patch" class="section level1">
 <h1 class="page-header">
 <a href="#eidith-0-3-1-patch" class="anchor"></a>eidith 0.3.1 (patch)</h1>
@@ -138,9 +176,9 @@
     <div id="eidith-0-3" class="section level1">
 <h1 class="page-header">
 <a href="#eidith-0-3" class="anchor"></a>eidith 0.3</h1>
-<div id="new-functionality" class="section level2">
+<div id="new-functionality-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-functionality" class="anchor"></a>New functionality</h2>
+<a href="#new-functionality-1" class="anchor"></a>New functionality</h2>
 <ul>
 <li>Additional functionality for FASTA export and interpretation: <code><a href="../reference/ed_fasta.html">ed_fasta_group()</a></code>, <code><a href="../reference/ed_fasta.html">ed_report_excel()</a></code>.</li>
 <li>Mock data sets now available: <code><a href="../reference/ed_mock.html">ed_table_mock()</a></code>
@@ -150,9 +188,9 @@
 <li>Database downloads more robust to errors, only overwrites old data after new data is checked</li>
 </ul>
 </div>
-<div id="new-documentation" class="section level2">
+<div id="new-documentation-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-documentation" class="anchor"></a>New documentation</h2>
+<a href="#new-documentation-1" class="anchor"></a>New documentation</h2>
 <ul>
 <li>Automatic Processing / Raw Data vignette</li>
 <li>Data Structure and Table Joining vignette with mock data example</li>
@@ -195,9 +233,9 @@
     <div id="eidith-0-2-0" class="section level1">
 <h1 class="page-header">
 <a href="#eidith-0-2-0" class="anchor"></a>eidith 0.2.0</h1>
-<div id="new-functionality-1" class="section level2">
+<div id="new-functionality-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-functionality-1" class="anchor"></a>New functionality</h2>
+<a href="#new-functionality-2" class="anchor"></a>New functionality</h2>
 <ul>
 <li>Add a FASTA export function: <code><a href="../reference/ed_fasta.html">ed_fasta()</a></code>
 </li>
@@ -236,6 +274,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#eidith-0-4">0.4</a></li>
         <li><a href="#eidith-0-3-1-patch">0.3.1</a></li>
         <li><a href="#eidith-0-3">0.3</a></li>
         <li><a href="#eidith-0-2-2-patch">0.2.2</a></li>

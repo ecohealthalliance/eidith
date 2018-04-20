@@ -25,6 +25,8 @@ navbar:
       href: articles/p2_data_structure.html
     - text: PREDICT-2 Multiple Response Fields
       href: articles/multi_response_fields.html
+    - text: EIDITH - R Package Workshop Slides
+      href: articles/eidith_r_training.pdf
   - text: Reference
     href: reference/index.html
   - text: Release Notes
@@ -70,6 +72,10 @@ reference:
   - title: "Mock data"
     contents:
       - ed_mock
+  - title: "Helper Functions"
+    contents:
+      - ed2_expand_wide
+      - ed2_expand_long
   - title: "Contacts"
     contents:
       - ed_contact
