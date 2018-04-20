@@ -284,7 +284,7 @@ print.dbstatus <- function(x,...) {
 #'
 
 #'@export
-ed_detailed_db_status <- function() {
+ed_db_detailed_status <- function() {
   cat(ed_db_presence())
   cat(ed_db_status_msg(ed_db_make_status_msg()))
 }

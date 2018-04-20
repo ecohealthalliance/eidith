@@ -7,6 +7,41 @@ package, like so:
 ```
 devtools::install_github('ecohealthalliance/eidith@v0.1.0')`
 ```
+
+# eidith 0.4
+
+## New functionality
+
+- PREDICT-2 database now available for download using `ed_db_download()` which takes
+  two arguments: one for PREDICT-1 tables, the second for PREDICT-2 tables. `p1_api_endpoints()` 
+  and `p2_api_endpoints()` are functions that list possible table endpoints. Errors in
+  one table download will not affect others.
+- PREDICT-2 local database tables available via `ed2_*()` functions (e.g. `ed2_animals()`). On 
+  pull of these tables from local database, messages print to user about note columns or 
+  duplicate IDs.
+- New status banner details database status at startup, is also available via `ed_db_detailed_status()`
+  function. Short database status checking function `ed_db_check_status()` checks each table
+  then prompts downloads when run interactively.
+- EIDITH field metadata available via `ed2_metadata()` function and searchable `?ed2_metadata` 
+  help file. Metadata is now automatically updated on database download.
+- EIDITH PREDICT-2 table connections available via `ed2_tables_conn()` function.
+- Delete local EIDITH database using `ed_db_delete()` function.
+- Helper functions for expanding multiple-response fields: `ed2_expand_wide()` and 
+  `ed2_expand_long()`. 
+
+## New documentation
+
+- PREDICT-2 EIDITH database structure and joining vignette
+- PREDICT-2 Multiple-response field helper function vignette
+- PREDICT-2 EIDITH-R workshop presentation slides
+- Updated help files for old and new functions
+
+## *Breaking changes*
+
+- New database functions and structure may result in errors for users with
+  pre-existing PREDICT-1 local databases. It is best to install new package
+  version, then run `ed_db_delete()` and run a clean `ed_db_download()` call.
+
 # eidith 0.3.1 (patch)
 
 - Internal changes to be compatible with dplyr 0.7.0 ([#55](https://github.com/ecohealthalliance/eidith/pull/55))

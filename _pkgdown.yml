@@ -43,7 +43,7 @@ reference:
       - ed_db_export
       - ed_db_delete
       - ed_db_check_status
-      - ed_detailed_db_status
+      - ed_db_detailed_status
   - title: "EIDITH data"
     contents:
       - ed_metadata
