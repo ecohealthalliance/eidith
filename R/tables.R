@@ -190,8 +190,6 @@ ed_testspecimen <- function(...) {
 #' equivalent, useful for programming.  The other functions are convenience aliases
 #' for the individual tables. Functions beginning with the `ed` prefix refer to
 #' PREDICT-1 data tables, while `ed2` functions refer to PREDICT-2 data tables.
-#' Alternate versions return [mock data] `ed_mock()`` for
-#' tutorials and practice.
 #'
 #' These functions take [dplyr::filter()] arguments to sub-set the data.  Using
 #' these, the data is subsetted via SQL *before* it is loaded into memory.
