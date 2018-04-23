@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Load PREDICT-2 EIDITH data from the local database — ed2_events • EIDITH</title>
+<title>Load PREDICT-2 EIDITH data from the local database — ed2_table • EIDITH</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -21,20 +21,24 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-<meta property="og:title" content="Load PREDICT-2 EIDITH data from the local database — ed2_events" />
+<meta property="og:title" content="Load PREDICT-2 EIDITH data from the local database — ed2_table" />
 
 <meta property="og:description" content="These functions load data from the locally-stored SQLite database of downloaded
 and cleaned EIDITH data. ed_table is a general function, and ed_table_
 it's standard evaluation
 equivalent, useful for programming.  The other functions are convenience aliases
 for the individual tables. Functions beginning with the ed prefix refer to
-PREDICT-1 data tables, while ed2 functions refer to PREDICT-2 data tables.
-Alternate versions return mock data `ed_mock()`` for
-tutorials and practice." />
+PREDICT-1 data tables, while ed2 functions refer to PREDICT-2 data tables." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -48,6 +52,9 @@ tutorials and practice." />
 
 
 
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
   </head>
 
@@ -64,7 +71,7 @@ tutorials and practice." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eidith</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4</span>
       </span>
     </div>
 
@@ -127,6 +134,12 @@ tutorials and practice." />
 </li>
       </ul>
       
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -138,20 +151,20 @@ tutorials and practice." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Load PREDICT-2 EIDITH data from the local database</h1>
-    <small>Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/tables.R'><code>R/tables.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/tables.R'><code>R/tables.R</code></a></small>
     <div class="hidden name"><code>ed2_table.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>These functions load data from the locally-stored SQLite database of downloaded
 and cleaned EIDITH data. <code>ed_table</code> is a general function, and <code>ed_table_</code>
 it's <a href='https://cran.r-project.org/web/packages/dplyr/vignettes/nse.html'>standard evaluation</a>
 equivalent, useful for programming.  The other functions are convenience aliases
 for the individual tables. Functions beginning with the <code>ed</code> prefix refer to
-PREDICT-1 data tables, while <code>ed2</code> functions refer to PREDICT-2 data tables.
-Alternate versions return mock data `ed_mock()`` for
-tutorials and practice.</p>
+PREDICT-1 data tables, while <code>ed2</code> functions refer to PREDICT-2 data tables.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>ed2_events</span>(<span class='no'>...</span>)
 
@@ -255,6 +268,17 @@ format, filtering such as <code>event_date &gt; "2014-01-01"</code> still works.
    </div>
 
   
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '2bf5efbf4437480db9685f3d09019982',
+    indexName: 'eidith',
+    inputSelector: 'input#search-input.form-control'
+  });
+</script>
+
 
   </body>
 </html>

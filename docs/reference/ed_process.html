@@ -21,6 +21,12 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -44,6 +50,9 @@ call this function directly - it is called by both ed_db_download() and the dire
 
 
 
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
   </head>
 
   <body>
@@ -59,7 +68,7 @@ call this function directly - it is called by both ed_db_download() and the dire
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eidith</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4</span>
       </span>
     </div>
 
@@ -122,6 +131,12 @@ call this function directly - it is called by both ed_db_download() and the dire
 </li>
       </ul>
       
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -133,15 +148,17 @@ call this function directly - it is called by both ed_db_download() and the dire
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Standard post-processing of EIDITH exports</h1>
-    <small>Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/process.R'><code>R/process.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/process.R'><code>R/process.R</code></a></small>
     <div class="hidden name"><code>ed_process.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>This function takes raw data downloaded from EIDITH and puts it through
 various preprocessing and cleaning steps.  In general there is no need to
 call this function directly - it is called by both <code><a href='ed_db_download.html'>ed_db_download()</a></code> and the <a href='ed_get.html'>direct download functions</a>.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>ed_process</span>(<span class='no'>dat</span>, <span class='no'>endpt</span>)</pre>
     
@@ -205,6 +222,17 @@ numeric primary keys, other identifiers now go by <code>_id_name</code>.</p></li
    </div>
 
   
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '2bf5efbf4437480db9685f3d09019982',
+    indexName: 'eidith',
+    inputSelector: 'input#search-input.form-control'
+  });
+</script>
+
 
   </body>
 </html>

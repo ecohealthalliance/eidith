@@ -21,6 +21,12 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -46,6 +52,9 @@ versions of the eidith package." />
 
 
 
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
   </head>
 
   <body>
@@ -61,7 +70,7 @@ versions of the eidith package." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eidith</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4</span>
       </span>
     </div>
 
@@ -124,6 +133,12 @@ versions of the eidith package." />
 </li>
       </ul>
       
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -135,10 +150,11 @@ versions of the eidith package." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Download EIDITH data to local storage</h1>
-    <small>Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/database.R'><code>R/database.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/database.R'><code>R/database.R</code></a></small>
     <div class="hidden name"><code>ed_db_download.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>This function fetches all available tables from the EIDITH database and
 caches the data locally for further use with the <a href='ed_table.html'>table functions</a>.
@@ -146,6 +162,7 @@ The database persists between R sessions, so you only need to run this when
 you want to update data.  You should also run it when updating to new
 versions of the <strong>eidith</strong> package.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>ed_db_download</span>(<span class='kw'>p1_tables</span> <span class='kw'>=</span> <span class='fu'>p1_api_endpoints</span>(),
   <span class='kw'>p2_tables</span> <span class='kw'>=</span> <span class='fu'>p2_api_endpoints</span>(), <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>())</pre>
@@ -214,6 +231,17 @@ In the future, we will allow for updating only with new and changed records.</p>
    </div>
 
   
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '2bf5efbf4437480db9685f3d09019982',
+    indexName: 'eidith',
+    inputSelector: 'input#search-input.form-control'
+  });
+</script>
+
 
   </body>
 </html>

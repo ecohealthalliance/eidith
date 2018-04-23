@@ -21,6 +21,12 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -45,6 +51,9 @@ and PREDICT 2 ed2_tables_conn databases." />
 
 
 
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
   </head>
 
   <body>
@@ -60,7 +69,7 @@ and PREDICT 2 ed2_tables_conn databases." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eidith</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4</span>
       </span>
     </div>
 
@@ -123,6 +132,12 @@ and PREDICT 2 ed2_tables_conn databases." />
 </li>
       </ul>
       
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -134,16 +149,18 @@ and PREDICT 2 ed2_tables_conn databases." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Connections between tables</h1>
-    <small>Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/tables_conn.R'><code>R/tables_conn.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/tables_conn.R'><code>R/tables_conn.R</code></a></small>
     <div class="hidden name"><code>ed_tables_conn.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>To understand how various EIDITH tables are connected via their column names.
 Visualizing these connections is helpful in determining how to join <code>eidith</code>
 tables for further analyses, and is available for both PREDICT 1 <code>ed_tables_conn</code>
 and PREDICT 2 <code>ed2_tables_conn</code> databases.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>ed_tables_conn</span>(<span class='kw'>cols</span> <span class='kw'>=</span> <span class='st'>"id"</span>)
 
@@ -178,7 +195,20 @@ tables, and <code>conn</code>, the connecting column.</p>
 #&gt; 3 TestIDSpecimenID             Test     test_id
 #&gt; 4 TestIDSpecimenID            Virus     test_id
 #&gt; 5         Specimen TestIDSpecimenID specimen_id
-#&gt; 6             Test            Virus     test_id</div><div class='input'><span class='fu'>ed2_tables_conn</span>()</div><div class='output co'>#&gt; <span class='error'>Error: 'data-raw/ed2_conn.csv' does not exist in current working directory ('/Users/basaraba/R/eidith/docs/reference').</span></div><div class='input'>
+#&gt; 6             Test            Virus     test_id</div><div class='input'><span class='fu'>ed2_tables_conn</span>()</div><div class='output co'>#&gt; # A tibble: 25 x 3
+#&gt;    T1    T2                 conn      
+#&gt;    &lt;chr&gt; &lt;chr&gt;              &lt;chr&gt;     
+#&gt;  1 Event ZooSanctuary       event_name
+#&gt;  2 Event AnimalProduction   event_name
+#&gt;  3 Event CropProduction     event_name
+#&gt;  4 Event Dwellings          event_name
+#&gt;  5 Event ExtractiveIndustry event_name
+#&gt;  6 Event WildlifeRestaurant event_name
+#&gt;  7 Event NaturalAreas       event_name
+#&gt;  8 Event MarketValueChain   event_name
+#&gt;  9 Event Animal             event_name
+#&gt; 10 Event Human              event_name
+#&gt; # ... with 15 more rows</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -207,6 +237,17 @@ tables, and <code>conn</code>, the connecting column.</p>
    </div>
 
   
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '2bf5efbf4437480db9685f3d09019982',
+    indexName: 'eidith',
+    inputSelector: 'input#search-input.form-control'
+  });
+</script>
+
 
   </body>
 </html>

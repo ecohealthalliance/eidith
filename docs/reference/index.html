@@ -21,6 +21,12 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -39,6 +45,9 @@
 
 
 
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
   </head>
 
   <body>
@@ -54,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eidith</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4</span>
       </span>
     </div>
 
@@ -116,6 +125,12 @@
   </a>
 </li>
       </ul>
+      
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
       
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -220,6 +235,12 @@
           <p><code><a href="ed_table.html">ed_table_()</a></code> <code><a href="ed_table.html">ed_table()</a></code> <code><a href="ed_table.html">ed_events()</a></code> <code><a href="ed_table.html">ed_animals()</a></code> <code><a href="ed_table.html">ed_specimens()</a></code> <code><a href="ed_table.html">ed_tests()</a></code> <code><a href="ed_table.html">ed_viruses()</a></code> <code><a href="ed_table.html">ed_testspecimen()</a></code> </p>
         </td>
         <td><p>Load PREDICT-1 EIDITH data from the local database</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="ed2_table.html">ed2_events()</a></code> <code><a href="ed2_table.html">ed2_animals()</a></code> <code><a href="ed2_table.html">ed2_specimens()</a></code> <code><a href="ed2_table.html">ed2_animal_production()</a></code> <code><a href="ed2_table.html">ed2_crop_production()</a></code> <code><a href="ed2_table.html">ed2_zoo_sanctuary()</a></code> <code><a href="ed2_table.html">ed2_wildlife_restaurant()</a></code> <code><a href="ed2_table.html">ed2_natural_areas()</a></code> <code><a href="ed2_table.html">ed2_market_value_chain()</a></code> <code><a href="ed2_table.html">ed2_human()</a></code> <code><a href="ed2_table.html">ed2_tests()</a></code> <code><a href="ed2_table.html">ed2_test_serology()</a></code> <code><a href="ed2_table.html">ed2_test_interpreted()</a></code> <code><a href="ed2_table.html">ed2_human_animal_production()</a></code> <code><a href="ed2_table.html">ed2_extractive_industry()</a></code> <code><a href="ed2_table.html">ed2_dwellings()</a></code> <code><a href="ed2_table.html">ed2_human_crop_production()</a></code> <code><a href="ed2_table.html">ed2_human_extractive_industry()</a></code> <code><a href="ed2_table.html">ed2_human_hospital_worker()</a></code> <code><a href="ed2_table.html">ed2_human_hunter()</a></code> <code><a href="ed2_table.html">ed2_human_market()</a></code> <code><a href="ed2_table.html">ed2_human_restaurant()</a></code> <code><a href="ed2_table.html">ed2_human_sick_person()</a></code> <code><a href="ed2_table.html">ed2_human_temporary_settlements()</a></code> <code><a href="ed2_table.html">ed2_human_zoo()</a></code> </p>
+        </td>
+        <td><p>Load PREDICT-2 EIDITH data from the local database</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -254,6 +275,12 @@
           <p><code><a href="ed_process.html">ed_process()</a></code> </p>
         </td>
         <td><p>Standard post-processing of EIDITH exports</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="endpoints.html">p1_api_endpoints()</a></code> <code><a href="endpoints.html">p2_api_endpoints()</a></code> </p>
+        </td>
+        <td><p>Return he names of the tables in the EIDITH database.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -335,6 +362,17 @@
    </div>
 
   
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '2bf5efbf4437480db9685f3d09019982',
+    indexName: 'eidith',
+    inputSelector: 'input#search-input.form-control'
+  });
+</script>
+
 
   </body>
 </html>

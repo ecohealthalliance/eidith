@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>This function returns the names of the tables in the PREDICT-1 EIDITH database. — p1_api_endpoints • EIDITH</title>
+<title>Return he names of the tables in the EIDITH database. — p1_api_endpoints • EIDITH</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -21,13 +21,19 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-<meta property="og:title" content="This function returns the names of the tables in the PREDICT-1 EIDITH database. — p1_api_endpoints" />
+<meta property="og:title" content="Return he names of the tables in the EIDITH database. — p1_api_endpoints" />
 
-<meta property="og:description" content="This function returns the names of the tables in the PREDICT-1 EIDITH database.
+<meta property="og:description" content="Return he names of the tables in the EIDITH database.
 This function returns the names of the tables in the PREDICT-2 EIDITH database." />
 <meta name="twitter:card" content="summary" />
 
@@ -42,6 +48,9 @@ This function returns the names of the tables in the PREDICT-2 EIDITH database."
 
 
 
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
   </head>
 
@@ -58,7 +67,7 @@ This function returns the names of the tables in the PREDICT-2 EIDITH database."
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eidith</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4</span>
       </span>
     </div>
 
@@ -121,6 +130,12 @@ This function returns the names of the tables in the PREDICT-2 EIDITH database."
 </li>
       </ul>
       
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -131,15 +146,17 @@ This function returns the names of the tables in the PREDICT-2 EIDITH database."
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>This function returns the names of the tables in the PREDICT-1 EIDITH database.</h1>
-    <small>Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/api_calls.R'><code>R/api_calls.R</code></a></small>
+    <h1>Return he names of the tables in the EIDITH database.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/api_calls.R'><code>R/api_calls.R</code></a></small>
     <div class="hidden name"><code>endpoints.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
-    <p>This function returns the names of the tables in the PREDICT-1 EIDITH database.</p>
+    <p>Return he names of the tables in the EIDITH database.</p>
 <p>This function returns the names of the tables in the PREDICT-2 EIDITH database.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>p1_api_endpoints</span>()
 
@@ -168,6 +185,17 @@ This function returns the names of the tables in the PREDICT-2 EIDITH database."
    </div>
 
   
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '2bf5efbf4437480db9685f3d09019982',
+    indexName: 'eidith',
+    inputSelector: 'input#search-input.form-control'
+  });
+</script>
+
 
   </body>
 </html>

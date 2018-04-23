@@ -8,14 +8,16 @@
 <title>Generating Reports and FASTA Files • EIDITH</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- docsearch --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
+<link href="../docsearch.css" rel="stylesheet">
+<!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><meta property="og:title" content="Generating Reports and FASTA Files">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<![endif]--><!-- docsearch --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
 </head>
 <body>
     <div class="container template-article">
@@ -29,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eidith</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4</span>
       </span>
     </div>
 
@@ -90,7 +92,13 @@
   </a>
 </li>
       </ul>
+<form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
+      </form>
+      
+    </div>
 <!--/.nav-collapse -->
   </div>
 <!--/.container -->
@@ -105,7 +113,7 @@
                         <h4 class="author">Cale Basaraba</h4>
             
       
-      <small>Source: <a href="https://github.com/ecohealthalliance/eidith/blob/master/vignettes/fasta_walkthrough.Rmd"><code>vignettes/fasta_walkthrough.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ecohealthalliance/eidith/blob/master/vignettes/fasta_walkthrough.Rmd"><code>vignettes/fasta_walkthrough.Rmd</code></a></small>
       <div class="hidden name"><code>fasta_walkthrough.Rmd</code></div>
 
     </div>
@@ -116,55 +124,55 @@
 <h3 class="hasAnchor">
 <a href="#initializing-eidith-r-package" class="anchor"></a>Initializing EIDITH R package:</h3>
 <p>In order to do anything with the EIDITH R package, we need to first make sure to load the <code>eidith</code> library. For straightforward data manipulation we will also load the <code>dplyr</code> package:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(eidith)
-<span class="kw">library</span>(dplyr)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(eidith)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a></code></pre></div>
 </div>
 <div id="using-eidith-r-package-to-generate-fasta-files" class="section level3">
 <h3 class="hasAnchor">
 <a href="#using-eidith-r-package-to-generate-fasta-files" class="anchor"></a>Using EIDITH R package to generate FASTA files:</h3>
 <p>The EIDITH R package has a built-in function for retrieving a summary of sequences ready for interpretation: <code><a href="../reference/ed_fasta.html">ed_tests_report()</a></code>. Running the default <code><a href="../reference/ed_fasta.html">ed_tests_report()</a></code> function will generate a table of all tests whose status is <code>"Result finalized, interpretation pending"</code>. We can retrieve tests with other statuses by using <code><a href="../reference/ed_fasta.html">ed_tests_report()</a></code> with the <code>status =</code> option. For example, if we are interested in retrieving a table of tests whose status was <code>"Under Sequence Review"</code> or <code>"Active testing ongoing"</code>, we can run:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ed_fasta.html">ed_tests_report</a></span>(<span class="dt">status =</span> <span class="kw">c</span>(<span class="st">"Under Sequence Review"</span>, <span class="st">"Active testing ongoing"</span>))</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/ed_fasta.html">ed_tests_report</a></span>(<span class="dt">status =</span> <span class="kw">c</span>(<span class="st">"Under Sequence Review"</span>, <span class="st">"Active testing ongoing"</span>))</a></code></pre></div>
 <p>If some of these tests do not have sequence data entered in EIDITH, a warning will appear in the R console informing the user.</p>
 <p>The <code><a href="../reference/ed_fasta.html">ed_tests_report()</a></code> function constructs a summary table that includes a sequence field, and this information can easily be exported to FASTA format using the function <code><a href="../reference/ed_fasta.html">ed_fasta()</a></code>. If we had assigned the result of our <code><a href="../reference/ed_fasta.html">ed_tests_report()</a></code> to a variable, such as:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">report &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ed_fasta.html">ed_tests_report</a></span>()  </code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">report &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ed_fasta.html">ed_tests_report</a></span>()  </a></code></pre></div>
 <p>We could then create a FASTA file of this report by:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ed_fasta.html">ed_fasta</a></span>(report, <span class="st">"report.fasta"</span>)  </code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="../reference/ed_fasta.html">ed_fasta</a></span>(report, <span class="st">"report.fasta"</span>)  </a></code></pre></div>
 <p>Alternatively, we could skip a step and call <code><a href="../reference/ed_fasta.html">ed_fasta(ed_tests_report(), "report.fasta")</a></code> directly.</p>
 </div>
 <div id="manually-subset-by-viral-family-or-method" class="section level3">
 <h3 class="hasAnchor">
 <a href="#manually-subset-by-viral-family-or-method" class="anchor"></a>Manually Subset by Viral Family or Method:</h3>
 <p>If we are interested in subsetting a report, we can easily do that by using <code><a href="http://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>. For instance, if we wanted a report of only Enteroviruses, we could subset by running:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">report &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ed_fasta.html">ed_tests_report</a></span>()
-entero_report &lt;-<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(report, test_rq <span class="op">==</span><span class="st"> "Enteroviruses"</span>)</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">report &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ed_fasta.html">ed_tests_report</a></span>()</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">entero_report &lt;-<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(report, test_rq <span class="op">==</span><span class="st"> "Enteroviruses"</span>)</a></code></pre></div>
 <p>The <code>entero_report</code> dataframe now only contains records for Enterovirus tests, and can be saved in FASTA format by:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ed_fasta.html">ed_fasta</a></span>(entero_report, <span class="st">"entero.fasta"</span>)</code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="../reference/ed_fasta.html">ed_fasta</a></span>(entero_report, <span class="st">"entero.fasta"</span>)</a></code></pre></div>
 <p>We could subset by the value of any field in our report table. For instance, if we are interested in only sequences derived by the “Johne, VP1 gene” protocol, we can run:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">report &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ed_fasta.html">ed_tests_report</a></span>()
-johne_report &lt;-<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(report, meth <span class="op">==</span><span class="st"> "Johne, VP1 gene"</span>)</code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">report &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ed_fasta.html">ed_tests_report</a></span>()</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">johne_report &lt;-<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(report, meth <span class="op">==</span><span class="st"> "Johne, VP1 gene"</span>)</a></code></pre></div>
 </div>
 <div id="automatically-grouped-fasta-files-by-viral-family-method-or-both" class="section level3">
 <h3 class="hasAnchor">
 <a href="#automatically-grouped-fasta-files-by-viral-family-method-or-both" class="anchor"></a>Automatically Grouped FASTA files by Viral Family, Method, or Both:</h3>
 <p>The function <code><a href="../reference/ed_fasta.html">ed_fasta_group()</a></code> will automatically create FASTA files that have been grouped by either Viral Family or Method. The name of these files will correspond to the grouping variable. If we want to output grouped FASTA files based on Viral family, we can run:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ed_fasta.html">ed_fasta_group</a></span>(report, <span class="dt">grouping =</span> <span class="st">"virus"</span>)</code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="../reference/ed_fasta.html">ed_fasta_group</a></span>(report, <span class="dt">grouping =</span> <span class="st">"virus"</span>)</a></code></pre></div>
 <p>And R will create several FASTA files with names reflecting the type of Viral Family sequences they contain (e.g. <em>“Orthopoxviruses.fasta”</em>, <em>“Enteroviruses.fasta”</em>, <em>“Polyomaviruses.fasta”</em>).</p>
 <p>If we are interested in grouping by the method/protocol we can instead run:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ed_fasta.html">ed_fasta_group</a></span>(report, <span class="dt">grouping =</span> <span class="st">"method"</span>)</code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="../reference/ed_fasta.html">ed_fasta_group</a></span>(report, <span class="dt">grouping =</span> <span class="st">"method"</span>)</a></code></pre></div>
 <p>And we would have a series of FASTA files grouped by method (e.g. <em>“Nitsch et al, RdRp gene.fasta”</em>, <em>“Chmielewicz et al, Term gene.fasta”</em>).</p>
 <p>If we are interested in grouping by both viral family and method, we can instead run:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ed_fasta.html">ed_fasta_group</a></span>(report, <span class="dt">grouping =</span> <span class="st">"both"</span>)</code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../reference/ed_fasta.html">ed_fasta_group</a></span>(report, <span class="dt">grouping =</span> <span class="st">"both"</span>)</a></code></pre></div>
 <p>And we would have a series of FASTA files grouped by both viral family and method whose names are separated by a “-” (e.g. <em>“Herpesvirus-Van DeVanter et al, Pol gene.fasta”</em>).</p>
 </div>
 <div id="creating-excel-files-to-return-to-eidith" class="section level3">
 <h3 class="hasAnchor">
 <a href="#creating-excel-files-to-return-to-eidith" class="anchor"></a>Creating Excel files to return to EIDITH</h3>
 <p>The function <code><a href="../reference/ed_fasta.html">ed_report_excel()</a></code> will take a report and output a .csv file that can easily be opened in Excel for entering data that can be returned to EIDITH. This function will work for the default report generated by <code><a href="../reference/ed_fasta.html">ed_tests_report()</a></code> or any subsetted part of that report. For example, the following code will create an Excel file for the default report and save it as <em>“report.csv”</em>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">report &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ed_fasta.html">ed_tests_report</a></span>()
-<span class="kw"><a href="../reference/ed_fasta.html">ed_report_excel</a></span>(report, <span class="st">"report.csv"</span>)</code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">report &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ed_fasta.html">ed_tests_report</a></span>()</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw"><a href="../reference/ed_fasta.html">ed_report_excel</a></span>(report, <span class="st">"report.csv"</span>)</a></code></pre></div>
 <p>We can do the same with our previous subsetted examples:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ed_fasta.html">ed_report_excel</a></span>(entero_report, <span class="st">"entero_report.csv"</span>)
-<span class="kw"><a href="../reference/ed_fasta.html">ed_report_excel</a></span>(johne_report, <span class="st">"johne_report.csv"</span>)</code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="../reference/ed_fasta.html">ed_report_excel</a></span>(entero_report, <span class="st">"entero_report.csv"</span>)</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw"><a href="../reference/ed_fasta.html">ed_report_excel</a></span>(johne_report, <span class="st">"johne_report.csv"</span>)</a></code></pre></div>
 </div>
   </div>
 
@@ -186,6 +194,14 @@ johne_report &lt;-<span class="st"> </span><span class="kw"><a href="http://dply
 </div>
 
   
-
-  </body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script>
+  docsearch({
+    
+    
+    apiKey: '2bf5efbf4437480db9685f3d09019982',
+    indexName: 'eidith',
+    inputSelector: 'input#search-input.form-control'
+  });
+</script>
+</body>
 </html>

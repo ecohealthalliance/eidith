@@ -21,6 +21,12 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -46,6 +52,9 @@ and are thus faster and work without an internet connection." />
 
 
 
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
   </head>
 
   <body>
@@ -61,7 +70,7 @@ and are thus faster and work without an internet connection." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eidith</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4</span>
       </span>
     </div>
 
@@ -124,6 +133,12 @@ and are thus faster and work without an internet connection." />
 </li>
       </ul>
       
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -135,10 +150,11 @@ and are thus faster and work without an internet connection." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Functions to download EIDITH tables via API</h1>
-    <small>Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/api_calls.R'><code>R/api_calls.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/api_calls.R'><code>R/api_calls.R</code></a></small>
     <div class="hidden name"><code>ed_get.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>These functions download data directly from the EIDITH API.  They require
 <a href='ed_auth.html'>authorization</a>.  They can be useful for comparing local data
@@ -146,6 +162,7 @@ against data updated in the database, or processed vs. unprocessed data.
 The <a href='ed_table.html'>table functions</a> load data from the local database instead,
 and are thus faster and work without an internet connection.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>ed_get</span>(<span class='no'>endpoint</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>header_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lmdate_from</span> <span class='kw'>=</span> <span class='st'>"2000-01-01"</span>, <span class='kw'>lmdate_to</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>()
@@ -235,6 +252,17 @@ API access works</p></td>
    </div>
 
   
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '2bf5efbf4437480db9685f3d09019982',
+    indexName: 'eidith',
+    inputSelector: 'input#search-input.form-control'
+  });
+</script>
+
 
   </body>
 </html>

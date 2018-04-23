@@ -19,16 +19,11 @@ More information can be found at \href{https://eidith.org/Resources.aspx}{the EI
     if(in_pkgdown) {
       mytext <- c('In RStudio, this help file includes a searchable table of values.')
     } else {
-    tmp <- tempfile(fileext=".html")
-      htmlwidgets::saveWidget(DT::datatable(eidith::ed2_metadata()), tmp)
-      mytext <- paste('Below is a searchable version of this table.',
-      'Here \\\bold{original_name} refers to the name in the online EIDITH database. The variable name in the local database is \\\bold{auto_processed_name} or \\\bold{replacement_name}, if the latter exists. Variables dropped from the local database have "DROP" in \\\bold{replacement_name}. Where relevant \\\bold{processing_notes} describes transformations applied to the data in \\\code{ed_process()} or information regarding the type of variable. The \\\bold{question} column is relevant for Human Questionnaire tables, indication which question the data field comes from.',
-      '\\\out{<div style="width:100\%">',
-         paste(stringi::stri_subset_regex(readLines(tmp), "^</?(!DOCTYPE|meta|body|html)",negate=TRUE), collapse="\n"),
-      '</div>}',
-      sep="\n")
+      mytext <- eidith::rd_datatable(eidith::ed2_metadata())
     }
     mytext
+  }
 }
-}
+
+\if{text,latex}{The HTML version of this help file includes a searchable table of values.}
 }

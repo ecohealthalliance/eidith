@@ -5,14 +5,14 @@
 \alias{p2_api_endpoints}
 \alias{p2_api_endpoints}
 \alias{p1_api_endpoints}
-\title{This function returns the names of the tables in the PREDICT-1 EIDITH database.}
+\title{Return he names of the tables in the EIDITH database.}
 \usage{
 p1_api_endpoints()
 
 p2_api_endpoints()
 }
 \description{
-This function returns the names of the tables in the PREDICT-1 EIDITH database.
+Return he names of the tables in the EIDITH database.
 
 This function returns the names of the tables in the PREDICT-2 EIDITH database.
 }

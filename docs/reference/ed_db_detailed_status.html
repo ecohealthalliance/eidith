@@ -21,6 +21,12 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -45,6 +51,9 @@ are available in the local database." />
 
 
 
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
   </head>
 
   <body>
@@ -60,7 +69,7 @@ are available in the local database." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eidith</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4</span>
       </span>
     </div>
 
@@ -123,6 +132,12 @@ are available in the local database." />
 </li>
       </ul>
       
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -134,16 +149,18 @@ are available in the local database." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Obtain and print status of all local EIDITH tables</h1>
-    <small>Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/status_checks.R'><code>R/status_checks.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/status_checks.R'><code>R/status_checks.R</code></a></small>
     <div class="hidden name"><code>ed_db_detailed_status.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>This function evaluates and prints a detailed banner of local EIDITH PREDICT-1
 and PREDICT-2 table statuses. This includes whether they are currently present,
 their last download date, and the PREDICT-1 and PREDICT-2 countries that
 are available in the local database.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>ed_db_detailed_status</span>()</pre>
         
@@ -170,6 +187,17 @@ are available in the local database.</p>
    </div>
 
   
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '2bf5efbf4437480db9685f3d09019982',
+    indexName: 'eidith',
+    inputSelector: 'input#search-input.form-control'
+  });
+</script>
+
 
   </body>
 </html>

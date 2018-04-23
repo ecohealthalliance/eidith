@@ -21,6 +21,12 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -44,6 +50,9 @@ housed at the Emerging Infectious Disease Information Technology Hub." />
 
 
 
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
   </head>
 
   <body>
@@ -59,7 +68,7 @@ housed at the Emerging Infectious Disease Information Technology Hub." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eidith</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4</span>
       </span>
     </div>
 
@@ -122,6 +131,12 @@ housed at the Emerging Infectious Disease Information Technology Hub." />
 </li>
       </ul>
       
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -133,15 +148,17 @@ housed at the Emerging Infectious Disease Information Technology Hub." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>eidith</h1>
-    <small>Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/eidith.R'><code>R/eidith.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/eidith.R'><code>R/eidith.R</code></a></small>
     <div class="hidden name"><code>eidith.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>The <strong>eidith</strong> R package provides programmatic access and analytical tools
 for data from the <a href='http://www.vetmed.ucdavis.edu/ohi/predict/'>PREDICT program</a>,
 housed at the <a href='https://www.eidith.org/'>Emerging Infectious Disease Information Technology Hub</a>.</p>
     
+    </div>
 
         
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -201,6 +218,17 @@ housed at the <a href='https://www.eidith.org/'>Emerging Infectious Disease Info
    </div>
 
   
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '2bf5efbf4437480db9685f3d09019982',
+    indexName: 'eidith',
+    inputSelector: 'input#search-input.form-control'
+  });
+</script>
+
 
   </body>
 </html>

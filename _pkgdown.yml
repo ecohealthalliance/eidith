@@ -101,6 +101,8 @@ reference:
       - ed_get_tests
       - ed_get_testspecimen
       - ed_process
+      - p1_api_endpoints
+      - p2_api_endpoints
   - title: "Mock data"
     contents:
       - ed_mock

@@ -8,14 +8,16 @@
 <title>The EIDITH Web API • EIDITH</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- docsearch --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
+<link href="../docsearch.css" rel="stylesheet">
+<!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><meta property="og:title" content="The EIDITH Web API">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<![endif]--><!-- docsearch --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
 </head>
 <body>
     <div class="container template-article">
@@ -29,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eidith</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4</span>
       </span>
     </div>
 
@@ -90,7 +92,13 @@
   </a>
 </li>
       </ul>
+<form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
+      </form>
+      
+    </div>
 <!--/.nav-collapse -->
   </div>
 <!--/.container -->
@@ -105,7 +113,7 @@
                         <h4 class="author">Noam Ross</h4>
             
       
-      <small>Source: <a href="https://github.com/ecohealthalliance/eidith/blob/master/vignettes/eidith_API.Rmd"><code>vignettes/eidith_API.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ecohealthalliance/eidith/blob/master/vignettes/eidith_API.Rmd"><code>vignettes/eidith_API.Rmd</code></a></small>
       <div class="hidden name"><code>eidith_API.Rmd</code></div>
 
     </div>
@@ -128,19 +136,19 @@
 <ul>
 <li>
 <p><code>header_only</code> will return only a vector of the table headers. This is useful for checking if you have data access or if database structure has changed, e.g.:</p>
-<pre><code>https://predict2api.eidith.org/api/modeling/Specimen?header_only=y
+<pre><code> https://predict2api.eidith.org/api/modeling/Specimen?header_only=y
 
-https://predict2api.eidith.org/api/modeling/Event?header_only=y</code></pre>
+ https://predict2api.eidith.org/api/modeling/Event?header_only=y</code></pre>
 </li>
 <li>
 <p><code>lmdate_from</code> and <code>lmdate_to</code> allow you to filter records by their last date modified, e.g.:</p>
-<pre><code>https://predict2api.eidith.org/api/modeling/Test?lmdate_from=2015-01-01
+<pre><code>  https://predict2api.eidith.org/api/modeling/Test?lmdate_from=2015-01-01
 
-https://predict2api.eidith.org/api/modeling/Test?lmdate_from=2015-03-01&amp;lmdate_to=2016-11-17
+  https://predict2api.eidith.org/api/modeling/Test?lmdate_from=2015-03-01&amp;lmdate_to=2016-11-17
 
-https://predict2api.eidith.org/api/modeling/Specimen?lmdate_from=2015-01-01
+  https://predict2api.eidith.org/api/modeling/Specimen?lmdate_from=2015-01-01
 
-https://predict2api.eidith.org/api/modeling/Specimen?lmdate_from=2015-01-01&amp;lmdate_to=2016-11-17</code></pre>
+  https://predict2api.eidith.org/api/modeling/Specimen?lmdate_from=2015-01-01&amp;lmdate_to=2016-11-17</code></pre>
 </li>
 </ul>
 </div>
@@ -163,6 +171,14 @@ https://predict2api.eidith.org/api/modeling/Specimen?lmdate_from=2015-01-01&amp;
 </div>
 
   
-
-  </body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script>
+  docsearch({
+    
+    
+    apiKey: '2bf5efbf4437480db9685f3d09019982',
+    indexName: 'eidith',
+    inputSelector: 'input#search-input.form-control'
+  });
+</script>
+</body>
 </html>
