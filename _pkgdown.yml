@@ -3,6 +3,11 @@ title: EIDITH
 bootswatch: flatly
 
 url: https://ecohealthalliance.github.io/eidith
+template:
+  params:
+    docsearch:
+      api_key: 2bf5efbf4437480db9685f3d09019982
+      index_name: eidith
 
 navbar:
   title: EIDITH
