@@ -26,9 +26,7 @@ The **eidith** package contains no data. To access data, you must be a
 [registered](https://www.eidith.org/register.aspx) EIDITH user with data access
 privileges. If you have a question about your access level, contact technology@eidith.org.
 
-This package is currently in development. We anticipate additional functionality
-for common analytical tasks. It also currently only accesses data from PREDICT-1. If
-you have questions, bug reports, or feature requests, please post them on our
+If you have questions, bug reports, or feature requests, please post them on our
 [issue tracker](https://github.com/ecohealthalliance/eidith/issues).
 
 ### Installation
