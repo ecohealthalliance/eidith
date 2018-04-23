@@ -204,6 +204,8 @@ ed_testspecimen <- function(...) {
 #' @param ... arguments passed to [dplyr::filter()] to subset data
 #' @return a [tibble][tibble::tibble]-style data frame.
 #' @rdname ed2_table
+#' @name ed2_table
+#' @aliases ed2_events
 #' @export
 ed2_events <- function(...){
   ed_table_("events_2", .dots = lazyeval::lazy_dots(...))

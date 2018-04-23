@@ -2,6 +2,8 @@ title: EIDITH
 
 bootswatch: flatly
 
+url: https://ecohealthalliance.github.io/eidith
+
 navbar:
   title: EIDITH
   type: inverse
@@ -57,6 +59,31 @@ reference:
       - ed_specimens
       - ed_tests
       - ed_testspecimen
+      - ed2_events
+      - ed2_animals
+      - ed2_specimens
+      - ed2_animal_production
+      - ed2_crop_production
+      - ed2_zoo_sanctuary
+      - ed2_wildlife_restaurant
+      - ed2_natural_areas
+      - ed2_market_value_chain
+      - ed2_human
+      - ed2_tests
+      - ed2_test_serology
+      - ed2_test_interpreted
+      - ed2_human_animal_production
+      - ed2_extractive_industry
+      - ed2_dwellings
+      - ed2_human_crop_production
+      - ed2_human_extractive_industry
+      - ed2_human_hospital_worker
+      - ed2_human_hunter
+      - ed2_human_market
+      - ed2_human_restaurant
+      - ed2_human_sick_person
+      - ed2_human_temporary_settlements
+      - ed2_human_zoo
   - title: "Reports and Analyses"
     contents:
       - ed_fasta

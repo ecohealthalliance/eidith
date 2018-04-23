@@ -2,7 +2,7 @@ eidith_base_url <- "https://predict2api.eidith.org/api/modeling/"
 
 eidith2_base_url <- "https://predict2api.eidith.org/api/Extract/"
 
-#' This function returns the names of the tables in the PREDICT-1 EIDITH database.
+#' Return he names of the tables in the EIDITH database.
 #'
 #' @rdname endpoints
 #' @aliases p1_api_endpoints p2_api_endpoints
