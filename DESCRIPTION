@@ -1,6 +1,6 @@
 Package: eidith
 Title: Data access and analytical tools for the PREDICT EIDITH database
-Version: 0.3.1
+Version: 0.4
 Authors@R: c(
     person("Noam", "Ross", , "ross@ecohealthalliance.org", role = c("aut", "cre")),
     person("Nistara", "Randhawa", , "nrandhawa@ucdavis.edu", role = c("aut")),
@@ -22,11 +22,14 @@ Imports:
     httr,
     jsonlite,
     dplyr (>= 0.7.0),
-    dbplyr,
+    dbplyr (>= 1.2.1),
     readr,
+    rlang (>= 0.1.6),
     tidyr,
     tibble,
     RSQLite,
+    cli,
+    crayon,
     DBI,
     getPass,
     rappdirs,
@@ -35,7 +38,8 @@ Imports:
     lazyeval,
     lubridate,
     htmlwidgets,
-    DT
+    DT,
+    janitor
 Suggests:
     curl,
     testthat,

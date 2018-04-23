@@ -1,0 +1,197 @@
+---
+title: "PREDICT-2 Data Structure / Basic Table Joining"
+author: "Cale Basaraba"
+output: 
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{PREDICT-2 Data Structure / Basic Table Joining}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+library(eidith)
+library(dplyr)
+library(ggplot2)
+P <- rprojroot::find_package_root_file
+```
+### Setup
+Before exploring the tables in the EIDITH database using the eidith package, make sure to load it:  
+```{r 1}
+library(eidith)
+``` 
+
+For the purposes of this vignette, you also will want to use the `dplyr` and `ggplot2` packages:
+```{r 2}
+library(dplyr)
+library(ggplot2)
+```
+
+If you are having trouble installing the eidith R package, logon credentials, permissions, or have not downloaded the local database, please follow the instructions in the [package setup tutorial](https://ecohealthalliance.github.io/eidith/articles/eidith.html).
+
+### PREDICT-2 EIDITH Database Structure
+
+When the EIDITH R package downloads the EIDITH data onto your local machine, it is organized into a set of tables with unique identifiers in a relational database structure. In a database like this, each table usually represents a logical unit of analysis. For instance, there will be an __Event__ table which lists all events, an __Animal__ table that lists all animals, and a __Specimen__ table that lists all specimens.
+
+The schematic below shows the relationships between tables and the unique ID fields which can be used to correctly join them. Both the lines and unique ID fields are color-coded to indicate that they link tables together: for instance, the __Event__ table and the __Animal__ table are linked to one another through the `event_name` field (marked here in green). This field also links the __Event__ table to all of the site characterization module tables as well as the __Human__ questionnaire table. 
+
+```{r picture, eval = TRUE, echo = FALSE, results = 'asis', upload.fun = image_uri}  
+uri <- knitr::image_uri(P("inst","images","total_schema.jpg"))
+cat(sprintf("<img src=\"%s\" style=\"width:825px\">", uri))
+
+```
+
+### Unique ID Fields
+
+A requirement of a well-tuned relational database is that each row is unique – for example, a particular animal won’t show up twice in the __Animal__ table, and unlike some spreadsheets or databases you may have worked with, there won’t be a row of totals or summary statistics at the bottom of the table. 
+
+In order to differentiate between entries, there has to be some column (or combination of columns) that is unique for each entry – this is called a unique ID. When two tables can be connected, they will contain their own unique identifier, and the unique identifier of their parent table. This allows us to combine information from different tables by “joining” or “merging” these tables.
+
+In the __Event__ table, for instance, each event (or row) has a unique `event_id`, while in the __Animal__ table, each animal (or row) has a unique `animal_id`. Importantly, each animal in the __Animal__ table also has an `event_id`, which links it to an event. Since `event_id` is not unique in the __Animal__ table, there can be more than one animal entry with the same `event_id` -- this makes perfect sense, since there are likely multiple animals attached to a particular event. 
+
+These ID fields tie all of the tables together, allowing us to join tables that contain information we are interested in analyzing. EIDITH is a large database with many fields per table, so it can be challenging at first to determine which table contains the relevant information. Generally, the location of the information we are looking for should be in the table that it is most closely tied to: if we are looking for the species of an animal, that field should be in the __Animal__ table, if we are looking for the results of a test, that information should be in the __Test__ table. If we are having a hard time finding the field we need, we can use the `?ed2_metadata` command to load the built-in help file that contains a searchable list of all EIDITH fields.
+
+### EIDITH Metadata
+
+Take a look at the `?ed2_metadata` help file now:
+
+```{r ed_metadata}
+?ed2_metadata
+```
+
+In the Help window of your RStudio session you should now see something like this:
+
+```{r metadata_picture, eval = TRUE, echo = FALSE, results = 'asis', upload.fun = image_uri}
+uri2 <- knitr::image_uri(P("inst","images","metadata_example.png"))
+cat(sprintf("<img src=\"%s\" style=\"width:825px\">", uri2))
+
+```
+
+This is a dynamic metadata table which shows information about all the fields in the P2 EIDITH database. For most fields, a note in the description will provide some explanation for what a particular field represents. In the PREDICT-2 Human questionnaire and livelihood tables, the wording of the actual survey question that relates to a data field has been copied over; additionally, the question number is listed in case the user wants to reference the Human survey documents. 
+
+This data table is automatically updated when fields are added or more information becomes available about them. It is also searchable and sortable to make it easier to find fields of interest. 
+
+### Joining Tables 
+
+Let's walk through a simple example that will illustrate how to join tables to get information that can produce a quick graph or two. In this case, our goals are:
+
+- Make a bar graph with the number of animal species sampled per country 
+
+- Make a bar graph with the number of animals sampled per country, broken up by species
+  
+We first need to identify what tables contain the information we need. Since we want information about events (*country*) and information about animals (*species*), we are going to want the Event table and the Animal table.
+
+First, we need to load these two tables into R from our local EIDITH database. To load the Event table, we use the function `ed2_events()`, and to load the Animal table, we use the function `ed2_animals`. All the tables are available this way using functions that start with `ed2_`. If you have EIDITH database access, you can use these functions to pull the data available to you:
+
+
+```{r 3, eval = TRUE}
+events <- ed2_events()
+animals <- ed2_animals()
+```
+
+```{r anonymize, eval = TRUE, echo = FALSE}
+
+num_countries <- length(unique(events$country))
+
+new_names <- paste("Country", LETTERS[1:num_countries])
+
+random_countries <- sample(new_names, num_countries, replace = FALSE)
+
+random_df <- data_frame(country_id = unique(events$country), random_countries)
+
+ea.joined <- left_join(events, animals, by = "event_name")
+
+
+ea.joined <- left_join(ea.joined, random_df, by = c("country" = "country_id"))
+
+ea.joined$country <- ea.joined$random_countries
+
+```
+
+We can take a look at all the fields / columns in these tables by running `names(events)` or `names(animals)`, which will print out all the column names from these tables into our console. If we do this, we can see that, along with many other fields, each table has the ID fields highlighted in the database structure diagram above. If we don't easily have access to the diagram above and are curious about how to join two tables, we can use the `ed2_tables_conn()` function to produce a dataframe that lists all table connections and which unique IDs they share.
+
+We are going to want to join these tables together to produce a new table that adds all the information from the __Animal__ table to the information from the __Event__ table:
+  
+```{r 4, eval = FALSE}
+
+ea.joined <- left_join(events, animals, by = "event_name")
+
+```
+
+In this example we are performing a "left join" which means that every event will remain in the dataframe, regardless of whether there are animals matching that event. If there are some animals which are un-linked to any event, they will be left out of the dataframe. If we run  In order to make it easier to look over the data, we can reduce it to just a few variables of interest:
+
+```{r 4a}
+
+ea.reduced <- select(ea.joined,event_name, country, animal_id, species_scientific_name)
+
+View(ea.reduced)
+
+```
+
+```{r secret4a, echo = FALSE, eval = TRUE}
+
+ea.reduced <- select(ea.joined,event_name, country, animal_id, species_scientific_name)
+
+```
+
+We can see by using `View()` that event information has been duplicated for each animal present in that event, but any event that has no animals linked to it will be filled with an `NA` for those animal variables. Depending on what kind of analysis we are interested in, we may want to perform a different kind of join. Running `?dplyr::join` to read the `dplyr` join help file can help explain different joining options.
+
+### Simple `ggplot2` Bar Graphs
+
+Using `group_by` and `summarize` we can now create a dataframe that summarizes the number of different species per country. This dataframe can then be used to create a simple bar graph with the `ggplot2` package to satisfy our first goal:
+
+- Make a bar graph with the number of animal species sampled per country 
+
+
+```{r 5a, eval = TRUE, fig.width = 8, fig.height = 6}
+library(ggplot2)
+
+ea.summary <- group_by(ea.reduced, country, species_scientific_name) %>%
+  summarize(species_num = n())
+
+ggplot(data = ea.summary) +
+  geom_bar(aes(x = country)) +
+  theme_minimal() + 
+  labs(title = "Number of Species by Country", subtitle = "Note: Scrambled Data")
+
+```
+
+If we are interested in looking at the number of individual animals (instead of species), we can slightly alter our code to create that bar graph:
+
+```{r 5b, eval = TRUE, fig.width = 8, fig.height = 6}
+
+ggplot(data = ea.summary) +
+  geom_bar(aes(x = country, y = species_num), stat = "identity") +
+  theme_minimal() +
+  labs(title = "Number of Animals by Country", subtitle = "Note: Scrambled Data")
+
+```
+
+And finally, we can map the name of each species to the fill color of our graph to make a colorful representation of the species that are represented most in our PREDICT-2 data, and satisfy our second goal:
+
+- Make a bar graph with the number of animals sampled per country, broken up by species
+
+
+```{r 5c, eval = TRUE, fig.width = 8, fig.height = 6}
+
+ggplot(data = ea.summary) +
+  geom_bar(aes(x = country, y = species_num, fill = species_scientific_name), stat = "identity") +
+  theme_minimal() +
+  theme(legend.position = "none") + # removing this line will show the legend with all the species names 
+  labs(title = "Number of Animals by Country with Species Colors", subtitle = "Note: Scrambled Data")
+
+```
+
+There are many options that allow customization of `ggplot2` graphs. For these examples we are using a minimal theme (`theme_minimal()`) and removing legends to mask private PREDICT data; if you are interested in learning more about tge `tidyverse` and `ggplot2` visualization, [Hadley Wickham's *R for Data Science*](http://r4ds.had.co.nz/) is a great resource. 
+
+
+### Conclusion
+
+The purpose of this vignette was to explore the PREDICT-2 EIDITH database structure, introduce the user to tables, unique ID's, and some simple visualization tools. 
+
+Due to the introduction of site characterization modules and human questionnaire data, the PREDICT-2 database has a more complex structure than the P1 database; however, the concepts used to manipulate both databases are largely the same. If you are interested in additional joining examples, the tutorial on joining P1 data is available [here](https://ecohealthalliance.github.io/eidith/articles/eidith.html).
+
+
+

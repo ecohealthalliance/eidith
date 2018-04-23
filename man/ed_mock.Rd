@@ -10,7 +10,7 @@
 \alias{ed_tests_mock}
 \alias{ed_viruses_mock}
 \alias{ed_testspecimen_mock}
-\title{Load mock EIDITH data for tutorials}
+\title{Load mock EIDITH data for PREDICT-1 tutorials}
 \usage{
 ed_table_mock_(mock_table, ..., .dots, raw = FALSE)
 
@@ -43,7 +43,7 @@ is equivalent to calling the \code{\link[=ed_get]{ed_get()}} functions with \cod
 a \link[tibble:tibble]{tibble}-style data frame.
 }
 \description{
-These functions load mock versions of the EIDITH data tables to be used
+These functions load mock versions of the EIDITH PREDICT-1 data tables to be used
 for demonstrations, tutorials, and practice.  They are drop-in replacements
 for the \code{\link[=ed_table]{ed_table()}} functions.
 }

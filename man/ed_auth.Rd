@@ -16,11 +16,15 @@ for your credentials in the \code{EIDITH_USERNAME} and \code{EIDITH_PASSWORD} en
 variables.
 
 To cache your credentials across multiple R sessions, save them in your
-personal \code{.Renviron} file by running the following code in your R console
-(replacing \code{YOUR_USERNAME} and \code{YOUR_PASSWORD} with actual values).\preformatted{cat("EIDITH_USERNAME=YOUR_USERNAME\nEIDITH_PASSWORD=YOUR_PASSWORD",
-    file = file.path(normalizePath("~/"), ".Renviron"), append = TRUE)
+personal \code{.Renviron} file. You can also use the \code{usethis} package to easily access
+and edit your \code{.Renviron} file:\preformatted{install.packages("usethis")`
+usethis::edit_r_environ()
 }
 
-Restart R, and you will be automatically logged in to download data from EIDITH
+This should open up your \code{.Renviron} file in a new tab, and you add the lines:\preformatted{EIDITH_USERNAME=your_username
+EIDITH_PASSWORD=your_password
+}
+
+Save this file, restart R, and you will be automatically logged in to download data from EIDITH
 when working on this computer.
 }

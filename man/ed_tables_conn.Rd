@@ -2,27 +2,30 @@
 % Please edit documentation in R/tables_conn.R
 \name{ed_tables_conn}
 \alias{ed_tables_conn}
-\title{Connecting eidith tables}
+\alias{ed2_tables_conn}
+\title{Connections between tables}
 \usage{
 ed_tables_conn(cols = "id")
+
+ed2_tables_conn(cols = "id")
 }
 \arguments{
 \item{cols}{can be either \code{all} or \code{id}. If \code{all}, all common columns are
-presented. If \code{id}, only unique id columns are shown.
-Default value of \code{type} is \code{id}.}
+presented. If \code{id}, only unique id columns are shown. Default value is \code{id}.}
 }
 \value{
 a data frame with three columns: \code{T1} and \code{T2} corresponding to eidith
 tables, and \code{conn}, the connecting column.
 }
 \description{
-To understand how various eidith tables are connected via their column names.
-Visualizing these connections is helpful in determining how to join
-\code{eidith} tables for further analyses.
+To understand how various EIDITH tables are connected via their column names.
+Visualizing these connections is helpful in determining how to join \code{eidith}
+tables for further analyses, and is available for both PREDICT 1 \code{ed_tables_conn}
+and PREDICT 2 \code{ed2_tables_conn} databases.
 }
 \examples{
 ed_tables_conn()
 ed_tables_conn(cols = "all")
-
+ed2_tables_conn()
 
 }

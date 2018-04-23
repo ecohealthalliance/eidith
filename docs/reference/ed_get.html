@@ -18,13 +18,29 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+<meta property="og:title" content="Functions to download EIDITH tables via API — ed_get" />
+
+<meta property="og:description" content="These functions download data directly from the EIDITH API.  They require
+authorization.  They can be useful for comparing local data
+against data updated in the database, or processed vs. unprocessed data.
+The table functions load data from the local database instead,
+and are thus faster and work without an internet connection." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -33,6 +49,11 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+
+
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
   </head>
 
@@ -47,8 +68,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">EIDITH</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">eidith</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -72,13 +97,22 @@
       <a href="../articles/preprocessing.html">Automatic Data Processing / Raw Data</a>
     </li>
     <li>
-      <a href="../articles/data_structure.html">Database Structure / Table Joining</a>
+      <a href="../articles/data_structure.html">PREDICT-1 Database Structure / Table Joining</a>
     </li>
     <li>
-      <a href="../articles/fasta_walkthrough.html">Generating Reports and FASTA</a>
+      <a href="../articles/fasta_walkthrough.html">PREDICT-1 Generating Reports and FASTA</a>
     </li>
     <li>
-      <a href="../articles/eidith_API.html">Web API Details</a>
+      <a href="../articles/eidith_API.html">PREDICT-1 Web API Details</a>
+    </li>
+    <li>
+      <a href="../articles/p2_data_structure.html">PREDICT-2 Database Structure / Table Joining</a>
+    </li>
+    <li>
+      <a href="../articles/multi_response_fields.html">PREDICT-2 Multiple Response Fields</a>
+    </li>
+    <li>
+      <a href="../articles/eidith_r_training.pdf">EIDITH - R Package Workshop Slides</a>
     </li>
   </ul>
 </li>
@@ -98,6 +132,13 @@
   </a>
 </li>
       </ul>
+      
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -105,12 +146,15 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Functions to download EIDITH tables via API</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/api_calls.R'><code>R/api_calls.R</code></a></small>
+    <div class="hidden name"><code>ed_get.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>These functions download data directly from the EIDITH API.  They require
 <a href='ed_auth.html'>authorization</a>.  They can be useful for comparing local data
@@ -118,8 +162,13 @@ against data updated in the database, or processed vs. unprocessed data.
 The <a href='ed_table.html'>table functions</a> load data from the local database instead,
 and are thus faster and work without an internet connection.</p>
     
+    </div>
 
-    <pre class="usage"><span class='fu'>ed_get_events</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+    <pre class="usage"><span class='fu'>ed_get</span>(<span class='no'>endpoint</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>header_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lmdate_from</span> <span class='kw'>=</span> <span class='st'>"2000-01-01"</span>, <span class='kw'>lmdate_to</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>()
+  + <span class='fl'>1</span>, <span class='kw'>auth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+
+<span class='fu'>ed_get_events</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>(), <span class='kw'>postprocess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>header_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lmdate_from</span> <span class='kw'>=</span> <span class='st'>"2000-01-01"</span>, <span class='kw'>lmdate_to</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>()
   + <span class='fl'>1</span>, <span class='no'>...</span>)
 
@@ -143,7 +192,7 @@ and are thus faster and work without an internet connection.</p>
   <span class='kw'>header_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lmdate_from</span> <span class='kw'>=</span> <span class='st'>"2000-01-01"</span>, <span class='kw'>lmdate_to</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>()
   + <span class='fl'>1</span>, <span class='no'>...</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -196,11 +245,25 @@ API access works</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '2bf5efbf4437480db9685f3d09019982',
+    indexName: 'eidith',
+    inputSelector: 'input#search-input.form-control'
+  });
+</script>
+
+
   </body>
 </html>
+

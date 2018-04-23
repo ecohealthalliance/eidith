@@ -18,13 +18,27 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+<meta property="og:title" content="eidith — eidith" />
+
+<meta property="og:description" content="The eidith R package provides programmatic access and analytical tools
+for data from the PREDICT program,
+housed at the Emerging Infectious Disease Information Technology Hub." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -33,6 +47,11 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+
+
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
   </head>
 
@@ -47,8 +66,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">EIDITH</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">eidith</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -72,13 +95,22 @@
       <a href="../articles/preprocessing.html">Automatic Data Processing / Raw Data</a>
     </li>
     <li>
-      <a href="../articles/data_structure.html">Database Structure / Table Joining</a>
+      <a href="../articles/data_structure.html">PREDICT-1 Database Structure / Table Joining</a>
     </li>
     <li>
-      <a href="../articles/fasta_walkthrough.html">Generating Reports and FASTA</a>
+      <a href="../articles/fasta_walkthrough.html">PREDICT-1 Generating Reports and FASTA</a>
     </li>
     <li>
-      <a href="../articles/eidith_API.html">Web API Details</a>
+      <a href="../articles/eidith_API.html">PREDICT-1 Web API Details</a>
+    </li>
+    <li>
+      <a href="../articles/p2_data_structure.html">PREDICT-2 Database Structure / Table Joining</a>
+    </li>
+    <li>
+      <a href="../articles/multi_response_fields.html">PREDICT-2 Multiple Response Fields</a>
+    </li>
+    <li>
+      <a href="../articles/eidith_r_training.pdf">EIDITH - R Package Workshop Slides</a>
     </li>
   </ul>
 </li>
@@ -98,6 +130,13 @@
   </a>
 </li>
       </ul>
+      
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -105,17 +144,21 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>eidith</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/eidith.R'><code>R/eidith.R</code></a></small>
+    <div class="hidden name"><code>eidith.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>The <strong>eidith</strong> R package provides programmatic access and analytical tools
 for data from the <a href='http://www.vetmed.ucdavis.edu/ohi/predict/'>PREDICT program</a>,
 housed at the <a href='https://www.eidith.org/'>Emerging Infectious Disease Information Technology Hub</a>.</p>
     
+    </div>
 
         
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -140,7 +183,8 @@ housed at the <a href='https://www.eidith.org/'>Emerging Infectious Disease Info
 <li><p>Package source code is found at <a href='https://github.com/ecohealthalliance/eidith'>https://github.com/ecohealthalliance/eidith</a></p></li>
 <li><p>File bug reports and request features at <a href='https://github.com/ecohealthalliance/eidith/issues'>https://github.com/ecohealthalliance/eidith/issues</a></p></li>
 <li><p>Online version of this documentation found at <a href='https://github.com/ecohealthalliance/eidith/issues'>https://ecohealthalliance.github.io/eidith/</a></p></li>
-<li><p>Questions related to your EIDITH credentials should be directed to <a href='mailto:technology@eidith.org'>technology@eidith.org</a>.</p></li>
+<li><p>Questions related to your EIDITH credentials or incorrect data should be directed to <a href='mailto:technology@eidith.org'>technology@eidith.org</a>.</p></li>
+<li><p>More detail at <a href='ed_contact.html'>?ed_contact</a>.</p></li>
 </ul>
     <p>To learn more about eidith, start with the vignettes:
 <code>browseVignettes(package = "eidith")</code></p>
@@ -167,11 +211,25 @@ housed at the <a href='https://www.eidith.org/'>Emerging Infectious Disease Info
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '2bf5efbf4437480db9685f3d09019982',
+    indexName: 'eidith',
+    inputSelector: 'input#search-input.form-control'
+  });
+</script>
+
+
   </body>
 </html>
+

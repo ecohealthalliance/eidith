@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>All news • EIDITH</title>
+<title>Changelog • EIDITH</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,22 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+<meta property="og:title" content="Changelog" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -33,6 +42,11 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+
+
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
   </head>
 
@@ -47,8 +61,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">EIDITH</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">eidith</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -72,13 +90,22 @@
       <a href="../articles/preprocessing.html">Automatic Data Processing / Raw Data</a>
     </li>
     <li>
-      <a href="../articles/data_structure.html">Database Structure / Table Joining</a>
+      <a href="../articles/data_structure.html">PREDICT-1 Database Structure / Table Joining</a>
     </li>
     <li>
-      <a href="../articles/fasta_walkthrough.html">Generating Reports and FASTA</a>
+      <a href="../articles/fasta_walkthrough.html">PREDICT-1 Generating Reports and FASTA</a>
     </li>
     <li>
-      <a href="../articles/eidith_API.html">Web API Details</a>
+      <a href="../articles/eidith_API.html">PREDICT-1 Web API Details</a>
+    </li>
+    <li>
+      <a href="../articles/p2_data_structure.html">PREDICT-2 Database Structure / Table Joining</a>
+    </li>
+    <li>
+      <a href="../articles/multi_response_fields.html">PREDICT-2 Multiple Response Fields</a>
+    </li>
+    <li>
+      <a href="../articles/eidith_r_training.pdf">EIDITH - R Package Workshop Slides</a>
     </li>
   </ul>
 </li>
@@ -98,6 +125,13 @@
   </a>
 </li>
       </ul>
+      
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -105,27 +139,61 @@
       
       </header>
 
-      <div class="row">
-
-  <div class="col-md-9">
+<div class="row">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Change log <small>All releases</small></h1>
+      <h1>Changelog <small></small></h1>
+      <small>Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="contents">
-    <div id="eidith-0-3-1-patch" class="section level1">
-<h1 class="hasAnchor">
-<a href="#eidith-0-3-1-patch" class="anchor"></a>eidith 0.3.1 (patch)</h1>
-<ul>
-<li>Internal changes to be compatible with dplyr 0.7.0 (<a href="https://github.com/ecohealthalliance/eidith/pull/55">#55</a>)</li>
-</ul>
-</div>
-    <div id="eidith-0-3" class="section level1">
-<h1 class="hasAnchor">
-<a href="#eidith-0-3" class="anchor"></a>eidith 0.3</h1>
+    <div id="eidith-0-4" class="section level1">
+<h1 class="page-header">
+<a href="#eidith-0-4" class="anchor"></a>eidith 0.4</h1>
 <div id="new-functionality" class="section level2">
 <h2 class="hasAnchor">
 <a href="#new-functionality" class="anchor"></a>New functionality</h2>
+<ul>
+<li>PREDICT-2 database now available for download using <code><a href="../reference/ed_db_download.html">ed_db_download()</a></code> which takes two arguments: one for PREDICT-1 tables, the second for PREDICT-2 tables. <code>p1_api_endpoints()</code> and <code>p2_api_endpoints()</code> are functions that list possible table endpoints. Errors in one table download will not affect others.</li>
+<li>PREDICT-2 local database tables available via <code>ed2_*()</code> functions (e.g. <code><a href="../reference/ed2_table.html">ed2_animals()</a></code>). On pull of these tables from local database, messages print to user about note columns or duplicate IDs.</li>
+<li>New status banner details database status at startup, is also available via <code><a href="../reference/ed_db_detailed_status.html">ed_db_detailed_status()</a></code> function. Short database status checking function <code><a href="../reference/ed_db_check_status.html">ed_db_check_status()</a></code> checks each table then prompts downloads when run interactively.</li>
+<li>EIDITH field metadata available via <code><a href="../reference/ed2_metadata.html">ed2_metadata()</a></code> function and searchable <code><a href="../reference/ed2_metadata.html">?ed2_metadata</a></code> help file. Metadata is now automatically updated on database download.</li>
+<li>EIDITH PREDICT-2 table connections available via <code><a href="../reference/ed_tables_conn.html">ed2_tables_conn()</a></code> function.</li>
+<li>Delete local EIDITH database using <code><a href="../reference/ed_db_delete.html">ed_db_delete()</a></code> function.</li>
+<li>Helper functions for expanding multiple-response fields: <code><a href="../reference/ed2_expand_wide.html">ed2_expand_wide()</a></code> and <code><a href="../reference/ed2_expand_long.html">ed2_expand_long()</a></code>.</li>
+</ul>
+</div>
+<div id="new-documentation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-documentation" class="anchor"></a>New documentation</h2>
+<ul>
+<li>PREDICT-2 EIDITH database structure and joining vignette</li>
+<li>PREDICT-2 Multiple-response field helper function vignette</li>
+<li>PREDICT-2 EIDITH-R workshop presentation slides</li>
+<li>Updated help files for old and new functions</li>
+</ul>
+</div>
+<div id="breaking-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#breaking-changes" class="anchor"></a><em>Breaking changes</em>
+</h2>
+<ul>
+<li>New database functions and structure may result in errors for users with pre-existing PREDICT-1 local databases. It is best to install new package version, then run <code><a href="../reference/ed_db_delete.html">ed_db_delete()</a></code> and run a clean <code><a href="../reference/ed_db_download.html">ed_db_download()</a></code> call.</li>
+</ul>
+</div>
+</div>
+    <div id="eidith-0-3-1-patch" class="section level1">
+<h1 class="page-header">
+<a href="#eidith-0-3-1-patch" class="anchor"></a>eidith 0.3.1 (patch)</h1>
+<ul>
+<li>Internal changes to be compatible with dplyr 0.7.0 (<a href="https://github.com/ecohealthalliance/eidith/pull/55"><a href='https://github.com/ecohealthalliance/eidith/issues/55'>#55</a></a>)</li>
+</ul>
+</div>
+    <div id="eidith-0-3" class="section level1">
+<h1 class="page-header">
+<a href="#eidith-0-3" class="anchor"></a>eidith 0.3</h1>
+<div id="new-functionality-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-functionality-1" class="anchor"></a>New functionality</h2>
 <ul>
 <li>Additional functionality for FASTA export and interpretation: <code><a href="../reference/ed_fasta.html">ed_fasta_group()</a></code>, <code><a href="../reference/ed_fasta.html">ed_report_excel()</a></code>.</li>
 <li>Mock data sets now available: <code><a href="../reference/ed_mock.html">ed_table_mock()</a></code>
@@ -135,9 +203,9 @@
 <li>Database downloads more robust to errors, only overwrites old data after new data is checked</li>
 </ul>
 </div>
-<div id="new-documentation" class="section level2">
+<div id="new-documentation-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-documentation" class="anchor"></a>New documentation</h2>
+<a href="#new-documentation-1" class="anchor"></a>New documentation</h2>
 <ul>
 <li>Automatic Processing / Raw Data vignette</li>
 <li>Data Structure and Table Joining vignette with mock data example</li>
@@ -163,14 +231,14 @@
 </div>
 </div>
     <div id="eidith-0-2-2-patch" class="section level1">
-<h1 class="hasAnchor">
+<h1 class="page-header">
 <a href="#eidith-0-2-2-patch" class="anchor"></a>eidith 0.2.2 (patch)</h1>
 <ul>
 <li>Switch API endpoints to new URLs</li>
 </ul>
 </div>
     <div id="eidith-0-2-1-patch" class="section level1">
-<h1 class="hasAnchor">
+<h1 class="page-header">
 <a href="#eidith-0-2-1-patch" class="anchor"></a>eidith 0.2.1 (patch)</h1>
 <ul>
 <li>Fix bug in <code>ed_table_</code> when parsing long expressions, showing up in <code><a href="../reference/ed_fasta.html">ed_tests_report()</a></code>
@@ -178,11 +246,11 @@
 </ul>
 </div>
     <div id="eidith-0-2-0" class="section level1">
-<h1 class="hasAnchor">
+<h1 class="page-header">
 <a href="#eidith-0-2-0" class="anchor"></a>eidith 0.2.0</h1>
-<div id="new-functionality-1" class="section level2">
+<div id="new-functionality-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-functionality-1" class="anchor"></a>New functionality</h2>
+<a href="#new-functionality-2" class="anchor"></a>New functionality</h2>
 <ul>
 <li>Add a FASTA export function: <code><a href="../reference/ed_fasta.html">ed_fasta()</a></code>
 </li>
@@ -196,7 +264,7 @@
 <ul>
 <li>New column in tests table - <code>diag_lab_shortname</code> - an abbreviated lab name for easier reporting</li>
 <li>Renamed <code>known_human_risk</code> to <code>evidence_human_infection</code> and added more clarifying text to metadata</li>
-<li>Taxagroups are now one-to-one mapped to orders. <code><a href="../reference/ed_metadata.html">ed_taxagroups()</a></code> will return a table with the mapping between them. Metadata notes updated to reflect this. (See <a href="https://github.com/ecohealthalliance/eidith/issues/32">Issue #32</a>)</li>
+<li>Taxagroups are now one-to-one mapped to orders. <code><a href="../reference/ed_metadata.html">ed_taxagroups()</a></code> will return a table with the mapping between them. Metadata notes updated to reflect this. (See <a href="https://github.com/ecohealthalliance/eidith/issues/32">Issue <a href='https://github.com/ecohealthalliance/eidith/issues/32'>#32</a></a>)</li>
 </ul>
 </div>
 <div id="bug-fixes" class="section level2">
@@ -215,13 +283,13 @@
 </ul>
 </div>
 </div>
-    </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#eidith-0-4">0.4</a></li>
         <li><a href="#eidith-0-3-1-patch">0.3.1</a></li>
         <li><a href="#eidith-0-3">0.3</a></li>
         <li><a href="#eidith-0-2-2-patch">0.2.2</a></li>
@@ -239,11 +307,25 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '2bf5efbf4437480db9685f3d09019982',
+    indexName: 'eidith',
+    inputSelector: 'input#search-input.form-control'
+  });
+</script>
+
+
   </body>
 </html>
+

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Connecting eidith tables — ed_tables_conn • EIDITH</title>
+<title>Connections between tables — ed_tables_conn • EIDITH</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,28 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+<meta property="og:title" content="Connections between tables — ed_tables_conn" />
+
+<meta property="og:description" content="To understand how various EIDITH tables are connected via their column names.
+Visualizing these connections is helpful in determining how to join eidith
+tables for further analyses, and is available for both PREDICT 1 ed_tables_conn
+and PREDICT 2 ed2_tables_conn databases." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -33,6 +48,11 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+
+
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
   </head>
 
@@ -47,8 +67,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">EIDITH</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">eidith</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -72,13 +96,22 @@
       <a href="../articles/preprocessing.html">Automatic Data Processing / Raw Data</a>
     </li>
     <li>
-      <a href="../articles/data_structure.html">Database Structure / Table Joining</a>
+      <a href="../articles/data_structure.html">PREDICT-1 Database Structure / Table Joining</a>
     </li>
     <li>
-      <a href="../articles/fasta_walkthrough.html">Generating Reports and FASTA</a>
+      <a href="../articles/fasta_walkthrough.html">PREDICT-1 Generating Reports and FASTA</a>
     </li>
     <li>
-      <a href="../articles/eidith_API.html">Web API Details</a>
+      <a href="../articles/eidith_API.html">PREDICT-1 Web API Details</a>
+    </li>
+    <li>
+      <a href="../articles/p2_data_structure.html">PREDICT-2 Database Structure / Table Joining</a>
+    </li>
+    <li>
+      <a href="../articles/multi_response_fields.html">PREDICT-2 Multiple Response Fields</a>
+    </li>
+    <li>
+      <a href="../articles/eidith_r_training.pdf">EIDITH - R Package Workshop Slides</a>
     </li>
   </ul>
 </li>
@@ -98,6 +131,13 @@
   </a>
 </li>
       </ul>
+      
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -105,28 +145,34 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Connecting eidith tables</h1>
+    <h1>Connections between tables</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/tables_conn.R'><code>R/tables_conn.R</code></a></small>
+    <div class="hidden name"><code>ed_tables_conn.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
-    <p>To understand how various eidith tables are connected via their column names.
-Visualizing these connections is helpful in determining how to join
-<code>eidith</code> tables for further analyses.</p>
+    <p>To understand how various EIDITH tables are connected via their column names.
+Visualizing these connections is helpful in determining how to join <code>eidith</code>
+tables for further analyses, and is available for both PREDICT 1 <code>ed_tables_conn</code>
+and PREDICT 2 <code>ed2_tables_conn</code> databases.</p>
     
+    </div>
 
-    <pre class="usage"><span class='fu'>ed_tables_conn</span>(<span class='kw'>cols</span> <span class='kw'>=</span> <span class='st'>"id"</span>)</pre>
+    <pre class="usage"><span class='fu'>ed_tables_conn</span>(<span class='kw'>cols</span> <span class='kw'>=</span> <span class='st'>"id"</span>)
+
+<span class='fu'>ed2_tables_conn</span>(<span class='kw'>cols</span> <span class='kw'>=</span> <span class='st'>"id"</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>cols</th>
       <td><p>can be either <code>all</code> or <code>id</code>. If <code>all</code>, all common columns are
-presented. If <code>id</code>, only unique id columns are shown.
-Default value of <code>type</code> is <code>id</code>.</p></td>
+presented. If <code>id</code>, only unique id columns are shown. Default value is <code>id</code>.</p></td>
     </tr>
     </table>
     
@@ -149,8 +195,20 @@ tables, and <code>conn</code>, the connecting column.</p>
 #&gt; 3 TestIDSpecimenID             Test     test_id
 #&gt; 4 TestIDSpecimenID            Virus     test_id
 #&gt; 5         Specimen TestIDSpecimenID specimen_id
-#&gt; 6             Test            Virus     test_id</div><div class='input'>
-
+#&gt; 6             Test            Virus     test_id</div><div class='input'><span class='fu'>ed2_tables_conn</span>()</div><div class='output co'>#&gt; # A tibble: 25 x 3
+#&gt;    T1    T2                 conn      
+#&gt;    &lt;chr&gt; &lt;chr&gt;              &lt;chr&gt;     
+#&gt;  1 Event ZooSanctuary       event_name
+#&gt;  2 Event AnimalProduction   event_name
+#&gt;  3 Event CropProduction     event_name
+#&gt;  4 Event Dwellings          event_name
+#&gt;  5 Event ExtractiveIndustry event_name
+#&gt;  6 Event WildlifeRestaurant event_name
+#&gt;  7 Event NaturalAreas       event_name
+#&gt;  8 Event MarketValueChain   event_name
+#&gt;  9 Event Animal             event_name
+#&gt; 10 Event Human              event_name
+#&gt; # ... with 15 more rows</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -172,11 +230,25 @@ tables, and <code>conn</code>, the connecting column.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '2bf5efbf4437480db9685f3d09019982',
+    indexName: 'eidith',
+    inputSelector: 'input#search-input.form-control'
+  });
+</script>
+
+
   </body>
 </html>
+

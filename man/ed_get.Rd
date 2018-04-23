@@ -10,6 +10,10 @@
 \alias{ed_get_testspecimen}
 \title{Functions to download EIDITH tables via API}
 \usage{
+ed_get(endpoint, verbose = interactive(), postprocess = TRUE,
+  header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
+  + 1, auth = NULL, ...)
+
 ed_get_events(verbose = interactive(), postprocess = TRUE,
   header_only = FALSE, lmdate_from = "2000-01-01", lmdate_to = Sys.Date()
   + 1, ...)

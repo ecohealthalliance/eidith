@@ -1,0 +1,26 @@
+﻿T1,T2,conn
+Event,ZooSanctuary,event_name
+Event,AnimalProduction,event_name
+Event,CropProduction,event_name
+Event,Dwellings,event_name
+Event,ExtractiveIndustry,event_name
+Event,WildlifeRestaurant,event_name
+Event,NaturalAreas,event_name
+Event,MarketValueChain,event_name
+Event,Animal,event_name
+Event,Human,event_name
+Animal,Specimen,animal_id = animal_human_id
+Human,Specimen,participant_id = animal_human_id
+Specimen,TestDataSerology,specimen_id
+Specimen,Test,specimen_id
+Test,TestDataInterpreted,test_id
+Human,HumanAnimalProduction,participant_id
+Human,HumanCropProduction,participant_id
+Human,HumanExtractiveIndustry,participant_id
+Human,HumanRestaurant,participant_id
+Human,HumanTemporarySettlements,participant_id
+Human,HumanHospitalWorker,participant_id
+Human,HumanSickPerson,participant_id
+Human,HumanHunter,participant_id
+Human,HumanMarket,participant_id
+Human,HumanZoo,participant_id

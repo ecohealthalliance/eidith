@@ -18,13 +18,29 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+<meta property="og:title" content="Download EIDITH data to local storage — ed_db_download" />
+
+<meta property="og:description" content="This function fetches all available tables from the EIDITH database and
+caches the data locally for further use with the table functions.
+The database persists between R sessions, so you only need to run this when
+you want to update data.  You should also run it when updating to new
+versions of the eidith package." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -33,6 +49,11 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+
+
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
   </head>
 
@@ -47,8 +68,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">EIDITH</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">eidith</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -72,13 +97,22 @@
       <a href="../articles/preprocessing.html">Automatic Data Processing / Raw Data</a>
     </li>
     <li>
-      <a href="../articles/data_structure.html">Database Structure / Table Joining</a>
+      <a href="../articles/data_structure.html">PREDICT-1 Database Structure / Table Joining</a>
     </li>
     <li>
-      <a href="../articles/fasta_walkthrough.html">Generating Reports and FASTA</a>
+      <a href="../articles/fasta_walkthrough.html">PREDICT-1 Generating Reports and FASTA</a>
     </li>
     <li>
-      <a href="../articles/eidith_API.html">Web API Details</a>
+      <a href="../articles/eidith_API.html">PREDICT-1 Web API Details</a>
+    </li>
+    <li>
+      <a href="../articles/p2_data_structure.html">PREDICT-2 Database Structure / Table Joining</a>
+    </li>
+    <li>
+      <a href="../articles/multi_response_fields.html">PREDICT-2 Multiple Response Fields</a>
+    </li>
+    <li>
+      <a href="../articles/eidith_r_training.pdf">EIDITH - R Package Workshop Slides</a>
     </li>
   </ul>
 </li>
@@ -98,6 +132,13 @@
   </a>
 </li>
       </ul>
+      
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -105,12 +146,15 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Download EIDITH data to local storage</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/database.R'><code>R/database.R</code></a></small>
+    <div class="hidden name"><code>ed_db_download.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>This function fetches all available tables from the EIDITH database and
 caches the data locally for further use with the <a href='ed_table.html'>table functions</a>.
@@ -118,12 +162,22 @@ The database persists between R sessions, so you only need to run this when
 you want to update data.  You should also run it when updating to new
 versions of the <strong>eidith</strong> package.</p>
     
+    </div>
 
-    <pre class="usage"><span class='fu'>ed_db_download</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>())</pre>
+    <pre class="usage"><span class='fu'>ed_db_download</span>(<span class='kw'>p1_tables</span> <span class='kw'>=</span> <span class='fu'>p1_api_endpoints</span>(),
+  <span class='kw'>p2_tables</span> <span class='kw'>=</span> <span class='fu'>p2_api_endpoints</span>(), <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'>interactive</span>())</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>p1_tables</th>
+      <td><p>Which PREDICT-1 tables to download</p></td>
+    </tr>
+    <tr>
+      <th>p2_tables</th>
+      <td><p>which PREDICT-2 tables to download</p></td>
+    </tr>
     <tr>
       <th>verbose</th>
       <td><p>Show messages while in progress?</p></td>
@@ -133,19 +187,21 @@ versions of the <strong>eidith</strong> package.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This function does a few things:</p><ul>
-<li><p>Fetches all tables from EIDITH (events, animals, specimens, tests, viruses, and test-specimen cross-references)</p></li>
+<li><p>Fetches all tables from both EIDITH PREDICT-1 and PREDICT-2 databases.</p></li>
 <li><p>Cleans and pre-processes the data with <code><a href='ed_process.html'>ed_process()</a></code>.</p></li>
 <li><p>Stores the data in an SQLite database in your <a href='http://www.rdocumentation.org/packages/rappdirs/topics/user_data_dir'>user data directory</a>.</p></li>
 </ul>
-    <p>Each time it is run it downloads into a temporary database and checks for the presence of
-all tables before it clears out the previous data, preventing the local database from becoming damaged if
-there are problems with the download. Each function run will download the entire database, and
-as such it takes a few minutes.  In the future, we will allow for updating only with new and changed records.</p>
+    <p>Each time this function is run it checks for updated metadata about database tables,
+then downloads each table into a temporary database and makes sure that the
+structure of these tables is as expected. Only well-formed tables will be copied
+into the user's permanent database. If a downloaded table is missing fields, has
+extra fields, or is otherwise corrupted, the user will receive an error message.
+In the future, we will allow for updating only with new and changed records.</p>
 <p>The function will prompt for username and password unless you have <a href='ed_auth.html'>cached your credentials</a>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='ed_db_status.html'>ed_db_status()</a></code>, <code><a href='ed_db_updates.html'>ed_db_updates()</a></code>, <code><a href='ed_db_export.html'>ed_db_export()</a></code></p>
+    <div class='dont-index'><p><code>ed_db_status()</code>, <code>ed_db_updates()</code>, <code><a href='ed_db_export.html'>ed_db_export()</a></code></p></div>
     
 
   </div>
@@ -168,11 +224,25 @@ as such it takes a few minutes.  In the future, we will allow for updating only 
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '2bf5efbf4437480db9685f3d09019982',
+    indexName: 'eidith',
+    inputSelector: 'input#search-input.form-control'
+  });
+</script>
+
+
   </body>
 </html>
+

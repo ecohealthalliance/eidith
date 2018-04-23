@@ -1,0 +1,1184 @@
+table,endpoint2,order,original_name,auto_processed_name,replacement_name,description,processing_notes,question
+events_2,Event,NA,Country,country,NA,Country where the site is located,NA,NA
+events_2,Event,NA,SiteName,site_name,NA,Name of the site where the samples were collected,NA,NA
+events_2,Event,NA,ConcurrentSamplingSite,concurrent_sampling_site,NA,??,NA,NA
+events_2,Event,NA,District,district,NA,District where the site is located - centroid used for sensitive sites,NA,NA
+events_2,Event,NA,StateProv,state_prov,NA,State or province where the site is located,NA,NA
+events_2,Event,NA,SiteLatitude,site_latitude,NA,GPS coordinates calculated to determine the centroid of the site. eg: the center of a park.,NA,NA
+events_2,Event,NA,SiteLongitude,site_longitude,NA,GPS coordinates calculated to determine the centroid of the site. eg: the center of a park.,NA,NA
+events_2,Event,NA,EventLatitude,event_latitude,NA,Defaults to site lat/long. Overwrite field to specific area where sampling is done within site.,NA,NA
+events_2,Event,NA,EventLongitude,event_longitude,NA,Defaults to site lat/long. Overwrite field to specific area where sampling is done within site.,NA,NA
+events_2,Event,NA,EventDate,event_date,NA,"The date that observations, interviews, or sampling began",NA,NA
+events_2,Event,NA,DurationDays,duration_days,NA,The time period in days that the event occurred,NA,NA
+events_2,Event,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,ID for joining Events + Animals,NA
+events_2,Event,NA,Recorder,recorder,event_recorder,The name of the primary person that recorded the site/event information,NA,NA
+events_2,Event,NA,Organization,organization,NA,The recorder's organization or affiliation,NA,NA
+events_2,Event,NA,HumanDensityImpact,human_density_impact,NA,A measure to describe the human density and the impact at the event site,4-cat var,NA
+events_2,Event,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,NA,What is the target animal-human disease transmission interface for this event? Select all that apply -- each interface chosen will create a corresponding module,semicolon separated list,NA
+events_2,Event,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,NA,??,These columns summed don't result in DiseaseTransmissionInterfaces??,NA
+events_2,Event,NA,InterfacesHumansSampled,interfaces_humans_sampled,NA,??,These columns summed don't result in DiseaseTransmissionInterfaces??,NA
+events_2,Event,NA,InterfacesNoneSampled,interfaces_none_sampled,NA,??,These columns summed don't result in DiseaseTransmissionInterfaces??,NA
+events_2,Event,NA,VeterinarianCare,veterinarian_care,NA,Does a veterinarian care for animals at the event site?,yes/no,NA
+events_2,Event,NA,SamplingAreaSize,sampling_area_size,NA,"To the best of your knowledge, what is the estimated size of the area for this event in m2?",4-cat var,NA
+events_2,Event,NA,HumansPresent,humans_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var,NA
+events_2,Event,NA,RodentsPresent,rodents_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var,NA
+events_2,Event,NA,BatsPresent,bats_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var,NA
+events_2,Event,NA,NHPPresent,nhp_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var,NA
+events_2,Event,NA,BirdsPresent,birds_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var,NA
+events_2,Event,NA,CarnivoresPresent,carnivores_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var,NA
+events_2,Event,NA,UngulatesPresent,ungulates_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var,NA
+events_2,Event,NA,PangolinsPresent,pangolins_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var,NA
+events_2,Event,NA,PoultryPresent,poultry_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var,NA
+events_2,Event,NA,GoatsPresent,goats_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var,NA
+events_2,Event,NA,CamelsPresent,camels_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var,NA
+events_2,Event,NA,SwinePresent,swine_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var,NA
+events_2,Event,NA,CattlePresent,cattle_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var,NA
+events_2,Event,NA,DogsPresent,dogs_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var,NA
+events_2,Event,NA,CatsPresent,cats_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var,NA
+events_2,Event,NA,drinkingWaterShared,drinking_water_shared,NA,Is drinking water shared between humans and animals?,yes/no/unknown,NA
+events_2,Event,NA,bathingWaterShared,bathing_water_shared,NA,Is bathing water shared between humans and animals?,yes/no/unknown,NA
+events_2,Event,NA,ToiletsAvailable,toilets_available,NA,"Are the toilets, latrines, or other public facilities available for people at this site...","5-cat var, semicolon separated",NA
+events_2,Event,NA,DrinkingWaterSource,drinking_water_source,NA,Where do people at this site get their drinking water?,"4-cat var, semicolon separated",NA
+events_2,Event,NA,AverageTripToWater,average_trip_to_water,NA,How long is the average trip to the drinking water sources?,3-cat var,NA
+events_2,Event,NA,InsectVectors,insect_vectors,NA,What types of insect vectors are observed at the site?,"6-cat var, semicolon separated",NA
+events_2,Event,NA,VectorControlMeasures,vector_control_measures,NA,Are vector control measures used at the site?,yes/no,NA
+events_2,Event,NA,CommunityEngagement?,community_engagement,NA,?? - Not included in Site / Event Field Metadata document,NA,NA
+events_2,Event,NA,CommunityEngagementDate,community_engagement_date,NA,?? - Not included in Site / Event Field Metadata document,NA,NA
+events_2,Event,NA,CommunityEngagementNotes,community_engagement_notes,NA,?? - Not included in Site / Event Field Metadata document,NA,NA
+events_2,Event,NA,NbrBeds,nbr_beds,NA,?? - Not included in Site / Event Field Metadata document,NA,NA
+events_2,Event,NA,IsDeepForest,is_deep_forest,NA,Uses deep forest protocols,yes/no,NA
+events_2,Event,NA,Notes,notes,event_notes,Notes,NA,NA
+animals_2,Animal,NA,Country,country,DROP,Event-level information,NA,NA
+animals_2,Animal,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+animals_2,Animal,NA,ConcurrentSamplingSite,concurrent_sampling_site,DROP,Event-level information,NA,NA
+animals_2,Animal,NA,District,district,DROP,Event-level information,NA,NA
+animals_2,Animal,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+animals_2,Animal,NA,SiteLatitudeUnrounded,site_latitude_unrounded,DROP,Event-level information,NA,NA
+animals_2,Animal,NA,SiteLongitudeUnrounded,site_longitude_unrounded,DROP,Event-level information,NA,NA
+animals_2,Animal,NA,EventLatitudeUnrounded,event_latitude_unrounded,DROP,Event-level information,NA,NA
+animals_2,Animal,NA,EventLongitudeUnrounded,event_longitude_unrounded,DROP,Event-level information,NA,NA
+animals_2,Animal,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+animals_2,Animal,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+animals_2,Animal,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,ID for joining Events + Animals,NA
+animals_2,Animal,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+animals_2,Animal,NA,AnimalID,animal_id,NA,"The animal ID is an automatically generated combination: AnimalID = OrganizationCountryTaxaAnimal#. For example, the first bat sampled by UCDavis in Tanzania would be UTZB001",NA,NA
+animals_2,Animal,NA,TaxaGroup,taxa_group,NA,"Animal's taxa group: rodents/shrews, bats, non-human primates, birds, carnivores, ungulates, poultry, goats/sheep, camels, swine, cattle/buffalo, dogs, cats, other.",14-cat variable,NA
+animals_2,Animal,NA,AnimalClass,animal_class,NA,"Animal's classification: captive wild animal, free-randing wild animal, owned domesticated species, unowned domesticated species.",NA,NA
+animals_2,Animal,NA,TagAndOtherID,tag_and_other_id,NA,??,NA,NA
+animals_2,Animal,NA,SpeciesScientificName,species_scientific_name,NA,"If complete genus species is unknown, this should be the next known level of taxonomic classification (i.e. genus, subfamily, family).",NA,NA
+animals_2,Animal,NA,SpeciesEnglishName,species_english_name,NA,Common name of animal,NA,NA
+animals_2,Animal,NA,SpeciesScientificNameFieldMorphology,species_scientific_name_field_morphology,NA,"If present, this field represents field species identification and species_scientific_name represents barcoded species identifcation. If absent, species_scientific_name represents field species identification.",NA,NA
+animals_2,Animal,NA,SpeciesEnglishNameFieldMorphology,species_english_name_field_morphology,NA,"If present, this field represents field species identification and species_english_name represents barcoded species identifcation. If absent, species_english_name represents field species identification.",NA,NA
+animals_2,Animal,NA,SpeciesLocalName,species_local_name,NA,Local name of animal,NA,NA
+animals_2,Animal,NA,IDCertainty,id_certainty,NA,"What is the level of certainty of species identification: actual, estimate, unknown?",3-cat variable,NA
+animals_2,Animal,NA,Sex,sex,NA,"Animal's sex: male, female, unknown",NA,NA
+animals_2,Animal,NA,SampleDate,sample_date,NA,Date sample was taken,NA,NA
+animals_2,Animal,NA,SampleLocationLatitude,sample_location_latitude,NA,Decimal degrees (if different than event),NA,NA
+animals_2,Animal,NA,SampleLocationLongitude,sample_location_longitude,NA,Decimal degrees (if different than event),NA,NA
+animals_2,Animal,NA,RecorderName,recorder_name,sample_recorder,Name of person recording sample information,NA,NA
+animals_2,Animal,NA,OrganizationSampled,organization_sampled,NA,Organization doing the sampling -- is this ever different than the Organization doing the Event?,NA,NA
+animals_2,Animal,NA,AgeClass,age_class,NA,"Fetus (in utero); Neonate (newborn); Juvenile (dependent); Subadult (immature, independent); Adult (reproductive age); Unknown.",6-cat var,NA
+animals_2,Animal,NA,ConditionAtSampling,condition_at_sampling,NA,"Estimate condition at sampling: alive, alive (non-invasive sample collection), dead (fresh carcass), dead (> 48 hours).",NA,NA
+animals_2,Animal,NA,nonInvasiveComment,non_invasive_comment,NA,??,NA,NA
+animals_2,Animal,NA,ReleasedAlive,released_alive,NA,??,NA,NA
+animals_2,Animal,NA,NecropsyExam,necropsy_exam,exam_type,"Was a necropscy exam conducted: necropsy, physical exam, no?",NA,NA
+animals_2,Animal,NA,NecropsyExamResult,necropsy_exam_result,exam_result,"What are the physical signs/signalment regarding the animals, to get information such as edema, bruising, hemorrhage, skin lesions, conjunctivitis, excessive discharge, etc. This would help define sentinel syndromes.",NA,NA
+animals_2,Animal,NA,PreservationMethodIfDead,preservation_method_if_dead,NA,Cooked; dried; fermented; frozen; powdered; preserved in liquid; salted; smoked; not preserved,NA,NA
+animals_2,Animal,NA,HealthStatus,health_status,NA,"Estimate health status at sampling: apparently healthy, sick, injured, unknown?",4-cat var,NA
+animals_2,Animal,NA,ClinicalSignsIfSick,clinical_signs_if_sick,NA,"Specify clinical signs if found sick of injured. Select all that apply: abscesses, abdominal mass, amputated body parts, broken bones, contusions, dermatitis, diarrhea, emaciated, external parasites, hair loss, in shock, lacerations, lethargic, nasal discharge, non-responsive, paralysis, respiratory symptoms, skin lesions, skin mass, swelling, other.",semicolon separated list,NA
+animals_2,Animal,NA,ClinicalSignsOther,clinical_signs_other,NA,POSSIBLE DROP?,NA,NA
+animals_2,Animal,NA,AnimalHumanInterfaces,animal_human_interfaces,NA,Select the animal to human interfaces that best describe the animal’s contact with people in this setting. Select all that apply.,semicolon separated list,NA
+animals_2,Animal,NA,AnimalUseProducedSold,animal_use_produced_sold,NA,"If this animal or animal product is being produced or sold, what is the intended use of the animal product? Select all that apply.",semicolon separated list,NA
+animals_2,Animal,NA,BatEarHeight,bat_ear_height,NA,NA,NA,NA
+animals_2,Animal,NA,BatTailLength,bat_tail_length,NA,NA,NA,NA
+animals_2,Animal,NA,BatHindFoodLength,bat_hind_foot_length,NA,NA,NA,NA
+animals_2,Animal,NA,BatForearmLength,bat_forearm_length,NA,NA,NA,NA
+animals_2,Animal,NA,BatHeadBodyLength,bat_head_body_length,NA,NA,NA,NA
+animals_2,Animal,NA,BatWeight,bat_weight,NA,NA,NA,NA
+animals_2,Animal,NA,NHPBodyLength,nhp_body_length,NA,NA,NA,NA
+animals_2,Animal,NA,NHPHeadLength,nhp_head_length,NA,NA,NA,NA
+animals_2,Animal,NA,NHPRightEarWidth,nhp_right_ear_width,NA,NA,NA,NA
+animals_2,Animal,NA,NHPHeadWidth,nhp_head_width,NA,NA,NA,NA
+animals_2,Animal,NA,NHPRightEarHeight,nhp_right_ear_height,NA,NA,NA,NA
+animals_2,Animal,NA,NHPLeftEarWidth,nhp_left_ear_width,NA,NA,NA,NA
+animals_2,Animal,NA,NHPLeftEarHeight,nhp_left_ear_height,NA,NA,NA,NA
+animals_2,Animal,NA,NHPWeight,nhp_weight,NA,NA,NA,NA
+animals_2,Animal,NA,RodentOtherRightEarHeight,rodent_other_right_ear_height,NA,NA,NA,NA
+animals_2,Animal,NA,RodentOtherTailLength,rodent_other_tail_length,NA,NA,NA,NA
+animals_2,Animal,NA,RodentOtherRHindFoot,rodent_other_rhind_foot,NA,NA,NA,NA
+animals_2,Animal,NA,RodentOtherBodyLength,rodent_other_body_length,NA,NA,NA,NA
+animals_2,Animal,NA,RodentOtherWeight,rodent_other_weight,NA,NA,NA,NA
+animals_2,Animal,NA,Notes,notes,animal_notes,Notes from Animal table.,NA,NA
+specimens_2,Specimen,NA,Country,country,DROP,Event-level information,NA,NA
+specimens_2,Specimen,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+specimens_2,Specimen,NA,ConcurrentSamplingSite,concurrent_sampling_site,DROP,Event-level information,NA,NA
+specimens_2,Specimen,NA,District,district,DROP,Event-level information,NA,NA
+specimens_2,Specimen,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+specimens_2,Specimen,NA,SiteLatitudeUnrounded,site_latitude_unrounded,DROP,Event-level information,NA,NA
+specimens_2,Specimen,NA,SiteLongitudeUnrounded,site_longitude_unrounded,DROP,Event-level information,NA,NA
+specimens_2,Specimen,NA,EventLatitudeUnrounded,event_latitude_unrounded,DROP,Event-level information,NA,NA
+specimens_2,Specimen,NA,EventLongitudeUnrounded,event_longitude_unrounded,DROP,Event-level information,NA,NA
+specimens_2,Specimen,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+specimens_2,Specimen,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+specimens_2,Specimen,NA,EventName,event_name,DROP,Event-level information,NA,NA
+specimens_2,Specimen,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+specimens_2,Specimen,NA,Animal/Human ID,animal_human_id,NA,Unique ID linking both Human table via participant_id and Animal table via animal_id.,NA,NA
+specimens_2,Specimen,NA,TaxaGroup,taxa_group,DROP,Animal-level information,NA,NA
+specimens_2,Specimen,NA,AnimalClass,animal_class,DROP,Animal-level information,NA,NA
+specimens_2,Specimen,NA,SpeciesScientificName,species_scientific_name,DROP,Animal-level information,NA,NA
+specimens_2,Specimen,NA,SpeciesEnglishName,species_english_name,DROP,Animal-level information,NA,NA
+specimens_2,Specimen,NA,Sex,sex,DROP,Animal-level information,NA,NA
+specimens_2,Specimen,NA,SpecimenID,specimen_id,NA,Preferred format:  AnimalIDSpecimenTypeSpecimen# The first oral swab sampled from the animal above would be UTZB001.O1,NA,NA
+specimens_2,Specimen,NA,SpecimenType,specimen_type,NA,Possible combination of Specimen Type and Specimen Tissue Type fields from metadata documents,NA,NA
+specimens_2,Specimen,NA,Medium,medium,NA,Specimen medium,NA,NA
+specimens_2,Specimen,NA,Container,container,NA,Specimen container,NA,NA
+specimens_2,Specimen,NA,StorageMethod,storage_method,NA,Specimen storage method,NA,NA
+specimens_2,Specimen,NA,StorageFacility,storage_facility,NA,Storage facility,NA,NA
+specimens_2,Specimen,NA,StorageLocation,storage_location,NA,Storage location within facility,NA,NA
+specimens_2,Specimen,NA,Notes,notes,specimen_notes,NA,NA,NA
+specimens_2,Specimen,NA,DateOfSpecimenCollection (humans only),date_of_specimen_collection_humans_only,NA,??,NA,NA
+specimens_2,Specimen,NA,TimeOfSpecimenCollection (humans only),time_of_specimen_collection_humans_only,NA,??,NA,NA
+specimens_2,Specimen,NA,SpecimenCollectedForDiagnosis (humans only),specimen_collected_for_diagnosis_humans_only,NA,??,NA,NA
+animal_production_2,AnimalProduction,NA,Country,country,DROP,Event-level information,NA,NA
+animal_production_2,AnimalProduction,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+animal_production_2,AnimalProduction,NA,District,district,DROP,Event-level information,NA,NA
+animal_production_2,AnimalProduction,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+animal_production_2,AnimalProduction,NA,SiteLatitudeUnrounded,site_latitude_unrounded,DROP,Event-level information,NA,NA
+animal_production_2,AnimalProduction,NA,SiteLongitudeUnrounded,site_longitude_unrounded,DROP,Event-level information,NA,NA
+animal_production_2,AnimalProduction,NA,EventLatitudeUnrounded,event_latitude_unrounded,DROP,Event-level information,NA,NA
+animal_production_2,AnimalProduction,NA,EventLongitudeUnrounded,event_longituded_unrounded,DROP,Event-level information,NA,NA
+animal_production_2,AnimalProduction,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+animal_production_2,AnimalProduction,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+animal_production_2,AnimalProduction,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+animal_production_2,AnimalProduction,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+animal_production_2,AnimalProduction,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+animal_production_2,AnimalProduction,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+animal_production_2,AnimalProduction,NA,TypeOfProduction,type_of_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var,NA
+animal_production_2,AnimalProduction,NA,RodentsInProduction,rodents_in_production,NA,What is the number of taxa animals in production at this facility? none; 1-10; 11-100; 101-1000; > 1000,5-cat var,NA
+animal_production_2,AnimalProduction,NA,RodentsNbrEnclosures,rodents_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,RodentsAvgNbrEnclosure,rodents_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,RodentsAvgSizeEnclosure,rodents_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,RodentsFreerangingTethered,rodents_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,RodentsPurposeOfProduction,rodents_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,RodentsTypeOfEnclosure,rodents_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,BatsInProduction,bats_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var,NA
+animal_production_2,AnimalProduction,NA,NHPInProduction,nhp_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var,NA
+animal_production_2,AnimalProduction,NA,BirdsInProduction,birds_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var,NA
+animal_production_2,AnimalProduction,NA,CarnivoresInProduction,carnivores_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var,NA
+animal_production_2,AnimalProduction,NA,UngulatesInProduction,ungulates_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var,NA
+animal_production_2,AnimalProduction,NA,PangolinsInProduction,pangolins_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var,NA
+animal_production_2,AnimalProduction,NA,PoultryInProduction,poultry_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var,NA
+animal_production_2,AnimalProduction,NA,GoatsInProduction,goats_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var,NA
+animal_production_2,AnimalProduction,NA,CamelsInProduction,camels_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var,NA
+animal_production_2,AnimalProduction,NA,SwineInProduction,swine_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var,NA
+animal_production_2,AnimalProduction,NA,CattleInProduction,cattle_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var,NA
+animal_production_2,AnimalProduction,NA,HorsesInProduction,horses_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var,NA
+animal_production_2,AnimalProduction,NA,DogsInProduction,dogs_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var,NA
+animal_production_2,AnimalProduction,NA,CatsInProduction,cats_in_production,NA,"What is the type of production system? Select one: family owned, corporate, government.",3-cat var,NA
+animal_production_2,AnimalProduction,NA,BatsNbrEnclosures,bats_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,NHPNbrEnclosures,nhp_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,BirdsNbrEnclosures,birds_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CarnivoresNbrEnclosures,carnivores_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,UngulatesNbrEnclosures,ungulates_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,PangolinsNbrEnclosures,pangolins_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,PoultryNbrEnclosures,poultry_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,GoatsNbrEnclosures,goats_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CamelsNbrEnclosures,camels_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,SwineNbrEnclosures,swine_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CattleNbrEnclosures,cattle_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,HorsesNbrEnclosures,horses_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,DogsNbrEnclosures,dogs_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CatsNbrEnclosures,cats_nbr_enclosures,NA,What is the number of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,BatsAvgNbrEnclosure,bats_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,NHPAvgNbrEnclosure,nhp_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,BirdsAvgNbrEnclosure,birds_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CarnivoresAvgNbrEnclosure,carnivores_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,UngulatesAvgNbrEnclosure,ungulates_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,PangolinsAvgNbrEnclosure,pangolins_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,PoultryAvgNbrEnclosure,poultry_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,GoatsAvgNbrEnclosure,goats_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CamelsAvgNbrEnclosure,camels_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,SwineAvgNbrEnclosure,swine_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CattleAvgNbrEnclosure,cattle_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,HorsesAvgNbrEnclosure,horses_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,DogsAvgNbrEnclosure,dogs_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CatsAvgNbrEnclosure,cats_avg_nbr_enclosure,NA,What is the average number of taxa animals per enclosure?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,BatsAvgSizeEnclosure,bats_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,NHPAvgSizeEnclosure,nhp_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,BirdsAvgSizeEnclosure,birds_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CarnivoresAvgSizeEnclosure,carnivores_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,UngulatesAvgSizeEnclosure,ungulates_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,PangolinsAvgSizeEnclosure,pangolins_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,PoultryAvgSizeEnclosure,poultry_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,GoatsAvgSizeEnclosure,goats_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CamelsAvgSizeEnclosure,camels_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,SwineAvgSizeEnclosure,swine_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CattleAvgSizeEnclosure,cattle_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,HorsesAvgSizeEnclosure,horses_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,DogsAvgSizeEnclosure,dogs_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CatsAvgSizeEnclosure,cats_avg_size_enclosure,NA,What is the average size of taxa enclosures?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,BatsFreerangingTethered,bats_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,NHPFreerangingTethered,nhp_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,BirdsFreerangingTethered,birds_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CarnivoresFreerangingTethered,carnivores_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,UngulatesFreerangingTethered,ungulates_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,PangolinsFreerangingTethered,pangolins_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,PoultryFreerangingTethered,poultry_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,GoatsFreerangingTethered,goats_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CamelsFreerangingTethered,camels_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,SwineFreerangingTethered,swine_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CattleFreerangingTethered,cattle_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,HorsesFreerangingTethered,horses_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,DogsFreerangingTethered,dogs_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CatsFreerangingTethered,cats_freeranging_tethered,NA,What is the number of freeranging or tethered animals?,"includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,BatsPurposeOfProduction,bats_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,NHPPurposeOfProduction,nhp_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,BirdsPurposeOfProduction,birds_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CarnivoresPurposeOfProduction,carnivores_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,UngulatesPurposeOfProduction,ungulates_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,PangolinsPurposeOfProduction,pangolins_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,PoultryPurposeOfProduction,poultry_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,GoatsPurposeOfProduction,goats_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CamelsPurposeOfProduction,camels_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,SwinePurposeOfProduction,swine_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CattlePurposeOfProduction,cattle_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,HorsesPurposeOfProduction,horses_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,DogsPurposeOfProduction,dogs_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CatsPurposeOfProduction,cats_purpose_of_production,NA,What is the purpose of taxa animal production? for breeding; for food; for resale of animals; for sale of animal products; not observed.,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,BatsTypeOfEnclosure,bats_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,NHPTypeOfEnclosure,nhp_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,BirdsTypeOfEnclosure,birds_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CarnivoresTypeOfEnclosure,carnivores_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,UngulatesTypeOfEnclosure,ungulates_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,PangolinsTypeOfEnclosure,pangolins_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,PoultryTypeOfEnclosure,poultry_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,GoatsTypeOfEnclosure,goats_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CamelsTypeOfEnclosure,camels_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,SwineTypeOfEnclosure,swine_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CattleTypeOfEnclosure,cattle_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,HorsesTypeOfEnclosure,horses_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,DogsTypeOfEnclosure,dogs_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,CatsTypeOfEnclosure,cats_type_of_enclosure,NA,What is the type of animal enclosure? fenced outdoor enclosure; free range (open range) outdoor; indoor enclosure in fully enclosed facility; outdoor cage; tethered grazing outdoor,"semicolon separated and includes ""N/A""",NA
+animal_production_2,AnimalProduction,NA,TaxaTogether,taxa_together,NA,Are there multiple taxa in one holding area or cage?,yes/no,NA
+animal_production_2,AnimalProduction,NA,WildDomesticTogether,wild_domestic_together,NA,Are wild animals and domesticated animals held together in one holding area or cage?,yes/no,NA
+animal_production_2,AnimalProduction,NA,SlaughteredButcheredOnsite,slaughtered_butchered_onsite,NA,Are animals slaughtered and butchered onsite?,yes/no,NA
+animal_production_2,AnimalProduction,NA,DesignatedSlaughterArea,production_designated_slaughter_area,NA,"If animals are slaughtered and butchered onsite, is there a designated area for slaughtering and butchering?","yes/no/""N/A""",NA
+animal_production_2,AnimalProduction,NA,AnimalWastePresent,production_animal_waste_present,NA,What type of animal waste is present at the site/event? Select all that apply: feces;l soiled bedding (urine and feces); animal tissue and/or blood; none.,semicolon separated,NA
+animal_production_2,AnimalProduction,NA,BiosecurityMeasures,production_biosecurity_measures,NA,What types of biosecurity measures are practiced at the facility? Select all that apply:,semicolon separated,NA
+animal_production_2,AnimalProduction,NA,AnimalsInDwellings,animals_in_dwellings,NA,Are there animals living in the human dwellings?,yes/no,NA
+crop_production_2,CropProduction,NA,Country,country,DROP,Event-level information,NA,NA
+crop_production_2,CropProduction,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+crop_production_2,CropProduction,NA,District,district,DROP,Event-level information,NA,NA
+crop_production_2,CropProduction,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+crop_production_2,CropProduction,NA,SiteLatitudeUnrounded,site_latitude_unrounded,DROP,Event-level information,NA,NA
+crop_production_2,CropProduction,NA,SiteLongitudeUnrounded,site_longitude_unrounded,DROP,Event-level information,NA,NA
+crop_production_2,CropProduction,NA,EventLatitudeUnrounded,event_latitude_unrounded,DROP,Event-level information,NA,NA
+crop_production_2,CropProduction,NA,EventLongitudeUnrounded,event_longitude_unrounded,DROP,Event-level information,NA,NA
+crop_production_2,CropProduction,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+crop_production_2,CropProduction,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+crop_production_2,CropProduction,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+crop_production_2,CropProduction,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+crop_production_2,CropProduction,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+crop_production_2,CropProduction,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+crop_production_2,CropProduction,NA,CropsPlanted,crops_planted,NA,Which crops are planted at the site? Select all that apply.,semicolon separated,NA
+crop_production_2,CropProduction,NA,TypeOfSystem,type_of_system,NA,What type of crop production system is it? Select one option: family owned; corporate; government.,3-cat var,NA
+crop_production_2,CropProduction,NA,PurposeHouseholdLevel,purpose_household_level,household_crops,Which crops are grown for household purposes?,semicolon separated,NA
+crop_production_2,CropProduction,NA,PurposeVillageLevel,purpose_village_level,village_crops,Which crops are grown for village purposes?,semicolon separated,NA
+crop_production_2,CropProduction,NA,PurposeLargeScaleProduction,purpose_large_scale_production,large_scale_production_crops,Which crops are grown for large scale production purposes?,semicolon separated,NA
+crop_production_2,CropProduction,NA,CropRaidingPestPrevention,crop_raiding_pest_prevention,NA,What are the observed practices or signs of practices used for preventing crop raiding and pest damage? Select all that apply,semicolon separated,NA
+crop_production_2,CropProduction,NA,FertilizersUsed,fertilizers_used,NA,What types of fertilizers are used on the crops? Select all that apply: chemical fertilizer; animal manure or guano; none.,semicolon separated,NA
+crop_production_2,CropProduction,NA,PoultyFertilizer,poulty_fertilizer,poultry_fertilizer,Is this the source of manure fertilizer? Select all that apply: composted or dried manure; fresh manure; none; N/A.,semicolon separated,NA
+crop_production_2,CropProduction,NA,CamelFertilizer,camel_fertilizer,NA,Is this the source of manure fertilizer? Select all that apply: composted or dried manure; fresh manure; none; N/A.,NA,NA
+crop_production_2,CropProduction,NA,CattleFertilizer,cattle_fertilizer,NA,Is this the source of manure fertilizer? Select all that apply: composted or dried manure; fresh manure; none; N/A.,NA,NA
+crop_production_2,CropProduction,NA,SwineFertilizer,swine_fertilizer,NA,Is this the source of manure fertilizer? Select all that apply: composted or dried manure; fresh manure; none; N/A.,NA,NA
+crop_production_2,CropProduction,NA,BatGuanoFertilizer,bat_guano_fertilizer,NA,Is this the source of manure fertilizer? Select all that apply: composted or dried manure; fresh manure; none; N/A.,NA,NA
+crop_production_2,CropProduction,NA,BirdGuanoFertilizer,bird_guano_fertilizer,NA,Is this the source of manure fertilizer? Select all that apply: composted or dried manure; fresh manure; none; N/A.,NA,NA
+crop_production_2,CropProduction,NA,GoatFertilizer,goat_fertilizer,NA,Is this the source of manure fertilizer? Select all that apply: composted or dried manure; fresh manure; none; N/A.,NA,NA
+crop_production_2,CropProduction,NA,CropStorageAtSite,crop_storage_at_site,NA,Are crops stored at this site after harvest? Select all that apply: yes; no; unknown.,NA,NA
+crop_production_2,CropProduction,NA,CropsStoredInDwellings,crops_stored_in_dwellings,NA,Which crops are stored in dwellings? Select all that apply.,semicolon separated,NA
+crop_production_2,CropProduction,NA,CropsStoredOutsideSacks,crops_stored_outside_sacks,NA,Which crops are stored in outside sacks? Select all that apply.,NA,NA
+crop_production_2,CropProduction,NA,CropsStoredSiloGranary,crops_stored_silo_granary,NA,Which crops are stored in silo / granary? Select all that apply.,NA,NA
+crop_production_2,CropProduction,NA,CropsStoredNotObserved,crops_stored_not_observed,NA,Which crops are not observed being stored? Select all that apply.,NA,NA
+crop_production_2,CropProduction,NA,CropsStoredOther,crops_stored_other,NA,Which crops are stored in other places? Select all that apply.,NA,NA
+crop_production_2,CropProduction,NA,RodentsInCrops,rodents_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",semicolon separated,NA
+crop_production_2,CropProduction,NA,BatsInCrops,bats_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA,NA
+crop_production_2,CropProduction,NA,NHPInCrops,nhp_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA,NA
+crop_production_2,CropProduction,NA,BirdsInCrops,birds_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA,NA
+crop_production_2,CropProduction,NA,CarnivoresInCrops,carnivores_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA,NA
+crop_production_2,CropProduction,NA,UngulatesInCrops,ungulates_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA,NA
+crop_production_2,CropProduction,NA,ElephantsInCrops,elephants_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA,NA
+crop_production_2,CropProduction,NA,PangolinsInCrops,pangolins_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA,NA
+crop_production_2,CropProduction,NA,PoultryInCrops,poultry_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA,NA
+crop_production_2,CropProduction,NA,GoatsInCrops,goats_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA,NA
+crop_production_2,CropProduction,NA,CamelsInCrops,camels_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA,NA
+crop_production_2,CropProduction,NA,SwineInCrops,swine_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA,NA
+crop_production_2,CropProduction,NA,CattleInCrops,cattle_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA,NA
+crop_production_2,CropProduction,NA,HorsesInCrops,horses_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA,NA
+crop_production_2,CropProduction,NA,DogsInCrops,dogs_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA,NA
+crop_production_2,CropProduction,NA,CatsInCrops,cats_in_crops,NA,"Is there evidence (direct observation, signs, scat, tracks) of this taxa of animals feeding on or visiting crop fields or stored crops? Select all that apply: in crop fields; in stored crops; none.",NA,NA
+dwellings_2,Dwellings,NA,Country,country,DROP,Event-level information,NA,NA
+dwellings_2,Dwellings,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+dwellings_2,Dwellings,NA,District,district,DROP,Event-level information,NA,NA
+dwellings_2,Dwellings,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+dwellings_2,Dwellings,NA,SiteLatitudeUnrounded,site_latitude_unrounded,DROP,Event-level information,NA,NA
+dwellings_2,Dwellings,NA,SiteLongitudeUnrounded,site_longitude_unrounded,DROP,Event-level information,NA,NA
+dwellings_2,Dwellings,NA,EventLatitudeUnrounded,event_latitude_unrounded,DROP,Event-level information,NA,NA
+dwellings_2,Dwellings,NA,EventLongitudeUnrounded,event_longitude_unrounded,DROP,Event-level information,NA,NA
+dwellings_2,Dwellings,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+dwellings_2,Dwellings,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+dwellings_2,Dwellings,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+dwellings_2,Dwellings,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+dwellings_2,Dwellings,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+dwellings_2,Dwellings,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+dwellings_2,Dwellings,NA,TypeOfSettlement,type_of_settlement,NA,Are there temporary or permanent human settlements in this area? Select all that apply: permanent; temporary.,comma-separated,NA
+dwellings_2,Dwellings,NA,TypeOfDwelling,type_of_dwelling,NA,What are the types of dwellings at sampling site/event? Select all that apply.,comma-separated,NA
+dwellings_2,Dwellings,NA,RodentsInDwelling,rodents_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated,NA
+dwellings_2,Dwellings,NA,BatsInDwelling,bats_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated,NA
+dwellings_2,Dwellings,NA,NHPInDwelling,nhp_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated,NA
+dwellings_2,Dwellings,NA,BirdsInDwelling,birds_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated,NA
+dwellings_2,Dwellings,NA,CarnivoresInDwelling,carnivores_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated,NA
+dwellings_2,Dwellings,NA,UngulatesInDwelling,ungulates_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated,NA
+dwellings_2,Dwellings,NA,PangolinsInDwelling,pangolins_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated,NA
+dwellings_2,Dwellings,NA,PoultryInDwelling,poultry_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated,NA
+dwellings_2,Dwellings,NA,GoatsInDwelling,goats_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated,NA
+dwellings_2,Dwellings,NA,CamelsInDwelling,camels_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated,NA
+dwellings_2,Dwellings,NA,SwineInDwelling,swine_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated,NA
+dwellings_2,Dwellings,NA,CattleInDwelling,cattle_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated,NA
+dwellings_2,Dwellings,NA,HorsesInDwelling,horses_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated,NA
+dwellings_2,Dwellings,NA,DogsInDwelling,dogs_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated,NA
+dwellings_2,Dwellings,NA,catsInDwelling,cats_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated,NA
+dwellings_2,Dwellings,NA,UnknownTaxaInDwelling,unknown_taxa_in_dwelling,NA,"Has this animal taxa been observed inside the dwelling, and why? Select all that apply.",comma-separated,NA
+dwellings_2,Dwellings,NA,HealthcareFacilityAvailable,healthcare_facility_available,NA,Is there a healthcare facility that can be accessed within 1 day?,yes/no,NA
+dwellings_2,Dwellings,NA,CapacityForMedicalTreatment,capacity_for_medical_treatment,NA,"If there is a healthcare facility, does it have the capacity for medical treatment?","yes/no/""N/A""",NA
+dwellings_2,Dwellings,NA,CapacityForPreventativeServices,capacity_for_preventative_services,NA,"If there is a healthcare facility, does it have the capacity for preventative services?","yes/no/""N/A""",NA
+dwellings_2,Dwellings,NA,PostedPreparednessPlan,posted_preparedness_plan,NA,"If there is a healthcare facility, does it have posted ebola or other disease outbreak preparedness plan?","yes/no/""N/A""",NA
+dwellings_2,Dwellings,NA,CapacityForPharmacyServices,capacity_for_pharmacy_services,NA,"If there is a healthcare facility, does it have the capacity for pharmacy services?","yes/no/""N/A""",NA
+extractive_industry_2,ExtractiveIndustry,NA,Country,country,DROP,Event-level information,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,District,district,DROP,Event-level information,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,SiteLatitudeUnrounded,site_latitude_unrounded,DROP,Event-level information,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,SiteLongitudeUnrounded,site_longitude_unrounded,DROP,Event-level information,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,EventLatitudeUnrounded,event_latitude_unrounded,DROP,Event-level information,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,EventLongitudeUnrounded,event_longitude_unrounded,DROP,Event-level information,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,CoalAtSite,coal_at_site,NA,??,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,ColtanAtSite,coltan_at_site,NA,??,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,GemstoneAtSite,gemstone_at_site,NA,??,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,ElectricityAtSite,electricity_at_site,NA,??,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,TinAtSite,tin_at_site,NA,??,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,GoldSilverAtSite,gold_silver_at_site,NA,??,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,LeadAtSite,lead_at_site,NA,??,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,OilGasAtSite,oil_gas_at_site,NA,??,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,TimberPlantAtSite,timber_plant_at_site,NA,??,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,OtherAtSite,other_at_site,NA,??,NA,NA
+extractive_industry_2,ExtractiveIndustry,NA,CoalBeforeConversion,coal_before_conversion,NA,"For each extractive industry at the site, what was the state of land before conversion? Select all that apply.",comma-separated 6-cat var,NA
+extractive_industry_2,ExtractiveIndustry,NA,CoaltanBeforeConversion,coltan_before_conversion,NA,"For each extractive industry at the site, what was the state of land before conversion? Select all that apply.",comma-separated 6-cat var,NA
+extractive_industry_2,ExtractiveIndustry,NA,GemstoneBeforeConversion,gemstone_before_conversion,NA,"For each extractive industry at the site, what was the state of land before conversion? Select all that apply.",comma-separated 6-cat var,NA
+extractive_industry_2,ExtractiveIndustry,NA,ElectricityBeforeConversion,electricity_before_conversion,NA,"For each extractive industry at the site, what was the state of land before conversion? Select all that apply.",comma-separated 6-cat var,NA
+extractive_industry_2,ExtractiveIndustry,NA,TinBeforeConversion,tin_before_conversion,NA,"For each extractive industry at the site, what was the state of land before conversion? Select all that apply.",comma-separated 6-cat var,NA
+extractive_industry_2,ExtractiveIndustry,NA,GoldSilverBeforeConversion,gold_silver_before_conversion,NA,"For each extractive industry at the site, what was the state of land before conversion? Select all that apply.",comma-separated 6-cat var,NA
+extractive_industry_2,ExtractiveIndustry,NA,LeadBeforeConversion,lead_before_conversion,NA,"For each extractive industry at the site, what was the state of land before conversion? Select all that apply.",comma-separated 6-cat var,NA
+extractive_industry_2,ExtractiveIndustry,NA,OilGasBeforeConversion,oil_gas_before_conversion,NA,"For each extractive industry at the site, what was the state of land before conversion? Select all that apply.",comma-separated 6-cat var,NA
+extractive_industry_2,ExtractiveIndustry,NA,TimberPlantBeforeConversion,timber_plant_before_conversion,NA,"For each extractive industry at the site, what was the state of land before conversion? Select all that apply.",comma-separated 6-cat var,NA
+extractive_industry_2,ExtractiveIndustry,NA,OtherBeforeConversion,other_before_conversion,NA,"For each extractive industry at the site, what was the state of land before conversion? Select all that apply.",comma-separated 6-cat var,NA
+extractive_industry_2,ExtractiveIndustry,NA,MoveResources,move_resources,NA,"Which of the following are used to move the resource (e.g. timber, ore oil) and/or staff to and from the facility? Select all that apply",semicolon-separated 7-cat var,NA
+extractive_industry_2,ExtractiveIndustry,NA,RoadsBeingBuilt,roads_being_built,NA,Are roads being built at the site?,yes/no,NA
+extractive_industry_2,ExtractiveIndustry,NA,MealsProvided,meals_provided,NA,Is there a place where meals are provided or food is sold?,yes/no,NA
+extractive_industry_2,ExtractiveIndustry,NA,HealthcareFacilityAvailable,healthcare_facility_available,NA,Is there an on-site healthcare facility available to workers?,yes/no,NA
+extractive_industry_2,ExtractiveIndustry,NA,CapacityForMedicalTreatment,capacity_for_medical_treatment,NA,"If there is a healthcare facility, does it have the capacity for medical treatment?","yes/no/""N/A""",NA
+extractive_industry_2,ExtractiveIndustry,NA,CapacityForPreventativeServices,capacity_for_preventative_services,NA,"If there is a healthcare facility, does it have the capacity for preventative services?","yes/no/""N/A""",NA
+extractive_industry_2,ExtractiveIndustry,NA,PostedPreparednessPlan,posted_preparedness_plan,NA,"If there is a healthcare facility, does it have posted ebola or other disease outbreak preparedness plan?","yes/no/""N/A""",NA
+extractive_industry_2,ExtractiveIndustry,NA,CapacityForPharmacyServices,capacity_for_pharmacy_services,NA,"If there is a healthcare facility, does it have the capacity for pharmacy services?","yes/no/""N/A""",NA
+market_value_chain_2,MarketValueChain,NA,Country,country,DROP,Event-level information,NA,NA
+market_value_chain_2,MarketValueChain,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+market_value_chain_2,MarketValueChain,NA,District,district,DROP,Event-level information,NA,NA
+market_value_chain_2,MarketValueChain,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+market_value_chain_2,MarketValueChain,NA,SiteLatitudeUnrounded,site_latitude_unrounded,DROP,Event-level information,NA,NA
+market_value_chain_2,MarketValueChain,NA,SiteLongitudeUnrounded,site_longitude_unrounded,DROP,Event-level information,NA,NA
+market_value_chain_2,MarketValueChain,NA,EventLatitudeUnrounded,event_latitude_unrounded,DROP,Event-level information,NA,NA
+market_value_chain_2,MarketValueChain,NA,EventLongitudeUnrounded,event_longitude_unrounded,DROP,Event-level information,NA,NA
+market_value_chain_2,MarketValueChain,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+market_value_chain_2,MarketValueChain,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+market_value_chain_2,MarketValueChain,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+market_value_chain_2,MarketValueChain,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+market_value_chain_2,MarketValueChain,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+market_value_chain_2,MarketValueChain,NA,NodeAlongValueChain,node_along_value_chain,NA,What is the node along value chain? Select one option: distributor/middle man; in transit; point of sale; source of animals (area of capture or farm).,4-cat variable,NA
+market_value_chain_2,MarketValueChain,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+market_value_chain_2,MarketValueChain,NA,NumberVendors,number_vendors,NA,How many vendors or workers are at the site/event? Select one option.,5-cat variable,NA
+market_value_chain_2,MarketValueChain,NA,RodentsForSale,rodents_for_sale,NA,Which taxa are for sale in the market or value chain? In what form(s)?,semicolon separated 5-cat var,NA
+market_value_chain_2,MarketValueChain,NA,BatsForSale,bats_for_sale,NA,Which taxa are for sale in the market or value chain? In what form(s)?,semicolon separated 5-cat var,NA
+market_value_chain_2,MarketValueChain,NA,NHPForSale,nhp_for_sale,NA,Which taxa are for sale in the market or value chain? In what form(s)?,semicolon separated 5-cat var,NA
+market_value_chain_2,MarketValueChain,NA,BirdsForSale,birds_for_sale,NA,Which taxa are for sale in the market or value chain? In what form(s)?,semicolon separated 5-cat var,NA
+market_value_chain_2,MarketValueChain,NA,CarnivoresForSale,carnivores_for_sale,NA,Which taxa are for sale in the market or value chain? In what form(s)?,semicolon separated 5-cat var,NA
+market_value_chain_2,MarketValueChain,NA,UngulatesForSale,ungulates_for_sale,NA,Which taxa are for sale in the market or value chain? In what form(s)?,semicolon separated 5-cat var,NA
+market_value_chain_2,MarketValueChain,NA,PangolinsForSale,pangolins_for_sale,NA,Which taxa are for sale in the market or value chain? In what form(s)?,semicolon separated 5-cat var,NA
+market_value_chain_2,MarketValueChain,NA,PoultryForSale,poultry_for_sale,NA,Which taxa are for sale in the market or value chain? In what form(s)?,semicolon separated 5-cat var,NA
+market_value_chain_2,MarketValueChain,NA,GoatsForSale,goats_for_sale,NA,Which taxa are for sale in the market or value chain? In what form(s)?,semicolon separated 5-cat var,NA
+market_value_chain_2,MarketValueChain,NA,CamelsForSale,camels_for_sale,NA,Which taxa are for sale in the market or value chain? In what form(s)?,semicolon separated 5-cat var,NA
+market_value_chain_2,MarketValueChain,NA,SwineForSale,swine_for_sale,NA,Which taxa are for sale in the market or value chain? In what form(s)?,semicolon separated 5-cat var,NA
+market_value_chain_2,MarketValueChain,NA,CattleForSale,cattle_for_sale,NA,Which taxa are for sale in the market or value chain? In what form(s)?,semicolon separated 5-cat var,NA
+market_value_chain_2,MarketValueChain,NA,HorsesForSale,horses_for_sale,NA,Which taxa are for sale in the market or value chain? In what form(s)?,semicolon separated 5-cat var,NA
+market_value_chain_2,MarketValueChain,NA,DogsForSale,dogs_for_sale,NA,Which taxa are for sale in the market or value chain? In what form(s)?,semicolon separated 5-cat var,NA
+market_value_chain_2,MarketValueChain,NA,CatsForSale,cats_for_sale,NA,Which taxa are for sale in the market or value chain? In what form(s)?,semicolon separated 5-cat var,NA
+market_value_chain_2,MarketValueChain,NA,NbrTaxaTogether,nbr_taxa_together,NA,What is the maximum number of taxonomic groups in one holding area or cage?,4-cat variable,NA
+market_value_chain_2,MarketValueChain,NA,WildDomesticTogether,wild_domestic_together,NA,Are wild animals and domesticaed animals held together in one holding area or cage?,yes/no,NA
+market_value_chain_2,MarketValueChain,NA,AnimalWastePresent,market_animal_waste_present,NA,What type of animal waste is present at the site/event? Select all that apply.,semicolon separated 4-cat var,NA
+market_value_chain_2,MarketValueChain,NA,BiosecurityMeasures,market_biosecurity_measures,NA,What types of biosecurity measures are practiced at the facility? Select all that apply.,semicolon separated 6-cat var,NA
+natural_areas_2,NaturalAreas,NA,Country,country,DROP,Event-level information,NA,NA
+natural_areas_2,NaturalAreas,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+natural_areas_2,NaturalAreas,NA,District,district,DROP,Event-level information,NA,NA
+natural_areas_2,NaturalAreas,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+natural_areas_2,NaturalAreas,NA,SiteLatitudeUnrounded,site_latitude_unrounded,DROP,Event-level information,NA,NA
+natural_areas_2,NaturalAreas,NA,SiteLongitudeUnrounded,site_longitude_unrounded,DROP,Event-level information,NA,NA
+natural_areas_2,NaturalAreas,NA,EventLatitudeUnrounded,event_latitude_unrounded,DROP,Event-level information,NA,NA
+natural_areas_2,NaturalAreas,NA,EventLongitudeUnrounded,event_longitude_unrounded,DROP,Event-level information,NA,NA
+natural_areas_2,NaturalAreas,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+natural_areas_2,NaturalAreas,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+natural_areas_2,NaturalAreas,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+natural_areas_2,NaturalAreas,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+natural_areas_2,NaturalAreas,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+natural_areas_2,NaturalAreas,NA,ProtectedArea,protected_area,NA,Is this a protected area?,yes/no,NA
+natural_areas_2,NaturalAreas,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+natural_areas_2,NaturalAreas,NA,ProtectedAreaSize,protected_area_size,NA,"If this is a protected area, what is the approximate size of the protected area in square km?",NA,NA
+natural_areas_2,NaturalAreas,NA,NameOfProtectedArea,name_of_protected_area,NA,"If this is a protected area, what is the name of the protected area?",NA,NA
+natural_areas_2,NaturalAreas,NA,TypeOfSetting,type_of_setting,NA,What is the type of setting? Select all that apply.,"semicolon separated, 8-cat var",NA
+natural_areas_2,NaturalAreas,NA,HumanImpacts,human_impacts,NA,What are the human impacts in the natural area? Select all that apply.,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,Country,country,DROP,Event-level information,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,District,district,DROP,Event-level information,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,SiteLatitudeUnrounded,site_latitude_unrounded,DROP,Event-level information,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,SiteLongitudeUnrounded,site_longitude_unrounded,DROP,Event-level information,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,EventLatitudeUnrounded,event_latitude_unrounded,DROP,Event-level information,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,EventLongitudeUnrounded,event_longitude_unrounded,DROP,Event-level information,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,RestaurantDescription,restaurant_description,NA,How would you best describe this restaurant: permanent structure; mobile/semi-permanent structure.,2-cat var,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,ChairsAvailable,chairs_available,NA,How many chairs are available at the restaurant (inside and outside)?,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,RodentsSold,rodents_sold,NA,Which taxonomic groups are sold at this restaurant and for what purpose? Select all that apply for each row.,comma-separated 6-cat var,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,BatsSold,bats_sold,NA,Which taxonomic groups are sold at this restaurant and for what purpose? Select all that apply for each row.,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,NHPSold,nhp_sold,NA,Which taxonomic groups are sold at this restaurant and for what purpose? Select all that apply for each row.,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,BirdsSold,birds_sold,NA,Which taxonomic groups are sold at this restaurant and for what purpose? Select all that apply for each row.,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,CarnivoresSold,carnivores_sold,NA,Which taxonomic groups are sold at this restaurant and for what purpose? Select all that apply for each row.,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,UngulatesSold,ungulates_sold,NA,Which taxonomic groups are sold at this restaurant and for what purpose? Select all that apply for each row.,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,PangolinsSold,pangolins_sold,NA,Which taxonomic groups are sold at this restaurant and for what purpose? Select all that apply for each row.,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,AnimalWastePresent,animal_waste_present,NA,What type of animal waste is present at the site/event? Select all that apply.,NA,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,DesignatedSlaughterArea,restaurant_designated_slaughter_area,NA,"Is there a designated area for slaughtering and butchering? Select one: yes, separate from dining area; yes, same as dining area; no.",3-cat var,NA
+wildlife_restaurant_2,WildlifeRestaurant,NA,BiosecurityMeasures,restaurant_biosecurity_measures,NA,What types of biosecurity measures are practiced at the facility? Select all that apply.,"semicolon separated, 6-cat var",NA
+zoo_sanctuary_2,ZooSanctuary,NA,Country,country,DROP,Event-level information,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,District,district,DROP,Event-level information,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,SiteLatitudeUnrounded,site_latitude_unrounded,DROP,Event-level information,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,SiteLongitudeUnrounded,site_longitude_unrounded,DROP,Event-level information,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,EventLatitudeUnrounded,event_latitude_unrounded,DROP,Event-level information,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,EventLongitudeUnrounded,event_longitude_unrounded,DROP,Event-level information,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,HoldingPurpose,holding_purpose,NA,What is the purpose of holding the animals? Select all that apply: public viewing or education; rehabilitation (for release); sanctuary.,semicolon separated 3-cat var,NA
+zoo_sanctuary_2,ZooSanctuary,NA,SourceOfAnimals,source_of_animals,NA,??,semicolon separated ??,NA
+zoo_sanctuary_2,ZooSanctuary,NA,NumberOfVisitors,number_of_visitors,NA,How many visitors are observed during this event? Select one option.,5-cat var,NA
+zoo_sanctuary_2,ZooSanctuary,NA,OriginOfVisitors,origin_of_visitors,NA,What is the origin of these visitors? Select all that apply: local visitors; regional visitors; foreign visitors.,semicolon separated 3-cat var,NA
+zoo_sanctuary_2,ZooSanctuary,NA,RodentsHeld,rodents_held,NA,How many of this taxa animal are held at this facility?,5-cat var,NA
+zoo_sanctuary_2,ZooSanctuary,NA,RodentsNbrEnclosures,rodents_nbr_enclosures,NA,How many enclosures of this taxa animal are there at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,RodentsAvgNbrEnclosure,rodents_avg_nbr_enclosure,NA,How many of this taxa animal are there per enclosure at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,RodentsAvgSizeEnclosure,rodents_avg_size_enclosure,NA,What is the average size of taxa animal enclosure?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,RodentsFreerangingTethered,rodents_freeranging_tethered,NA,How many of this taxa animal are freeranging / tethered at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,BatsHeld,bats_held,NA,How many of this taxa animal are held at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,BatsNbrEnclosures,bats_nbr_enclosures,NA,How many enclosures of this taxa animal are there at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,BatsAvgNbrEnclosure,bats_avg_nbr_enclosure,NA,How many of this taxa animal are there per enclosure at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,BatsAvgSizeEnclosure,bats_avg_size_enclosure,NA,What is the average size of taxa animal enclosure?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,BatsFreerangingTethered,bats_freeranging_tethered,NA,How many of this taxa animal are freeranging / tethered at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,NHPHeld,nhp_held,NA,How many of this taxa animal are held at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,NHPNbrEnclosures,nhp_nbr_enclosures,NA,How many enclosures of this taxa animal are there at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,NHPAvgNbrEnclosure,nhp_avg_nbr_enclosure,NA,How many of this taxa animal are there per enclosure at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,NHPAvgSizeEnclosure,nhp_avg_size_enclosure,NA,What is the average size of taxa animal enclosure?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,NHPFreerangingTethered,nhp_freeranging_tethered,NA,How many of this taxa animal are freeranging / tethered at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,BirdsHeld,birds_held,NA,How many of this taxa animal are held at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,BirdsNbrEnclosures,birds_nbr_enclosures,NA,How many enclosures of this taxa animal are there at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,BirdsAvgNbrEnclosure,birds_avg_nbr_enclosure,NA,How many of this taxa animal are there per enclosure at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,BirdsAvgSizeEnclosure,birds_avg_size_enclosure,NA,What is the average size of taxa animal enclosure?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,BirdsFreerangingTethered,birds_freeranging_tethered,NA,How many of this taxa animal are freeranging / tethered at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,CarnivoresHeld,carnivores_held,NA,How many of this taxa animal are held at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,CarnivoresNbrEnclosures,carnivores_nbr_enclosures,NA,How many enclosures of this taxa animal are there at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,CarnivoresAvgNbrEnclosure,carnivores_avg_nbr_enclosure,NA,How many of this taxa animal are there per enclosure at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,CarnivoresAvgSizeEnclosure,carnivores_avg_size_enclosure,NA,What is the average size of taxa animal enclosure?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,CarnivoresFreerangingTethered,carnivores_freeranging_tethered,NA,How many of this taxa animal are freeranging / tethered at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,UngulatesHeld,ungulates_held,NA,How many of this taxa animal are held at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,UngulatesNbrEnclosures,ungulates_nbr_enclosures,NA,How many enclosures of this taxa animal are there at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,UngulatesAvgNbrEnclosure,ungulates_avg_nbr_enclosure,NA,How many of this taxa animal are there per enclosure at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,UngulatesAvgSizeEnclosure,ungulates_avg_size_enclosure,NA,What is the average size of taxa animal enclosure?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,UngulatesFreerangingTethered,ungulates_freeranging_tethered,NA,How many of this taxa animal are freeranging / tethered at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,PangolinsHeld,pangolins_held,NA,How many of this taxa animal are held at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,PangolinsNbrEnclosures,pangolins_nbr_enclosures,NA,How many enclosures of this taxa animal are there at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,PangolinsAvgNbrEnclosure,pangolins_avg_nbr_enclosure,NA,How many of this taxa animal are there per enclosure at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,PangolinsAvgSizeEnclosure,pangolins_avg_size_enclosure,NA,What is the average size of taxa animal enclosure?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,PangolinsFreerangingTethered,pangolins_freeranging_tethered,NA,How many of this taxa animal are freeranging / tethered at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,PoultryHeld,poultry_held,NA,How many of this taxa animal are held at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,PoultryNbrEnclosures,poultry_nbr_enclosures,NA,How many enclosures of this taxa animal are there at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,PoultryAvgNbrEnclosure,poultry_avg_nbr_enclosure,NA,How many of this taxa animal are there per enclosure at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,PoultryAvgSizeEnclosure,poultry_avg_size_enclosure,NA,What is the average size of taxa animal enclosure?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,PoultryFreerangingTethered,poultry_freeranging_tethered,NA,How many of this taxa animal are freeranging / tethered at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,GoatsHeld,goats_held,NA,How many of this taxa animal are held at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,GoatsNbrEnclosures,goats_nbr_enclosures,NA,How many enclosures of this taxa animal are there at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,GoatsAvgNbrEnclosure,goats_avg_nbr_enclosure,NA,How many of this taxa animal are there per enclosure at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,GoatsAvgSizeEnclosure,goats_avg_size_enclosure,NA,What is the average size of taxa animal enclosure?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,GoatsFreerangingTethered,goats_freeranging_tethered,NA,How many of this taxa animal are freeranging / tethered at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,CamelsHeld,camels_held,NA,How many of this taxa animal are held at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,CamelsNbrEnclosures,camels_nbr_enclosures,NA,How many enclosures of this taxa animal are there at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,CamelsAvgNbrEnclosure,camels_avg_nbr_enclosure,NA,How many of this taxa animal are there per enclosure at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,CamelsAvgSizeEnclosure,camels_avg_size_enclosure,NA,What is the average size of taxa animal enclosure?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,CamelsFreerangingTethered,camels_freeranging_tethered,NA,How many of this taxa animal are freeranging / tethered at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,SwineHeld,swine_held,NA,How many of this taxa animal are held at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,SwineNbrEnclosures,swine_nbr_enclosures,NA,How many enclosures of this taxa animal are there at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,SwineAvgNbrEnclosure,swine_avg_nbr_enclosure,NA,How many of this taxa animal are there per enclosure at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,SwineAvgSizeEnclosure,swine_avg_size_enclosure,NA,What is the average size of taxa animal enclosure?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,SwineFreerangingTethered,swine_freeranging_tethered,NA,How many of this taxa animal are freeranging / tethered at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,CattleHeld,cattle_held,NA,How many of this taxa animal are held at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,CattleNbrEnclosures,cattle_nbr_enclosures,NA,How many enclosures of this taxa animal are there at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,CattleAvgNbrEnclosure,cattle_avg_nbr_enclosure,NA,How many of this taxa animal are there per enclosure at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,CattleAvgSizeEnclosure,cattle_avg_size_enclosure,NA,What is the average size of taxa animal enclosure?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,CattleFreerangingTethered,cattle_freeranging_tethered,NA,How many of this taxa animal are freeranging / tethered at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,HorsesHeld,horses_held,NA,How many of this taxa animal are held at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,HorsesNbrEnclosures,horses_nbr_enclosures,NA,How many enclosures of this taxa animal are there at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,HorsesAvgNbrEnclosure,horses_avg_nbr_enclosure,NA,How many of this taxa animal are there per enclosure at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,HorsesAvgSizeEnclosure,horses_avg_size_enclosure,NA,What is the average size of taxa animal enclosure?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,HorsesFreerangingTethered,horses_freeranging_tethered,NA,How many of this taxa animal are freeranging / tethered at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,DogsHeld,dogs_held,NA,How many of this taxa animal are held at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,DogsNbrEnclosures,dogs_nbr_enclosures,NA,How many enclosures of this taxa animal are there at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,DogsAvgNbrEnclosure,dogs_avg_nbr_enclosure,NA,How many of this taxa animal are there per enclosure at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,DogsAvgSizeEnclosure,dogs_avg_size_enclosure,NA,What is the average size of taxa animal enclosure?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,DogsFreerangingTethered,dogs_freeranging_tethered,NA,How many of this taxa animal are freeranging / tethered at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,CatsHeld,cats_held,NA,How many of this taxa animal are held at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,CatsNbrEnclosures,cats_nbr_enclosures,NA,How many enclosures of this taxa animal are there at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,CatsAvgNbrEnclosure,cats_avg_nbr_enclosure,NA,How many of this taxa animal are there per enclosure at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,CatsAvgSizeEnclosure,cats_avg_size_enclosure,NA,What is the average size of taxa animal enclosure?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,CatsFreerangingTethered,cats_freeranging_tethered,NA,How many of this taxa animal are freeranging / tethered at this facility?,NA,NA
+zoo_sanctuary_2,ZooSanctuary,NA,TaxaTogether,taxa_together,NA,Are there multiple taxonomic groups in one holding area or cage?,4-cat var,NA
+zoo_sanctuary_2,ZooSanctuary,NA,WildDomesticTogether,wild_domestic_together,NA,Are wild animals and domesticated animals held together in one holding area or cage?,yes/no/unknown,NA
+zoo_sanctuary_2,ZooSanctuary,NA,AnimalWastePresent,animal_waste_present,NA,What type of animal waste is present at the site/event? Select all that apply.,semicolon separated 4-cat var,NA
+zoo_sanctuary_2,ZooSanctuary,NA,BioSecurityMeasures,zoo_biosecurity_measures,NA,What types of biosecurity measures are practiced at the facility? Select all that apply.,semicolon separated 10-cat var,NA
+human_2,Human,NA,Country,country,DROP,Event-level information,NA,NA
+human_2,Human,NA,SpecimensCollected,specimens_collected,NA,NA,NA,NA
+human_2,Human,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+human_2,Human,NA,GAINS4_SampleUnitID,sample_unit_id,DROP,"Deprecated: originally for directly joining humans to tests, better to join via Specimen table.",NA,NA
+human_2,Human,NA,ConcurrentSamplingSite,concurrent_sampling_site,DROP,Event-level information,NA,NA
+human_2,Human,NA,District,district,DROP,Event-level information,NA,NA
+human_2,Human,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+human_2,Human,NA,SiteLatitude,site_latitude,DROP,Event-level information,NA,NA
+human_2,Human,NA,SiteLongitude,site_longitude,DROP,Event-level information,NA,NA
+human_2,Human,NA,EventLatitude,event_latitude,DROP,Event-level information,NA,NA
+human_2,Human,NA,EventLongitude,event_longitude,DROP,Event-level information,NA,NA
+human_2,Human,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+human_2,Human,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+human_2,Human,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+human_2,Human,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+human_2,Human,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+human_2,Human,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+human_2,Human,NA,BiologicalSample,biological_sample,NA,NA,yes/no,NA
+human_2,Human,NA,Q1 ParticipantID,participant_id,NA,Interview participant's unique identifier.,NA,Q1
+human_2,Human,NA,Q3 DateOfInterview,date_of_interview,NA,Date of interview,NA,Q3
+human_2,Human,NA,Q4 BeginTimeInterview,begin_time_interview,NA,Begin time of interview,character,Q4
+human_2,Human,NA,Q5 EndTimeInterview,end_time_interview,NA,End time of interview,character,Q5
+human_2,Human,NA,Q6 InterviewCity,interview_city,NA,Where are you conducting this interview? Village / Town / City,NA,Q6
+human_2,Human,NA,Q6 InterviewStateProv,interview_state_prov,NA,Where are you conducting this interview? Province / State,NA,Q6
+human_2,Human,NA,Q6 InterviewLatitude,interview_latitude,NA,Where are you conducting this interview? Latitude,NA,Q6
+human_2,Human,NA,Q6 InterviewLongitude,interview_longitude,NA,Where are you conducting this interview? Longitude,NA,Q6
+human_2,Human,NA,Q7 Gender,gender,NA,Interviewer observed gender,3-cat var,Q7
+human_2,Human,NA,Q8 Age,age,NA,How old are you?,NA,Q8
+human_2,Human,NA,Q9 LiveCity,live_city,NA,Where do you live? Village / Town / City,NA,Q9
+human_2,Human,NA,Q9 LiveStateProv,live_state_prov,NA,Where do you live? Province / State,NA,Q9
+human_2,Human,NA,Q9 LiveLatitude,live_latitude,NA,Where do you live? Latitude,NA,Q9
+human_2,Human,NA,Q9 LiveLongitude,live_longitude,NA,Where do you live? Longitude,NA,Q9
+human_2,Human,NA,Q10 LengthLived,length_lived,NA,How long have you lived there? Select one option,5-cat var,Q10
+human_2,Human,NA,Q11 PeopleInDwelling,people_in_dwelling,NA,How many other people live in the dwelling where you live? (Not including participant),NA,Q11
+human_2,Human,NA,Q12 ChildrenInDwelling,children_in_dwelling,NA,How many in the dwelling are children less than 5 years old? (Not including participant),NA,Q12
+human_2,Human,NA,Q13 MalesInDwelling,males_in_dwelling,NA,How many in the dwelling are male? (Not including participant),NA,Q13
+human_2,Human,NA,Q14 RoomsInDwelling,rooms_in_dwelling,NA,How many rooms are there in the dwelling where you live? (Do not include bathroom or kitchen),NA,Q14
+human_2,Human,NA,Q15 DwellingPermanentStructure?,dwelling_permanent_structure,NA,Is the dwelling a permanent structure (that cannot be moved)?,yes/no,Q15
+human_2,Human,NA,Q16 DrinkingWaterSource,drinking_water_source,NA,Do you get water from: Select all that apply,semicolon separated 5+ cat var,Q16
+human_2,Human,NA,Q17 WaterTreated?,water_treated,NA,Do you treat your drinking water?,yes/no,Q17
+human_2,Human,NA,Q18 WaterTreatment,water_treatment,NA,"If you treat your water, how do you treat your water? Select all that apply.",semicolon separated 5+ cat var,Q18
+human_2,Human,NA,Q19 WaterUsedByAnimals?,water_used_by_animals,NA,Is your source for drinking water ever used by animals?,yes/no,Q19
+human_2,Human,NA,Q20 DedicatedLocationForWaste?,dedicated_location_for_waste,NA,In your dwelling is there a dedicated location for human solid waste/excreta?,yes/no,Q20
+human_2,Human,NA,Q21 FoodStorageContainers,food_storage_containers,NA,Do you have containers for storing food for the household? Select all that apply.,semicolon separated 3-cat var,Q21
+human_2,Human,NA,DemographicNotes,demographic_notes,NA,Demographic Notes,NA,NA
+human_2,Human,NA,Q22 HighestEducation,highest_education,NA,What is the highest level of education you have completed? Select one option.,4-cat var,Q22
+human_2,Human,NA,Q23 HighestEducatinMother,highest_education_mother,NA,What is the highest level of education that your mother completed? Select one option.,4-cat var,Q23
+human_2,Human,NA,Q24 Livelihood(s),livelihoods,NA,Since this time last year what are the activities you have done to earn your livelihood? Select all that apply,semi-colon separated,Q24
+human_2,Human,NA,LivelihoodGroup(s)IfOther,livelihood_groups_other,NA,"Grouping ""other"" responses from Q24:livelihoods.",NA,Q24
+human_2,Human,NA,Q25 MostTimeSpent,most_time_spent,primary_livelihood,"If more than one activity was selected, what is hte activity on which you spend the most time since this time last year? Select one option",NA,Q25
+human_2,Human,NA,Modules Used,modules_used,NA,List of modules used based on livelihoods,semicolon-separated,NA
+human_2,Human,NA,Q26 JobPosition,job_position,NA,Which best describes your job position? Select one option,NA,Q26
+human_2,Human,NA,Q27 WorkLocationCity,work_location_city,NA,Where do you work? Village / Town / City,NA,Q27
+human_2,Human,NA,Q27 WorkLocationProv,work_location_prov,NA,Where do you work? Province / State,NA,Q27
+human_2,Human,NA,Q27 WorkLocationLatitude,work_location_latitude,NA,Where do you work? Latitude,NA,Q27
+human_2,Human,NA,Q27 WorkLocationLongitude,work_location_longitude,NA,Where do you work? Longitude,NA,Q27
+human_2,Human,NA,LivelihoodNotes,livelihood_notes,NA,Livelihood notes,NA,NA
+human_2,Human,NA,Q28 Treatment,treatment,NA,Where do you usually get treatment for medical problems? Select all that apply.,semicolon-separated 6-cat var,Q28
+human_2,Human,NA,Q29 SymptomsLife,symptoms_life,NA,Have you ever had an unusual illness with any of the following symptoms: Select all that apply.,semicolon-separated,Q29
+human_2,Human,NA,Q30 HadSymptomsInLastYear,had_symptoms_in_last_year,NA,"Since this time last year, have you had any of these symptoms?","yes/no/""N/A""",Q30
+human_2,Human,NA,Q31 SymptomsInLastYear,symptoms_in_last_year,NA,"If symptoms were experienced, which ones? Select all that apply",semicolon-separated,Q31
+human_2,Human,NA,Q32 SicknessCause,sickness_cause,NA,"In your opinion, when you were sick, what caused this sickness? Select all that apply",semicolon-separated,Q32
+human_2,Human,NA,Q33 SymptomsInLastYearOtherPeople,symptoms_in_last_year_other_people,had_symptoms_in_last_year_other_people,"Since this time last year, have any of the people you lived with had any of these symptoms?","yes/no/""N/A""",Q33
+human_2,Human,NA,Q34 SymptomsInLastYearOtherPeople,symptoms_in_last_year_other_people,NA,"If symptoms were experienced, which ones? Select all that apply",semicolon-separated,Q34
+human_2,Human,NA,Q35 IllnessDeath,illness_death,NA,"Since this time last year, did anyone you lived with die from this illness?","yes/no/""N/A""",Q35
+human_2,Human,NA,MedicalHistoryNotes,medical_history_notes,NA,Medical History notes,NA,NA
+human_2,Human,NA,Q36 Travelled,travelled,NA,Have you traveled since this time last year?,yes/no,Q36
+human_2,Human,NA,Q37 More than 6,more_than_6,NA,If there are more than six locations check here,"yes/no/""N/A""",Q37
+human_2,Human,NA,Q37 TravelledCity Loc 1,travelled_city_loc_1,NA,Where have you traveled since this time last year? Location 1: Village / Town / City,NA,Q37
+human_2,Human,NA,Q37 Latitude Loc 1,latitude_loc_1,NA,Where have you traveled since this time last year? Location 1: Latitude,NA,Q37
+human_2,Human,NA,Q37 Longitude Loc 1,longitude_loc_1,NA,Where have you traveled since this time last year? Location 1: Longitude,NA,Q37
+human_2,Human,NA,Q37 TravelledCity Loc 2,travelled_city_loc_2,NA,Where have you traveled since this time last year? Location 2: Village / Town / City,NA,Q37
+human_2,Human,NA,Q37 Latitude Loc 2,latitude_loc_2,NA,Where have you traveled since this time last year? Location 2: Latitude,NA,Q37
+human_2,Human,NA,Q37 Longitude Loc 2,longitude_loc_2,NA,Where have you traveled since this time last year? Location 2: Longitude,NA,Q37
+human_2,Human,NA,Q37 TravelledCity Loc 3,travelled_city_loc_3,NA,Where have you traveled since this time last year? Location 3: Village / Town / City,NA,Q37
+human_2,Human,NA,Q37 Latitude Loc 3,latitude_loc_3,NA,Where have you traveled since this time last year? Location 3: Latitude,NA,Q37
+human_2,Human,NA,Q37 Longitude Loc 3,longitude_loc_3,NA,Where have you traveled since this time last year? Location 3: Longitude,NA,Q37
+human_2,Human,NA,Q37 TravelledCity Loc 4,travelled_city_loc_4,NA,Where have you traveled since this time last year? Location 4: Village / Town / City,NA,Q37
+human_2,Human,NA,Q37 Latitude Loc 4,latitude_loc_4,NA,Where have you traveled since this time last year? Location 4: Latitude,NA,Q37
+human_2,Human,NA,Q37 Longitude Loc 4,longitude_loc_4,NA,Where have you traveled since this time last year? Location 4: Longitude,NA,Q37
+human_2,Human,NA,Q37 TravelledCity Loc 5,travelled_city_loc_5,NA,Where have you traveled since this time last year? Location 5: Village / Town / City,NA,Q37
+human_2,Human,NA,Q37 Latitude Loc 5,latitude_loc_5,NA,Where have you traveled since this time last year? Location 5: Latitude,NA,Q37
+human_2,Human,NA,Q37 Longitude Loc 5,longitude_loc_5,NA,Where have you traveled since this time last year? Location 5: Longitude,NA,Q37
+human_2,Human,NA,Q37 TravelledCity Loc 6,travelled_city_loc_6,NA,Where have you traveled since this time last year? Location 6: Village / Town / City,NA,Q37
+human_2,Human,NA,Q37 Latitude Loc 6,latitude_loc_6,NA,Where have you traveled since this time last year? Location 6: Latitude,NA,Q37
+human_2,Human,NA,Q37 Longitude Loc 6,longitude_loc_6,NA,Where have you traveled since this time last year? Location 6: Longitude,NA,Q37
+human_2,Human,NA,Q38 Travel Reason,travel_reason,NA,Why have you traveled? Select all that apply.,semicolon-separated,Q38
+human_2,Human,NA,MovementNotes,movement_notes,NA,Movement notes,NA,NA
+human_2,Human,NA,Q39 PetInDwellingLife,pet_in_dwelling_life,NA,Has an animal lived as a pet in or near your dwelling in your lifetime?,yes/no,Q39
+human_2,Human,NA,Q39 PetInDwellingLastYear,pet_in_dwelling_last_year,NA,Has an animal lived as a pet in or near your dwelling in the last year?,"yes/no/""N/A""",Q39
+human_2,Human,NA,Q40 HandleAnimalsLife,handle_animals_life,NA,Have you handled live animals in your lifetime?,yes/no,Q40
+human_2,Human,NA,Q40 HandleAnimalsLastYear,handle_animals_last_year,NA,Have you handled live animals in the last year?,"yes/no/""N/A""",Q40
+human_2,Human,NA,Q41 RaisedAnimalsLife,raised_animals_life,NA,Have you raised live animals in your lifetime?,yes/no,Q41
+human_2,Human,NA,Q41 RaisedAnimalsLastYear,raised_animals_last_year,NA,Have you raised live animals in the last year?,"yes/no/""N/A""",Q41
+human_2,Human,NA,Q42 SharedWaterLife,shared_water_life,NA,Have you shared a water source with animals for washing in your lifetime?,yes/no,Q42
+human_2,Human,NA,Q42 SharedWaterLastYear,shared_water_last_year,NA,Have you shared a water source with animals for washing in the last year?,"yes/no/""N/A""",Q42
+human_2,Human,NA,Q43 AnimalFecesFoodLife,animal_feces_food_life,NA,Have you seen animal feces in or near food before you have eaten it in your lifetime?,yes/no,Q43
+human_2,Human,NA,Q43 AnimalFecesFoodLastYear,animal_feces_food_last_year,NA,Have you seen animal feces in or near food before you have eaten it in the last year?,"yes/no/""N/A""",Q43
+human_2,Human,NA,Q44 AnimalsInFoodLife,animals_in_food_life,NA,Have you eaten food after an animal has touched or damaged it in your lifetime?,yes/no,Q44
+human_2,Human,NA,Q44 AnimalsInFoodLastYear,animals_in_food_last_year,NA,Have you eaten food after an animal has touched or damaged it in the last year?,"yes/no/""N/A""",Q44
+human_2,Human,NA,Q45 AnimalsInDwellingLife,animals_in_dwelling_life,NA,Do any animals come inside the dwelling where you live in your lifetime?,yes/no,Q45
+human_2,Human,NA,Q45 AnimalsInDwellingLastYear,animals_in_dwelling_last_year,NA,Do any animals come inside the dwelling where you live in the last year?,"yes/no/""N/A""",Q45
+human_2,Human,NA,Q46 CookedMeatLife,cooked_meat_life,NA,"Have you cooked or handled meat, organs or blood from a recently killed animal in your lifetime?",yes/no,Q46
+human_2,Human,NA,Q46 CookedMeatLastYear,cooked_meat_last_year,NA,"Have you cooked or handled meat, organs or blood from a recently killed animal in the last year?","yes/no/""N/A""",Q46
+human_2,Human,NA,Q47 EatenRawMeatLife,eaten_raw_meat_life,NA,Have you eaten raw or undercooked meat or organs or blood in your lifetime?,yes/no,Q47
+human_2,Human,NA,Q47 EatenRawMeatLastYear,eaten_raw_meat_last_year,NA,Have you eaten raw or undercooked meat or organs or blood in the last year?,"yes/no/""N/A""",Q47
+human_2,Human,NA,Q48 EatenSickAnimalLife,eaten_sick_animal_life,NA,Have you eaten an animal that you knew was not well/sick in your lifetime?,yes/no,Q48
+human_2,Human,NA,Q48 EatenSickAnimalLastYear,eaten_sick_animal_last_year,NA,Have you eaten an animal that you knew was not well/sick in the last year?,"yes/no/""N/A""",Q48
+human_2,Human,NA,Q49 EatenDeadAnimalLife,eaten_dead_animal_life,NA,Have you found a dead animal and collected it to eat or share in your lifetime?,yes/no,Q49
+human_2,Human,NA,Q49 EatenDeadAnimalLastYear,eaten_dead_animal_last_year,NA,Have you found a dead animal and collected it to eat or share in the last year?,"yes/no/""N/A""",Q49
+human_2,Human,NA,Q50 SoldDeadAnimalLife,sold_dead_animal_life,NA,Have you found a dead animal and collected it to sell it in your lifetime?,yes/no,Q50
+human_2,Human,NA,Q50 SoldDeadAnimalLastYear,sold_dead_animal_last_year,NA,Have you found a dead animal and collected it to sell it in the last year?,"yes/no/""N/A""",Q50
+human_2,Human,NA,Q51 ScratchedBittenLife,scratched_bitten_life,NA,Have you been scratched or bitten by an animal in your lifetime?,yes/no,Q51
+human_2,Human,NA,Q51 ScratchedBittenLastYear,scratched_bitten_last_year,NA,Have you been scratched or bitten by an animal in the last year?,"yes/no/""N/A""",Q51
+human_2,Human,NA,Q52 HuntedAnimalLife,hunted_animal_life,NA,Have you hunted or trapped an animal in your lifetime?,yes/no,Q52
+human_2,Human,NA,Q52 HuntedAnimalLastYear,hunted_animal_last_year,NA,Have you hunted or trapped an animal in the last year?,"yes/no/""N/A""",Q52
+human_2,Human,NA,Q53 SlaughtedAnimalLife,slaughtered_animal_life,NA,Have you slaughtered an animal in your lifetime?,yes/no,Q53
+human_2,Human,NA,Q53 SlaughtedAnimalLastYear,slaughtered_animal_last_year,NA,Have you slaughtered an animal in the last year?,"yes/no/""N/A""",Q53
+human_2,Human,NA,Q54 ScratchedBittenAction,scratched_bitten_action,NA,"The last time you were scratched or bitten, or cut yourself while butchering or slaughtering, what did you do? Select all that apply.",semicolon-separated,Q54
+human_2,Human,NA,Q55 RiskOpenWound,risk_open_wound,NA,Are there any risks associated with slaughtering or butchering when you have an open wound?,semicolon-separated,Q55
+human_2,Human,NA,Q56 Contact with rodents/shrews,rodents_contact,rodents_contact,Which taxa were contacted in methods Q39-Q53?,semicolon-separated,Q56
+human_2,Human,NA,Q56 Contact with bats,bats_contact,bats_contact,Which taxa were contacted in methods Q39-Q53?,semicolon-separated,Q56
+human_2,Human,NA,Q56 Contact with non-human primates,nhp_contact,nhp_contact,Which taxa were contacted in methods Q39-Q53?,semicolon-separated,Q56
+human_2,Human,NA,Q56 Contact with birds,birds_contact,birds_contact,Which taxa were contacted in methods Q39-Q53?,semicolon-separated,Q56
+human_2,Human,NA,Q56 Contact with carnivores,carnivores_contact,carnivores_contact,Which taxa were contacted in methods Q39-Q53?,semicolon-separated,Q56
+human_2,Human,NA,Q56 Contact with ungulates,ungulates_contact,ungulates_contact,Which taxa were contacted in methods Q39-Q53?,semicolon-separated,Q56
+human_2,Human,NA,Q56 Contact with pangolins,pangolins_contact,pangolins_contact,Which taxa were contacted in methods Q39-Q53?,semicolon-separated,Q56
+human_2,Human,NA,Q56 Contact with poultry/other fowl,poultry_contact,poultry_contact,Which taxa were contacted in methods Q39-Q53?,semicolon-separated,Q56
+human_2,Human,NA,Q56 Contact with goats/sheep,goats_sheep_contact,goats_sheep_contact,Which taxa were contacted in methods Q39-Q53?,semicolon-separated,Q56
+human_2,Human,NA,Q56 Contact with camels,camels_contact,camels_contact,Which taxa were contacted in methods Q39-Q53?,semicolon-separated,Q56
+human_2,Human,NA,Q56 Contact with swine,swine_contact,swine_contact,Which taxa were contacted in methods Q39-Q53?,semicolon-separated,Q56
+human_2,Human,NA,Q56 Contact with cattle/buffalo,cattle_contact,cattle_contact,Which taxa were contacted in methods Q39-Q53?,semicolon-separated,Q56
+human_2,Human,NA,Q56 Contact with horses,horses_contact,horses_contact,Which taxa were contacted in methods Q39-Q53?,semicolon-separated,Q56
+human_2,Human,NA,Q56 Contact with dogs,dogs_contact,dogs_contact,Which taxa were contacted in methods Q39-Q53?,semicolon-separated,Q56
+human_2,Human,NA,Q56 Contact with cats,cats_contact,cats_contact,Which taxa were contacted in methods Q39-Q53?,semicolon-separated,Q56
+human_2,Human,NA,Q57 WorriedAboutDisease,worried_about_disease,NA,Are you worried about diseases or disease outbreaks in live animals in your local market?,yes/no,Q57
+human_animal_production_2,HumanAnimalProduction,NA,Country,country,DROP,Event-level information,NA,NA
+human_animal_production_2,HumanAnimalProduction,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+human_animal_production_2,HumanAnimalProduction,NA,District,district,DROP,Event-level information,NA,NA
+human_animal_production_2,HumanAnimalProduction,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+human_animal_production_2,HumanAnimalProduction,NA,SiteLatitudeUnrounded,site_latitude,DROP,Event-level information,NA,NA
+human_animal_production_2,HumanAnimalProduction,NA,SiteLongitudeUnrounded,site_longitude,DROP,Event-level information,NA,NA
+human_animal_production_2,HumanAnimalProduction,NA,EventLatitudeUnrounded,event_latitude,DROP,Event-level information,NA,NA
+human_animal_production_2,HumanAnimalProduction,NA,EventLongitudeUnrounded,event_longitude,DROP,Event-level information,NA,NA
+human_animal_production_2,HumanAnimalProduction,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+human_animal_production_2,HumanAnimalProduction,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+human_animal_production_2,HumanAnimalProduction,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+human_animal_production_2,HumanAnimalProduction,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+human_animal_production_2,HumanAnimalProduction,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+human_animal_production_2,HumanAnimalProduction,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+human_animal_production_2,HumanAnimalProduction,NA,ParticipantID,participant_id,NA,Interview participant's unique identifier.,NA,NA
+human_animal_production_2,HumanAnimalProduction,NA,Livelihood(s),livelihoods,DROP,Human-level information.,NA,NA
+human_animal_production_2,HumanAnimalProduction,NA,MostTimeSpent,most_time_spent,DROP,Human-level information.,NA,NA
+human_animal_production_2,HumanAnimalProduction,NA,Q1 LiveOnSite,live_on_site,NA,Do you live on site?,yes/no,Q1
+human_animal_production_2,HumanAnimalProduction,NA,Q2 #WorkAtSite,work_at_site,NA,"To the best of your knowledge, how many people work at this site?",5-cat var,Q2
+human_animal_production_2,HumanAnimalProduction,NA,Q3 HowLongWorked,how_long_worked,NA,How long have you worked here?,4-cat var,Q3
+human_animal_production_2,HumanAnimalProduction,NA,Q4 AnimalsRaised,animals_raised,NA,Which animals are raised here? Select all that apply.,semicolon-separated 15-cat var,Q4
+human_animal_production_2,HumanAnimalProduction,NA,Q5 LiveAnimalsStoredNight,live_animals_stored_night,NA,How are live animals stored at night? Select all that apply.,semicolon-separated 3-cat var,Q5
+human_animal_production_2,HumanAnimalProduction,NA,Q6 QuarantineForNewAnimals,quarantine_for_new_animals,NA,Is there a quarantine period for new animals?,yes/no,Q6
+human_animal_production_2,HumanAnimalProduction,NA,Q7 OnSiteFoodProduction,on_site_food_production,NA,Is there on-site food production?,yes/no,Q7
+human_animal_production_2,HumanAnimalProduction,NA,Q8 WhoPaysGrowCrops,who_pays_grow_crops,NA,"If there is on-site food production, who pays for the cost to grow the food crops: the company; the workers.",NA,Q8
+human_animal_production_2,HumanAnimalProduction,NA,Q9 BushMeatOnsite,bush_meat_on_site,meat_on_site,Is there meat available for consumption?,yes/no,Q9
+human_animal_production_2,HumanAnimalProduction,NA,Q10 MeatSource,meat_source,NA,"If there is meat available, where does the meat come from? Select all that apply.",semicolon-separated 6-cat var,Q10
+human_animal_production_2,HumanAnimalProduction,NA,Q11 ConsumeBushMeatOnSite,consume_bush_meat_on_site,NA,Is it possible to consume bushmeat/wild animal meat on or near the site?,yes/no,Q11
+human_animal_production_2,HumanAnimalProduction,NA,Q12 PPEUsed,ppe_used,animal_production_ppe_used,"Do you have special protective equipment (Example: shoes, masks, gloves) only worn at work?",yes/no,Q12
+human_animal_production_2,HumanAnimalProduction,NA,Q13 WhichPPE,which_ppe,animal_production_which_ppe,"If you have special work protective equipment, which kind? Select all that apply.",semicolon-separated 5-cat var,Q13
+human_animal_production_2,HumanAnimalProduction,NA,Q14 WhenPPEUsed,when_ppe_used,animal_production_when_ppe_used,When do you use protective equipment?,semicolon-separated,Q14
+human_animal_production_2,HumanAnimalProduction,NA,Q15 UseDisinfectantToClean,use_disinfectant_to_clean,NA,Do you always use disinfectant to clean?,yes/no,Q15
+human_animal_production_2,HumanAnimalProduction,NA,Q16 DisinfectantsUsedFor,disinfectants_used_for,NA,"If you always use disinfectants, do you always use disinfectants to clean the following: Select all that apply",semiciolon-separated 7-cat var,Q16
+human_animal_production_2,HumanAnimalProduction,NA,Q17 AnimalEnclosuresCleanedFrequency,animal_enclosures_cleaned_frequency,NA,How often are the animal enclosures cleaned?,5-cat var,Q17
+human_animal_production_2,HumanAnimalProduction,NA,Q18 ViscaraRefuse,viscara_refuse,viscera_refuse,"When slaughtering/butchering animals, what happens to the viscera (blood, organs, skin, sinews etc)? Select all that apply.",semicolon-separated 6-cat var,Q18
+human_animal_production_2,HumanAnimalProduction,NA,Q19 DesignatedAreaForAnimalWaste,designated_area_for_animal_waste,NA,Is there a designated area for the disposal of animal waste?,yes/no,Q19
+human_animal_production_2,HumanAnimalProduction,NA,Q20 DesignatedAreaForAnimalWasteUsed,designated_area_for_animal_waste_used,NA,"If there is a disposal area, do people use the dedicated area for animal waste?",yes/no,Q20
+human_animal_production_2,HumanAnimalProduction,NA,Q21 AnimalsReceiveVetCareinYear,animals_receive_vet_care_in_year,NA,"Since this time last year, have the animals received veterinary care?",yes/no,Q21
+human_animal_production_2,HumanAnimalProduction,NA,Q22 HealthOfficalInspectedAnimals,health_official_inspected_animals,NA,"Since this time last year, has an animal health official inspected your animals?",yes/no,Q22
+human_animal_production_2,HumanAnimalProduction,NA,Q23 ActionWhenAnimalsSick,action_when_animals_sick,NA,What do you do when an animal gets sick? Select all that apply,semicolon-separated,Q23
+human_animal_production_2,HumanAnimalProduction,NA,Q24 AnimalsQuarantinedOrDestroyed,animals_quarantined_or_destroyed,NA,"Since this time last year, has anyone quarantined or destroyed your animals because of infection or disease?",yes/no,Q24
+human_animal_production_2,HumanAnimalProduction,NA,Q25 WhichAnimalsQuarantinedOrDestroyed,which_animals_quarantined_or_destroyed,NA,"If animals have been quarantined or destroyed, which animals? Selec all that apply",semicolon-separated 14-cat var,Q25
+human_animal_production_2,HumanAnimalProduction,NA,Q26 OutbreakInYear,outbreak_in_year,NA,"Since this time last year, has there been a disease outbreak among any raised animals or livestock?",yes/no,Q26
+human_animal_production_2,HumanAnimalProduction,NA,Q27 RodentsOutbreakDeaths,rodents_outbreak_deaths,NA,"If there has been an outbreak in this taxa in the last year, indicate the percentage that died during the outbreak).",NA,Q27
+human_animal_production_2,HumanAnimalProduction,NA,Q27 BatsOutbreakDeaths,bats_outbreak_deaths,NA,"If there has been an outbreak in this taxa in the last year, indicate the percentage that died during the outbreak).",NA,Q27
+human_animal_production_2,HumanAnimalProduction,NA,Q27 NHPOutbreakDeaths,nhp_outbreak_deaths,NA,"If there has been an outbreak in this taxa in the last year, indicate the percentage that died during the outbreak).",NA,Q27
+human_animal_production_2,HumanAnimalProduction,NA,Q27 BirdsOutbreakDeaths,birds_outbreak_deaths,NA,"If there has been an outbreak in this taxa in the last year, indicate the percentage that died during the outbreak).",NA,Q27
+human_animal_production_2,HumanAnimalProduction,NA,Q27 CarnivoresOutbreakDeaths,carnivores_outbreak_deaths,NA,"If there has been an outbreak in this taxa in the last year, indicate the percentage that died during the outbreak).",NA,Q27
+human_animal_production_2,HumanAnimalProduction,NA,Q27 UngulatesOutbreakDeaths,ungulates_outbreak_deaths,NA,"If there has been an outbreak in this taxa in the last year, indicate the percentage that died during the outbreak).",NA,Q27
+human_animal_production_2,HumanAnimalProduction,NA,Q27 PangolinsOutbreakDeaths,pangolins_outbreak_deaths,NA,"If there has been an outbreak in this taxa in the last year, indicate the percentage that died during the outbreak).",NA,Q27
+human_animal_production_2,HumanAnimalProduction,NA,Q27 PoultryOutbreakDeaths,poultry_outbreak_deaths,NA,"If there has been an outbreak in this taxa in the last year, indicate the percentage that died during the outbreak).",NA,Q27
+human_animal_production_2,HumanAnimalProduction,NA,Q27 GoatsOutbreakDeaths,goats_outbreak_deaths,NA,"If there has been an outbreak in this taxa in the last year, indicate the percentage that died during the outbreak).",NA,Q27
+human_animal_production_2,HumanAnimalProduction,NA,Q27 CamelsOutbreakDeaths,camels_outbreak_deaths,NA,"If there has been an outbreak in this taxa in the last year, indicate the percentage that died during the outbreak).",NA,Q27
+human_animal_production_2,HumanAnimalProduction,NA,Q27 SwineOutbreakDeaths,swine_outbreak_deaths,NA,"If there has been an outbreak in this taxa in the last year, indicate the percentage that died during the outbreak).",NA,Q27
+human_animal_production_2,HumanAnimalProduction,NA,Q27 CattleOutbreakDeaths,cattle_outbreak_deaths,NA,"If there has been an outbreak in this taxa in the last year, indicate the percentage that died during the outbreak).",NA,Q27
+human_animal_production_2,HumanAnimalProduction,NA,Q27 HorsesOutbreakDeaths,horses_outbreak_deaths,NA,"If there has been an outbreak in this taxa in the last year, indicate the percentage that died during the outbreak).",NA,Q27
+human_animal_production_2,HumanAnimalProduction,NA,Q27 DogsOutbreakDeaths,dogs_outbreak_deaths,NA,"If there has been an outbreak in this taxa in the last year, indicate the percentage that died during the outbreak).",NA,Q27
+human_animal_production_2,HumanAnimalProduction,NA,Q27 CatsOutbreakDeaths,cats_outbreak_deaths,NA,"If there has been an outbreak in this taxa in the last year, indicate the percentage that died during the outbreak).",NA,Q27
+human_animal_production_2,HumanAnimalProduction,NA,Q28 AnimalsRaidFood,animals_raid_food,NA,Do any animals raid or destroy food supplies,yes/no,Q28
+human_animal_production_2,HumanAnimalProduction,NA,Q29 WhichAnimalsRaidFood,which_animals_raid_food,NA,"If animals raid food, which animals? Select all that apply",semicolon-separated 14-cat var,Q29
+human_animal_production_2,HumanAnimalProduction,NA,Q30 RaidingPrevention,raiding_prevention,NA,What is done to stop animals from raiding or destroying food supplies? Select all that apply,semicolon-separated 11-cat var,Q30
+human_animal_production_2,HumanAnimalProduction,NA,notes,notes,human_animal_production_notes,Notes from human animal production interview,NA,NA
+tests_2,Test,NA,Country,country,DROP,Event-level information,NA,NA
+tests_2,Test,NA,TestBatchName,test_batch_name,NA,"Test batch name is an inconsistent combination of event name, specimen type, and other fields (date or storage method).",NA,NA
+tests_2,Test,NA,ConcurrentSamplingSite,concurrent_sampling_site,DROP,Event-level information,NA,NA
+tests_2,Test,NA,IsOutbreakTesting,is_outbreak_testing,NA,"Whether the test is part of a response to an outbreak, rather than regular PREDICT surveillance efforts.",NA,NA
+tests_2,Test,NA,TestID,test_id,NA,Unique numeric identifier for identifying a test.,NA,NA
+tests_2,Test,NA,TestName,test_name,NA,"This is a non-unique combination of specimen ID, test requested, and test protocol.",NA,NA
+tests_2,Test,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+tests_2,Test,NA,District,district,DROP,Event-level information,NA,NA
+tests_2,Test,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+tests_2,Test,NA,SiteLatitude,site_latitude,DROP,Event-level information,NA,NA
+tests_2,Test,NA,SiteLongitude,site_longitude,DROP,Event-level information,NA,NA
+tests_2,Test,NA,EventLatitude,event_latitude,DROP,Event-level information,NA,NA
+tests_2,Test,NA,EventLongitude,event_longitude,DROP,Event-level information,NA,NA
+tests_2,Test,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+tests_2,Test,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+tests_2,Test,NA,EventName,event_name,DROP,Event-level information,NA,NA
+tests_2,Test,NA,AnimalID,animal_id,DROP,Animal-level information,NA,NA
+tests_2,Test,NA,TaxaGroup,taxa_group,DROP,Animal-level information,NA,NA
+tests_2,Test,NA,AnimalClass,animal_class,DROP,Animal-level information,NA,NA
+tests_2,Test,NA,SpeciesScientificName,species_scientific_name,DROP,Animal-level information,NA,NA
+tests_2,Test,NA,SpeciesEnglishName,species_english_name,DROP,Animal-level information,NA,NA
+tests_2,Test,NA,AnimalSampleDate,animal_sample_date,DROP,Animal-level information,NA,NA
+tests_2,Test,NA,Sex,sex,DROP,Animal-level information,NA,NA
+tests_2,Test,NA,SpecimenID,specimen_id,NA,Unique identifier for specimens. Preferred format:  AnimalID.SpecimenTypeSpecimen# The first oral swab sampled would be UTZB001.O1,NA,NA
+tests_2,Test,NA,SpecimenType,specimen_type,DROP,Specimen-level information,NA,NA
+tests_2,Test,NA,LabSubmissionDate,lab_submission_date,NA,Date test was submitted to laboratory.,NA,NA
+tests_2,Test,NA,TestDate,test_date,NA,"The date test was performed. This field may not represent exactly when a test was run, as batches may be uploaded all at once and given the same date.",NA,NA
+tests_2,Test,NA,ResultsDate,results_date,NA,"The date test results were obtained. This field may not represent exactly when test results are received, as batches may be uploaded at once and given the same date.",NA,NA
+tests_2,Test,NA,LabName,lab_name,NA,Laboratory that performed initial test.,NA,NA
+tests_2,Test,NA,TestType,test_type,NA,Type of test performed.,NA,NA
+tests_2,Test,NA,TestRequested,test_requested,NA,Viral family test requested.,NA,NA
+tests_2,Test,NA,TestRequestedProtocol,test_requested_protocol,NA,Specific protocol used for test. Many assays have been modified from originally published method.,NA,NA
+tests_2,Test,NA,MethodologyReference,methodology_reference,NA,Citation for test protocol. Many assays have been modified from their original citation.,NA,NA
+tests_2,Test,NA,TestResult,test_result,NA,Initial test result.,NA,NA
+tests_2,Test,NA,RealTime_PositiveControlValue1,real_time_positive_control_value_1,NA,Positive control value used to confirm that PCR assay is working,NA,NA
+tests_2,Test,NA,RealTime_PositiveControlValue2,real_time_positive_control_value_2,NA,Positive control value used to confirm that PCR assay is working,NA,NA
+tests_2,Test,NA,RealTime_InternalControlValue,real_time_internal_control_value,NA,Internal control value used to confirm that PCR assay is working,NA,NA
+tests_2,Test,NA,RealTime_CTValue,real_time_ct_value,NA,Numeric raw result of real-time PCR test.,NA,NA
+tests_2,Test,NA,ConfirmationTestType,confirmation_test_type,NA,Type of confirmation test performed.,NA,NA
+tests_2,Test,NA,LabName_Confirmation,lab_name_confirmation,NA,Laboratory that performed confirmation test,NA,NA
+tests_2,Test,NA,ConfirmationTestDate,confirmation_test_date,NA,"The date confirmation test was performed. This field may not represent exactly when a test was run, as batches may be uploaded all at once and given the same date.",NA,NA
+tests_2,Test,NA,ConfirmationResult,confirmation_result,NA,Confirmation test result.,NA,NA
+tests_2,Test,NA,Sequence,sequence,NA,Sequenced virus.,NA,NA
+tests_2,Test,NA,Virus,virus,NA,Virus name or strain.,NA,NA
+tests_2,Test,NA,TestStatus,test_status,NA,Status of testing / interpretation.,NA,NA
+tests_2,Test,NA,Notes,notes,test_notes,Laboratory notes for initial test.,NA,NA
+tests_2,Test,NA,ConfirmationNotes,confirmation_notes,confirmation_test_notes,Laboratory notes for confirmation test.,NA,NA
+tests_2,Test,NA,GovernmentReport,government_report,NA,Whether report has been generated for country ministries.,NA,NA
+tests_2,Test,NA,DateGovtApprovedRelease,date_govt_approved_release,NA,When report was approved for release by relevant country ministry.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,Country,country,DROP,Event-level,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,TestBatch,test_batch,DROP,"Test batch name is an inconsistent combination of event name, specimen type, and other fields (date or storage method).",NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,TestID,test_id,NA,Unique numeric identifier for identifying a test.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,TestName,test_name,DROP,Test-level information.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,SpecimenID,specimen_id,DROP,Specimen-level information.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,SpecimenType,specimen_type,DROP,Specimen-level information.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,AnimalID,animal_id,DROP,Animal-level information,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,TaxaGroup,taxa_group,DROP,Animal-level information,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,LabSubmissionDate,lab_submission_date,DROP,Test-level information.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,TestDate,test_date,DROP,Test-level information.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,ResultsDate,results_date,DROP,Test-level information.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,LabName,lab_name,DROP,Test-level information.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,TestType,test_type,DROP,Test-level information.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,TestRequested,test_requested,DROP,Test-level information.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,TestRequestedProtocol,test_requested_protocol,DROP,Test-level information.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,MethodologyReference,methodology_reference,DROP,Test-level information.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,TestResult,test_result,DROP,Test-level information.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,ConfirmationTestDate,confirmation_test_date,DROP,Test-level information.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,LabName_Confirmation,lab_name_confirmation,DROP,Test-level information.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,ConfirmationTestType,confirmation_test_type,DROP,Test-level information.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,ConfirmationResult,confirmation_result,DROP,Test-level information.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,sequence,sequence,DROP,Test-level information.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,Virus,virus,DROP,Test-level information.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,VirusStatus,virus_status,NA,"Determination whether virus is new or known by TG / SJA. This field is derived from interpretation field, which uses sequence genetic identity to establish viral species. New species are mainly determined by % identity cutoffs, but these differ between viral family.",NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,HumanThreat,human_threat,NA,"Determination whether virus is a human threat by TG / SJA. This field is derived from interpretation field, which uses knowledge of viral family and close species to assess human threat.",NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,Interpretation,interpretation,NA,"Full written interpretation of sequence by TG / SJA. Interpretations include establishing new or known viral species status via genetic identity comparisons, viral family and close species to assess human threat level, as well as other comments.",NA,NA
+test_data_serology_2,TestDataSerology,NA,TestBatch,test_batch,test_batch_name,"Test batch name is an inconsistent combination of event name, specimen type, and other fields (date or storage method).",NA,NA
+test_data_serology_2,TestDataSerology,NA,Country,country,DROP,Event-level information,NA,NA
+test_data_serology_2,TestDataSerology,NA,TestID,test_id,NA,Unique numeric identifier for identifying a test.,NA,NA
+test_data_serology_2,TestDataSerology,NA,TestName,test_name,NA,"This is a non-unique combination of specimen ID, test requested, and test protocol.",NA,NA
+test_data_serology_2,TestDataSerology,NA,SpecimenID,specimen_id,NA,Unique identifier for specimens. Preferred format:  AnimalID.SpecimenTypeSpecimen# The first oral swab sampled would be UTZB001.O1,NA,NA
+test_data_serology_2,TestDataSerology,NA,SpecimenType,specimen_type,DROP,Specimen-level information,NA,NA
+test_data_serology_2,TestDataSerology,NA,SampleID,sample_id,NA,Unique sample identifier.,NA,NA
+test_data_serology_2,TestDataSerology,NA,TaxaGroup,taxa_group,DROP,Animal-level or Human-level information.,NA,NA
+test_data_serology_2,TestDataSerology,NA,LabSubmissionDate,lab_submission_date,NA,Date test was submitted to laboratory.,NA,NA
+test_data_serology_2,TestDataSerology,NA,TestDate,test_date,NA,"The date test was performed. This field may not represent exactly when a test was run, as batches may be uploaded all at once and given the same date.",NA,NA
+test_data_serology_2,TestDataSerology,NA,ResultsDate,results_date,NA,"The date test results were obtained. This field may not represent exactly when test results are received, as batches may be uploaded at once and given the same date.",NA,NA
+test_data_serology_2,TestDataSerology,NA,LabName,lab_name,NA,Laboratory that performed initial test.,NA,NA
+test_data_serology_2,TestDataSerology,NA,TestType,test_type,NA,Type of test performed.,NA,NA
+test_data_serology_2,TestDataSerology,NA,Virus,virus,NA,The target virus for serological testing.,NA,NA
+test_data_serology_2,TestDataSerology,NA,ProteinTargeted,protein_targeted,NA,Protein targeted: part of virus or whole virus.,NA,NA
+test_data_serology_2,TestDataSerology,NA,ProtocolReference,protocol_reference,NA,Protocol citation.,NA,NA
+test_data_serology_2,TestDataSerology,NA,Result,result,NA,"Overall positive or negative, write-in field (possibly a number)",NA,NA
+test_data_serology_2,TestDataSerology,NA,PositiveControlUsed,positive_control_used,NA,Description of positive control used,NA,NA
+test_data_serology_2,TestDataSerology,NA,PositiveResultInterpretation,positive_result_interpretation,positive_control_interpretation,Result or interpretation of positive control.,NA,NA
+test_data_serology_2,TestDataSerology,NA,ResultInterpretation,result_interpretation,NA,Result or interpretation of serological test.,NA,NA
+test_data_serology_2,TestDataSerology,NA,ConfirmationTestType,confirmation_test_type,NA,Type of confirmation test performed.,NA,NA
+test_data_serology_2,TestDataSerology,NA,LabName_Confirmation,lab_name_confirmation,NA,Laboratory that performed confirmation test,NA,NA
+test_data_serology_2,TestDataSerology,NA,ConfirmationTestDate,confirmation_test_date,NA,"The date confirmation test was performed. This field may not represent exactly when a test was run, as batches may be uploaded all at once and given the same date.",NA,NA
+test_data_serology_2,TestDataSerology,NA,ConfirmationProteinTargeted,confirmation_protein_targeted,NA,Protein targeted for confirmation test: part of virus or whole virus.,NA,NA
+test_data_serology_2,TestDataSerology,NA,ConfirmationProtocolReference,confirmation_protocol_reference,NA,Protocol citation for confirmation test.,NA,NA
+test_data_serology_2,TestDataSerology,NA,ConfirmationResult,confirmation_result,NA,"Overall positive or negative, write-in field (possibly a number)",NA,NA
+test_data_serology_2,TestDataSerology,NA,ConfirmationPositiveControlUsed,confirmation_positive_control_used,NA,Description of positive control used in confirmation test.,NA,NA
+test_data_serology_2,TestDataSerology,NA,ConfirmationPositiveControlResult,confirmation_positive_control_result,confirmation_positive_control_interpretation,Result or interpretation of positive control in confirmation test.,NA,NA
+test_data_serology_2,TestDataSerology,NA,ConfirmationResultInterpretation,confirmation_result_interepretation,NA,Result or interpretation of serological confirmation test.,NA,NA
+test_data_serology_2,TestDataSerology,NA,TestStatus,test_status,NA,Status of testing / interpretation.,NA,NA
+test_data_serology_2,TestDataSerology,NA,Notes,notes,NA,Laboratory notes for the initial test.,NA,NA
+test_data_serology_2,TestDataSerology,NA,ConfirmationNotes,confirmation_notes,NA,Laboratory notes for the confirmation test.,NA,NA
+human_zoo_2,HumanZoo,NA,Country,country,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,District,district,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,SiteLatitudeUnrounded,site_latitude,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,SiteLongitudeUnrounded,site_longitude,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,EventLatitudeUnrounded,event_latitude,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,EventLongitudeUnrounded,event_longitude,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+human_zoo_2,HumanZoo,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+human_zoo_2,HumanZoo,NA,ParticipantID,participant_id,NA,Interview participant's unique identifier.,NA,NA
+human_zoo_2,HumanZoo,NA,Livelihood(s),livelihoods,DROP,Human-level information.,NA,NA
+human_zoo_2,HumanZoo,NA,MostTimeSpent,most_time_spent,DROP,Human-level information.,NA,NA
+human_zoo_2,HumanZoo,NA,Q1 LiveOnSite,live_on_site,NA,Do you live on site?,yes/no,Q1
+human_zoo_2,HumanZoo,NA,Q2 #WorkAtSite,work_at_site,NA,"To the best of your knowledge, how many people work at this site?",5-cat var,Q2
+human_zoo_2,HumanZoo,NA,Q3 HowLongWorked,how_long_worked,NA,How long have you worked here?,4-cat var,Q3
+human_zoo_2,HumanZoo,NA,Q4 AnimalsWorkWith,animals_work_with,NA,What species do you work with? Select all that apply.,semicolon-separated,Q4
+human_zoo_2,HumanZoo,NA,Q5 PPEUsed,ppe_used,NA,"Do you have special protective equipment (Example: shoes, masks, gloves) only worn at work?",yes/no,Q5
+human_zoo_2,HumanZoo,NA,Q6 PPEquipment,pp_equipment,which_ppe,"If you have special work protective equipment, which kind? Select all that apply.",semicolon-separated,Q6
+human_zoo_2,HumanZoo,NA,Q7 WhenPPEUsed,when_ppe_used,NA,When do you use protective equipment? Select all that apply.,semicolon-separated,Q7
+human_zoo_2,HumanZoo,NA,Q8 UseDisinfectantToClean,use_disinfectant_to_clean,NA,Do you always use disinfectant to clean?,yes/no,Q8
+human_zoo_2,HumanZoo,NA,Q9 DisinfectantsUsedFor,disinfectants_used_for,NA,"If you always use disinfectants, do you always use disinfectants to clean the following: Select all that apply",semicolon-separated,Q9
+human_zoo_2,HumanZoo,NA,Q10 AnimalEnclosuresCleanedFrequency,animal_enclosures_cleaned_frequency,NA,How often are the animal enclosures cleaned?,5-cat var,Q10
+human_zoo_2,HumanZoo,NA,Q11 DesignatedAreaForAnimalWaste,designated_area_for_animal_waste,NA,Is there a designated area for the disposal of animal waste?,yes/no,Q11
+human_zoo_2,HumanZoo,NA,Q12 DesignatedAreaForAnimalWasteUsed,designated_area_for_animal_waste_used,NA,"If there is a disposal area, do people use the dedicated area for animal waste?","yes/no/""N/A""",Q12
+human_zoo_2,HumanZoo,NA,Q13 QuarantinePeriodNewAnimals,quarantine_period_new_animals,NA,Is there a quarantine period for new animals?,yes/no,Q13
+human_zoo_2,HumanZoo,NA,Q14 PreventativeMedProgram,preventative_med_program,NA,Is there a preventative medicine program for the animals?,yes/no,Q14
+human_zoo_2,HumanZoo,NA,Q15 AnimalsRaidFood,animals_raid_food,NA,Do any animals raid or destroy food supplies?,yes/no,Q15
+human_zoo_2,HumanZoo,NA,Q16 WhichAnimalsRaidFood,which_animals_raid_food,NA,"If animals raid food, which animals? Select all that apply",semicolon-separated,Q16
+human_zoo_2,HumanZoo,NA,Q17 RaidingPrevention,raiding_prevention,NA,What is done to stop animals from raiding or destroying food supplies? Select all that apply,semicolon-separated,Q17
+human_zoo_2,HumanZoo,NA,notes,human_zoo_notes,NA,Human Zoo interview notes,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Country,country,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,District,district,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,SiteLatitudeUnrounded,site_latitude,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,SiteLongitudeUnrounded,site_longitude,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,EventLatitudeUnrounded,event_latitude,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,EventLongitudeUnrounded,event_longitude,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,ParticipantID,participant_id,NA,Interview participant's unique identifier.,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Livelihood(s),livelihoods,DROP,Human-level information.,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,MostTimeSpent,most_time_spent,DROP,Human-level information.,NA,NA
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q1 Nationality,nationality,NA,What is your nationality?,NA,Q1
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q2 LengthLived,length_lived,NA,How long have you lived at this settlement?,6-cat var,Q2
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q3 #LiveAtSite,live_at_site,NA,"To the best of your knowledge, how many people live at this site?",5-cat var,Q3
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q4 AllPeopleFromCountry,all_people_from_country,NA,Are all the people living here from this country?,yes/no,Q4
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q5 ReasonForSettlement,reason_for_settlement,NA,Why did you settle here? Select all that apply.,semicolon-separated 6-cat var,Q5
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q6 OnSiteFoodProduction,on_site_food_production,NA,Is there on-site food production?,yes/no,Q6
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q7 MeatOnsite,meat_on_site,NA,Is there meat available for consumption?,yes/no,Q7
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q8 MeatSource,meat_source,NA,"If there is meat available, where does the meat come from? Select all that apply.",semicolon-separated 6-cat var,Q8
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q9 BushMeatOnSite,bush_meat_on_site,NA,Note: This question has been removed from survey.,NA,Q9
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q10 AnimalsConsume,animals_consume,NA,Which animals are available for consumption? Select all that apply.,semicolon-separated 14-cat var,Q10
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q11 DesignatedAreaForRubbish,designated_area_for_rubbish,NA,"Is there a designated area for rubbish, including animal waste from slaughter/butcher and animal excrement?",yes/no,Q11
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q12 DesignatedAreaForRubbishUsed,designated_area_for_rubbish_used,NA,"If there is a designated area for rubbish, do people use it?","yes/no/""N/A""",Q12
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q13 AnimalsRaidFood,animals_raid_food,NA,Do any animals raid food supplies or destroy crops?,yes/no,Q13
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q14 WhichAnimalsRaidFood,which_animals_raid_food,NA,"If animals raid food supplies or crops, which animals? Select all that apply.",semicolon-separated 14-cat var,Q14
+human_temporary_settlements_2,HumanTemporarySettlements,NA,Q15 RaidingPrevention,raiding_prevention,NA,What is done to stop animals from raiding or destroying food supplies? Select all that apply,semicolon-separated 11-cat var,Q15
+human_crop_production_2,HumanCropProduction,NA,Country,country,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,District,district,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,SiteLatitudeUnrounded,site_latitude,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,SiteLongitudeUnrounded,site_longitude,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,EventLatitudeUnrounded,event_latitude,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,EventLongitudeUnrounded,event_longitude,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+human_crop_production_2,HumanCropProduction,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+human_crop_production_2,HumanCropProduction,NA,ParticipantID,participant_id,NA,Interview participant's unique identifier.,NA,NA
+human_crop_production_2,HumanCropProduction,NA,Livelihood(s),livelihoods,DROP,Human-level information.,NA,NA
+human_crop_production_2,HumanCropProduction,NA,MostTimeSpent,most_time_spent,DROP,Human-level information.,NA,NA
+human_crop_production_2,HumanCropProduction,NA,Q1 LiveOnSite,live_on_site,NA,Do you live on the work site?,yes/no,Q1
+human_crop_production_2,HumanCropProduction,NA,Q2 #WorkAtSite,work_at_site,NA,"To the best of your knowledge, how many people work at this site?",5-cat var,Q2
+human_crop_production_2,HumanCropProduction,NA,Q3 HowLongWorked,how_long_worked,NA,How long have you worked at the site?,4-cat var,Q3
+human_crop_production_2,HumanCropProduction,NA,Q4 CropsAtSite,crops_at_site,NA,Which crops are at the site? Select all that apply?,semicolon-separated 13-cat var,Q4
+human_crop_production_2,HumanCropProduction,NA,Q5 ManureFertilizersUsed,manure_fertilizers_used,NA,"Does the farm use manure, guano or night soil to fertilize the crops?",yes/no,Q5
+human_crop_production_2,HumanCropProduction,NA,Q6 TypesOfFertilizers,types_of_fertilizers,NA,"If they use fertilizer, which types? Select all that apply.",semicolon-separated 7-cat var,Q6
+human_crop_production_2,HumanCropProduction,NA,Q7 MeatOnsite,meat_on_site,NA,Is there meat available for consumption?,yes/no,Q7
+human_crop_production_2,HumanCropProduction,NA,Q8 MeatSource,meat_source,NA,"If there is meat available, where does the meat come from? Select all that apply.",semicolon-separated 6-cat var,Q8
+human_crop_production_2,HumanCropProduction,NA,Q9 BushMeatOnSite,bush_meat_on_site,NA,Is it possible to consume bushmeat/wild meat on or near the site?,yes/no,Q9
+human_crop_production_2,HumanCropProduction,NA,Q10 DesignatedAreaForRubbish,designated_area_for_rubbish,NA,"Is there a designated area for rubbish, including animal waste from slaughter/butcher and animal excrement?",yes/no,Q10
+human_crop_production_2,HumanCropProduction,NA,Q11 DesignatedAreaForRubbishUsed,designated_area_for_rubbish_used,NA,"If there is a designated area for rubbish, do people use it?","yes/no/""N/A""",Q11
+human_crop_production_2,HumanCropProduction,NA,Q12 AnimalsRaidFood,animals_raid_food,NA,Do any animals raid food supplies or destroy crops?,yes/no,Q12
+human_crop_production_2,HumanCropProduction,NA,Q13 WhichAnimalsRaidFood,which_animals_raid_food,NA,"If animals raid food supplies or crops, which animals? Select all that apply.",semicolon-separated 14-cat var,Q13
+human_crop_production_2,HumanCropProduction,NA,Q14 RaidingPrevention,raiding_prevention,NA,What is done to stop animals from raiding or destroying food supplies? Select all that apply,semicolon-separated 11-cat var,Q14
+human_crop_production_2,HumanCropProduction,NA,Notes,human_crop_production_notes,NA,Human Crop Production interview notes.,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Country,country,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,District,district,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,SiteLatitudeUnrounded,site_latitude,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,SiteLongitudeUnrounded,site_longitude,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,EventLatitudeUnrounded,event_latitude,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,EventLongitudeUnrounded,event_longitude,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,ParticipantID,participant_id,NA,Interview participant's unique identifier.,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Livelihood(s),livelihoods,DROP,Human-level information.,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,MostTimeSpent,most_time_spent,DROP,Human-level information.,NA,NA
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q1 TypeOfWorkConducted,type_of_work_conducted,NA,What type of work or industry is conducted here? Select one option.,NA,Q1
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q2 ProductsExtracted,products_extracted,NA,What products are extracted? Select one option.,NA,Q2
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q3 LiveOnSite,live_on_site,NA,Do you live on the work site?,yes/no,Q3
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q4 #WorkAtSite,work_at_site,NA,"To the best of your knowledge, how many people work at this site?",5-cat var,Q4
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q5 HowLongWorked,how_long_worked,NA,How long have you worked at this site?,4-cat var,Q5
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q6 OnSiteFoodProduction,on_site_food_production,NA,Is there on-site food production?,yes/no,Q6
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q7 WhoPaysGrowCrops,who_pays_grow_crops,NA,"If there is on-site food production, who pays for the cost to grow the food crops?","""the company""/""the workers""",Q7
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q8 BushMeatOnsite,bush_meat_on_site,meat_on_site,Is there meat available for consumption?,yes/no,Q8
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q9 MeatSource,meat_source,NA,"If there is meat available, where does the meat come from? Select all that apply.",semicolon-separated,Q9
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q10 BushMeatOnSite,bush_meat_on_site,NA,Is it possible to consume bushmeat/wild meat on or near the site?,yes/no,Q10
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q11 DesignatedAreaForRubbish,designated_area_for_rubbish,NA,"Is there a designated area for rubbish, including animal waste from slaughter/butcher and animal excrement?",yes/no,Q11
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q12 DesignatedAreaForRubbishUsed,designated_area_for_rubbish_used,NA,"If there is a designated area for rubbish, do people use it?","yes/no/""N/A""",Q12
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q13 AnimalsRaidFood,animals_raid_food,NA,Do any animals raid food supplies or destroy crops?,yes/no,Q13
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q14 WhichAnimalsRaidFood,which_animals_raid_food,NA,"If animals raid food supplies or crops, which animals? Select all that apply.",semicolon-separated 14-cat var,Q14
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Q15 RaidingPrevention,raiding_prevention,NA,What is done to stop animals from raiding or destroying food supplies? Select all that apply,semicolon-separated 11-cat var,Q15
+human_extractive_industry_2,HumanExtractiveIndustry,NA,Notes,human_extractive_notes,NA,Notes from Human Extractive Industry interview,NA,NA
+human_hunter_2,HumanHunter,NA,Country,country,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,District,district,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,SiteLatitudeUnrounded,site_latitude,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,SiteLongitudeUnrounded,site_longitude,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,EventLatitudeUnrounded,event_latitude,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,EventLongitudeUnrounded,event_longitude,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+human_hunter_2,HumanHunter,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+human_hunter_2,HumanHunter,NA,ParticipantID,participant_id,NA,Interview participant's unique identifier.,NA,NA
+human_hunter_2,HumanHunter,NA,Livelihood(s),livelihoods,DROP,Human-level information.,NA,NA
+human_hunter_2,HumanHunter,NA,MostTimeSpent,most_time_spent,DROP,Human-level information.,NA,NA
+human_hunter_2,HumanHunter,NA,Q1 AnimalsHunted,animals_hunted,NA,What animals have you hunted since this time last year? Select all that apply.,semicolon-separated 8-cat var,Q1
+human_hunter_2,HumanHunter,NA,Q2 MethodsUsedToHuntTrap,methods_used_to_hunt_trap,NA,"Since this time last year, what methods have you used to hunt/trap animals? Select all that apply.",semicolon-separated,Q2
+human_hunter_2,HumanHunter,NA,Q3 RodentsHuntTrapPurpose,rodents_hunt_trap_purpose,NA,What is the purpose of your trapping or hunting this taxa? Select all that apply.,semicolon-separated 7-cat var,Q3
+human_hunter_2,HumanHunter,NA,Q3 BatsHuntTrapPurpose,bats_hunt_trap_purpose,NA,What is the purpose of your trapping or hunting this taxa? Select all that apply.,semicolon-separated 7-cat var,Q3
+human_hunter_2,HumanHunter,NA,Q3 NHPHuntTrapPurpose,nhp_hunt_trap_purpose,NA,What is the purpose of your trapping or hunting this taxa? Select all that apply.,semicolon-separated 7-cat var,Q3
+human_hunter_2,HumanHunter,NA,Q3 BirdsHuntTrapPurpose,birds_hunt_trap_purpose,NA,What is the purpose of your trapping or hunting this taxa? Select all that apply.,semicolon-separated 7-cat var,Q3
+human_hunter_2,HumanHunter,NA,Q3 CarnivoresHuntTrapPurpose,carnivores_hunt_trap_purpose,NA,What is the purpose of your trapping or hunting this taxa? Select all that apply.,semicolon-separated 7-cat var,Q3
+human_hunter_2,HumanHunter,NA,Q3 UngulatesHuntTrapPurpose,ungulates_hunt_trap_purpose,NA,What is the purpose of your trapping or hunting this taxa? Select all that apply.,semicolon-separated 7-cat var,Q3
+human_hunter_2,HumanHunter,NA,Q3 PangolinsHuntTrapPurpose,pangolins_hunt_trap_purpose,NA,What is the purpose of your trapping or hunting this taxa? Select all that apply.,semicolon-separated 7-cat var,Q3
+human_hunter_2,HumanHunter,NA,Q4 ExposedToBloodLastYear,exposed_to_blood_last_year,NA,"Since this time last year, when you hunt or trap: Are you exposed to blood?",yes/no,Q4
+human_hunter_2,HumanHunter,NA,Q5 ScratchedBittenLastYear,scratched_bitten_last_year,NA,"Since this time last year, when you hunt or trap: Have you been scratched or bitten?",yes/no,Q5
+human_hunter_2,HumanHunter,NA,Q6 OutbreakLastYear,outbreak_last_year,NA,"Since this time last year, have you seen an outbreak of dead wild animals?",yes/no,Q6
+human_hunter_2,HumanHunter,NA,Q7 OutbreakDeaths,outbreak_deaths,NA,"If you have seen an outbreak of dead wild animals since this time last year, which wild animals? Select all that apply.",semicolon-separated 7-cat var,Q7
+human_hunter_2,HumanHunter,NA,Q8 ActionWhenDeadAnimalFound,action_when_dead_animal_found,NA,What do you do when you find an animal dead (not in a trap or shot by another hunter)? Select all that apply.,semicolon-separated,Q8
+human_hunter_2,HumanHunter,NA,Q9 TransportDeadAnimal,transport_dead_animal,NA,"How do you transport a dead animal, if you take it? Select all that apply.",semicolon-separated,Q9
+human_hunter_2,HumanHunter,NA,Q10 PPEUsed,ppe_used,hunter_ppe_used,NA,yes/no,Q10
+human_hunter_2,HumanHunter,NA,Q11 WhichPPE,which_ppe,hunter_which_ppe,"If you have special PPE, which protective equipment? Select all that apply.",semicolon-separated 5-cat var,Q11
+human_hunter_2,HumanHunter,NA,Q12 WhenPPEUsed,when_ppe_used,hunter_when_ppe_used,When do you use protective equipment? Select all that apply.,semicolon-separated,Q12
+human_hunter_2,HumanHunter,NA,Notes,notes,hunter_notes,Notes on Human Hunter interview.,NA,NA
+human_sick_person_2,HumanSickPerson,NA,Country,country,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,District,district,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,SiteLatitudeUnrounded,site_latitude,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,SiteLongitudeUnrounded,site_longitude,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,EventLatitudeUnrounded,event_latitude,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,EventLongitudeUnrounded,event_longitude,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+human_sick_person_2,HumanSickPerson,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,ParticipantID,participant_id,NA,Interview participant's unique identifier.,NA,NA
+human_sick_person_2,HumanSickPerson,NA,Livelihood(s),livelihoods,DROP,Human-level information.,NA,NA
+human_sick_person_2,HumanSickPerson,NA,MostTimeSpent,most_time_spent,DROP,Human-level information.,NA,NA
+human_sick_person_2,HumanSickPerson,NA,Q1 Diagnosis,diagnosis,NA,Clinical Diagnosis as determined by a physician or health care provider (from medical record if available),write-in field,Q1
+human_sick_person_2,HumanSickPerson,NA,Q2 DateHospitalization,date_hospitalization,NA,Date of hospitalization for present illness (if applicable),date,Q2
+human_sick_person_2,HumanSickPerson,NA,Q3 CountOfSpecimensCollected,count_of_specimens_collected,NA,Count of specimens collected for this participant.,NA,Q3
+human_sick_person_2,HumanSickPerson,NA,Q4 AntiviralUsed,antiviral_used,NA,Antiviral use for present illness at the time of specimen collection?,yes/no,Q4
+human_sick_person_2,HumanSickPerson,NA,Q5 WhichAntivirals,which_antivirals,NA,"If antiviral used, which medication?",write-in field,Q5
+human_sick_person_2,HumanSickPerson,NA,Q6 BodyTemp,body_temp,NA,Body temperature at the time of sampling (celsius) (In the clinical setting only),NA,Q6
+human_sick_person_2,HumanSickPerson,NA,Q7 DaysWithFever,days_with_fever,NA,For how many days have you had a fever?,NA,Q7
+human_sick_person_2,HumanSickPerson,NA,Q8 DateSymptomOnset,date_symptom_onset,NA,Date of symptom onset,NA,Q8
+human_sick_person_2,HumanSickPerson,NA,Q9 Symptoms,symptoms,NA,Signs and symptoms of present illness. Select all that apply.,NA,Q9
+human_sick_person_2,HumanSickPerson,NA,Q10 ChronicSymptoms,chronic_symptoms,NA,Presence of chronic pre-existing medical illnesses: Select all that apply,NA,Q10
+human_sick_person_2,HumanSickPerson,NA,Q11 PregnancyStatus,pregnancy_status,NA,Pregnancy status,yes/no/don't know,Q11
+human_sick_person_2,HumanSickPerson,NA,Q12 MonthsPregnant,months_pregnant,NA,"If yes, how many months pregnant",NA,Q12
+human_sick_person_2,HumanSickPerson,NA,Q13 OthersWithSymptoms,others_with_symptoms,NA,Other symptom in family member of member of household?,yes/no,Q13
+human_sick_person_2,HumanSickPerson,NA,Q14 WhichSymptoms,which_symptoms,NA,"If other symptom in family member or member of household, whom an what symptom?",symptom(family member),Q14
+human_sick_person_2,HumanSickPerson,NA,Q15 NbrLabTestResults,nbr_lab_test_results,NA,Number of lab test results,NA,Q15
+human_restaurant_2,HumanRestaurant,NA,Country,country,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,District,district,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,SiteLatitudeUnrounded,site_latitude,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,SiteLongitudeUnrounded,site_longitude,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,EventLatitudeUnrounded,event_latitude,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,EventLongitudeUnrounded,event_longitude,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+human_restaurant_2,HumanRestaurant,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+human_restaurant_2,HumanRestaurant,NA,ParticipantID,participant_id,NA,Interview participant's unique identifier.,NA,NA
+human_restaurant_2,HumanRestaurant,NA,Livelihood(s),livelihoods,DROP,Human-level information.,NA,NA
+human_restaurant_2,HumanRestaurant,NA,MostTimeSpent,most_time_spent,DROP,Human-level information.,NA,NA
+human_restaurant_2,HumanRestaurant,NA,Q1 LiveOnSite,live_on_site,NA,Do you live on site?,yes/no,Q1
+human_restaurant_2,HumanRestaurant,NA,Q2 #WorkAtSite,work_at_site,NA,"To the best of your knowledge, how many people work at this site?",5-cat var,Q2
+human_restaurant_2,HumanRestaurant,NA,Q3 HowLongWorked,how_long_worked,NA,How long have you worked here? Select one option.,4-cat var,Q3
+human_restaurant_2,HumanRestaurant,NA,Q4 AnimalsOnMenu,animals_on_menu,NA,What wild animals are on the menu today? Select all that apply.,semicolon-separated,Q4
+human_restaurant_2,HumanRestaurant,NA,Q5 LiveAnimalsOnSite,live_animals_on_site,NA,"Since this time last year, have you had live animals on site?",yes/no,Q5
+human_restaurant_2,HumanRestaurant,NA,Q6 AnimalSource,animal_source,NA,"If there have been live animals on site, where do they come from? Select all that apply.",semicolon-separated,Q6
+human_restaurant_2,HumanRestaurant,NA,Q7 AnimalsToRestaurant,animals_to_restaurant,NA,How do the live animals get to the restaurant? Select all that apply.,semicolon-separated,Q7
+human_restaurant_2,HumanRestaurant,NA,Q8 LiveAnimalsStoredNight,live_animals_stored_night,NA,How are live animals stored at night? Select all that apply.,3-cat var,Q8
+human_restaurant_2,HumanRestaurant,NA,Q9 AnimalsSlaughted,animals_slaughted,NA,Are live animals slaughtered at the restaurant?,yes/no,Q9
+human_restaurant_2,HumanRestaurant,NA,Q10 PPEUsed,ppe_used,NA,"Do you have special protective equipment (Example: shoes, masks, gloves) only worn at work?",yes/no,Q10
+human_restaurant_2,HumanRestaurant,NA,Q11 PPEquipment,pp_equipment,NA,"If you have special work protective equipment, which kind? Select all that apply.",semicolon-separated 5-cat var,Q11
+human_restaurant_2,HumanRestaurant,NA,Q12 WhenPPEUsed,when_ppe_used,NA,When do you use protective equipment?,semicolon-separated,Q12
+human_restaurant_2,HumanRestaurant,NA,Q13 UseDisinfectantToClean,use_disinfectant_to_clean,NA,Do you always use disinfectant to clean?,yes/no,Q13
+human_restaurant_2,HumanRestaurant,NA,Q14 DisinfectantsUsedFor,disinfectants_used_for,NA,"If you always use disinfectants, do you always use disinfectants to clean the following: Select all that apply",semiciolon-separated 7-cat var,Q14
+human_restaurant_2,HumanRestaurant,NA,Q15 DesignatedAreaRubbish,designated_area_rubbish,NA,"Is there a designated area for rubbish, including animal waste from slaughter/butcher and animal excrement?",yes/no,Q15
+human_restaurant_2,HumanRestaurant,NA,Q16 DesignatedAreaForRubbishUsed,designated_area_for_rubbish_used,NA,"If there is a designated area for rubbish, do people use it?","yes/no/""N/A""",Q16
+human_restaurant_2,HumanRestaurant,NA,Q17 AnimalsRaidFood,animals_raid_food,NA,Do any animals raid food or destroy supplies?,yes/no,Q17
+human_restaurant_2,HumanRestaurant,NA,Q18 WhichAnimalsRaidFood,which_animals_raid_food,NA,"If animals raid food or destroy supplies, which animals? Select all that apply.",semicolon-separated 14-cat var,Q18
+human_restaurant_2,HumanRestaurant,NA,Q19 RaidingPrevention,raiding_prevention,NA,What is done to stop animals from raiding or destroying food supplies? Select all that apply.,semicolon-separated 11-cat var,Q19
+human_restaurant_2,HumanRestaurant,NA,Notes,notes,human_restaurant_notes,Notes from the Human Restaurant interview.,NA,NA
+human_market_2,HumanMarket,NA,Country,country,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,District,district,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,SiteLatitudeUnrounded,site_latitude,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,SiteLongitudeUnrounded,site_longitude,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,EventLatitudeUnrounded,event_latitude,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,EventLongitudeUnrounded,event_longitude,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+human_market_2,HumanMarket,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+human_market_2,HumanMarket,NA,ParticipantID,participant_id,NA,Interview participant's unique identifier.,NA,NA
+human_market_2,HumanMarket,NA,Livelihood(s),livelihoods,DROP,Human-level information.,NA,NA
+human_market_2,HumanMarket,NA,MostTimeSpent,most_time_spent,DROP,Human-level information.,NA,NA
+human_market_2,HumanMarket,NA,Q1 LiveOnSite,live_on_site,NA,Do you live on the work site?,yes/no,Q1
+human_market_2,HumanMarket,NA,Q2 #WorkAtSite,work_at_site,NA,"To the best of your knowledge, how many people work at this site?",5-cat var,Q2
+human_market_2,HumanMarket,NA,Q3 HowLongWorked,how_long_worked,NA,How long have you worked at this market?,4-cat var,Q3
+human_market_2,HumanMarket,NA,Q4 AnimalsSold,animals_sold,NA,What animals are you selling today? Select all that apply.,semicolon-separated,Q4
+human_market_2,HumanMarket,NA,Q5 SoldLiveAnimalToday,sold_live_animal_today,NA,Have you sold a live animal today?,yes/no,Q5
+human_market_2,HumanMarket,NA,Q6 WhoBuysAnimals,who_buys_animals,NA,Who buys the live animals you sell? Select all that apply.,semicolon-separated,Q6
+human_market_2,HumanMarket,NA,Q7 AnimalSource,animal_source,NA,Where do the animals come from? Select all that apply.,semicolon-separated,Q7
+human_market_2,HumanMarket,NA,Q8 AnimalsToMarket,animals_to_market,NA,How do the live animals get to the market? Select all that apply.,semicolon-separated,Q8
+human_market_2,HumanMarket,NA,Q9 LiveAnimalsStored,live_animals_stored,NA,How are the live animals stored at night? Select all that apply.,semicolon-separated,Q9
+human_market_2,HumanMarket,NA,Q10 HoursLiveAnimalsKept,hourse_live_animals_kept,NA,How long do you keep alive animals before you sell them? (in hours),NA,Q10
+human_market_2,HumanMarket,NA,Q11 ActionWhenAnimalsSick,action_when_animals_sick,NA,What do you do when an animal gets sick? Select all that apply.,semicolon-separated,Q11
+human_market_2,HumanMarket,NA,Q12 PPEUsed,ppe_used,NA,"Do you have special protective equipment (Example: shoes, masks, gloves) only worn at work?",yes/no,Q12
+human_market_2,HumanMarket,NA,Q13 WhichPPE,which_ppe,NA,"If you have special PPE, which protective equipment? Select all that apply.",semicolon-separated,Q13
+human_market_2,HumanMarket,NA,Q14 WhenPPEUsed,when_ppe_used,NA,When do you use protective equipment? Select all that apply.,semicolon-separated,Q14
+human_market_2,HumanMarket,NA,Q15 PPEUsedHandling,ppe_used_handling,NA,Is protective equipment used every time an animal is handled?,yes/no,Q15
+human_market_2,HumanMarket,NA,Q16 ViscaraRefuse,viscara_refuse,viscera_refuse,"When butchering animals, what happens to the refuse (blood, organs, skin, sinews, etc)? Select all that apply",6-cat var,Q16
+human_market_2,HumanMarket,NA,Q17 UseDisinfectantsToClean,use_disinfectants_to_clean,NA,Do you always use disinfectant to clean?,yes/no,Q17
+human_market_2,HumanMarket,NA,Q18 DisinfectantsUsedFor,disinfectants_used_for,NA,"If you always use disinfectants, do you always use disinfectants to clean the following: Select all that apply",semicolon-separated 7-cat var,Q18
+human_market_2,HumanMarket,NA,Q19 AnimalEnclosuresCleanedFrequency,animal_enclosures_cleaned_frequency,NA,How often are the animal enclosures cleaned? Select one option.,5-cat var,Q19
+human_market_2,HumanMarket,NA,Q20 DesignatedAreaForAnimalWaste,designated_area_for_animal_waste,NA,"Is there a designated area for rubbish, including animal waste from slaughter/butcher and animal excrement?",yes/no,Q20
+human_market_2,HumanMarket,NA,Q20 DesignatedAreaForAnimalWasteUsed,designated_area_for_animal_waste_used,NA,"If there is a designated area for rubbish, do people use it?","yes/no/""N/A""",Q21
+human_market_2,HumanMarket,NA,Q22 MarketClosedFrequency,market_closed_frequency,NA,How often does the market close? Select one option.,6-cat var,Q22
+human_market_2,HumanMarket,NA,Q23 HealthOfficalInspectedAnimals,health_official_inspected_animals,NA,"Since this time last year, has an animal health official inspected your animals?",yes/no,Q23
+human_market_2,HumanMarket,NA,Q24 AnimalsDestroyed,animals_destroyed,NA,"Since this time last year, has anyone destroyed your animals because of infection or disease?",yes/no,Q24
+human_market_2,HumanMarket,NA,Q25 WhichAnimalsDestroyed,which_animals_destroyed,NA,"If animals have been destroyed, which animals? Select all that apply.",semicolon-separated,Q25
+human_market_2,HumanMarket,NA,Q26 RaidingPrevention,raiding_prevention,NA,What is done to stop animals from raiding or destroying food supplies? Select all that apply.,semicolon-separated,Q26
+human_market_2,HumanMarket,NA,Notes,notes,human_market_notes,Human Market interview notes.,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,Country,country,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,SiteName,site_name,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,District,district,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,SiteLatitudeUnrounded,site_latitude,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,SiteLongitudeUnrounded,site_longitude,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,EventLatitudeUnrounded,event_latitude,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,EventLongitudeUnrounded,event_longitude,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,ParticipantID,participant_id,NA,Interview participant's unique identifier.,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,Livelihood(s),livelihoods,DROP,Human-level information.,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,MostTimeSpent,most_time_spent,DROP,Human-level information.,NA,NA
+human_hospital_worker_2,HumanHospitalWorker,NA,Q1 HealthActivities,health_activities,NA,What are your human health activities?,data entered as numbers,Q1
+human_hospital_worker_2,HumanHospitalWorker,NA,Q2 PPEUsed,ppe_used,NA,"Do you have special protective equipment (Example: shoes, masks, gloves) only worn at work?",yes/no,Q2
+human_hospital_worker_2,HumanHospitalWorker,NA,Q3 WhichPPE,which_ppe,NA,"If you have special work protective equipment, which kind? Select all that apply.",semicolon-separated 5-cat var,Q3
+human_hospital_worker_2,HumanHospitalWorker,NA,Q4 WhenPPEUsed,when_ppe_used,NA,Is the protective equipment used every time you examine or collect specimens from a patient?,yes/no,Q4
+human_hospital_worker_2,HumanHospitalWorker,NA,Q5 PPECleaned,ppe_cleaned,NA,"Is the protective equipment cleaned, sterilized, or discarded after each use?",yes/no,Q5
+human_hospital_worker_2,HumanHospitalWorker,NA,Q6 UseDisinfectantToClean,use_disinfectant_to_clean,NA,Do you always use disinfectant to clean equipment and hospital areas?,yes/no,Q6
+human_hospital_worker_2,HumanHospitalWorker,NA,Notes,human_hospital_notes,NA,Notes from the Human Hospital interview,NA,NA

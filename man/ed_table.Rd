@@ -9,7 +9,7 @@
 \alias{ed_tests}
 \alias{ed_viruses}
 \alias{ed_testspecimen}
-\title{Load EIDITH data from the local database}
+\title{Load PREDICT-1 EIDITH data from the local database}
 \usage{
 ed_table_(table, ..., .dots)
 
@@ -28,8 +28,7 @@ ed_viruses(...)
 ed_testspecimen(...)
 }
 \arguments{
-\item{table}{one of the EIDITH database tables. One of "events", "animals",
-"specimens", "tests", "viruses", or "test_specimen_ids".}
+\item{table}{one of the EIDITH PREDICT-1 or PREDICT-2 database tables.}
 
 \item{...}{arguments passed to \code{\link[dplyr:filter]{dplyr::filter()}} to subset data}
 
@@ -43,7 +42,8 @@ These functions load data from the locally-stored SQLite database of downloaded
 and cleaned EIDITH data. \code{ed_table} is a general function, and \code{ed_table_}
 it's \href{https://cran.r-project.org/web/packages/dplyr/vignettes/nse.html}{standard evaluation}
 equivalent, useful for programming.  The other functions are convenience aliases
-for the individual tables. Alternate versions return \link[=ed_mock]{mock data} for
+for the individual tables.
+Alternate versions return \link{mock data} `ed_mock()`` for
 tutorials and practice.
 }
 \details{

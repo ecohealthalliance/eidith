@@ -1,0 +1,15 @@
+pandoc: 2.1.3
+pkgdown: 0.1.0.9000
+pkgdown_sha: 50a0aa068651ae487090a37c21c5242adc2d221d
+articles:
+  data_structure: data_structure.html
+  eidith: eidith.html
+  eidith_API: eidith_API.html
+  fasta_walkthrough: fasta_walkthrough.html
+  multi_response_fields: multi_response_fields.html
+  p2_data_structure: p2_data_structure.html
+  preprocessing: preprocessing.html
+urls:
+  reference: https://ecohealthalliance.github.io/eidith/reference
+  article: https://ecohealthalliance.github.io/eidith/articles
+

@@ -1,6 +1,6 @@
-#' Load mock EIDITH data for tutorials
+#' Load mock EIDITH data for PREDICT-1 tutorials
 #'
-#' These functions load mock versions of the EIDITH data tables to be used
+#' These functions load mock versions of the EIDITH PREDICT-1 data tables to be used
 #' for demonstrations, tutorials, and practice.  They are drop-in replacements
 #' for the [ed_table()] functions.
 #'

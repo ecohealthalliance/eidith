@@ -18,13 +18,28 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+<meta property="og:title" content="EIDITH logon credentials — ed_auth" />
+
+<meta property="og:description" content="Any function that downloads data from EIDITH, such as ed_db_download() or
+the raw download functions requires login credentials.  These
+functions will ask for a username and password.  To get an EIDITH account
+with data access permissions, contact technology@eidith.org." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -33,6 +48,11 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+
+
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
   </head>
 
@@ -47,8 +67,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">EIDITH</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">eidith</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -72,13 +96,22 @@
       <a href="../articles/preprocessing.html">Automatic Data Processing / Raw Data</a>
     </li>
     <li>
-      <a href="../articles/data_structure.html">Database Structure / Table Joining</a>
+      <a href="../articles/data_structure.html">PREDICT-1 Database Structure / Table Joining</a>
     </li>
     <li>
-      <a href="../articles/fasta_walkthrough.html">Generating Reports and FASTA</a>
+      <a href="../articles/fasta_walkthrough.html">PREDICT-1 Generating Reports and FASTA</a>
     </li>
     <li>
-      <a href="../articles/eidith_API.html">Web API Details</a>
+      <a href="../articles/eidith_API.html">PREDICT-1 Web API Details</a>
+    </li>
+    <li>
+      <a href="../articles/p2_data_structure.html">PREDICT-2 Database Structure / Table Joining</a>
+    </li>
+    <li>
+      <a href="../articles/multi_response_fields.html">PREDICT-2 Multiple Response Fields</a>
+    </li>
+    <li>
+      <a href="../articles/eidith_r_training.pdf">EIDITH - R Package Workshop Slides</a>
     </li>
   </ul>
 </li>
@@ -98,6 +131,13 @@
   </a>
 </li>
       </ul>
+      
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -105,18 +145,22 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>EIDITH logon credentials</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ecohealthalliance/eidith/blob/master/R/auth.R'><code>R/auth.R</code></a></small>
+    <div class="hidden name"><code>ed_auth.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Any function that downloads data from EIDITH, such as <code><a href='ed_db_download.html'>ed_db_download()</a></code> or
 the <a href='ed_get.html'>raw download functions</a> requires login credentials.  These
 functions will ask for a username and password.  To get an EIDITH account
 with data access permissions, contact technology@eidith.org.</p>
     
+    </div>
 
         
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -126,11 +170,14 @@ as environment variables.  <strong>eidith</strong> functions will automatically 
 for your credentials in the <code>EIDITH_USERNAME</code> and <code>EIDITH_PASSWORD</code> environment
 variables.</p>
 <p>To cache your credentials across multiple R sessions, save them in your
-personal <code>.Renviron</code> file by running the following code in your R console
-(replacing <code>YOUR_USERNAME</code> and <code>YOUR_PASSWORD</code> with actual values).</p><pre>cat("EIDITH_USERNAME=YOUR_USERNAME\nEIDITH_PASSWORD=YOUR_PASSWORD",
-    file = file.path(normalizePath("~/"), ".Renviron"), append = TRUE)
+personal <code>.Renviron</code> file. You can also use the <code>usethis</code> package to easily access
+and edit your <code>.Renviron</code> file:</p><pre>install.packages("usethis")`
+usethis::edit_r_environ()
 </pre>
-    <p>Restart R, and you will be automatically logged in to download data from EIDITH
+    <p>This should open up your <code>.Renviron</code> file in a new tab, and you add the lines:</p><pre>EIDITH_USERNAME=your_username
+EIDITH_PASSWORD=your_password
+</pre>
+    <p>Save this file, restart R, and you will be automatically logged in to download data from EIDITH
 when working on this computer.</p>
     
 
@@ -151,11 +198,25 @@ when working on this computer.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '2bf5efbf4437480db9685f3d09019982',
+    indexName: 'eidith',
+    inputSelector: 'input#search-input.form-control'
+  });
+</script>
+
+
   </body>
 </html>
+
