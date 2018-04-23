@@ -82,7 +82,7 @@ ed_tables_conn <- function(cols = "id"){
 #'
 ed2_tables_conn <- function(cols = "id"){
   if(cols == "id"){
-    return(readr::read_csv("data-raw/ed2_conn.csv",
+    return(readr::read_csv(system.file("ed2_conn.csv", package="eidith"),
            col_types = readr::cols(
              T1 = readr::col_character(),
              T2 = readr::col_character(),
