@@ -34,6 +34,16 @@ create_empty_p2_table <- function(e2){
   return(df)
 }
 
+create_empty_p1_table <- function(e1){
+  meta <- ed_metadata()
+  headers <- filter(meta, endpoint == e1, replacement_name %in% "DROP" == FALSE) %>%
+    mutate(new_name = ifelse(is.na(replacement_name), auto_processed_name, replacement_name)) %>%
+    pull(new_name)
+  df <- data.frame(matrix(ncol = length(headers), nrow = 0))
+  names(df) <- headers
+  return(df)
+}
+
 
 #' Functions to download EIDITH tables via API
 #'
@@ -95,6 +105,10 @@ Contact technology@eidith.org about permissions. See ?ed_contact.")
     data <- as_tibble(data)
   }
 
+  if(nrow(data) == 0){
+    data <- create_empty_p1_table(endpoint)
+    return(data)
+  }
 
   if("ExceptionMessage" %in% names(data)){
     cat_line(red(paste0("Download for the ", endpoint, " table failed. See ?ed_contact for support. \n")))
