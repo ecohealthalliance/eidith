@@ -15,7 +15,7 @@
 #' and edit your `.Renviron` file:
 #'
 #' ```
-#' install.packages("usethis")`
+#' install.packages("usethis")
 #' usethis::edit_r_environ()
 #' ```
 #'
