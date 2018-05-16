@@ -1,5 +1,5 @@
 ***************************
-Metadata Management README:
+### Metadata Management README:
 
 The EIDITH R package automatically updates PREDICT-2 metadata via a googlesheets query
 whenever an `ed2_metadata()` call is made. This occurs when downloading tables, when
@@ -26,7 +26,7 @@ google spreadsheet in order to change existing metadata or add a new metadata fi
 descriptions of each column in the metadata spreadsheet:
 
 ***************************
-Spreadsheet Column Descriptions:
+#### Spreadsheet Column Descriptions:
 
 The `table` column in the spreadsheet requires all lower-case letters with a trailing "_2" to
 indicate that it is a PREDICT 2 table.
