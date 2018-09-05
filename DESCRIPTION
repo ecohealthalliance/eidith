@@ -5,6 +5,7 @@ Authors@R: c(
     person("Noam", "Ross", , "ross@ecohealthalliance.org", role = c("aut", "cre")),
     person("Nistara", "Randhawa", , "nrandhawa@ucdavis.edu", role = c("aut")),
     person("Cale", "Basaraba", , "basaraba@ecohealthalliance.org", role = c("aut")),
+    person("Emma", "Mendelsohn", , "mendelsohn@ecohealthalliance.org", role = c("aut")),
     person("EcoHealth Alliance", role="cph"))
 Description: This package provides a programmatic interface to the PREDICT
     EIDITH database from R, allowing download and query of sampling data.  Use
