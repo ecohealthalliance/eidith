@@ -7,6 +7,7 @@
 #' @importFrom tidyr %>% unnest
 #' @importFrom dplyr mutate
 #' @importFrom stringr str_split str_trim str_detect str_match
+#' @importFrom rlang enquo quo_name !!
 #'
 #' @return A long form dataframe with `col` field separated into repeated entries.
 #' @rdname ed2_expand_long
@@ -17,7 +18,6 @@
 #' humans_reduced <- dplyr::select(humans, event_name, participant_id, travel_reason)
 #' humans_reduced_long <- ed2_expand_long(humans_reduced, travel_reason)
 #' }
-
 ed2_expand_long <- function(df, col, other_details = TRUE){
   col <- enquo(col)
   col_name <- paste0(quo_name(col), "_val")
@@ -44,6 +44,7 @@ ed2_expand_long <- function(df, col, other_details = TRUE){
 #' @importFrom dplyr mutate
 #' @importFrom stringr str_split str_trim
 #' @importFrom janitor clean_names
+#' @importFrom rlang enquo quo_name !!
 #'
 #' @return A wide form dataframe with `col` field separated into different columns and filled with TRUE or FALSE values.
 #' @export
@@ -54,7 +55,6 @@ ed2_expand_long <- function(df, col, other_details = TRUE){
 #' humans_reduced <- dplyr::select(humans, event_name, participant_id, travel_reason)
 #' humans_reduced_wide <- ed2_expand_wide(humans_reduced, travel_reason)
 #' }
-
 ed2_expand_wide <- function(df, col, clean_names = TRUE){
   col <- enquo(col)
   name_stub <- paste0(quo_name(col))
