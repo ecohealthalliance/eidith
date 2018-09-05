@@ -35,7 +35,7 @@ as an other index for the table need to be added to the `db_unique_indexes` and 
 These lists help with creating valid SQL tables in the SQLite database. Notice that for many PREDICT 2
 tables, the unique index is the created `integer_id` variable because the unique ID columns for those
 tables are not actually unique in the downloaded data. If this is the case for your new endpoint, you can use
-the same logic used in the `ed_db_download()` function (in the p2_table lapply section lines 169-185). 
+the same logic used in the `ed_db_download()` function (in the p2_table lapply section lines 175-195). 
 
 #### Add convenience function to `tables.R`
 
