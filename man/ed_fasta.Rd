@@ -15,9 +15,10 @@ ed_fasta_(.data, filename = "", sequence = "sequence", ..., .dots)
 
 ed_tests_report(status = c("Result finalized, interpretation pending"),
   test_ids = NULL, meta_fields = c(sp_idname = "specimen_id_name", sp =
-  "species_scientific_name", country = "country", an_idname = "animal_id_name",
-  lab = "diag_lab_shortname", test_rq = "test_requested", meth =
-  "test_requested_protocol", seq_id = "sequence_id", test_id = "test_id"))
+  "species_scientific_name", country = "country", an_idname =
+  "animal_id_name", lab = "diag_lab_shortname", test_rq = "test_requested",
+  meth = "test_requested_protocol", seq_id = "sequence_id", test_id =
+  "test_id"))
 
 ed_fasta_group(.data, filepath = "", sequence = "sequence",
   grouping = "virus", ...)
