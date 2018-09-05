@@ -18,7 +18,6 @@ devtools::install_github('ecohealthalliance/eidith@v0.1.0')`
   and metadata.
 - New author: Emma Mendehlson joins the team! 🎉
 
- # New functionality
 
 # eidith 0.4
 
