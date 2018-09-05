@@ -8,6 +8,18 @@ package, like so:
 devtools::install_github('ecohealthalliance/eidith@v0.1.0')`
 ```
 
+# eidith 0.4.1
+
+- Two new data endpoints/tables available: `ed2_behavioral()`, which lists
+  qualitative interview events, and `ed2_training()` which lists training events.
+  There are primarily for reporting purposes.
+- Fix warnings due to deprecated functions in the **glue** package.
+- New developer documentation in the main GitHub repo for adding new endpoints
+  and metadata.
+- New author: Emma Mendehlson joins the team! 🎉
+
+ # New functionality
+
 # eidith 0.4
 
 ## New functionality
