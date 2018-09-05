@@ -21,16 +21,21 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
-
-<!-- docsearch -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
-<link href="../docsearch.css" rel="stylesheet">
-
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
+
 <meta property="og:title" content="Load PREDICT-2 EIDITH data from the local database — ed2_table" />
 
 <meta property="og:description" content="These functions load data from the locally-stored SQLite database of downloaded
@@ -42,6 +47,7 @@ PREDICT-1 data tables, while ed2 functions refer to PREDICT-2 data tables." />
 <meta name="twitter:card" content="summary" />
 
 
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -50,11 +56,6 @@ PREDICT-1 data tables, while ed2 functions refer to PREDICT-2 data tables." />
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-
-
-
-<!-- docsearch -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
   </head>
 
@@ -70,8 +71,8 @@ PREDICT-1 data tables, while ed2 functions refer to PREDICT-2 data tables." />
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">eidith</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4</span>
+        <a class="navbar-link" href="../index.html">EIDITH</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.1</span>
       </span>
     </div>
 
@@ -136,7 +137,7 @@ PREDICT-1 data tables, while ed2 functions refer to PREDICT-2 data tables." />
       
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
-          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
         </div>
       </form>
       
@@ -214,7 +215,11 @@ PREDICT-1 data tables, while <code>ed2</code> functions refer to PREDICT-2 data 
 
 <span class='fu'>ed2_human_temporary_settlements</span>(<span class='no'>...</span>)
 
-<span class='fu'>ed2_human_zoo</span>(<span class='no'>...</span>)</pre>
+<span class='fu'>ed2_human_zoo</span>(<span class='no'>...</span>)
+
+<span class='fu'>ed2_behavior</span>(<span class='no'>...</span>)
+
+<span class='fu'>ed2_training</span>(<span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -257,7 +262,7 @@ format, filtering such as <code>event_date &gt; "2014-01-01"</code> still works.
 
       <footer>
       <div class="copyright">
-  <p>Developed by Noam Ross, Nistara Randhawa, Cale Basaraba.</p>
+  <p>Developed by Noam Ross, Nistara Randhawa, Cale Basaraba, Emma Mendelsohn.</p>
 </div>
 
 <div class="pkgdown">
@@ -275,7 +280,13 @@ format, filtering such as <code>event_date &gt; "2014-01-01"</code> still works.
     
     apiKey: '2bf5efbf4437480db9685f3d09019982',
     indexName: 'eidith',
-    inputSelector: 'input#search-input.form-control'
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
   });
 </script>
 
