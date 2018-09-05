@@ -21,17 +21,23 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
-
-<!-- docsearch -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
-<link href="../docsearch.css" rel="stylesheet">
-
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
+
 <meta property="og:title" content="Function reference" />
+
 
 
 <!-- mathjax -->
@@ -42,11 +48,6 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-
-
-
-<!-- docsearch -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
   </head>
 
@@ -62,8 +63,8 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">eidith</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4</span>
+        <a class="navbar-link" href="../index.html">EIDITH</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.1</span>
       </span>
     </div>
 
@@ -128,7 +129,7 @@
       
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
-          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
         </div>
       </form>
       
@@ -148,6 +149,7 @@
     <table class="ref-index">
 
     <colgroup>
+      
       <col class="alias" />
       <col class="title" />
     </colgroup>
@@ -160,7 +162,7 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="ed_auth.html">ed_auth</a></code> </p>
         </td>
@@ -174,31 +176,31 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="ed_db_download.html">ed_db_download()</a></code> </p>
         </td>
         <td><p>Download EIDITH data to local storage</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="ed_db_export.html">ed_db_export()</a></code> </p>
         </td>
         <td><p>Export the local EIDITH database to a file</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="ed_db_delete.html">ed_db_delete()</a></code> </p>
         </td>
         <td><p>Delete the local EIDITH database</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="ed_db_check_status.html">ed_db_check_status()</a></code> </p>
         </td>
         <td><p>Get the status of the locally stored EIDITH database</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="ed_db_detailed_status.html">ed_db_detailed_status()</a></code> </p>
         </td>
@@ -212,33 +214,33 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="ed_metadata.html">ed_metadata()</a></code> <code><a href="ed_metadata.html">ed_taxagroups()</a></code> </p>
         </td>
         <td><p>EIDITH PREDICT-1 table metadata</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="ed2_metadata.html">ed2_metadata()</a></code> </p>
         </td>
         <td><p>EIDITH PREDICT-2 table metadata</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="ed_tables_conn.html">ed_tables_conn()</a></code> <code><a href="ed_tables_conn.html">ed2_tables_conn()</a></code> </p>
         </td>
         <td><p>Connections between tables</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="ed_table.html">ed_table_()</a></code> <code><a href="ed_table.html">ed_table()</a></code> <code><a href="ed_table.html">ed_events()</a></code> <code><a href="ed_table.html">ed_animals()</a></code> <code><a href="ed_table.html">ed_specimens()</a></code> <code><a href="ed_table.html">ed_tests()</a></code> <code><a href="ed_table.html">ed_viruses()</a></code> <code><a href="ed_table.html">ed_testspecimen()</a></code> </p>
         </td>
         <td><p>Load PREDICT-1 EIDITH data from the local database</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="ed2_table.html">ed2_events()</a></code> <code><a href="ed2_table.html">ed2_animals()</a></code> <code><a href="ed2_table.html">ed2_specimens()</a></code> <code><a href="ed2_table.html">ed2_animal_production()</a></code> <code><a href="ed2_table.html">ed2_crop_production()</a></code> <code><a href="ed2_table.html">ed2_zoo_sanctuary()</a></code> <code><a href="ed2_table.html">ed2_wildlife_restaurant()</a></code> <code><a href="ed2_table.html">ed2_natural_areas()</a></code> <code><a href="ed2_table.html">ed2_market_value_chain()</a></code> <code><a href="ed2_table.html">ed2_human()</a></code> <code><a href="ed2_table.html">ed2_tests()</a></code> <code><a href="ed2_table.html">ed2_test_serology()</a></code> <code><a href="ed2_table.html">ed2_test_interpreted()</a></code> <code><a href="ed2_table.html">ed2_human_animal_production()</a></code> <code><a href="ed2_table.html">ed2_extractive_industry()</a></code> <code><a href="ed2_table.html">ed2_dwellings()</a></code> <code><a href="ed2_table.html">ed2_human_crop_production()</a></code> <code><a href="ed2_table.html">ed2_human_extractive_industry()</a></code> <code><a href="ed2_table.html">ed2_human_hospital_worker()</a></code> <code><a href="ed2_table.html">ed2_human_hunter()</a></code> <code><a href="ed2_table.html">ed2_human_market()</a></code> <code><a href="ed2_table.html">ed2_human_restaurant()</a></code> <code><a href="ed2_table.html">ed2_human_sick_person()</a></code> <code><a href="ed2_table.html">ed2_human_temporary_settlements()</a></code> <code><a href="ed2_table.html">ed2_human_zoo()</a></code> </p>
+          <p><code><a href="ed2_table.html">ed2_events()</a></code> <code><a href="ed2_table.html">ed2_animals()</a></code> <code><a href="ed2_table.html">ed2_specimens()</a></code> <code><a href="ed2_table.html">ed2_animal_production()</a></code> <code><a href="ed2_table.html">ed2_crop_production()</a></code> <code><a href="ed2_table.html">ed2_zoo_sanctuary()</a></code> <code><a href="ed2_table.html">ed2_wildlife_restaurant()</a></code> <code><a href="ed2_table.html">ed2_natural_areas()</a></code> <code><a href="ed2_table.html">ed2_market_value_chain()</a></code> <code><a href="ed2_table.html">ed2_human()</a></code> <code><a href="ed2_table.html">ed2_tests()</a></code> <code><a href="ed2_table.html">ed2_test_serology()</a></code> <code><a href="ed2_table.html">ed2_test_interpreted()</a></code> <code><a href="ed2_table.html">ed2_human_animal_production()</a></code> <code><a href="ed2_table.html">ed2_extractive_industry()</a></code> <code><a href="ed2_table.html">ed2_dwellings()</a></code> <code><a href="ed2_table.html">ed2_human_crop_production()</a></code> <code><a href="ed2_table.html">ed2_human_extractive_industry()</a></code> <code><a href="ed2_table.html">ed2_human_hospital_worker()</a></code> <code><a href="ed2_table.html">ed2_human_hunter()</a></code> <code><a href="ed2_table.html">ed2_human_market()</a></code> <code><a href="ed2_table.html">ed2_human_restaurant()</a></code> <code><a href="ed2_table.html">ed2_human_sick_person()</a></code> <code><a href="ed2_table.html">ed2_human_temporary_settlements()</a></code> <code><a href="ed2_table.html">ed2_human_zoo()</a></code> <code><a href="ed2_table.html">ed2_behavior()</a></code> <code><a href="ed2_table.html">ed2_training()</a></code> </p>
         </td>
         <td><p>Load PREDICT-2 EIDITH data from the local database</p></td>
       </tr>
@@ -250,7 +252,7 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="ed_fasta.html">ed_fasta()</a></code> <code><a href="ed_fasta.html">ed_fasta_()</a></code> <code><a href="ed_fasta.html">ed_tests_report()</a></code> <code><a href="ed_fasta.html">ed_fasta_group()</a></code> <code><a href="ed_fasta.html">ed_report_excel()</a></code> </p>
         </td>
@@ -264,19 +266,19 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="ed_get.html">ed_get()</a></code> <code><a href="ed_get.html">ed_get_events()</a></code> <code><a href="ed_get.html">ed_get_animals()</a></code> <code><a href="ed_get.html">ed_get_specimens()</a></code> <code><a href="ed_get.html">ed_get_tests()</a></code> <code><a href="ed_get.html">ed_get_viruses()</a></code> <code><a href="ed_get.html">ed_get_testspecimen()</a></code> </p>
         </td>
         <td><p>Functions to download EIDITH tables via API</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="ed_process.html">ed_process()</a></code> </p>
         </td>
         <td><p>Standard post-processing of EIDITH exports</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="endpoints.html">p1_api_endpoints()</a></code> <code><a href="endpoints.html">p2_api_endpoints()</a></code> </p>
         </td>
@@ -290,7 +292,7 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="ed_mock.html">ed_table_mock_()</a></code> <code><a href="ed_mock.html">ed_table_mock()</a></code> <code><a href="ed_mock.html">ed_events_mock()</a></code> <code><a href="ed_mock.html">ed_animals_mock()</a></code> <code><a href="ed_mock.html">ed_specimens_mock()</a></code> <code><a href="ed_mock.html">ed_tests_mock()</a></code> <code><a href="ed_mock.html">ed_viruses_mock()</a></code> <code><a href="ed_mock.html">ed_testspecimen_mock()</a></code> </p>
         </td>
@@ -304,13 +306,13 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="ed2_expand_wide.html">ed2_expand_wide()</a></code> </p>
         </td>
         <td><p>Expand multiple-response fields into wide data form</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="ed2_expand_long.html">ed2_expand_long()</a></code> </p>
         </td>
@@ -324,7 +326,7 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="ed_contact.html">ed_contact</a></code> </p>
         </td>
@@ -351,7 +353,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Noam Ross, Nistara Randhawa, Cale Basaraba.</p>
+  <p>Developed by Noam Ross, Nistara Randhawa, Cale Basaraba, Emma Mendelsohn.</p>
 </div>
 
 <div class="pkgdown">
@@ -369,7 +371,13 @@
     
     apiKey: '2bf5efbf4437480db9685f3d09019982',
     indexName: 'eidith',
-    inputSelector: 'input#search-input.form-control'
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
   });
 </script>
 

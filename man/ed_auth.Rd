@@ -17,7 +17,7 @@ variables.
 
 To cache your credentials across multiple R sessions, save them in your
 personal \code{.Renviron} file. You can also use the \code{usethis} package to easily access
-and edit your \code{.Renviron} file:\preformatted{install.packages("usethis")`
+and edit your \code{.Renviron} file:\preformatted{install.packages("usethis")
 usethis::edit_r_environ()
 }
 

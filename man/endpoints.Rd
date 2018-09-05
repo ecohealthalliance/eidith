@@ -3,8 +3,6 @@
 \name{p1_api_endpoints}
 \alias{p1_api_endpoints}
 \alias{p2_api_endpoints}
-\alias{p2_api_endpoints}
-\alias{p1_api_endpoints}
 \title{Return he names of the tables in the EIDITH database.}
 \usage{
 p1_api_endpoints()

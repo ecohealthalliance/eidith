@@ -354,3 +354,15 @@ ed2_human_temporary_settlements <- function(...){
 ed2_human_zoo <- function(...){
   ed_table_("human_zoo_2", .dots = lazyeval::lazy_dots(...))
 }
+
+#' @rdname ed2_table
+#' @export
+ed2_behavior <- function(...){
+  ed_table_("behavioral_2", .dots = lazyeval::lazy_dots(...))
+}
+
+#' @rdname ed2_table
+#' @export
+ed2_training <- function(...){
+  ed_table_("training_2", .dots = lazyeval::lazy_dots(...))
+}

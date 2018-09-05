@@ -112,7 +112,7 @@ ed_db_presence <- function(){
 
 
 #' @importFrom DBI dbReadTable
-#' @importFrom glue glue collapse
+#' @importFrom glue glue glue_collapse
 #' @importFrom dplyr %>% group_by summarize filter mutate
 #' @importFrom purrr keep map
 #' @importFrom cli rule symbol
@@ -147,7 +147,7 @@ ed_create_banner <- function(path = NULL){
           return(glue(crayon::red(cli::symbol$cross), "  ", x))
         }else{
           return(glue(crayon::green(cli::symbol$tick), "  ", crayon::cyan(x), crayon::black(" Table"),
-                      collapse(rep(" ", max(nchar(p1_api_endpoints())) + 5 - nchar(x))),
+                      glue_collapse(rep(" ", max(nchar(p1_api_endpoints())) + 5 - nchar(x))),
                       crayon::magenta(glue("Last Downloaded: ",
                                            as.character(predict_1$most_recent[ind])))))
         }
@@ -161,7 +161,7 @@ ed_create_banner <- function(path = NULL){
           return(glue(crayon::red(cli::symbol$cross), "  ", crayon::red(x), crayon::black(" Table")))
         }else{
           return(glue(crayon::green(cli::symbol$tick), "  ", crayon::cyan(x), crayon::black(" Table"),
-                      collapse(rep(" ", max(nchar(p2_api_endpoints())) + 5 - nchar(x))),
+                      glue_collapse(rep(" ", max(nchar(p2_api_endpoints())) + 5 - nchar(x))),
                       crayon::magenta(glue("Last Downloaded: ",
                                            as.character(predict_2$most_recent[ind])))))
         }
@@ -170,9 +170,9 @@ ed_create_banner <- function(path = NULL){
 
     ed_banner <- glue(cli::rule(crayon::black(crayon::bold("EIDITH R Package"))),
                       crayon::black(crayon::italic("PREDICT-1 Table Status:")),
-                      collapse(p1_status_list, sep = "\n"),
+                      glue_collapse(p1_status_list, sep = "\n"),
                       crayon::black(crayon::italic("PREDICT-2 Table Status:")),
-                      collapse(p2_status_list, sep = "\n"), "\n","",
+                      glue_collapse(p2_status_list, sep = "\n"), "\n","",
                       .sep = "\n")
 
     return(ed_banner)

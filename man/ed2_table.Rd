@@ -27,6 +27,8 @@
 \alias{ed2_human_sick_person}
 \alias{ed2_human_temporary_settlements}
 \alias{ed2_human_zoo}
+\alias{ed2_behavior}
+\alias{ed2_training}
 \title{Load PREDICT-2 EIDITH data from the local database}
 \usage{
 ed2_events(...)
@@ -78,6 +80,10 @@ ed2_human_sick_person(...)
 ed2_human_temporary_settlements(...)
 
 ed2_human_zoo(...)
+
+ed2_behavior(...)
+
+ed2_training(...)
 }
 \arguments{
 \item{...}{arguments passed to \code{\link[dplyr:filter]{dplyr::filter()}} to subset data}

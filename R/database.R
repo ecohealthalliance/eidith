@@ -7,7 +7,7 @@ db2_tables <- c("events_2", "animals_2", "specimens_2", "animal_production_2", "
                 "human_animal_production_2", "extractive_industry_2", "human_crop_production_2",
                 "human_extractive_industry_2", "human_hospital_worker_2", "human_hunter_2",
                 "human_market_2", "human_restaurant_2", "human_sick_person_2", "human_temporary_settlements_2",
-                "human_zoo_2")
+                "human_zoo_2", "behavioral_2", "training_2")
 
 p1_table_names <- list(
   Event = "events",
@@ -43,7 +43,9 @@ p2_table_names <- list(
   HumanRestaurant = "human_restaurant_2",
   HumanSickPerson = "human_sick_person_2",
   HumanTemporarySettlements = "human_temporary_settlements_2",
-  HumanZoo = "human_zoo_2"
+  HumanZoo = "human_zoo_2",
+  Behavioral = "behavioral_2",
+  Training = "training_2"
 )
 
 
@@ -78,7 +80,9 @@ db_unique_indexes <- list(
   human_restaurant_2 = list("integer_id"),
   human_sick_person_2 = list("integer_id"),
   human_temporary_settlements_2 = list("integer_id"),
-  human_zoo_2 = list("integer_id")
+  human_zoo_2 = list("integer_id"),
+  behavioral_2 = list("integer_id"),
+  training_2 = list("integer_id")
   )
 
 db_other_indexes <- list(
@@ -112,7 +116,9 @@ db_other_indexes <- list(
   human_restaurant_2 = list("participant_id"),
   human_sick_person_2 = list("participant_id"),
   human_temporary_settlements_2 = list("participant_id"),
-  human_zoo_2 = list("participant_id")
+  human_zoo_2 = list("participant_id"),
+  behavioral_2 = list("transcript_id"),
+  training_2 = list("trainee")
 )
 
 
