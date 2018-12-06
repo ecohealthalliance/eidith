@@ -1,4 +1,4 @@
-.eidith_db <- NULL
+.eidith_env <- new.env(parent = emptyenv())
 #' @importFrom rappdirs user_data_dir
 default_sql_path <- function(){
   return(dplyr::if_else(
@@ -29,24 +29,30 @@ eidith_db <- function(path = NULL) {
     if(!dir.exists(dirname(current_path))) {
       dir.create(dirname(current_path), recursive=TRUE)
     }
-    if(is.null(.eidith_db) || .eidith_db$con@dbname != current_path) {
-      .eidith_db <<- dplyr::src_sqlite(current_path, create=TRUE) #connect to database and create if it isn't there
+    if(is.null(.eidith_env$db) ||
+       .eidith_env$db$con@dbname != current_path ||
+       !file.exists(current_path)) {
+      if (bindingIsLocked(".eidith_env", env=asNamespace("eidith"))) {
+        unlockBinding(".eidith_env", env=asNamespace("eidith"))
+      }
+      .eidith_env$db <<- dplyr::src_sqlite(current_path, create=TRUE) #connect to database and create if it isn't there
     }
-    return(.eidith_db)
+    return(.eidith_env$db)
   }
 }
 
 .onLoad <- function(libname, pkgname) {
-  .eidith_db <<- eidith_db()
-
+  unlockBinding(".eidith_env", env=asNamespace("eidith"))       #allows .eidith_env to be edited
+  .eidith_env$db <- NULL
+  invisible(eidith_db())
 }
 
 .onAttach <- function(libname, pkgname) {
+  unlockBinding(".eidith_env", env=asNamespace("eidith"))       #allows .eidith_env to be edited
   if(interactive()){
     packageStartupMessage(crayon::black(ed_db_presence()))
     packageStartupMessage(ed_db_status_msg(ed_db_make_status_msg()))
     packageStartupMessage(ed_db_check_status(path = NULL, inter = F))
   }
-  unlockBinding(".eidith_db", env=asNamespace("eidith"))       #allows .eidith_db to be edited
 }
 

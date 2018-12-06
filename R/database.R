@@ -307,7 +307,9 @@ ed_db_export <- function(filename, ...) {  #Exports the database file to new loc
 ed_db_delete <- function(path = NULL){
   suppressMessages({
     if(is.null(path)){
+      try(DBI::dbDisconnect(.eidith_env$db), silent = TRUE)
       status <- file.remove(default_sql_path())
+      .eidith_env$db <- NULL
       if(status == TRUE){
         cat_line("Local EIDITH database successfully deleted.")
         invisible(gc(verbose = F))
@@ -318,6 +320,7 @@ ed_db_delete <- function(path = NULL){
     }else{
       file.remove(path)
       invisible(gc(verbose = F))
+      .eidith_env$db <- NULL
     }
   })
 }
