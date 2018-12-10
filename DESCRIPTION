@@ -16,7 +16,7 @@ License: MIT + file LICENSE
 LazyData: true
 URL: https://github.com/ecohealthalliance/eidith
 BugReports: https://github.com/ecohealthalliance/eidith/issues
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 Depends: 
     R (>= 3.1.2)
 Imports:
@@ -40,7 +40,8 @@ Imports:
     lubridate,
     htmlwidgets,
     DT,
-    janitor
+    janitor,
+    digest
 Suggests:
     curl,
     testthat,

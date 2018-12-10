@@ -20,17 +20,19 @@ temp_sql_path <- function(){
 }
 
 eidith_db <- function(path = NULL) {
-  db <- mget("db", envir = .eidith_env, ifnotfound = NA)[[1]]
-
   if (!is.null(path)) {
+    dbobjname <- paste0("db", digest::sha1(path))
+    db <- mget(dbobjname, envir = .eidith_env, ifnotfound = NA)[[1]]
     if (inherits(db, "DBIConnection")) {
       if (DBI::dbIsValid(db) && normalizePath(path, mustWork = FALSE) == normalizePath(db@dbname, mustWork = FALSE)) {
         return(db)
       }
-      db <- DBI::dbConnect(RSQLite::SQLite(), path)
-      return(db)
     }
+     db <- DBI::dbConnect(RSQLite::SQLite(), path)
+     assign(dbobjname, db, envir = .eidith_env)
+     return(db)
   } else {
+    db <- mget("db", envir = .eidith_env, ifnotfound = NA)[[1]]
     current_path <- normalizePath(getOption("ed_sql_path", default_sql_path()),
                                   mustWork = FALSE)
     if (inherits(db, "DBIConnection")) {
@@ -50,9 +52,12 @@ eidith_db <- function(path = NULL) {
 
 
 eidith_disconnect <- function(.eidith_env) {
-  db <- mget("db", envir = .eidith_env, ifnotfound = NA)[[1]]
+  for (x in c("db", paste0("db", digest::sha1(temp_sql_path())))) {
+  db <- mget(x, envir = .eidith_env, ifnotfound = NA)[[1]]
   if (inherits(db, "DBIConnection")) {
     DBI::dbDisconnect(db)
+  }
+  assign(x, NULL, envir = .eidith_env)
   }
 }
 
@@ -61,13 +66,11 @@ eidith_disconnect <- function(.eidith_env) {
 reg.finalizer(.eidith_env, eidith_disconnect, onexit = TRUE)
 
 .onLoad <- function(libname, pkgname) {
-  unlockBinding(".eidith_env", env=asNamespace("eidith"))       #allows .eidith_env to be edited
-  invisible(eidith_db())
+  ed_db_delete(temp_sql_path(), verbose = FALSE)
 }
 
 .onAttach <- function(libname, pkgname) {
-  unlockBinding(".eidith_env", env=asNamespace("eidith"))       #allows .eidith_env to be edited
-  if(interactive()){
+  if (interactive())  {
     packageStartupMessage(crayon::black(ed_db_presence()))
     packageStartupMessage(ed_db_status_msg(ed_db_make_status_msg()))
     packageStartupMessage(ed_db_check_status(path = NULL, inter = FALSE))

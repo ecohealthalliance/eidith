@@ -156,11 +156,10 @@ db_other_indexes <- list(
 #' @export
 ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_endpoints(), verbose=interactive()) {
   auth <- ed_auth(verbose = verbose)
-  if(verbose) message("Downloading and processing EIDITH data. This may take a few minutes.")
+  if (verbose) message("Downloading and processing EIDITH data. This may take some time.")
 
-  lapply(dplyr::db_list_tables(eidith_db(temp_sql_path())), function(x) {
-    dplyr::db_drop_table(eidith_db(temp_sql_path()), x)}
-  )
+  eidith_disconnect(.eidith_env)
+  ed_db_delete(temp_sql_path())
 
   #P1 tables
   lapply(p1_tables, function(x) {
@@ -247,6 +246,7 @@ ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_en
     suppressWarnings(file.remove(temp_sql_path()))
     cat(ed_db_presence(), ed_db_status_msg(ed_db_make_status_msg()))
     cat(ed_db_check_status())
+  ed_db_delete(temp_sql_path())
   return(invisible(0))
   }
 
@@ -303,24 +303,35 @@ ed_db_export <- function(filename, ...) {  #Exports the database file to new loc
 #' This function allows you to delete the local SQLite EIDITH database.
 #'
 #' @param path Path to locate the database if it is not in its default location.
+#' @param verbose print messages?
 #' @export
-ed_db_delete <- function(path = NULL){
+
+ed_db_delete <- function(path = NULL, verbose = TRUE) {
   suppressMessages({
-    if(is.null(path)){
-      try(DBI::dbDisconnect(.eidith_env$db), silent = TRUE)
-      status <- file.remove(default_sql_path())
-      .eidith_env$db <- NULL
-      if(status == TRUE){
-        cat_line("Local EIDITH database successfully deleted.")
-        invisible(gc(verbose = F))
-      }else{
-        cat_line("There were problems deleting local EIDITH database, check file path!")
-        invisible(gc(verbose = F))
+    if (is.null(path)) {
+      try(eidith_disconnect(.eidith_env), silent = TRUE)
+      path <- default_sql_path()
+      if (file.exists(path))
+        status <- file.remove(default_sql_path())
+      else {
+        if (verbose) cat_line("No EIDITH database found.")
+        status <- FALSE
       }
-    }else{
-      file.remove(path)
-      invisible(gc(verbose = F))
       .eidith_env$db <- NULL
+      if (status == TRUE) {
+        if (verbose) cat_line("Local EIDITH database successfully deleted.")
+        invisible(gc(verbose = FALSE))
+      } else if (file.exists(path)) {
+        if (verbose) cat_line("There were problems deleting local EIDITH database, check that you have appropriate access.")
+        invisible(gc(verbose = FALSE))
+      }
+      assign("db", NULL, envir = .eidith_env)
+    } else {
+      try(eidith_disconnect(.eidith_env), silent = TRUE)
+      if (file.exists(path))
+        status <- file.remove(path)
+      invisible(gc(verbose = FALSE))
+      assign("db", NULL, envir = .eidith_env)
     }
   })
 }

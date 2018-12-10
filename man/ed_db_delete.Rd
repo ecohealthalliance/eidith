@@ -4,10 +4,12 @@
 \alias{ed_db_delete}
 \title{Delete the local EIDITH database}
 \usage{
-ed_db_delete(path = NULL)
+ed_db_delete(path = NULL, verbose = TRUE)
 }
 \arguments{
 \item{path}{Path to locate the database if it is not in its default location.}
+
+\item{verbose}{print messages?}
 }
 \description{
 This function allows you to delete the local SQLite EIDITH database.
