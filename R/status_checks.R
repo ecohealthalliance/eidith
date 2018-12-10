@@ -43,7 +43,7 @@ ed_db_field_check <- function(tb, path, df2 = ed2_metadata()){
 #' @importFrom RSQLite dbGetQuery dbWriteTable
 #' @export
 ed_db_check_status <- function(path=NULL, inter = T) {
-  status <- length(dbListTables(eidith_db(path)$con)) > 0
+  status <- length(dbListTables(eidith_db(path))) > 0
   ed2_meta <- ed2_metadata()
   if(status == FALSE){
     if(interactive() & inter){
@@ -57,10 +57,10 @@ ed_db_check_status <- function(path=NULL, inter = T) {
   }else{
   edb <- eidith_db(path)
   dbstatus <- ""
-  if(!(all(c(db_tables, db2_tables) %in% db_list_tables(edb$con)))) {
+  if(!(all(c(db_tables, db2_tables) %in% db_list_tables(edb)))) {
     #find out which tables are missing and then ask the user if they wish to download them?
-    missing_p1_tables <- db_tables[which(db_tables %in% db_list_tables(edb$con) == FALSE)]
-    missing_p2_tables <- db2_tables[which(db2_tables %in% db_list_tables(edb$con) == FALSE)]
+    missing_p1_tables <- db_tables[which(db_tables %in% db_list_tables(edb) == FALSE)]
+    missing_p2_tables <- db2_tables[which(db2_tables %in% db_list_tables(edb) == FALSE)]
     dl_p1_tables <- names(purrr::keep(p1_table_names, function(x) x %in% missing_p1_tables))
     dl_p2_tables <- names(purrr::keep(p2_table_names, function(x) x %in% missing_p2_tables))
 
@@ -101,7 +101,7 @@ ed_db_check_status <- function(path=NULL, inter = T) {
 
 
 ed_db_presence <- function(){
-  status <- length(dbListTables(eidith_db()$con)) > 0
+  status <- length(dbListTables(eidith_db())) > 0
   if(status == FALSE){
     line1 <- (cli::rule(crayon::bold("Welcome to the EIDITH R Package!")))
     return(line1)
@@ -121,7 +121,7 @@ ed_db_presence <- function(){
 ed_create_banner <- function(path = NULL){
   edb <- eidith_db(path)
   tryCatch(expr = {
-    download_dates <- dbReadTable(edb$con, "status") %>%
+    download_dates <- dbReadTable(edb, "status") %>%
       group_by(t_name) %>%
       summarize(most_recent = max(as.Date(last_download)))
 
@@ -190,19 +190,19 @@ ed_create_banner <- function(path = NULL){
 #' @importFrom DBI dbListTables
 ed_db_make_status_msg <- function(path = NULL){
   edb <- eidith_db(path)
-  if("status" %in% dbListTables(edb$con)){
-  dbExecute(edb$con, "analyze")
-  download_dates <- dbReadTable(edb$con, "status") %>%
+  if("status" %in% dbListTables(edb)){
+  dbExecute(edb, "analyze")
+  download_dates <- dbReadTable(edb, "status") %>%
     group_by(t_name) %>%
     summarize(most_recent = max(as.Date(last_download)))
-  records <- dbReadTable(edb$con, "sqlite_stat1")
+  records <- dbReadTable(edb, "sqlite_stat1")
   p1_records <- filter(records, str_detect(tbl, "2") == FALSE & tbl != "status")
   p2_records <- filter(records, str_detect(tbl, "2"))
   #mutate_(string = ~paste(prettyNum(rows, big.mark=","), tbl))
-  tables <- dbListTables(edb$con)
+  tables <- dbListTables(edb)
 
   if("events" %in% tables){
-    p1_countries <- dbReadTable(edb$con, "events") %>%
+    p1_countries <- dbReadTable(edb, "events") %>%
       group_by_("country") %>%
       summarise_(n=~n()) %>%
       collect() %>%
@@ -212,7 +212,7 @@ ed_db_make_status_msg <- function(path = NULL){
     p1_countries <- NULL
   }
   if("events_2" %in% tables){
-    p2_countries <- dbReadTable(edb$con, "events_2") %>%
+    p2_countries <- dbReadTable(edb, "events_2") %>%
       group_by_("country") %>%
       summarise_(n=~n()) %>%
       collect() %>%
@@ -232,11 +232,11 @@ ed_db_make_status_msg <- function(path = NULL){
     p2_countries = p2_countries,
     n_countries = n_countries
     # last_modified_records = ~quicktime2(map_chr(db_tables[1:5], function(db_table) {
-    #   DBI::dbGetQuery(edb$con, paste0("SELECT MAX(date_modified_",db_table,") FROM ", db_table ))[[1]]
+    #   DBI::dbGetQuery(edb, paste0("SELECT MAX(date_modified_",db_table,") FROM ", db_table ))[[1]]
     # })),
     # last_modified_record = ~max(last_modified_records),
     # last_table = ~db_tables[1:5][last_modified_records == last_modified_record],
-    # last_download = ~DBI::dbGetQuery(edb$con, "SELECT last_download FROM status")[[1]],
+    # last_download = ~DBI::dbGetQuery(edb, "SELECT last_download FROM status")[[1]],
     # records = records
   )
   } else{

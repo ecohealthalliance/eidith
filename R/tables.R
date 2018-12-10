@@ -61,7 +61,7 @@ ed_table_ <- function(table, ..., .dots) {
 
   #add class attributes to P2 tables
   if(stri_detect_fixed(table, "2")){
-    ed_tb <- dbReadTable(eidith_db()$con, table)
+    ed_tb <- dbReadTable(eidith_db(), table)
     #adding notes
     ed_tb <- ed_tb %>%
       filter_(.dots=dots)
@@ -89,7 +89,7 @@ ed_table_ <- function(table, ..., .dots) {
     print(ed_tb, tibble_print = FALSE)
   }
   }else{
-    ed_tb <- dbReadTable(eidith_db()$con, table)
+    ed_tb <- dbReadTable(eidith_db(), table)
     ed_tb <- ed_tb %>%
       filter_(.dots=dots) %>%
       fix_classes() %>%
