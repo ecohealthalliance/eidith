@@ -37,9 +37,9 @@ ed_db_field_check <- function(tb, path, df2 = ed2_metadata()){
 #' @param inter whether function is run interactively
 #' @seealso  [ed_db_download()], [ed_db_updates()], [ed_db_export()]
 #' @importFrom purrr map_chr keep
-#' @importFrom dplyr tbl group_by_ summarise_ collect lst db_list_tables mutate_ lst_
+#' @importFrom dplyr tbl group_by_ summarise_ collect lst mutate_ lst_
 #' @importFrom tidyr separate_
-#' @importFrom DBI dbGetQuery dbExecute
+#' @importFrom DBI dbGetQuery dbExecute dbListTables
 #' @importFrom RSQLite dbGetQuery dbWriteTable
 #' @export
 ed_db_check_status <- function(path=NULL, inter = T) {
@@ -57,10 +57,10 @@ ed_db_check_status <- function(path=NULL, inter = T) {
   }else{
   edb <- eidith_db(path)
   dbstatus <- ""
-  if(!(all(c(db_tables, db2_tables) %in% db_list_tables(edb)))) {
+  if(!(all(c(db_tables, db2_tables) %in% dbListTables(edb)))) {
     #find out which tables are missing and then ask the user if they wish to download them?
-    missing_p1_tables <- db_tables[which(db_tables %in% db_list_tables(edb) == FALSE)]
-    missing_p2_tables <- db2_tables[which(db2_tables %in% db_list_tables(edb) == FALSE)]
+    missing_p1_tables <- db_tables[which(db_tables %in% dbListTables(edb) == FALSE)]
+    missing_p2_tables <- db2_tables[which(db2_tables %in% dbListTables(edb) == FALSE)]
     dl_p1_tables <- names(purrr::keep(p1_table_names, function(x) x %in% missing_p1_tables))
     dl_p2_tables <- names(purrr::keep(p2_table_names, function(x) x %in% missing_p2_tables))
 
@@ -179,6 +179,7 @@ ed_create_banner <- function(path = NULL){
   },
   error = function(err){
     error_line <- (green("There are unspecified errors in the local EIDITH database. If problems persist after using ed_db_download(), see ?ed_contact.\n"))
+    eidith_disconnect(.eidith_env)
     return(paste(error_line, err, sep = "\n"))
     }
 
