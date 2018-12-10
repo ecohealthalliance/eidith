@@ -158,8 +158,8 @@ ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_en
   auth <- ed_auth(verbose = verbose)
   if(verbose) message("Downloading and processing EIDITH data. This may take a few minutes.")
 
-  lapply(dplyr::db_list_tables(eidith_db(temp_sql_path())$con), function(x) {
-    dplyr::db_drop_table(eidith_db(temp_sql_path())$con, x)}
+  lapply(dplyr::db_list_tables(eidith_db(temp_sql_path())), function(x) {
+    dplyr::db_drop_table(eidith_db(temp_sql_path()), x)}
   )
 
   #P1 tables
@@ -195,15 +195,15 @@ ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_en
   })
 
   # if(nrow(p2_key_errors) > 0){
-  #   dbWriteTable(eidith_db(temp_sql_path())$con, p2_key_errors, name = "p2_unique_id_errors", append = TRUE)
+  #   dbWriteTable(eidith_db(temp_sql_path()), p2_key_errors, name = "p2_unique_id_errors", append = TRUE)
   # }
   #Check that requested tables have downloaded:
   p1_dls <- unname(sapply(p1_tables, function(x) p1_table_names[[x]]))
   p2_dls <- unname(sapply(p2_tables, function(x) p2_table_names[[x]]))
 
   downloaded_tables <- unlist(c(p1_dls, p2_dls))
-  if(!(all(downloaded_tables %in% db_list_tables(eidith_db(temp_sql_path())$con)))) {
-    downloaded_tables <- downloaded_tables[which(downloaded_tables %in% db_list_tables(eidith_db(temp_sql_path())$con))]
+  if(!(all(downloaded_tables %in% db_list_tables(eidith_db(temp_sql_path()))))) {
+    downloaded_tables <- downloaded_tables[which(downloaded_tables %in% db_list_tables(eidith_db(temp_sql_path())))]
   }
   ed2_meta <- ed2_metadata()
   if(!all(sapply(downloaded_tables, function(x) ed_db_field_check(x, temp_sql_path(), ed2_meta)))){
@@ -226,22 +226,22 @@ ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_en
     }
 }
   lapply(downloaded_tables, function(x){
-      temp_tbl <- dbReadTable(eidith_db(temp_sql_path())$con, x)
-      dbWriteTable(eidith_db()$con, value = temp_tbl, name = x, overwrite = TRUE)
+      temp_tbl <- dbReadTable(eidith_db(temp_sql_path()), x)
+      dbWriteTable(eidith_db(), value = temp_tbl, name = x, overwrite = TRUE)
     })
 
-    # if("p2_unique_id_errors" %in% dbListTables(eidith_db(temp_sql_path())$con)){
-    #   dbWriteTable(eidith_db()$con, value = dbReadTable(eidith_db(temp_sql_path())$con, "p2_unique_id_errors"),
+    # if("p2_unique_id_errors" %in% dbListTables(eidith_db(temp_sql_path()))){
+    #   dbWriteTable(eidith_db(), value = dbReadTable(eidith_db(temp_sql_path()), "p2_unique_id_errors"),
     #               name = "p2_unique_id_errors", append = TRUE)
     # }
 
     # creating status
     status_df <- data_frame(unique_id = seq_along(downloaded_tables), t_name = unlist(downloaded_tables), last_download = as.character(Sys.time()))
 
-    if("status" %in% db_list_tables(eidith_db()$con)){
-      dbWriteTable(eidith_db()$con, name = "status", value = status_df, append = TRUE, row.names = FALSE)
+    if("status" %in% db_list_tables(eidith_db())){
+      dbWriteTable(eidith_db(), name = "status", value = status_df, append = TRUE, row.names = FALSE)
     }else{
-      dbWriteTable(eidith_db()$con, value = status_df,
+      dbWriteTable(eidith_db(), value = status_df,
                    name="status", row.names = FALSE)
     }
     suppressWarnings(file.remove(temp_sql_path()))
@@ -270,7 +270,7 @@ ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_en
 #' @export
 #' @importFrom RSQLite sqliteCopyDatabase
 ed_db_export <- function(filename, ...) {  #Exports the database file to new location.  options(eidith_db) should let you change it.
-  sqliteCopyDatabase(eidith_db()$con, filename, ...)
+  sqliteCopyDatabase(eidith_db(), filename, ...)
 }
 
 #
