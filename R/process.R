@@ -158,7 +158,7 @@ ed2_process <- function(dat, endpt) {
   })
 
 
-    # dat <-
+  # dat <-
   #   map_if(dat, ~ all(. %in% c("yes", "no", NA_character_)),  ~ . == "yes")
   # dat <- as_data_frame(dat)
   #
@@ -235,11 +235,11 @@ pp_Animal <- function(dat) {
           "binomial" = "itis_binomial"
         )
       )
-  dat <- select_(dat, .dots=c("-taxagroup"))
-  dat <- left_join(dat, ed_taxagroups_, by="order")
-  dat <- mutate_(dat, taxagroup = ~if_else((is.na(taxagroup) | taxagroup=="Unknown") & (class == "Aves"), "Birds", taxagroup))
-  dat <- mutate_(dat, taxagroup = ~if_else((is.na(taxagroup) | taxagroup=="Unknown") & (class == "Reptilia"), "Reptiles", taxagroup))
-    }
+    dat <- select_(dat, .dots=c("-taxagroup"))
+    dat <- left_join(dat, ed_taxagroups_, by="order")
+    dat <- mutate_(dat, taxagroup = ~if_else((is.na(taxagroup) | taxagroup=="Unknown") & (class == "Aves"), "Birds", taxagroup))
+    dat <- mutate_(dat, taxagroup = ~if_else((is.na(taxagroup) | taxagroup=="Unknown") & (class == "Reptilia"), "Reptiles", taxagroup))
+  }
   return(dat)
 }
 
@@ -329,9 +329,10 @@ pp_TestIDSpecimenID <- function(dat) {
 
 #' @importFrom stringi stri_extract_all_regex stri_replace_all_fixed
 #' @importFrom dplyr na_if
+#' @importFrom purrr modify_depth
 get_genbank <- function(interpretations) {
-  accession <-
-    stri_extract_all_regex(interpretations, "([A-Z]{1,2}_?[0-9]{5,6})")
+  accession <- stri_extract_all_regex(interpretations, "([A-Z]{1,2}_?[0-9]{5,6})") %>%
+    modify_depth(.depth = 1, ~paste(.x, collapse = "; "))
   accession <- stri_replace_all_fixed(accession, "_", "")
   accession <- na_if(accession, "character(0)")
   return(accession)
