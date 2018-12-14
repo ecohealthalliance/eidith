@@ -244,7 +244,7 @@ ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_en
                    name="status", row.names = FALSE)
     }
     suppressWarnings(file.remove(temp_sql_path()))
-    cat(ed_db_presence(), ed_db_status_msg(ed_db_make_status_msg()))
+    cat(ed_db_presence())
     cat(ed_db_check_status())
   ed_db_delete(temp_sql_path())
   return(invisible(0))
