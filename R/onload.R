@@ -71,8 +71,7 @@ reg.finalizer(.eidith_env, eidith_disconnect, onexit = TRUE)
 
 .onAttach <- function(libname, pkgname) {
   if (interactive())  {
-    packageStartupMessage(crayon::black(ed_db_presence()))
-    packageStartupMessage(ed_db_status_msg(ed_db_make_status_msg()))
+    packageStartupMessage(ed_db_presence())
     packageStartupMessage(ed_db_check_status(path = NULL, inter = FALSE))
   }
 }

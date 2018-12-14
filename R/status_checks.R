@@ -23,8 +23,6 @@ ed_db_field_check <- function(tb, path, df2 = ed2_metadata()){
 }
 
 
-
-
 #' Get the status of the locally stored EIDITH database
 #'
 #' @description
@@ -43,236 +41,190 @@ ed_db_field_check <- function(tb, path, df2 = ed2_metadata()){
 #' @importFrom RSQLite dbGetQuery dbWriteTable
 #' @export
 ed_db_check_status <- function(path=NULL, inter = T) {
-  status <- length(dbListTables(eidith_db(path))) > 0
+
+  edb <- eidith_db(path)
+  edt <- dbListTables(edb)
   ed2_meta <- ed2_metadata()
-  if(status == FALSE){
+
+  # check that tables exist
+  tables_exist <- length(edt) > 0
+
+  # case when no tables exist
+  if(!tables_exist){
     if(interactive() & inter){
       dl_opt <- menu(c("Yes", "No"), title = "Local EIDITH database is missing.\nWould you like to download it?")
 
       if(dl_opt == 1) ed_db_download()
-      if(dl_opt == 2) dbstatus <- list(status_msg1 ="There is no local EIDITH database.\nRun ed_db_download() to download.")
+      if(dl_opt == 2) dbstatus <- list(status_msg1 ="There is no local EIDITH database.\ned_db_download() to download.")
+
     }else{
-      dbstatus <- list(status_msg1 ="There is no local EIDITH database.\nRun ed_db_download() to download.")
+      dbstatus <- list(status_msg1 ="There is no local EIDITH database.\ned_db_download() to download.")
     }
-  }else{
-  edb <- eidith_db(path)
-  dbstatus <- ""
-  if(!(all(c(db_tables, db2_tables) %in% dbListTables(edb)))) {
-    #find out which tables are missing and then ask the user if they wish to download them?
-    missing_p1_tables <- db_tables[which(db_tables %in% dbListTables(edb) == FALSE)]
-    missing_p2_tables <- db2_tables[which(db2_tables %in% dbListTables(edb) == FALSE)]
-    dl_p1_tables <- names(purrr::keep(p1_table_names, function(x) x %in% missing_p1_tables))
-    dl_p2_tables <- names(purrr::keep(p2_table_names, function(x) x %in% missing_p2_tables))
-
-    if(interactive() & inter){
-    dl_opt <- menu(c("Yes", "No"), title = "Local EIDITH database is missing tables.\nWould you like to download missing tables?")
-
-    if(dl_opt == 1) ed_db_download(dl_p1_tables, dl_p2_tables)
-    if(dl_opt == 2) dbstatus <- list(status_msg1 ="Local EIDITH database is available, but missing tables.\nRun ed_db_check_status() to update")
-    }else{
-      dbstatus <- list(status_msg1 ="Local EIDITH database is available, but missing tables.\nRun ed_db_check_status() to update")
-    }
-  }else if(!all(sapply(c(db_tables[-7], db2_tables), function(x) ed_db_field_check(x, NULL, ed2_meta)))){
-    #find out which tables have errors
-    error_p1_tables <- sapply(db_tables[-7], function(x) ed_db_field_check(x, NULL, ed2_meta))
-    error_p2_tables <- sapply(db2_tables, function(x) ed_db_field_check(x, NULL, ed2_meta))
-    dl_p1_tables <- names(purrr::keep(p1_table_names, function(x) x %in% error_p1_tables))
-    dl_p2_tables <- names(purrr::keep(p2_table_names, function(x) x %in% error_p2_tables))
-
-    if(interactive() & inter){
-    dl_opt <- menu(c("Yes", "No"), title = "Local EIDITH database has tables with corrupt or empty fields.\nWould you like to re-download these tables to correct errors?")
-
-    if(dl_opt == 1) ed_db_download(dl_p1_tables, dl_p2_tables)
-    if(dl_opt == 2) dbstatus <- list(status_msg2 ="Local EIDITH database fields are empty or corrupt. Use ed_db_download() to attempt a clean install.")
-    }else{
-      dbstatus <- list(status_msg ="Local EIDITH database fields are empty or corrupt. Use ed_db_download() to attempt a clean install.")
-    }
-  }else{
-    dbstatus <- "Local EIDITH database contains all tables with all expected fields!\n"
   }
+
+  # check that status table is not corrupt
+  status_table_not_corrupt <- ed_db_status_table()
+
+  # case when status table corrupt
+  if(!status_table_not_corrupt){
+    dbstatus <- list(status_msg1 ="Database is out of date or corrupt. Delete and re-download:\ned_db_delete() followed by ed_db_download()")
   }
+
+  # case where tables exist
+  if(tables_exist & status_table_not_corrupt){
+
+    dbstatus <- ""
+
+    # find out if any tables are missing and then ask the user if they wish to download them?
+    if(!(all(c(db_tables, db2_tables) %in% dbListTables(edb)))) {
+      missing_p1_tables <- db_tables[which(db_tables %in% dbListTables(edb) == FALSE)]
+      missing_p2_tables <- db2_tables[which(db2_tables %in% dbListTables(edb) == FALSE)]
+      dl_p1_tables <- names(purrr::keep(p1_table_names, function(x) x %in% missing_p1_tables))
+      dl_p2_tables <- names(purrr::keep(p2_table_names, function(x) x %in% missing_p2_tables))
+
+      if(interactive() & inter){
+        dl_opt <- menu(c("Yes", "No"), title = "Local EIDITH database is missing tables.\nWould you like to download missing tables?")
+
+        if(dl_opt == 1) ed_db_download(dl_p1_tables, dl_p2_tables)
+        if(dl_opt == 2) dbstatus <- list(status_msg1 ="Local EIDITH database is available, but missing tables.\ned_db_check_status() to update")
+      }else{
+        dbstatus <- list(status_msg1 ="Local EIDITH database is available, but missing tables.\ned_db_check_status() to update")
+      }
+    }else{
+      dbstatus <- "Local EIDITH database contains all tables with all expected fields!\n"
+    }
+
+    #check tables that exist for errors
+    tbls_to_check <- edt[!grepl("sqlite|status", edt)]
+
+    if(!all(sapply(tbls_to_check, function(x) ed_db_field_check(x, NULL, ed2_meta)))){
+      error_p1_tables <- sapply(db_tables[-7], function(x) ed_db_field_check(x, NULL, ed2_meta))
+      error_p2_tables <- sapply(db2_tables, function(x) ed_db_field_check(x, NULL, ed2_meta))
+      dl_p1_tables <- names(purrr::keep(p1_table_names, function(x) x %in% error_p1_tables))
+      dl_p2_tables <- names(purrr::keep(p2_table_names, function(x) x %in% error_p2_tables))
+
+
+      dbstatus <- list(status_msg ="Local EIDITH database fields are empty or corrupt. Delete and re-download:\ned_db_delete() followed by ed_db_download().")
+    }
+  }
+
   if(interactive() & inter){
-   cat_line(green(dbstatus))
+    cat_line(cyan(dbstatus))
   }else{
-  return(green(dbstatus))
+    return(cyan(dbstatus))
   }
-
 }
 
 
 ed_db_presence <- function(){
-  status <- length(dbListTables(eidith_db())) > 0
-  if(status == FALSE){
-    line1 <- (cli::rule(crayon::bold("Welcome to the EIDITH R Package!")))
+  status <- all(length(dbListTables(eidith_db())) > 0, ed_db_status_table()) # tables exist and status not corrupt
+  if(!status){
+    line1 <- (cli::rule(crayon::green("Welcome to the EIDITH R Package!")))
     return(line1)
-    }else{
+  }else{
     ed_create_banner()
   }
 }
 
 
-#' @importFrom DBI dbReadTable
+#' @importFrom DBI dbReadTable dbListTables dbExecute
 #' @importFrom glue glue glue_collapse
 #' @importFrom dplyr %>% group_by summarize filter mutate
 #' @importFrom purrr keep map
 #' @importFrom cli rule symbol
-#' @importFrom crayon cyan black green red magenta
+#' @importFrom crayon cyan green red magenta
 #' @importFrom stringr str_detect
 ed_create_banner <- function(path = NULL){
-  edb <- eidith_db(path)
-  tryCatch(expr = {
-    download_dates <- dbReadTable(edb, "status") %>%
-      group_by(t_name) %>%
-      summarize(most_recent = max(as.Date(last_download)))
 
-    predict_1 <- download_dates %>%
-      filter(str_detect(t_name, "2") == FALSE)
+  if(ed_db_status_table()){ #only run banner if status table is not corrupt
 
-    if(nrow(predict_1) > 0){
-      predict_1 <- predict_1  %>%
-        mutate(display_name = unlist(purrr::map(t_name, function(x) unlist(names(purrr::keep(p1_table_names, function(y) y == x))))))
-    }
+    edb <- eidith_db(path)
+    tryCatch(expr = {
+      download_dates <- dbReadTable(edb, "status") %>%
+        group_by(t_name) %>%
+        summarize(most_recent = max(as.Date(last_download)))
 
-    predict_2 <- download_dates %>%
-      filter(str_detect(t_name, "2") == TRUE)
+      predict_1 <- download_dates %>%
+        filter(str_detect(t_name, "2") == FALSE)
 
-    if(nrow(predict_2) > 0){
-      predict_2 <- mutate(predict_2, display_name = unlist(purrr::map(t_name, function(x) unlist(names(purrr::keep(p2_table_names, function(y) y == x))))))
-    }
+      if(nrow(predict_1) > 0){
+        predict_1 <- predict_1  %>%
+          mutate(display_name = unlist(purrr::map(t_name, function(x) unlist(names(purrr::keep(p1_table_names, function(y) y == x))))))
+      }
 
-    suppressWarnings({
-      p1_status_list <- purrr::map(p1_api_endpoints(), function(x){
-        ind <- which(predict_1$display_name == x)
-        if(length(ind) == 0){
-          return(glue(crayon::red(cli::symbol$cross), "  ", x))
-        }else{
-          return(glue(crayon::green(cli::symbol$tick), "  ", crayon::cyan(x), crayon::black(" Table"),
-                      glue_collapse(rep(" ", max(nchar(p1_api_endpoints())) + 5 - nchar(x))),
-                      crayon::magenta(glue("Last Downloaded: ",
-                                           as.character(predict_1$most_recent[ind])))))
-        }
+      predict_2 <- download_dates %>%
+        filter(str_detect(t_name, "2") == TRUE)
+
+      if(nrow(predict_2) > 0){
+        predict_2 <- mutate(predict_2, display_name = unlist(purrr::map(t_name, function(x) unlist(names(purrr::keep(p2_table_names, function(y) y == x))))))
+      }
+
+      suppressWarnings({
+        p1_status_list <- purrr::map(p1_api_endpoints(), function(x){
+          ind <- which(predict_1$display_name == x)
+          if(length(ind) == 0){
+            return(glue(crayon::red(cli::symbol$cross), "  ", crayon::red(x)))
+          }else{
+            return(glue(crayon::green(cli::symbol$tick), "  ", crayon::green(x),
+                        glue_collapse(rep(" ", max(nchar(p1_api_endpoints())) + 5 - nchar(x))),
+                        crayon::magenta(glue("Last Downloaded: ",
+                                             as.character(predict_1$most_recent[ind])))))
+          }
+        })
       })
-    })
 
-    suppressWarnings({
-      p2_status_list <- purrr::map(p2_api_endpoints(), function(x){
-        ind <- which(predict_2$display_name == x)
-        if(length(ind) == 0){
-          return(glue(crayon::red(cli::symbol$cross), "  ", crayon::red(x), crayon::black(" Table")))
-        }else{
-          return(glue(crayon::green(cli::symbol$tick), "  ", crayon::cyan(x), crayon::black(" Table"),
-                      glue_collapse(rep(" ", max(nchar(p2_api_endpoints())) + 5 - nchar(x))),
-                      crayon::magenta(glue("Last Downloaded: ",
-                                           as.character(predict_2$most_recent[ind])))))
-        }
+      suppressWarnings({
+        p2_status_list <- purrr::map(p2_api_endpoints(), function(x){
+          ind <- which(predict_2$display_name == x)
+          if(length(ind) == 0){
+            return(glue(crayon::red(cli::symbol$cross), "  ", crayon::red(x)))
+          }else{
+            return(glue(crayon::green(cli::symbol$tick), "  ", crayon::green(x),
+                        glue_collapse(rep(" ", max(nchar(p2_api_endpoints())) + 5 - nchar(x))),
+                        crayon::magenta(glue("Last Downloaded: ",
+                                             as.character(predict_2$most_recent[ind])))))
+          }
+        })
       })
-    })
 
-    ed_banner <- glue(cli::rule(crayon::black(crayon::bold("EIDITH R Package"))),
-                      crayon::black(crayon::italic("PREDICT-1 Table Status:")),
-                      glue_collapse(p1_status_list, sep = "\n"),
-                      crayon::black(crayon::italic("PREDICT-2 Table Status:")),
-                      glue_collapse(p2_status_list, sep = "\n"), "\n","",
-                      .sep = "\n")
+      ed_banner <- glue(cli::rule(crayon::cyan(crayon::bold("EIDITH R Package"))),
+                        crayon::cyan(crayon::italic("PREDICT-1 Table Status:")),
+                        glue_collapse(p1_status_list, sep = "\n"),
+                        crayon::cyan(crayon::italic("\nPREDICT-2 Table Status:")),
+                        glue_collapse(p2_status_list, sep = "\n"), "\n","",
+                        .sep = "\n")
 
-    return(ed_banner)
-  },
-  error = function(err){
-    error_line <- (green("There are unspecified errors in the local EIDITH database. If problems persist after using ed_db_download(), see ?ed_contact.\n"))
-    eidith_disconnect(.eidith_env)
-    return(paste(error_line, err, sep = "\n"))
+      return(ed_banner)
+    },
+    error = function(err){
+      error_line <- (red("There are unspecified errors in the local EIDITH database. If problems persist after using ed_db_download(), see ?ed_contact.\n"))
+      eidith_disconnect(.eidith_env)
+      return(paste(error_line, err, sep = "\n"))
     }
 
-  )
+    )
+  }
 }
 
+#' @importFrom DBI dbGetQuery dbExecute dbListTables
+#' @export
+ed_db_status_table <- function(path=NULL) {
 
-
-#' @importFrom DBI dbListTables
-ed_db_make_status_msg <- function(path = NULL){
   edb <- eidith_db(path)
-  if("status" %in% dbListTables(edb)){
-  dbExecute(edb, "analyze")
-  download_dates <- dbReadTable(edb, "status") %>%
-    group_by(t_name) %>%
-    summarize(most_recent = max(as.Date(last_download)))
-  records <- dbReadTable(edb, "sqlite_stat1")
-  p1_records <- filter(records, str_detect(tbl, "2") == FALSE & tbl != "status")
-  p2_records <- filter(records, str_detect(tbl, "2"))
-  #mutate_(string = ~paste(prettyNum(rows, big.mark=","), tbl))
-  tables <- dbListTables(edb)
+  edt <- dbListTables(edb)
 
-  if("events" %in% tables){
-    p1_countries <- dbReadTable(edb, "events") %>%
-      group_by_("country") %>%
-      summarise_(n=~n()) %>%
-      collect() %>%
-      `$`("country") %>%
-      sort()
-  } else{
-    p1_countries <- NULL
-  }
-  if("events_2" %in% tables){
-    p2_countries <- dbReadTable(edb, "events_2") %>%
-      group_by_("country") %>%
-      summarise_(n=~n()) %>%
-      collect() %>%
-      `$`("country") %>%
-      sort()
-  } else{
-    p2_countries <- NULL
-  }
+  status_exists <- "status" %in% edt
 
-  n_countries <- length(unique(c(p2_countries, p1_countries)))
-  if (is.null(p1_countries) | is.null(p2_countries)){
-    n_countries <- n_countries - 1
-  }
+  status_table_not_corrupt <- if(status_exists){
+    dbExecute(edb, "analyze")
+    status_names <- dbReadTable(edb, "status") %>% colnames()
+    all(length(status_names) == 3, status_names %in% c("unique_id", "t_name", "last_download"))
+  }else{TRUE}
 
-  dbstatus <-list(
-    p1_countries = p1_countries,
-    p2_countries = p2_countries,
-    n_countries = n_countries
-    # last_modified_records = ~quicktime2(map_chr(db_tables[1:5], function(db_table) {
-    #   DBI::dbGetQuery(edb, paste0("SELECT MAX(date_modified_",db_table,") FROM ", db_table ))[[1]]
-    # })),
-    # last_modified_record = ~max(last_modified_records),
-    # last_table = ~db_tables[1:5][last_modified_records == last_modified_record],
-    # last_download = ~DBI::dbGetQuery(edb, "SELECT last_download FROM status")[[1]],
-    # records = records
-  )
-  } else{
-    dbstatus <- ""
-  }
-  class(dbstatus) <- c("dbstatus", class(dbstatus))
-  dbstatus
+  return(status_table_not_corrupt)
 }
 
 
-ed_db_status_msg <- function(status) {
-  if(length(status) == 1) return("")
-  if(is.null(status[["n_countries"]])) {
-    status_msg <- status[["status_msg"]]
-  } else {
-    status_msg <-
-      paste(strwrap(paste0(c(
-        crayon::blue(paste0("Local EIDITH database holds data from ", status[["n_countries"]], " countries: ")), crayon::green("PREDICT-1 countries: "),
-        crayon::black(paste(status[["p1_countries"]], collapse = "; ")), crayon::green("PREDICT-2 countries: "), crayon::black(paste(status[["p2_countries"]], collapse = "; "))
-      )), width=80, exdent=2), "\n")
-
-    # paste(strwrap(paste0(c(
-    #   "Records: ", paste(status[["records"]][["string"]], collapse="; ")
-    # ), collapse = ""), width=80, exdent=2), collapse="\n"), "\n",
-    #   "Last download: ", "FILLER", "\n")
-    # "Last updated record: ", as.character(status[["last_modified_record"]]),
-    #   " in ", status[["last_table"]], " table"), collapse="")
-  }
-  return(status_msg)
-}
-
-#'@export
-print.dbstatus <- function(x,...) {
-  cat(ed_db_status_msg(ed_db_make_status_msg()))
-}
 
 
 #' Obtain and print status of all local EIDITH tables
@@ -287,7 +239,6 @@ print.dbstatus <- function(x,...) {
 #'@export
 ed_db_detailed_status <- function() {
   cat(ed_db_presence())
-  cat(ed_db_status_msg(ed_db_make_status_msg()))
 }
 
 
