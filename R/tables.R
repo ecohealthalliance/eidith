@@ -121,9 +121,9 @@ print.eidith_tbl <- function(x, tibble_print = TRUE, ...){
   if(length(duplicate_keys > 0)){
     cat_line("")
     cat_line(red(paste0("IMPORTANT: There are ", length(duplicate_indices)," rows with duplicate unique ID's in this table!")))
-    cat_line(black("              The duplicate IDs are:"))
+    cat_line("              The duplicate IDs are:")
     cat_line(paste("                  ", red(duplicate_keys)))
-    cat_line(black(paste0("              This affects the following ", length(duplicate_indices)," rows:")))
+    cat_line(paste0("              This affects the following ", length(duplicate_indices)," rows:"))
     cat_line(paste("                  ", red(duplicate_indices)))
   }
 }
