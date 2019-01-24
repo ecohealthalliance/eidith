@@ -18,10 +18,10 @@ p1_api_endpoints <- function() {
 #' @export
 p2_api_endpoints <- function() {
   c("Event", "Animal", "Specimen", "AnimalProduction", "CropProduction", "Dwellings",
-                "ExtractiveIndustry", "MarketValueChain", "NaturalAreas", "WildlifeRestaurant", "ZooSanctuary",
-                "Human", "HumanCropProduction", "HumanAnimalProduction", "HumanExtractiveIndustry", "HumanHospitalWorker",
-                "HumanHunter", "HumanMarket", "HumanRestaurant", "HumanSickPerson", "HumanTemporarySettlements", "HumanZoo",
-                "Test", "TestDataInterpreted", "TestDataSerology", "Behavioral", "Training")
+    "ExtractiveIndustry", "MarketValueChain", "NaturalAreas", "WildlifeRestaurant", "ZooSanctuary",
+    "Human", "HumanCropProduction", "HumanAnimalProduction", "HumanExtractiveIndustry", "HumanHospitalWorker",
+    "HumanHunter", "HumanMarket", "HumanRestaurant", "HumanSickPerson", "HumanTemporarySettlements", "HumanZoo",
+    "Test", "TestDataInterpreted", "TestDataSerology", "Behavioral", "Training")
 }
 
 
@@ -123,7 +123,7 @@ Contact technology@eidith.org about permissions. See ?ed_contact.")
                        return(invisible(NULL))
                      })
 
-}
+  }
 
   return(data)
 }
@@ -146,19 +146,13 @@ Contact technology@eidith.org about permissions. See ?ed_contact.")
 #' @importFrom tibble as_tibble
 #' @export
 ed2_get <- function(endpoint2, postprocess=TRUE, verbose=interactive(),
-                   header_only=FALSE, lmdate_from="2000-01-01",
-                   lmdate_to=Sys.Date() + 1, auth=NULL, ...) {
+                    header_only=FALSE, lmdate_from="2000-01-01",
+                    lmdate_to=Sys.Date() + 1, auth=NULL, ...) {
 
   if(endpoint2 == "TestDataInterpreted" | endpoint2 == "TestDataSerology"){
-    url <- modify_url(url = paste0(eidith2_base_url, "Extract", endpoint2),
-                      query = list(header_only = ifelse(header_only, "y", "n"),
-                                   lmdate_from = lmdate_from,
-                                   lmdate_to = lmdate_to))
+    url <- paste0(eidith2_base_url, "Extract", endpoint2)
   }else{
-  url <- modify_url(url = paste0(eidith2_base_url, "Extract", endpoint2, "Data"),
-                    query = list(header_only = ifelse(header_only, "y", "n"),
-                                 lmdate_from = lmdate_from,
-                                 lmdate_to = lmdate_to))
+    url <-  paste0(eidith2_base_url, "Extract", endpoint2, "Data")
   }
 
   if(verbose) {
@@ -203,18 +197,18 @@ ed2_get <- function(endpoint2, postprocess=TRUE, verbose=interactive(),
   }
 
   if(postprocess){
-   data <- tryCatch(ed2_process(data, endpoint2),
-      error = function(e){
-  cat_line(red(paste0("Error: The fields in the ", endpoint2, " download are not as expected. See message for details and ?ed_contact for support.")))
-  cat_line(e)
-        return(invisible(0))
-        },  warning = function(w){
-  cat_line(red(paste0("Warning: The fields in the ", endpoint2, " download are not as expected. See message for details and ?ed_contact for support.")))
-  cat_line(w)
-          return(invisible(0))
-})
+    data <- tryCatch(ed2_process(data, endpoint2),
+                     error = function(e){
+                       cat_line(red(paste0("Error: The fields in the ", endpoint2, " download are not as expected. See message for details and ?ed_contact for support.")))
+                       cat_line(e)
+                       return(invisible(0))
+                     },  warning = function(w){
+                       cat_line(red(paste0("Warning: The fields in the ", endpoint2, " download are not as expected. See message for details and ?ed_contact for support.")))
+                       cat_line(w)
+                       return(invisible(0))
+                     })
 
-}
+  }
 
   #if(postprocess) data <- ed2_process(data, endpoint2)
 
