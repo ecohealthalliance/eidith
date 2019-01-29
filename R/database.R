@@ -161,34 +161,23 @@ ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_en
   eidith_disconnect(.eidith_env)
   ed_db_delete(temp_sql_path())
 
-  #P1 tables
+  #P1
   lapply(p1_tables, function(x) {
     tb <- ed_get(x, postprocess=TRUE, verbose=verbose, auth=auth)
     dplyr::copy_to(eidith_db(temp_sql_path()), tb, name=p1_table_names[[x]], temporary = FALSE,
-                   unique_indexes = db_unique_indexes[[x]], indexes = db_other_indexes[[x]])
+                   unique_indexes = db_unique_indexes[[p1_table_names[[x]]]], indexes = db_other_indexes[[p1_table_names[[x]]]])
+    eidith_disconnect(.eidith_env)
     rm(tb);
     gc(verbose=FALSE)
   })
   # P2
-#  p2_key_errors <- data_frame(table = character(), field_name = character(), multiple_id = character())
   lapply(p2_tables, function(x) {
     tb <- ed2_get(x, postprocess=TRUE, verbose=verbose, auth=auth)
-    #escaping if there is an error with the download
-    if(any(typeof(tb) != "list")) return(invisible(0))
-    # #key errors
-    # lc_name <- p2_table_names[[x]]
-    # intended_key <- db_other_indexes[[lc_name]][[1]]
-    # group_var <- as.name(intended_key)
-    # key_check <- tb %>%
-    #   group_by(!!group_var) %>%
-    #   summarize(count = n()) %>%
-    #   filter(count > 1) %>%
-    #   dplyr::pull(!!group_var)
-    # errors <- data_frame(table = x, field_name = intended_key, multiple_id = key_check)
-    # p2_key_errors <<- rbind(p2_key_errors, errors)
+    if(any(typeof(tb) != "list")) return(invisible(0)) #escaping if there is an error with the download
     tb$integer_id <- seq_len(nrow(tb))
     dplyr::copy_to(eidith_db(temp_sql_path()), tb, name=p2_table_names[[x]], temporary = FALSE,
-                   unique_indexes = db_unique_indexes[[x]], indexes = db_other_indexes[[x]])
+                   unique_indexes = db_unique_indexes[[p2_table_names[[x]]]], indexes = db_other_indexes[[p2_table_names[[x]]]])
+    eidith_disconnect(.eidith_env)
     rm(tb);
     gc(verbose=FALSE)
   })
