@@ -19,8 +19,8 @@ p1_api_endpoints <- function() {
 p2_api_endpoints <- function() {
   c("Event", "Animal", "Specimen", "AnimalProduction", "CropProduction", "Dwellings",
     "ExtractiveIndustry", "MarketValueChain", "NaturalAreas", "WildlifeRestaurant", "ZooSanctuary",
-    "Human", "HumanCropProduction", "HumanAnimalProduction", "HumanExtractiveIndustry", "HumanHospitalWorker",
-    "HumanHunter", "HumanMarket", "HumanRestaurant", "HumanSickPerson", "HumanTemporarySettlements", "HumanZoo",
+    "Human",  "HumanEHP", "HumanCropProduction", "HumanAnimalProduction", "HumanAnimalProductionEHP","HumanExtractiveIndustry", "HumanHospitalWorker",
+    "HumanHunter", "HumanHunterEHP", "HumanMarket", "HumanRestaurant", "HumanSickPerson", "HumanTemporarySettlements", "HumanZoo",
     "Test", "TestDataInterpreted", "TestDataSerology", "Behavioral", "Training")
 }
 
@@ -149,10 +149,21 @@ ed2_get <- function(endpoint2, postprocess=TRUE, verbose=interactive(),
                     header_only=FALSE, lmdate_from="2000-01-01",
                     lmdate_to=Sys.Date() + 1, auth=NULL, ...) {
 
+  url <-  paste0(eidith2_base_url, "Extract", endpoint2, "Data")
+
   if(endpoint2 == "TestDataInterpreted" | endpoint2 == "TestDataSerology"){
     url <- paste0(eidith2_base_url, "Extract", endpoint2)
-  }else{
-    url <-  paste0(eidith2_base_url, "Extract", endpoint2, "Data")
+  }
+
+  if(endpoint2 %in% c("HumanEHP", "HumanAnimalProductionEHP", "HumanHunterEHP")){
+    endpoint_mod <- gsub("EHP", "", endpoint2)
+    url <- modify_url(url =  paste0(eidith2_base_url, "Extract", endpoint_mod, "Data"),
+                      query = list(country = "'Liberia', 'Sierra Leone', 'Guinea'"))
+  }
+
+  if(endpoint2 %in% c("Human", "HumanAnimalProduction", "HumanHunter")){
+    url <- modify_url(url =  paste0(eidith2_base_url, "Extract", endpoint2, "Data"),
+                      query = list(country =   "'Bangladesh', 'China', 'Egypt', 'India', 'Indonesia', 'Ivory Coast', 'Jordan', 'Republic of Congo', 'South Sudan', 'Thailand', 'Cambodia', 'Cameroon', 'DR Congo', 'Ethiopia', 'Ghana', 'Kenya', 'Lao PDR', 'Malaysia, Peninsular', 'Malaysia, Sabah', 'Mongolia', 'Myanmar', 'Nepal', 'Rwanda', 'Senegal', 'Tanzania', 'Uganda', 'Vietnam'"))
   }
 
   if(verbose) {
