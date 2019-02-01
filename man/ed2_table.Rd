@@ -12,16 +12,19 @@
 \alias{ed2_natural_areas}
 \alias{ed2_market_value_chain}
 \alias{ed2_human}
+\alias{ed2_human_ehp}
 \alias{ed2_tests}
 \alias{ed2_test_serology}
 \alias{ed2_test_interpreted}
 \alias{ed2_human_animal_production}
+\alias{ed2_human_animal_production_ehp}
 \alias{ed2_extractive_industry}
 \alias{ed2_dwellings}
 \alias{ed2_human_crop_production}
 \alias{ed2_human_extractive_industry}
 \alias{ed2_human_hospital_worker}
 \alias{ed2_human_hunter}
+\alias{ed2_human_hunter_ehp}
 \alias{ed2_human_market}
 \alias{ed2_human_restaurant}
 \alias{ed2_human_sick_person}
@@ -51,6 +54,8 @@ ed2_market_value_chain(...)
 
 ed2_human(...)
 
+ed2_human_ehp(...)
+
 ed2_tests(...)
 
 ed2_test_serology(...)
@@ -58,6 +63,8 @@ ed2_test_serology(...)
 ed2_test_interpreted(...)
 
 ed2_human_animal_production(...)
+
+ed2_human_animal_production_ehp(...)
 
 ed2_extractive_industry(...)
 
@@ -70,6 +77,8 @@ ed2_human_extractive_industry(...)
 ed2_human_hospital_worker(...)
 
 ed2_human_hunter(...)
+
+ed2_human_hunter_ehp(...)
 
 ed2_human_market(...)
 

@@ -144,6 +144,7 @@ Contact technology@eidith.org about permissions. See ?ed_contact.")
 #' @importFrom httr GET status_code progress authenticate content modify_url
 #' @importFrom jsonlite fromJSON
 #' @importFrom tibble as_tibble
+#' @importFrom purrr imap map_df map_lgl
 #' @export
 ed2_get <- function(endpoint2, postprocess=TRUE, verbose=interactive(),
                     header_only=FALSE, lmdate_from="2000-01-01",
@@ -157,13 +158,12 @@ ed2_get <- function(endpoint2, postprocess=TRUE, verbose=interactive(),
 
   if(endpoint2 %in% c("HumanEHP", "HumanAnimalProductionEHP", "HumanHunterEHP")){
     endpoint_mod <- gsub("EHP", "", endpoint2)
-    url <- modify_url(url =  paste0(eidith2_base_url, "Extract", endpoint_mod, "Data"),
-                      query = list(country = "'Liberia', 'Sierra Leone', 'Guinea'"))
-  }
-
-  if(endpoint2 %in% c("Human", "HumanAnimalProduction", "HumanHunter")){
-    url <- modify_url(url =  paste0(eidith2_base_url, "Extract", endpoint2, "Data"),
-                      query = list(country =   "'Bangladesh', 'China', 'Egypt', 'India', 'Indonesia', 'Ivory Coast', 'Jordan', 'Republic of Congo', 'South Sudan', 'Thailand', 'Cambodia', 'Cameroon', 'DR Congo', 'Ethiopia', 'Ghana', 'Kenya', 'Lao PDR', 'Malaysia, Peninsular', 'Malaysia, Sabah', 'Mongolia', 'Myanmar', 'Nepal', 'Rwanda', 'Senegal', 'Tanzania', 'Uganda', 'Vietnam'"))
+    url <- list(modify_url(url =  paste0(eidith2_base_url, "Extract", endpoint_mod, "Data"),
+                      query = list(country = "'Liberia'")),
+                modify_url(url =  paste0(eidith2_base_url, "Extract", endpoint_mod, "Data"),
+                           query = list(country = "'Sierra Leone'")),
+                modify_url(url =  paste0(eidith2_base_url, "Extract", endpoint_mod, "Data"),
+                           query = list(country = "'Guinea'")))
   }
 
   if(verbose) {
@@ -175,21 +175,23 @@ ed2_get <- function(endpoint2, postprocess=TRUE, verbose=interactive(),
 
   if(is.null(auth)) auth <- ed_auth()
 
-  request <- GET(url=url, authenticate(auth[1], auth[2], type="basic"),
-                 pbar, ...)
+  request <- imap(url, function(x, y) {
+    if(y != length(url)){pbar = NULL}
+    GET(url = x, authenticate(auth[1], auth[2], type="basic"), pbar, ...)
+    })
 
-  if(status_code(request) == 401) {
+  if(any(map_lgl(request, ~status_code(.x) == 401))) {
     stop("Unauthorized (HTTP 401). Your username or password do not match an account.
          See ?ed_auth.")
   }
 
-  if(status_code(request) == 403) {
+  if(any(map_lgl(request, ~status_code(.x) == 403))) {
     stop("Forbidden (HTTP 403). Your account does not have access permissions.
          Contact technology@eidith.org.")
   }
 
   if(verbose) cat_line("Importing...")
-  data <- fromJSON(content(request, as = "text", encoding="UTF-8"))
+  data <- map_df(request, ~fromJSON(content(.x, as = "text", encoding="UTF-8")))
 
   if(header_only) {
     return(data)
