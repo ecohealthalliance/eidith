@@ -6,7 +6,7 @@
 #'
 #' @importFrom tidyr %>% unnest
 #' @importFrom dplyr mutate
-#' @importFrom stringr str_split str_trim str_detect str_match
+#' @importFrom stringr str_split str_trim str_detect str_match str_replace_all
 #' @importFrom rlang enquo quo_name !!
 #'
 #' @return A long form dataframe with `col` field separated into repeated entries.
