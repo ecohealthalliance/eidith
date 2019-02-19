@@ -7,7 +7,9 @@ db2_tables <- c("events_2", "animals_2", "specimens_2", "animal_production_2", "
                 "human_animal_production_2", "extractive_industry_2", "human_crop_production_2",
                 "human_extractive_industry_2", "human_hospital_worker_2", "human_hunter_2",
                 "human_market_2", "human_restaurant_2", "human_sick_person_2", "human_temporary_settlements_2",
-                "human_zoo_2", "behavioral_2", "training_2")
+                "human_zoo_2", "behavioral_2", "training_2"#,
+                #"human_ehp_2",  "human_animal_production_ehp_2", "human_hunter_ehp_2"
+                )
 
 p1_table_names <- list(
   Event = "events",
@@ -30,15 +32,18 @@ p2_table_names <- list(
   ZooSanctuary = "zoo_sanctuary_2",
   WildlifeRestaurant = "wildlife_restaurant_2",
   Human = "human_2",
+  HumanEHP = "human_ehp_2",
   Test = "tests_2",
   TestDataInterpreted = "test_data_interpreted_2",
   TestDataSerology = "test_data_serology_2",
   HumanAnimalProduction = "human_animal_production_2",
+  HumanAnimalProductionEHP = "human_animal_production_ehp_2",
   ExtractiveIndustry = "extractive_industry_2",
   HumanCropProduction = "human_crop_production_2",
   HumanExtractiveIndustry = "human_extractive_industry_2",
   HumanHospitalWorker = "human_hospital_worker_2",
   HumanHunter = "human_hunter_2",
+  HumanHunterEHP = "human_hunter_ehp_2",
   HumanMarket = "human_market_2",
   HumanRestaurant = "human_restaurant_2",
   HumanSickPerson = "human_sick_person_2",
@@ -67,15 +72,18 @@ db_unique_indexes <- list(
   zoo_sanctuary_2 = list("integer_id"),
   wildlife_restaurant_2 = list("integer_id"),
   human_2 = list("integer_id"),
+  human_ehp_2 = list("integer_id"),
   tests_2 = list("integer_id"),
   test_data_interpreted_2 = list("integer_id"),
   test_data_serology_2 = list("integer_id"),
   human_animal_production_2 = list("integer_id"),
+  human_animal_production_ehp_2 = list("integer_id"),
   extractive_industry_2 = list("integer_id"),
   human_crop_production_2 = list("integer_id"),
   human_extractive_industry_2 = list("integer_id"),
   human_hospital_worker_2 = list("integer_id"),
   human_hunter_2 = list("integer_id"),
+  human_hunter_ehp_2 = list("integer_id"),
   human_market_2 = list("integer_id"),
   human_restaurant_2 = list("integer_id"),
   human_sick_person_2 = list("integer_id"),
@@ -103,15 +111,18 @@ db_other_indexes <- list(
   zoo_sanctuary_2 = list("event_name"),
   wildlife_restaurant_2 = list("event_name"),
   human_2 = list("participant_id"),
+  human_ehp_2 = list("participant_id"),
   tests_2 = list("test_id"),
   test_data_interpreted_2 = list("test_id"),
   test_data_serology_2 = list("test_id"),
   human_animal_production_2 = list("participant_id"),
+  human_animal_production_ehp_2 = list("participant_id"),
   extractive_industry_2 = list("event_name"),
   human_crop_production_2 = list("participant_id"),
   human_extractive_industry_2 = list("participant_id"),
   human_hospital_worker_2 = list("participant_id"),
   human_hunter_2 = list("participant_id"),
+  human_hunter_ehp_2 = list("participant_id"),
   human_market_2 = list("participant_id"),
   human_restaurant_2 = list("participant_id"),
   human_sick_person_2 = list("participant_id"),
@@ -161,34 +172,23 @@ ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_en
   eidith_disconnect(.eidith_env)
   ed_db_delete(temp_sql_path())
 
-  #P1 tables
+  #P1
   lapply(p1_tables, function(x) {
     tb <- ed_get(x, postprocess=TRUE, verbose=verbose, auth=auth)
     dplyr::copy_to(eidith_db(temp_sql_path()), tb, name=p1_table_names[[x]], temporary = FALSE,
-                   unique_indexes = db_unique_indexes[[x]], indexes = db_other_indexes[[x]])
+                   unique_indexes = db_unique_indexes[[p1_table_names[[x]]]], indexes = db_other_indexes[[p1_table_names[[x]]]])
+    eidith_disconnect(.eidith_env)
     rm(tb);
     gc(verbose=FALSE)
   })
   # P2
-#  p2_key_errors <- data_frame(table = character(), field_name = character(), multiple_id = character())
   lapply(p2_tables, function(x) {
     tb <- ed2_get(x, postprocess=TRUE, verbose=verbose, auth=auth)
-    #escaping if there is an error with the download
-    if(any(typeof(tb) != "list")) return(invisible(0))
-    # #key errors
-    # lc_name <- p2_table_names[[x]]
-    # intended_key <- db_other_indexes[[lc_name]][[1]]
-    # group_var <- as.name(intended_key)
-    # key_check <- tb %>%
-    #   group_by(!!group_var) %>%
-    #   summarize(count = n()) %>%
-    #   filter(count > 1) %>%
-    #   dplyr::pull(!!group_var)
-    # errors <- data_frame(table = x, field_name = intended_key, multiple_id = key_check)
-    # p2_key_errors <<- rbind(p2_key_errors, errors)
+    if(any(typeof(tb) != "list")) return(invisible(0)) #escaping if there is an error with the download
     tb$integer_id <- seq_len(nrow(tb))
     dplyr::copy_to(eidith_db(temp_sql_path()), tb, name=p2_table_names[[x]], temporary = FALSE,
-                   unique_indexes = db_unique_indexes[[x]], indexes = db_other_indexes[[x]])
+                   unique_indexes = db_unique_indexes[[p2_table_names[[x]]]], indexes = db_other_indexes[[p2_table_names[[x]]]])
+    eidith_disconnect(.eidith_env)
     rm(tb);
     gc(verbose=FALSE)
   })

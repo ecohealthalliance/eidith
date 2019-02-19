@@ -267,6 +267,12 @@ ed2_human <- function(...){
 
 #' @rdname ed2_table
 #' @export
+ed2_human_ehp <- function(...){
+  ed_table_("human_ehp_2", .dots = lazyeval::lazy_dots(...))
+}
+
+#' @rdname ed2_table
+#' @export
 ed2_tests <- function(...){
   ed_table_("tests_2", .dots = lazyeval::lazy_dots(...))
 }
@@ -287,6 +293,12 @@ ed2_test_interpreted <- function(...){
 #' @export
 ed2_human_animal_production <- function(...){
   ed_table_("human_animal_production_2", .dots = lazyeval::lazy_dots(...))
+}
+
+#' @rdname ed2_table
+#' @export
+ed2_human_animal_production_ehp <- function(...){
+  ed_table_("human_animal_production_ehp_2", .dots = lazyeval::lazy_dots(...))
 }
 
 #' @rdname ed2_table
@@ -323,6 +335,12 @@ ed2_human_hospital_worker <- function(...){
 #' @export
 ed2_human_hunter <- function(...){
   ed_table_("human_hunter_2", .dots = lazyeval::lazy_dots(...))
+}
+
+#' @rdname ed2_table
+#' @export
+ed2_human_hunter_ehp <- function(...){
+  ed_table_("human_hunter_ehp_2", .dots = lazyeval::lazy_dots(...))
 }
 
 #' @rdname ed2_table
