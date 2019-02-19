@@ -2,12 +2,14 @@ db_tables <- c("events", "animals", "specimens", "tests", "viruses",
                "test_specimen_ids", "status")
 
 db2_tables <- c("events_2", "animals_2", "specimens_2", "animal_production_2", "crop_production_2",
-                "dwellings_2", "human_2", "human_ehp_2", "market_value_chain_2", "natural_areas_2", "zoo_sanctuary_2",
+                "dwellings_2", "human_2", "market_value_chain_2", "natural_areas_2", "zoo_sanctuary_2",
                 "wildlife_restaurant_2", "tests_2", "test_data_interpreted_2", "test_data_serology_2",
-                "human_animal_production_2", "human_animal_production_ehp_2", "extractive_industry_2", "human_crop_production_2",
-                "human_extractive_industry_2", "human_hospital_worker_2", "human_hunter_2", "human_hunter_ehp_2",
+                "human_animal_production_2", "extractive_industry_2", "human_crop_production_2",
+                "human_extractive_industry_2", "human_hospital_worker_2", "human_hunter_2",
                 "human_market_2", "human_restaurant_2", "human_sick_person_2", "human_temporary_settlements_2",
-                "human_zoo_2", "behavioral_2", "training_2")
+                "human_zoo_2", "behavioral_2", "training_2"#,
+                #"human_ehp_2",  "human_animal_production_ehp_2", "human_hunter_ehp_2"
+                )
 
 p1_table_names <- list(
   Event = "events",

@@ -19,9 +19,11 @@ p1_api_endpoints <- function() {
 p2_api_endpoints <- function() {
   c("Event", "Animal", "Specimen", "AnimalProduction", "CropProduction", "Dwellings",
     "ExtractiveIndustry", "MarketValueChain", "NaturalAreas", "WildlifeRestaurant", "ZooSanctuary",
-    "Human",  "HumanEHP", "HumanCropProduction", "HumanAnimalProduction", "HumanAnimalProductionEHP","HumanExtractiveIndustry", "HumanHospitalWorker",
-    "HumanHunter", "HumanHunterEHP", "HumanMarket", "HumanRestaurant", "HumanSickPerson", "HumanTemporarySettlements", "HumanZoo",
-    "Test", "TestDataInterpreted", "TestDataSerology", "Behavioral", "Training")
+    "Human", "HumanCropProduction", "HumanAnimalProduction","HumanExtractiveIndustry", "HumanHospitalWorker",
+    "HumanHunter", "HumanMarket", "HumanRestaurant", "HumanSickPerson", "HumanTemporarySettlements", "HumanZoo",
+    "Test", "TestDataInterpreted", "TestDataSerology", "Behavioral", "Training"#,
+    #"HumanEHP", "HumanAnimalProductionEHP", "HumanHunterEHP"
+    )
 }
 
 
