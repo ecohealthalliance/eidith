@@ -9,15 +9,13 @@ events_2,Event,NA,SiteLongitude,site_longitude,NA,GPS coordinates calculated to 
 events_2,Event,NA,EventLatitude,event_latitude,NA,Defaults to site lat/long. Overwrite field to specific area where sampling is done within site.,NA,NA
 events_2,Event,NA,EventLongitude,event_longitude,NA,Defaults to site lat/long. Overwrite field to specific area where sampling is done within site.,NA,NA
 events_2,Event,NA,EventDate,event_date,NA,"The date that observations, interviews, or sampling began",NA,NA
+events_2,Event,NA,Season,season,NA,"""Wet"" or ""Dry""",NA,NA
 events_2,Event,NA,DurationDays,duration_days,NA,The time period in days that the event occurred,NA,NA
 events_2,Event,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,ID for joining Events + Animals,NA
 events_2,Event,NA,Recorder,recorder,event_recorder,The name of the primary person that recorded the site/event information,NA,NA
 events_2,Event,NA,Organization,organization,NA,The recorder's organization or affiliation,NA,NA
 events_2,Event,NA,HumanDensityImpact,human_density_impact,NA,A measure to describe the human density and the impact at the event site,4-cat var,NA
 events_2,Event,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,NA,What is the target animal-human disease transmission interface for this event? Select all that apply -- each interface chosen will create a corresponding module,semicolon separated list,NA
-events_2,Event,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,NA,??,These columns summed don't result in DiseaseTransmissionInterfaces??,NA
-events_2,Event,NA,InterfacesHumansSampled,interfaces_humans_sampled,NA,??,These columns summed don't result in DiseaseTransmissionInterfaces??,NA
-events_2,Event,NA,InterfacesNoneSampled,interfaces_none_sampled,NA,??,These columns summed don't result in DiseaseTransmissionInterfaces??,NA
 events_2,Event,NA,VeterinarianCare,veterinarian_care,NA,Does a veterinarian care for animals at the event site?,yes/no,NA
 events_2,Event,NA,SamplingAreaSize,sampling_area_size,NA,"To the best of your knowledge, what is the estimated size of the area for this event in m2?",4-cat var,NA
 events_2,Event,NA,HumansPresent,humans_present,NA,"To the best of your knowledge, what is the estimated number of humans and animals (live or dead) within 0.5 km in any direction? Do not include animals kept at the location you are sampling e.g. animals on/in that farm, market, restaurant, dwelling etc.)",5-cat var,NA
@@ -42,12 +40,13 @@ events_2,Event,NA,DrinkingWaterSource,drinking_water_source,NA,Where do people a
 events_2,Event,NA,AverageTripToWater,average_trip_to_water,NA,How long is the average trip to the drinking water sources?,3-cat var,NA
 events_2,Event,NA,InsectVectors,insect_vectors,NA,What types of insect vectors are observed at the site?,"6-cat var, semicolon separated",NA
 events_2,Event,NA,VectorControlMeasures,vector_control_measures,NA,Are vector control measures used at the site?,yes/no,NA
-events_2,Event,NA,CommunityEngagement?,community_engagement,NA,?? - Not included in Site / Event Field Metadata document,NA,NA
+events_2,Event,NA,CommunityEngagement,community_engagement,NA,?? - Not included in Site / Event Field Metadata document,NA,NA
 events_2,Event,NA,CommunityEngagementDate,community_engagement_date,NA,?? - Not included in Site / Event Field Metadata document,NA,NA
 events_2,Event,NA,CommunityEngagementNotes,community_engagement_notes,NA,?? - Not included in Site / Event Field Metadata document,NA,NA
 events_2,Event,NA,NbrBeds,nbr_beds,NA,?? - Not included in Site / Event Field Metadata document,NA,NA
 events_2,Event,NA,IsDeepForest,is_deep_forest,NA,Uses deep forest protocols,yes/no,NA
 events_2,Event,NA,Notes,notes,event_notes,Notes,NA,NA
+events_2,Event,NA,OutbreakName,outbreak_name,NA,Name of an outbreak event,NA,NA
 animals_2,Animal,NA,Country,country,DROP,Event-level information,NA,NA
 animals_2,Animal,NA,SiteName,site_name,DROP,Event-level information,NA,NA
 animals_2,Animal,NA,ConcurrentSamplingSite,concurrent_sampling_site,DROP,Event-level information,NA,NA
@@ -58,10 +57,16 @@ animals_2,Animal,NA,SiteLongitudeUnrounded,site_longitude_unrounded,DROP,Event-l
 animals_2,Animal,NA,EventLatitudeUnrounded,event_latitude_unrounded,DROP,Event-level information,NA,NA
 animals_2,Animal,NA,EventLongitudeUnrounded,event_longitude_unrounded,DROP,Event-level information,NA,NA
 animals_2,Animal,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+animals_2,Animal,NA,Season,season,DROP,Event-level information,NA,NA
 animals_2,Animal,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
 animals_2,Animal,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,ID for joining Events + Animals,NA
 animals_2,Animal,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
 animals_2,Animal,NA,AnimalID,animal_id,NA,"The animal ID is an automatically generated combination: AnimalID = OrganizationCountryTaxaAnimal#. For example, the first bat sampled by UCDavis in Tanzania would be UTZB001",NA,NA
+animals_2,Animal,NA,Class,class,NA,Taxonomic resolution by IM (ITIS?),NA,NA
+animals_2,Animal,NA,Order,order,NA,Taxonomic resolution by IM (ITIS?),NA,NA
+animals_2,Animal,NA,Family,family,NA,Taxonomic resolution by IM (ITIS?),NA,NA
+animals_2,Animal,NA,Genus,genus,NA,Taxonomic resolution by IM (ITIS?),NA,NA
+animals_2,Animal,NA,Species,species,NA,Taxonomic resolution by IM (ITIS?),NA,NA
 animals_2,Animal,NA,TaxaGroup,taxa_group,NA,"Animal's taxa group: rodents/shrews, bats, non-human primates, birds, carnivores, ungulates, poultry, goats/sheep, camels, swine, cattle/buffalo, dogs, cats, other.",14-cat variable,NA
 animals_2,Animal,NA,AnimalClass,animal_class,NA,"Animal's classification: captive wild animal, free-randing wild animal, owned domesticated species, unowned domesticated species.",NA,NA
 animals_2,Animal,NA,TagAndOtherID,tag_and_other_id,NA,??,NA,NA
@@ -119,6 +124,7 @@ specimens_2,Specimen,NA,SiteLongitudeUnrounded,site_longitude_unrounded,DROP,Eve
 specimens_2,Specimen,NA,EventLatitudeUnrounded,event_latitude_unrounded,DROP,Event-level information,NA,NA
 specimens_2,Specimen,NA,EventLongitudeUnrounded,event_longitude_unrounded,DROP,Event-level information,NA,NA
 specimens_2,Specimen,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+specimens_3,Specimen,NA,Season,season,DROP,Event-level information,NA,NA
 specimens_2,Specimen,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
 specimens_2,Specimen,NA,EventName,event_name,DROP,Event-level information,NA,NA
 specimens_2,Specimen,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
@@ -573,6 +579,7 @@ zoo_sanctuary_2,ZooSanctuary,NA,WildDomesticTogether,wild_domestic_together,NA,A
 zoo_sanctuary_2,ZooSanctuary,NA,AnimalWastePresent,animal_waste_present,NA,What type of animal waste is present at the site/event? Select all that apply.,semicolon separated 4-cat var,NA
 zoo_sanctuary_2,ZooSanctuary,NA,BioSecurityMeasures,zoo_biosecurity_measures,NA,What types of biosecurity measures are practiced at the facility? Select all that apply.,semicolon separated 10-cat var,NA
 human_2,Human,NA,Country,country,DROP,Event-level information,NA,NA
+human_2,Human,NA,Organization,organization,DROP,Event-level information,NA,NA
 human_2,Human,NA,SpecimensCollected,specimens_collected,NA,NA,NA,NA
 human_2,Human,NA,SiteName,site_name,DROP,Event-level information,NA,NA
 human_2,Human,NA,GAINS4_SampleUnitID,sample_unit_id,DROP,"Deprecated: originally for directly joining humans to tests, better to join via Specimen table.",NA,NA
@@ -584,12 +591,10 @@ human_2,Human,NA,SiteLongitude,site_longitude,DROP,Event-level information,NA,NA
 human_2,Human,NA,EventLatitude,event_latitude,DROP,Event-level information,NA,NA
 human_2,Human,NA,EventLongitude,event_longitude,DROP,Event-level information,NA,NA
 human_2,Human,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+human_2,Human,NA,Season,season,DROP,Event-level information,NA,NA
 human_2,Human,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
 human_2,Human,NA,EventName,event_name,NA,The event name is an automatically generated combination of the site name and the start date of the event.,NA,NA
 human_2,Human,NA,DiseaseTransmissionInterfaces,disease_transmission_interfaces,DROP,Event-level information,NA,NA
-human_2,Human,NA,InterfacesAnimalsSampled,interfaces_animals_sampled,DROP,Event-level information,NA,NA
-human_2,Human,NA,InterfacesHumansSampled,interfaces_human_sampled,DROP,Event-level information,NA,NA
-human_2,Human,NA,BiologicalSample,biological_sample,NA,NA,yes/no,NA
 human_2,Human,NA,Q1 ParticipantID,participant_id,NA,Interview participant's unique identifier.,NA,Q1
 human_2,Human,NA,Q3 DateOfInterview,date_of_interview,NA,Date of interview,NA,Q3
 human_2,Human,NA,Q4 BeginTimeInterview,begin_time_interview,NA,Begin time of interview,character,Q4
@@ -622,7 +627,7 @@ human_2,Human,NA,Q23 HighestEducatinMother,highest_education_mother,NA,What is t
 human_2,Human,NA,Q24 Livelihood(s),livelihoods,NA,Since this time last year what are the activities you have done to earn your livelihood? Select all that apply,semi-colon separated,Q24
 human_2,Human,NA,LivelihoodGroup(s)IfOther,livelihood_groups_other,NA,"Grouping ""other"" responses from Q24:livelihoods.",NA,Q24
 human_2,Human,NA,Q25 MostTimeSpent,most_time_spent,primary_livelihood,"If more than one activity was selected, what is hte activity on which you spend the most time since this time last year? Select one option",NA,Q25
-human_2,Human,NA,Modules Used,modules_used,NA,List of modules used based on livelihoods,semicolon-separated,NA
+human_2,Human,NA,ModulesCompleted,modules_completed,NA,List of modules used based on livelihoods,semicolon-separated,NA
 human_2,Human,NA,Q26 JobPosition,job_position,NA,Which best describes your job position? Select one option,NA,Q26
 human_2,Human,NA,Q27 WorkLocationCity,work_location_city,NA,Where do you work? Village / Town / City,NA,Q27
 human_2,Human,NA,Q27 WorkLocationProv,work_location_prov,NA,Where do you work? Province / State,NA,Q27
@@ -784,6 +789,7 @@ tests_2,Test,NA,SiteLongitude,site_longitude,DROP,Event-level information,NA,NA
 tests_2,Test,NA,EventLatitude,event_latitude,DROP,Event-level information,NA,NA
 tests_2,Test,NA,EventLongitude,event_longitude,DROP,Event-level information,NA,NA
 tests_2,Test,NA,EventDate,event_date,DROP,Event-level information,NA,NA
+tests_2,Test,NA,Season,season,DROP,Event-level information,NA,NA
 tests_2,Test,NA,DurationDays,duration_days,DROP,Event-level information,NA,NA
 tests_2,Test,NA,EventName,event_name,DROP,Event-level information,NA,NA
 tests_2,Test,NA,AnimalID,animal_id,DROP,Animal-level information,NA,NA
@@ -819,6 +825,22 @@ tests_2,Test,NA,Notes,notes,test_notes,Laboratory notes for initial test.,NA,NA
 tests_2,Test,NA,ConfirmationNotes,confirmation_notes,confirmation_test_notes,Laboratory notes for confirmation test.,NA,NA
 tests_2,Test,NA,GovernmentReport,government_report,NA,Whether report has been generated for country ministries.,NA,NA
 tests_2,Test,NA,DateGovtApprovedRelease,date_govt_approved_release,NA,When report was approved for release by relevant country ministry.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,SiteName,site_name,DROP,Event-level,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,ConcurrentSamplingSite,concurrent_sampling_site,DROP,Event-level,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,District,district,DROP,Event-level,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,StateProv,state_prov,DROP,Event-level,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,SiteLatitude,site_latitude,DROP,Event-level,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,SiteLongitude,site_longitude,DROP,Event-level,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,EventLatitude,event_latitude,DROP,Event-level,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,EventLongitude,event_longitude,DROP,Event-level,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,EventDate,event_date,DROP,Event-level,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,DurationDays,duration_days,DROP,Event-level,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,EventName,event_name,DROP,Event-level,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,AnimalClass,animal_class,DROP,Animal-level information,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,SpeciesScientificName,species_scientific_name,DROP,Animal-level information,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,SpeciesEnglishName,species_english_name,DROP,Animal-level information,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,AnimalSampleDate,animal_sample_date,DROP,Animal-level information,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,Sex,sex,DROP,Animal-level information,NA,NA
 test_data_interpreted_2,TestDataInterpreted,NA,Country,country,DROP,Event-level,NA,NA
 test_data_interpreted_2,TestDataInterpreted,NA,TestBatch,test_batch,DROP,"Test batch name is an inconsistent combination of event name, specimen type, and other fields (date or storage method).",NA,NA
 test_data_interpreted_2,TestDataInterpreted,NA,TestID,test_id,NA,Unique numeric identifier for identifying a test.,NA,NA
@@ -836,6 +858,9 @@ test_data_interpreted_2,TestDataInterpreted,NA,TestRequested,test_requested,DROP
 test_data_interpreted_2,TestDataInterpreted,NA,TestRequestedProtocol,test_requested_protocol,DROP,Test-level information.,NA,NA
 test_data_interpreted_2,TestDataInterpreted,NA,MethodologyReference,methodology_reference,DROP,Test-level information.,NA,NA
 test_data_interpreted_2,TestDataInterpreted,NA,TestResult,test_result,DROP,Test-level information.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,TestStatus,test_status,NA,Test-level information.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,GovernmentReport,government_report,NA,Test-level information.,NA,NA
+test_data_interpreted_2,TestDataInterpreted,NA,DateGovtApprovedRelease,date_govt_approved_release,NA,Test-level information.,NA,NA
 test_data_interpreted_2,TestDataInterpreted,NA,ConfirmationTestDate,confirmation_test_date,DROP,Test-level information.,NA,NA
 test_data_interpreted_2,TestDataInterpreted,NA,LabName_Confirmation,lab_name_confirmation,DROP,Test-level information.,NA,NA
 test_data_interpreted_2,TestDataInterpreted,NA,ConfirmationTestType,confirmation_test_type,DROP,Test-level information.,NA,NA
@@ -1046,6 +1071,7 @@ human_hunter_2,HumanHunter,NA,Q11 WhichPPE,which_ppe,hunter_which_ppe,"If you ha
 human_hunter_2,HumanHunter,NA,Q12 WhenPPEUsed,when_ppe_used,hunter_when_ppe_used,When do you use protective equipment? Select all that apply.,semicolon-separated,Q12
 human_hunter_2,HumanHunter,NA,Notes,notes,hunter_notes,Notes on Human Hunter interview.,NA,NA
 human_sick_person_2,HumanSickPerson,NA,Country,country,DROP,Event-level information,NA,NA
+human_sick_person_2,HumanSickPerson,NA,Organization,organization,DROP,Event-level information,NA,NA
 human_sick_person_2,HumanSickPerson,NA,SiteName,site_name,DROP,Event-level information,NA,NA
 human_sick_person_2,HumanSickPerson,NA,District,district,DROP,Event-level information,NA,NA
 human_sick_person_2,HumanSickPerson,NA,StateProv,state_prov,DROP,Event-level information,NA,NA
@@ -1182,3 +1208,39 @@ human_hospital_worker_2,HumanHospitalWorker,NA,Q4 WhenPPEUsed,when_ppe_used,NA,I
 human_hospital_worker_2,HumanHospitalWorker,NA,Q5 PPECleaned,ppe_cleaned,NA,"Is the protective equipment cleaned, sterilized, or discarded after each use?",yes/no,Q5
 human_hospital_worker_2,HumanHospitalWorker,NA,Q6 UseDisinfectantToClean,use_disinfectant_to_clean,NA,Do you always use disinfectant to clean equipment and hospital areas?,yes/no,Q6
 human_hospital_worker_2,HumanHospitalWorker,NA,Notes,human_hospital_notes,NA,Notes from the Human Hospital interview,NA,NA
+behavioral_2,Behavioral,NA,Country,country,NA,Country where the site is located,NA,NA
+behavioral_2,Behavioral,NA,Site,site,NA,Name of site where focus group or ethnographic interview was held,NA,NA
+behavioral_2,Behavioral,NA,Date,date,NA,Date that focus group or ethnographic interview occurred,NA,NA
+behavioral_2,Behavioral,NA,TranscriptType,transcript_type,NA,Focus group or ethnographic interview,NA,NA
+behavioral_2,Behavioral,NA,PID,pid,NA,Participant ID for ethnographic interview participants.  Focus group ID for focus group.,NA,NA
+behavioral_2,Behavioral,NA,Livelihood,livelihoods,NA,Since this time last year what are the activities you have done to earn your livelihood? Select all that apply,NA,NA
+behavioral_2,Behavioral,NA,Gender,gender,NA,Participant sex,NA,NA
+behavioral_2,Behavioral,NA,AgeCategory,age_category,NA,Adult or child,NA,NA
+behavioral_2,Behavioral,NA,AgeRange,age_range,NA,"Age group, options: ""<18"", ""18-30"", ""31-50"", "">50"" , ""unknown""",NA,NA
+behavioral_2,Behavioral,NA,District,district,NA,NA,NA,NA
+behavioral_2,Behavioral,NA,State/Prov,state_prov,NA,NA,NA,NA
+behavioral_2,Behavioral,NA,Latitude,latitude,NA,NA,NA,NA
+behavioral_2,Behavioral,NA,Longitude,longitude,NA,NA,NA,NA
+behavioral_2,Behavioral,NA,TranscriptID,transcript_id,NA,NA,NA,NA
+training_2,Training,NA,Trainee,trainee,NA,Trainee name,NA,NA
+training_2,Training,NA,Status,status,NA,Active or inactive trainee,NA,NA
+training_2,Training,NA,TraineeDateAdded,trainee_date_added,NA,Date trainee added,NA,NA
+training_2,Training,NA,TrainingTopic,training_topic,NA,Training topic,NA,NA
+training_2,Training,NA,TrainingDate,training_date,NA,Date of training,NA,NA
+training_2,Training,NA,ExpiryDate,expiry_date,NA,Date of quiz expiration,NA,NA
+training_2,Training,NA,ParticipantHomeCountry,participant_home_country,NA,Home country of the trainee,NA,NA
+training_2,Training,NA,Gender,gender,NA,Gender of trainee,NA,NA
+training_2,Training,NA,PREDICTStaff,predict_staff,NA,Yes/no trainee is predict staff,NA,NA
+training_2,Training,NA,Student,student,NA,Yes/no trainee is student,NA,NA
+training_2,Training,NA,OrganizationName,organization_name,NA,Trainee organization,NA,NA
+training_2,Training,NA,OrganizationType,organization_type,NA,"Trainee organization type (NGO, University, etc)",NA,NA
+training_2,Training,NA,OnJobTraining,on_job_training,NA,Yes/no trainee received on job training,NA,NA
+training_2,Training,NA,RefresherTraining,refresher_training,NA,Yes/no trainee received refresher training,NA,NA
+training_2,Training,NA,Trainer,trainer,NA,Trainer name,NA,NA
+training_2,Training,NA,TrainingLocation,training_location,NA,Training location,NA,NA
+training_2,Training,NA,Duration,duration,NA,Duration of training,NA,NA
+training_2,Training,NA,Completed,completed,NA,Yes/no trainee completed training,NA,NA
+training_2,Training,NA,Certified,certified,NA,Yes/no certification received,NA,NA
+training_2,Training,NA,QuizPassed,quiz_passed,NA,Yes/no quiz passed,NA,NA
+training_2,Training,NA,Feedback/Comments,feedback,NA,Feedback and comments received following training,NA,NA
+training_2,Training,NA,Role(s),roles,NA,NA,NA,NA

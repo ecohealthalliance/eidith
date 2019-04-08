@@ -142,8 +142,8 @@ specimens,Specimen,25,LMDate,lmdate,date_modified_specimens,Last-modified date o
 specimens,Specimen,26,DateLastUpdated,date_last_updated,database_date_specimens,Date of last database update,NA
 specimens,Specimen,NA,SpecimenID,specimen_id,DROP,NA,NA
 specimens,Specimen,NA,Country,country,DROP,NA,NA
-test_specimen_id,TestIDSpecimenID,1,GAINS3_TestID,gains3_test_id,test_id,NA,NA
-test_specimen_id,TestIDSpecimenID,2,GAINS3_SpecimenID,gains3_specimen_id,specimen_id,NA,NA
+test_specimen_ids,TestIDSpecimenID,1,GAINS3_TestID,gains3_test_id,test_id,NA,NA
+test_specimen_ids,TestIDSpecimenID,2,GAINS3_SpecimenID,gains3_specimen_id,specimen_id,NA,NA
 tests,Test,1,TestID,test_id,NA,Numerical Test ID,NA
 tests,Test,2,SpecimenName,specimen_name,specimen_id_names,NA,NA
 tests,Test,3,Pooled,pooled,NA,Whether tests are pooled or single samples,NA

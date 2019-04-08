@@ -28,9 +28,9 @@ eidith_db <- function(path = NULL) {
         return(db)
       }
     }
-     db <- DBI::dbConnect(RSQLite::SQLite(), path)
-     assign(dbobjname, db, envir = .eidith_env)
-     return(db)
+    db <- DBI::dbConnect(RSQLite::SQLite(), dbname = path)
+    assign(dbobjname, db, envir = .eidith_env)
+    return(db)
   } else {
     db <- mget("db", envir = .eidith_env, ifnotfound = NA)[[1]]
     current_path <- normalizePath(getOption("ed_sql_path", default_sql_path()),
@@ -43,7 +43,7 @@ eidith_db <- function(path = NULL) {
       if (!dir.exists(dirname(current_path))) {
         dir.create(dirname(current_path), recursive = TRUE)
       }
-      db <- DBI::dbConnect(RSQLite::SQLite(), current_path)
+      db <- DBI::dbConnect(RSQLite::SQLite(), dbname = current_path)
       assign("db", db, envir = .eidith_env)
       return(db)
     }
@@ -53,11 +53,11 @@ eidith_db <- function(path = NULL) {
 
 eidith_disconnect <- function(.eidith_env) {
   for (x in c("db", paste0("db", digest::sha1(temp_sql_path())))) {
-  db <- mget(x, envir = .eidith_env, ifnotfound = NA)[[1]]
-  if (inherits(db, "DBIConnection")) {
-    DBI::dbDisconnect(db)
-  }
-  assign(x, NULL, envir = .eidith_env)
+    db <- mget(x, envir = .eidith_env, ifnotfound = NA)[[1]]
+    if (inherits(db, "DBIConnection")) {
+      DBI::dbDisconnect(db)
+    }
+    assign(x, NULL, envir = .eidith_env)
   }
 }
 
