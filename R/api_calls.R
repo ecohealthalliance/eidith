@@ -62,7 +62,9 @@ p2_api_endpoints <- function() {
     "ExtractiveIndustry", "MarketValueChain", "NaturalAreas", "WildlifeRestaurant", "ZooSanctuary",
     "Human", "HumanCropProduction", "HumanAnimalProduction","HumanExtractiveIndustry", "HumanHospitalWorker",
     "HumanHunter", "HumanMarket", "HumanRestaurant", "HumanSickPerson", "HumanTemporarySettlements", "HumanZoo",
-    "Test", "TestDataInterpreted", "TestDataSerology", "Behavioral", "Training"
+    "Test", "TestDataInterpreted", "TestDataSerology", "Behavioral", "Training"#,
+    #"HumanEHP", "HumanAnimalProductionEHP", "HumanHunterEHP"
+
   )
 }
 
@@ -229,7 +231,7 @@ ed2_get <- function(endpoint2, country=NULL, postprocess=TRUE, verbose=interacti
       stop(paste(
         "Not recognized PREDICT country: ",
         paste(country[!country %in% predict_countries()], collapse = ", ")
-        ))
+      ))
     }
     url <- map(country, function(x){
       modify_url(url =  paste0(eidith2_base_url, "Extract", endpoint2, "Data"),
@@ -272,11 +274,13 @@ ed2_get <- function(endpoint2, country=NULL, postprocess=TRUE, verbose=interacti
     data <- data[,colnames(data) %in% event_non_ehp_cols]
   }
 
-  if(endpoint2 %in% c("Human", "HumanAnimalProduction", "HumanHunter") &
-                      (any(!country  %in% ehp_countries()) | is.null(country))){ # do not include ebola names in human tbls unless only ehp data is downloaded
-     data <- data[,colnames(data) %in% human_non_ehp_cols]
-  } else {
-    endpoint2 <- paste0(endpoint2, "EHP") # for the metadata
+  if(endpoint2 %in% c("Human", "HumanAnimalProduction", "HumanHunter")){
+    if(any(!country  %in% ehp_countries()) | is.null(country)){ # do not include ebola names in human tbls unless only ehp data is downloaded
+      data <- data[,colnames(data) %in% human_non_ehp_cols]
+    } else {
+      # leave data fields as is but change endpoint2 for metadata
+      endpoint2 <- paste0(endpoint2, "EHP")
+    }
   }
 
 
