@@ -23,7 +23,7 @@ p2_api_endpoints <- function() {
     "HumanHunter", "HumanMarket", "HumanRestaurant", "HumanSickPerson", "HumanTemporarySettlements", "HumanZoo",
     "Test", "TestDataInterpreted", "TestDataSerology", "Behavioral", "Training"#,
     #"HumanEHP", "HumanAnimalProductionEHP", "HumanHunterEHP"
-    )
+  )
 }
 
 #' This function returns the names of PREDICT-2 countries in the EIDITH database.
@@ -37,7 +37,6 @@ predict_countries <- function() {
     "South Sudan", "Thailand", "Tanzania", "Uganda", "Vietnam"
   )
 }
-
 
 #' This function returns the names of EHA PREDICT-2 countries in the EIDITH database.
 #' @rdname countries
@@ -178,26 +177,19 @@ Contact technology@eidith.org about permissions. See ?ed_contact.")
 #' @importFrom httr GET status_code progress authenticate content modify_url
 #' @importFrom jsonlite fromJSON
 #' @importFrom tibble as_tibble
-#' @importFrom purrr imap map_df map_lgl
+#' @importFrom purrr map imap map_df map_lgl
 #' @export
 ed2_get <- function(endpoint2, country=predict_countries(), postprocess=TRUE, verbose=interactive(),
                     header_only=FALSE, lmdate_from="2000-01-01",
                     lmdate_to=Sys.Date() + 1, auth=NULL, ...) {
 
-  url <-  paste0(eidith2_base_url, "Extract", endpoint2, "Data")
+  url <- map(country, function(x){
+    modify_url(url =  paste0(eidith2_base_url, "Extract", endpoint2, "Data"),
+               query = list(country = paste0("'", x, "'")))
+  })
 
   if(endpoint2 == "TestDataInterpreted" | endpoint2 == "TestDataSerology"){
-    url <- paste0(eidith2_base_url, "Extract", endpoint2)
-  }
-
-  if(endpoint2 %in% c("HumanEHP", "HumanAnimalProductionEHP", "HumanHunterEHP")){
-    endpoint_mod <- gsub("EHP", "", endpoint2)
-    url <- list(modify_url(url =  paste0(eidith2_base_url, "Extract", endpoint_mod, "Data"),
-                      query = list(country = "'Liberia'")),
-                modify_url(url =  paste0(eidith2_base_url, "Extract", endpoint_mod, "Data"),
-                           query = list(country = "'Sierra Leone'")),
-                modify_url(url =  paste0(eidith2_base_url, "Extract", endpoint_mod, "Data"),
-                           query = list(country = "'Guinea'")))
+    url <- map(url, ~gsub("Data", "", .x))
   }
 
   if(verbose) {
@@ -211,8 +203,8 @@ ed2_get <- function(endpoint2, country=predict_countries(), postprocess=TRUE, ve
 
   request <- imap(url, function(x, y) {
     if(y != length(url)){pbar = NULL}
-    GET(url = x, authenticate(auth[1], auth[2], type="basic"), pbar, ...)
-    })
+    GET(url = x, authenticate(auth[1], auth[2], type="basic"), pbar)
+  })
 
   if(any(map_lgl(request, ~status_code(.x) == 401))) {
     stop("Unauthorized (HTTP 401). Your username or password do not match an account.
