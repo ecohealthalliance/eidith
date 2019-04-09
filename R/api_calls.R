@@ -26,6 +26,38 @@ p2_api_endpoints <- function() {
     )
 }
 
+#' This function returns the names of PREDICT-2 countries in the EIDITH database.
+#' @rdname countries
+#' @aliases predict_countries eha_countries ehp_countries
+#' @export
+predict_countries <- function() {
+  c("Bangladesh", "DR Congo", "Republic of Congo", "Ivory Coast", "Cameroon", "China", "Egypt", "Ethiopia",
+    "Ghana", "Guinea", "Indonesia", "India", "Jordan", "Kenya", "Cambodia", "Lao PDR", "Liberia", "Myanmar",
+    "Mongolia", "Malaysia, Peninsular", "Malaysia, Sabah", "Nepal", "Rwanda", "Sierra Leone", "Senegal",
+    "South Sudan", "Thailand", "Tanzania", "Uganda", "Vietnam"
+  )
+}
+
+
+#' This function returns the names of EHA PREDICT-2 countries in the EIDITH database.
+#' @rdname countries
+#' @aliases predict_countries eha_countries ehp_countries
+#' @export
+eha_countries <- function() {
+  c("Bangladesh", "Republic of Congo", "Ivory Coast", "China", "Egypt", "Indonesia", "India", "Jordan",
+    "Liberia", "Malaysia, Peninsular", "Malaysia, Sabah", "South Sudan", "Thailand"
+  )
+}
+
+#' This function returns the names of Ebola Host Project PREDICT-2 countries in the EIDITH database.
+#' @rdname countries
+#' @aliases predict_countries eha_countries ehp_countries
+#' @export
+ehp_countries <- function() {
+  c(
+    "Liberia", "Sierra Leone", "Guinea"
+  )
+}
 
 create_empty_p2_table <- function(e2){
   meta <- ed2_metadata()
@@ -148,7 +180,7 @@ Contact technology@eidith.org about permissions. See ?ed_contact.")
 #' @importFrom tibble as_tibble
 #' @importFrom purrr imap map_df map_lgl
 #' @export
-ed2_get <- function(endpoint2, postprocess=TRUE, verbose=interactive(),
+ed2_get <- function(endpoint2, country=predict_countries(), postprocess=TRUE, verbose=interactive(),
                     header_only=FALSE, lmdate_from="2000-01-01",
                     lmdate_to=Sys.Date() + 1, auth=NULL, ...) {
 
