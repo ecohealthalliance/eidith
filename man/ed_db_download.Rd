@@ -5,7 +5,8 @@
 \title{Download EIDITH data to local storage}
 \usage{
 ed_db_download(p1_tables = p1_api_endpoints(),
-  p2_tables = p2_api_endpoints(), verbose = interactive())
+  p2_tables = p2_api_endpoints(), country = NULL,
+  verbose = interactive())
 }
 \arguments{
 \item{p1_tables}{Which PREDICT-1 tables to download}

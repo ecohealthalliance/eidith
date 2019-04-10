@@ -41,7 +41,9 @@ human_non_ehp_cols <- c("Country", "SiteName", "ConcurrentSamplingSite", "Distri
                         "Q56 Contact with rodents/shrews", "Q56 Contact with bats", "Q56 Contact with non-human primates", "Q56 Contact with birds",
                         "Q56 Contact with carnivores", "Q56 Contact with ungulates", "Q56 Contact with pangolins", "Q56 Contact with poultry/other fowl",
                         "Q56 Contact with goats/sheep", "Q56 Contact with camels", "Q56 Contact with swine", "Q56 Contact with cattle/buffalo", "Q56 Contact with horses",
-                        "Q56 Contact with dogs", "Q56 Contact with cats", "Q57 WorriedAboutDisease", "SpecimensCollected", "Organization")
+                        "Q56 Contact with dogs", "Q56 Contact with cats", "Q57 WorriedAboutDisease", "SpecimensCollected", "Organization",
+                        "SiteLatitudeUnrounded", "SiteLongitudeUnrounded", "EventLatitudeUnrounded", "EventLongitudeUnrounded", "InterfacesAnimalsSampled", "InterfacesHumansSampled", "ParticipantID", "Livelihood(s)", "MostTimeSpent", "Q1 AnimalsHunted", "Q2 MethodsUsedToHuntTrap", "Q3 RodentsHuntTrapPurpose", "Q3 BatsHuntTrapPurpose", "Q3 NHPHuntTrapPurpose", "Q3 BirdsHuntTrapPurpose", "Q3 CarnivoresHuntTrapPurpose", "Q3 UngulatesHuntTrapPurpose", "Q3 PangolinsHuntTrapPurpose", "Q4 ExposedToBloodLastYear", "Q5 ScratchedBittenLastYear", "Q6 OutbreakLastYear", "Q7 OutbreakDeaths", "Q8 ActionWhenDeadAnimalFound", "Q9 TransportDeadAnimal", "Q10 PPEUsed", "Q11 WhichPPE", "Q12 WhenPPEUsed", "Notes",
+                        "Q1 LiveOnSite", "Q2 #WorkAtSite", "Q3 HowLongWorked", "Q4 AnimalsRaised", "Q5 LiveAnimalsStoredNight", "Q6 QuarantineForNewAnimals", "Q7 OnSiteFoodProduction", "Q8 WhoPaysGrowCrops", "Q9 BushMeatOnsite", "Q10 MeatSource", "Q11 ConsumeBushMeatOnSite", "Q12 PPEUsed", "Q13 WhichPPE", "Q14 WhenPPEUsed", "Q15 UseDisinfectantToClean", "Q16 DisinfectantsUsedFor", "Q17 AnimalEnclosuresCleanedFrequency", "Q18 ViscaraRefuse", "Q19 DesignatedAreaForAnimalWaste", "Q20 DesignatedAreaForAnimalWasteUsed", "Q21 AnimalsReceiveVetCareinYear", "Q22 HealthOfficalInspectedAnimals", "Q23 ActionWhenAnimalsSick", "Q24 AnimalsQuarantinedOrDestroyed", "Q25 WhichAnimalsQuarantinedOrDestroyed", "Q26 OutbreakInYear", "Q27 RodentsOutbreakDeaths", "Q27 BatsOutbreakDeaths", "Q27 NHPOutbreakDeaths", "Q27 BirdsOutbreakDeaths", "Q27 CarnivoresOutbreakDeaths", "Q27 UngulatesOutbreakDeaths", "Q27 PangolinsOutbreakDeaths", "Q27 PoultryOutbreakDeaths", "Q27 GoatsOutbreakDeaths", "Q27 CamelsOutbreakDeaths", "Q27 SwineOutbreakDeaths", "Q27 CattleOutbreakDeaths", "Q27 HorsesOutbreakDeaths", "Q27 DogsOutbreakDeaths", "Q27 CatsOutbreakDeaths", "Q28 AnimalsRaidFood", "Q29 WhichAnimalsRaidFood", "Q30 RaidingPrevention", "notes")
 
 #' Return he names of the tables in the EIDITH database.
 #'
@@ -146,6 +148,7 @@ create_empty_p1_table <- function(e1){
 ed_get <- function(endpoint, verbose=interactive(), postprocess=TRUE,
                    header_only=FALSE, lmdate_from="2000-01-01",
                    lmdate_to=Sys.Date() + 1, auth=NULL, ...) {
+
   url <- modify_url(url =  paste0(eidith_base_url, endpoint),
                     query = list(header_only = ifelse(header_only, "y", "n"),
                                  lmdate_from = lmdate_from,
@@ -225,22 +228,38 @@ ed2_get <- function(endpoint2, country=NULL, postprocess=TRUE, verbose=interacti
                     header_only=FALSE, auth=NULL, ...) {
 
   if(is.null(country)){
-    url <-  paste0(eidith2_base_url, "Extract", endpoint2, "Data")
+    url <-  paste0(eidith2_base_url, "Extract", endpoint2, "Data") # url when country is null (gets all countries)
   } else {
-    if(any(!country %in% predict_countries())) {
+    if(any(!country %in% predict_countries())) { # if country is specified, make sure it is recognized
       stop(paste(
         "Not recognized PREDICT country: ",
         paste(country[!country %in% predict_countries()], collapse = ", ")
       ))
     }
-    url <- map(country, function(x){
+    url <- map(country, function(x){ # make list of urls for specified countries
       modify_url(url =  paste0(eidith2_base_url, "Extract", endpoint2, "Data"),
                  query = list(country = paste0("'", x, "'")))
     })
   }
 
-  if(endpoint2 == "TestDataInterpreted" | endpoint2 == "TestDataSerology"){
+  if(endpoint2 %in% c("TestDataInterpreted", "TestDataSerology")){ # modify url for these two cases
     url <- map(url, ~gsub("Data", "", .x))
+  }
+
+  if(endpoint2 %in% c("HumanEHP", "HumanAnimalProductionEHP", "HumanHunterEHP")){
+    if(is.null(country)){
+      endpoint_mod <- gsub("EHP", "", endpoint2)
+      # url list for all three EHP countries
+      url <- list(modify_url(url =  paste0(eidith2_base_url, "Extract", endpoint_mod, "Data"),
+                             query = list(country = "'Liberia'")),
+                  modify_url(url =  paste0(eidith2_base_url, "Extract", endpoint_mod, "Data"),
+                             query = list(country = "'Sierra Leone'")),
+                  modify_url(url =  paste0(eidith2_base_url, "Extract", endpoint_mod, "Data"),
+                             query = list(country = "'Guinea'")))
+    }else{
+      if(any(!country %in% ehp_countries())) stop("EHP tables available only for Liberia, Sierra Leone, and Guinea")
+      url <- map(url, ~gsub("EHP", "", .x)) # remove EHP from url.  this applies for cases when country is specified.
+    }
   }
 
   if(verbose) {
@@ -282,7 +301,6 @@ ed2_get <- function(endpoint2, country=NULL, postprocess=TRUE, verbose=interacti
       endpoint2 <- paste0(endpoint2, "EHP")
     }
   }
-
 
   if(header_only) {
     return(data)
