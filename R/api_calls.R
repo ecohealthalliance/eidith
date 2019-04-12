@@ -227,8 +227,10 @@ Contact technology@eidith.org about permissions. See ?ed_contact.")
 ed2_get <- function(endpoint2, country=NULL, postprocess=TRUE, verbose=interactive(),
                     header_only=FALSE, auth=NULL, ...) {
 
+  url_end <- ifelse(endpoint2 %in% c("TestDataInterpreted", "TestDataSerology"), "", "Data")
+
   if(is.null(country)){
-    url <-  paste0(eidith2_base_url, "Extract", endpoint2, "Data") # url when country is null (gets all countries)
+    url <-  paste0(eidith2_base_url, "Extract", endpoint2, url_end) # url when country is null (gets all countries)
   } else {
     if(any(!country %in% predict_countries())) { # if country is specified, make sure it is recognized
       stop(paste(
@@ -237,13 +239,13 @@ ed2_get <- function(endpoint2, country=NULL, postprocess=TRUE, verbose=interacti
       ))
     }
     url <- map(country, function(x){ # make list of urls for specified countries
-      modify_url(url =  paste0(eidith2_base_url, "Extract", endpoint2, "Data"),
+      modify_url(url =  paste0(eidith2_base_url, "Extract", endpoint2, url_end),
                  query = list(country = paste0("'", x, "'")))
     })
   }
 
-  if(endpoint2 %in% c("TestDataInterpreted", "TestDataSerology")){ # modify url for these two cases
-    url <- map(url, ~gsub("Data", "", .x))
+  if(endpoint2 %in% c("TestDataInterpreted", "TestDataSerology", "Test")){ # modify url for these two cases
+    url <- map(url, ~gsub("%27", "", .x))
   }
 
   if(endpoint2 %in% c("HumanEHP", "HumanAnimalProductionEHP", "HumanHunterEHP")){
