@@ -2,7 +2,7 @@ eidith_base_url <- "https://predict2api.eidith.org/api/modeling/"
 
 eidith2_base_url <- "https://predict2api.eidith.org/api/Extract/"
 
-event_non_ehp_cols <- c("Country", "SiteName", "ConcurrentSamplingSite", "District", "StateProv",
+event_non_ehp_cols <- c("GAINS4_EventID", "Country", "SiteName", "ConcurrentSamplingSite", "District", "StateProv",
                         "SiteLatitude", "SiteLongitude", "EventLatitude", "EventLongitude", "EventDate",
                         "Season", "DurationDays", "EventName", "Recorder", "Organization", "HumanDensityImpact",
                         "DiseaseTransmissionInterfaces", "OutbreakName", "VeterinarianCare", "SamplingAreaSize",
