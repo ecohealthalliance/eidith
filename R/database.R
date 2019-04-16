@@ -112,7 +112,7 @@ db_other_indexes <- list(
   wildlife_restaurant_2 = list("event_name"),
   human_2 = list("participant_id"),
   human_ehp_2 = list("participant_id"),
-  tests_2 = list("test_id"),
+  tests_2 = list("test_name"),
   test_data_interpreted_2 = list("test_id"),
   test_data_serology_2 = list("sample_id"),
   human_animal_production_2 = list("participant_id"),
