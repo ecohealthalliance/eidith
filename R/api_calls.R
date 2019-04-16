@@ -244,10 +244,6 @@ ed2_get <- function(endpoint2, country=NULL, postprocess=TRUE, verbose=interacti
     })
   }
 
-  if(endpoint2 %in% c("TestDataInterpreted", "TestDataSerology", "Test")){ # modify url for these two cases
-    url <- map(url, ~gsub("%27", "", .x))
-  }
-
   if(endpoint2 %in% c("HumanEHP", "HumanAnimalProductionEHP", "HumanHunterEHP")){
     if(is.null(country)){
       endpoint_mod <- gsub("EHP", "", endpoint2)
