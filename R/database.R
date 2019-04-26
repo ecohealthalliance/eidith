@@ -112,9 +112,9 @@ db_other_indexes <- list(
   wildlife_restaurant_2 = list("event_name"),
   human_2 = list("participant_id"),
   human_ehp_2 = list("participant_id"),
-  tests_2 = list("test_id"),
-  test_data_interpreted_2 = list("test_id"),
-  test_data_serology_2 = list("test_id"),
+  tests_2 = list("gains4_test_id"),
+  test_data_interpreted_2 = list("gains4_test_id"),
+  test_data_serology_2 = list("gains4_test_id"),
   human_animal_production_2 = list("participant_id"),
   human_animal_production_ehp_2 = list("participant_id"),
   extractive_industry_2 = list("event_name"),
@@ -165,7 +165,8 @@ db_other_indexes <- list(
 #' @param verbose Show messages while in progress?
 #' @seealso [ed_db_status()], [ed_db_updates()], [ed_db_export()]
 #' @export
-ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_endpoints(), verbose=interactive()) {
+ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_endpoints(),
+                           country = NULL, verbose=interactive()) {
   auth <- ed_auth(verbose = verbose)
   if (verbose) message("Downloading and processing EIDITH data. This may take some time.")
 
@@ -183,7 +184,7 @@ ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_en
   })
   # P2
   lapply(p2_tables, function(x) {
-    tb <- ed2_get(x, postprocess=TRUE, verbose=verbose, auth=auth)
+    tb <- ed2_get(x, country=country, postprocess=TRUE, verbose=verbose, auth=auth)
     if(any(typeof(tb) != "list")) return(invisible(0)) #escaping if there is an error with the download
     tb$integer_id <- seq_len(nrow(tb))
     dplyr::copy_to(eidith_db(temp_sql_path()), tb, name=p2_table_names[[x]], temporary = FALSE,
