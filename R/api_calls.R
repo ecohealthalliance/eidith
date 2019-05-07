@@ -300,7 +300,7 @@ ed2_get <- function(endpoint2, country=NULL, p1_data = FALSE, postprocess=TRUE,
   }
 
   if(postprocess){
-    data <- tryCatch(ed2_process(data, endpoint2, p1_data),
+    data <- tryCatch(ed2_process(data, endpoint2),
                      error = function(e){
                        cat_line(red(paste0("Error: The fields in the ", endpoint2, " download are not as expected. See message for details and ?ed_contact for support.")))
                        cat_line(e)
