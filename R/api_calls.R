@@ -16,7 +16,7 @@ event_non_ehp_cols <- c("GAINS4_EventID", "Country", "SiteName", "ConcurrentSamp
 human_non_ehp_cols <- c("Country", "SiteName", "ConcurrentSamplingSite", "District", "StateProv",
                         "SiteLatitude", "SiteLongitude", "EventLatitude", "EventLongitude",
                         "EventDate", "Season", "DurationDays", "EventName", "DiseaseTransmissionInterfaces",
-                        "GAINS4_SampleUnitID", "Q1 ParticipantID", "Q3 DateOfInterview", "Q4 BeginTimeInterview",
+                        "GAINS4_SampleUnitID", "GAINS4_EventID", "Q1 ParticipantID", "Q3 DateOfInterview", "Q4 BeginTimeInterview",
                         "Q5 EndTimeInterview", "Q6 InterviewCity", "Q6 InterviewStateProv", "Q6 InterviewLatitude",
                         "Q6 InterviewLongitude", "Q7 Gender", "Q8 Age", "Q9 LiveCity", "Q9 LiveStateProv",
                         "Q9 LiveLatitude", "Q9 LiveLongitude", "Q10 LengthLived", "Q11 PeopleInDwelling",
