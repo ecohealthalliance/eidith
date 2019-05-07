@@ -22,10 +22,10 @@ p1_api_endpoints <- function() {
 p2_api_endpoints <- function() {
   c("Event", "Animal", "Specimen", "AnimalProduction", "CropProduction", "Dwellings",
     "ExtractiveIndustry", "MarketValueChain", "NaturalAreas", "WildlifeRestaurant", "ZooSanctuary",
-    "Human", "HumanCropProduction", "HumanAnimalProduction","HumanExtractiveIndustry", "HumanHospitalWorker",
+    "Human", "HumanEHP","HumanCropProduction", "HumanAnimalProduction", "HumanAnimalProductionEHP", "HumanExtractiveIndustry", "HumanHospitalWorker",
     "HumanHunter", "HumanMarket", "HumanRestaurant", "HumanSickPerson", "HumanTemporarySettlements", "HumanZoo",
     "Test", "TestDataInterpreted", "TestDataSerology", "Behavioral", "Training"#,
-    #"HumanEHP", "HumanAnimalProductionEHP", "HumanHunterEHP"
+     #"HumanHunterEHP"
 
   )
 }
@@ -234,7 +234,7 @@ ed2_get <- function(endpoint2, country=NULL, postprocess=TRUE, verbose=interacti
     })
   }
 
-  # add modules parameters for eho modeules
+  # add modules parameters for ehp modeules
   if(endpoint2 == "HumanAnimalProductionEHP") {url <- map(url, ~paste0(., "&modules=%27AP%27"))}
   if(endpoint2 == "HumanHunterEHP") {url <- map(url, ~paste0(., "&modules=%27HT%27"))}
 
