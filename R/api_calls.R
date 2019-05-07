@@ -184,8 +184,8 @@ Contact technology@eidith.org about permissions. See ?ed_contact.")
 #' @importFrom tibble as_tibble
 #' @importFrom purrr map imap map_df map_lgl
 #' @export
-ed2_get <- function(endpoint2, country=NULL, postprocess=TRUE, verbose=interactive(),
-                    header_only=FALSE, auth=NULL, ...) {
+ed2_get <- function(endpoint2, country=NULL, p1_data = FALSE, postprocess=TRUE,
+                    verbose=interactive(), header_only=FALSE, auth=NULL, ...) {
 
   # special url case - test data tables
   url_end <- ifelse(endpoint2 %in% c("TestDataInterpreted", "TestDataSerology"), "", "Data")
@@ -230,13 +230,21 @@ ed2_get <- function(endpoint2, country=NULL, postprocess=TRUE, verbose=interacti
     # list of urls for specified countries
     url <- map(country, function(x){
       modify_url(url =  paste0(eidith2_base_url, "Extract", endpoint_mod, url_end),
-                 query = list(country = paste0("'", x, "'")))
+                 query = list(country = x))
     })
   }
 
   # add modules parameters for ehp modeules
-  if(endpoint2 == "HumanAnimalProductionEHP") {url <- map(url, ~paste0(., "&modules=%27AP%27"))}
-  if(endpoint2 == "HumanHunterEHP") {url <- map(url, ~paste0(., "&modules=%27HT%27"))}
+  if(endpoint2 == "HumanAnimalProductionEHP") {url <- map(url, ~modify_url(url = .x,
+                                                                 query = list(modules = "AP")))}
+  if(endpoint2 == "HumanHunterEHP") {url <- map(url, ~modify_url(url = .x,
+                                                                 query = list(modules = "HT")))}
+
+  # combine with p1 table if specified
+  if(p1_data & endpoint2 %in% c("Event", "Animal", "Specimen", "Test")){
+    url <-  map(url, ~modify_url(url = .x,
+                       query = list(p1data = 1)))
+  }
 
   # get data
   if(verbose) {
@@ -292,7 +300,7 @@ ed2_get <- function(endpoint2, country=NULL, postprocess=TRUE, verbose=interacti
   }
 
   if(postprocess){
-    data <- tryCatch(ed2_process(data, endpoint2),
+    data <- tryCatch(ed2_process(data, endpoint2, p1_data),
                      error = function(e){
                        cat_line(red(paste0("Error: The fields in the ", endpoint2, " download are not as expected. See message for details and ?ed_contact for support.")))
                        cat_line(e)
@@ -304,8 +312,6 @@ ed2_get <- function(endpoint2, country=NULL, postprocess=TRUE, verbose=interacti
                      })
 
   }
-
-  #if(postprocess) data <- ed2_process(data, endpoint2)
 
   return(data)
 }
