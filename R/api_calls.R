@@ -23,9 +23,9 @@ p2_api_endpoints <- function() {
   c("Event", "Animal", "Specimen", "AnimalProduction", "CropProduction", "Dwellings",
     "ExtractiveIndustry", "MarketValueChain", "NaturalAreas", "WildlifeRestaurant", "ZooSanctuary",
     "Human", "HumanEHP","HumanCropProduction", "HumanAnimalProduction", "HumanAnimalProductionEHP", "HumanExtractiveIndustry", "HumanHospitalWorker",
-    "HumanHunter", "HumanMarket", "HumanRestaurant", "HumanSickPerson", "HumanTemporarySettlements", "HumanZoo",
-    "Test", "TestDataInterpreted", "TestDataSerology", "Behavioral", "Training"#,
-     #"HumanHunterEHP"
+    "HumanHunter", "HumanHunterEHP", "HumanMarket", "HumanRestaurant", "HumanSickPerson", "HumanTemporarySettlements", "HumanZoo",
+    "Test", "TestDataInterpreted", "TestDataSerology", "Behavioral", "Training"
+
 
   )
 }
@@ -286,6 +286,11 @@ ed2_get <- function(endpoint2, country=NULL, p1_data=FALSE, postprocess=TRUE,
   if(endpoint2 ==  "HumanAnimalProductionEHP"){
     data <- data %>%
       filter(!is.na(`(Animal Production Module) Q1 LiveOnSite`))
+  }
+
+  if(endpoint2 ==  "HumanHunterEHP"){
+    data <- data %>%
+      filter(!is.na(`(Hunter Module) Q1 AnimalsHunted`))
   }
 
   if(header_only) {

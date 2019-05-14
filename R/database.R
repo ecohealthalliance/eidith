@@ -8,7 +8,7 @@ db2_tables <- c("events_2", "animals_2", "specimens_2", "animal_production_2", "
                 "human_extractive_industry_2", "human_hospital_worker_2", "human_hunter_2",
                 "human_market_2", "human_restaurant_2", "human_sick_person_2", "human_temporary_settlements_2",
                 "human_zoo_2", "behavioral_2", "training_2",
-                "human_ehp_2",  "human_animal_production_ehp_2"#, "human_hunter_ehp_2"
+                "human_ehp_2",  "human_animal_production_ehp_2", "human_hunter_ehp_2"
                 )
 
 p1_table_names <- list(
