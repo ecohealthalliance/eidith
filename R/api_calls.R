@@ -205,8 +205,8 @@ ed2_get <- function(endpoint2, country=NULL, p1_data=FALSE, postprocess=TRUE,
     if(is.null(country)){
       country <- ehp_countries()
     } else {
-      # check that countries are ehp only
-      if(any(!country %in% ehp_countries())) stop("EHP tables available only for Liberia, Sierra Leone, and Guinea")
+      # filter out non ehp countries
+      country <- country[country %in% ehp_countries()]
     }
   }else{
     endpoint_mod <- endpoint2
