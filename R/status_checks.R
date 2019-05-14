@@ -75,38 +75,36 @@ ed_db_check_status <- function(path=NULL, inter = T) {
 
     dbstatus <- ""
 
-    #db_tables <- eidith:::db2_tables
+    #db_tables <- eidith:::db_tables
     #db2_tables <- c(eidith:::db2_tables, "new_table")
 
     # find out if any tables are missing and then ask the user if they wish to download them?
-    # if(!(all(c(db_tables, db2_tables) %in% dbListTables(edb)))) {
-    #   missing_p1_tables <- db_tables[which(db_tables %in% dbListTables(edb) == FALSE)]
-    #   missing_p2_tables <- db2_tables[which(db2_tables %in% dbListTables(edb) == FALSE)]
-    #   dl_p1_tables <- names(purrr::keep(p1_table_names, function(x) x %in% missing_p1_tables))
-    #   dl_p2_tables <- names(purrr::keep(p2_table_names, function(x) x %in% missing_p2_tables))
-    #
-    #   if(interactive() & inter){
-    #     dl_opt <- menu(c("Yes", "No"), title = "Local EIDITH database is missing tables.\nWould you like to download missing tables?")
-    #
-    #     if(dl_opt == 1) ed_db_download(dl_p1_tables, dl_p2_tables)
-    #     if(dl_opt == 2) dbstatus <- list(status_msg1 ="Local EIDITH database is available, but missing tables.\ned_db_check_status() to update")
-    #   }else{
-    #     dbstatus <- list(status_msg1 ="Local EIDITH database is available, but missing tables.\ned_db_check_status() to update")
-    #   }
-    # }else{
-    #   dbstatus <- "Local EIDITH database contains all tables with all expected fields!\n"
-    # }
-    dbstatus <- "test status"
+    if(!(all(c(db_tables, db2_tables) %in% dbListTables(edb)))) {
+      missing_p1_tables <- db_tables[which(db_tables %in% dbListTables(edb) == FALSE)]
+      missing_p2_tables <- db2_tables[which(db2_tables %in% dbListTables(edb) == FALSE)]
+      dl_p1_tables <- names(purrr::keep(p1_table_names, function(x) x %in% missing_p1_tables))
+      dl_p2_tables <- names(purrr::keep(p2_table_names, function(x) x %in% missing_p2_tables))
+
+      if(interactive() & inter){
+        dl_opt <- menu(c("Yes", "No"), title = "Local EIDITH database is missing tables.\nWould you like to download missing tables?")
+
+        if(dl_opt == 1) ed_db_download(dl_p1_tables, dl_p2_tables)
+        if(dl_opt == 2) dbstatus <- list(status_msg1 ="Local EIDITH database is available, but missing tables.\ned_db_check_status() to update")
+      }else{
+        dbstatus <- list(status_msg1 ="Local EIDITH database is available, but missing tables.\ned_db_check_status() to update")
+      }
+    }else{
+      dbstatus <- "Local EIDITH database contains all tables with all expected fields!\n"
+    }
 
     #check tables that exist for errors
     tbls_to_check <- edt[!grepl("sqlite|status", edt)]
 
-    if(!all(sapply(tbls_to_check, function(x) ed_db_field_check(x, NULL, ed2_meta)))){
-      error_p1_tables <- sapply(db_tables[-7], function(x) ed_db_field_check(x, NULL, ed2_meta))
-      error_p2_tables <- sapply(db2_tables, function(x) ed_db_field_check(x, NULL, ed2_meta))
-      dl_p1_tables <- names(purrr::keep(p1_table_names, function(x) x %in% error_p1_tables))
-      dl_p2_tables <- names(purrr::keep(p2_table_names, function(x) x %in% error_p2_tables))
-
+    if(!all(sapply(tbls_to_check, function(x) eidith:::ed_db_field_check(x, NULL, ed2_meta)))){
+      # error_p1_tables <- sapply(db_tables[-7], function(x) ed_db_field_check(x, NULL, ed2_meta))
+      # error_p2_tables <- sapply(db2_tables, function(x) ed_db_field_check(x, NULL, ed2_meta))
+      # dl_p1_tables <- names(purrr::keep(p1_table_names, function(x) x %in% error_p1_tables))
+      # dl_p2_tables <- names(purrr::keep(p2_table_names, function(x) x %in% error_p2_tables))
 
       dbstatus <- list(status_msg ="Local EIDITH database fields are empty or corrupt. Delete and re-download:\ned_db_delete() followed by ed_db_download().")
     }
