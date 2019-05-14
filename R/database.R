@@ -166,7 +166,7 @@ db_other_indexes <- list(
 #' @seealso [ed_db_status()], [ed_db_updates()], [ed_db_export()]
 #' @export
 ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_endpoints(),
-                           country = NULL, verbose=interactive()) {
+                           country = NULL, p1_data=FALSE, verbose=interactive()) {
   auth <- ed_auth(verbose = verbose)
   if (verbose) message("Downloading and processing EIDITH data. This may take some time.")
 
@@ -184,7 +184,7 @@ ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_en
   })
   # P2
   lapply(p2_tables, function(x) {
-    tb <- ed2_get(x, country=country, postprocess=TRUE, verbose=verbose, auth=auth)
+    tb <- ed2_get(x, country=country, p1_data=p1_data, postprocess=TRUE, verbose=verbose, auth=auth)
     if(any(typeof(tb) != "list")) return(invisible(0)) #escaping if there is an error with the download
     tb$integer_id <- seq_len(nrow(tb))
     dplyr::copy_to(eidith_db(temp_sql_path()), tb, name=p2_table_names[[x]], temporary = FALSE,

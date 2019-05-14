@@ -184,25 +184,24 @@ Contact technology@eidith.org about permissions. See ?ed_contact.")
 #' @importFrom tibble as_tibble
 #' @importFrom purrr map imap map_df map_lgl
 #' @export
-ed2_get <- function(endpoint2, country=NULL, p1_data = FALSE, postprocess=TRUE,
+ed2_get <- function(endpoint2, country=NULL, p1_data=FALSE, postprocess=TRUE,
                     verbose=interactive(), header_only=FALSE, auth=NULL, ...) {
 
-  # special url case - test data tables
+  # should endpoint2 have "data" appeneded in the url call?
   url_end <- ifelse(endpoint2 %in% c("TestDataInterpreted", "TestDataSerology"), "", "Data")
 
-  # ehp handling
+  # ehp handling when country is given - if only specifying ehp countries, get ehp-specific data, otherwise remove ehp country from results
   if(endpoint2 %in% c("Human", "HumanAnimalProduction", "HumanHunter") & !is.null(country)){
-    # if only specifying ehp country, give ehp-specific data
     if(all(country %in% ehp_countries())) {
     endpoint2 <- paste0(endpoint2, "EHP")
     } else {
-      # otherwise remove ehp country from list
       country <- country[!country %in% ehp_countries()]
     }
   }
 
+  # ehp modules to be called from the human table, so create endpoint_mod for url call.  also specify countries for ehp call if they are not already specified.
   if(endpoint2 %in% c("HumanEHP", "HumanAnimalProductionEHP", "HumanHunterEHP")){
-    endpoint_mod <- gsub("EHP|AnimalProduction|Hunter", "", endpoint2)
+    endpoint_mod <- "Human"
     if(is.null(country)){
       country <- ehp_countries()
     } else {
@@ -244,6 +243,12 @@ ed2_get <- function(endpoint2, country=NULL, p1_data = FALSE, postprocess=TRUE,
   if(p1_data & endpoint2 %in% c("Event", "Animal", "Specimen", "Test")){
     url <-  map(url, ~modify_url(url = .x,
                        query = list(p1data = 1)))
+  }
+
+  # test table - include sequence column
+  if(endpoint2 == "Test"){
+    url <-  map(url, ~modify_url(url = .x,
+                                 query = list(sequence=1 )))
   }
 
   # get data
