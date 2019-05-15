@@ -97,13 +97,7 @@ ed_db_check_status <- function(path=NULL, inter = T) {
     #check tables that exist for errors
     tbls_to_check <- edt[!grepl("sqlite|status", edt)]
 
-    if(!all(sapply(tbls_to_check, function(x) ed_db_field_check(x, NULL, ed2_meta)))){
-      error_p1_tables <- sapply(db_tables[-7], function(x) ed_db_field_check(x, NULL, ed2_meta))
-      error_p2_tables <- sapply(db2_tables, function(x) ed_db_field_check(x, NULL, ed2_meta))
-      dl_p1_tables <- names(purrr::keep(p1_table_names, function(x) x %in% error_p1_tables))
-      dl_p2_tables <- names(purrr::keep(p2_table_names, function(x) x %in% error_p2_tables))
-
-
+    if(!all(sapply(tbls_to_check, function(x) eidith:::ed_db_field_check(x, NULL, ed2_meta)))){
       dbstatus <- list(status_msg ="Local EIDITH database fields are empty or corrupt. Delete and re-download:\ned_db_delete() followed by ed_db_download().")
     }
   }

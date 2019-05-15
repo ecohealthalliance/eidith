@@ -7,8 +7,8 @@ db2_tables <- c("events_2", "animals_2", "specimens_2", "animal_production_2", "
                 "human_animal_production_2", "extractive_industry_2", "human_crop_production_2",
                 "human_extractive_industry_2", "human_hospital_worker_2", "human_hunter_2",
                 "human_market_2", "human_restaurant_2", "human_sick_person_2", "human_temporary_settlements_2",
-                "human_zoo_2", "behavioral_2", "training_2"#,
-                #"human_ehp_2",  "human_animal_production_ehp_2", "human_hunter_ehp_2"
+                "human_zoo_2", "behavioral_2", "training_2",
+                "human_ehp_2",  "human_animal_production_ehp_2", "human_hunter_ehp_2"
                 )
 
 p1_table_names <- list(
@@ -166,7 +166,7 @@ db_other_indexes <- list(
 #' @seealso [ed_db_status()], [ed_db_updates()], [ed_db_export()]
 #' @export
 ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_endpoints(),
-                           country = NULL, verbose=interactive()) {
+                           country = NULL, p1_data=FALSE, verbose=interactive()) {
   auth <- ed_auth(verbose = verbose)
   if (verbose) message("Downloading and processing EIDITH data. This may take some time.")
 
@@ -184,7 +184,7 @@ ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_en
   })
   # P2
   lapply(p2_tables, function(x) {
-    tb <- ed2_get(x, country=country, postprocess=TRUE, verbose=verbose, auth=auth)
+    tb <- ed2_get(x, country=country, p1_data=p1_data, postprocess=TRUE, verbose=verbose, auth=auth)
     if(any(typeof(tb) != "list")) return(invisible(0)) #escaping if there is an error with the download
     tb$integer_id <- seq_len(nrow(tb))
     dplyr::copy_to(eidith_db(temp_sql_path()), tb, name=p2_table_names[[x]], temporary = FALSE,
