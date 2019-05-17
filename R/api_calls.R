@@ -315,10 +315,6 @@ ed2_get <- function(endpoint2, country=NULL, p1_data=FALSE, postprocess=TRUE,
                        cat_line(red(paste0("Error: The fields in the ", endpoint2, " download are not as expected. See message for details and ?ed_contact for support.")))
                        cat_line(e)
                        return(invisible(0))
-                     },  warning = function(w){
-                       cat_line(red(paste0("Warning: The fields in the ", endpoint2, " download are not as expected. See message for details and ?ed_contact for support.")))
-                       cat_line(w)
-                       return(invisible(0))
                      })
 
   }
