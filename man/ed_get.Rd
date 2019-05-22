@@ -11,44 +11,24 @@
 \title{Functions to download EIDITH tables via API}
 \usage{
 ed_get(endpoint, verbose = interactive(), postprocess = TRUE,
-  header_only = FALSE, lmdate_from = "2000-01-01",
-  lmdate_to = Sys.Date() + 1, auth = NULL, ...)
+  auth = NULL, ...)
 
-ed_get_events(verbose = interactive(), postprocess = TRUE,
-  header_only = FALSE, lmdate_from = "2000-01-01",
-  lmdate_to = Sys.Date() + 1, ...)
+ed_get_events(verbose = interactive(), postprocess = TRUE, ...)
 
-ed_get_animals(verbose = interactive(), postprocess = TRUE,
-  header_only = FALSE, lmdate_from = "2000-01-01",
-  lmdate_to = Sys.Date() + 1, ...)
+ed_get_animals(verbose = interactive(), postprocess = TRUE, ...)
 
-ed_get_specimens(verbose = interactive(), postprocess = TRUE,
-  header_only = FALSE, lmdate_from = "2000-01-01",
-  lmdate_to = Sys.Date() + 1, ...)
+ed_get_specimens(verbose = interactive(), postprocess = TRUE, ...)
 
-ed_get_tests(verbose = interactive(), postprocess = TRUE,
-  header_only = FALSE, lmdate_from = "2000-01-01",
-  lmdate_to = Sys.Date() + 1, ...)
+ed_get_tests(verbose = interactive(), postprocess = TRUE, ...)
 
-ed_get_viruses(verbose = interactive(), postprocess = TRUE,
-  header_only = FALSE, lmdate_from = "2000-01-01",
-  lmdate_to = Sys.Date() + 1, ...)
+ed_get_viruses(verbose = interactive(), postprocess = TRUE, ...)
 
-ed_get_testspecimen(verbose = interactive(), postprocess = TRUE,
-  header_only = FALSE, lmdate_from = "2000-01-01",
-  lmdate_to = Sys.Date() + 1, ...)
+ed_get_testspecimen(verbose = interactive(), postprocess = TRUE, ...)
 }
 \arguments{
 \item{verbose}{Show a progress bar and other messages?}
 
 \item{postprocess}{Should data be cleaned via \code{\link[=ed_process]{ed_process()}} or returned raw?}
-
-\item{header_only}{Return only the table header.  Useful for checking if
-API access works}
-
-\item{lmdate_from}{filter records by earliest date, in YYYY-MM-DD format}
-
-\item{lmdate_to}{filter records by latest date, in YYYY-MM-DD format (see details)}
 
 \item{...}{additional arguments passed to \code{\link[httr:GET]{httr::GET()}}}
 }
