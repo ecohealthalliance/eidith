@@ -3,7 +3,7 @@ eidith_base_url <- "https://predict2api.eidith.org/api/modeling/"
 eidith2_base_url <- "https://predict2api.eidith.org/api/Extract/"
 
 # event ehp names to exclude from event table
-event_ehp_names <- c("HumanPopulation", "NumEbolaCases", "NumEbolaSurvivors", "DateFirstCase", "DateLastCase", "EbolaTreatmentCenter", "QuarantinedDuringOutbreak", "QuarantineDate", "WeeksQuarantine", "PercentageQuarantined", "FoodMarketClosed", "WeeksFoodMarketClosed", "HealthClinicClosed", "WeeksHealthClinicClosed", "EbolaBurialGround", "BurialGroundLocation", "BatsinBuildings", "BatsinTrees", "BatsinCaves", "BatsSoldInMarket")
+event_ehp_names <- c("HumanPopulation", "NumEbolaCases", "NumEbolaSurvivors", "DateFirstCase", "DateLastCase", "EbolaTreatmentCenter", "QuarantinedDuringOutbreak", "QuarantineDate", "WeeksQuarantine", "PercentageQuarantined", "FoodMarketClosed", "WeeksFoodMarketClosed", "HealthClinicClosed", "WeeksHealthClinicClosed", "EbolaBurialGround", "BurialGroundLocation", "BatsinBuildings", "BatsinTrees", "BatsinCaves", "BatsSoldInMarket", "BatsinBuildingsnPopulation")
 
 #' Return he names of the tables in the EIDITH database.
 #'
