@@ -10,13 +10,17 @@ default_sql_path <- function(){
 }
 
 temp_sql_path <- function(){
-  return(dplyr::if_else(
+
+  tpath <- dplyr::if_else(
     file.access(rappdirs::user_data_dir(), 2) == 0, #if user has write permissions
     file.path(rappdirs::user_data_dir(),            #then write to eidith/eidith_db.sqlite
               "eidith", "temp_db.sqlite"),
     file.path(                                      #else write to this file-path
       system.file(package = "eidith", mustWork = FALSE),
-      "eidith", "temp_db.sqlite")))
+      "eidith", "temp_db.sqlite"))
+
+  tpath <- normalizePath(getOption("ed_temp_sql_path", tpath), mustWork = FALSE) # use path from options if specified
+  return(tpath)
 }
 
 eidith_db <- function(path = NULL) {
