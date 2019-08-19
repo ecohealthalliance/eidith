@@ -58,7 +58,7 @@ eha_countries <- function() {
 #' @export
 ehp_countries <- function() {
   c(
-    "Liberia", "Sierra Leone", "Guinea"
+    "Liberia",  "Guinea" #, "Sierra Leone"
   )
 }
 
