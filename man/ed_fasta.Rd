@@ -3,25 +3,35 @@
 \name{ed_fasta}
 \alias{ed_fasta}
 \alias{fasta}
-\alias{ed_fasta_}
 \alias{ed_tests_report}
 \alias{ed_fasta_group}
 \alias{ed_report_excel}
 \title{Export FASTA files for viral interpretation}
 \usage{
-ed_fasta(.data, filename = "", sequence = "sequence", ...)
+ed_fasta(
+  .data,
+  filename = "",
+  sequence = "sequence",
+  include_names = TRUE,
+  ...
+)
 
-ed_fasta_(.data, filename = "", sequence = "sequence", ..., .dots)
+ed_tests_report(
+  status = c("Result finalized, interpretation pending"),
+  test_ids = NULL,
+  meta_fields = c(sp_idname = "specimen_id_name", sp = "species_scientific_name",
+    country = "country", an_idname = "animal_id_name", lab = "diag_lab_shortname", test_rq
+    = "test_requested", meth = "test_requested_protocol", seq_id = "sequence_id", test_id
+    = "test_id")
+)
 
-ed_tests_report(status = c("Result finalized, interpretation pending"),
-  test_ids = NULL, meta_fields = c(sp_idname = "specimen_id_name", sp =
-  "species_scientific_name", country = "country", an_idname =
-  "animal_id_name", lab = "diag_lab_shortname", test_rq = "test_requested",
-  meth = "test_requested_protocol", seq_id = "sequence_id", test_id =
-  "test_id"))
-
-ed_fasta_group(.data, filepath = "", sequence = "sequence",
-  grouping = "virus", ...)
+ed_fasta_group(
+  .data,
+  filepath = "",
+  sequence = "sequence",
+  grouping = "virus",
+  ...
+)
 
 ed_report_excel(.data, filename)
 }
@@ -32,9 +42,9 @@ ed_report_excel(.data, filename)
 
 \item{sequence}{the column name in the data frame that contains the sequence.  Default is "sequence".}
 
-\item{...}{Additional columns to include as metadata, using \code{\link[dplyr:select]{dplyr::select()}} syntax.  If nothing is included, all columns are used.}
+\item{include_names}{Whether to include column names of sequence discriptors.  Default is TRUE.}
 
-\item{.dots}{Columns specified using standard evaluation.}
+\item{...}{Additional columns to include as metadata, using \code{\link[dplyr:select]{dplyr::select()}} syntax.  If nothing is included, all columns are used.}
 
 \item{status}{For \code{ed_test_report()}, the status of tests that should be pulled.
 A vector of any of "Interpretation completed", "Active testing ongoing - pooled test positive",
