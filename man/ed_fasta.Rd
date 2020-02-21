@@ -3,9 +3,6 @@
 \name{ed_fasta}
 \alias{ed_fasta}
 \alias{fasta}
-\alias{ed_tests_report}
-\alias{ed_fasta_group}
-\alias{ed_report_excel}
 \title{Export FASTA files for viral interpretation}
 \usage{
 ed_fasta(
@@ -15,25 +12,6 @@ ed_fasta(
   include_names = TRUE,
   ...
 )
-
-ed_tests_report(
-  status = c("Result finalized, interpretation pending"),
-  test_ids = NULL,
-  meta_fields = c(sp_idname = "specimen_id_name", sp = "species_scientific_name",
-    country = "country", an_idname = "animal_id_name", lab = "diag_lab_shortname", test_rq
-    = "test_requested", meth = "test_requested_protocol", seq_id = "sequence_id", test_id
-    = "test_id")
-)
-
-ed_fasta_group(
-  .data,
-  filepath = "",
-  sequence = "sequence",
-  grouping = "virus",
-  ...
-)
-
-ed_report_excel(.data, filename)
 }
 \arguments{
 \item{.data}{The data frame}
@@ -45,20 +23,6 @@ ed_report_excel(.data, filename)
 \item{include_names}{Whether to include column names of sequence discriptors.  Default is TRUE.}
 
 \item{...}{Additional columns to include as metadata, using \code{\link[dplyr:select]{dplyr::select()}} syntax.  If nothing is included, all columns are used.}
-
-\item{status}{For \code{ed_test_report()}, the status of tests that should be pulled.
-A vector of any of "Interpretation completed", "Active testing ongoing - pooled test positive",
-"Pooled test positive", "Active testing ongoing", or "Under Sequence Review". A warning will be
-printed if some tests have no sequence data.}
-
-\item{test_ids}{For \code{ed_test_report()}. If provided, \code{status} is ignored and tests are pulled by numeric test_id values}
-
-\item{meta_fields}{For \code{ed_test_report()}. A vector of names of metadata to provide.  If named, fields will be renamed,
-which is useful for abbreviating fields for FASTA export}
-
-\item{filepath}{File path indicating where grouped FASTA files should be saved.}
-
-\item{grouping}{The variable used to group sequences into separate FASTA files. One of "virus", "method", or "both".}
 }
 \value{
 For \code{ed_fasta()}, \code{ed_fasta_group()}, and \code{ed_report_excel()}, the file(s) will be written to a file or the console (default).  Also, a character vector of each FASTA record is returned invisibly

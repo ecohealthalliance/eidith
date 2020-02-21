@@ -171,12 +171,6 @@ ed_tests <- function(...) {
 
 #' @export
 #' @rdname ed_table
-ed_viruses <- function(...) {
-  ed_table_("viruses", .dots = lazyeval::lazy_dots(...))
-}
-
-#' @export
-#' @rdname ed_table
 ed_testspecimen <- function(...) {
   ed_table_("test_specimen_ids", .dots = lazyeval::lazy_dots(...))
 }
