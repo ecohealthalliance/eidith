@@ -193,7 +193,7 @@ ed2_get <- function(endpoint2, country=NULL, p1_data=FALSE, postprocess=TRUE,
   # ehp handling when country is given - if only specifying ehp countries, get ehp-specific data, otherwise remove ehp country from results
   if(endpoint2 %in% c("Human", "HumanAnimalProduction", "HumanHunter") & !is.null(country)){
     if(all(country %in% ehp_countries())) {
-    endpoint2 <- paste0(endpoint2, "EHP")
+      endpoint2 <- paste0(endpoint2, "EHP")
     } else {
       country <- country[!country %in% ehp_countries()]
     }
@@ -235,14 +235,14 @@ ed2_get <- function(endpoint2, country=NULL, p1_data=FALSE, postprocess=TRUE,
 
   # add modules parameters for ehp modeules
   if(endpoint2 == "HumanAnimalProductionEHP") {url <- map(url, ~modify_url(url = .x,
-                                                                 query = list(modules = "AP")))}
+                                                                           query = list(modules = "AP")))}
   if(endpoint2 == "HumanHunterEHP") {url <- map(url, ~modify_url(url = .x,
                                                                  query = list(modules = "HT")))}
 
   # combine with p1 table if specified
-  if(p1_data & endpoint2 %in% c("Event", "Animal", "Specimen", "Test")){
+  if(p1_data & endpoint2 %in% c("Event", "Animal", "Specimen", "Test", "TestDataInterpreted")){
     url <-  map(url, ~modify_url(url = .x,
-                       query = list(p1data = 1)))
+                                 query = list(p1data = 1)))
   }
 
   # test table - include sequence column
