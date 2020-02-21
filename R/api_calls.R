@@ -240,7 +240,7 @@ ed2_get <- function(endpoint2, country=NULL, p1_data=FALSE, postprocess=TRUE,
                                                                  query = list(modules = "HT")))}
 
   # combine with p1 table if specified
-  if(p1_data & endpoint2 %in% c("Event", "Animal", "Specimen", "Test")){
+  if(p1_data & endpoint2 %in% c("Event", "Animal", "Specimen", "Test", "TestDataInterpreted")){
     url <-  map(url, ~modify_url(url = .x,
                        query = list(p1data = 1)))
   }
