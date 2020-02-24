@@ -7,7 +7,6 @@
 \alias{ed_animals}
 \alias{ed_specimens}
 \alias{ed_tests}
-\alias{ed_viruses}
 \alias{ed_testspecimen}
 \title{Load PREDICT-1 EIDITH data from the local database}
 \usage{
@@ -22,8 +21,6 @@ ed_animals(...)
 ed_specimens(...)
 
 ed_tests(...)
-
-ed_viruses(...)
 
 ed_testspecimen(...)
 }

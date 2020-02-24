@@ -11,7 +11,7 @@ event_ehp_names <- c("HumanPopulation", "NumEbolaCases", "NumEbolaSurvivors", "D
 #' @aliases p1_api_endpoints p2_api_endpoints
 #' @export
 p1_api_endpoints <- function() {
-  c("Event", "Animal", "Specimen", "Test", "Virus",
+  c("Event", "Animal", "Specimen", "Test",
     "TestIDSpecimenID")
 }
 
@@ -354,16 +354,8 @@ ed_get_specimens <- function(verbose=interactive(), postprocess=TRUE,
 ed_get_tests <- function(verbose=interactive(), postprocess=TRUE,
                          header_only=FALSE, lmdate_from="2000-01-01",
                          lmdate_to=Sys.Date() + 1, ...) {
-  ed_get("Test", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
-}
 
-#' @rdname ed_get
-#' @export
-ed_get_viruses <- function(verbose=interactive(), postprocess=TRUE,
-                           header_only=FALSE, lmdate_from="2000-01-01",
-                           lmdate_to=Sys.Date() + 1, ...) {
-  ed_get("Virus", verbose, postprocess, header_only,
-         lmdate_from, lmdate_to, ...)
+  ed_get("Test", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
 }
 
 #' @rdname ed_get

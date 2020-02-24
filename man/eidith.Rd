@@ -3,7 +3,6 @@
 \docType{package}
 \name{eidith}
 \alias{eidith}
-\alias{eidith-package}
 \title{eidith}
 \description{
 The \strong{eidith} R package provides programmatic access and analytical tools
