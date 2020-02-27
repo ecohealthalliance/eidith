@@ -38,7 +38,7 @@ predict_countries <- function() {
   c("Bangladesh", "DR Congo", "Republic of Congo", "Ivory Coast", "Cameroon", "China", "Egypt", "Ethiopia",
     "Ghana", "Guinea", "Indonesia", "India", "Jordan", "Kenya", "Cambodia", "Lao PDR", "Liberia", "Myanmar",
     "Mongolia", "Malaysia, Peninsular", "Malaysia, Sabah", "Nepal", "Rwanda", "Sierra Leone", "Senegal",
-    "South Sudan", "Thailand", "Tanzania", "Uganda", "Vietnam"
+    "South Sudan", "Thailand", "Tanzania", "Uganda", "Vietnam", "Peru", "Bolivia", "Brazil", "Mexico"
   )
 }
 
