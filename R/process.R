@@ -23,7 +23,7 @@
 #'
 #' @param dat The data as exported from EIDITH and imported via the [ed_get()] functions (without preprocessing).
 #' @param endpt The name of the API URL endpoints: one of "Event",
-#' "Animal",  "Specimen", "Test", "Virus", or "TestIDSpecimenID" (for test-specimen cross referencing).  Note these are different
+#' "Animal",  "Specimen", "Test", or "TestIDSpecimenID" (for test-specimen cross referencing).  Note these are different
 #' than the names of the tables stored locally (which are lowercase and plural).
 #' @importFrom dplyr na_if as_data_frame rename_ %>% mutate_ select_ if_else data_frame arrange_ full_join
 #' @importFrom stringi stri_trim_both
@@ -308,13 +308,6 @@ pp_Test <- function(dat) {
     dat <- mutate_(dat, specimen_type = ~ clean_csc(specimen_type))
   }
   return(dat)
-}
-
-#' @importFrom dplyr rename_ select_ mutate_ arrange_ distinct_
-pp_Virus <- function(dat) {
-  if ("known" %in% names(dat)) {
-    dat <- mutate_(dat, known = ~ known == "known")
-  }
 
   if("interpretation" %in% names(dat)) {
     dat <- mutate_(dat, known_genbank_accession = ~get_genbank(interpretation))

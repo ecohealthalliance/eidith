@@ -5,7 +5,7 @@
 #' for the [ed_table()] functions.
 #'
 #' @param mock_table one of the EIDITH database tables. One of "events", "animals",
-#' "specimens", "tests", "viruses", or "test_specimen_ids".
+#' "specimens", "tests", or "test_specimen_ids".
 #' @param ... arguments passed to [dplyr::filter()] to subset data
 #' @param .dots standard-evaluation versions of subsetting arguments
 #' @param raw Whether to return the unprocessed form of the mock data.  This
@@ -55,12 +55,6 @@ ed_specimens_mock  <- function(...) {
 #' @rdname ed_mock
 ed_tests_mock <- function(...) {
   ed_table_mock_("tests", .dots = lazyeval::lazy_dots(...))
-}
-
-#' @export
-#' @rdname ed_mock
-ed_viruses_mock <- function(...) {
-  ed_table_mock_("viruses", .dots = lazyeval::lazy_dots(...))
 }
 
 #' @export

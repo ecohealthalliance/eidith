@@ -1,4 +1,4 @@
-db_tables <- c("events", "animals", "specimens", "tests", "viruses",
+db_tables <- c("events", "animals", "specimens", "tests",
                "test_specimen_ids", "status")
 
 db2_tables <- c("events_2", "animals_2", "specimens_2", "animal_production_2", "crop_production_2",
@@ -16,7 +16,6 @@ p1_table_names <- list(
   Animal = "animals",
   Specimen = "specimens",
   Test = "tests",
-  Virus = "viruses",
   TestIDSpecimenID = "test_specimen_ids"
 )
 
@@ -59,7 +58,6 @@ db_unique_indexes <- list(
   animals = list("animal_id"),
   specimens = list("specimen_id"),
   tests = list("test_id"),
-  viruses = list("sequence_id"),
   test_specimen_ids = list(),
   events_2 = list("integer_id"),
   animals_2 = list("integer_id"),
@@ -98,7 +96,6 @@ db_other_indexes <- list(
   animals = list("event_id"),
   specimens = list("animal_id", "specimen_id_name"),
   tests = list("specimen_id_names"),
-  viruses = list("test_id"),
   test_specimen_ids = list("test_id", "specimen_id"),
   events_2 = list("event_name"),
   animals_2 = list("animal_id"),

@@ -8,7 +8,6 @@
 \alias{ed_animals_mock}
 \alias{ed_specimens_mock}
 \alias{ed_tests_mock}
-\alias{ed_viruses_mock}
 \alias{ed_testspecimen_mock}
 \title{Load mock EIDITH data for PREDICT-1 tutorials}
 \usage{
@@ -24,13 +23,11 @@ ed_specimens_mock(...)
 
 ed_tests_mock(...)
 
-ed_viruses_mock(...)
-
 ed_testspecimen_mock(...)
 }
 \arguments{
 \item{mock_table}{one of the EIDITH database tables. One of "events", "animals",
-"specimens", "tests", "viruses", or "test_specimen_ids".}
+"specimens", "tests", or "test_specimen_ids".}
 
 \item{...}{arguments passed to \code{\link[dplyr:filter]{dplyr::filter()}} to subset data}
 

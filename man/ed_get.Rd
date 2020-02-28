@@ -6,37 +6,64 @@
 \alias{ed_get_animals}
 \alias{ed_get_specimens}
 \alias{ed_get_tests}
-\alias{ed_get_viruses}
 \alias{ed_get_testspecimen}
 \title{Functions to download EIDITH tables via API}
 \usage{
-ed_get(endpoint, verbose = interactive(), postprocess = TRUE,
-  header_only = FALSE, lmdate_from = "2000-01-01",
-  lmdate_to = Sys.Date() + 1, auth = NULL, ...)
+ed_get(
+  endpoint,
+  verbose = interactive(),
+  postprocess = TRUE,
+  header_only = FALSE,
+  lmdate_from = "2000-01-01",
+  lmdate_to = Sys.Date() + 1,
+  auth = NULL,
+  ...
+)
 
-ed_get_events(verbose = interactive(), postprocess = TRUE,
-  header_only = FALSE, lmdate_from = "2000-01-01",
-  lmdate_to = Sys.Date() + 1, ...)
+ed_get_events(
+  verbose = interactive(),
+  postprocess = TRUE,
+  header_only = FALSE,
+  lmdate_from = "2000-01-01",
+  lmdate_to = Sys.Date() + 1,
+  ...
+)
 
-ed_get_animals(verbose = interactive(), postprocess = TRUE,
-  header_only = FALSE, lmdate_from = "2000-01-01",
-  lmdate_to = Sys.Date() + 1, ...)
+ed_get_animals(
+  verbose = interactive(),
+  postprocess = TRUE,
+  header_only = FALSE,
+  lmdate_from = "2000-01-01",
+  lmdate_to = Sys.Date() + 1,
+  ...
+)
 
-ed_get_specimens(verbose = interactive(), postprocess = TRUE,
-  header_only = FALSE, lmdate_from = "2000-01-01",
-  lmdate_to = Sys.Date() + 1, ...)
+ed_get_specimens(
+  verbose = interactive(),
+  postprocess = TRUE,
+  header_only = FALSE,
+  lmdate_from = "2000-01-01",
+  lmdate_to = Sys.Date() + 1,
+  ...
+)
 
-ed_get_tests(verbose = interactive(), postprocess = TRUE,
-  header_only = FALSE, lmdate_from = "2000-01-01",
-  lmdate_to = Sys.Date() + 1, ...)
+ed_get_tests(
+  verbose = interactive(),
+  postprocess = TRUE,
+  header_only = FALSE,
+  lmdate_from = "2000-01-01",
+  lmdate_to = Sys.Date() + 1,
+  ...
+)
 
-ed_get_viruses(verbose = interactive(), postprocess = TRUE,
-  header_only = FALSE, lmdate_from = "2000-01-01",
-  lmdate_to = Sys.Date() + 1, ...)
-
-ed_get_testspecimen(verbose = interactive(), postprocess = TRUE,
-  header_only = FALSE, lmdate_from = "2000-01-01",
-  lmdate_to = Sys.Date() + 1, ...)
+ed_get_testspecimen(
+  verbose = interactive(),
+  postprocess = TRUE,
+  header_only = FALSE,
+  lmdate_from = "2000-01-01",
+  lmdate_to = Sys.Date() + 1,
+  ...
+)
 }
 \arguments{
 \item{verbose}{Show a progress bar and other messages?}
