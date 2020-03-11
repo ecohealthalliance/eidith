@@ -76,7 +76,7 @@ ed_db_check_status <- function(path=NULL, inter = T) {
     dbstatus <- ""
 
     # find out if any tables are missing and then ask the user if they wish to download them?
-    if(!(all(c(db_tables, db2_tables) %in% dbListTables(edb)))) {
+    if(!(all(c(db2_tables) %in% dbListTables(edb)))) {
       missing_p2_tables <- db2_tables[which(db2_tables %in% dbListTables(edb) == FALSE)]
       dl_p2_tables <- names(purrr::keep(p2_table_names, function(x) x %in% missing_p2_tables))
 
