@@ -1,19 +1,8 @@
-eidith_base_url <- "https://predict2api.eidith.org/api/modeling/"
-
 eidith2_base_url <- "https://predict2api.eidith.org/api/Extract/"
 
 # event ehp names to exclude from event table
 event_ehp_names <- c("HumanPopulation", "NumEbolaCases", "NumEbolaSurvivors", "DateFirstCase", "DateLastCase", "EbolaTreatmentCenter", "QuarantinedDuringOutbreak", "QuarantineDate", "WeeksQuarantine", "PercentageQuarantined", "FoodMarketClosed", "WeeksFoodMarketClosed", "HealthClinicClosed", "WeeksHealthClinicClosed", "EbolaBurialGround", "BurialGroundLocation", "BatsinBuildings", "BatsinTrees", "BatsinCaves", "BatsSoldInMarket", "BatsinBuildingsnPopulation")
 
-#' Return he names of the tables in the EIDITH database.
-#'
-#' @rdname endpoints
-#' @aliases p1_api_endpoints p2_api_endpoints
-#' @export
-p1_api_endpoints <- function() {
-  c("Event", "Animal", "Specimen", "Test",
-    "TestIDSpecimenID")
-}
 
 #' This function returns the names of the tables in the PREDICT-2 EIDITH database.
 #' @rdname endpoints
@@ -25,8 +14,6 @@ p2_api_endpoints <- function() {
     "Human", "HumanEHP","HumanCropProduction", "HumanAnimalProduction", "HumanAnimalProductionEHP", "HumanExtractiveIndustry", "HumanHospitalWorker",
     "HumanHunter", "HumanHunterEHP", "HumanMarket", "HumanRestaurant", "HumanSickPerson", "HumanTemporarySettlements", "HumanZoo",
     "Test", "TestDataInterpreted", "TestDataSerology", "Behavioral", "Training"
-
-
   )
 }
 
@@ -72,111 +59,15 @@ create_empty_p2_table <- function(e2){
   return(df)
 }
 
-create_empty_p1_table <- function(e1){
-  meta <- ed_metadata()
-  headers <- filter(meta, endpoint == e1, replacement_name %in% "DROP" == FALSE) %>%
-    mutate(new_name = ifelse(is.na(replacement_name), auto_processed_name, replacement_name)) %>%
-    pull(new_name)
-  df <- data.frame(matrix(ncol = length(headers), nrow = 0))
-  names(df) <- headers
-  return(df)
-}
-
-
-#' Functions to download EIDITH tables via API
-#'
-#' These functions download data directly from the EIDITH API.  They require
-#' [authorization][ed_auth].  They can be useful for comparing local data
-#' against data updated in the database, or processed vs. unprocessed data.
-#' The [table functions][ed_table] load data from the local database instead,
-#' and are thus faster and work without an internet connection.
-#'
+#' @param endpoint2 Table name
+#' @param country Which countries to get? Default is NULL, which will return all countries
+#' @param p1_data Include P1 results?
 #' @param verbose Show a progress bar and other messages?
-#' @param postprocess Should data be cleaned via [ed_process()] or returned raw?
-#' @param header_only Return only the table header.  Useful for checking if
-#' API access works
-#' @param lmdate_from filter records by earliest date, in YYYY-MM-DD format
-#' @param lmdate_to filter records by latest date, in YYYY-MM-DD format (see details)
-#' @param ... additional arguments passed to [httr::GET()]
-#' @return a [tibble][tibble::tibble()]-style data frame
-#' @rdname ed_get
-#' @name ed_get
-#' @importFrom httr GET status_code progress authenticate content modify_url
-#' @importFrom jsonlite fromJSON
-#' @importFrom tibble as_tibble
-#' @export
-ed_get <- function(endpoint, verbose=interactive(), postprocess=TRUE,
-                   header_only=FALSE, lmdate_from="2000-01-01",
-                   lmdate_to=Sys.Date() + 1, auth=NULL, ...) {
-
-  url <- modify_url(url =  paste0(eidith_base_url, endpoint),
-                    query = list(header_only = ifelse(header_only, "y", "n"),
-                                 lmdate_from = lmdate_from,
-                                 lmdate_to = lmdate_to))
-  if(verbose) {
-    pbar <- progress()
-    cat_line(red(paste("Downloading PREDICT-1", endpoint, "table...\n")))
-  } else {
-    pbar <- NULL
-  }
-
-  if(is.null(auth)) auth <- ed_auth()
-
-  request <- GET(url=url, authenticate(auth[1], auth[2], type="basic"),
-                 pbar, ...)
-
-  if(status_code(request) == 401) {
-    stop("Unauthorized (HTTP 401). Your username or password do not match an account.
-See ?ed_auth.")
-  }
-
-  if(status_code(request) == 403) {
-    stop("Forbidden (HTTP 403). Your account does not have access permissions.
-Contact technology@eidith.org about permissions. See ?ed_contact.")
-  }
-
-  if(verbose) cat_line("Importing...\n")
-  data <- fromJSON(content(request, as = "text", encoding="UTF-8"))
-
-  if(header_only) {
-    return(data)
-  } else {
-    data <- as_tibble(data)
-  }
-
-  if(nrow(data) == 0){
-    data <- create_empty_p1_table(endpoint)
-    return(data)
-  }
-
-  if("ExceptionMessage" %in% names(data)){
-    cat_line(red(paste0("Download for the ", endpoint, " table failed. See ?ed_contact for support. \n")))
-    return(invisible(0))
-  }
-
-  if(postprocess){
-    data <- tryCatch(ed_process(data, endpoint),
-                     error = function(e){
-                       cat_line(red(paste0("Error: The fields in the ", endpoint, " download are not as expected.  See message for details and ?ed_contact for support.\n")))
-                       return(invisible(NULL))
-                     })
-
-  }
-
-  return(data)
-}
-
-
-#' @param verbose Show a progress bar and other messages?
-#' @param header_only Return only the table header.  Useful for checking if
-#' API access works
-#' @param lmdate_from filter records by earliest date, in YYYY-MM-DD format
-#' @param lmdate_to filter records by latest date, in YYYY-MM-DD format (see details)
+#' @param header_only Return only the table header.  Useful for checking if API access works
 #' @param ... additional arguments passed to [httr::GET()]
 #' @return a [tibble][tibble::tibble()]-style data frame
 #' @rdname ed2_get
 #' @name ed2_get
-
 
 #' @noRd
 #' @importFrom httr GET status_code progress authenticate content modify_url
@@ -320,49 +211,4 @@ ed2_get <- function(endpoint2, country=NULL, p1_data=FALSE, postprocess=TRUE,
   }
 
   return(data)
-}
-
-
-#' @rdname ed_get
-#' @export
-ed_get_events <- function(verbose=interactive(), postprocess=TRUE,
-                          header_only=FALSE, lmdate_from="2000-01-01",
-                          lmdate_to=Sys.Date() + 1, ...) {
-  ed_get("Event", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
-}
-
-
-#' @rdname ed_get
-#' @export
-ed_get_animals <- function(verbose=interactive(), postprocess=TRUE,
-                           header_only=FALSE, lmdate_from="2000-01-01",
-                           lmdate_to=Sys.Date() + 1, ...) {
-  ed_get("Animal", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
-}
-
-#' @rdname ed_get
-#' @export
-ed_get_specimens <- function(verbose=interactive(), postprocess=TRUE,
-                             header_only=FALSE, lmdate_from="2000-01-01",
-                             lmdate_to=Sys.Date() + 1, ...) {
-  ed_get("Specimen", verbose, postprocess, header_only,
-         lmdate_from, lmdate_to, ...)
-}
-
-#' @rdname ed_get
-#' @export
-ed_get_tests <- function(verbose=interactive(), postprocess=TRUE,
-                         header_only=FALSE, lmdate_from="2000-01-01",
-                         lmdate_to=Sys.Date() + 1, ...) {
-
-  ed_get("Test", verbose, postprocess, header_only, lmdate_from, lmdate_to, ...)
-}
-
-#' @rdname ed_get
-#' @export
-ed_get_testspecimen <- function(verbose=interactive(), postprocess=TRUE,
-                                header_only=FALSE, lmdate_from="2000-01-01",
-                                lmdate_to=Sys.Date() + 1, ...) {
-  ed_get("TestIDSpecimenID", verbose, postprocess, header_only,
-         lmdate_from, lmdate_to, ...)
 }
