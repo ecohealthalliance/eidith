@@ -1,6 +1,3 @@
-db_tables <- c("events", "animals", "specimens", "tests",
-               "test_specimen_ids", "status")
-
 db2_tables <- c("events_2", "animals_2", "specimens_2", "animal_production_2", "crop_production_2",
                 "dwellings_2", "human_2", "market_value_chain_2", "natural_areas_2", "zoo_sanctuary_2",
                 "wildlife_restaurant_2", "tests_2", "test_data_interpreted_2", "test_data_serology_2",
@@ -10,14 +7,6 @@ db2_tables <- c("events_2", "animals_2", "specimens_2", "animal_production_2", "
                 "human_zoo_2", "behavioral_2", "training_2",
                 "human_ehp_2",  "human_animal_production_ehp_2", "human_hunter_ehp_2"
                 )
-
-p1_table_names <- list(
-  Event = "events",
-  Animal = "animals",
-  Specimen = "specimens",
-  Test = "tests",
-  TestIDSpecimenID = "test_specimen_ids"
-)
 
 p2_table_names <- list(
   Event = "events_2",
@@ -157,12 +146,11 @@ db_other_indexes <- list(
 #' @importFrom RSQLite sqliteCopyDatabase
 #' @importFrom DBI dbWriteTable
 #' @importFrom purrr safely
-#' @param p1_tables Which PREDICT-1 tables to download
 #' @param p2_tables which PREDICT-2 tables to download
 #' @param verbose Show messages while in progress?
 #' @seealso [ed_db_status()], [ed_db_updates()], [ed_db_export()]
 #' @export
-ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_endpoints(),
+ed_db_download <- function(p2_tables = p2_api_endpoints(),
                            country = NULL, p1_data=FALSE, verbose=interactive()) {
   auth <- ed_auth(verbose = verbose)
   if (verbose) message("Downloading and processing EIDITH data. This may take some time.")
@@ -170,15 +158,6 @@ ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_en
   eidith_disconnect(.eidith_env)
   ed_db_delete(temp_sql_path())
 
-  #P1
-  lapply(p1_tables, function(x) {
-    tb <- ed_get(x, postprocess=TRUE, verbose=verbose, auth=auth)
-    dplyr::copy_to(eidith_db(temp_sql_path()), tb, name=p1_table_names[[x]], temporary = FALSE,
-                   unique_indexes = db_unique_indexes[[p1_table_names[[x]]]], indexes = db_other_indexes[[p1_table_names[[x]]]])
-    eidith_disconnect(.eidith_env)
-    rm(tb);
-    gc(verbose=FALSE)
-  })
   # P2
   lapply(p2_tables, function(x) {
     tb <- ed2_get(x, country=country, p1_data=p1_data, postprocess=TRUE, verbose=verbose, auth=auth)
@@ -195,10 +174,9 @@ ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_en
   #   dbWriteTable(eidith_db(temp_sql_path()), p2_key_errors, name = "p2_unique_id_errors", append = TRUE)
   # }
   #Check that requested tables have downloaded:
-  p1_dls <- unname(sapply(p1_tables, function(x) p1_table_names[[x]]))
   p2_dls <- unname(sapply(p2_tables, function(x) p2_table_names[[x]]))
 
-  downloaded_tables <- unlist(c(p1_dls, p2_dls))
+  downloaded_tables <- unlist(c(p2_dls))
   if(!(all(downloaded_tables %in% db_list_tables(eidith_db(temp_sql_path()))))) {
     downloaded_tables <- downloaded_tables[which(downloaded_tables %in% db_list_tables(eidith_db(temp_sql_path())))]
   }
@@ -208,9 +186,9 @@ ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_en
   }
 
   if(verbose) {
-      if(length(downloaded_tables) == length(c(p1_dls, p2_dls))){
+      if(length(downloaded_tables) == length(c(p2_dls))){
       cat_line("All database tables have successfully downloaded!")
-      } else if(length(downloaded_tables < length(c(p1_dls, p2_dls)))){
+      } else if(length(downloaded_tables < length(c(p2_dls)))){
         cat_line("Problems with remote EIDITH database / API prevented some tables from downloading.")
         cat_line("If problems persist see ?ed_contact for support.")
         cat_line("")
@@ -270,31 +248,6 @@ ed_db_download <- function(p1_tables = p1_api_endpoints(), p2_tables = p2_api_en
 ed_db_export <- function(filename, ...) {  #Exports the database file to new location.  options(eidith_db) should let you change it.
   sqliteCopyDatabase(eidith_db(), filename, ...)
 }
-
-#
-# ed_db_updates <- function(path = NULL) {    # NEEDS TO BE RE-WORKED
-#   last_download <- stri_replace_first_fixed(
-#     collect(tbl(eidith_db(path), "status"))$last_download,
-#     " ", "T")
-#   auth <- ed_auth()
-#   check_at <- p1_api_endpoints()[p1_api_endpoints() !="TestIDSpecimenID"]
-#   new_rows <- lapply(check_at, function(endpoint) {
-#     newdat <- ed_get(endpoint = endpoint, verbose = FALSE,
-#                      lmdate_from = last_download, postprocess = FALSE, auth = auth)
-#     nrow(newdat)
-#   })
-#   is_new_data <- as.logical(unlist(new_rows))
-#   names(is_new_data) <- check_at
-#   if(all(!is_new_data)) {
-#     message("No new data since ", last_download, ".")
-#   } else {
-#     message("New data at endpoints: [",
-#             paste0(check_at[is_new_data], collapse=","),
-#             "]. Use ed_db_download() to update.")
-#   }
-#   return(is_new_data)
-# }
-
 
 #' Delete the local EIDITH database
 #'

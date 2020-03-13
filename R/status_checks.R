@@ -76,16 +76,14 @@ ed_db_check_status <- function(path=NULL, inter = T) {
     dbstatus <- ""
 
     # find out if any tables are missing and then ask the user if they wish to download them?
-    if(!(all(c(db_tables, db2_tables) %in% dbListTables(edb)))) {
-      missing_p1_tables <- db_tables[which(db_tables %in% dbListTables(edb) == FALSE)]
+    if(!(all(c(db2_tables) %in% dbListTables(edb)))) {
       missing_p2_tables <- db2_tables[which(db2_tables %in% dbListTables(edb) == FALSE)]
-      dl_p1_tables <- names(purrr::keep(p1_table_names, function(x) x %in% missing_p1_tables))
       dl_p2_tables <- names(purrr::keep(p2_table_names, function(x) x %in% missing_p2_tables))
 
       if(interactive() & inter){
         dl_opt <- menu(c("Yes", "No"), title = "Local EIDITH database is missing tables.\nWould you like to download missing tables?")
 
-        if(dl_opt == 1) ed_db_download(dl_p1_tables, dl_p2_tables)
+        if(dl_opt == 1) ed_db_download(dl_p2_tables)
         if(dl_opt == 2) dbstatus <- list(status_msg1 ="Local EIDITH database is available, but missing tables.\ned_db_check_status() to update")
       }else{
         dbstatus <- list(status_msg1 ="Local EIDITH database is available, but missing tables.\ned_db_check_status() to update")
@@ -138,34 +136,12 @@ ed_create_banner <- function(path = NULL){
         group_by(t_name) %>%
         summarize(most_recent = max(as.Date(last_download)))
 
-      predict_1 <- download_dates %>%
-        filter(str_detect(t_name, "2") == FALSE)
-
-      if(nrow(predict_1) > 0){
-        predict_1 <- predict_1  %>%
-          mutate(display_name = unlist(purrr::map(t_name, function(x) unlist(names(purrr::keep(p1_table_names, function(y) y == x))))))
-      }
-
       predict_2 <- download_dates %>%
         filter(str_detect(t_name, "2") == TRUE)
 
       if(nrow(predict_2) > 0){
         predict_2 <- mutate(predict_2, display_name = unlist(purrr::map(t_name, function(x) unlist(names(purrr::keep(p2_table_names, function(y) y == x))))))
       }
-
-      suppressWarnings({
-        p1_status_list <- purrr::map(p1_api_endpoints(), function(x){
-          ind <- which(predict_1$display_name == x)
-          if(length(ind) == 0){
-            return(glue(crayon::red(cli::symbol$cross), "  ", crayon::red(x)))
-          }else{
-            return(glue(crayon::green(cli::symbol$tick), "  ", crayon::green(x),
-                        glue_collapse(rep(" ", max(nchar(p1_api_endpoints())) + 5 - nchar(x))),
-                        crayon::magenta(glue("Last Downloaded: ",
-                                             as.character(predict_1$most_recent[ind])))))
-          }
-        })
-      })
 
       suppressWarnings({
         p2_status_list <- purrr::map(p2_api_endpoints(), function(x){
@@ -182,8 +158,6 @@ ed_create_banner <- function(path = NULL){
       })
 
       ed_banner <- glue(cli::rule(crayon::cyan(crayon::bold("EIDITH R Package"))),
-                        crayon::cyan(crayon::italic("PREDICT-1 Table Status:")),
-                        glue_collapse(p1_status_list, sep = "\n"),
                         crayon::cyan(crayon::italic("\nPREDICT-2 Table Status:")),
                         glue_collapse(p2_status_list, sep = "\n"), "\n","",
                         .sep = "\n")
