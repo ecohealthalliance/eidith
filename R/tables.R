@@ -33,7 +33,7 @@ datetime_vars <- c("date_created", "date_modified", "database_date")
 #' @param .dots standard-evaluation versions of subsetting arguments
 #' @return a [tibble][tibble::tibble]-style data frame.
 #' @importFrom dbplyr partial_eval
-#' @importFrom dplyr tbl tbl_df filter_ mutate_at funs_ funs collect vars
+#' @importFrom dplyr tbl tbl_df filter_ mutate_at funs_ funs collect vars n
 #' @importFrom stringi stri_replace_first_regex stri_extract_last_regex stri_detect_fixed
 #' @export
 #' @rdname ed_table
