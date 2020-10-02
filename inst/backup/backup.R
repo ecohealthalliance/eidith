@@ -12,11 +12,11 @@ event_url <- "https://predict2api.eidith.org/api/Extract/ExtractEventData?p1data
 test_url <- "https://predict2api.eidith.org/api/Extract/ExtractTestData?p1data=1&sequence=1"
 test_interp_url <- "https://predict2api.eidith.org/api/Extract/ExtractTestDataInterpreted?p1data=1"
 
-GET(url = event_url, authenticate(auth[1], auth[2], type="basic"), write_disk(here::here("backup/event.json")))
-GET(url = test_url, authenticate(auth[1], auth[2], type="basic"), write_disk(here::here("backup/test.json")))
-GET(url = test_interp_url, authenticate(auth[1], auth[2], type="basic"), write_disk(here::here("backup/TestInterpreted.json")))
+GET(url = event_url, authenticate(auth[1], auth[2], type="basic"), write_disk(here::here("inst/backup/event.json")))
+GET(url = test_url, authenticate(auth[1], auth[2], type="basic"), write_disk(here::here("inst/backup/test.json")))
+GET(url = test_interp_url, authenticate(auth[1], auth[2], type="basic"), write_disk(here::here("inst/backup/TestInterpreted.json")))
 
-event <- fromJSON(here::here("backup/event.json"))
+event <- fromJSON(here::here("inst/backup/event.json"))
 event_clean <- eidith:::ed2_process(event, "Event")
 event_clean$integer_id <- seq_len(nrow(event_clean))
 event_exists <- ed2_events()
@@ -30,7 +30,7 @@ dim(event_new)
 setdiff(names(event_exists), names(event_new))
 
 
-test <- fromJSON(here::here("backup/test.json"))
+test <- fromJSON(here::here("inst/backup/test.json"))
 test_clean <- eidith:::ed2_process(test, "Test")
 test_clean$integer_id <- seq_len(nrow(test_clean))
 test_exists <- ed2_tests()
@@ -46,7 +46,7 @@ unique(test_new$project)
 setdiff(names(test_exists), names(test_new))
 
 
-test_interp <- fromJSON(here::here("backup/TestInterpreted.json"))
+test_interp <- fromJSON(here::here("inst/backup/TestInterpreted.json"))
 test_interp_clean <- eidith:::ed2_process(test_interp, "TestDataInterpreted")
 test_interp_clean$integer_id <- seq_len(nrow(test_interp_clean))
 test_interp_exists <- ed2_test_interpreted()
