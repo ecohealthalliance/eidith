@@ -23,6 +23,7 @@ temp_sql_path <- function(){
   return(tpath)
 }
 
+
 eidith_db <- function(path = NULL) {
   if (!is.null(path)) {
     dbobjname <- paste0("db", digest::sha1(path))
@@ -74,9 +75,9 @@ reg.finalizer(.eidith_env, eidith_disconnect, onexit = TRUE)
 }
 
 .onAttach <- function(libname, pkgname) {
-  if (interactive())  {
-    packageStartupMessage(ed_db_presence())
-    packageStartupMessage(ed_db_check_status(path = NULL, inter = FALSE))
-  }
+   if (interactive())  {
+     packageStartupMessage(ed_db_presence())
+  #   packageStartupMessage(ed_db_check_status(path = NULL, inter = FALSE))
+   }
 }
 
