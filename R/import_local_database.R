@@ -7,7 +7,7 @@
 #' @importFrom googledrive drive_download
 #' @return NULL
 #' @export
-import_local_db <- function(database = c("global", "eha", "eha_and_malaysia")){
+import_local_db <- function(database = c("global", "eha", "eha_with_malaysia")){
 
   # establish paths
   drive_path <- paste0("~/eidith/", database, "/eidith_db.zip")
