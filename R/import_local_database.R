@@ -10,13 +10,14 @@
 import_local_db <- function(database = c("global", "eha", "eha_and_malaysia")){
 
   # establish paths
-  drive_path <- paste0("~/eidith/", database, "/eidith_db.zip")
+  drive_url <- switch(database, "global" = "https://drive.google.com/file/d/1LC_i7jba6kbwMcIa3n_MNu8iQnvF1gsP/view?usp=sharing")
+    #paste0("~/eidith/", database, "/eidith_db.zip")
   local_path <- file.path(rappdirs::user_data_dir(),
                           "eidith")
   local_path_zip <- paste0(local_path,  "/eidith_db.zip")
 
   #save to eidith local share folder from google drive
-  drive_download(file = drive_path,
+  googledrive::drive_download(file = drive_url,
                  path = local_path_zip,
                  overwrite = TRUE)
 
@@ -27,8 +28,8 @@ import_local_db <- function(database = c("global", "eha", "eha_and_malaysia")){
   }
 
   # unzip
+  local_path <- paste0("'", local_path, "'")
+  local_path_zip <- paste0("'", local_path_zip, "'")
   system(command = paste0("unzip -o -P ", pw, " ", local_path_zip, " -d ", local_path), wait = TRUE )
-
-  assertthat::assert_that(file.exists(paste0(local_path, "/eidith_db.zip")))
   return("complete")
 }
