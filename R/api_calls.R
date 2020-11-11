@@ -78,7 +78,7 @@ create_empty_p2_table <- function(e2){
 ed2_get <- function(endpoint2, country=NULL, p1_data=FALSE, postprocess=TRUE,
                     verbose=interactive(), header_only=FALSE, auth=NULL, ...) {
 
-  stop("API access capabilities are unavailable.")
+  stop("API access capabilities are unavailable. Use import_local_db() instead.")
 
   # should endpoint2 have "data" appeneded in the url call?
   url_end <- ifelse(endpoint2 %in% c("TestDataInterpreted", "TestDataSerology"), "", "Data")

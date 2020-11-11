@@ -4,7 +4,7 @@
 \alias{import_local_db}
 \title{Downloads EIDITH from google drive}
 \usage{
-import_local_db(database = c("global", "eha", "eha_and_malaysia"))
+import_local_db(database = c("eha", "eha_with_malaysia", "global"))
 }
 \arguments{
 \item{database}{whether downloading "global", "eha", or "eha_and_malaysia" database (all password protected)}

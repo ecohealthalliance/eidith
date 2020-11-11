@@ -112,7 +112,7 @@ ed_db_presence <- function(){
   status <- all(length(dbListTables(eidith_db())) > 0 )#, ed_db_status_table()) # tables exist and status not corrupt
   if(!status){
     line1 <- (cli::rule(crayon::green("Welcome to the EIDITH R Package!")))
-    line2 <- crayon::green(".  No database detected")
+    line2 <- crayon::green(".  No database detected.  Use import_local_db() to import.")
     return(glue::glue(line1, line2, .sep = "\n"))
   }else{
     ed_create_banner()

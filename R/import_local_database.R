@@ -7,7 +7,9 @@
 #' @importFrom googledrive drive_download
 #' @return NULL
 #' @export
-import_local_db <- function(database = c("global", "eha", "eha_with_malaysia")){
+import_local_db <- function(database = c("eha", "eha_with_malaysia", "global")){
+
+  database = match.arg(database)
 
   # establish paths
   drive_url <- switch(database,
