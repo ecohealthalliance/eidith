@@ -31,24 +31,11 @@ animal <- animal %>%
 all(names(animal) == animal_keep$original_name)
 colnames(animal) <- animal_keep$replacement_name
 
-# read in existing animal tables for handling col types
-animal_headers <- ed2_animals()
-unique(map(animal_headers, class))
-
-animal_headers_num <- animal_headers %>%
-  select_if(is.numeric) %>%
-  select(-integer_id) %>%
-  colnames()
-
-animal <- animal %>%
-  mutate_at(animal_headers_num, as.numeric)
-
 # save table to db
 DBI::dbWriteTable(eidith:::eidith_db(),
                   value = animal,
                   name = eidith:::p2_table_names[["Animal"]],
                   overwrite = TRUE)
-
 
 # for all tables, remove integer id
 for(tb in eidith:::p2_table_names){
@@ -61,5 +48,18 @@ for(tb in eidith:::p2_table_names){
                     name = tb,
                     overwrite = TRUE)
 }
+
+# for all tables, make everything character
+for(tb in eidith:::p2_table_names){
+  etb <- tbl(eidith:::eidith_db(), tb) %>%
+    collect() %>%
+    mutate_all(as.character)
+
+  DBI::dbWriteTable(eidith:::eidith_db(),
+                    value = etb,
+                    name = tb,
+                    overwrite = TRUE)
+}
+
 
 DBI::dbDisconnect(eidith:::eidith_db())

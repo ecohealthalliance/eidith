@@ -1,2 +1,5 @@
 *.json
+eha_no_malaysia/*
+eha_with_malaysia/*
+global/*
 *.txt
