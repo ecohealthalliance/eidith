@@ -2,13 +2,16 @@
 % Please edit documentation in R/import_local_database.R
 \name{import_local_db}
 \alias{import_local_db}
-\title{Downloads EIDITH from google drive}
+\title{Downloads EIDITH database from google drive}
 \usage{
 import_local_db(database = c("eha", "eha_with_malaysia", "global"))
 }
 \arguments{
-\item{database}{whether downloading "global", "eha", or "eha_and_malaysia" database (all password protected)}
+\item{database}{whether downloading "eha", "eha_and_malaysia",or "glabal" database}
 }
 \description{
-Downloads EIDITH from google drive
+Note that post-September 2020, EIDITH remote database access is disabled.
+}
+\details{
+This function downloads a static version of the database. Access is enforced via Google Drive. Contact Emma (mendelsohn@ecohealthalliance.org) with questions.
 }

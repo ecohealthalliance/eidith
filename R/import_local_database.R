@@ -1,9 +1,11 @@
-#' Downloads EIDITH from google drive
+#' Downloads EIDITH database from google drive
 #'
-#' @param database whether downloading "global", "eha", or "eha_and_malaysia" database (all password protected)
-#' @importFrom getPass getPass
+#' Note that post-September 2020, EIDITH remote database access is disabled.
+#'
+#' This function downloads a static version of the database. Access is enforced via Google Drive. Contact Emma (mendelsohn@ecohealthalliance.org) with questions.
+#'
+#' @param database whether downloading "eha", "eha_and_malaysia",or "glabal" database
 #' @importFrom rappdirs user_data_dir
-#' @importFrom assertthat assert_that
 #' @importFrom googledrive drive_download
 #' @return NULL
 #' @export
