@@ -11,15 +11,55 @@ tools for data from the PREDICT program.
 The **eidith** package contains no data. To access data via this package, you must be a
 member of the PREDICT project.
 
-The package has been updated since the end of the PREDICT project in September 2020 to access static backups of the EIDITH database.
+The package has been updated following the end of the PREDICT project in September 2020. It now accesses a static backup of the EIDITH database, with permission enforced via Google Drive. Contact Emma if you need access.
 
-To download the database, run `import_local_db(database = "eha")`. If you have Malaysia or global PREDICT access, you can enter 
-`"eha_with_malaysia"` or `"global"` for the `database` argument. Access to the database is enforced via Google Drive--contact Emma (mendelsohn@ecohealthalliance.org) with questions.
+### Database download
 
-When downloading the database, you will be prompted in your R console to allow the `googledrive` package to access to your Google account. 
+Before downloading the database, run `googledrive::drive_auth(email = "yourname@ecohealthalliance.org")` and follow the prompts. If you are working on the server or running into any issues, try `googledrive::drive_auth(email = "yourname@ecohealthalliance.org", use_oob=TRUE)`. If you are still running into issues, reach out to Emma. 
 
-As in earlier versions of this package, once your database is downloaded, you can use the `ed2_x()` functions to read in tables (`ed2_events()`, `ed2_animals()`, etc.)
+Once your Google auth is set up, download the database with `import_local_db(database = "eha")`. If you have Malaysia or global PREDICT access, you can enter 
+`"eha_with_malaysia"` or `"global"` for the `database` argument. 
 
-Note the functions `ed_db_download()` and `ed2_get()`, which previously accessed the EIDITH API, are now disabled.
+### Reading in tables
+ 
+As in earlier versions of this package, once your database is downloaded, you can use the `ed2_x()` functions to read in tables.
+The following functions are available:
+
+`ed2_animals()`,
+`ed2_behavior()`,
+`ed2_crop_production()`,
+`ed2_dwellings()`,
+`ed2_events()`,
+`ed2_extractive_industry()`,
+`ed2_human()`,
+`ed2_human_animal_production()`,
+`ed2_human_animal_production_ehp()`,
+`ed2_human_crop_production()`,
+`ed2_human_ehp()`,
+`ed2_human_extractive_industry()`,
+`ed2_human_hospital_worker()`,
+`ed2_human_hunter()`,
+`ed2_human_hunter_ehp()`,
+`ed2_human_market()`,
+`ed2_human_restaurant()`,
+`ed2_human_sick_person()`,
+`ed2_human_temporary_settlements()`,
+`ed2_human_zoo()`,
+`ed2_market_value_chain()`,
+`ed2_natural_areas()`,
+`ed2_specimens()`,
+`ed2_test_interpreted()`,
+`ed2_test_serology()`,
+`ed2_tests()`,
+`ed2_training()`,
+`ed2_wildlife_restaurant()`
+
+### Data processing support functions
+
+To unnest multi-response fields, see `?ed2_expand_long` and `?ed2_expand_wide`.
+
+### Note on deprecated functions 
+
+`ed_db_download()` and `ed2_get()`, which previously accessed the EIDITH API, are now disabled.
 
 
