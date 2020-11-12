@@ -152,6 +152,9 @@ db_other_indexes <- list(
 #' @export
 ed_db_download <- function(p2_tables = p2_api_endpoints(),
                            country = NULL, p1_data=FALSE, verbose=interactive()) {
+
+  stop("API access capabilities are unavailable. . Use import_local_db() instead.")
+
   auth <- ed_auth(verbose = verbose)
   if (verbose) message("Downloading and processing EIDITH data. This may take some time.")
 

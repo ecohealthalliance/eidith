@@ -6,33 +6,20 @@
 # The EIDITH R Package
 
 The **eidith** R package provides programmatic access and analytical
-tools for data from the [PREDICT
-program](http://www.vetmed.ucdavis.edu/ohi/predict/). housed at the
-[Emerging Infectious Disease Information Technology
-Hub](https://www.eidith.org/).
+tools for data from the PREDICT program.
 
-The **eidith** package contains no data. To access data, you must be a
-member of the PREDICT project and an
-[registered](https://www.eidith.org/register.aspx) EIDITH user with data
-access privileges. If need an account or have questions about your
-access level, contact <technology@eidith.org>.
+The **eidith** package contains no data. To access data via this package, you must be a
+member of the PREDICT project.
 
-See the [package
-tutorial](https://ecohealthalliance.github.io/eidith/articles/eidith.html)
-and [help
-files](https://ecohealthalliance.github.io/eidith/reference/index.html)
-for installation and usage information.
+The package has been updated since the end of the PREDICT project in September 2020 to access static backups of the EIDITH database.
 
-If you’d like to contribute to the project, please see the [contributing
-guidelines](CONTRIBUTING.md). Please note that this project is governed
-by a [code of
-conduct](CONDUCT.md).
+To download the database, run `import_local_db(database = "eha")`. If you have Malaysia or global PREDICT access, you can enter 
+`"eha_with_malaysia"` or `"global"` for the `database` argument. Access to the database is enforced via Google Drive--contact Emma (mendelsohn@ecohealthalliance.org) with questions.
 
-### Package Testing Status
+When downloading the database, you will be prompted in your R console to allow the `googledrive` package to access to your Google account. 
 
-| Branch                            |                                                             Travis CI (Mac/Linux)                                                             |                                                                             Appveyor (Windows)                                                                              |                                                                  Testing Coverage                                                                  |
-| :-------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------: |
-| Current Release (`master` branch) | [![Travis-CI Build Status](https://travis-ci.org/ecohealthalliance/eidith.svg?branch=master)](https://travis-ci.org/ecohealthalliance/eidith) | [![Build status](https://ci.appveyor.com/api/projects/status/j1nsmtbqj7sr3pti/branch/master?svg=true)](https://ci.appveyorgithub.com/project/NoamRoss/eidith/branch/master) | [![Coverage status](https://codecov.io/gh/ecohealthalliance/eidith/branch/master/graph/badge.svg)](https://codecov.io/gh/ecohealthalliance/eidith) |
-| Upcoming release (`dev` branch)   |  [![Travis-CI Build Status](https://travis-ci.org/ecohealthalliance/eidith.svg?branch=dev)](https://travis-ci.org/ecohealthalliance/eidith)   |       [![Build status](https://ci.appveyor.com/api/projects/status/j1nsmtbqj7sr3pti/branch/dev?svg=true)](https://ci.appveyor.com/project/NoamRoss/eidith/branch/dev)       | [![codecov](https://codecov.io/gh/ecohealthalliance/eidith/branch/dev/graph/badge.svg)](https://codecov.io/gh/ecohealthalliance/eidith/branch/dev) |
+As in earlier versions of this package, once your database is downloaded, you can use the `ed2_x()` functions to read in tables (`ed2_events()`, `ed2_animals()`, etc.)
 
-![](inst/images/README-predictfooter.png)
+Note the functions `ed_db_download()` and `ed2_get()`, which previously accessed the EIDITH API, are now disabled.
+
+

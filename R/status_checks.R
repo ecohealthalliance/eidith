@@ -109,10 +109,11 @@ ed_db_check_status <- function(path=NULL, inter = T) {
 
 
 ed_db_presence <- function(){
-  status <- all(length(dbListTables(eidith_db())) > 0, ed_db_status_table()) # tables exist and status not corrupt
+  status <- all(length(dbListTables(eidith_db())) > 0 )#, ed_db_status_table()) # tables exist and status not corrupt
   if(!status){
     line1 <- (cli::rule(crayon::green("Welcome to the EIDITH R Package!")))
-    return(line1)
+    line2 <- crayon::green(".  No database detected.  Use import_local_db() to import.")
+    return(glue::glue(line1, line2, .sep = "\n"))
   }else{
     ed_create_banner()
   }
@@ -128,7 +129,7 @@ ed_db_presence <- function(){
 #' @importFrom stringr str_detect
 ed_create_banner <- function(path = NULL){
 
-  if(ed_db_status_table()){ #only run banner if status table is not corrupt
+ # if(ed_db_status_table()){ #only run banner if status table is not corrupt
 
     edb <- eidith_db(path)
     tryCatch(expr = {
@@ -158,7 +159,7 @@ ed_create_banner <- function(path = NULL){
       })
 
       ed_banner <- glue(cli::rule(crayon::cyan(crayon::bold("EIDITH R Package"))),
-                        crayon::cyan(crayon::italic("\nPREDICT-2 Table Status:")),
+                        crayon::cyan(crayon::italic("\nPREDICT Table Status:")),
                         glue_collapse(p2_status_list, sep = "\n"), "\n","",
                         .sep = "\n")
 
@@ -171,7 +172,7 @@ ed_create_banner <- function(path = NULL){
     }
 
     )
-  }
+  #}
 }
 
 #' @importFrom DBI dbGetQuery dbExecute dbListTables

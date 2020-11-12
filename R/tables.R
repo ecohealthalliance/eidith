@@ -60,41 +60,41 @@ ed_table_ <- function(table, ..., .dots) {
 
 
   #add class attributes to P2 tables
-  if(stri_detect_fixed(table, "2")){
-    ed_tb <- dbReadTable(eidith_db(), table)
-    #adding notes
-    ed_tb <- ed_tb %>%
-      filter_(.dots=dots)
-    note_cols <- which(stri_detect_fixed(names(ed_tb), "notes"))
-    if(length(note_cols > 0)){
-      filled_notes <- sapply(note_cols, function(x) all(!is.na(ed_tb[,x])))
-      msg_notes <- note_cols[filled_notes]
-      if(length(msg_notes > 0)) attr(ed_tb, "notes") <- msg_notes
-    }
-    #adding duplicate rows
-    intended_key <- db_other_indexes[[table]][[1]]
-    group_var <- as.name(intended_key)
-    key_errors <- ed_tb %>%
-      group_by(!!group_var) %>%
-      summarize(count = n()) %>%
-      filter(count > 1) %>%
-      dplyr::pull(!!group_var)
-    attr(ed_tb, "duplicate_keys") <- key_errors
-    indices <- which(ed_tb[[intended_key]] %in% key_errors)
-    attr(ed_tb, "duplicate_indices") <- indices
-    class(ed_tb) <- c("eidith_tbl", class(ed_tb))
-
-    #print details on local database pull"
-    if(interactive()){
-    print(ed_tb, tibble_print = FALSE)
-  }
-  }else{
+  # if(stri_detect_fixed(table, "2")){
+  #   ed_tb <- dbReadTable(eidith_db(), table)
+  #   #adding notes
+  #   ed_tb <- ed_tb %>%
+  #     filter_(.dots=dots)
+  #   note_cols <- which(stri_detect_fixed(names(ed_tb), "notes"))
+  #   if(length(note_cols > 0)){
+  #     filled_notes <- sapply(note_cols, function(x) all(!is.na(ed_tb[,x])))
+  #     msg_notes <- note_cols[filled_notes]
+  #     if(length(msg_notes > 0)) attr(ed_tb, "notes") <- msg_notes
+  #   }
+  #   #adding duplicate rows
+  #   intended_key <- db_other_indexes[[table]][[1]]
+  #   group_var <- as.name(intended_key)
+  #   key_errors <- ed_tb %>%
+  #     group_by(!!group_var) %>%
+  #     summarize(count = n()) %>%
+  #     filter(count > 1) %>%
+  #     dplyr::pull(!!group_var)
+  #   attr(ed_tb, "duplicate_keys") <- key_errors
+  #   indices <- which(ed_tb[[intended_key]] %in% key_errors)
+  #   attr(ed_tb, "duplicate_indices") <- indices
+  #   class(ed_tb) <- c("eidith_tbl", class(ed_tb))
+  #
+  #   #print details on local database pull"
+  #   if(interactive()){
+  #   print(ed_tb, tibble_print = FALSE)
+  # }
+  # }else{
     ed_tb <- dbReadTable(eidith_db(), table)
     ed_tb <- ed_tb %>%
       filter_(.dots=dots) %>%
       fix_classes() %>%
       as.tibble()
-  }
+ # }
 ed_tb
 }
 
