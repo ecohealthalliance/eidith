@@ -42,7 +42,8 @@ Imports:
     htmlwidgets,
     DT,
     janitor,
-    digest
+    digest,
+    googledrive
 Suggests:
     curl,
     testthat,
