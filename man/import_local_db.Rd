@@ -13,5 +13,9 @@ import_local_db(database = c("eha", "eha_with_malaysia", "global"))
 Note that post-September 2020, EIDITH remote database access is disabled.
 }
 \details{
-This function downloads a static version of the database. Access is enforced via Google Drive. Contact Emma (mendelsohn@ecohealthalliance.org) with questions.
+This function downloads a static version of the database. Access is enforced via Google Drive.
+You will be prompted in your R console to allow the \code{googledrive} package to access to your Google account.
+See \code{?googledrive::drive_auth()}.
+
+Contact Emma (mendelsohn@ecohealthalliance.org) for access or with any questions!
 }

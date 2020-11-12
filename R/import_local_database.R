@@ -2,7 +2,11 @@
 #'
 #' Note that post-September 2020, EIDITH remote database access is disabled.
 #'
-#' This function downloads a static version of the database. Access is enforced via Google Drive. Contact Emma (mendelsohn@ecohealthalliance.org) with questions.
+#' This function downloads a static version of the database. Access is enforced via Google Drive.
+#' You will be prompted in your R console to allow the `googledrive` package to access to your Google account.
+#' See `?googledrive::drive_auth()`.
+#'
+#' Contact Emma (mendelsohn@ecohealthalliance.org) for access or with any questions!
 #'
 #' @param database whether downloading "eha", "eha_and_malaysia",or "glabal" database
 #' @importFrom rappdirs user_data_dir
