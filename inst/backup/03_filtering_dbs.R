@@ -1,233 +1,202 @@
-# this script filters the global database (from the global download) for just eha countries or just eha + malaysia
+# this script filters the global database for just eha countries or just eha + malaysia
+# it also adds the country column to each table
+# it takes as input the database as exported from 02_fixing_animal_table.R (eidith/original)
 
 library(eidith)
 library(tidyverse)
 library(DBI)
 
-import_local_db(database = "global")
+# Get original global db from google drive ---------------------------------------
+drive_url <- "https://drive.google.com/file/d/1noDn8YoGS-fyKgqGOkgi2bOkxirDGXIB/view?usp=sharing"
+local_path <- file.path(rappdirs::user_data_dir(),
+                        "eidith")
+local_path_zip <- paste0(local_path,  "/eidith_db.sqlite.zip")
+googledrive::drive_download(file = drive_url,
+                            path = local_path_zip,
+                            overwrite = TRUE)
+unzip(zipfile = local_path_zip, exdir = local_path)
 
-# Initiate filtered dbs ------------------------------------------------------------
+# Initiate dbs  ------------------------------------------------------------
+conn_global <- DBI::dbConnect(RSQLite::SQLite(), here::here("inst/backup/global/eidith_db.sqlite"))
 conn_eha_with_malay <- DBI::dbConnect(RSQLite::SQLite(), here::here("inst/backup/eha_with_malaysia/eidith_db.sqlite"))
 conn_eha_no_malay <- DBI::dbConnect(RSQLite::SQLite(), here::here("inst/backup/eha_no_malaysia/eidith_db.sqlite"))
 
-# Events + extracts -----------------------------------------------------------
-#TODO update this to filter by event_id and project (using inner join)
-tbls <- p2_api_endpoints()
-event_extracts <- c("Event", "AnimalProduction", "CropProduction", "Dwellings",  "ExtractiveIndustry",
+# Function to save to dbs --------------------------------------------------
+save_tb_to_dbs <- function(tb, tb_name){
+  DBI::dbWriteTable(conn_global,
+                    value = tb,
+                    name = tb_name,
+                    overwrite = TRUE)
+  DBI::dbWriteTable(conn_eha_with_malay,
+                    value = tb %>% filter(country %in% eha_countries()),
+                    name = tb_name,
+                    overwrite = TRUE)
+  DBI::dbWriteTable(conn_eha_no_malay,
+                    value = tb %>% filter(country %in% eha_countries(), !country %in% c("Malaysia, Peninsular", "Malaysia, Sabah" )),
+                    name = tb_name,
+                    overwrite = TRUE)
+}
+
+# events -----------------------------------------------------------
+events <- ed2_events()
+save_tb_to_dbs(tb = events, tb_name =  eidith:::p2_table_names[["Event"]])
+lookup_events <- events %>%
+  select(project, gains4_event_id, event_name, country) %>%
+  distinct()
+
+# event extracts -----------------------------------------------------------
+## join with events by event_name
+event_extracts <- c("AnimalProduction", "CropProduction", "Dwellings",  "ExtractiveIndustry",
                     "MarketValueChain", "NaturalAreas", "WildlifeRestaurant", "ZooSanctuary" )
 
-events <- ed2_events()
-
-events_eha_with_malay <- events %>%
-  filter(country %in% eha_countries())
-events_eha_with_malay_names <- unique(events_eha_with_malay$event_name)
-
-events_eha_no_malay <- events_eha_with_malay %>%
-  filter(!country %in% c("Malaysia, Peninsular", "Malaysia, Sabah"))
-events_eha_no_malay_names <- unique(events_eha_no_malay$event_name)
-
 for(ee in event_extracts){
-
-  # read full global table
   tb_name <- eidith:::p2_table_names[[ee]]
   tb <- DBI::dbReadTable(eidith:::eidith_db(), tb_name)
-
-  # filter for eha with malaysia
-  tb_eha_with_malay <- tb %>% filter(event_name %in% events_eha_with_malay_names)
-  DBI::dbWriteTable(conn_eha_with_malay,
-                    value = tb_eha_with_malay,
-                    name = tb_name,
-                    overwrite = TRUE)
-
-  # filter for eha without malaysia
-  tb_eha_no_malay <- tb %>% filter(event_name %in% events_eha_no_malay_names)
-  DBI::dbWriteTable(conn_eha_no_malay,
-                    value = tb_eha_no_malay,
-                    name = tb_name,
-                    overwrite = TRUE)
+  assertthat::assert_that(all(unique(tb$event_name) %in% unique(lookup_events$event_name)))
+  tb2 <- inner_join(lookup_events, tb, by = "event_name") # this may expand in size relative to tb because some events have multiple gain_4 ids
+  assertthat::assert_that(!any(str_detect(colnames(tb2), "\\.x|\\.y")))
+  assertthat::assert_that(nrow(tb) == nrow(tb2))
+  save_tb_to_dbs(tb = tb2, tb_name = tb_name)
 }
 
-# lookups for other tables
-lookup_events_eha_with_malay <- events_eha_with_malay %>%
-  select(project, gains4_event_id) %>%
-  distinct()
+# animals -----------------------------------------------------------------
+## join with events by gains4_event_id
+animals <- ed2_animals() %>%
+  select(-event_name) # let's use event_name from events table since there are some minor inconsistencies that cause data to be lost in the join
+assertthat::assert_that(all(unique(animals$gains4_event_id) %in% unique(lookup_events$gains4_event_id)))
+animals2 <- inner_join(lookup_events, animals, by = c("project", "gains4_event_id"))
+assertthat::assert_that(!any(str_detect(colnames(animals2), "\\.x|\\.y")))
+assertthat::assert_that(nrow(animals) == nrow(animals2))
+save_tb_to_dbs(tb = animals2, tb_name =  eidith:::p2_table_names[["Animal"]])
+lookup_animals <- animals2  %>%
+  select(project, country, gains4_sample_unit_id)
 
-lookup_events_eha_no_malay <- events_eha_no_malay %>%
-  select(project, gains4_event_id) %>%
-  distinct()
+# humans ------------------------------------------------------------------
+## join with events by gains4_event_id
+human <- ed2_human() %>%
+  mutate(project = "P2") %>%
+  select(-event_name) # let's use event_name from events table since there are some minor inconsistencies that cause data to be lost in the join
+assertthat::assert_that(all(unique(human$gains4_event_id) %in% unique(lookup_events$gains4_event_id)))
+human2 <- inner_join(lookup_events, human, by = c("project", "gains4_event_id"))
+assertthat::assert_that(!any(str_detect(colnames(human2), "\\.x|\\.y")))
+assertthat::assert_that(nrow(human) == nrow(human2))
+save_tb_to_dbs(tb = human2, tb_name =  eidith:::p2_table_names[["Human"]])
+lookup_human <- human2  %>%
+  select(project, country, gains4_sample_unit_id)
 
-# Animal ------------------------------------------------------------------
+# human ehp ---------------------------------------------------------------
+## join with events by gains4_event_id
+human_ehp <- ed2_human_ehp() %>%
+  mutate(project = "P2") %>%
+  select(-event_name) # let's use event_name from events table since there are some minor inconsistencies that cause data to be lost in the join
+assertthat::assert_that(all(unique(human_ehp$gains4_event_id) %in% unique(lookup_events$gains4_event_id)))
+human_ehp2 <- inner_join(lookup_events, human_ehp, by = c("project", "gains4_event_id"))
+assertthat::assert_that(!any(str_detect(colnames(human_ehp2), "\\.x|\\.y")))
+assertthat::assert_that(nrow(human_ehp) == nrow(human_ehp2))
+save_tb_to_dbs(tb = human_ehp2, tb_name =  eidith:::p2_table_names[["HumanEHP"]])
+lookup_human_ehp <- human_ehp2  %>%
+  select(project, country, gains4_sample_unit_id)
+lookup_human <- bind_rows(lookup_human, lookup_human_ehp)
 
-animals <- ed2_animals()
-
-# join for eha with malaysia
-animals_eha_with_malay <- inner_join(lookup_events_eha_with_malay, animals) %>%
-  as.data.frame()
-
-DBI::dbWriteTable(conn_eha_with_malay,
-                  value = animals_eha_with_malay,
-                  name =  eidith:::p2_table_names[["Animal"]],
-                  overwrite = TRUE)
-
-# join for eha no malaysia
-animals_eha_no_malay <- inner_join(lookup_events_eha_no_malay, animals) %>%
-  as.data.frame()
-
-DBI::dbWriteTable(conn_eha_no_malay,
-                  value = animals_eha_no_malay,
-                  name =  eidith:::p2_table_names[["Animal"]],
-                  overwrite = TRUE)
-
-# Human + extracts -------------------------------------------------------------------
-
+# human extracts ----------------------------------------------------------
+## join with humans by gains4_sample_unit_id
 human_extracts <- p2_api_endpoints()[grep("Human", p2_api_endpoints())]
+human_extracts <- human_extracts[!human_extracts %in% c("Human", "HumanEHP")]
 
-human <- ed2_human()
-human_ehp <- ed2_human_ehp()
-
-# get pid for eha with malaysia
-lookup_events_eha_with_malay_p2 <- lookup_events_eha_with_malay %>%
-  filter(project == "P2")
-human_eha_with_malay <- human %>%
-  filter(gains4_event_id %in% lookup_events_eha_with_malay_p2$gains4_event_id)
-human_ehp_eha_with_malay <- human_ehp %>%
-  filter(gains4_event_id %in% lookup_events_eha_with_malay_p2$gains4_event_id)
-human_eha_with_malay_pid <- c(unique(human_eha_with_malay$participant_id), unique(human_ehp_eha_with_malay$participant_id))
-
-# get pid for eha no malaysia
-lookup_events_eha_no_malay_p2 <- lookup_events_eha_no_malay %>%
-  filter(project == "P2")
-human_eha_no_malay <- human %>%
-  filter(gains4_event_id %in% lookup_events_eha_no_malay_p2$gains4_event_id)
-human_ehp_eha_no_malay <- human_ehp %>%
-  filter(gains4_event_id %in% lookup_events_eha_no_malay_p2$gains4_event_id)
-human_eha_no_malay_pid <- c(unique(human_eha_no_malay$participant_id), unique(human_ehp_eha_no_malay$participant_id))
-
-
-# filter and save human extracts
 for(he in human_extracts){
-
-  # read full global table
   tb_name <- eidith:::p2_table_names[[he]]
-  tb <- DBI::dbReadTable(eidith:::eidith_db(), tb_name)
-
-  # filter for eha with malaysia
-  tb_eha_with_malay <- tb %>% filter(participant_id %in% human_eha_with_malay_pid)
-  DBI::dbWriteTable(conn_eha_with_malay,
-                    value = tb_eha_with_malay,
-                    name = tb_name,
-                    overwrite = TRUE)
-
-  # filter for eha without malaysia
-  tb_eha_no_malay <- tb %>% filter(participant_id %in% human_eha_no_malay_pid)
-  DBI::dbWriteTable(conn_eha_no_malay,
-                    value = tb_eha_no_malay,
-                    name = tb_name,
-                    overwrite = TRUE)
+  tb <- DBI::dbReadTable(eidith:::eidith_db(), tb_name) %>%
+    select(-one_of("event_name"))
+  assertthat::assert_that(all(unique(tb$gains4_sample_unit_id) %in% unique(lookup_human$gains4_sample_unit_id)))
+  tb2 <- inner_join(lookup_human, tb, by = "gains4_sample_unit_id") # this may expand in size relative to tb because some events have multiple gain_4 ids
+  assertthat::assert_that(!any(str_detect(colnames(tb2), "\\.x|\\.y")))
+  assertthat::assert_that(nrow(tb) == nrow(tb2))
+  save_tb_to_dbs(tb = tb2, tb_name = tb_name)
 }
 
-# Specimen ----------------------------------------------------------------
+# specimen ----------------------------------------------------------------
+## join with humans + animals by gains4_sample_unit_id
+lookup_sui <- bind_rows(lookup_animals, lookup_human)
 specimens <- ed2_specimens()
+assertthat::assert_that(all(unique(specimens$gains4_sample_unit_id) %in% unique(lookup_sui$gains4_sample_unit_id)))
+specimens2 <- inner_join(lookup_sui, specimens, by = c("project", "gains4_sample_unit_id"))
+assertthat::assert_that(!any(str_detect(colnames(specimens2), "\\.x|\\.y")))
+assertthat::assert_that(nrow(specimens) == nrow(specimens2))
+save_tb_to_dbs(tb = specimens2, tb_name =  eidith:::p2_table_names[["Specimen"]])
+lookup_specimen <- specimens2 %>%
+  select(project, country, gains4_specimen_id)
 
-# lookup sample unit id for eha with malay
-lookup_animals_eha_with_malay <- animals_eha_with_malay %>%
-  select(project, gains4_sample_unit_id)
-lookup_human_eha_with_malay <- human_eha_with_malay %>%
-  select(gains4_sample_unit_id) %>%
-  mutate(project = "P2")
-lookup_human_ehp_eha_with_malay <- human_ehp_eha_with_malay %>%
-  select(gains4_sample_unit_id) %>%
-  mutate(project = "P2")
-lookup_sui_with_malay <- bind_rows(lookup_animals_eha_with_malay, lookup_human_eha_with_malay) %>%
-  bind_rows(lookup_human_ehp_eha_with_malay)
-
-specimens_eha_with_malay <- inner_join(lookup_sui_with_malay, specimens)
-
-DBI::dbWriteTable(conn_eha_with_malay,
-                  value = specimens_eha_with_malay,
-                  name =  eidith:::p2_table_names[["Specimen"]],
-                  overwrite = TRUE)
-
-# lookup sample unit id for eha no malay
-lookup_animals_eha_no_malay <- animals_eha_no_malay %>%
-  select(project, gains4_sample_unit_id)
-lookup_human_eha_no_malay <- human_eha_no_malay %>%
-  select(gains4_sample_unit_id) %>%
-  mutate(project = "P2")
-lookup_human_ehp_eha_no_malay <- human_ehp_eha_no_malay %>%
-  select(gains4_sample_unit_id) %>%
-  mutate(project = "P2")
-lookup_sui_no_malay <- bind_rows(lookup_animals_eha_no_malay, lookup_human_eha_no_malay) %>%
-  bind_rows(lookup_human_ehp_eha_no_malay)
-
-specimens_eha_no_malay <- inner_join(lookup_sui_no_malay, specimens)
-
-DBI::dbWriteTable(conn_eha_no_malay,
-                  value = specimens_eha_no_malay,
-                  name =  eidith:::p2_table_names[["Specimen"]],
-                  overwrite = TRUE)
-
-# Test --------------------------------------------------------------------
+# test --------------------------------------------------------------------
+## join with specimen by gains4_specimen_id
 test <- ed2_tests()
+assertthat::assert_that(all(unique(test$gains4_specimen_id) %in% unique(lookup_specimen$gains4_specimen_id)))
+# ---
+# there are some specimen IDs in test but not specimen
+# eg gains4_specimen_id "1015696" belongs to animal_id "LAP11-F0061" ie gains_4_sample_unit_id "34566". This sample unit has two gains4_specimen_id (201929, 1015696)
+# most of these cases are the malaysia pooled samples that are okay to drop
+# diff <- setdiff(unique(test$gains4_specimen_id), unique(lookup_specimen$gains4_specimen_id))
+# length(diff)
+# test_no_match <- test %>% filter(gains4_specimen_id %in% diff)
+# test_no_match_p2 <- test_no_match %>% filter(project == "P2")
+# ---
+test2 <- inner_join(lookup_specimen, test, by = c("project", "gains4_specimen_id"))
+assertthat::assert_that(!any(str_detect(colnames(test2), "\\.x|\\.y")))
+assertthat::assert_that(nrow(test) == nrow(test2)) # error expected b/c above issues
+save_tb_to_dbs(tb = test2, tb_name =  eidith:::p2_table_names[["Test"]])
 
-# lookup specimen id for eha with malay
-lookup_specimens_eha_with_malay <- specimens_eha_with_malay %>%
-  select(project, gains4_specimen_id)
-test_eha_with_malay <- inner_join(lookup_specimens_eha_with_malay, test)
+# test interpreted --------------------------------------------------------------------
+## join with specimen by gains4_specimen_id
+test_interpreted <- ed2_test_interpreted()
+assertthat::assert_that(all(unique(test_interpreted$gains4_specimen_id) %in% unique(lookup_specimen$gains4_specimen_id)))
+# ---
+# there are some specimen IDs in test interp but not specimen
+# most of these cases are the malaysia pooled samples that I think are okay to drop
+# diff <- setdiff(unique(test_interpreted$gains4_specimen_id), unique(lookup_specimen$gains4_specimen_id))
+# length(diff)
+# test_interp_no_match <- test_interpreted %>% filter(gains4_specimen_id %in% diff)
+# test_interp_match_p2 <- test_interp_no_match %>% filter(project == "P2")
+# unique(test_interp_match_p2$lab_name)
+# ---
+test_interpreted2 <- inner_join(lookup_specimen, test_interpreted, by = c("project", "gains4_specimen_id"))
+assertthat::assert_that(!any(str_detect(colnames(test_interpreted2), "\\.x|\\.y")))
+assertthat::assert_that(nrow(test_interpreted) == nrow(test_interpreted2)) # error expected b/c above issues
+save_tb_to_dbs(tb = test_interpreted2, tb_name =  eidith:::p2_table_names[["TestDataInterpreted"]])
 
-DBI::dbWriteTable(conn_eha_with_malay,
-                  value = test_eha_with_malay,
-                  name =  eidith:::p2_table_names[["Test"]],
-                  overwrite = TRUE)
+# test serology --------------------------------------------------------------------
+## join with specimen by gains4_specimen_id
+test_serology <- ed2_test_serology() %>%
+  mutate(project = "P2")
+assertthat::assert_that(all(unique(test_serology$gains4_specimen_id) %in% unique(lookup_specimen$gains4_specimen_id)))
+test_serology2 <- inner_join(lookup_specimen, test_serology, by = c("project", "gains4_specimen_id"))
+assertthat::assert_that(!any(str_detect(colnames(test_serology2), "\\.x|\\.y")))
+assertthat::assert_that(nrow(test_serology) == nrow(test_serology2))
+save_tb_to_dbs(tb = test_serology2, tb_name =  eidith:::p2_table_names[["TestDataSerology"]])
 
-# lookup specimen id for eha no malay
-lookup_specimens_eha_no_malay <- specimens_eha_no_malay %>%
-  select(project, gains4_specimen_id)
-test_eha_no_malay <- inner_join(lookup_specimens_eha_no_malay, test)
-
-DBI::dbWriteTable(conn_eha_no_malay,
-                  value = test_eha_no_malay,
-                  name =  eidith:::p2_table_names[["Test"]],
-                  overwrite = TRUE)
-# Behavioral --------------------------------------------------------------
+# behavior ----------------------------------------------------------------
 behavior <- ed2_behavior()
+save_tb_to_dbs(tb = behavior, tb_name =  eidith:::p2_table_names[["Behavioral"]])
 
-behavior_eha <- behavior %>%
-  filter(country %in% eha_countries())
-
-unique(behavior_eha$country)
-
-DBI::dbWriteTable(conn_eha_with_malay,
-                  value = behavior_eha,
-                  name =  eidith:::p2_table_names[["Behavioral"]],
-                  overwrite = TRUE)
-
-DBI::dbWriteTable(conn_eha_with_malay,
-                  value = behavior_eha,
-                  name =  eidith:::p2_table_names[["Behavioral"]],
-                  overwrite = TRUE)
-
-
-# Training ----------------------------------------------------------------
-
+# training ----------------------------------------------------------------
 training <- ed2_training()
-training_eha_with_malay <- training %>%
-  filter(participant_home_country %in% eha_countries())
+DBI::dbWriteTable(conn_global,
+                  value = training,
+                  name = eidith:::p2_table_names[["Training"]],
+                  overwrite = TRUE)
 DBI::dbWriteTable(conn_eha_with_malay,
-                  value = as.data.frame(training_eha_with_malay),
-                  name = "training_2",
+                  value = training %>% filter(participant_home_country %in% eha_countries()),
+                  name = eidith:::p2_table_names[["Training"]],
                   overwrite = TRUE)
-
-training_eha_no_malay <- training_eha_with_malay %>%
-  filter(!participant_home_country %in% c("Malaysia, Peninsular", "Malaysia, Sabah"))
 DBI::dbWriteTable(conn_eha_no_malay,
-                  value = as.data.frame(training_eha_no_malay),
-                  name = "training_2",
+                  value = training %>% filter(participant_home_country %in% eha_countries(), !participant_home_country %in% c("Malaysia, Peninsular", "Malaysia, Sabah" )),
+                  name = eidith:::p2_table_names[["Training"]],
                   overwrite = TRUE)
 
+# check and close ---------------------------------------------------------
+dbListTables(conn_global)
 dbListTables(conn_eha_with_malay)
 dbListTables(conn_eha_no_malay)
 
+dbDisconnect(conn_global)
 dbDisconnect(conn_eha_with_malay)
 dbDisconnect(conn_eha_no_malay)
 
