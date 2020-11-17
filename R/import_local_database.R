@@ -19,9 +19,9 @@ import_local_db <- function(database = c("eha", "eha_with_malaysia", "global")){
 
   # establish paths
   drive_url <- switch(database,
-                      "global" = "https://drive.google.com/file/d/1fWr3pEMTWvSatf3z9ecBAYXnZnDViXlS/view?usp=sharing",
-                      "eha" = "https://drive.google.com/file/d/1QeCv-9oUtgrUakGkS5ccK7CXXKZFRqwF/view?usp=sharing",
-                      "eha_with_malaysia" = "https://drive.google.com/file/d/1PbFO7-FhSkd9cBin5RP1r8SMDYrQdgMO/view?usp=sharing"
+                      "global" = "https://drive.google.com/file/d/1i_7zJvPEhKQ0D8YGnqZpBsEjP8cYoFUB/view?usp=sharing",
+                      "eha" = "https://drive.google.com/file/d/1Hu4hjsJepMAQ03XnzAYWpdFdqYg_4JfV/view?usp=sharing",
+                      "eha_with_malaysia" = "https://drive.google.com/file/d/1zBXavCFg9fvwdPVQqLfCW3aDWWjYraDU/view?usp=sharing"
                       )
   local_path <- file.path(rappdirs::user_data_dir(),
                           "eidith")
@@ -37,3 +37,4 @@ import_local_db <- function(database = c("eha", "eha_with_malaysia", "global")){
 
   return(local_path)
 }
+
