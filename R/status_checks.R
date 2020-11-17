@@ -39,7 +39,7 @@ ed_db_field_check <- function(tb, path, df2 = ed2_metadata()){
 #' @importFrom tidyr separate_
 #' @importFrom DBI dbGetQuery dbExecute dbListTables
 #' @importFrom RSQLite dbGetQuery dbWriteTable
-#' @export
+#' @noRd
 ed_db_check_status <- function(path=NULL, inter = T) {
 
   edb <- eidith_db(path)
@@ -115,7 +115,10 @@ ed_db_presence <- function(){
     line2 <- crayon::green(".  No database detected.  Use import_local_db() to import.")
     return(glue::glue(line1, line2, .sep = "\n"))
   }else{
-    ed_create_banner()
+    line1 <- (cli::rule(crayon::green("Welcome to the EIDITH R Package!")))
+    line2 <- crayon::green(".  Database detected.")
+    return(glue::glue(line1, line2, .sep = "\n"))
+    #ed_create_banner()
   }
 }
 
@@ -176,7 +179,7 @@ ed_create_banner <- function(path = NULL){
 }
 
 #' @importFrom DBI dbGetQuery dbExecute dbListTables
-#' @export
+#' @noRd
 ed_db_status_table <- function(path=NULL) {
 
   edb <- eidith_db(path)
