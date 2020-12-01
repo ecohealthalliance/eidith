@@ -1,25 +1,36 @@
 # this script filters the global database for just eha countries or just eha + malaysia
 # it also adds the country column to each table
-# it takes as input the database as exported from 02_fixing_animal_table.R (eidith/original)
+# and it removes the integer id column
+# for the animal table, it reads in the backup copy
+# it takes as input the database as downloaded from googledrive: eiditih/original
 
 library(eidith)
 library(tidyverse)
 library(DBI)
+library(googledrive)
 
 # Get original global db from google drive ---------------------------------------
-drive_url <- "https://drive.google.com/file/d/1noDn8YoGS-fyKgqGOkgi2bOkxirDGXIB/view?usp=sharing"
+# establish paths
+drive_path <- paste0("~/eidith/original/eidith_db.zip")
 local_path <- file.path(rappdirs::user_data_dir(),
                         "eidith")
-local_path_zip <- paste0(local_path,  "/eidith_db.sqlite.zip")
-googledrive::drive_download(file = drive_url,
-                            path = local_path_zip,
-                            overwrite = TRUE)
-unzip(zipfile = local_path_zip, exdir = local_path)
+local_path_zip <- paste0(local_path,  "/eidith_db.zip")
+
+#save to eidith local share folder from google drive
+drive_download(file = drive_path,
+               path = local_path_zip,
+               overwrite = TRUE)
+
+# I unzipped with command line
 
 # Initiate dbs  ------------------------------------------------------------
 conn_global <- DBI::dbConnect(RSQLite::SQLite(), here::here("inst/backup/global/eidith_db.sqlite"))
 conn_eha_with_malay <- DBI::dbConnect(RSQLite::SQLite(), here::here("inst/backup/eha_with_malaysia/eidith_db.sqlite"))
 conn_eha_no_malay <- DBI::dbConnect(RSQLite::SQLite(), here::here("inst/backup/eha_no_malaysia/eidith_db.sqlite"))
+
+
+# Connect to original db --------------------------------------------------
+conn <- eidith:::eidith_db()
 
 # Function to save to dbs --------------------------------------------------
 save_tb_to_dbs <- function(tb, tb_name){
@@ -38,7 +49,7 @@ save_tb_to_dbs <- function(tb, tb_name){
 }
 
 # events -----------------------------------------------------------
-events <- ed2_events()
+events <- dbReadTable(conn, "events_2") %>% select(-integer_id)
 save_tb_to_dbs(tb = events, tb_name =  eidith:::p2_table_names[["Event"]])
 lookup_events <- events %>%
   select(project, gains4_event_id, event_name, country) %>%
@@ -51,7 +62,7 @@ event_extracts <- c("AnimalProduction", "CropProduction", "Dwellings",  "Extract
 
 for(ee in event_extracts){
   tb_name <- eidith:::p2_table_names[[ee]]
-  tb <- DBI::dbReadTable(eidith:::eidith_db(), tb_name)
+  tb <- DBI::dbReadTable(conn, tb_name)  %>% select(-integer_id)
   assertthat::assert_that(all(unique(tb$event_name) %in% unique(lookup_events$event_name)))
   tb2 <- inner_join(lookup_events, tb, by = "event_name") # this may expand in size relative to tb because some events have multiple gain_4 ids
   assertthat::assert_that(!any(str_detect(colnames(tb2), "\\.x|\\.y")))
@@ -60,9 +71,35 @@ for(ee in event_extracts){
 }
 
 # animals -----------------------------------------------------------------
+## first fix table using backup
+animals <- read_delim(here::here("inst/backup/AnimalData_20200929.txt"), delim = "\t",
+                     col_types = cols(.default = "c"))
+
+# clean table names
+animals_metadata <- ed2_metadata() %>%
+  filter(endpoint2 == "Animal") %>%
+  select(original_name, auto_processed_name, replacement_name)
+
+animals_drop <- animals_metadata %>%
+  filter(replacement_name == "DROP") %>%
+  pull(original_name)
+
+animals_keep <- animals_metadata %>%
+  filter(!original_name %in% animals_drop)  %>%
+  mutate(replacement_name = ifelse(is.na(replacement_name), auto_processed_name, replacement_name)) %>%
+  select(-auto_processed_name)
+
+animals <- animals %>%
+  select(all_of(animals_keep$original_name))
+
+assertthat::assert_that(all(names(animals) == animals_keep$original_name))
+colnames(animals) <- animals_keep$replacement_name
+
 ## join with events by gains4_event_id
-animals <- ed2_animals() %>%
-  select(-event_name) # let's use event_name from events table since there are some minor inconsistencies that cause data to be lost in the join
+animals <- animals %>%
+  select(-event_name) %>% # let's use event_name from events table since there are some minor inconsistencies that cause data to be lost in the join
+  mutate(gains4_event_id = as.integer(gains4_event_id)) %>%
+  mutate(gains4_sample_unit_id = as.integer(gains4_sample_unit_id))
 assertthat::assert_that(all(unique(animals$gains4_event_id) %in% unique(lookup_events$gains4_event_id)))
 animals2 <- inner_join(lookup_events, animals, by = c("project", "gains4_event_id"))
 assertthat::assert_that(!any(str_detect(colnames(animals2), "\\.x|\\.y")))
@@ -73,7 +110,8 @@ lookup_animals <- animals2  %>%
 
 # humans ------------------------------------------------------------------
 ## join with events by gains4_event_id
-human <- ed2_human() %>%
+human <- dbReadTable(conn, "human_2") %>%
+  select(-integer_id) %>%
   mutate(project = "P2") %>%
   select(-event_name) # let's use event_name from events table since there are some minor inconsistencies that cause data to be lost in the join
 assertthat::assert_that(all(unique(human$gains4_event_id) %in% unique(lookup_events$gains4_event_id)))
@@ -86,7 +124,8 @@ lookup_human <- human2  %>%
 
 # human ehp ---------------------------------------------------------------
 ## join with events by gains4_event_id
-human_ehp <- ed2_human_ehp() %>%
+human_ehp <- dbReadTable(conn, "human_ehp_2") %>%
+  select(-integer_id) %>%
   mutate(project = "P2") %>%
   select(-event_name) # let's use event_name from events table since there are some minor inconsistencies that cause data to be lost in the join
 assertthat::assert_that(all(unique(human_ehp$gains4_event_id) %in% unique(lookup_events$gains4_event_id)))
@@ -105,8 +144,9 @@ human_extracts <- human_extracts[!human_extracts %in% c("Human", "HumanEHP")]
 
 for(he in human_extracts){
   tb_name <- eidith:::p2_table_names[[he]]
-  tb <- DBI::dbReadTable(eidith:::eidith_db(), tb_name) %>%
-    select(-one_of("event_name"))
+  tb <- DBI::dbReadTable(conn, tb_name) %>%
+    select(-integer_id) %>%
+    select(-one_of("event_name")) # warnings are ok
   assertthat::assert_that(all(unique(tb$gains4_sample_unit_id) %in% unique(lookup_human$gains4_sample_unit_id)))
   tb2 <- inner_join(lookup_human, tb, by = "gains4_sample_unit_id") # this may expand in size relative to tb because some events have multiple gain_4 ids
   assertthat::assert_that(!any(str_detect(colnames(tb2), "\\.x|\\.y")))
@@ -117,7 +157,7 @@ for(he in human_extracts){
 # specimen ----------------------------------------------------------------
 ## join with humans + animals by gains4_sample_unit_id
 lookup_sui <- bind_rows(lookup_animals, lookup_human)
-specimens <- ed2_specimens()
+specimens <-  dbReadTable(conn, "specimens_2") %>% select(-integer_id)
 assertthat::assert_that(all(unique(specimens$gains4_sample_unit_id) %in% unique(lookup_sui$gains4_sample_unit_id)))
 specimens2 <- inner_join(lookup_sui, specimens, by = c("project", "gains4_sample_unit_id"))
 assertthat::assert_that(!any(str_detect(colnames(specimens2), "\\.x|\\.y")))
@@ -128,7 +168,7 @@ lookup_specimen <- specimens2 %>%
 
 # test --------------------------------------------------------------------
 ## join with specimen by gains4_specimen_id
-test <- ed2_tests()
+test <-  dbReadTable(conn, "tests_2") %>% select(-integer_id)
 assertthat::assert_that(all(unique(test$gains4_specimen_id) %in% unique(lookup_specimen$gains4_specimen_id)))
 # ---
 # there are some specimen IDs in test but not specimen
@@ -146,7 +186,7 @@ save_tb_to_dbs(tb = test2, tb_name =  eidith:::p2_table_names[["Test"]])
 
 # test interpreted --------------------------------------------------------------------
 ## join with specimen by gains4_specimen_id
-test_interpreted <- ed2_test_interpreted()
+test_interpreted <-  dbReadTable(conn, "test_data_interpreted_2") %>% select(-integer_id)
 assertthat::assert_that(all(unique(test_interpreted$gains4_specimen_id) %in% unique(lookup_specimen$gains4_specimen_id)))
 # ---
 # there are some specimen IDs in test interp but not specimen
@@ -164,7 +204,8 @@ save_tb_to_dbs(tb = test_interpreted2, tb_name =  eidith:::p2_table_names[["Test
 
 # test serology --------------------------------------------------------------------
 ## join with specimen by gains4_specimen_id
-test_serology <- ed2_test_serology() %>%
+test_serology <-  dbReadTable(conn, "test_data_serology_2") %>%
+  select(-integer_id) %>%
   mutate(project = "P2")
 assertthat::assert_that(all(unique(test_serology$gains4_specimen_id) %in% unique(lookup_specimen$gains4_specimen_id)))
 test_serology2 <- inner_join(lookup_specimen, test_serology, by = c("project", "gains4_specimen_id"))
@@ -173,11 +214,11 @@ assertthat::assert_that(nrow(test_serology) == nrow(test_serology2))
 save_tb_to_dbs(tb = test_serology2, tb_name =  eidith:::p2_table_names[["TestDataSerology"]])
 
 # behavior ----------------------------------------------------------------
-behavior <- ed2_behavior()
+behavior <-  dbReadTable(conn, "behavioral_2") %>% select(-integer_id)
 save_tb_to_dbs(tb = behavior, tb_name =  eidith:::p2_table_names[["Behavioral"]])
 
 # training ----------------------------------------------------------------
-training <- ed2_training()
+training <- dbReadTable(conn, "training_2") %>% select(-integer_id)
 DBI::dbWriteTable(conn_global,
                   value = training,
                   name = eidith:::p2_table_names[["Training"]],
