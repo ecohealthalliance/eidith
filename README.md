@@ -59,9 +59,31 @@ The following functions are available:
 `ed2_training()`,
 `ed2_wildlife_restaurant()`
 
+### Basic database structure
+![](inst/images/README-primary-tables.png)
+
+The database is primarily represented by the above structure, with modules branching off these main nodes.
+
+The following are fields for joining among these tables:
+
+_events_ `project`, `country`, `gains4_event_id` 
+
+_animals_ `project`, `country`, `gains4_event_id`, `gains4_sample_unit_id`
+
+_humans_  `project`, `country`, `gains4_event_id`, `gains4_sample_unit_id` 
+
+_specimens_ `project`, `country`, `gains4_sample_unit_id`, `gains4_specimen_id` 
+
+_tests_ `project`, `country`, `gains4_specimen_id`, `gains4_test_id` 
+
 ### Data processing support functions
 
 To unnest multi-response fields, see `?ed2_expand_long` and `?ed2_expand_wide`.
+
+### Metadata
+Somewhat outdated, but `ed2_metadata()` contains tables, fields, and descriptions.
+
+Use `eha_countries()` and `predict_countries()` to see list of country names
 
 ### Note on deprecated functions 
 

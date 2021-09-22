@@ -3,6 +3,11 @@ library(tidyverse)
 library(DBI)
 h <- here::here
 
+# events: project, country, gains4_event_id
+# animals: project, country, gains4_event_id, gains4_sample_unit_id
+# humans:  project, country, gains4_event_id, gains4_sample_unit_id
+# specimens: project, country, gains4_sample_unit_id, gains4_specimen_id
+# tests: project, country, gains4_specimen_id, gains4_test_id
 
 tests <- ed2_tests() %>%
   filter(country %in% c("Malaysia, Sabah",  "Malaysia, Peninsular", "Thailand")) %>%
