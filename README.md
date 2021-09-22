@@ -14,7 +14,7 @@ member of the PREDICT project.
 The package has been updated following the end of the PREDICT project in September 2020. It now accesses a static backup of the EIDITH database, with permission enforced via Google Drive. Contact Emma if you need access.
 
 ### Package Installation
-To install the package, you must have an active GitHub PAT associated with your EHA account, saved in your `.Renviron` (which can be viewed via `usethis::edit_r_environ()`). If you do not have a PAT, or if it hasn't been used in over a year, follow the instructions here: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token. Save your new token in your `.Renviron` as `GITHUB_PAT=[paste_your_token_here]`. Restart your R session.
+To install the package, you must have an active GitHub PAT associated with your EHA account, saved in your `.Renviron` (which can be viewed via `usethis::edit_r_environ()`). If you do not have a PAT, or if it hasn't been used in over a year [or a month?], follow the instructions here: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token. Save your new token in your `.Renviron` as `GITHUB_PAT=[paste_your_token_here]`. Restart your R session.
 
 You can then install the package with `remotes::intall_github("ecohealthalliance/eidith")`.
 
