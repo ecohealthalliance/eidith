@@ -1,4 +1,10 @@
 
+***This package has been deprecated. following the end of the PREDICT project in September 2020.  EIDITH Data is now accessible via the USAID Development Data Library at <https://data.usaid.gov/Global-Health-Security-in-Development-GHSD-/PREDICT-Emerging-Pandemic-Threats-Project/tqea-hwmr>***
+
+With the shutdown of the EIDITH database and export to the DDL, this package can be used to process data from static backups of the EIDITH data. 
+
+---
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ![](inst/images/README-eidith-logo-2014.png)
@@ -11,7 +17,7 @@ tools for data from the PREDICT program.
 The **eidith** package contains no data. To access data via this package, you must be a
 member of the PREDICT project.
 
-The package has been updated following the end of the PREDICT project in September 2020. It now accesses a static backup of the EIDITH database, with permission enforced via Google Drive. Contact Emma if you need access.
+
 
 ### Package Installation
 
