@@ -1,7 +1,7 @@
 
 ***This package has been deprecated. following the end of the PREDICT project in September 2020.  EIDITH Data is now accessible via the USAID Development Data Library at <https://data.usaid.gov/Global-Health-Security-in-Development-GHSD-/PREDICT-Emerging-Pandemic-Threats-Project/tqea-hwmr>***
 
-With the shutdown of the EIDITH database and export to the DDL, this package can be used to process data from static backups of the EIDITH data. 
+With the shutdown of the EIDITH database and export to the DDL, this package can be used to process data from static backups. 
 
 ---
 
