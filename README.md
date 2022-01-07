@@ -15,7 +15,7 @@ The package has been updated following the end of the PREDICT project in Septemb
 
 ### Package Installation
 
-You can then install the package with `remotes::install_github("ecohealthalliance/eidith")`.
+You can install the package with `remotes::install_github("ecohealthalliance/eidith")`.
 
 ### Database download
 
