@@ -32,7 +32,8 @@ Once your Google auth is set up, download the database with `import_local_db(dat
 
 ### Reading in tables
  
-As in earlier versions of this package, once your database is downloaded, you can use the `ed2_x()` functions to read in tables.
+As in earlier versions of this package, once your database is downloaded, you can use the `ed2_x()` functions to read in tables. Note these tables contain Predict 2 and Predict 1 data when available. Predict 1 data are no longer in separate tables. 
+
 The following functions are available:
 
 `ed2_animals()`,
